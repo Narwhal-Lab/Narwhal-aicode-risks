@@ -1,0 +1,29 @@
+slug: 2026-ip-and-license-compliance
+title_en: "Doe 1 v. GitHub — Ongoing IP & License Compliance Risk"
+title_cn: "AI 代码生成知识产权与开源合规风险案例（Copilot 诉讼跟进）"
+year: 2026
+disclosed: 2026-03-04
+category: ip-compliance
+severity: high
+severity_basis: editorial
+severity_evidence: "Legal/IP risk has no CVSS scale; rated High because case is still active in 2026 (9th Circuit appeal 24-7700) with OSS-license breach claims preserved by 2024-01-22 ruling."
+cvss: null
+cve: null
+real_incident: true
+ai_tool: [GitHub Copilot]
+language: [C, C++]
+attack_surface: [code-attribution, oss-license, m-and-a, sbom]
+reproducible: false
+tldr: "Updated coverage of Doe 1 v. GitHub: 2024 partial-dismissal upheld OSS-license breach claims; 2026-03-04 docket still active; Black Duck data shows 68% of audited M&A code bases carry license conflicts — direct relevance to AI-generated code SBOM/attribution."
+references:
+  - title: "Justia — 2024-01-22 Order, Document 195"
+    url: "https://law.justia.com/cases/federal/district-courts/california/candce/4%3A2022cv06823/403220/195/"
+  - title: "Doe et al. v. GitHub — 9th Circuit Appeal 24-7700"
+    url: "https://dockets.justia.com/docket/circuit-courts/ca9/24-7700"
+  - title: "GitHub — Code suggestions matching public code"
+    url: "https://docs.github.com/en/copilot/concepts/completions/code-suggestions"
+  - title: "Black Duck — Software Due Diligence for Tech M&A"
+    url: "https://www.blackduck.com/blog/software-due-diligence/"
+  - title: "WIRED — GitHub's Commercial AI Tool Was Built From Open Source Code"
+    url: "https://www.wired.com/story/github-commercial-ai-tool-built-open-source-code/"
+tags: [copilot-lawsuit, gpl, license-pollution, sbom, m-and-a, q-rsqrt]

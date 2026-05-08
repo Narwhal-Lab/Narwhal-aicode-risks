@@ -1,0 +1,36 @@
+slug: 2025-agent-prompt-injection-leak
+title_en: "EchoLeak — Zero-Click Prompt Injection in Microsoft 365 Copilot"
+title_cn: "诱导 AI agent 提示注入致数据泄露(EchoLeak)"
+year: 2025
+disclosed: 2025-06-11
+category: agent-risk
+severity: critical
+severity_basis: cvss
+severity_evidence: "MSRC CVSS 3.1 = 9.3 Critical (CVE-2025-32711); NVD score 7.5"
+cvss: 9.3                  # MSRC; NVD lists 7.5
+cve: CVE-2025-32711
+real_incident: true
+ai_tool: [Microsoft 365 Copilot]
+language: []
+attack_surface: [llm-context, rag, email, prompt-injection]
+reproducible: false
+tldr: "First publicly verified zero-click AI agent vulnerability (CVE-2025-32711, CVSS 9.3): a single crafted email coerces M365 Copilot into exfiltrating sensitive context via image URLs — no user click required."
+references:
+  - title: "NVD — CVE-2025-32711"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2025-32711"
+  - title: "MSRC advisory — CVE-2025-32711"
+    url: "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-32711"
+  - title: "Aim Labs / Cato Networks — Breaking Down EchoLeak"
+    url: "https://www.catonetworks.com/blog/breaking-down-echoleak/"
+  - title: "The Hacker News — Zero-Click AI Vulnerability Exposes M365 Copilot"
+    url: "https://thehackernews.com/2025/06/zero-click-ai-vulnerability-exposes.html"
+  - title: "SOC Prime — CVE-2025-32711 EchoLeak"
+    url: "https://socprime.com/blog/cve-2025-32711-zero-click-ai-vulnerability/"
+  - title: "Checkmarx — EchoLeak CVE-2025-32711"
+    url: "https://checkmarx.com/zero-post/echoleak-cve-2025-32711-show-us-that-ai-security-is-challenging/"
+verification_notes: |
+  2026-05 verification: CVE-2025-32711 confirmed in NVD (CVSS 7.5) and MSRC (CVSS 9.3, the
+  vendor-issued number). Aim Security was acquired by Cato Networks; canonical primary post
+  is now at catonetworks.com (the older aim.security/lp/... URL 301-redirects). Trimmed an
+  off-topic MCP/FSP/ATPA digression that was inherited from a Sohu translation.
+tags: [echoleak, prompt-injection, zero-click, m365-copilot, rag, scope-violation, cve-2025-32711]

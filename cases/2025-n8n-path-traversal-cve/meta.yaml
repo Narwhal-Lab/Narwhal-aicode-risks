@@ -1,0 +1,29 @@
+slug: 2025-n8n-path-traversal-cve
+title_en: "CVE-2025-55526 — n8n-workflows Path Traversal in AI-Generated Code"
+title_cn: "CVE-2025-55526：n8n-workflows 路径遍历漏洞案例"
+year: 2025
+disclosed: 2025-08-26
+category: code-vulns
+severity: critical
+severity_basis: cvss
+severity_evidence: "NVD CVSS 9.1 (CISA-ADP), CWE-22, AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N; not disputed."
+cvss: 9.1
+cve: CVE-2025-55526
+real_incident: true
+ai_tool: [Claude Code]
+language: [Python]
+attack_surface: [web-api, file-system, path-traversal]
+reproducible: true
+tldr: "Path-traversal CVE in n8n-workflows (CVSS 9.1) traced to a Claude Code co-authored commit; `os.path.join('workflows', filename)` allowed `..%5c` to read arbitrary files."
+references:
+  - title: "NVD — CVE-2025-55526"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2025-55526"
+  - title: "GitHub Advisory — GHSA-c7rr-qhwx-6q49"
+    url: "https://github.com/advisories/GHSA-c7rr-qhwx-6q49"
+  - title: "GitHub Issue #48 — public PoC"
+    url: "https://github.com/Zie619/n8n-workflows/issues/48"
+  - title: "Vibe Security Radar — CVE-2025-55526"
+    url: "https://vibe-radar-ten.vercel.app/cves/CVE-2025-55526"
+  - title: "The Register — AI coding assistants not making code more secure"
+    url: "https://www.theregister.com/2026/03/26/ai_coding_assistant_not_more_secure/"
+tags: [cwe-22, path-traversal, claude-code, n8n, fastapi]

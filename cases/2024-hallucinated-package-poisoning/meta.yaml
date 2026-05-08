@@ -1,0 +1,32 @@
+slug: 2024-hallucinated-package-poisoning
+title_en: "Hallucinated Package Supply-Chain Poisoning (huggingface-cli)"
+title_cn: "AI 幻觉包供应链投毒测试"
+year: 2024
+disclosed: 2024-03-26
+category: supply-chain
+severity: high
+severity_basis: quantifiable-impact
+severity_evidence: "30,000+ real PyPI downloads in 3 months; Alibaba GraphTranslator README at commit 4394d722 referenced the hallucinated package."
+cvss: null
+cve: null
+real_incident: true
+ai_tool: [GPT-3.5, GPT-4, Gemini Pro, Cohere]
+language: [Python, JavaScript]
+attack_surface: [package-registry, dependency-resolution]
+reproducible: true
+tldr: "Lasso Security registered a hallucinated package name `huggingface-cli` on PyPI; it received 30,000+ real downloads in 3 months — including from Alibaba's official repos — proving package hallucination as a viable supply-chain attack."
+references:
+  - title: "Lasso Research — AI Package Hallucinations"
+    url: "https://www.lasso.security/blog/ai-package-hallucinations"
+  - title: "SecurityWeek — AI Hallucinated Packages Fool Unsuspecting Developers"
+    url: "https://www.securityweek.com/ai-hallucinated-packages-fool-unsuspecting-developers/"
+  - title: "Alibaba/GraphTranslator README at commit 4394d722 (literally contains `pip install huggingface-cli`)"
+    url: "https://github.com/alibaba/GraphTranslator/blob/4394d722/README.md"
+  - title: "The Register — AI bots hallucinate software packages"
+    url: "https://www.theregister.com/2024/03/28/ai_bots_hallucinate_software_packages/"
+verification_notes: |
+  2026-05 verification: Hallucination rates and 30k-download figure confirmed via Lasso blog;
+  Alibaba/GraphTranslator commit 4394d722 confirmed as the strongest single piece of evidence.
+  Fixed an internal contradiction (registration was on PyPI, not npm). Note that the term
+  "Slopsquatting" was coined by Seth Larson (PSF) in April 2025 — postdates Lasso's 2024 research.
+tags: [slopsquatting, package-hallucination, pypi, supply-chain]

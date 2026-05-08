@@ -1,0 +1,29 @@
+slug: 2026-smart-contract-price-vuln
+title_en: "Moonwell cbETH Oracle Misconfig — $1.78M DeFi Loss"
+title_cn: "AI 生成智能合约代码借贷价格漏洞（Moonwell cbETH 预言机事故）"
+year: 2026
+disclosed: 2026-02-15
+category: domain-specific
+severity: critical
+severity_basis: quantifiable-impact
+severity_evidence: "Moonwell official postmortem: 1,096.317 cbETH liquidated, $1,779,044.83 multi-asset bad debt; recovery plan covers ~181 borrowers with ~$2.68M aggregate net loss."
+cvss: null
+cve: null
+real_incident: true
+ai_tool: [Claude Opus 4.6, GitHub Copilot review]
+language: [Solidity]
+attack_surface: [defi, oracle, lending, chainlink, governance]
+reproducible: false
+tldr: "Moonwell PR #578 (Claude co-authored, Copilot-reviewed, 28 checks passed) shipped a cbETH oracle config that returned $1.12 instead of ~$2,200 — liquidators drained 1,096 cbETH, $1.78M bad debt."
+references:
+  - title: "Moonwell Governance — MIP-X43 cbETH Oracle Incident Summary"
+    url: "https://forum.moonwell.fi/t/mip-x43-cbeth-oracle-incident-summary/2068"
+  - title: "Moonwell PR #578 — Activate OEV wrappers"
+    url: "https://github.com/moonwell-fi/moonwell-contracts-v2/pull/578"
+  - title: "BlockSec — Web3 Security Incident Roundup Feb 16-22 2026"
+    url: "https://blocksec.com/ja/blog/weekly-web3-security-incident-roundup-feb-16-feb-22-2026"
+  - title: "Cointelegraph — Moonwell hit by $1.78M exploit as AI vibe coding debate reaches DeFi"
+    url: "https://www.tradingview.com/news/cointelegraph%3A17d2ac684094b%3A0-moonwell-hit-by-1-78m-exploit-as-ai-vibe-coding-debate-reaches-defi/"
+  - title: "Rekt — Moonwell"
+    url: "https://rekt.news/moonwell-rekt"
+tags: [defi, oracle, chainlink, cbeth, claude-co-author, copilot-review, semantic-bug]

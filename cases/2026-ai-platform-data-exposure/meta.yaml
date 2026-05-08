@@ -1,0 +1,29 @@
+slug: 2026-ai-platform-data-exposure
+title_en: "Lovable AI App-Generation Platform Data Exposure"
+title_cn: "Lovable AI 应用生成平台数据暴露事件"
+year: 2026
+disclosed: 2026-02-27
+category: domain-specific
+severity: critical
+severity_basis: cvss
+severity_evidence: "NVD CVSS 9.3 Critical, CWE-863, MITRE CNA (disputed by vendor); confirmed exposure of 18,697 user records and 5,000+ vibe-coded apps lacking auth."
+cvss: 9.3
+cve: CVE-2025-48757
+real_incident: true
+ai_tool: [Lovable]
+language: [JavaScript, TypeScript, SQL]
+attack_surface: [rls, supabase, multi-tenant, project-visibility]
+reproducible: false
+tldr: "Lovable AI app platform: an EdTech app exposed 18,697 user records via inverted-auth RPC; platform-wide regression made 2026-02-03→04-20 public-project chats and source code accessible. RedAccess found 5,000+ vibe-coded apps lacking auth across the ecosystem."
+references:
+  - title: "Lovable — Our response to the April 2026 incident"
+    url: "https://lovable.dev/blog/our-response-to-the-april-2026-incident"
+  - title: "The Register — AI-built app on Lovable exposed 18K users"
+    url: "https://www.theregister.com/2026/02/27/lovable_app_vulnerabilities/"
+  - title: "NVD — CVE-2025-48757"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2025-48757"
+  - title: "Axios — AI vibe-coding apps leak sensitive data"
+    url: "https://www.axios.com/2026/05/07/loveable-replit-vibe-coding-privacy"
+  - title: "WIRED — Thousands of Vibe-Coded Apps Expose Data"
+    url: "https://www.wired.com/story/thousands-of-vibe-coded-apps-expose-corporate-and-personal-data-on-the-open-web/"
+tags: [lovable, vibe-coding, rls, supabase, edtech, gdpr]

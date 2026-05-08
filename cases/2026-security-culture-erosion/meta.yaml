@@ -1,0 +1,41 @@
+slug: 2026-security-culture-erosion   # path retained; canonical case is the merged Moltbook RLS exposure
+title_en: "Moltbook RLS Data Exposure — Vibe Coding & Agent Architecture"
+title_cn: "Moltbook 数据库泄露事件：Vibe Coding 文化与 Agent 架构默认值的双重失效"
+year: 2026
+disclosed: 2026-01-31         # 404 Media first, Wiz Research follow-up 2026-02-02
+category: human-factor
+severity: critical
+severity_basis: quantifiable-impact
+severity_evidence: "Wiz disclosure: 1.5M API tokens, ~35K emails, ~4,060 DM conversations, agent claim tokens; vendor patched within hours. Multiple primary sources (Wiz, 404 Media, Wikipedia, Fortune)."
+cvss: null
+cve: null
+real_incident: true
+ai_tool: [OpenClaw, AI-generated full-stack implementation]
+language: [TypeScript, SQL]
+attack_surface: [supabase, rls, code-review, dev-culture, agent-architecture]
+reproducible: true
+tldr: "Moltbook (AI-agent social network) had 1.5M API tokens + 35K emails accessible via missing Supabase RLS. Founder Matt Schlicht openly stated AI wrote the code — disclosed by Dvuln/404 Media (Jan 31) and Wiz Research (Feb 2). Karpathy's reaction shifted from 'sci-fi takeoff' to 'dumpster fire'."
+references:
+  - title: "Wiz Research — Hacking Moltbook: AI Social Network Reveals 1.5M API Keys"
+    url: "https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys"
+  - title: "Wikipedia — Moltbook"
+    url: "https://en.wikipedia.org/wiki/Moltbook"
+  - title: "PurpleBox Security — Moltbook Breach Incident Brief"
+    url: "https://www.prplbx.com/blog/moltbook-breach-incident-brief"
+  - title: "Astrix Security — OpenClaw & MoltBot: First AI Agent Security Nightmare"
+    url: "https://astrix.security/learn/blog/openclaw-moltbot-the-rise-chaos-and-security-nightmare-of-the-first-real-ai-agent/"
+  - title: "Supabase Docs — Row Level Security"
+    url: "https://supabase.com/docs/guides/database/postgres/row-level-security"
+  - title: "Perry et al. — Do Users Write More Insecure Code with AI Assistants?"
+    url: "https://arxiv.org/abs/2211.03622"
+  - title: "Pearce et al. — Asleep at the Keyboard?"
+    url: "https://arxiv.org/abs/2108.09293"
+verification_notes: |
+  2026-05 verification: Moltbook (Matt Schlicht / Octane AI, launched 2026-01-28) is a real platform
+  with multiple primary sources (Wiz, 404 Media, Wikipedia, Fortune, TechCrunch). OpenClaw is a real
+  open-source AI agent framework by Peter Steinberger (renamed from Clawdbot/Moltbot). Earlier draft
+  spelled "Andrei Karpathy" — actual spelling is Andrej Karpathy. The earlier sibling case
+  `2026-agent-architecture-bias-db` was found to be the same incident from a different angle and
+  has been merged into this file as section 5b. Some unsourced figures in the deleted draft
+  (75% / 32% Moltbook-instance vulnerability rates) were dropped.
+tags: [moltbook, openclaw, vibe-coding, supabase, rls, karpathy, dvuln, wiz]

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" font-family="-apple-system, system-ui, sans-serif">
+<text x="360.0" y="32" text-anchor="middle" font-size="18" font-weight="700">Cases by Year</text>
+<rect x="81.6" y="268.6" width="76.8" height="31.4" rx="4" fill="#ef4444" />
+<text x="120.0" y="260.6" text-anchor="middle" font-size="14" font-weight="700">1</text>
+<text x="120.0" y="324" text-anchor="middle" font-size="14" fill="#444">2022</text>
+<text x="240.0" y="324" text-anchor="middle" font-size="14" fill="#444">2023</text>
+<rect x="321.6" y="268.6" width="76.8" height="31.4" rx="4" fill="#ef4444" />
+<text x="360.0" y="260.6" text-anchor="middle" font-size="14" font-weight="700">1</text>
+<text x="360.0" y="324" text-anchor="middle" font-size="14" fill="#444">2024</text>
+<rect x="441.6" y="237.1" width="76.8" height="62.9" rx="4" fill="#ef4444" />
+<text x="480.0" y="229.1" text-anchor="middle" font-size="14" font-weight="700">2</text>
+<text x="480.0" y="324" text-anchor="middle" font-size="14" fill="#444">2025</text>
+<rect x="561.6" y="80.0" width="76.8" height="220.0" rx="4" fill="#ef4444" />
+<text x="600.0" y="72.0" text-anchor="middle" font-size="14" font-weight="700">7</text>
+<text x="600.0" y="324" text-anchor="middle" font-size="14" fill="#444">2026</text>
+<line x1="60" y1="300" x2="660" y2="300" stroke="#333" stroke-width="1.5"/>
+</svg>

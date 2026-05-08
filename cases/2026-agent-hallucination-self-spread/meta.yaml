@@ -1,0 +1,25 @@
+slug: 2026-agent-hallucination-self-spread
+title_en: "Agent Hallucination Self-Propagation via Skill Files (react-codeshift)"
+title_cn: "AI 生成代码智能体幻觉自我传播导致供应链风险"
+year: 2026
+disclosed: 2026-01-28
+category: supply-chain
+severity: high
+severity_basis: quantifiable-impact
+severity_evidence: "237 GitHub repos referenced the hallucinated package via 47 AI-generated Agent Skill files (Aikido, 2026-02-20); package was defensively claimed by Charlie Eriksen."
+cvss: null
+cve: null
+real_incident: true
+ai_tool: [Claude Code, LLM Agent Skills]
+language: [JavaScript, YAML, Markdown]
+attack_surface: [npm, agent-skills, ci-cd, autonomous-execution]
+reproducible: true
+tldr: "An LLM-hallucinated npm package `react-codeshift` was written into 47 AI-generated Agent Skill files and propagated to 237+ GitHub repos — first publicly documented agent-driven self-spreading slopsquatting."
+references:
+  - title: "Aikido Security — Slopsquatting: The AI Package Hallucination Attack Already Happening"
+    url: "https://www.aikido.dev/blog/slopsquatting-ai-package-hallucination-attacks"
+  - title: "InstaTunnel (Medium) — AI Hallucination Squatting: The New Agentic Attack Vector"
+    url: "https://medium.com/@instatunnel/ai-hallucination-squatting-the-new-agentic-attack-vector-6e1366d77038"
+  - title: "USENIX Security 2025 — Package Hallucinations by Code Generating LLMs"
+    url: "https://github.com/Spracks/PackageHallucination"
+tags: [slopsquatting, agent-skills, npm, autonomous-supply-chain]
