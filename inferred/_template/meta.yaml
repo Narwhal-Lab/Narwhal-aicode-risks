@@ -1,0 +1,32 @@
+slug: YYYY-short-slug
+title_en: "Short English Title"
+title_cn: "简短中文标题"
+year: 2026
+disclosed: null
+category: code-vulns        # supply-chain | code-vulns | cloud-iac | agent-risk | domain-specific | ip-compliance | human-factor
+type: inferred              # cases/* are full evidence, inferred/* are partial, scenarios/* are illustrative
+severity: medium
+severity_basis: editorial   # cvss | quantifiable-impact | editorial
+severity_evidence: "1-line note about what the rating is based on, given partial evidence"
+evidence_strength: partial  # partial | full — inferred cases must be `partial`
+missing_evidence: |
+  Describe the specific evidence that, if it appeared, would promote this to `cases/`.
+  e.g.:
+  - vendor advisory
+  - CVE assignment
+  - official postmortem
+  - court filing
+cvss: null
+cve: null
+real_incident: true         # the event appears real, even if specifics are partially evidenced
+ai_tool: []
+language: []
+attack_surface: []
+reproducible: false
+tldr: "One-sentence summary, hedged appropriately."
+references:
+  - title: ""
+    url: ""
+verification_notes: |
+  What was checked, what could not be confirmed, what specific claim each reference supports.
+tags: []

@@ -1,0 +1,31 @@
+name: "🐞 Report an issue / 报告问题"
+description: "Report a broken link, factual error, or suggestion for an existing case. 报告死链、事实错误,或对现有案例的建议。"
+labels: ["bug", "needs-triage"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: "Issue type / 问题类型"
+      options:
+        - "Broken link / 死链"
+        - "Factual error / 事实错误"
+        - "Citation mismatch (URL exists but doesn't say what's claimed) / 引用错配"
+        - "Severity / severity_basis disagreement / 严重度评级争议"
+        - "Suggestion / 建议"
+        - "Other / 其他"
+    validations:
+      required: true
+
+  - type: input
+    id: case
+    attributes:
+      label: "Affected case / 涉及案例"
+      placeholder: "e.g. cases/2025-n8n-path-traversal-cve/ — line 47"
+
+  - type: textarea
+    id: details
+    attributes:
+      label: "Details / 详情"
+      description: "Be specific. Quote the existing text and what should change. 请具体引用现有文本,说明应如何修正。"
+    validations:
+      required: true

@@ -1,0 +1,48 @@
+name: Validate cases
+
+on:
+  push:
+    branches: [main, examples]
+  pull_request:
+    branches: [main, examples]
+
+jobs:
+  schema:
+    name: Schema validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install pyyaml
+      - name: Run schema validator
+        run: python3 scripts/validate_cases.py
+      - name: Re-render index and verify clean
+        run: |
+          python3 scripts/render_index.py
+          if ! git diff --quiet cases/README.md assets/category-chart.svg assets/timeline.svg; then
+            echo "::error::Generated artifacts are out of date."
+            echo "Run 'python3 scripts/render_index.py' locally and commit the result."
+            git --no-pager diff cases/README.md assets/category-chart.svg assets/timeline.svg | head -50
+            exit 1
+          fi
+
+  links:
+    name: Reference link check
+    runs-on: ubuntu-latest
+    # Link check only on PRs that touch case content, to keep CI fast.
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install pyyaml
+      - name: HEAD all reference URLs
+        run: python3 scripts/validate_cases.py --check-links
+        continue-on-error: true  # Warnings only — broken links should be flagged but not block merge.

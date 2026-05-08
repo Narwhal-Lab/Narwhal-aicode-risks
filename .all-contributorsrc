@@ -1,0 +1,43 @@
+{
+  "projectName": "narwhal-aicode-risks",
+  "projectOwner": "Narwhal-Lab",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": ["README.md", "README_CN.md"],
+  "imageSize": 64,
+  "commit": false,
+  "commitConvention": "angular",
+  "skipCi": true,
+  "contributors": [
+    {
+      "login": "TheBinKing",
+      "name": "Bin Wang",
+      "avatar_url": "https://avatars.githubusercontent.com/TheBinKing",
+      "profile": "https://github.com/TheBinKing",
+      "contributions": ["projectManagement", "research", "content", "review"]
+    },
+    {
+      "login": "yumkea",
+      "name": "Wenjie Yu",
+      "avatar_url": "https://avatars.githubusercontent.com/yumkea",
+      "profile": "https://github.com/yumkea",
+      "contributions": ["research", "content"]
+    },
+    {
+      "login": "YilZhong",
+      "name": "Yilu Zhong",
+      "avatar_url": "https://avatars.githubusercontent.com/YilZhong",
+      "profile": "https://github.com/YilZhong",
+      "contributions": ["research", "content"]
+    },
+    {
+      "login": "GioldDiorld",
+      "name": "Hao Yu",
+      "avatar_url": "https://avatars.githubusercontent.com/GioldDiorld",
+      "profile": "https://github.com/GioldDiorld",
+      "contributions": ["research", "content"]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": false
+}

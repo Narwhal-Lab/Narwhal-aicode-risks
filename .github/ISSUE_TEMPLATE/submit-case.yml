@@ -1,0 +1,149 @@
+name: "📝 Submit a case / 提交案例"
+description: "Suggest a new AI-code security incident, scenario, or partially-evidenced case. 提交一个 AI 代码安全案例 / 场景 / 部分证据案例。"
+labels: ["case-submission", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! / 感谢投稿!
+
+        Please fill the form below. A maintainer will respond within **14 days** to either accept this as a draft case (we'll convert it to a PR) or request more information.
+
+        请填写下方表单。维护者会在 **14 天内**回应:接受为草稿(由我们代为开 PR),或请您补充资料。
+
+        Before submitting, please check existing cases at [`cases/`](../tree/main/cases) to avoid duplicates.
+
+  - type: input
+    id: title
+    attributes:
+      label: "Case title (English, concise) / 英文标题"
+      placeholder: "e.g. Vibe-Coded App Leaks 50K Tokens via Missing RLS"
+    validations:
+      required: true
+
+  - type: input
+    id: title_cn
+    attributes:
+      label: "中文标题(可选)"
+      placeholder: "例:Vibe-Coding 应用因 RLS 缺失泄露 5 万 token"
+
+  - type: dropdown
+    id: bucket
+    attributes:
+      label: "Submission bucket / 投稿类型"
+      description: |
+        - **case** — confirmed real incident with primary sources / 已确证的真实事件,有一手来源
+        - **inferred** — partial public evidence (e.g. press but no advisory) / 有部分证据(如有报道但无 advisory)
+        - **scenario** — illustrative pattern, not a confirmed event / 描述性场景,未确认具体事件
+      options:
+        - "case (confirmed)"
+        - "inferred (partial evidence)"
+        - "scenario (illustrative)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: "Risk category / 风险类别"
+      options:
+        - "supply-chain — Hallucination & Supply Chain"
+        - "code-vulns — Code-Level Vulnerabilities"
+        - "cloud-iac — Cloud & IaC Misconfiguration"
+        - "agent-risk — Agent Risks"
+        - "domain-specific — Domain-Specific Risks"
+        - "ip-compliance — IP, License & Compliance"
+        - "human-factor — Human Factors"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: "Severity / 严重度"
+      options: ["critical", "high", "medium", "low", "info"]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity_basis
+    attributes:
+      label: "Severity basis / 严重度依据"
+      description: |
+        - **cvss** — anchored to a public CVE / NVD / vendor advisory
+        - **quantifiable-impact** — anchored to a publicly disclosed loss/scope figure
+        - **editorial** — judgment without a CVSS scale (e.g. legal/compliance)
+      options: ["cvss", "quantifiable-impact", "editorial"]
+    validations:
+      required: true
+
+  - type: input
+    id: cve
+    attributes:
+      label: "CVE (if any)"
+      placeholder: "e.g. CVE-2025-55526"
+
+  - type: input
+    id: ai_tools
+    attributes:
+      label: "AI tools involved / 涉及的 AI 工具"
+      placeholder: "e.g. Claude Code, GitHub Copilot, Cursor"
+    validations:
+      required: true
+
+  - type: textarea
+    id: tldr
+    attributes:
+      label: "TL;DR (one sentence) / 一句话摘要"
+      placeholder: "Describe what happened in ≤120 chars. / 不超过 120 字。"
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: "References / 参考来源"
+      description: "List the primary sources, one URL per line. We'll fetch each one to verify before merging. 请每行一条 URL,我们会逐条 fetch 核实。"
+      placeholder: |
+        https://nvd.nist.gov/vuln/detail/CVE-XXXX-XXXXX
+        https://example.com/incident-report
+        https://example.com/vendor-advisory
+    validations:
+      required: true
+
+  - type: textarea
+    id: ai_attribution
+    attributes:
+      label: "AI-attribution evidence / AI 参与证据"
+      description: "What's the public evidence linking this to AI-generated code? (commit signatures, advisory text, press attribution, etc.) Be specific. 公开材料中的 AI 参与证据是什么?(commit 签名、advisory、归因报道等),请具体。"
+      placeholder: |
+        - PR #XYZ contains `Co-Authored-By: Claude <noreply@anthropic.com>` on commit abc1234
+        - Vendor blog post explicitly attributes to Cursor agent
+        - ...
+
+  - type: textarea
+    id: details
+    attributes:
+      label: "Details / 详情"
+      description: "Background, root cause, impact, references — anything that would go in the case README. We'll help you shape it."
+
+  - type: checkboxes
+    id: verification
+    attributes:
+      label: "Pre-flight self-check / 投稿前自查"
+      options:
+        - label: "I have personally opened each reference URL and confirmed it loads and says what I claim it says. / 我已逐条 fetch 过 URL 并确认内容与所声称的一致。"
+          required: true
+        - label: "I have not conflated a controlled experiment / red-team test / hypothetical scenario with a real disclosed incident. / 我没有把研究 / 红队测试 / 假设场景包装成真实事件。"
+          required: true
+        - label: "Loss / scope figures cited are from a primary source (or labelled clearly as estimates). / 引用的损失或规模数字来自一手来源(或明确标注为估计)。"
+          required: true
+        - label: "I understand the repository is licensed under CC BY 4.0 and consent to my submission being licensed under the same terms. / 我理解本仓库使用 CC BY 4.0 协议,并同意以同样条款贡献内容。"
+          required: true
+
+  - type: input
+    id: contributor
+    attributes:
+      label: "How would you like to be credited? / 您希望如何署名?"
+      placeholder: "GitHub username, real name, or 'anonymous'"
