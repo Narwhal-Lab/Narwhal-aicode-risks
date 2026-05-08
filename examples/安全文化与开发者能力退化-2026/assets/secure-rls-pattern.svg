@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560">
+  <rect width="1280" height="560" fill="#f8fafc"/>
+  <text x="48" y="58" font-size="30" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" font-weight="700" fill="#102033">修复模式：让公开 key 只能访问“自己有权访问的数据”</text>
+  <rect x="60" y="115" width="1160" height="350" rx="18" fill="#0f172a"/>
+  <text x="96" y="165" font-size="22" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#93c5fd">-- 1. 对暴露在 API 后面的表启用 RLS</text>
+  <text x="96" y="205" font-size="22" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">alter table public.agents enable row level security;</text>
+  <text x="96" y="265" font-size="22" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#93c5fd">-- 2. 读取时只能看自己的 agent</text>
+  <text x="96" y="305" font-size="22" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">create policy "agent owner can read"</text>
+  <text x="96" y="340" font-size="22" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">on public.agents for select to authenticated</text>
+  <text x="96" y="375" font-size="22" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">using (auth.uid() is not null and auth.uid() = owner_id);</text>
+  <text x="96" y="430" font-size="22" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#93c5fd">-- 3. 更新时也要检查 owner_id，不能只在前端隐藏按钮</text>
+  <text x="80" y="515" font-size="20" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#334155">要点：Supabase publishable key 可以在前端出现，但数据库必须用 RLS 和 policy 把权限收紧到用户级别。</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="680" viewBox="0 0 1280 680">
+  <rect width="1280" height="680" fill="#0f172a"/>
+  <text x="42" y="58" font-size="28" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#ffffff" font-weight="700">漏洞模式复现：前端可见 key + 后端 RLS 缺失</text>
+  <text x="42" y="90" font-size="16" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#b6c2d2">脱敏重构代码，说明 Moltbook 类 Supabase 暴露问题的技术本质</text>
+  <rect x="42" y="125" width="580" height="460" rx="14" fill="#111827" stroke="#334155"/>
+  <text x="72" y="168" font-size="20" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#93c5fd" font-weight="700">client.ts</text>
+  <text x="72" y="214" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">import { createClient } from '@supabase/supabase-js'</text>
+  <text x="72" y="256" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#fca5a5">const url = 'https://project.supabase.co'</text>
+  <text x="72" y="298" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#fca5a5">const key = 'sb_publishable_REDACTED'</text>
+  <text x="72" y="340" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">const db = createClient(url, key)</text>
+  <text x="72" y="392" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">await db.from('agents')</text>
+  <text x="72" y="426" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">  .select('name, api_key, owner_email')</text>
+  <text x="72" y="470" font-size="16" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#fbbf24">前端 key 可见并不一定是漏洞，真正危险在于</text>
+  <text x="72" y="500" font-size="16" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#fbbf24">数据库没有按用户身份做行级限制。</text>
+  <rect x="658" y="125" width="580" height="460" rx="14" fill="#111827" stroke="#334155"/>
+  <text x="688" y="168" font-size="20" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#93c5fd" font-weight="700">database.sql</text>
+  <text x="688" y="214" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">create table agents (</text>
+  <text x="688" y="248" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">  id uuid primary key,</text>
+  <text x="688" y="282" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">  owner_id uuid,</text>
+  <text x="688" y="316" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#fca5a5">  api_key text,</text>
+  <text x="688" y="350" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#fca5a5">  claim_token text</text>
+  <text x="688" y="384" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#e5e7eb">);</text>
+  <text x="688" y="436" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#f87171">-- 缺失：alter table agents enable row level security;</text>
+  <text x="688" y="470" font-size="19" font-family="Noto Sans Mono CJK SC, Noto Sans CJK SC, WenQuanYi Zen Hei, monospace" fill="#f87171">-- 缺失：using (auth.uid() = owner_id)</text>
+  <text x="688" y="512" font-size="16" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#fbbf24">任何拿到 publishable key 的人都可能绕过</text>
+  <text x="688" y="542" font-size="16" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#fbbf24">预期的用户边界访问数据。</text>
+  <text x="42" y="638" font-size="18" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#cbd5e1">安全含义：代码审查不能只看能否运行，还要看云服务访问模型、RLS、密钥权限和默认公开面。</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#f7f2ea"/>
+  <text x="64" y="78" fill="#312920" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700">GPL 公开代码与 AI 输出建议的风险对照</text>
+  <text x="64" y="112" fill="#77695a" font-size="20" font-family="Arial, Helvetica, sans-serif">重点不在变量名是否完全一致，而在高度可识别的算法结构与许可证信息被一起剥离</text>
+
+  <rect x="60" y="150" width="500" height="520" rx="22" fill="#1f2430"/>
+  <text x="88" y="196" fill="#f6d7a8" font-size="25" font-family="Arial, Helvetica, sans-serif" font-weight="700">公开 GPL 代码片段</text>
+  <text x="88" y="228" fill="#9bd38f" font-size="20" font-family="Courier New, monospace">float Q_rsqrt(float number) {</text>
+  <text x="88" y="260" fill="#d9dee7" font-size="20" font-family="Courier New, monospace">    long i;</text>
+  <text x="88" y="292" fill="#d9dee7" font-size="20" font-family="Courier New, monospace">    float x2, y;</text>
+  <text x="88" y="324" fill="#d9dee7" font-size="20" font-family="Courier New, monospace">    const float threehalfs = 1.5F;</text>
+  <text x="88" y="356" fill="#d9dee7" font-size="20" font-family="Courier New, monospace">    x2 = number * 0.5F;</text>
+  <text x="88" y="388" fill="#d9dee7" font-size="20" font-family="Courier New, monospace">    y = number;</text>
+  <text x="88" y="420" fill="#ffcc99" font-size="20" font-family="Courier New, monospace">    i = 0x5f3759df - (i &gt;&gt; 1);</text>
+  <text x="88" y="452" fill="#ffcc99" font-size="20" font-family="Courier New, monospace">    y = y * (threehalfs - (x2 * y * y));</text>
+  <text x="88" y="484" fill="#9bd38f" font-size="20" font-family="Courier New, monospace">    return y;</text>
+  <text x="88" y="516" fill="#9bd38f" font-size="20" font-family="Courier New, monospace">}</text>
+  <text x="88" y="574" fill="#a9b3c1" font-size="18" font-family="Arial, Helvetica, sans-serif">文件上下文中原本还存在：</text>
+  <text x="88" y="604" fill="#a9b3c1" font-size="18" font-family="Arial, Helvetica, sans-serif">仓库地址、版权信息、许可证文本、提交历史</text>
+
+  <rect x="640" y="150" width="500" height="520" rx="22" fill="#20262e"/>
+  <text x="668" y="196" fill="#f6d7a8" font-size="25" font-family="Arial, Helvetica, sans-serif" font-weight="700">AI 给开发者的建议</text>
+  <text x="668" y="228" fill="#9bd38f" font-size="20" font-family="Courier New, monospace">float fast_inv_sqrt(float n) {</text>
+  <text x="668" y="260" fill="#d9dee7" font-size="20" font-family="Courier New, monospace">    long bits;</text>
+  <text x="668" y="292" fill="#d9dee7" font-size="20" font-family="Courier New, monospace">    float half, result;</text>
+  <text x="668" y="324" fill="#d9dee7" font-size="20" font-family="Courier New, monospace">    half = n * 0.5f;</text>
+  <text x="668" y="356" fill="#d9dee7" font-size="20" font-family="Courier New, monospace">    result = n;</text>
+  <text x="668" y="388" fill="#ffcc99" font-size="20" font-family="Courier New, monospace">    bits = 0x5f3759df - (bits &gt;&gt; 1);</text>
+  <text x="668" y="420" fill="#ffcc99" font-size="20" font-family="Courier New, monospace">    result = result * (1.5f - (half * result * result));</text>
+  <text x="668" y="452" fill="#9bd38f" font-size="20" font-family="Courier New, monospace">    return result;</text>
+  <text x="668" y="484" fill="#9bd38f" font-size="20" font-family="Courier New, monospace">}</text>
+  <text x="668" y="574" fill="#a9b3c1" font-size="18" font-family="Arial, Helvetica, sans-serif">开发者看到的通常只有：</text>
+  <text x="668" y="604" fill="#a9b3c1" font-size="18" font-family="Arial, Helvetica, sans-serif">可运行片段，没有作者、许可证和来源说明</text>
+
+  <rect x="250" y="690" width="700" height="42" rx="12" fill="#ead6c0" stroke="#c9a37c"/>
+  <text x="275" y="718" fill="#3b2f24" font-size="20" font-family="Arial, Helvetica, sans-serif">法律风险不要求它和原始文件逐字符一致。对企业来说，最致命的是来源链断裂而代码已经入库。</text>
+</svg>

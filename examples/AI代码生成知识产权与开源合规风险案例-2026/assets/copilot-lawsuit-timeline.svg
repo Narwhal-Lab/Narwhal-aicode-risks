@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <rect width="1200" height="520" fill="#f8f3ea"/>
+  <rect x="40" y="34" width="1120" height="452" rx="24" fill="#fffdf9" stroke="#d8c7ae" stroke-width="2"/>
+  <text x="72" y="92" fill="#3b2f24" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700">GitHub Copilot 许可证污染与版权争议时间线</text>
+  <text x="72" y="126" fill="#7a6858" font-size="20" font-family="Arial, Helvetica, sans-serif">从公开代码复现争议，到联邦诉讼，再到企业级来源追溯机制上线</text>
+
+  <line x1="110" y1="292" x2="1090" y2="292" stroke="#b38f63" stroke-width="6" stroke-linecap="round"/>
+
+  <circle cx="180" cy="292" r="18" fill="#8b5e34"/>
+  <rect x="104" y="170" width="154" height="92" rx="14" fill="#efe1cf" stroke="#d1b089"/>
+  <text x="122" y="206" fill="#3b2f24" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700">2021-07</text>
+  <text x="122" y="236" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">Wired 报道开发者</text>
+  <text x="122" y="259" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">测试到 Copilot 复现公开代码</text>
+
+  <circle cx="405" cy="292" r="18" fill="#8b5e34"/>
+  <rect x="323" y="326" width="164" height="102" rx="14" fill="#f5e9da" stroke="#d1b089"/>
+  <text x="341" y="362" fill="#3b2f24" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700">2022-11-03</text>
+  <text x="341" y="392" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">匿名原告起诉 GitHub</text>
+  <text x="341" y="415" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">Microsoft 与 OpenAI</text>
+
+  <circle cx="635" cy="292" r="18" fill="#8b5e34"/>
+  <rect x="551" y="152" width="170" height="110" rx="14" fill="#efe1cf" stroke="#d1b089"/>
+  <text x="570" y="188" fill="#3b2f24" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700">2024-01-22</text>
+  <text x="570" y="218" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">法院认定部分原告</text>
+  <text x="570" y="241" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">已给出足够具体的</text>
+  <text x="570" y="264" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">Copilot 输出实例</text>
+
+  <circle cx="860" cy="292" r="18" fill="#8b5e34"/>
+  <rect x="778" y="326" width="166" height="102" rx="14" fill="#f5e9da" stroke="#d1b089"/>
+  <text x="796" y="362" fill="#3b2f24" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700">2024-09-30</text>
+  <text x="796" y="392" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">GitHub 上线</text>
+  <text x="796" y="415" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">code referencing</text>
+
+  <circle cx="1040" cy="292" r="18" fill="#8b5e34"/>
+  <rect x="952" y="152" width="154" height="110" rx="14" fill="#efe1cf" stroke="#d1b089"/>
+  <text x="970" y="188" fill="#3b2f24" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700">2026-03-04</text>
+  <text x="970" y="218" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">官方案件页仍有</text>
+  <text x="970" y="241" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">新的公开 filing</text>
+  <text x="970" y="264" fill="#5e4c3a" font-size="18" font-family="Arial, Helvetica, sans-serif">案件尚未终局</text>
+</svg>

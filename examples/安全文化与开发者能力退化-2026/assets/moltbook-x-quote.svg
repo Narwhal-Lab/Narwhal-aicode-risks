@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="430" viewBox="0 0 1180 430">
+  <rect width="1180" height="430" fill="#f4f7fb"/>
+  <rect x="90" y="66" width="1000" height="290" rx="28" fill="#ffffff" stroke="#d4dde8"/>
+  <circle cx="150" cy="130" r="34" fill="#111827"/>
+  <text x="139" y="141" font-size="32" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#ffffff" font-weight="700">X</text>
+  <text x="205" y="118" font-size="24" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" font-weight="700" fill="#172033">Moltbook 创始人公开表述</text>
+  <text x="205" y="150" font-size="16" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#667085">根据 Wiz 原文引用重绘，非社交媒体原始截图</text>
+  <text x="145" y="235" font-size="30" font-family="Noto Serif CJK SC, Noto Sans CJK SC, serif" fill="#172033">“I didn’t write a single line of code for @moltbook.”</text>
+  <text x="145" y="282" font-size="30" font-family="Noto Serif CJK SC, Noto Sans CJK SC, serif" fill="#172033">“I just had a vision for the technical architecture, and AI made it a reality.”</text>
+  <text x="145" y="325" font-size="18" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#53616f">这句话本身不是漏洞证明，但它说明团队把大量实现工作交给 AI 后，仍必须保留安全审查责任。</text>
+</svg>

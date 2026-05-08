@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <rect width="1200" height="620" fill="#fbf7f0"/>
+  <text x="60" y="76" fill="#2e2a26" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700">AI 生成代码进入商业闭源项目后的许可证污染链路</text>
+  <text x="60" y="110" fill="#75685b" font-size="20" font-family="Arial, Helvetica, sans-serif">真正的风险不是一段代码“能跑”，而是企业无法解释它从哪里来、应该履行什么义务</text>
+
+  <rect x="60" y="160" width="220" height="150" rx="20" fill="#efe2d2" stroke="#c9a37c" stroke-width="2"/>
+  <text x="86" y="204" fill="#2e2a26" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">1. 训练数据侧</text>
+  <text x="86" y="240" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">公开仓库中包含</text>
+  <text x="86" y="266" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">MIT、Apache、GPL</text>
+  <text x="86" y="292" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">等不同许可证代码</text>
+
+  <rect x="340" y="160" width="220" height="150" rx="20" fill="#f6eadf" stroke="#c9a37c" stroke-width="2"/>
+  <text x="366" y="204" fill="#2e2a26" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">2. 生成阶段</text>
+  <text x="366" y="240" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">Copilot 给出与公开代码</text>
+  <text x="366" y="266" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">高度相似的建议</text>
+  <text x="366" y="292" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">但不附许可证上下文</text>
+
+  <rect x="620" y="160" width="220" height="150" rx="20" fill="#efe2d2" stroke="#c9a37c" stroke-width="2"/>
+  <text x="646" y="204" fill="#2e2a26" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">3. 入库阶段</text>
+  <text x="646" y="240" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">开发者把建议直接贴进</text>
+  <text x="646" y="266" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">私有仓库或核心产品</text>
+  <text x="646" y="292" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">来源链随即中断</text>
+
+  <rect x="900" y="160" width="240" height="150" rx="20" fill="#f9ddd0" stroke="#c97c66" stroke-width="2"/>
+  <text x="926" y="204" fill="#2e2a26" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">4. 对外分发阶段</text>
+  <text x="926" y="240" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">SaaS、SDK、嵌入式交付</text>
+  <text x="926" y="266" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">客户项目交付或出售公司</text>
+  <text x="926" y="292" fill="#53483f" font-size="19" font-family="Arial, Helvetica, sans-serif">风险被法务与尽调放大</text>
+
+  <path d="M280 235 H330" stroke="#9a6b43" stroke-width="5" fill="none"/>
+  <polygon points="330,235 315,227 315,243" fill="#9a6b43"/>
+  <path d="M560 235 H610" stroke="#9a6b43" stroke-width="5" fill="none"/>
+  <polygon points="610,235 595,227 595,243" fill="#9a6b43"/>
+  <path d="M840 235 H890" stroke="#9a6b43" stroke-width="5" fill="none"/>
+  <polygon points="890,235 875,227 875,243" fill="#9a6b43"/>
+
+  <rect x="90" y="390" width="1020" height="170" rx="24" fill="#fffdfa" stroke="#dac7b3" stroke-width="2"/>
+  <text x="120" y="438" fill="#2e2a26" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700">最终落到企业身上的不是抽象伦理争论，而是可计价的合规成本</text>
+  <text x="120" y="482" fill="#564c43" font-size="21" font-family="Arial, Helvetica, sans-serif">风险 1：无法提交完整 SBOM 与开源清单</text>
+  <text x="470" y="482" fill="#564c43" font-size="21" font-family="Arial, Helvetica, sans-serif">风险 2：客户合同中的知识产权保证可能失真</text>
+  <text x="120" y="516" fill="#564c43" font-size="21" font-family="Arial, Helvetica, sans-serif">风险 3：并购尽调要求替换、重写、设赔偿条款或推迟交割</text>
+  <text x="470" y="516" fill="#564c43" font-size="21" font-family="Arial, Helvetica, sans-serif">风险 4：若命中 GPL 等 copyleft 代码，需重新评估分发义务</text>
+</svg>
