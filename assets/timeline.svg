@@ -3,6 +3,8 @@
 <rect x="81.6" y="268.6" width="76.8" height="31.4" rx="4" fill="#ef4444" />
 <text x="120.0" y="260.6" text-anchor="middle" font-size="14" font-weight="700">1</text>
 <text x="120.0" y="324" text-anchor="middle" font-size="14" fill="#444">2022</text>
+<rect x="201.6" y="268.6" width="76.8" height="31.4" rx="4" fill="#ef4444" />
+<text x="240.0" y="260.6" text-anchor="middle" font-size="14" font-weight="700">1</text>
 <text x="240.0" y="324" text-anchor="middle" font-size="14" fill="#444">2023</text>
 <rect x="321.6" y="268.6" width="76.8" height="31.4" rx="4" fill="#ef4444" />
 <text x="360.0" y="260.6" text-anchor="middle" font-size="14" font-weight="700">1</text>
