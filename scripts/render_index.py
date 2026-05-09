@@ -248,6 +248,8 @@ def render_category_png(cases: list[dict], out_path: Path) -> bool:
             "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
             "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
             "/Library/Fonts/Arial.ttf",
+            "C:/Windows/Fonts/arial.ttf",
+            "C:/Windows/Fonts/arialbd.ttf",
         ]:
             if Path(path).exists():
                 try:
@@ -321,6 +323,8 @@ def render_timeline_png(cases: list[dict], out_path: Path) -> bool:
             "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
             "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
             "/Library/Fonts/Arial.ttf",
+            "C:/Windows/Fonts/arial.ttf",
+            "C:/Windows/Fonts/arialbd.ttf",
         ]:
             if Path(path).exists():
                 try:
