@@ -206,6 +206,182 @@ def render_timeline_svg(cases: list[dict]) -> str:
     return "\n".join(svg)
 
 
+def render_category_png(cases: list[dict], out_path: Path) -> bool:
+    """Generate a PNG donut chart. Returns True on success, False if Pillow missing."""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        return False
+
+    counts: dict[str, int] = {}
+    for c in cases:
+        counts[c["category"]] = counts.get(c["category"], 0) + 1
+    total = sum(counts.values())
+
+    W, H = 1440, 800  # 2x SVG dims for retina; downscale at display time
+    SCALE = 2
+    img = Image.new("RGB", (W, H), "white")
+    draw = ImageDraw.Draw(img)
+
+    # Donut: outer r=260, inner r=176, center (400, 400)
+    cx, cy, r_out, r_in = 400, 400, 260, 176
+    bbox_out = (cx - r_out, cy - r_out, cx + r_out, cy + r_out)
+    bbox_in = (cx - r_in, cy - r_in, cx + r_in, cy + r_in)
+
+    angle = -90.0
+    for cat_key in CATEGORIES:
+        n = counts.get(cat_key, 0)
+        if not n:
+            continue
+        sweep = 360.0 * n / total
+        end = angle + sweep
+        draw.pieslice(bbox_out, angle, end, fill=CAT_COLORS[cat_key])
+        angle = end
+    # Donut hole
+    draw.ellipse(bbox_in, fill="white")
+
+    # Try to load a usable font
+    def _font(size: int):
+        for path in [
+            "/System/Library/Fonts/Helvetica.ttc",
+            "/System/Library/Fonts/HelveticaNeue.ttc",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+            "/Library/Fonts/Arial.ttf",
+        ]:
+            if Path(path).exists():
+                try:
+                    return ImageFont.truetype(path, size)
+                except OSError:
+                    continue
+        return ImageFont.load_default()
+
+    f_big = _font(112 * SCALE // 2)  # ~112
+    f_sm = _font(28 * SCALE // 2)    # ~28
+    f_legend = _font(28 * SCALE // 2)
+
+    # Center text
+    tot_text = str(total)
+    bb = draw.textbbox((0, 0), tot_text, font=f_big, anchor="lt")
+    tw = bb[2] - bb[0]
+    th = bb[3] - bb[1]
+    draw.text((cx - tw // 2, cy - th // 2 - 10), tot_text, fill="#111", font=f_big)
+    draw.text((cx, cy + th // 2 + 6), "cases", fill="#666", font=f_sm, anchor="mt")
+
+    # Legend (right side)
+    lx = 840
+    ly = 150
+    box_size = 32
+    line_h = 56
+    for cat_key, display in CATEGORIES.items():
+        n = counts.get(cat_key, 0)
+        if not n:
+            continue
+        draw.rounded_rectangle(
+            (lx, ly, lx + box_size, ly + box_size),
+            radius=6,
+            fill=CAT_COLORS[cat_key],
+        )
+        draw.text(
+            (lx + box_size + 16, ly + box_size // 2),
+            f"{display}  ({n})",
+            fill="#222",
+            font=f_legend,
+            anchor="lm",
+        )
+        ly += line_h
+
+    img.save(out_path, "PNG", optimize=True)
+    return True
+
+
+def render_timeline_png(cases: list[dict], out_path: Path) -> bool:
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        return False
+
+    years: dict[int, int] = {}
+    for c in cases:
+        years[c["year"]] = years.get(c["year"], 0) + 1
+    if not years:
+        return False
+    yr_min, yr_max = min(years), max(years)
+    n_years = yr_max - yr_min + 1
+    max_count = max(years.values())
+
+    W, H = 1440, 720
+    img = Image.new("RGB", (W, H), "white")
+    draw = ImageDraw.Draw(img)
+
+    def _font(size: int):
+        for path in [
+            "/System/Library/Fonts/Helvetica.ttc",
+            "/System/Library/Fonts/HelveticaNeue.ttc",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+            "/Library/Fonts/Arial.ttf",
+        ]:
+            if Path(path).exists():
+                try:
+                    return ImageFont.truetype(path, size)
+                except OSError:
+                    continue
+        return ImageFont.load_default()
+
+    f_title = _font(40)
+    f_year = _font(28)
+    f_count = _font(28)
+
+    # Title
+    draw.text((W // 2, 50), "Cases by Year", fill="#111", font=f_title, anchor="mt")
+
+    # Plot area
+    margin = 120
+    baseline = H - margin
+    plot_top = 130
+    plot_h = baseline - plot_top
+    plot_w = W - 2 * margin
+
+    bar_slot = plot_w / n_years
+    for i, yr in enumerate(range(yr_min, yr_max + 1)):
+        count = years.get(yr, 0)
+        h = int((count / max_count) * plot_h) if count else 0
+        x = margin + i * bar_slot + bar_slot * 0.20
+        bw = bar_slot * 0.60
+        y = baseline - h
+        if count:
+            draw.rounded_rectangle(
+                (x, y, x + bw, baseline),
+                radius=8,
+                fill="#ef4444",
+            )
+            draw.text(
+                (x + bw / 2, y - 16),
+                str(count),
+                fill="#111",
+                font=f_count,
+                anchor="ms",
+            )
+        draw.text(
+            (x + bw / 2, baseline + 16),
+            str(yr),
+            fill="#444",
+            font=f_year,
+            anchor="mt",
+        )
+
+    # Baseline
+    draw.line(
+        ((margin, baseline), (W - margin, baseline)),
+        fill="#333",
+        width=3,
+    )
+
+    img.save(out_path, "PNG", optimize=True)
+    return True
+
+
 def main() -> None:
     cases = load_cases()
     print(f"Loaded {len(cases)} cases")
@@ -222,6 +398,17 @@ def main() -> None:
     tl_svg = render_timeline_svg(cases)
     (ASSETS_DIR / "timeline.svg").write_text(tl_svg, encoding="utf-8")
     print(f"  → assets/timeline.svg ({len(tl_svg)} bytes)")
+
+    cat_png = ASSETS_DIR / "category-chart.png"
+    if render_category_png(cases, cat_png):
+        print(f"  → assets/category-chart.png ({cat_png.stat().st_size} bytes)")
+    else:
+        print("  ⚠ Pillow not installed; skipping PNG charts")
+        return
+
+    tl_png = ASSETS_DIR / "timeline.png"
+    if render_timeline_png(cases, tl_png):
+        print(f"  → assets/timeline.png ({tl_png.stat().st_size} bytes)")
 
 
 if __name__ == "__main__":

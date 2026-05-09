@@ -22,8 +22,8 @@
 
 <table>
 <tr>
-  <td align="center" width="50%"><img src="assets/category-chart.svg" alt="案例类别分布" width="100%"/></td>
-  <td align="center" width="50%"><img src="assets/timeline.svg" alt="按年份分布" width="100%"/></td>
+  <td align="center" width="50%"><img src="assets/category-chart.png" alt="案例类别分布" width="100%"/></td>
+  <td align="center" width="50%"><img src="assets/timeline.png" alt="按年份分布" width="100%"/></td>
 </tr>
 </table>
 

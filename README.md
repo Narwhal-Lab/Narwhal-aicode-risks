@@ -22,8 +22,8 @@ This repository documents the **risks** of AI-generated code through layered evi
 
 <table>
 <tr>
-  <td align="center" width="50%"><img src="assets/category-chart.svg" alt="Cases by category" width="100%"/></td>
-  <td align="center" width="50%"><img src="assets/timeline.svg" alt="Cases by year" width="100%"/></td>
+  <td align="center" width="50%"><img src="assets/category-chart.png" alt="Cases by category" width="100%"/></td>
+  <td align="center" width="50%"><img src="assets/timeline.png" alt="Cases by year" width="100%"/></td>
 </tr>
 </table>
 
