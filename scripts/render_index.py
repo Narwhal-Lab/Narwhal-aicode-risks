@@ -104,8 +104,10 @@ def render_category_svg(cases: list[dict]) -> str:
 
     cx, cy, r, w = 200, 200, 130, 42
     svg: list[str] = [
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" '
-        'font-family="-apple-system, system-ui, sans-serif">',
+        '<svg xmlns="http://www.w3.org/2000/svg" '
+        'width="720" height="400" viewBox="0 0 720 400" '
+        'preserveAspectRatio="xMidYMid meet" '
+        'font-family="Arial, Helvetica, sans-serif">',
     ]
 
     angle = -math.pi / 2
@@ -166,8 +168,10 @@ def render_timeline_svg(cases: list[dict]) -> str:
     max_count = max(years.values())
 
     svg = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" '
-        f'font-family="-apple-system, system-ui, sans-serif">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" '
+        f'width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
+        f'preserveAspectRatio="xMidYMid meet" '
+        f'font-family="Arial, Helvetica, sans-serif">',
         f'<text x="{width / 2}" y="32" text-anchor="middle" font-size="18" font-weight="700">'
         "Cases by Year</text>",
     ]

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="-apple-system, system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" preserveAspectRatio="xMidYMid meet" font-family="Arial, Helvetica, sans-serif">
 <path d="M 200.00 70.00 A 130 130 0 0 1 328.68 218.50 L 287.10 212.52 A 88 88 0 0 0 200.00 112.00 Z" fill="#3b82f6" />
 <path d="M 328.68 218.50 A 130 130 0 0 1 236.63 324.73 L 224.79 284.44 A 88 88 0 0 0 287.10 212.52 Z" fill="#ef4444" />
 <path d="M 236.63 324.73 A 130 130 0 0 1 163.37 324.73 L 175.21 284.44 A 88 88 0 0 0 224.79 284.44 Z" fill="#a855f7" />
