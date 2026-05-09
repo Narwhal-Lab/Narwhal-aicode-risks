@@ -36,6 +36,41 @@
       "avatar_url": "https://avatars.githubusercontent.com/GioldDiorld",
       "profile": "https://github.com/GioldDiorld",
       "contributions": ["research", "content"]
+    },
+    {
+      "login": "jzquan",
+      "name": "Jiazheng Quan",
+      "avatar_url": "https://avatars.githubusercontent.com/jzquan",
+      "profile": "https://github.com/jzquan",
+      "contributions": ["content", "review"]
+    },
+    {
+      "login": "ZJN514",
+      "name": "Jianing Zhou",
+      "avatar_url": "https://avatars.githubusercontent.com/ZJN514",
+      "profile": "https://github.com/ZJN514",
+      "contributions": ["content"]
+    },
+    {
+      "login": "adcdl",
+      "name": "Liangliang Qian",
+      "avatar_url": "https://avatars.githubusercontent.com/adcdl",
+      "profile": "https://github.com/adcdl",
+      "contributions": ["content"]
+    },
+    {
+      "login": "Y0uYuGe",
+      "name": "Like Liu",
+      "avatar_url": "https://avatars.githubusercontent.com/Y0uYuGe",
+      "profile": "https://github.com/Y0uYuGe",
+      "contributions": ["content"]
+    },
+    {
+      "login": "utopiazzr",
+      "name": "Zherong Zhang",
+      "avatar_url": "https://avatars.githubusercontent.com/utopiazzr",
+      "profile": "https://github.com/utopiazzr",
+      "contributions": ["content"]
     }
   ],
   "contributorsPerLine": 7,

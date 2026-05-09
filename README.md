@@ -351,6 +351,13 @@ Thanks goes to these wonderful people. We use [all-contributors](https://allcont
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/yumkea"><img src="https://avatars.githubusercontent.com/yumkea?s=64" width="64px;" alt="Wenjie Yu"/><br /><sub><b>Wenjie Yu</b></sub></a><br /><a title="Research">🔬</a> <a title="Content">📝</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/YilZhong"><img src="https://avatars.githubusercontent.com/YilZhong?s=64" width="64px;" alt="Yilu Zhong"/><br /><sub><b>Yilu Zhong</b></sub></a><br /><a title="Research">🔬</a> <a title="Content">📝</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/GioldDiorld"><img src="https://avatars.githubusercontent.com/GioldDiorld?s=64" width="64px;" alt="Hao Yu"/><br /><sub><b>Hao Yu</b></sub></a><br /><a title="Research">🔬</a> <a title="Content">📝</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jzquan"><img src="https://avatars.githubusercontent.com/jzquan?s=64" width="64px;" alt="Jiazheng Quan"/><br /><sub><b>Jiazheng Quan</b></sub></a><br /><a title="Content">📝</a> <a title="Review">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ZJN514"><img src="https://avatars.githubusercontent.com/ZJN514?s=64" width="64px;" alt="Jianing Zhou"/><br /><sub><b>Jianing Zhou</b></sub></a><br /><a title="Content">📝</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/adcdl"><img src="https://avatars.githubusercontent.com/adcdl?s=64" width="64px;" alt="Liangliang Qian"/><br /><sub><b>Liangliang Qian</b></sub></a><br /><a title="Content">📝</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Y0uYuGe"><img src="https://avatars.githubusercontent.com/Y0uYuGe?s=64" width="64px;" alt="Like Liu"/><br /><sub><b>Like Liu</b></sub></a><br /><a title="Content">📝</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/utopiazzr"><img src="https://avatars.githubusercontent.com/utopiazzr?s=64" width="64px;" alt="Zherong Zhang"/><br /><sub><b>Zherong Zhang</b></sub></a><br /><a title="Content">📝</a></td>
     </tr>
   </tbody>
 </table>

@@ -351,6 +351,13 @@ python3 scripts/render_index.py               # 重新生成索引与 SVG
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/yumkea"><img src="https://avatars.githubusercontent.com/yumkea?s=64" width="64px;" alt="喻文杰"/><br /><sub><b>喻文杰</b></sub></a><br /><a title="研究">🔬</a> <a title="内容">📝</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/YilZhong"><img src="https://avatars.githubusercontent.com/YilZhong?s=64" width="64px;" alt="钟一路"/><br /><sub><b>钟一路</b></sub></a><br /><a title="研究">🔬</a> <a title="内容">📝</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/GioldDiorld"><img src="https://avatars.githubusercontent.com/GioldDiorld?s=64" width="64px;" alt="余昊"/><br /><sub><b>余昊</b></sub></a><br /><a title="研究">🔬</a> <a title="内容">📝</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jzquan"><img src="https://avatars.githubusercontent.com/jzquan?s=64" width="64px;" alt="全嘉政"/><br /><sub><b>全嘉政</b></sub></a><br /><a title="内容">📝</a> <a title="审稿">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ZJN514"><img src="https://avatars.githubusercontent.com/ZJN514?s=64" width="64px;" alt="周佳凝"/><br /><sub><b>周佳凝</b></sub></a><br /><a title="内容">📝</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/adcdl"><img src="https://avatars.githubusercontent.com/adcdl?s=64" width="64px;" alt="钱亮亮"/><br /><sub><b>钱亮亮</b></sub></a><br /><a title="内容">📝</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Y0uYuGe"><img src="https://avatars.githubusercontent.com/Y0uYuGe?s=64" width="64px;" alt="刘理科"/><br /><sub><b>刘理科</b></sub></a><br /><a title="内容">📝</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/utopiazzr"><img src="https://avatars.githubusercontent.com/utopiazzr?s=64" width="64px;" alt="张哲荣"/><br /><sub><b>张哲荣</b></sub></a><br /><a title="内容">📝</a></td>
     </tr>
   </tbody>
 </table>
