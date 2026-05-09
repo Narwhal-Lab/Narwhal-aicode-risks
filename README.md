@@ -406,6 +406,20 @@ Contribution emoji key: 📝 Content · 🔬 Research · 👀 Review · 📆 Pro
       <br/>
       <a href="mailto:g.diorld@gmail.com"><sub><b>Hao Yu</b></sub></a>
     </td>
+    <td align="center" width="90">
+      <a href="https://github.com/jzquan">
+        <img src="https://avatars.githubusercontent.com/jzquan" width="70px;" style="border-radius: 50%;" alt=""/>
+      </a>
+      <br/>
+      <a href="https://github.com/jzquan"><sub><b>Jiazheng Quan</b></sub></a>
+    </td>
+    <td align="center" width="90">
+      <a href="https://github.com/Y0uYuGe">
+        <img src="https://avatars.githubusercontent.com/Y0uYuGe" width="70px;" style="border-radius: 50%;" alt=""/>
+      </a>
+      <br/>
+      <a href="https://github.com/Y0uYuGe"><sub><b>Like Liu</b></sub></a>
+    </td>
   </tr>
 </table>
 

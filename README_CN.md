@@ -406,6 +406,20 @@ python3 scripts/render_index.py               # 重新生成索引与 SVG
       <br/>
       <a href="mailto:g.diorld@gmail.com"><sub><b>余昊</b></sub></a>
     </td>
+    <td align="center" width="90">
+      <a href="https://github.com/jzquan">
+        <img src="https://avatars.githubusercontent.com/jzquan" width="70px;" style="border-radius: 50%;" alt=""/>
+      </a>
+      <br/>
+      <a href="https://github.com/jzquan"><sub><b>全嘉政</b></sub></a>
+    </td>
+    <td align="center" width="90">
+      <a href="https://github.com/Y0uYuGe">
+        <img src="https://avatars.githubusercontent.com/Y0uYuGe" width="70px;" style="border-radius: 50%;" alt=""/>
+      </a>
+      <br/>
+      <a href="https://github.com/Y0uYuGe"><sub><b>刘理科</b></sub></a>
+    </td>
   </tr>
 </table>
 
