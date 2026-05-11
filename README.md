@@ -27,7 +27,7 @@ This repository documents the **risks** of AI-generated code through layered evi
 </tr>
 </table>
 
-**11 cases · 6 active categories · 2022 → 2026 · 10+ AI tools implicated · 3 cases anchored to public CVEs (CVSS 9.1 / 9.3 / 9.3)**
+**13 cases · 6 active categories · 2022 → 2026 · 10+ AI tools implicated · 3 cases anchored to public CVEs (CVSS 9.1 / 9.3 / 9.3)**
 
 ---
 
