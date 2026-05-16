@@ -7,7 +7,7 @@
 This repository documents the **risks** of AI-generated code through layered evidence buckets:
 
 - **Technical Report** — [English PDF](docs/report-en.pdf) · [中文 PDF](docs/report-cn.pdf) · [arXiv](https://arxiv.org/abs/2512.18567)
-- **`cases/`** — **11 verified real-world incidents** with primary sources, evidence archives, and bilingual analysis.
+- **`cases/`** — **14 verified real-world incidents** with primary sources, evidence archives, and bilingual analysis.
 - **`inferred/`** — partial-evidence cases: event appears real, but key facts (vendor advisory / CVE / postmortem) not yet pinned down. *(0 cases as of v1.0; submit one!)*
 - **`scenarios/`** — illustrative scenarios for a real risk pattern, not tied to a confirmed event.
 - **Risk Taxonomy** — 7 categories spanning supply chain, code-level vulnerabilities, cloud / IaC, agent risks, domain-specific risks, IP & compliance, and human factors. See [`docs/taxonomy.md`](docs/taxonomy.md).
@@ -27,7 +27,7 @@ This repository documents the **risks** of AI-generated code through layered evi
 </tr>
 </table>
 
-**13 cases · 6 active categories · 2022 → 2026 · 10+ AI tools implicated · 3 cases anchored to public CVEs (CVSS 9.1 / 9.3 / 9.3)**
+**14 cases · 7 active categories · 2022 → 2026 · 10+ AI tools implicated · 3 cases anchored to public CVEs (CVSS 9.1 / 9.3 / 9.3)**
 
 ---
 
@@ -143,13 +143,14 @@ Vibe-coded AI-agent social network whose founder publicly stated he doesn't writ
 <tr>
 <td width="33%" valign="top">
 
-### Hallucination & Supply Chain &nbsp;<sub>(3)</sub>
+### Hallucination & Supply Chain &nbsp;<sub>(4)</sub>
 
 <sub>AI hallucinates non-existent dependencies, recommends squatted packages, or contaminates install chains.</sub>
 
 - <a href="cases/2024-hallucinated-package-poisoning/"><b>huggingface-cli</b></a> · 2024 · <img src="https://img.shields.io/badge/-high-orange?style=flat-square" alt="high"/>
 - <a href="cases/2026-agent-hallucination-self-spread/"><b>react-codeshift agent self-spread</b></a> · 2026 · <img src="https://img.shields.io/badge/-high-orange?style=flat-square" alt="high"/>
 - <a href="cases/2026-ai-tool-install-chain-abuse/"><b>InstallFix + Bing OpenClaw spoof</b></a> · 2026 · <img src="https://img.shields.io/badge/-high-orange?style=flat-square" alt="high"/>
+- <a href="cases/2026-litellm-pypi-supply-chain-poisoning/"><b>LiteLLM PyPI supply chain poisoning</b></a> · 2026 · <img src="https://img.shields.io/badge/-high-orange?style=flat-square" alt="high"/>
 
 </td>
 <td width="33%" valign="top">
@@ -196,10 +197,11 @@ Vibe-coded AI-agent social network whose founder publicly stated he doesn't writ
 </td>
 <td width="33%" valign="top">
 
-### Human Factors &nbsp;<sub>(1)</sub>
+### Human Factors &nbsp;<sub>(2)</sub>
 
 <sub>Skill erosion, over-reliance on AI, security-culture decay in AI-assisted teams.</sub>
 
+- <a href="cases/2023-samsung-chatgpt-leak/"><b>Samsung ChatGPT data leak</b></a> · 2023 · <img src="https://img.shields.io/badge/-high-orange?style=flat-square" alt="high"/>
 - <a href="cases/2026-security-culture-erosion/"><b>Moltbook RLS exposure</b></a> · 2026 · <img src="https://img.shields.io/badge/-critical-red?style=flat-square" alt="critical"/>
 
 </td>
@@ -208,10 +210,11 @@ Vibe-coded AI-agent social network whose founder publicly stated he doesn't writ
 <tr>
 <td width="33%" valign="top">
 
-### Cloud & IaC Misconfiguration &nbsp;<sub>(0)</sub>
+### Cloud & IaC Misconfiguration &nbsp;<sub>(1)</sub>
 
-<sub>No verified case yet — see scenarios/ for illustrative material.</sub>
+<sub>Cloud and infrastructure-as-code defaults or generated scripts that expose data or misconfigure access.</sub>
 
+- <a href="cases/2025-ai-iac-s3-breach/"><b>AI-generated IaC public S3 bucket leak</b></a> · 2025 · <img src="https://img.shields.io/badge/-high-orange?style=flat-square" alt="high"/>
 - <a href="scenarios/2025-iac-s3-bucket-leak/"><b>[Scenario] AI Terraform → S3 Public-Read</b></a> · <img src="https://img.shields.io/badge/-scenario-lightgrey?style=flat-square" alt="scenario"/>
 
 </td>
@@ -246,15 +249,15 @@ A 2026-05 verification pass against primary sources reshaped the library:
 
 | Verdict | Count | Notes |
 |---|---|---|
-| ✅ Real, well-sourced | 11 | All `cases/*` after this round |
+| ✅ Real, well-sourced | 14 | All `cases/*` after this round |
 | 📘 Illustrative scenario (downgraded from "case") | 1 | `scenarios/2025-iac-s3-bucket-leak/` — phenomenon real, specific incident not corroborated; cited primary sources returned 404 |
 | 🔁 Merged duplicates | -1 | The earlier `2026-agent-architecture-bias-db` covered the same Moltbook incident as `2026-security-culture-erosion`; merged into the latter |
 
 Each case's `meta.yaml` carries a `severity_basis` field with one of three values:
 
 - **cvss** — anchored to a public CVE / NVD / vendor advisory (3 cases: n8n, Lovable, EchoLeak)
-- **quantifiable-impact** — anchored to a publicly disclosed loss / scope figure that we can cite (5 cases: Moonwell $1.78M, huggingface-cli 30k downloads, react-codeshift 237 repos, install-chain malware delivery, Moltbook 1.5M tokens, Mass-CVE 35/74 figures)
-- **editorial** — judgment based on the nature of the risk where no CVSS scale applies (2 cases: GitHub Copilot lawsuits — IP/legal risk; the merged Moltbook also touches editorial framing for "agent architecture defaults")
+- **quantifiable-impact** — anchored to a publicly disclosed loss / scope figure that we can cite (8 cases as of this index)
+- **editorial** — judgment based on the nature of the risk where no CVSS scale applies (3 cases as of this index)
 
 `verification_notes` in each `meta.yaml` records what was checked and what was changed during verification.
 
