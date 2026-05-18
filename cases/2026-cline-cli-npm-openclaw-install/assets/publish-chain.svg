@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-labelledby="title desc">
+  <title id="title">Cline npm unauthorized publish chain</title>
+  <desc id="desc">A visual timeline from compromised npm token to cline 2.3.0 publication, postinstall OpenClaw installation, and corrected 2.4.0 release.</desc>
+  <style>
+    .bg{fill:#f8fafc}
+    .box{fill:#fff;stroke:#26384f;stroke-width:2;rx:12}
+    .risk{fill:#fff1ee;stroke:#bf3c2f}
+    .fix{fill:#edf8f2;stroke:#28764f}
+    .line{stroke:#61758c;stroke-width:3}
+    .title{fill:#172235;font:700 24px Arial,sans-serif}
+    .text{fill:#26384f;font:18px Arial,sans-serif}
+    .small{fill:#61758c;font:15px Arial,sans-serif}
+    .time{fill:#172235;font:700 20px Arial,sans-serif}
+  </style>
+  <rect class="bg" width="1100" height="520"/>
+  <text class="title" x="48" y="56">Unauthorized Cline CLI npm publish</text>
+  <text class="small" x="48" y="86">February 17, 2026. Exposure window: about eight hours according to the official post-mortem.</text>
+
+  <rect class="box risk" x="58" y="136" width="235" height="160"/>
+  <text class="time" x="86" y="176">03:26 PT</text>
+  <text class="text" x="86" y="216">Compromised npm</text>
+  <text class="text" x="86" y="244">publish token used</text>
+
+  <line class="line" x1="293" y1="216" x2="353" y2="216"/>
+
+  <rect class="box risk" x="353" y="136" width="235" height="160"/>
+  <text class="time" x="381" y="176">cline@2.3.0</text>
+  <text class="text" x="381" y="216">Package.json gains</text>
+  <text class="text" x="381" y="244">one postinstall script</text>
+
+  <line class="line" x1="588" y1="216" x2="648" y2="216"/>
+
+  <rect class="box risk" x="648" y="136" width="235" height="160"/>
+  <text class="time" x="676" y="176">Install time</text>
+  <text class="text" x="676" y="216">npm globally installs</text>
+  <text class="text" x="676" y="244">OpenClaw latest</text>
+
+  <line class="line" x1="883" y1="216" x2="943" y2="216"/>
+
+  <rect class="box fix" x="943" y="136" width="112" height="160"/>
+  <text class="time" x="964" y="176">11:23</text>
+  <text class="text" x="964" y="216">2.4.0</text>
+  <text class="text" x="964" y="244">fix</text>
+
+  <rect class="box fix" x="212" y="366" width="676" height="92"/>
+  <text class="title" x="242" y="404">Long-term control</text>
+  <text class="text" x="242" y="436">OIDC trusted publishing, provenance, registry monitoring, and lifecycle script review.</text>
+</svg>

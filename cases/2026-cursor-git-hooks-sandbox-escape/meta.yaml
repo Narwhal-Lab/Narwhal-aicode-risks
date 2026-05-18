@@ -1,0 +1,44 @@
+slug: 2026-cursor-git-hooks-sandbox-escape
+title_en: "Cursor Sandbox Escape via Git Hooks"
+title_cn: "Cursor 通过 Git Hooks 逃逸沙箱"
+year: 2026
+disclosed: 2026-02-13
+category: agent-risk
+severity: critical
+severity_basis: cvss
+severity_evidence: "NVD scores CVE-2026-26268 as CVSS 3.1 = 9.9 Critical; the GitHub/CVE record describes out-of-sandbox RCE via improperly protected .git settings and Git hooks in Cursor versions before 2.5."
+cvss: 9.9
+cve: CVE-2026-26268
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Cursor"
+language:
+  - "Git"
+attack_surface:
+  - "AI code editor"
+  - "agent sandbox"
+  - ".git configuration"
+  - "Git hooks"
+references:
+  - title: "NVD: CVE-2026-26268"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-26268"
+  - title: "CVEProject cvelistV5: CVE-2026-26268"
+    url: "https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/26xxx/CVE-2026-26268.json"
+  - title: "Cursor security advisory GHSA-8pcm-8jpx-hv8r"
+    url: "https://github.com/cursor/cursor/security/advisories/GHSA-8pcm-8jpx-hv8r"
+  - title: "Novee: How an AI Coding Agent Can Run Exploits in Cursor IDE"
+    url: "https://novee.security/blog/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution/"
+  - title: "arXiv: Your AI, My Shell"
+    url: "https://arxiv.org/abs/2509.22040"
+  - title: "AI GenCode Technical Capability Report CN"
+    url: "https://github.com/Narwhal-Lab/narwhal-aicode-risks/blob/main/docs/report-cn.pdf"
+tldr: "Cursor before 2.5 let agents alter .git hook settings, so later Git actions could execute code outside the sandbox."
+verification_notes: |
+  Verified against NVD and CVEProject on 2026-05-18. NVD lists primary CVSS 9.9 Critical and vendor/GitHub CVSS 8.0 High; this case uses the NVD primary score.
+tags:
+  - "cursor"
+  - "git-hooks"
+  - "sandbox-escape"
+  - "prompt-injection"
+  - "rce"
