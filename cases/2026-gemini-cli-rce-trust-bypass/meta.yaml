@@ -1,0 +1,40 @@
+slug: 2026-gemini-cli-rce-trust-bypass
+title_en: "Gemini CLI Workspace-Trust and Tool-Allowlist RCE"
+title_cn: "Gemini CLI 工作区信任与工具白名单绕过 RCE"
+year: 2026
+disclosed: 2026-04-24
+category: agent-risk
+severity: critical
+severity_basis: cvss
+severity_evidence: "GitHub Advisory GHSA-wpqr-6v78-jr5g scores the issue CVSS 3.1 = 10.0 Critical; affected headless Gemini CLI and run-gemini-cli workflows could reach RCE through workspace trust or --yolo tool allowlisting bypasses."
+cvss: 10.0
+cve: null
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Gemini CLI"
+  - "run-gemini-cli"
+language:
+  - "TypeScript"
+  - "GitHub Actions"
+attack_surface:
+  - "AI coding CLI"
+  - "CI/CD workflow"
+  - "workspace trust"
+  - "tool allowlist"
+references:
+  - title: "GitHub Advisory GHSA-wpqr-6v78-jr5g"
+    url: "https://github.com/advisories/GHSA-wpqr-6v78-jr5g"
+  - title: "google-github-actions/run-gemini-cli security advisory"
+    url: "https://github.com/google-github-actions/run-gemini-cli/security/advisories/GHSA-wpqr-6v78-jr5g"
+  - title: "run-gemini-cli repository"
+    url: "https://github.com/google-github-actions/run-gemini-cli"
+tldr: "Gemini CLI and run-gemini-cli trusted headless workspaces and ignored fine-grained allowlists under --yolo, allowing prompt-injection or malicious workspace content to reach RCE in CI."
+verification_notes: |
+  Verified against the reviewed GitHub Advisory on 2026-05-18. Patched versions are @google/gemini-cli 0.39.1 / 0.40.0-preview.3 and run-gemini-cli 0.1.22.
+tags:
+  - "gemini-cli"
+  - "github-actions"
+  - "prompt-injection"
+  - "rce"
+  - "workspace-trust"
