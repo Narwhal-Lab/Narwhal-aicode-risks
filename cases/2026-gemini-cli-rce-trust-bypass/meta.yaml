@@ -27,9 +27,13 @@ references:
     url: "https://github.com/advisories/GHSA-wpqr-6v78-jr5g"
   - title: "google-github-actions/run-gemini-cli security advisory"
     url: "https://github.com/google-github-actions/run-gemini-cli/security/advisories/GHSA-wpqr-6v78-jr5g"
+  - title: "Cloud Security Alliance: Gemini CLI CVSS 10.0: Pre-Sandbox RCE in CI/CD Agents"
+    url: "https://labs.cloudsecurityalliance.org/research/csa-research-note-gemini-cli-cvss10-rce-sandbox-bypass-20260/"
   - title: "run-gemini-cli repository"
     url: "https://github.com/google-github-actions/run-gemini-cli"
-tldr: "Gemini CLI and run-gemini-cli trusted headless workspaces and ignored fine-grained allowlists under --yolo, allowing prompt-injection or malicious workspace content to reach RCE in CI."
+  - title: "AI GenCode Technical Capability Report CN"
+    url: "https://github.com/Narwhal-Lab/narwhal-aicode-risks/blob/main/docs/report-cn.pdf"
+tldr: "Headless Gemini CLI trusted untrusted workspaces and let --yolo bypass tool allowlists, exposing CI runners to RCE."
 verification_notes: |
   Verified against the reviewed GitHub Advisory on 2026-05-18. Patched versions are @google/gemini-cli 0.39.1 / 0.40.0-preview.3 and run-gemini-cli 0.1.22.
 tags:
