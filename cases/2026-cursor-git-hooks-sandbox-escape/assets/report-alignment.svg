@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="450" viewBox="0 0 1080 450" role="img" aria-labelledby="title desc">
+  <title id="title">Cursor case alignment with technical report</title>
+  <desc id="desc">Mapping Cursor Git hook sandbox escape to the report concepts of zero trust, isolation, DAST, SAST, and human review.</desc>
+  <style>
+    .bg{fill:#f6faf9}
+    .box{fill:#ffffff;stroke:#21483f;stroke-width:2;rx:12}
+    .case{fill:#fff5e8;stroke:#c76b18}
+    .line{stroke:#557067;stroke-width:3}
+    .title{fill:#123026;font:700 24px Arial,sans-serif}
+    .text{fill:#223a33;font:18px Arial,sans-serif}
+    .small{fill:#557067;font:15px Arial,sans-serif}
+  </style>
+  <rect class="bg" width="1080" height="450"/>
+  <text class="title" x="48" y="56">Connection to the team report</text>
+  <text class="small" x="48" y="86">The case shifts attention from generated code to agent-controlled execution policy.</text>
+
+  <rect class="box case" x="58" y="132" width="260" height="190"/>
+  <text class="title" x="88" y="174">Case signal</text>
+  <text class="text" x="88" y="214">Agent writes Git policy</text>
+  <text class="text" x="88" y="244">Git later runs hook</text>
+  <text class="text" x="88" y="274">User sees no prompt</text>
+
+  <line class="line" x1="318" y1="228" x2="380" y2="228"/>
+
+  <rect class="box" x="380" y="112" width="290" height="230"/>
+  <text class="title" x="410" y="154">Report concept</text>
+  <text class="text" x="410" y="194">Zero-trust governance</text>
+  <text class="text" x="410" y="224">Full process traceability</text>
+  <text class="text" x="410" y="254">Automatic isolation</text>
+  <text class="text" x="410" y="284">DAST and SAST checks</text>
+
+  <line class="line" x1="670" y1="228" x2="732" y2="228"/>
+
+  <rect class="box" x="732" y="112" width="290" height="230"/>
+  <text class="title" x="762" y="154">Practical control</text>
+  <text class="text" x="762" y="194">Deny writes to .git</text>
+  <text class="text" x="762" y="224">Audit agent file writes</text>
+  <text class="text" x="762" y="254">Run unknown repos isolated</text>
+  <text class="text" x="762" y="284">Review hook and CI changes</text>
+</svg>
