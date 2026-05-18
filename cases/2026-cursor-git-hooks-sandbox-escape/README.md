@@ -93,3 +93,12 @@ arXiv 论文 “Your AI, My Shell” 把这类问题概括为 agentic coding edi
 - [Novee: How an AI Coding Agent Can Run Exploits in Cursor IDE](https://novee.security/blog/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution/)
 - [arXiv: Your AI, My Shell](https://arxiv.org/abs/2509.22040)
 - [AI GenCode Technical Capability Report CN](../../docs/report-cn.pdf)
+
+### Archived HTML mirrors / 网页镜像
+
+- [NVD: CVE-2026-26268](assets/reference-mirrors/01-nvd-cve-2026-26268.html)
+- [CVEProject cvelistV5: CVE-2026-26268](assets/reference-mirrors/02-cveproject-cvelist-cve-2026-26268.html)
+- [Cursor security advisory GHSA-8pcm-8jpx-hv8r](assets/reference-mirrors/03-cursor-ghsa-8pcm-8jpx-hv8r.html)
+- [Novee Cursor Git hook RCE blog](assets/reference-mirrors/04-novee-cursor-git-hook-rce.html)
+- [arXiv: Your AI, My Shell](assets/reference-mirrors/05-arxiv-your-ai-my-shell.html)
+- [AI GenCode Technical Capability Report GitHub page](assets/reference-mirrors/06-team-report-github-page.html)

@@ -116,3 +116,11 @@ Google 的修复改变了两个关键默认行为：headless mode 不再静默�
 - [Cloud Security Alliance: Gemini CLI CVSS 10.0: Pre-Sandbox RCE in CI/CD Agents](https://labs.cloudsecurityalliance.org/research/csa-research-note-gemini-cli-cvss10-rce-sandbox-bypass-20260/)
 - [run-gemini-cli repository](https://github.com/google-github-actions/run-gemini-cli)
 - [AI GenCode Technical Capability Report CN](../../docs/report-cn.pdf)
+
+### Archived HTML mirrors / 网页镜像
+
+- [GitHub Advisory GHSA-wpqr-6v78-jr5g](assets/reference-mirrors/01-github-advisory-ghsa-wpqr-6v78-jr5g.html)
+- [google-github-actions/run-gemini-cli security advisory](assets/reference-mirrors/02-run-gemini-cli-security-advisory.html)
+- [Cloud Security Alliance research note](assets/reference-mirrors/03-cloud-security-alliance-gemini-cli-cvss10-rce.html)
+- [run-gemini-cli repository](assets/reference-mirrors/04-run-gemini-cli-repository.html)
+- [AI GenCode Technical Capability Report GitHub page](assets/reference-mirrors/05-team-report-github-page.html)
