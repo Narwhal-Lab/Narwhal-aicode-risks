@@ -1,0 +1,40 @@
+slug: "2025-copilot-camoleak-prompt-injection"
+title_en: "GitHub Copilot CamoLeak Prompt Injection & Data Exfiltration Vulnerability"
+title_cn: "GitHub Copilot CamoLeak 提示词注入与数据外发漏洞"
+year: 2025
+disclosed: 2025-10
+category: "supply-chain"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "CVE-2025-59145 with CVSS 9.6, publicly disclosed by BlackFog and NVD."
+cvss: 9.6
+cve: "CVE-2025-59145"
+real_incident: true
+reproducible: false
+ai_tool:
+  - "GitHub Copilot Chat"
+language:
+  - "Multiple"
+attack_surface:
+  - "prompt-injection"
+  - "indirect-prompt-injection"
+  - "ide-integration"
+  - "data-exfiltration"
+references:
+  - title: "BlackFog: CamoLeak - How GitHub Copilot Became An Exfiltration Channel"
+    url: "https://www.blackfog.com/camoleak-how-github-copilot-became-an-exfiltration-channel/"
+  - title: "NVD: CVE-2025-59145 Detail"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2025-59145"
+  - title: "19 npm Packages Compromised in Major Supply-Chain Attack"
+    url: "https://www.ox.security/blog/npm-packages-compromised"
+  - title: "GitHub color-name@2.0.1 contains malware after npm account takeover"
+    url: "https://github.com/colorjs/color-name/security/advisories/GHSA-5fvm-p68v-5wmh"
+tldr: "CamoLeak exploit allows hidden prompt injection in PRs/issues to steal code and secrets via GitHub Copilot Chat without user awareness."
+tags:
+  - "copilot"
+  - "prompt-injection"
+  - "camoleak"
+  - "data-exfiltration"
+  - "supply-chain"
+  - "ide"
+  - "cve-2025-59145"

@@ -1,0 +1,1636 @@
+
+(function(window, document) {
+  'use strict';
+  
+  // Prevent double loading
+  if (window.HelpJet && window.HelpJet.loaded) {
+    console.warn('HelpJet widget already loaded');
+    return;
+  }
+  
+  // Initialize HelpJet namespace
+  window.HelpJet = window.HelpJet || {};
+  window.HelpJet.loaded = true;
+  window.HelpJet.config = {"botId":"jh70pt46bs6nw63ctytg09qban84zyex","apiBaseUrl":"https://app.helpjet.com","position":"right","primaryColor":"#f59e0b","welcomeMessage":"Hi there! How can I help you today?","headerText":"Product Support Assistant","headerTextColor":"#FFFFFF","headerLogo":null,"selectedIcon":"LifeBuoy","maxWidth":400,"collectFeedback":true,"showNewConversation":true,"poweredByText":"Powered by <a href='https://helpjet.com'>HelpJet</a>","targetingRules":[],"suggestedQuestions":[{"id":"m176svekwgzd5nb24vt6ty85zx84zt58","priority":0,"question":"How do I set up the allow list?"},{"id":"m17az0v881sd75esqhy3tvgagx84z3jv","priority":1,"question":"What is the role of a Virtual CISO?"},{"id":"m17cb9350a6n4b7p8eh1xbhkfd84zfa6","priority":2,"question":"Can I use BlackFog with Windows S mode?"}]};
+
+  // Shadow root reference, set by the custom element constructor before init().
+  // All widget DOM lookups go through $root for style/script isolation from the host page.
+  var $root = null;
+  
+  // Widget implementation
+  var Widget = {
+    config: {"botId":"jh70pt46bs6nw63ctytg09qban84zyex","apiBaseUrl":"https://app.helpjet.com","position":"right","primaryColor":"#f59e0b","welcomeMessage":"Hi there! How can I help you today?","headerText":"Product Support Assistant","headerTextColor":"#FFFFFF","headerLogo":null,"selectedIcon":"LifeBuoy","maxWidth":400,"collectFeedback":true,"showNewConversation":true,"poweredByText":"Powered by <a href='https://helpjet.com'>HelpJet</a>","targetingRules":[],"suggestedQuestions":[{"id":"m176svekwgzd5nb24vt6ty85zx84zt58","priority":0,"question":"How do I set up the allow list?"},{"id":"m17az0v881sd75esqhy3tvgagx84z3jv","priority":1,"question":"What is the role of a Virtual CISO?"},{"id":"m17cb9350a6n4b7p8eh1xbhkfd84zfa6","priority":2,"question":"Can I use BlackFog with Windows S mode?"}]},
+    isOpen: false,
+    isInitialized: false,
+    isLoading: false,
+    messages: [], // Track conversation history
+    
+    // Targeting evaluation
+    shouldShowWidget: function() {
+      var targetingRules = this.config.targetingRules || [];
+      
+      // If no targeting rules, show widget by default
+      if (targetingRules.length === 0) {
+        console.log('HelpJet widget shown: no targeting rules configured');
+        return true;
+      }
+      
+      // Apply targeting rules in priority order (highest priority first)
+      var currentPath = window.location.pathname;
+      var currentUrl = window.location.href;
+      
+      console.log('=== HelpJet Targeting Evaluation ===');
+      console.log('Current path:', currentPath);
+      console.log('Current URL:', currentUrl);
+      console.log('Total rules:', targetingRules.length);
+      
+      // Log all rules for debugging
+      for (var j = 0; j < targetingRules.length; j++) {
+        var debugRule = targetingRules[j];
+        console.log('Rule ' + (j + 1) + ':', debugRule.type, '"' + debugRule.pattern + '"', 'Priority:', debugRule.priority);
+      }
+      
+      for (var i = 0; i < targetingRules.length; i++) {
+        var rule = targetingRules[i];
+        var matches = false;
+        
+        console.log('\nEvaluating Rule ' + (i + 1) + ':', rule.type, '"' + rule.pattern + '"', 'Priority:', rule.priority);
+        
+        switch (rule.type) {
+          case 'pathContains':
+            // Handle wildcard pattern
+            if (rule.pattern === '*') {
+              matches = true;
+              console.log('→ Wildcard pattern matches all paths');
+            } else {
+              matches = currentPath.indexOf(rule.pattern) !== -1;
+              console.log('→ Path "' + currentPath + '" ' + (matches ? 'contains' : 'does not contain') + ' "' + rule.pattern + '"');
+            }
+            if (matches) {
+              console.log('✅ WIDGET SHOWN - Rule matched: pathContains "' + rule.pattern + '"');
+              return true;
+            }
+            break;
+          case 'pathDoesNotContain':
+            // Handle wildcard pattern
+            if (rule.pattern === '*') {
+              matches = true;
+              console.log('→ Wildcard pattern matches all paths');
+            } else {
+              matches = currentPath.indexOf(rule.pattern) !== -1;
+              console.log('→ Path "' + currentPath + '" ' + (matches ? 'contains' : 'does not contain') + ' "' + rule.pattern + '"');
+            }
+            if (matches) {
+              console.log('❌ WIDGET HIDDEN - Rule matched: pathDoesNotContain "' + rule.pattern + '"');
+              return false;
+            }
+            break;
+          default:
+            // For future rule types, default to not matching
+            console.log('→ Unknown rule type, skipping');
+            break;
+        }
+        
+        console.log('→ Rule did not match, continuing...');
+      }
+      
+      // If no rules matched, show widget by default
+      console.log('✅ WIDGET SHOWN - No rules matched, showing by default');
+      return true;
+    },
+    
+    // Icon SVG mappings
+    getIconSVG: function(iconName) {
+      var icons = {
+        MessageSquare: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+        MessageCircle: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+        MessagesSquare: '<path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+        HelpCircle: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M12 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+        Bot: '<path d="M12 8V4H8v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect width="16" height="12" x="4" y="8" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M9 16v-2h6v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="9" cy="13" r="1" fill="currentColor"/><circle cx="15" cy="13" r="1" fill="currentColor"/>',
+        Headphones: '<path d="M3 18v-6a9 9 0 0 1 18 0v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+        LifeBuoy: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="m4.93 4.93 4.24 4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="m14.83 9.17 4.24-4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="m14.83 14.83 4.24 4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="m9.17 14.83-4.24 4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+        Heart: '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+        BrainCircuit: '<path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M9 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M11 14h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+        Send: '<path d="m22 2-7 20-4-9-9-4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M22 2 11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>'
+      };
+      return icons[iconName] || icons.MessageSquare;
+    },
+    
+    // Enhanced markdown parser with semantic HTML elements
+    parseMarkdown: function(text) {
+      if (!text) return text;
+      
+      var html = text;
+      
+      // First handle inline formatting that shouldn't be affected by block processing
+      // Handle markdown links with link emoji [text](url) as badges
+      var sourceLinkRegex = /🔗\s*\[([^\]]+)\]\(([^\)]+)\)/g;
+      html = html.replace(sourceLinkRegex, function(match, linkText, url) {
+        // Ensure URL has protocol
+        var fullUrl = url;
+        if (!/^https?:\/\//.test(url)) {
+          fullUrl = 'https://' + url;
+        }
+        // Return as badge with link icon
+        return '<a href="' + fullUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 4px; background: ' + (this.config?.primaryColor || '#6366f1') + '; color: white; padding: 4px 8px; border-radius: 12px; text-decoration: none; font-size: 12px; font-weight: 500; margin: 2px 4px 2px 0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>' + linkText + '</a>';
+      }.bind(this));
+      
+      // Handle regular markdown links [text](url) (without emoji prefix)  
+      var linkRegex = /\[([^\]]+)\]\(([^\)]+)\)/g;
+      html = html.replace(linkRegex, function(match, linkText, url) {
+        // Ensure URL has protocol
+        var fullUrl = url;
+        if (!/^https?:\/\//.test(url)) {
+          fullUrl = 'https://' + url;
+        }
+        return '<a href="' + fullUrl + '" target="_blank" rel="noopener noreferrer" style="color: ' + (this.config?.primaryColor || '#6366f1') + '; text-decoration: underline;">' + linkText + '</a>';
+      }.bind(this));
+      
+      // Bold **text**
+      while (html.indexOf('**') !== -1) {
+        var start = html.indexOf('**');
+        var end = html.indexOf('**', start + 2);
+        if (end !== -1) {
+          var before = html.substring(0, start);
+          var content = html.substring(start + 2, end);
+          var after = html.substring(end + 2);
+          html = before + '<strong>' + content + '</strong>' + after;
+        } else {
+          break;
+        }
+      }
+      
+      // Inline code `text`
+      while (html.indexOf('`') !== -1) {
+        var start = html.indexOf('`');
+        var end = html.indexOf('`', start + 1);
+        if (end !== -1) {
+          var before = html.substring(0, start);
+          var content = html.substring(start + 1, end);
+          var after = html.substring(end + 1);
+          html = before + '<code>' + content + '</code>' + after;
+        } else {
+          break;
+        }
+      }
+      
+      // Now process block-level elements
+      var lines = html.split('\n');
+      var result = [];
+      var currentList = null;
+      var currentListType = null;
+      var currentParagraph = [];
+      var currentListItem = null;
+      
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+        
+        // Check if this is a heading
+        var headingMatch = line.match(/^(#{1,3})\s+(.*)$/);
+        var isHeading = headingMatch !== null;
+        
+        // Check if this is a list item with bold content (should be treated as heading, not list)
+        var isBoldListHeading = /^([-*]|\d+\.)\s+<strong>.*<\/strong>[:\s]*$/.test(line.trim());
+        
+        // Check if this is a standalone bold/strong element (often used as subheadings)
+        var isBoldLine = /^<strong>.*<\/strong>[:\s]*$/.test(line.trim()) && line.indexOf('<br>') === -1;
+        
+        // Debug logging
+        if (line.indexOf('strong>') !== -1) {
+          console.log('Line with strong tag:', JSON.stringify(line), 'isBoldLine:', isBoldLine, 'isBoldListHeading:', isBoldListHeading);
+        }
+        
+        // Check if this is a list item (but exclude bold headings)
+        var isUnorderedListItem = /^[-*]\s+(.*)/.test(line) && !isBoldListHeading;
+        var isOrderedListItem = /^\d+\.\s+(.*)/.test(line) && !isBoldListHeading;
+        var isListItem = isUnorderedListItem || isOrderedListItem;
+        
+        // Debug logging for list detection
+        if (isListItem) {
+          console.log('Detected list item:', JSON.stringify(line));
+        }
+        
+        if (isHeading || isBoldListHeading) {
+          // Close current paragraph if any
+          if (currentParagraph.length > 0) {
+            var paragraphContent = currentParagraph.join('<br>').trim();
+            if (paragraphContent) {
+              result.push('<p>' + paragraphContent + '</p>');
+            }
+            currentParagraph = [];
+          }
+          
+          // Close current list item if any
+          if (currentListItem !== null) {
+            var hasLinkBadge = currentListItem.indexOf('display: inline-flex; align-items: center; gap: 4px; background:') !== -1;
+            var liClass = hasLinkBadge ? ' class="no-bullet"' : '';
+            result.push('<li' + liClass + '>' + currentListItem + '</li>');
+            currentListItem = null;
+          }
+          
+          // Close current list if any
+          if (currentList !== null) {
+            result.push('</' + currentListType + '>');
+            currentList = null;
+            currentListType = null;
+          }
+          
+          // Process heading
+          if (headingMatch) {
+            var level = headingMatch[1].length;
+            var headingText = headingMatch[2];
+            result.push('<h' + level + '>' + headingText + '</h' + level + '>');
+          } else if (isBoldListHeading) {
+            // Extract the bold content from list marker (e.g., "1. <strong>Prerequisites</strong>:" -> "<strong>Prerequisites</strong>:")
+            var boldContent = line.replace(/^([-*]|\d+\.)\s+/, '');
+            result.push('<p>' + boldContent + '</p>');
+          }
+        } else if (isBoldLine) {
+          // Close current paragraph if any
+          if (currentParagraph.length > 0) {
+            var paragraphContent = currentParagraph.join('<br>').trim();
+            if (paragraphContent) {
+              result.push('<p>' + paragraphContent + '</p>');
+            }
+            currentParagraph = [];
+          }
+          
+          // Close current list item if any
+          if (currentListItem !== null) {
+            var hasLinkBadge = currentListItem.indexOf('display: inline-flex; align-items: center; gap: 4px; background:') !== -1;
+            var liClass = hasLinkBadge ? ' class="no-bullet"' : '';
+            result.push('<li' + liClass + '>' + currentListItem + '</li>');
+            currentListItem = null;
+          }
+          
+          // Close current list if any
+          if (currentList !== null) {
+            result.push('</' + currentListType + '>');
+            currentList = null;
+            currentListType = null;
+          }
+          
+          // Process standalone bold line as a paragraph
+          result.push('<p>' + line + '</p>');
+        } else if (isListItem) {
+          // Close current paragraph if any
+          if (currentParagraph.length > 0) {
+            var paragraphContent = currentParagraph.join('<br>').trim();
+            if (paragraphContent) {
+              result.push('<p>' + paragraphContent + '</p>');
+            }
+            currentParagraph = [];
+          }
+          
+          // Close previous list item if any
+          if (currentListItem !== null) {
+            var hasLinkBadge = currentListItem.indexOf('display: inline-flex; align-items: center; gap: 4px; background:') !== -1;
+            var liClass = hasLinkBadge ? ' class="no-bullet"' : '';
+            result.push('<li' + liClass + '>' + currentListItem + '</li>');
+            currentListItem = null;
+          }
+          
+          var listType = 'ul'; // Always use unordered lists
+          var listContent = isUnorderedListItem ? 
+            line.replace(/^[-*]\s+/, '') : 
+            line.replace(/^\d+\.\s+/, '');
+          
+          // Start new list or continue existing one
+          if (currentListType !== listType || currentList === null) {
+            // Close previous list if different type
+            if (currentList !== null) {
+              result.push('</' + currentListType + '>');
+            }
+            // Start new list
+            result.push('<' + listType + '>');
+            currentList = [];
+            currentListType = listType;
+          }
+          
+          // Start collecting content for this list item
+          currentListItem = listContent;
+        } else if (line === '') {
+          // Empty line - close current list item and list
+          if (currentListItem !== null) {
+            var hasLinkBadge = currentListItem.indexOf('display: inline-flex; align-items: center; gap: 4px; background:') !== -1;
+            var liClass = hasLinkBadge ? ' class="no-bullet"' : '';
+            result.push('<li' + liClass + '>' + currentListItem + '</li>');
+            currentListItem = null;
+          }
+          if (currentList !== null) {
+            result.push('</' + currentListType + '>');
+            currentList = null;
+            currentListType = null;
+          } else if (currentParagraph.length > 0) {
+            var paragraphContent = currentParagraph.join('<br>').trim();
+            if (paragraphContent) {
+              result.push('<p>' + paragraphContent + '</p>');
+            }
+            currentParagraph = [];
+          }
+        } else {
+          // Regular text line
+          if (currentListItem !== null) {
+            // This line is part of the current list item
+            currentListItem += '<br>' + line;
+          } else {
+            // Close current list if any
+            if (currentList !== null) {
+              result.push('</' + currentListType + '>');
+              currentList = null;
+              currentListType = null;
+            }
+            
+            // Add to current paragraph
+            currentParagraph.push(line);
+          }
+        }
+      }
+      
+      // Close any remaining open elements
+      if (currentListItem !== null) {
+        var hasLinkBadge = currentListItem.indexOf('display: inline-flex; align-items: center; gap: 4px; background:') !== -1;
+        var liClass = hasLinkBadge ? ' class="no-bullet"' : '';
+        result.push('<li' + liClass + '>' + currentListItem + '</li>');
+      }
+      if (currentList !== null) {
+        result.push('</' + currentListType + '>');
+      } else if (currentParagraph.length > 0) {
+        var paragraphContent = currentParagraph.join('<br>').trim();
+        if (paragraphContent) {
+          result.push('<p>' + paragraphContent + '</p>');
+        }
+      }
+      
+      return result.join('');
+    },
+    
+    init: function() {
+      if (this.isInitialized) return;
+      
+      // Check targeting rules before showing widget
+      if (!this.shouldShowWidget()) {
+        console.log('HelpJet widget hidden due to targeting rules');
+        return;
+      }
+      
+      this.createStyles();
+      this.createWidget();
+      
+      // Initialize conversation history with welcome message
+      var welcomeMessage = this.config.welcomeMessage || 'Hi! How can I help you today?';
+      this.messages = [{ role: 'assistant', content: welcomeMessage }];
+      
+      this.bindEvents();
+      this.isInitialized = true;
+      
+      console.log('HelpJet widget initialized for bot:', 'jh70pt46bs6nw63ctytg09qban84zyex');
+    },
+    
+    createStyles: function() {
+      var css = `
+        :host {
+          all: initial;
+          display: block;
+          position: fixed;
+          bottom: 20px;
+          ${this.config.position === 'left' ? 'left: 20px;' : 'right: 20px;'}
+          z-index: 10000;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .helpjet-button {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: ${this.config.primaryColor || '#6366f1'};
+          border: none;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          color: white;
+        }
+        
+        .helpjet-button:hover {
+          transform: scale(1.1);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .helpjet-button svg {
+          width: 24px;
+          height: 24px;
+          fill: white;
+        }
+        
+        .helpjet-chat {
+          position: fixed;
+          bottom: 80px;
+          ${this.config.position === 'left' ? 'left: 20px;' : 'right: 20px;'}
+          width: ${this.config.maxWidth || 400}px;
+          max-width: 400px;
+          height: calc(100% - 120px);
+          max-height: 825px;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+          display: none;
+          flex-direction: column;
+          overflow: hidden;
+        }
+        
+        .helpjet-chat.open {
+          display: flex;
+        }
+        
+        .helpjet-header {
+          background: ${this.config.primaryColor || '#6366f1'};
+          color: white;
+          padding: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 8px 8px 0 0;
+        }
+        
+        .helpjet-header img {
+          width: 24px;
+          height: 24px;
+          object-fit: contain;
+        }
+        
+        .helpjet-header .helpjet-header-text {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.25;
+        }
+        
+        .helpjet-header .helpjet-header-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: white;
+          margin-right: 8px;
+        }
+        
+        .helpjet-messages {
+          flex: 1;
+          padding: 16px;
+          overflow-y: auto;
+          background: #f9fafb;
+          scroll-behavior: smooth;
+        }
+        
+        .helpjet-messages::-webkit-scrollbar {
+          width: 6px;
+        }
+        
+        .helpjet-messages::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        
+        .helpjet-messages::-webkit-scrollbar-thumb {
+          background: #d1d5db;
+          border-radius: 3px;
+        }
+        
+        .helpjet-messages::-webkit-scrollbar-thumb:hover {
+          background: #9ca3af;
+        }
+        
+        .helpjet-scroll-to-bottom {
+          position: absolute;
+          bottom: 105px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 40px;
+          height: 40px;
+          background: ${this.config.primaryColor || '#6366f1'};
+          opacity: 0.9;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          display: none;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(4px);
+          transition: all 0.2s ease;
+          z-index: 10;
+          pointer-events: auto;
+        }
+        
+        .helpjet-scroll-to-bottom:hover {
+          background: ${this.config.primaryColor ? this.config.primaryColor + 'dd' : '#4f46e5'};
+          opacity: 1;
+          transform: translateX(-50%) translateY(1px);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .helpjet-scroll-to-bottom.visible {
+          display: flex;
+        }
+        
+        .helpjet-scroll-to-bottom svg {
+          width: 20px;
+          height: 20px;
+          color: white;
+        }
+        
+        .helpjet-message {
+          margin-bottom: 12px;
+          padding: 16px;
+          border-radius: 8px;
+          max-width: 80%;
+          word-wrap: break-word;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+        
+        .helpjet-message.bot {
+          background: #f9fafb;
+          border: 1px solid #e5e7eb;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .helpjet-message.user {
+          background: ${this.config.primaryColor || '#6366f1'};
+          color: white;
+          margin-left: auto;
+          box-shadow: 0 1px 2px rgba(99, 102, 241, 0.2);
+        }
+        
+        .helpjet-message-content {
+          line-height: 1.4;
+        }
+        
+        .helpjet-message-content strong {
+          font-weight: 600;
+        }
+        
+        .helpjet-message-content em {
+          font-style: italic;
+        }
+        
+        .helpjet-message-content code {
+          background: #f1f5f9;
+          padding: 2px 4px;
+          border-radius: 3px;
+          font-family: monospace;
+          font-size: 14px;
+        }
+        
+        .helpjet-message-content a {
+          color: #3b82f6;
+          text-decoration: underline;
+        }
+        
+        .helpjet-message-content br {
+          font-size: 4px;
+          line-height: 4px;
+        }
+        
+        .helpjet-message-content ul {
+          margin: 8px 0;
+          padding-left: 20px;
+          overflow: hidden;
+        }
+        
+        .helpjet-message-content li {
+          margin: 4px 0;
+        }
+        
+        .helpjet-message-content li.no-bullet {
+          list-style: none;
+          margin-left: -20px;
+          padding-left: 0;
+        }
+        
+        .helpjet-message-content {
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+        
+        .helpjet-message-content p {
+          margin: 4px 0;
+        }
+        
+        .helpjet-message-content h1,
+        .helpjet-message-content h2,
+        .helpjet-message-content h3 {
+          font-weight: 600;
+          margin: 12px 0 8px 0;
+        }
+        
+        .helpjet-message-content h1 {
+          font-size: 20px;
+        }
+        
+        .helpjet-message-content h2 {
+          font-size: 18px;
+        }
+        
+        .helpjet-message-content h3 {
+          font-size: 16px;
+        }
+        
+        .helpjet-streaming {
+          position: relative;
+        }
+        
+        .helpjet-streaming::after {
+          content: '';
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          background: ${this.config.primaryColor || '#6366f1'};
+          border-radius: 50%;
+          animation: helpjet-pulse 1s infinite;
+          margin-left: 4px;
+          vertical-align: middle;
+        }
+        
+        @keyframes helpjet-pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+        
+        .helpjet-input-container {
+          padding: 12px;
+          border-top: 1px solid #e5e7eb;
+          background: white;
+          display: flex;
+          gap: 8px;
+          align-items: center;
+        }
+        
+        .helpjet-input-wrapper {
+          flex: 1;
+          position: relative;
+        }
+        
+        .helpjet-input-dummy {
+          padding: 10px 16px;
+          overflow: hidden;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          word-break: break-word;
+          visibility: hidden;
+          min-height: 40px;
+          max-height: 120px;
+          border: 1px solid transparent;
+          border-radius: 6px;
+          font-size: 16px;
+          font-family: Arial, Helvetica, sans-serif;
+          line-height: 1.4;
+        }
+        
+        .helpjet-input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          min-height: 40px;
+          max-height: 120px;
+          padding: 10px 16px;
+          border: 1px solid #e5e7eb;
+          border-radius: 6px;
+          outline: none;
+          font-size: 16px;
+          font-family: Arial, Helvetica, sans-serif;
+          transition: border-color 0.2s;
+          resize: none;
+          overflow-y: auto;
+          line-height: 1.4;
+          background: transparent;
+        }
+        
+        .helpjet-input:focus {
+          border-color: ${this.config.primaryColor || '#6366f1'};
+          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .helpjet-input::placeholder {
+          color: #9ca3af;
+          font-size: 16px;
+        }
+        
+        .helpjet-send {
+          width: 40px;
+          align-self: stretch;
+          background: ${this.config.primaryColor || '#6366f1'};
+          color: white;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .helpjet-send:hover:not(:disabled) {
+          background: ${this.config.primaryColor ? this.config.primaryColor + 'dd' : '#4f46e5'};
+          transform: translateY(-1px);
+        }
+        
+        .helpjet-send:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+        
+        .helpjet-powered-by {
+          text-align: center;
+          font-size: 12px;
+          color: #6b7280;
+          padding: 8px 12px 8px 12px;
+          background: white;
+        }
+        
+        .helpjet-typing-indicator {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 16px;
+          background: #f9fafb;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+          max-width: 80%;
+          margin-bottom: 16px;
+        }
+        
+        .helpjet-spinner {
+          width: 20px;
+          height: 20px;
+          border: 2px solid #e5e7eb;
+          border-top: 2px solid ${this.config.primaryColor || '#6366f1'};
+          border-radius: 50%;
+          animation: helpjet-spin 1s linear infinite;
+        }
+        
+        @keyframes helpjet-spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        .helpjet-typing-text {
+          color: #6b7280;
+          font-size: 16px;
+        }
+        
+        .helpjet-feedback {
+          display: flex;
+          justify-content: flex-start;
+          margin-top: 8px;
+          margin-left: 8px;
+          margin-bottom: 12px;
+        }
+        
+        .helpjet-feedback-container {
+          display: flex;
+          gap: 8px;
+        }
+        
+        .helpjet-feedback-buttons {
+          display: flex;
+          gap: 4px;
+        }
+        
+        .helpjet-feedback-btn {
+          width: 28px;
+          height: 28px;
+          background: white;
+          border: 1px solid #e5e7eb;
+          border-radius: 4px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+          color: #6b7280;
+        }
+        
+        .helpjet-feedback-btn:hover.positive {
+          background: #f0fdf4;
+          border-color: #86efac;
+          color: #16a34a;
+        }
+        
+        .helpjet-feedback-btn:hover.negative {
+          background: #fef2f2;
+          border-color: #fca5a5;
+          color: #dc2626;
+        }
+        
+        .helpjet-feedback-btn.selected.positive {
+          background: #f0fdf4;
+          border-color: #16a34a;
+          color: #16a34a;
+        }
+        
+        .helpjet-feedback-btn.selected.negative {
+          background: #fef2f2;
+          border-color: #dc2626;
+          color: #dc2626;
+        }
+        
+        .helpjet-feedback-btn:disabled {
+          opacity: 0.5;
+        }
+        
+        .helpjet-feedback-thanks {
+          font-size: 12px;
+          color: #6b7280;
+          background: #f3f4f6;
+          padding: 4px 8px;
+          border-radius: 4px;
+        }
+        
+        .helpjet-feedback-message {
+          font-size: 12px;
+          color: #ea580c;
+          margin-left: 8px;
+          display: inline-flex;
+          align-items: center;
+        }
+        
+        /* Suggested Questions Styles - Positioned at bottom */
+        .helpjet-suggested-questions {
+          padding: 12px 16px 8px 16px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          background: #fafafa;
+          border-top: 1px solid #e5e7eb;
+          max-height: 120px;
+          overflow-y: auto;
+        }
+
+        .helpjet-suggested-question {
+          background: white;
+          border: 1px solid #d1d5db;
+          border-radius: 16px;
+          padding: 8px 12px;
+          cursor: pointer;
+          transition: all 0.15s ease;
+          font-size: 13px;
+          color: #6b7280;
+          text-align: left;
+          line-height: 1.3;
+          white-space: nowrap;
+          max-width: calc(100% - 12px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .helpjet-suggested-question:hover {
+          background: ${this.config.primaryColor || '#6366f1'};
+          border-color: ${this.config.primaryColor || '#6366f1'};
+          color: white;
+          transform: none;
+          box-shadow: none;
+        }
+
+        .helpjet-suggested-question:active {
+          transform: scale(0.98);
+        }
+      `;
+      
+      var style = document.createElement('style');
+      style.textContent = css;
+      $root.appendChild(style);
+
+      // Override message styling to revert to pre-suggested-questions state
+      var paddingFix = document.createElement('style');
+      paddingFix.textContent = '.helpjet-message { padding: 12px !important; }';
+      $root.appendChild(paddingFix);
+    },
+    
+    createWidget: function() {
+      var container = document.createElement('div');
+      container.className = 'helpjet-widget';
+      
+      // Generate suggested questions HTML - positioned at bottom above input
+      var suggestedQuestionsHTML = '';
+      if (this.config.suggestedQuestions && this.config.suggestedQuestions.length > 0) {
+        suggestedQuestionsHTML = `
+          <div class="helpjet-suggested-questions" id="helpjet-suggested-questions">
+            ${this.config.suggestedQuestions.map(q => `
+              <button class="helpjet-suggested-question" data-question="${q.question.replace(/"/g, '&quot;')}">
+                ${q.question}
+              </button>
+            `).join('')}
+          </div>
+        `;
+      }
+      
+      container.innerHTML = `
+        <div class="helpjet-chat" id="helpjet-chat">
+          <div class="helpjet-header">
+            ${this.config.headerLogo ? `<img src="${this.config.headerLogo}" alt="Logo">` : `<div class="helpjet-header-dot"></div>`}
+            <span class="helpjet-header-text">${this.config.headerText || 'Chat Support'}</span>
+          </div>
+          <div class="helpjet-messages" id="helpjet-messages">
+            <div class="helpjet-message bot">
+              <div class="helpjet-message-content">
+                ${this.config.welcomeMessage || 'Hi! How can I help you today?'}
+              </div>
+            </div>
+          </div>
+          <button class="helpjet-scroll-to-bottom" id="helpjet-scroll-to-bottom" title="Scroll to bottom">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </button>
+          ${suggestedQuestionsHTML}
+          <div class="helpjet-input-container">
+            <div class="helpjet-input-wrapper">
+              <div class="helpjet-input-dummy" id="helpjet-input-dummy" aria-hidden="true">Type a message...|</div>
+              <textarea class="helpjet-input" id="helpjet-input" placeholder="Type a message..." rows="1"></textarea>
+            </div>
+            <button class="helpjet-send" id="helpjet-send">
+              <svg viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+                ${this.getIconSVG('Send')}
+              </svg>
+            </button>
+          </div>
+          ${this.config.poweredByText ? `<div class="helpjet-powered-by">${this.config.poweredByText}</div>` : ''}
+        </div>
+        <button class="helpjet-button" id="helpjet-button">
+          <svg viewBox="0 0 24 24">
+            ${this.getIconSVG(this.config.selectedIcon)}
+          </svg>
+        </button>
+      `;
+      
+      $root.appendChild(container);
+      this.container = container;
+    },
+    
+    bindEvents: function() {
+      var button = $root.getElementById('helpjet-button');
+      var chat = $root.getElementById('helpjet-chat');
+      var input = $root.getElementById('helpjet-input');
+      var dummy = $root.getElementById('helpjet-input-dummy');
+      var send = $root.getElementById('helpjet-send');
+      
+      button.addEventListener('click', this.toggle.bind(this));
+      send.addEventListener('click', this.sendMessage.bind(this));
+      
+      // Handle Enter key behavior for textarea
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey && !Widget.isLoading) {
+          e.preventDefault();
+          Widget.sendMessage();
+        }
+      });
+      
+      // Update dummy div content on input
+      input.addEventListener('input', function() {
+        Widget.updateDummyContent();
+        
+        // Hide suggested questions when user starts typing
+        var suggestedQuestions = $root.getElementById('helpjet-suggested-questions');
+        if (suggestedQuestions && input.value.trim().length > 0) {
+          suggestedQuestions.style.display = 'none';
+        }
+      });
+      
+      // Initial content sync
+      this.updateDummyContent();
+      
+      // Suggested questions event handling
+      var suggestedQuestions = $root.getElementById('helpjet-suggested-questions');
+      if (suggestedQuestions) {
+        var questionButtons = suggestedQuestions.querySelectorAll('.helpjet-suggested-question');
+        for (var i = 0; i < questionButtons.length; i++) {
+          questionButtons[i].addEventListener('click', function() {
+            var question = this.getAttribute('data-question');
+            if (question) {
+              // Hide suggested questions after selection
+              if (suggestedQuestions) {
+                suggestedQuestions.style.display = 'none';
+              }
+              
+              // Send the selected question as a message
+              Widget.sendMessageWithText(question);
+            }
+          });
+        }
+      }
+      
+      // Scroll-to-bottom functionality
+      var messages = $root.getElementById('helpjet-messages');
+      var scrollToBottomBtn = $root.getElementById('helpjet-scroll-to-bottom');
+      
+      if (messages && scrollToBottomBtn) {
+        var self = this;
+        
+        // Add scroll event listener
+        messages.addEventListener('scroll', self.checkScrollToBottomVisibility.bind(self));
+        
+        // Add click event to scroll to bottom
+        scrollToBottomBtn.addEventListener('click', function() {
+          messages.scrollTop = messages.scrollHeight;
+          self.checkScrollToBottomVisibility();
+        });
+        
+        // Initial check
+        self.checkScrollToBottomVisibility();
+      }
+    },
+    
+    toggle: function() {
+      var chat = $root.getElementById('helpjet-chat');
+      this.isOpen = !this.isOpen;
+      chat.classList.toggle('open', this.isOpen);
+    },
+    
+    updateDummyContent: function() {
+      var input = $root.getElementById('helpjet-input');
+      var dummy = $root.getElementById('helpjet-input-dummy');
+      
+      if (input && dummy) {
+        var content = input.value || input.placeholder;
+        // Add dummy character to maintain line height
+        dummy.textContent = content + '|';
+      }
+    },
+    
+    sendMessage: function() {
+      var input = $root.getElementById('helpjet-input');
+      var send = $root.getElementById('helpjet-send');
+      var message = input.value.trim();
+      
+      if (!message || this.isLoading) return;
+      
+      // Set loading state
+      this.isLoading = true;
+      input.disabled = true;
+      send.disabled = true;
+      send.innerHTML = '<div class="helpjet-spinner" style="width: 16px; height: 16px; border-width: 2px;"></div>';
+      
+      this.addMessage(message, 'user');
+      input.value = '';
+      
+      // Update dummy content after clearing
+      this.updateDummyContent();
+      
+      // Send to API
+      this.callAPI(message);
+    },
+    
+    sendMessageWithText: function(messageText) {
+      var input = $root.getElementById('helpjet-input');
+      var send = $root.getElementById('helpjet-send');
+      
+      if (!messageText || this.isLoading) return;
+      
+      // Set loading state
+      this.isLoading = true;
+      input.disabled = true;
+      send.disabled = true;
+      send.innerHTML = '<div class="helpjet-spinner" style="width: 16px; height: 16px; border-width: 2px;"></div>';
+      
+      this.addMessage(messageText, 'user');
+      
+      // Clear input and update dummy content
+      input.value = '';
+      this.updateDummyContent();
+      
+      // Send to API
+      this.callAPI(messageText);
+    },
+    
+    addMessage: function(content, sender) {
+      var messages = $root.getElementById('helpjet-messages');
+      var messageId = 'msg-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+      var messageEl = document.createElement('div');
+      messageEl.className = 'helpjet-message ' + sender;
+      messageEl.id = messageId;
+      messageEl.innerHTML = '<div class="helpjet-message-content"></div>';
+      
+      // Apply markdown parsing for bot messages
+      if (sender === 'bot') {
+        var processedContent = this.parseMarkdown(content);
+        messageEl.querySelector('.helpjet-message-content').innerHTML = processedContent;
+        
+        // Add feedback buttons if enabled and this isn't the welcome message
+        var messagesCount = messages.querySelectorAll('.helpjet-message.bot').length;
+        if (this.config.collectFeedback && messagesCount > 0) {
+          this.addFeedbackButtons(messageEl, messageId);
+        }
+      } else {
+        messageEl.querySelector('.helpjet-message-content').textContent = content;
+      }
+      
+      messages.appendChild(messageEl);
+      messages.scrollTop = messages.scrollHeight;
+      
+      // Check scroll-to-bottom button visibility after adding message
+      this.checkScrollToBottomVisibility();
+    },
+    
+    checkScrollToBottomVisibility: function() {
+      var messages = $root.getElementById('helpjet-messages');
+      var scrollToBottomBtn = $root.getElementById('helpjet-scroll-to-bottom');
+      
+      if (messages && scrollToBottomBtn) {
+        var isAtBottom = messages.scrollHeight - messages.clientHeight <= messages.scrollTop + 1;
+        if (isAtBottom) {
+          scrollToBottomBtn.classList.remove('visible');
+        } else {
+          scrollToBottomBtn.classList.add('visible');
+        }
+      }
+    },
+    
+    addFeedbackButtons: function(messageEl, messageId) {
+      var messages = $root.getElementById('helpjet-messages');
+      
+      // Remove any existing feedback buttons first
+      var existingFeedback = messages.querySelector('.helpjet-feedback');
+      if (existingFeedback) {
+        existingFeedback.remove();
+      }
+      
+      var feedbackDiv = document.createElement('div');
+      feedbackDiv.innerHTML = this.generateFeedbackHTML(messageId, this.config.showNewConversation);
+      
+      // Bind click events properly
+      var self = this;
+      feedbackDiv.addEventListener('click', function(e) {
+        if (e.target.closest('.helpjet-feedback-btn')) {
+          var button = e.target.closest('.helpjet-feedback-btn');
+          var rating = button.getAttribute('data-rating');
+          var action = button.getAttribute('data-action');
+          var msgId = button.getAttribute('data-message-id');
+          
+          if (rating && msgId) {
+            self.handleFeedback(msgId, rating);
+          } else if (action === 'new-conversation') {
+            self.startNewConversation();
+          }
+        }
+      });
+      
+      // Insert feedback buttons after the message element, as a separate element
+      messageEl.insertAdjacentElement('afterend', feedbackDiv);
+      
+      // Auto-scroll to show the feedback buttons
+      messages.scrollTop = messages.scrollHeight;
+      // Update scroll-to-bottom button visibility
+      this.checkScrollToBottomVisibility();
+    },
+    
+    generateFeedbackHTML: function(messageId, showNewConversation) {
+      return `
+        <div class="helpjet-feedback" data-message-id="${messageId}">
+          <div class="helpjet-feedback-container">
+            <div class="helpjet-feedback-buttons">
+              <button class="helpjet-feedback-btn positive" data-rating="positive" data-message-id="${messageId}" title="Helpful">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 10v12"/>
+                  <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h3.73a2 2 0 0 1 1.92 2.56z"/>
+                </svg>
+              </button>
+              <button class="helpjet-feedback-btn negative" data-rating="negative" data-message-id="${messageId}" title="Not helpful">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 14V2"/>
+                  <path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22H8.27a2 2 0 0 1-1.92-2.56z"/>
+                </svg>
+              </button>
+              ${showNewConversation ? `
+              <button class="helpjet-feedback-btn new-conversation" data-action="new-conversation" title="Start new conversation">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                  <path d="M21 3v5h-5"/>
+                  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                  <path d="M3 21v-5h5"/>
+                </svg>
+              </button>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+    },
+    
+    generateThankYouHTML: function() {
+      return `
+        <div class="helpjet-feedback-container">
+          <div class="helpjet-feedback-thanks">Thank you for your feedback!</div>
+        </div>
+      `;
+    },
+    
+    handleFeedback: function(messageId, rating) {
+      var feedbackDiv = $root.querySelector('.helpjet-feedback[data-message-id="' + messageId + '"]');
+      if (!feedbackDiv) return;
+      
+      // Clear previous selections and highlight current choice
+      var buttons = feedbackDiv.querySelectorAll('.helpjet-feedback-btn');
+      buttons.forEach(function(btn) {
+        btn.classList.remove('selected');
+      });
+      
+      // Highlight the selected button
+      var selectedButton = feedbackDiv.querySelector('.helpjet-feedback-btn[data-rating="' + rating + '"]');
+      if (selectedButton) {
+        selectedButton.classList.add('selected');
+      }
+      
+      // Clear any existing message - don't show message until API responds
+      var existingMessage = feedbackDiv.querySelector('.helpjet-feedback-message');
+      if (existingMessage) {
+        existingMessage.remove();
+      }
+      
+      // Send feedback to API
+      var self = this;
+      var feedbackUrl = this.config.apiBaseUrl + '/api/feedback';
+      console.log('🔧 Feedback URL:', feedbackUrl);
+      console.log('Sending feedback:', {
+        sessionId: this.getSessionId(),
+        rating: rating,
+        messageId: messageId
+      });
+      
+      fetch(feedbackUrl, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'omit',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sessionId: this.getSessionId(),
+          rating: rating
+        })
+      })
+      .then(function(response) {
+        console.log('Feedback API response status:', response.status);
+        console.log('Feedback API response headers:', response.headers.get('content-type'));
+        
+        // Check if response is JSON
+        var contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          return response.json().then(function(data) {
+            console.log('Feedback API response data:', data);
+            
+            if (response.ok) {
+              console.log('✅ Feedback recorded successfully:', rating);
+              // Show success message after API confirms
+              var feedbackContainer = feedbackDiv.querySelector('.helpjet-feedback-container');
+              if (feedbackContainer) {
+                var thankYouMessage = document.createElement('span');
+                thankYouMessage.className = 'helpjet-feedback-message';
+                thankYouMessage.textContent = 'Feedback submitted';
+                feedbackContainer.appendChild(thankYouMessage);
+                
+                // Remove message after 3 seconds
+                setTimeout(function() {
+                  if (thankYouMessage && thankYouMessage.parentNode) {
+                    thankYouMessage.parentNode.removeChild(thankYouMessage);
+                  }
+                }, 3000);
+              }
+            } else {
+              console.error('❌ Failed to record feedback - HTTP', response.status, ':', data);
+              // Show error message
+              var feedbackContainer = feedbackDiv.querySelector('.helpjet-feedback-container');
+              if (feedbackContainer) {
+                var errorMessage = document.createElement('span');
+                errorMessage.className = 'helpjet-feedback-message';
+                errorMessage.textContent = 'Error recording feedback';
+                errorMessage.style.color = '#dc2626';
+                feedbackContainer.appendChild(errorMessage);
+              }
+            }
+          });
+        } else {
+          // Non-JSON response (likely HTML error page)
+          return response.text().then(function(text) {
+            console.error('❌ Received non-JSON response from feedback API:', text.substring(0, 200) + '...');
+            console.error('❌ Full response status:', response.status, response.statusText);
+            
+            // Show error message
+            var feedbackContainer = feedbackDiv.querySelector('.helpjet-feedback-container');
+            if (feedbackContainer) {
+              var errorMessage = document.createElement('span');
+              errorMessage.className = 'helpjet-feedback-message';
+              errorMessage.textContent = 'API Error (' + response.status + ')';
+              errorMessage.style.color = '#dc2626';
+              feedbackContainer.appendChild(errorMessage);
+            }
+          });
+        }
+      })
+      .catch(function(error) {
+        console.error('❌ Network error recording feedback:', error);
+        // Show error message
+        var feedbackContainer = feedbackDiv.querySelector('.helpjet-feedback-container');
+        if (feedbackContainer) {
+          var errorMessage = document.createElement('span');
+          errorMessage.className = 'helpjet-feedback-message';
+          errorMessage.textContent = 'Network error';
+          errorMessage.style.color = '#dc2626';
+          feedbackContainer.appendChild(errorMessage);
+        }
+      });
+    },
+    
+    showTypingIndicator: function() {
+      var messages = $root.getElementById('helpjet-messages');
+      var typingEl = document.createElement('div');
+      typingEl.className = 'helpjet-typing-indicator';
+      typingEl.id = 'helpjet-typing-indicator';
+      typingEl.innerHTML = `
+        <div class="helpjet-spinner"></div>
+        <div class="helpjet-typing-text">thinking...</div>
+      `;
+      messages.appendChild(typingEl);
+      messages.scrollTop = messages.scrollHeight;
+      // Update scroll-to-bottom button visibility
+      this.checkScrollToBottomVisibility();
+    },
+    
+    hideTypingIndicator: function() {
+      var typingEl = $root.getElementById('helpjet-typing-indicator');
+      if (typingEl) {
+        typingEl.remove();
+      }
+    },
+    
+    resetLoadingState: function() {
+      this.isLoading = false;
+      var input = $root.getElementById('helpjet-input');
+      var send = $root.getElementById('helpjet-send');
+      if (input) {
+        input.disabled = false;
+        this.updateDummyContent();
+      }
+      if (send) {
+        send.disabled = false;
+        send.innerHTML = '<svg viewBox="0 0 24 24" style="width: 16px; height: 16px;">' + this.getIconSVG('Send') + '</svg>';
+      }
+    },
+    
+    callAPI: function(message) {
+      // Show typing indicator with spinner
+      this.showTypingIndicator();
+      
+      // Add user message to conversation history
+      this.messages.push({ role: 'user', content: message });
+      
+      // Use absolute URL to HelpJet server
+      var apiUrl = this.config.apiBaseUrl + '/api/chat';
+      
+      // Handle streaming response like BotPreview
+      fetch(apiUrl, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'omit',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: this.messages, // Send full conversation history
+          chatbotId: 'jh70pt46bs6nw63ctytg09qban84zyex',
+          widget: true,
+          context: {
+            conversationId: this.getSessionId()
+          }
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok: ' + response.status);
+        }
+        
+        // Hide typing indicator immediately when stream starts
+        this.hideTypingIndicator();
+        
+        // Create the bot message element for streaming
+        var messageEl = this.createStreamingMessage();
+        
+        // Handle streaming response
+        return this.handleStreamingResponse(response, messageEl);
+      })
+      .catch(error => {
+        console.error('Chat API error:', error);
+        // Hide typing indicator
+        this.hideTypingIndicator();
+        this.addMessage('Sorry, there was an error processing your request.', 'bot');
+        this.resetLoadingState();
+      });
+    },
+    
+    createStreamingMessage: function() {
+      var messages = $root.getElementById('helpjet-messages');
+      var messageId = 'msg-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+      var messageEl = document.createElement('div');
+      messageEl.className = 'helpjet-message bot helpjet-streaming';
+      messageEl.setAttribute('data-message-id', messageId);
+      messageEl.innerHTML = '<div class="helpjet-message-content"></div>';
+      messages.appendChild(messageEl);
+      messages.scrollTop = messages.scrollHeight;
+      // Update scroll-to-bottom button visibility
+      this.checkScrollToBottomVisibility();
+      return messageEl;
+    },
+    
+    handleStreamingResponse: function(response, messageEl) {
+      var reader = response.body.getReader();
+      var decoder = new TextDecoder();
+      var content = '';
+      var self = this; // Store reference to Widget context
+      
+      function readStream() {
+        return reader.read().then(function(result) {
+          if (result.done) {
+            console.log('Stream complete. Final content length:', content.length);
+            
+            // Stream complete, finalize the message
+            messageEl.classList.remove('helpjet-streaming');
+            if (!content.trim()) {
+              console.log('No content received, using fallback message');
+              content = 'Sorry, I could not process your request.';
+              messageEl.querySelector('.helpjet-message-content').innerHTML = content;
+            } else {
+              // Debug: Log the raw content before processing
+              console.log('Raw content before parseMarkdown:', JSON.stringify(content));
+              
+              // Now apply full markdown processing to the complete content
+              var processedContent = self.parseMarkdown(content);
+              
+              // Debug: Log the processed content
+              console.log('Processed content after parseMarkdown:', processedContent);
+              
+              messageEl.querySelector('.helpjet-message-content').innerHTML = processedContent;
+            }
+            
+            // Add bot message to conversation history
+            self.messages.push({ role: 'assistant', content: content });
+            
+            // Add feedback buttons for streamed bot responses
+            var messages = $root.getElementById('helpjet-messages');
+            var messagesCount = messages.querySelectorAll('.helpjet-message.bot').length;
+            var messageId = messageEl.getAttribute('data-message-id');
+            if (self.config.collectFeedback && messagesCount > 0 && messageId) {
+              self.addFeedbackButtons(messageEl, messageId);
+            }
+            
+            self.resetLoadingState();
+            return;
+          }
+          
+          var chunk = decoder.decode(result.value, { stream: true });
+          
+          // Split by newlines but use regular newline characters
+          var lines = chunk.split(String.fromCharCode(10));
+          
+          for (var i = 0; i < lines.length; i++) {
+            var line = lines[i].trim();
+            
+            // Handle different streaming data formats
+            if (line.startsWith('0:')) {
+              // Text content
+              try {
+                var textData = line.substring(2);
+                var textPart = JSON.parse(textData);
+                
+                content += textPart;
+                // During streaming, only apply basic text formatting to avoid issues with partial content
+                var streamingContent = content.replace(/\n/g, '<br>');
+                messageEl.querySelector('.helpjet-message-content').innerHTML = streamingContent;
+                
+                // Auto-scroll
+                var messages = $root.getElementById('helpjet-messages');
+                messages.scrollTop = messages.scrollHeight;
+                // Update scroll-to-bottom button visibility
+                self.checkScrollToBottomVisibility();
+              } catch (e) {
+                console.log('Text parse error:', e, 'for line:', line);
+              }
+            } else if (line.startsWith('f:')) {
+              console.log('Stream started');
+            } else if (line.startsWith('9:')) {
+              console.log('AI is using tools to search knowledge base...');
+              // Tool is being called, keep the stream alive
+            } else if (line.startsWith('a:')) {
+              console.log('Search complete, generating response...');
+              // Tool result received, AI should continue with final response
+            } else if (line.startsWith('e:')) {
+              try {
+                var endData = JSON.parse(line.substring(2));
+                console.log('Stream ending with reason:', endData.finishReason);
+                // Don't add fallback messages here - let the main completion handler deal with empty content
+              } catch (e) {
+                console.log('End data parse error:', e);
+              }
+            } else if (line.startsWith('d:')) {
+              console.log('Stream complete');
+            }
+          }
+          
+          return readStream();
+        }).catch(function(error) {
+          console.error('Stream reading error:', error);
+          self.resetLoadingState();
+          messageEl.classList.remove('helpjet-streaming');
+          messageEl.querySelector('.helpjet-message-content').innerHTML = 'Sorry, there was an error processing your request.';
+        });
+      }
+      
+      return readStream();
+    },
+    
+    startNewConversation: function() {
+      // Clear conversation history and reset with welcome message
+      var welcomeMessage = this.config.welcomeMessage || 'Hi! How can I help you today?';
+      this.messages = [{ role: 'assistant', content: welcomeMessage }];
+      
+      // Clear all messages except the welcome message
+      var messages = $root.getElementById('helpjet-messages');
+      if (messages) {
+        messages.innerHTML = `
+          <div class="helpjet-message bot">
+            <div class="helpjet-message-content">${welcomeMessage}</div>
+          </div>
+        `;
+      }
+      
+      // Clear input
+      var input = $root.getElementById('helpjet-input');
+      if (input) {
+        input.value = '';
+      }
+      
+      // Update dummy content after clearing input
+      this.updateDummyContent();
+      
+      // Show suggested questions again (reset to initial state)
+      var suggestedQuestions = $root.getElementById('helpjet-suggested-questions');
+      if (suggestedQuestions) {
+        suggestedQuestions.style.display = '';
+      }
+      
+      // Generate new session ID
+      var newSessionId = 'session-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem('helpjet-session-' + 'jh70pt46bs6nw63ctytg09qban84zyex', newSessionId);
+      
+      console.log('Started new conversation with session ID:', newSessionId);
+    },
+    
+    getSessionId: function() {
+      var sessionId = localStorage.getItem('helpjet-session-' + 'jh70pt46bs6nw63ctytg09qban84zyex');
+      if (!sessionId) {
+        sessionId = 'session-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('helpjet-session-' + 'jh70pt46bs6nw63ctytg09qban84zyex', sessionId);
+      }
+      return sessionId;
+    }
+  };
+  
+  // Define the custom element. The shadow root isolates widget styles from the host page.
+  class HelpJetWidgetElement extends HTMLElement {
+    constructor() {
+      super();
+      $root = this.attachShadow({ mode: 'open' });
+    }
+    connectedCallback() {
+      Widget.init();
+    }
+  }
+
+  if (!customElements.get('helpjet-widget')) {
+    customElements.define('helpjet-widget', HelpJetWidgetElement);
+  }
+
+  // Mount the widget when DOM is ready (and targeting rules allow it).
+  function mountHelpJet() {
+    if (!Widget.shouldShowWidget()) {
+      console.log('HelpJet widget hidden due to targeting rules');
+      return;
+    }
+    var el = document.createElement('helpjet-widget');
+    document.body.appendChild(el);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mountHelpJet);
+  } else {
+    mountHelpJet();
+  }
+
+  // Expose API
+  window.HelpJet.widget = Widget;
+
+})(window, document);

@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" preserveAspectRatio="xMidYMid meet" font-family="Arial, Helvetica, sans-serif">
 <text x="360.0" y="32" text-anchor="middle" font-size="18" font-weight="700">Cases by Year</text>
-<rect x="81.6" y="280.0" width="76.8" height="20.0" rx="4" fill="#ef4444" />
-<text x="120.0" y="272.0" text-anchor="middle" font-size="14" font-weight="700">1</text>
+<rect x="81.6" y="283.1" width="76.8" height="16.9" rx="4" fill="#ef4444" />
+<text x="120.0" y="275.1" text-anchor="middle" font-size="14" font-weight="700">1</text>
 <text x="120.0" y="324" text-anchor="middle" font-size="14" fill="#444">2022</text>
-<rect x="201.6" y="280.0" width="76.8" height="20.0" rx="4" fill="#ef4444" />
-<text x="240.0" y="272.0" text-anchor="middle" font-size="14" font-weight="700">1</text>
+<rect x="201.6" y="283.1" width="76.8" height="16.9" rx="4" fill="#ef4444" />
+<text x="240.0" y="275.1" text-anchor="middle" font-size="14" font-weight="700">1</text>
 <text x="240.0" y="324" text-anchor="middle" font-size="14" fill="#444">2023</text>
-<rect x="321.6" y="280.0" width="76.8" height="20.0" rx="4" fill="#ef4444" />
-<text x="360.0" y="272.0" text-anchor="middle" font-size="14" font-weight="700">1</text>
+<rect x="321.6" y="283.1" width="76.8" height="16.9" rx="4" fill="#ef4444" />
+<text x="360.0" y="275.1" text-anchor="middle" font-size="14" font-weight="700">1</text>
 <text x="360.0" y="324" text-anchor="middle" font-size="14" fill="#444">2024</text>
-<rect x="441.6" y="220.0" width="76.8" height="80.0" rx="4" fill="#ef4444" />
-<text x="480.0" y="212.0" text-anchor="middle" font-size="14" font-weight="700">4</text>
+<rect x="441.6" y="215.4" width="76.8" height="84.6" rx="4" fill="#ef4444" />
+<text x="480.0" y="207.4" text-anchor="middle" font-size="14" font-weight="700">5</text>
 <text x="480.0" y="324" text-anchor="middle" font-size="14" fill="#444">2025</text>
 <rect x="561.6" y="80.0" width="76.8" height="220.0" rx="4" fill="#ef4444" />
-<text x="600.0" y="72.0" text-anchor="middle" font-size="14" font-weight="700">11</text>
+<text x="600.0" y="72.0" text-anchor="middle" font-size="14" font-weight="700">13</text>
 <text x="600.0" y="324" text-anchor="middle" font-size="14" fill="#444">2026</text>
 <line x1="60" y1="300" x2="660" y2="300" stroke="#333" stroke-width="1.5"/>
 </svg>

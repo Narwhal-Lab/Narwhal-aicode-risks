@@ -1,0 +1,3 @@
+(function(){function updateSiteHeaderHeight(){var header=document.querySelector('.site-header');var h=header?header.offsetHeight:68;document.documentElement.style.setProperty('--site-header-height',h+'px')}
+function init(){updateSiteHeaderHeight();window.addEventListener('resize',updateSiteHeaderHeight);var header=document.querySelector('.site-header');if(header){var observer=new MutationObserver(function(){updateSiteHeaderHeight()});observer.observe(header,{attributes:!0,attributeFilter:['style','class'],childList:!0,subtree:!0,characterData:!0})}}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init)}else{init()}})()
