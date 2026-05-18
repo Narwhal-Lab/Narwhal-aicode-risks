@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',function(){const rows=document.querySelectorAll('.compare-table__row');if(rows.length>0){rows[0].classList.add('compare-table__row--first');rows[rows.length-1].classList.add('compare-table__row--last')}})
