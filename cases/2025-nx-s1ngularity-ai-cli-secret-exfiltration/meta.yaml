@@ -1,0 +1,43 @@
+slug: 2025-nx-s1ngularity-ai-cli-secret-exfiltration
+title_en: "Nx s1ngularity Supply-Chain Attack Weaponized AI CLIs"
+title_cn: "Nx s1ngularity 供应链攻击武器化 AI CLI"
+year: 2025
+disclosed: 2025-08-27
+category: supply-chain
+severity: critical
+severity_basis: quantifiable-impact
+severity_evidence: "GitHub Advisory GHSA-cxm3-wv7p-598c / CVE-2025-10894 documents malicious Nx package versions that scanned files, collected credentials, posted them to GitHub repositories, and used an AI-agent prompt embedded in telemetry.js."
+cvss: null
+cve: CVE-2025-10894
+real_incident: true
+reproducible: false
+ai_tool:
+  - "AI CLI agents"
+language:
+  - "JavaScript"
+  - "GitHub Actions"
+  - "npm"
+attack_surface:
+  - "npm package"
+  - "postinstall script"
+  - "GitHub Actions"
+  - "AI CLI tooling"
+  - "developer credentials"
+references:
+  - title: "Nx postmortem: s1ngularity"
+    url: "https://nx.dev/blog/s1ngularity-postmortem"
+  - title: "GitHub Advisory GHSA-cxm3-wv7p-598c"
+    url: "https://github.com/advisories/GHSA-cxm3-wv7p-598c"
+  - title: "Nx repository security advisory GHSA-cxm3-wv7p-598c"
+    url: "https://github.com/nrwl/nx/security/advisories/GHSA-cxm3-wv7p-598c"
+  - title: "NVD: CVE-2025-10894"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2025-10894"
+tldr: "The Nx s1ngularity npm compromise shipped malicious postinstall code that harvested credentials and embedded an AI-agent prompt to inventory files, turning local AI CLIs into part of the attack workflow."
+verification_notes: |
+  Verified against the Nx postmortem and GHSA on 2026-05-18. The case focuses on the documented malicious package behavior and the embedded AI-agent prompt in telemetry.js.
+tags:
+  - "nx"
+  - "s1ngularity"
+  - "npm"
+  - "credential-theft"
+  - "ai-cli"
