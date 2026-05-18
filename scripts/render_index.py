@@ -9,10 +9,13 @@ Outputs:
   - cases/README.md             (auto-generated case index, grouped by category)
   - assets/category-chart.svg   (donut chart of category distribution)
   - assets/timeline.svg         (bar chart of cases by year)
+  - assets/*.png                (PNG versions of charts)
+  - README.md counts            (patches hard-coded stats in root README)
 """
 from __future__ import annotations
 
 import math
+import re
 import sys
 from pathlib import Path
 
@@ -60,6 +63,71 @@ def load_cases() -> list[dict]:
         if data and data.get("slug"):
             cases.append(data)
     return sorted(cases, key=lambda c: (c["year"], c["slug"]))
+
+
+def update_readme_counts(cases: list[dict]) -> None:
+    """Patch hard-coded case counts in the repo root README.md."""
+    readme = ROOT / "README.md"
+    if not readme.exists():
+        return
+
+    n = len(cases)
+    if n == 0:
+        return
+
+    # Count by category
+    by_cat: dict[str, int] = {}
+    for c in cases:
+        by_cat[c["category"]] = by_cat.get(c["category"], 0) + 1
+
+    # Count AI tools
+    ai_tools: set[str] = set()
+    for c in cases:
+        for t in c.get("ai_tool") or []:
+            ai_tools.add(t)
+    ai_tools_count = len(ai_tools) if ai_tools else 0
+
+    # Count CVEs and collect CVSS scores
+    cve_count = 0
+    cvss_scores: list[float] = []
+    for c in cases:
+        if c.get("cve"):
+            cve_count += 1
+        if c.get("cvss") is not None:
+            try:
+                cvss_scores.append(float(c["cvss"]))
+            except (TypeError, ValueError):
+                pass
+    cvss_str = " / ".join(str(int(s)) for s in sorted(set(int(s) for s in cvss_scores))) if cvss_scores else ""
+
+    yr_min = min(c["year"] for c in cases)
+    yr_max = max(c["year"] for c in cases)
+    cat_active = len(by_cat)
+
+    text = readme.read_text(encoding="utf-8")
+
+    # 1) Update the incidents count in the intro sentence
+    text = re.sub(
+        r'\*\*\d+ verified real-world incidents\*\*',
+        f'**{n} verified real-world incidents**',
+        text,
+    )
+
+    # 2) Update the "At a Glance" one-liner
+    def replace_glance(_m: re.Match) -> str:
+        parts = [f"{n} cases", f"{cat_active} active categories", f"{yr_min} → {yr_max}"]
+        if ai_tools_count:
+            parts.append(f"{ai_tools_count}+ AI tools implicated")
+        if cve_count:
+            cve_part = f"{cve_count} cases anchored to public CVEs"
+            if cvss_str:
+                cve_part += f" (CVSS {cvss_str})"
+            parts.append(cve_part)
+        return "**" + " · ".join(parts) + "**"
+
+    text = re.sub(r'\*\*[\d ]+cases[^*]*\*\*', replace_glance, text)
+
+    readme.write_text(text, encoding="utf-8")
 
 
 def render_index(cases: list[dict]) -> str:
@@ -218,12 +286,11 @@ def render_category_png(cases: list[dict], out_path: Path) -> bool:
         counts[c["category"]] = counts.get(c["category"], 0) + 1
     total = sum(counts.values())
 
-    W, H = 1440, 800  # 2x SVG dims for retina; downscale at display time
+    W, H = 1440, 800
     SCALE = 2
     img = Image.new("RGB", (W, H), "white")
     draw = ImageDraw.Draw(img)
 
-    # Donut: outer r=260, inner r=176, center (400, 400)
     cx, cy, r_out, r_in = 400, 400, 260, 176
     bbox_out = (cx - r_out, cy - r_out, cx + r_out, cy + r_out)
     bbox_in = (cx - r_in, cy - r_in, cx + r_in, cy + r_in)
@@ -237,10 +304,8 @@ def render_category_png(cases: list[dict], out_path: Path) -> bool:
         end = angle + sweep
         draw.pieslice(bbox_out, angle, end, fill=CAT_COLORS[cat_key])
         angle = end
-    # Donut hole
     draw.ellipse(bbox_in, fill="white")
 
-    # Try to load a usable font
     def _font(size: int):
         for path in [
             "/System/Library/Fonts/Helvetica.ttc",
@@ -258,11 +323,10 @@ def render_category_png(cases: list[dict], out_path: Path) -> bool:
                     continue
         return ImageFont.load_default()
 
-    f_big = _font(112 * SCALE // 2)  # ~112
-    f_sm = _font(28 * SCALE // 2)    # ~28
+    f_big = _font(112 * SCALE // 2)
+    f_sm = _font(28 * SCALE // 2)
     f_legend = _font(28 * SCALE // 2)
 
-    # Center text
     tot_text = str(total)
     bb = draw.textbbox((0, 0), tot_text, font=f_big, anchor="lt")
     tw = bb[2] - bb[0]
@@ -270,7 +334,6 @@ def render_category_png(cases: list[dict], out_path: Path) -> bool:
     draw.text((cx - tw // 2, cy - th // 2 - 10), tot_text, fill="#111", font=f_big)
     draw.text((cx, cy + th // 2 + 6), "cases", fill="#666", font=f_sm, anchor="mt")
 
-    # Legend (right side)
     lx = 840
     ly = 150
     box_size = 32
@@ -337,10 +400,8 @@ def render_timeline_png(cases: list[dict], out_path: Path) -> bool:
     f_year = _font(28)
     f_count = _font(28)
 
-    # Title
     draw.text((W // 2, 50), "Cases by Year", fill="#111", font=f_title, anchor="mt")
 
-    # Plot area
     margin = 120
     baseline = H - margin
     plot_top = 130
@@ -375,7 +436,6 @@ def render_timeline_png(cases: list[dict], out_path: Path) -> bool:
             anchor="mt",
         )
 
-    # Baseline
     draw.line(
         ((margin, baseline), (W - margin, baseline)),
         fill="#333",
@@ -408,11 +468,13 @@ def main() -> None:
         print(f"  → assets/category-chart.png ({cat_png.stat().st_size} bytes)")
     else:
         print("  ⚠ Pillow not installed; skipping PNG charts")
-        return
 
     tl_png = ASSETS_DIR / "timeline.png"
     if render_timeline_png(cases, tl_png):
         print(f"  → assets/timeline.png ({tl_png.stat().st_size} bytes)")
+
+    update_readme_counts(cases)
+    print("  → README.md counts updated")
 
 
 if __name__ == "__main__":
