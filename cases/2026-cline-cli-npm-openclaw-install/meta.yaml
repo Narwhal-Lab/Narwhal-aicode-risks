@@ -29,7 +29,15 @@ references:
     url: "https://github.com/cline/cline/security/advisories/GHSA-9ppg-jx86-fqw7"
   - title: "GitHub Advisory GHSA-9ppg-jx86-fqw7"
     url: "https://github.com/advisories/GHSA-9ppg-jx86-fqw7"
-tldr: "An unauthorized npm publish of cline@2.3.0 added a postinstall script that globally installed OpenClaw, exposing how AI-powered CI triage and publish-token handling can compromise an AI coding CLI channel."
+  - title: "Socket: Cline CLI npm package compromised"
+    url: "https://socket.dev/blog/cline-cli-npm-package-compromised-via-suspected-cache-poisoning-attack"
+  - title: "Endor Labs: Supply Chain Attack targeting Cline installs OpenClaw"
+    url: "https://www.endorlabs.com/learn/supply-chain-attack-targeting-cline-installs-openclaw"
+  - title: "arXiv: Your Agent, Their Asset"
+    url: "https://arxiv.org/abs/2604.04759"
+  - title: "AI GenCode Technical Capability Report CN"
+    url: "https://github.com/Narwhal-Lab/narwhal-aicode-risks/blob/main/docs/report-cn.pdf"
+tldr: "An unauthorized cline@2.3.0 npm publish added a postinstall script that globally installed OpenClaw."
 verification_notes: |
   Verified against the Cline post-mortem and GHSA on 2026-05-18. The advisory states OpenClaw was a legitimate non-malicious package and that the VS Code and JetBrains plugins were not affected.
 tags:
