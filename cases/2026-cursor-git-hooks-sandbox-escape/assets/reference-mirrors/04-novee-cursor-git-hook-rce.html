@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html id="ie7" class="ie" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" class="ie" lang="en-US">
+<![endif]-->
+<!--[if IE 9]>
+<html id="ie9" class="ie" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8) | !(IE 9) ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+
+<head>
+
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+        data-cbid="85dce21b-c0c0-4f3d-9d36-1a421e912d23" type="text/javascript"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="shortcut icon" href="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/images/favicon.png" type="image/x-icon">
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TVBPLZ9T');</script>
+<!-- End Google Tag Manager --><meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v27.3 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>CVE-2026-26268: How an AI Coding Agent Can Run Exploits in Cursor IDE</title>
+	<meta name="description" content="Novee researcher discovered a high-severity arbitrary code execution vulnerability in Cursor IDE (CVE-2026-26268). Learn how AI agents and Git hooks create a dangerous new attack surface for developers." />
+	<link rel="canonical" href="https://novee.security/blog/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="CVE-2026-26268: How an AI Coding Agent Can Run Exploits in Cursor IDE" />
+	<meta property="og:description" content="Novee researcher discovered a high-severity arbitrary code execution vulnerability in Cursor IDE (CVE-2026-26268). Learn how AI agents and Git hooks create a dangerous new attack surface for developers." />
+	<meta property="og:url" content="https://novee.security/blog/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution/" />
+	<meta property="og:site_name" content="Novee" />
+	<meta property="article:published_time" content="2026-04-28T11:58:12+00:00" />
+	<meta property="article:modified_time" content="2026-05-06T15:55:56+00:00" />
+	<meta property="og:image" content="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/1-1024x767.png" />
+	<meta property="og:image:width" content="1024" />
+	<meta property="og:image:height" content="767" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="author" content="Novee Team" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Novee Team" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="6 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"Article","@id":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/#article","isPartOf":{"@id":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/"},"author":{"name":"Novee Team","@id":"https:\/\/novee.security\/#\/schema\/person\/8fcf08da4eab2ecde3a4c8e92faa6b85"},"headline":"Your AI Coding Agent Will Run This Exploit For You: How We Found a High-Severity CVE in Cursor","datePublished":"2026-04-28T11:58:12+00:00","dateModified":"2026-05-06T15:55:56+00:00","mainEntityOfPage":{"@id":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/"},"wordCount":1239,"publisher":{"@id":"https:\/\/novee.security\/#organization"},"image":{"@id":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/#primaryimage"},"thumbnailUrl":"https:\/\/novee.security\/wp-content\/uploads\/2026\/04\/1-scaled.png","articleSection":["AI","Blog","Novee Labs"],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/","url":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/","name":"CVE-2026-26268: How an AI Coding Agent Can Run Exploits in Cursor IDE","isPartOf":{"@id":"https:\/\/novee.security\/#website"},"primaryImageOfPage":{"@id":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/#primaryimage"},"image":{"@id":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/#primaryimage"},"thumbnailUrl":"https:\/\/novee.security\/wp-content\/uploads\/2026\/04\/1-scaled.png","datePublished":"2026-04-28T11:58:12+00:00","dateModified":"2026-05-06T15:55:56+00:00","description":"Novee researcher discovered a high-severity arbitrary code execution vulnerability in Cursor IDE (CVE-2026-26268). Learn how AI agents and Git hooks create a dangerous new attack surface for developers.","breadcrumb":{"@id":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/#primaryimage","url":"https:\/\/novee.security\/wp-content\/uploads\/2026\/04\/1-scaled.png","contentUrl":"https:\/\/novee.security\/wp-content\/uploads\/2026\/04\/1-scaled.png","width":2560,"height":1918},{"@type":"BreadcrumbList","@id":"https:\/\/novee.security\/blog\/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/novee.security\/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https:\/\/novee.security\/blog\/"},{"@type":"ListItem","position":3,"name":"Your AI Coding Agent Will Run This Exploit For You: How We Found a High-Severity CVE in Cursor"}]},{"@type":"WebSite","@id":"https:\/\/novee.security\/#website","url":"https:\/\/novee.security\/","name":"Novee","description":"AI Penetration Testing","publisher":{"@id":"https:\/\/novee.security\/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/novee.security\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https:\/\/novee.security\/#organization","name":"Novee","url":"https:\/\/novee.security\/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/novee.security\/#\/schema\/logo\/image\/","url":"https:\/\/novee.security\/wp-content\/uploads\/2026\/01\/novee-logo.png","contentUrl":"https:\/\/novee.security\/wp-content\/uploads\/2026\/01\/novee-logo.png","width":696,"height":696,"caption":"Novee"},"image":{"@id":"https:\/\/novee.security\/#\/schema\/logo\/image\/"}},{"@type":"Person","@id":"https:\/\/novee.security\/#\/schema\/person\/8fcf08da4eab2ecde3a4c8e92faa6b85","name":"Novee Team","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/secure.gravatar.com\/avatar\/855f32397c7b0aacaf10426ca350d9f65aaeaffb19160b257e973dd97e09f632?s=96&d=mm&r=g","url":"https:\/\/secure.gravatar.com\/avatar\/855f32397c7b0aacaf10426ca350d9f65aaeaffb19160b257e973dd97e09f632?s=96&d=mm&r=g","contentUrl":"https:\/\/secure.gravatar.com\/avatar\/855f32397c7b0aacaf10426ca350d9f65aaeaffb19160b257e973dd97e09f632?s=96&d=mm&r=g","caption":"Novee Team"}}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://novee.security/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnovee.security%2Fblog%2Fcursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://novee.security/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnovee.security%2Fblog%2Fcursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution%2F&#038;format=xml" />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='swiper-css-css' href='https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/css/vendors/swiper-bundle.min.css?ver=49' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css' href='https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/css/main.css?ver=49' type='text/css' media='all' />
+<style id='wp-block-library-inline-css' type='text/css'>
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id='wp-block-heading-inline-css' type='text/css'>
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://novee.security/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id='wp-block-image-inline-css' type='text/css'>
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:#5a5a5a40;border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto #5a5a5a40;outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:#5a5a5a40;border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .close-button{align-items:center;cursor:pointer;display:flex;justify-content:center;min-height:40px;min-width:40px;padding:0;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .close-button:focus,.wp-lightbox-overlay .close-button:hover,.wp-lightbox-overlay .close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:9999999999}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=https://novee.security/wp-includes/blocks/image/style.min.css */
+</style>
+<style id='wp-block-paragraph-inline-css' type='text/css'>
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://novee.security/wp-includes/blocks/paragraph/style.min.css */
+</style>
+
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--primary: #8e55fd;--wp--preset--color--dark: #140945;--wp--preset--color--light: #f5f3ff;--wp--preset--color--secondary: #B28BFF;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='template-blog-css' href='https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/css/template-blog.css?ver=49' type='text/css' media='all' />
+<link rel='stylesheet' id='template-post-css' href='https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/css/template-post.css?ver=49' type='text/css' media='all' />
+<script type="text/javascript" src="https://novee.security/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://novee.security/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/js/main.js?ver=49" id="main-js-js"></script>
+<script type="text/javascript" src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/js/vendor/swiper-bundle.min.js?ver=49" id="swiper-js-js"></script>
+<script type="text/javascript" src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/js/vendor/aos.min.js?ver=49" id="aos-js-js"></script>
+<script type="text/javascript" src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/js/vendor/bxslider.min.js?ver=49" id="bxslider-js-js"></script>
+<link rel="https://api.w.org/" href="https://novee.security/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://novee.security/wp-json/wp/v2/posts/1463" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://novee.security/xmlrpc.php?rsd" />
+<link rel='shortlink' href='https://novee.security/?p=1463' />
+<meta name="application-name" itemprop="name" content="Comeet Jobs" />
+<meta name="application-url" itemprop="url" content="https://novee.security/careers/" />
+<link rel="icon" href="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2025/12/fav-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2025/12/fav-300x300.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2025/12/fav-300x300.png" />
+<meta name="msapplication-TileImage" content="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2025/12/fav-300x300.png" />
+</head>
+
+<body class="wp-singular post-template-default single single-post postid-1463 single-format-standard wp-theme-novee blog-pages blog-pages-single" data-git="6">
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVBPLZ9T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <section
+    class="section-header js-section-header header-always-white">
+
+            <div class="section-header__modal">
+
+            <div class="section-header__modal-inner">
+
+                <div class="section-header__modal-text">
+
+                    <span class="section-header__modal-text__wrapper show-desktop"
+                        data-text-small>
+                        <p>Your AI coding agent will run this exploit for you</p>
+
+                                                    <a class="button button--primary" href="https://novee.security/blog/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution/"
+                                >See how we found a high-severity CVE in Cursor</a>
+                                            </span>
+
+                    <div class="section-header__modal-text__wrapper show-mobile" data-text-small>
+
+                        <div class="header-marquee">
+                            <div class="header-marquee__wrapper">
+                                <div class="header-marquee__item">
+                                    <p>Your AI coding agent will run this exploit for you</p>
+
+                                                                            <a class="button button--primary"
+                                            href="https://novee.security/blog/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution/"
+                                            >
+                                            See how we found a high-severity CVE in Cursor                                        </a>
+                                                                    </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="section-header__modal-close modal-close">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.0488 20.9492L20.9483 11.0497" stroke="#140945" stroke-width="2"
+                        stroke-linecap="round"></path>
+                    <path d="M20.9483 20.9503L11.0488 11.0508" stroke="#140945" stroke-width="2"
+                        stroke-linecap="round"></path>
+                </svg>
+            </div>
+
+        </div>
+
+        <script class="messagebar">
+            function initModal() {
+                let modalSelector = document.querySelector('.section-header__modal');
+                let headerSelector = document.querySelector('.section-header');
+                let modalSessionKey = 'headerModalSeen';
+
+                if (!modalSelector) {
+                    return false;
+                }
+                if (sessionStorage.getItem(modalSessionKey)) {
+                    return false;
+                }
+
+                slideDown(modalSelector);
+
+                setTimeout(function() {
+                    modalSelector.style.maxHeight = "auto";
+                    calcModal1Height();
+                }, 500);
+
+                document.querySelector('.section-header__modal-close').addEventListener("click", function() {
+                    slideUp(modalSelector);
+                    document.body.style.setProperty('--header-extra-height', "0px");
+                    document.body.style.setProperty('--header-total-height', headerSelector.offsetHeight + "px");
+
+                    sessionStorage.setItem(modalSessionKey, 'yes');
+
+                    calcModal1Height();
+                    window.updateFirstSectionPadding();
+                });
+
+                window.addEventListener('resize', function(event) {
+                    calcModal1Height();
+                }, true);
+
+                function calcModal1Height() {
+                    if (isHidden(modalSelector)) {
+                        return false;
+                    }
+
+                    let newHeight = 80 + modalSelector.offsetHeight - 2;
+
+                    document.body.style.setProperty('--header-extra-height', modalSelector.offsetHeight + "px");
+                    document.body.style.setProperty('--header-total-height', headerSelector.offsetHeight + "px");
+                }
+
+                function slideDown(container) {
+                    container.classList.add('active');
+                    container.style.maxHeight = "auto";
+                    var height = container.clientHeight + "px";
+                    container.style.maxHeight = "0px";
+                    setTimeout(() => {
+                        container.style.maxHeight = height
+                    }, 0);
+                }
+
+                function slideUp(container) {
+                    container.style.maxHeight = "0px";
+                    container.style.minHeight = "0px";
+                    container.classList.remove('active')
+                }
+
+                function isHidden(el) {
+                    return (el.offsetParent === null)
+                }
+            }
+
+            initModal();
+        </script>
+    
+    <div class="section-header__overlay"></div>
+    <div class="section-header__wrap">
+        <div class="container container--wide">
+            <div class="section-header__logo-wrap">
+                <a href="https://novee.security" class="section-header__logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="149" height="37" viewBox="0 0 149 37"
+                        fill="none">
+                        <g clip-path="url(#clip0_884_10314)">
+                            <path d="M6.10471 3.07331C6.10471 1.37597 4.73812 0 3.05236 0C1.36659 0 0 1.37597 0 3.07331V33.2017C0 34.899 1.36659 36.275 3.05236 36.275C4.73812 36.275 6.10471 34.899 6.10471 33.2017V3.07331Z"
+                                fill="url(#paint0_linear_884_10314)" />
+                            <path d="M28.0618 4.50748C29.0396 3.17821 28.712 1.3892 27.3223 0.504683C25.9326 -0.384827 24.0019 -0.0250251 23.0242 1.30924L0.605505 31.7025C-0.372241 33.0318 -0.0446711 34.8208 1.34502 35.7053C2.73471 36.5948 4.66539 36.235 5.64313 34.9007L28.0618 4.50748Z"
+                                fill="url(#paint1_linear_884_10314)" />
+                            <path d="M28.6128 3.07331C28.6128 1.37597 27.2462 0 25.5604 0C23.8746 0 22.5081 1.37597 22.5081 3.07331V33.2017C22.5081 34.899 23.8746 36.275 25.5604 36.275C27.2462 36.275 28.6128 34.899 28.6128 33.2017V3.07331Z"
+                                fill="url(#paint2_linear_884_10314)" />
+                            <path d="M0.600638 4.5475C-0.377108 3.20824 -0.0396118 1.40923 1.36 0.529712C2.75466 -0.344805 4.67044 0.0249907 5.64819 1.35426L27.9825 31.7925C28.9652 33.1267 28.6227 34.9307 27.2231 35.8103C25.8285 36.6848 23.9127 36.315 22.9349 34.9857L0.600638 4.5475Z"
+                                fill="url(#paint3_linear_884_10314)" />
+                            <path class="logo_text"
+                                d="M56.8681 26.4754V5.85675H61.3002V28.6092C61.3002 30.1933 59.5284 31.7375 58.0047 31.8374C56.0293 31.9624 54.8431 31.1328 53.8703 29.5337C50.2373 23.542 47.1998 16.9806 43.6214 10.9389C43.5618 10.839 43.5271 10.6891 43.3931 10.6691V31.3777H38.9609V8.62522C38.9609 7.53083 40.1074 6.09662 41.11 5.69684C43.2094 4.8523 45.155 5.67685 46.3015 7.52083C49.999 13.4626 53.0514 20.1489 56.6348 26.2055C56.6944 26.3055 56.7291 26.4554 56.8631 26.4754H56.8681Z"
+                                fill="#140945" />
+                            <path class="logo_text"
+                                d="M126.799 23.4371H112.366C112.887 26.9652 115.915 28.9041 119.34 28.1545C120.982 27.7947 122.129 26.8552 123.042 25.471C123.96 26.0107 125.35 26.4354 126.194 27.0351C126.343 27.1401 126.457 27.18 126.402 27.3899C126.353 27.5698 125.841 28.3094 125.692 28.5193C122.6 32.9968 116.123 33.4516 111.88 30.4033C106.381 26.4454 106.748 17.5004 112.351 13.8274C115.97 11.4537 121.469 11.9884 124.392 15.2616C126.417 17.5304 126.894 20.4537 126.794 23.4371H126.799ZM122.263 20.6786C121.652 14.8968 113.344 15.1267 112.55 20.6786H122.263Z"
+                                fill="#140945" />
+                            <path class="logo_text"
+                                d="M148.627 23.4371H134.184C134.785 27.3999 138.582 29.2989 142.2 27.8247C143.416 27.33 144.151 26.5454 144.87 25.471L148.255 27.1201C148.364 27.28 147.774 28.1845 147.645 28.3744C143.848 34.1262 134.686 33.4066 131.202 27.6948C128.71 23.602 129.574 17.7003 133.182 14.572C136.84 11.4038 143.103 11.6336 146.31 15.3516C148.275 17.6303 148.751 20.4837 148.622 23.4371H148.627ZM144.091 20.6836C143.505 14.8968 135.187 15.1367 134.373 20.6836H144.091Z"
+                                fill="#140945" />
+                            <path class="logo_text"
+                                d="M73.6884 12.4132C81.9322 11.6186 87.9079 19.8191 83.7736 27.26C79.6988 34.591 68.6954 33.8114 65.5091 26.1206C62.9878 20.039 67.2015 13.0378 73.6884 12.4132ZM74.2393 16.7558C66.7945 17.6053 68.4522 29.5987 76.2494 27.8297C82.8057 26.3405 81.3267 15.9462 74.2393 16.7558Z"
+                                fill="#140945" />
+                            <path class="logo_text"
+                                d="M90.9752 12.8629L96.5339 27.9746L96.7672 27.8347L102.048 12.8629H106.957L100.614 29.8436C99.889 31.2278 98.7078 32.2223 97.0948 32.3322C92.8016 32.632 92.1415 29.2989 90.9305 26.1006C89.2629 21.7131 87.6846 17.2705 86.1162 12.8579H90.9801L90.9752 12.8629Z"
+                                fill="#140945" />
+                        </g>
+                        <defs>
+                            <linearGradient id="paint0_linear_884_10314" x1="3.02333" y1="-9.07" x2="18.0372" y2="-2.0278"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#CDB5FB" />
+                                <stop offset="1" stop-color="#8E55FD" />
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_884_10314" x1="23.6828" y1="5.54279" x2="2.83455" y2="34.0587"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#CDB5FB" />
+                                <stop offset="1" stop-color="#8E55FD" />
+                            </linearGradient>
+                            <linearGradient id="paint2_linear_884_10314" x1="25.6983" y1="9.32194" x2="36.3533" y2="14.3196"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#CDB5FB" />
+                                <stop offset="1" stop-color="#8E55FD" />
+                            </linearGradient>
+                            <linearGradient id="paint3_linear_884_10314" x1="-2.01551" y1="-3.52719" x2="25.6747"
+                                y2="33.084"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#CDB5FB" />
+                                <stop offset="1" stop-color="#8E55FD" />
+                            </linearGradient>
+                            <clipPath id="clip0_884_10314">
+                                <rect width="148.647" height="36.28" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </a>
+                <button type="button" class="section-header__mega-back" data-text-small aria-label="Back">
+                    <div class="section-header__mega-back__icon">
+                        <svg viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.96002 0.560059L0.560022 5.36006L5.96002 10.1601" stroke="currentColor" stroke-width="1.12" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    Back                </button>
+            </div>
+
+            <nav class="section-header__nav">
+
+                <div class="section-header__nav_blur"></div>
+
+                                    <ul class="section-header__nav-list">
+                        
+                            
+                            <li class="section-header__nav-item " data-menu="company">
+                                                                    <a class="section-header__nav-link " href="#"
+                                        >Company</a>
+                                    <div class="section-header__nav-item__icon">
+                                        <svg viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0.560059 0.560059L5.36006 5.96006L10.1601 0.560059" stroke="currentColor" stroke-width="1.12" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                                            </li>
+
+                        
+                            
+                            <li class="section-header__nav-item " data-menu="resources">
+                                                                    <a class="section-header__nav-link " href="#"
+                                        >Resources</a>
+                                    <div class="section-header__nav-item__icon">
+                                        <svg viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0.560059 0.560059L5.36006 5.96006L10.1601 0.560059" stroke="currentColor" stroke-width="1.12" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                                            </li>
+
+                        
+                            
+                            <li class="section-header__nav-item " data-menu="customers">
+                                                                                                            <a class="section-header__nav-link "
+                                            href="https://novee.security/blog/category/customers/"
+                                            >Customers</a>
+                                                                                                </li>
+
+                        
+                            
+                            <li class="section-header__nav-item " data-menu="contact">
+                                                                                                            <a class="section-header__nav-link "
+                                            href="https://novee.security/contact/"
+                                            >Contact</a>
+                                                                                                </li>
+
+                        
+                            
+                            <li class="section-header__nav-item " data-menu="careers">
+                                                                                                            <a class="section-header__nav-link "
+                                            href="https://novee.security/careers/"
+                                            >Careers</a>
+                                                                                                </li>
+
+                                            </ul>
+                
+                                    <div class="section-header-buttons buttons">
+                                    <a
+
+                                    href="https://novee.security/demo/"
+                                                    class="button button--primary"
+                                        >
+                Book a demo                            </a>
+
+                            </div>
+                            </nav>
+
+            <div class="section-header__right">
+                                    <div class="section-header-buttons buttons">
+                                    <a
+
+                                    href="https://novee.security/demo/"
+                                                    class="button button--primary"
+                                        >
+                Book a demo                            </a>
+
+                            </div>
+                                <button class="section-header__toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+                <div class="section-header__mega">
+                                    <div class="section-header__mega-item" data-menu-for="company">
+                        <div class="container container--wide">
+                            <nav class="section-header__mega-menu-wrap">
+                                <div class="section-header__mega-menu" data-menu-columns="1">
+                                                                                                                        <div class="section-header__mega-menu__col">
+                                                <div class="section-header__mega-list__wrap">
+                                                                                                        <ul class="section-header__mega-list">
+                                                                                                                    <li>
+                                                                <a href="https://novee.security/about/" class="section-header__mega-link" data-text-color="novee-dark"
+                                                                    >
+                                                                    <div class="section-header__mega-link__icon">
+                                                                                                                                                    <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/Rectangle-1-4.png" alt="" width="84" height="84">
+                                                                                                                                            </div>
+                                                                    <div class="section-header__mega-link__content">
+                                                                        <div class="section-header__mega-link__title" data-text-large>About</div>
+                                                                                                                                            </div>
+                                                                </a>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <a href="https://novee.security/careers/" class="section-header__mega-link" data-text-color="novee-dark"
+                                                                    >
+                                                                    <div class="section-header__mega-link__icon">
+                                                                                                                                                    <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/Novee-2_Gemini-3.1-Flash-Nano-Banana-2_2026-04-25_20-41-56-1.png" alt="" width="80" height="80">
+                                                                                                                                            </div>
+                                                                    <div class="section-header__mega-link__content">
+                                                                        <div class="section-header__mega-link__title" data-text-large>Careers</div>
+                                                                                                                                            </div>
+                                                                </a>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <a href="https://novee.security/blog/category/company-news/" class="section-header__mega-link" data-text-color="novee-dark"
+                                                                    >
+                                                                    <div class="section-header__mega-link__icon">
+                                                                                                                                                    <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/Rectangle-4.png" alt="" width="80" height="80">
+                                                                                                                                            </div>
+                                                                    <div class="section-header__mega-link__content">
+                                                                        <div class="section-header__mega-link__title" data-text-large>News</div>
+                                                                                                                                            </div>
+                                                                </a>
+                                                            </li>
+                                                                                                            </ul>
+                                                </div>
+                                            </div>
+                                                                                                            </div>
+                            </nav>
+                        </div>
+                    </div>
+                                    <div class="section-header__mega-item" data-menu-for="resources">
+                        <div class="container container--wide">
+                            <nav class="section-header__mega-menu-wrap">
+                                <div class="section-header__mega-menu" data-menu-columns="2">
+                                                                                                                        <div class="section-header__mega-menu__col">
+                                                <div class="section-header__mega-list__wrap">
+                                                                                                        <ul class="section-header__mega-list">
+                                                                                                                    <li>
+                                                                <a href="https://novee.security/blog/category/blog/" class="section-header__mega-link" data-text-color="novee-dark"
+                                                                    >
+                                                                    <div class="section-header__mega-link__icon">
+                                                                                                                                                    <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/Rectangle-2.png" alt="" width="80" height="80">
+                                                                                                                                            </div>
+                                                                    <div class="section-header__mega-link__content">
+                                                                        <div class="section-header__mega-link__title" data-text-large> Blog</div>
+                                                                                                                                            </div>
+                                                                </a>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <a href="https://novee.security/blog/category/novee-labs/" class="section-header__mega-link" data-text-color="novee-dark"
+                                                                    >
+                                                                    <div class="section-header__mega-link__icon">
+                                                                                                                                                    <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/Rectangle-3.png" alt="" width="80" height="80">
+                                                                                                                                            </div>
+                                                                    <div class="section-header__mega-link__content">
+                                                                        <div class="section-header__mega-link__title" data-text-large>Labs</div>
+                                                                                                                                            </div>
+                                                                </a>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <a href="https://novee.security/blog/category/company-news/" class="section-header__mega-link" data-text-color="novee-dark"
+                                                                    >
+                                                                    <div class="section-header__mega-link__icon">
+                                                                                                                                                    <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/Rectangle-4.png" alt="" width="80" height="80">
+                                                                                                                                            </div>
+                                                                    <div class="section-header__mega-link__content">
+                                                                        <div class="section-header__mega-link__title" data-text-large>News</div>
+                                                                                                                                            </div>
+                                                                </a>
+                                                            </li>
+                                                                                                            </ul>
+                                                </div>
+                                            </div>
+                                                                                                                                                                <div class="section-header__mega-menu__col">
+                                                <div class="section-header__mega-list__wrap">
+                                                                                                        <ul class="section-header__mega-list">
+                                                                                                                    <li>
+                                                                <a href="https://novee.security/vulnerabilities/" class="section-header__mega-link" data-text-color="novee-dark"
+                                                                    >
+                                                                    <div class="section-header__mega-link__icon">
+                                                                                                                                                    <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/novee_Gemini-3-Nano-Banana-Pro_2026-03-30_19-15-18-1.png" alt="" width="80" height="80">
+                                                                                                                                            </div>
+                                                                    <div class="section-header__mega-link__content">
+                                                                        <div class="section-header__mega-link__title" data-text-large>Exploit Registry</div>
+                                                                                                                                            </div>
+                                                                </a>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <a href="https://lp.novee.security/novees-buyer-guide/" class="section-header__mega-link" data-text-color="novee-dark"
+                                                                    >
+                                                                    <div class="section-header__mega-link__icon">
+                                                                                                                                                    <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/Rectangle-8.png" alt="" width="80" height="80">
+                                                                                                                                            </div>
+                                                                    <div class="section-header__mega-link__content">
+                                                                        <div class="section-header__mega-link__title" data-text-large>Buyer&#039;s Guide</div>
+                                                                                                                                            </div>
+                                                                </a>
+                                                            </li>
+                                                                                                            </ul>
+                                                </div>
+                                            </div>
+                                                                                                            </div>
+                            </nav>
+                        </div>
+                    </div>
+                            </div>
+    </section>
+<div class="post">
+    <div class="blog-hero">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-12 col-md-5 order-2 order-md-1">
+                    <div class="content">
+
+                        <div class="blog-hero__categories" data-text-small><a href="https://novee.security/blog/category/ai/" class="blog-hero__category">AI</a><a href="https://novee.security/blog/category/blog/" class="blog-hero__category">Blog</a><a href="https://novee.security/blog/category/novee-labs/" class="blog-hero__category">Novee Labs</a></div>
+
+                        <div class="heading">
+                            <h1 class="section-hero__title" data-title-size="title-h2">
+                                Your AI Coding Agent Will Run This Exploit For You: How We Found a High-Severity CVE in Cursor                            </h1>
+
+                                                            <p class="blog-hero__excerpt" data-text-regular>
+                                    Novee researcher discovered a high-severity arbitrary code execution vulnerability in Cursor IDE (CVE-2026-26268). Learn how AI agents and Git hooks create a dangerous new attack surface for developers.                                </p>
+                                                    </div>
+
+                        <div class="blog-hero__meta" data-text-small>
+                            
+    <div class="blog-posts__meta-wrap">
+
+
+        
+        <div class="meta_info" data-text-small>
+
+            <div class="author_names">
+                
+                                            <div class="author">
+                            <span class="author_name">
+                                Assaf Levkovich, <span
+                                    class="position">Vulnerability Researcher</span>                            </span>
+                        </div>
+
+                    
+                            </div>
+
+            <div class="post_date">
+                April 28, 2026            </div>
+
+        </div>
+
+    </div>
+
+                                <p class="blog-hero__meta-reading" data-text-small>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                    fill="none">
+                                    <path d="M15 8C15 4.125 11.875 1 8 1C4.125 1 1 4.125 1 8C1 11.875 4.125 15 8 15C11.875 15 15 11.875 15 8ZM0 8C0 3.59375 3.59375 0 8 0C12.4062 0 16 3.59375 16 8C16 12.4062 12.4062 16 8 16C3.59375 16 0 12.4062 0 8ZM7.5 3.5C7.5 3.21875 7.71875 3 8 3C8.28125 3 8.5 3.21875 8.5 3.5V7.71875L11.2812 9.59375C11.5 9.75 11.5625 10.0625 11.4062 10.2812C11.25 10.5 10.9688 10.5625 10.7188 10.4062L7.71875 8.40625C7.59375 8.3125 7.5 8.15625 7.5 8V3.5Z"
+                                        fill="#140945" />
+                                </svg>
+                                6 mins                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                                    <div class="col-12 col-md-7 order-1 order-md-2">
+                        <div class="thumb">
+                            <img width="1024" height="767" src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/1-1024x767.png" class="attachment-large size-large wp-post-image" alt="" decoding="async" srcset="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/1-1024x767.png 1024w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/1-300x225.png 300w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/1-768x575.png 768w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/1-1536x1151.png 1536w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/1-2048x1534.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />                        </div>
+                    </div>
+                
+            </div>
+
+        </div>
+    </div>
+    <section class="post__container">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-sm-4 order-2 order-sm-1">
+                    <div class="post__toc js-post-toc">
+                        <div class="post__toc-title" data-title-size="title-h4">
+                            Explore Article
+
+                            <a href="#" class="expand">+</a>
+                        </div>
+                        <div class="post__toc-wrap">
+                            <div class="post_toc_links" data-toc-titles="h2"></div>
+                            <div class="post__toc-list">
+                            </div>
+
+                                <div class="post__share">
+
+
+        <div class="post__share-buttons">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://novee.security/blog/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution/&title=Your AI Coding Agent Will Run This Exploit For You: How We Found a High-Severity CVE in Cursor"
+                class="post__share-button social-popup">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <path d="M25.5605 0H2.03794C0.91114 0 0 0.889575 0 1.98941V25.609C0 26.7088 0.91114 27.6038 2.03794 27.6038H25.5605C26.6872 27.6038 27.6038 26.7088 27.6038 25.6144V1.98941C27.6038 0.889575 26.6872 0 25.5605 0ZM8.18948 23.5225H4.09204V10.346H8.18948V23.5225ZM6.14076 8.5507C4.82527 8.5507 3.76317 7.4886 3.76317 6.1785C3.76317 4.8684 4.82527 3.8063 6.14076 3.8063C7.45086 3.8063 8.51296 4.8684 8.51296 6.1785C8.51296 7.48321 7.45086 8.5507 6.14076 8.5507ZM23.5225 23.5225H19.4305V17.1176C19.4305 15.5918 19.4035 13.624 17.3009 13.624C15.1713 13.624 14.8478 15.2899 14.8478 17.0098V23.5225H10.7612V10.346H14.6861V12.1467H14.74C15.2845 11.1116 16.6216 10.0172 18.611 10.0172C22.7569 10.0172 23.5225 12.7452 23.5225 16.2927V23.5225Z"
+                        fill="#140945" />
+                </svg>
+            </a>
+            <a href="https://twitter.com/intent/tweet?text=https://novee.security/blog/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution/"
+                class="post__share-button social-popup">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <path d="M21.0781 2.18982H24.9581L16.4814 11.8782L26.4536 25.0618H18.6455L12.5298 17.066L5.53219 25.0618H1.64981L10.7165 14.699L1.15015 2.18982H9.15652L14.6845 9.4983L21.0781 2.18982ZM19.7163 22.7394H21.8663L7.98829 4.39022H5.68115L19.7163 22.7394Z"
+                        fill="#140945" />
+                </svg>
+            </a>
+        </div>
+
+        <a href="https://novee.security/demo" class="button button--primary">
+            Request a Demo
+        </a>
+    </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-sm-8 col-md-7 offset-md-1 order-1 order-sm-2">
+                    <div class="post__content-wrap">
+                        <div class="post__content" data-gutenberg>
+                            
+<p><em>This research was conducted under responsible disclosure principles and in full cooperation with Cursor. Coordination and remediation efforts were completed with the vendor prior to publication. Cursor </em><a href="https://github.com/cursor/cursor/security/advisories/GHSA-8pcm-8jpx-hv8r" target="_blank" rel="noreferrer noopener"><em>published CVE-2026-26268</em></a><em> in February, 2026.</em></p>
+
+
+
+<p><em>Don&#8217;t test systems you don&#8217;t own or have explicit permission to access.</em></p>
+
+
+
+<h2 class="wp-block-heading">The IDE Is Not a Safe Zone</h2>
+
+
+
+<p>Novee&#8217;s research team identified a <strong>high-severity arbitrary code execution vulnerability</strong> in Cursor, the popular AI-powered IDE. Cursor has <a href="https://github.com/cursor/cursor/security/advisories/GHSA-8pcm-8jpx-hv8r" target="_blank" rel="noreferrer noopener">published the vulnerability as CVE-2026-26268</a>.</p>
+
+
+
+<p>The root cause is not a flaw in Cursor&#8217;s core product logic, but rather a consequence of a feature interaction in Git, one that becomes exploitable the moment an AI agent starts autonomously executing Git operations inside a repository it doesn&#8217;t control. The end result is <strong>attacker code execution directly on a developer’s machine</strong>.</p>
+
+
+
+<p>This research emphasizes a critical gap in modern security testing focus: when a security team audits an application&#8217;s external attack surface (APIs, authentication flows, user-facing inputs) the development environment itself rarely comes under scrutiny. The assumption is that the <strong>tools developers use to build software are themselves secure. </strong>That assumption is worth revisiting, <em>especially</em> <a href="https://novee.security/blog/ai-red-teaming-llm-applications/" target="_blank" rel="noreferrer noopener">when those tools are AI-powered agents</a>, operating autonomously inside a developer&#8217;s local environment on code from any source on the internet.</p>
+
+
+
+<h2 class="wp-block-heading">How Git Features Work (And How They Leave Room for Exploits)</h2>
+
+
+
+<p>To understand the vulnerability, it helps to understand two legitimate Git features that, when combined, produce an exploitable condition.</p>
+
+
+
+<p><strong>(1) Git Hooks</strong> are scripts that execute automatically in response to specific Git events, such as pre-commit and post-checkout. They&#8217;re a standard tool for automating repetitive tasks in software development workflows. Hook scripts live in the .git directory of a repository, which is generally excluded from tracked Git repo contents.&nbsp;</p>
+
+
+
+<p><strong>(2) Bare repositories</strong> are another standard Git construct: repositories that contain only version control data (the .git directory contents) without a working directory. They can be embedded inside a larger repository. This is where the exploit starts.</p>
+
+
+
+<p><br>A malicious actor can embed a <strong>bare repository</strong> inside a legitimate-looking repository. That embedded bare repository includes a malicious pre-commit hook. Whenever a commit operation runs within the embedded repository context (for example, triggered by the Cursor agent executing git checkout, as instructed by the repository&#8217;s Cursor Rules), the malicious hook fires automatically.</p>
+
+
+
+<p>No user prompt required. No warning displayed.</p>
+
+
+
+<p>The impact is <strong>auto-approved arbitrary code execution on the end-user&#8217;s machine</strong>, triggered by ordinary use of the IDE on a cloned repository.</p>
+
+
+
+<h2 class="wp-block-heading">Why AI Agents Change the Threat Model for Developer Tools</h2>
+
+
+
+<p>This vulnerability is not new in the sense that the underlying Git behavior is well-documented. What makes it newly dangerous is the context in which it operates.</p>
+
+
+
+<p>Traditional IDE usage is largely passive. Developers open repositories, read and write code, and manually execute commands. The IDE simply follows instructions.</p>
+
+
+
+<p>Cursor&#8217;s AI agent fundamentally changes that model. The agent interprets a high-level user prompt and autonomously decides which operations to run. <strong>Including Git operations.</strong> This is what makes the product powerful, yes, but it’s also what makes this vulnerability exploitable at scale.</p>
+
+
+
+<p>When the agent runs git checkout as part of fulfilling a routine request, it is not doing anything the user didn&#8217;t implicitly authorize. But neither the user nor the agent has visibility into what the repository&#8217;s Cursor Rules have set in motion. A malicious pre-commit hook embedded in a nested bare repository executes silently, outside the agent&#8217;s reasoning chain and outside the user&#8217;s field of view.</p>
+
+
+
+<p>The attack requires no social engineering beyond what&#8217;s inherent in the act of cloning a public repository; something developers do constantly, and something AI-assisted workflows are increasingly automating. As agents take on more autonomous capability, the scope of what they can be made to execute grows, <strong>and the attack surface of the underlying environment they operate in becomes directly relevant to security</strong>.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img decoding="async" width="1024" height="513" src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/image1-1024x513.png" alt="" class="wp-image-1468" srcset="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/image1-1024x513.png 1024w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/image1-300x150.png 300w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/image1-768x384.png 768w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/image1-1536x769.png 1536w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/image1.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+</div>
+
+
+<h2 class="wp-block-heading">Expanding Security Testing to the Agentic Attack Surface</h2>
+
+
+
+<p>In traditional pentesting, &#8220;client-side&#8221; attacks targeting developer machines have always been a known vector. But they relied on user error or a lapse in vigilance, typically requiring a degree of deliberate action on the part of the victim: opening a malicious file, executing a script, clicking a link. The assumption not only of a trustworthy IDE, but of required human action, is a meaningful constraint on exploitability. AI agents do away with that constraint.</p>
+
+
+
+<p>When the agent automatically executes Git operations in response to a natural-language prompt, the step between &#8220;clone a repository&#8221; and &#8220;execute attacker-controlled code&#8221; is reduced to a single, unremarkable user action. The attack surface of any AI-powered tool now includes the untrusted content that tool operates on. And, as this finding illustrates, the execution environment of the software those tools interact with.</p>
+
+
+
+<h2 class="wp-block-heading">How Novee Found It</h2>
+
+
+
+<p>The Novee research team set out to find multi-step exploit paths that emerge specifically from <a href="https://novee.security/blog/ai-red-teaming-llm-applications/" target="_blank" rel="noreferrer noopener">the interaction between AI agent behavior and untrusted inputs</a>. The question is not just &#8220;what can go wrong in Cursor?&#8221; but &#8220;what can an attacker cause to happen by controlling what a Cursor agent operates on?&#8221;</p>
+
+
+
+<p>Pushing the boundaries of traditional vulnerability research requires our team to search not just for individual vulnerabilities, but for complex vulnerability <em>patterns.</em> This allows us to keep improving our AI agents based on those unique patterns, which in turn leads to a deeper understanding of how individual components of a software system interact under adversarial conditions. In this case: how does Git&#8217;s hook execution model interact with Cursor&#8217;s agentic Git behavior? What happens when a repository is specifically designed to exploit that interaction? The answer to that question is CVE-2026-26268.</p>
+
+
+
+<p>The reasoning that uncovered this vulnerability (identifying trust boundary violations in multi-step workflows involving AI agent behavior) is the same class of reasoning Novee encodes into its autonomous pentesting agents.&nbsp;</p>
+
+
+
+<p>When a researcher understands how to exploit agentic behavior at the application layer, that understanding becomes a capability the platform can exercise at scale. It’s how we turn research like this into our latest product: <a href="https://novee.security/blog/ai-red-teaming-llm-applications/" target="_blank" rel="noreferrer noopener">AI Red Teaming for LLMs</a>.</p>
+
+
+
+<h2 class="wp-block-heading">Final Thoughts for Security Teams</h2>
+
+
+
+<p><strong>Developer machines are production-equivalent targets.</strong> Credentials, tokens, source code, and internal tooling are routinely accessible from developer environments. Arbitrary code execution on a developer machine is often a meaningful step toward broader compromise.</p>
+
+
+
+<p><strong>The attack surface of AI-powered tools includes the content they process.</strong> Security reviews of AI coding assistants should account not just for the tool&#8217;s own code, but for how the tool behaves when operating on attacker-controlled inputs.</p>
+
+
+
+<p><strong>Cursor rules and agent instructions are an attack surface.</strong> Repositories can include configuration that shapes agent behavior. The security implications of that configuration, and what it can cause an agent to execute, deserve scrutiny.</p>
+
+
+
+<p>The attack surface is changing because the environments defenders need to protect now include AI agents that operate autonomously, respond to external inputs, and execute system-level operations without explicit per-action approval.</p>
+
+
+
+<p>CVE-2026-26268 is high severity because <strong>the path from &#8220;clone a repo&#8221; to &#8220;attacker runs code on your machine&#8221; is now a single routine action</strong>. The only way to stay ahead of attackers who reason that way is to think like them – continuously.</p>
+
+
+
+<p>That&#8217;s what Novee&#8217;s researchers do. And it&#8217;s what the platform is built to replicate.<br>See it in action → <a href="https://novee.security/blog/teaching-a-small-model-to-hack-like-a-real-attacker/" target="_blank" rel="noreferrer noopener">Book a demo</a>.</p>
+
+
+
+<p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+            <section class="post-more js-post-more">
+            <div class="container">
+                <div class="post-more__heading">
+                    <h2 class="post-more__title" data-title-size="title-h2">
+                        You might also like
+                    </h2>
+                </div>
+                <div class="row">
+                                                                    <div class="col-12 col-sm-6 col-md-4">    <a href="https://novee.security/blog/penetration-testing-frameworks/" class="blog-posts__item">
+        <div class="blog-posts__image">
+                            <img width="1024" height="699" src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/9-Penetration-Testing-Frameworks-Security-Teams-Rely-On-1024x699.jpg" class="attachment-large size-large wp-post-image" alt="" decoding="async" srcset="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/9-Penetration-Testing-Frameworks-Security-Teams-Rely-On-1024x699.jpg 1024w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/9-Penetration-Testing-Frameworks-Security-Teams-Rely-On-300x205.jpg 300w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/9-Penetration-Testing-Frameworks-Security-Teams-Rely-On-768x524.jpg 768w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/9-Penetration-Testing-Frameworks-Security-Teams-Rely-On-1536x1048.jpg 1536w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/9-Penetration-Testing-Frameworks-Security-Teams-Rely-On-2048x1398.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />                    </div>
+        <div class="blog-posts__item-body">
+            <h3 class="blog-posts__title" data-title-size="title-h4">
+                9 Penetration Testing Frameworks Security Teams Rely On            </h3>
+            <div class="blog-posts__meta">
+                
+    <div class="blog-posts__meta-wrap">
+
+
+        
+        <div class="meta_info" data-text-small>
+
+            <div class="author_names">
+                
+                                            <div class="author">
+                            <span class="author_name">
+                                Novee Marketing                            </span>
+                        </div>
+
+                    
+                            </div>
+
+            <div class="post_date">
+                May 14, 2026            </div>
+
+        </div>
+
+    </div>
+
+                </div>
+            <div class="blog-posts__excerpt" data-wysiwyg data-text-small>
+                <p>
+                    Compare the 9 most trusted penetration testing frameworks — OWASP, PTES, NIST SP 800-115, MITRE ATT&CK, and more. Learn how to choose the right one for your environment.                </p>
+            </div>
+            <div class="blog-posts__actions">
+                <div class="reading">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M15 8C15 4.125 11.875 1 8 1C4.125 1 1 4.125 1 8C1 11.875 4.125 15 8 15C11.875 15 15 11.875 15 8ZM0 8C0 3.59375 3.59375 0 8 0C12.4062 0 16 3.59375 16 8C16 12.4062 12.4062 16 8 16C3.59375 16 0 12.4062 0 8ZM7.5 3.5C7.5 3.21875 7.71875 3 8 3C8.28125 3 8.5 3.21875 8.5 3.5V7.71875L11.2812 9.59375C11.5 9.75 11.5625 10.0625 11.4062 10.2812C11.25 10.5 10.9688 10.5625 10.7188 10.4062L7.71875 8.40625C7.59375 8.3125 7.5 8.15625 7.5 8V3.5Z"
+                            fill="#8984A2" />
+                    </svg>
+                    12 mins                </div>
+                <div class="readmore">
+                    Read more
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>                                                                    <div class="col-12 col-sm-6 col-md-4">    <a href="https://novee.security/blog/dast-scanner-limitations/" class="blog-posts__item">
+        <div class="blog-posts__image">
+                            <img width="1024" height="584" src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/weavy-Gemini-3-Nano-Banana-Pro-2026-01-04-at-22.25.29-2-1024x584.jpg" class="attachment-large size-large wp-post-image" alt="" decoding="async" srcset="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/weavy-Gemini-3-Nano-Banana-Pro-2026-01-04-at-22.25.29-2-1024x584.jpg 1024w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/weavy-Gemini-3-Nano-Banana-Pro-2026-01-04-at-22.25.29-2-300x171.jpg 300w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/weavy-Gemini-3-Nano-Banana-Pro-2026-01-04-at-22.25.29-2-768x438.jpg 768w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/weavy-Gemini-3-Nano-Banana-Pro-2026-01-04-at-22.25.29-2-1536x876.jpg 1536w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/04/weavy-Gemini-3-Nano-Banana-Pro-2026-01-04-at-22.25.29-2.jpg 1600w" sizes="(max-width: 1024px) 100vw, 1024px" />                    </div>
+        <div class="blog-posts__item-body">
+            <h3 class="blog-posts__title" data-title-size="title-h4">
+                5 Gaps in Every DAST Scanner            </h3>
+            <div class="blog-posts__meta">
+                
+    <div class="blog-posts__meta-wrap">
+
+
+        
+        <div class="meta_info" data-text-small>
+
+            <div class="author_names">
+                
+                                            <div class="author">
+                            <span class="author_name">
+                                Novee Marketing                            </span>
+                        </div>
+
+                    
+                            </div>
+
+            <div class="post_date">
+                May 12, 2026            </div>
+
+        </div>
+
+    </div>
+
+                </div>
+            <div class="blog-posts__excerpt" data-wysiwyg data-text-small>
+                <p>
+                    Discover the 5 gaps that exist in every DAST scanner — from stale results and auth blind spots to false positives — and learn how continuous testing closes them.                </p>
+            </div>
+            <div class="blog-posts__actions">
+                <div class="reading">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M15 8C15 4.125 11.875 1 8 1C4.125 1 1 4.125 1 8C1 11.875 4.125 15 8 15C11.875 15 15 11.875 15 8ZM0 8C0 3.59375 3.59375 0 8 0C12.4062 0 16 3.59375 16 8C16 12.4062 12.4062 16 8 16C3.59375 16 0 12.4062 0 8ZM7.5 3.5C7.5 3.21875 7.71875 3 8 3C8.28125 3 8.5 3.21875 8.5 3.5V7.71875L11.2812 9.59375C11.5 9.75 11.5625 10.0625 11.4062 10.2812C11.25 10.5 10.9688 10.5625 10.7188 10.4062L7.71875 8.40625C7.59375 8.3125 7.5 8.15625 7.5 8V3.5Z"
+                            fill="#8984A2" />
+                    </svg>
+                    4 mins                </div>
+                <div class="readmore">
+                    Read more
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>                                                                    <div class="col-12 col-sm-6 col-md-4">    <a href="https://novee.security/blog/best-web-application-security-testing-tools-2026/" class="blog-posts__item">
+        <div class="blog-posts__image">
+                            <img width="1024" height="699" src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/Blog-Header_-16-Best-Web-Application-Security-Testing-Tools-of-2026-1024x699.jpg" class="attachment-large size-large wp-post-image" alt="" decoding="async" srcset="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/Blog-Header_-16-Best-Web-Application-Security-Testing-Tools-of-2026-1024x699.jpg 1024w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/Blog-Header_-16-Best-Web-Application-Security-Testing-Tools-of-2026-300x205.jpg 300w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/Blog-Header_-16-Best-Web-Application-Security-Testing-Tools-of-2026-768x524.jpg 768w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/Blog-Header_-16-Best-Web-Application-Security-Testing-Tools-of-2026-1536x1048.jpg 1536w, https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/Blog-Header_-16-Best-Web-Application-Security-Testing-Tools-of-2026-2048x1398.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />                    </div>
+        <div class="blog-posts__item-body">
+            <h3 class="blog-posts__title" data-title-size="title-h4">
+                16 Best Web Application Security Testing Tools of 2026            </h3>
+            <div class="blog-posts__meta">
+                
+    <div class="blog-posts__meta-wrap">
+
+
+        
+        <div class="meta_info" data-text-small>
+
+            <div class="author_names">
+                
+                                            <div class="author">
+                            <span class="author_name">
+                                Novee Marketing                            </span>
+                        </div>
+
+                    
+                            </div>
+
+            <div class="post_date">
+                May 8, 2026            </div>
+
+        </div>
+
+    </div>
+
+                </div>
+            <div class="blog-posts__excerpt" data-wysiwyg data-text-small>
+                <p>
+                    Explore the top 16 web application security testing tools of 2026, including SAST, DAST, SCA, and AI-powered pentesting platforms built for continuous security validation.                </p>
+            </div>
+            <div class="blog-posts__actions">
+                <div class="reading">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M15 8C15 4.125 11.875 1 8 1C4.125 1 1 4.125 1 8C1 11.875 4.125 15 8 15C11.875 15 15 11.875 15 8ZM0 8C0 3.59375 3.59375 0 8 0C12.4062 0 16 3.59375 16 8C16 12.4062 12.4062 16 8 16C3.59375 16 0 12.4062 0 8ZM7.5 3.5C7.5 3.21875 7.71875 3 8 3C8.28125 3 8.5 3.21875 8.5 3.5V7.71875L11.2812 9.59375C11.5 9.75 11.5625 10.0625 11.4062 10.2812C11.25 10.5 10.9688 10.5625 10.7188 10.4062L7.71875 8.40625C7.59375 8.3125 7.5 8.15625 7.5 8V3.5Z"
+                            fill="#8984A2" />
+                    </svg>
+                    16 mins                </div>
+                <div class="readmore">
+                    Read more
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>                                                        </div>
+            </div>
+        </section>
+</div>
+
+<section class="blog-subscription">
+    <div class="container">
+        <div class="blog-subscription__inner">
+
+            <div class="row items-center justify-center">
+
+                <div class="col-12 col-md-7 offset-md-1 order-2 order-md-1">
+                    <div class="blog-subscription__inner_content">
+
+                        <h2 class="blog-subscription__title" data-title-size="title-h2">
+                            Stay updated
+                        </h2>
+                        <div class="blog-subscription__desc" data-text-extra-large>
+                            <p>
+                                Get the latest insights on AI, cybersecurity, and continuous pentesting
+                                delivered to
+                                your
+                                inbox
+                            </p>
+                        </div>
+
+                        <div class="blog-subscription__form">
+                            <script charset="utf-8" type="text/javascript"
+                                src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+                            <script>
+                                hbspt.forms.create({
+                                    portalId: "146555661",
+                                    formId: "1a9a0ba5-1ab2-449c-b29b-f5560f527e5d",
+                                    region: "eu1"
+                                });
+                            </script>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 order-1 order-md-2">
+                    <div class="blog-subscription__inner_media">
+                                                <div class="video-container">
+
+                            <video autoplay muted loop playsinline webkit-playsinline>
+                                <source src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/images/globe.mp4"
+                                    type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="sections_wrap">
+    <section
+    class="section-footer_cta"
+         data-theme="dark" data-padding="huge">
+    <div class="section-footer_cta-body">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-5">
+                    <div class="section-footer_cta-content">
+                                                    <h2 class="section-footer_cta-title" data-title-size="title-h1">
+                                Follow the path real attackers take                            </h2>
+                        
+                        
+                                                    <div class="section-footer_cta-buttons buttons">
+                                            <a
+
+                                    href="https://novee.security/demo/"
+                                                    class="button button--primary"
+                                        >
+                Book a demo                            </a>
+
+                                    </div>
+                                            </div>
+                </div>
+            </div>
+
+            <div class="section-footer_cta-vector">
+
+                <!-- Desktop video -->
+                <div class="show-desktop">
+                    <video
+                        class="footer-video"
+                        muted
+                        loop
+                        autoplay
+                        playsinline
+                        -webkit-playsinline
+                        poster="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/images/footer-cta-v2.jpg">
+                        <source src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/images/footer_cta_v2.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- Mobile video -->
+                <div class="show-mobile">
+                    <video
+                        class="footer-video"
+                        muted
+                        loop
+                        autoplay
+                        playsinline
+                        -webkit-playsinline
+                        poster="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/images/footer-cta-mobile-v2.jpg">
+                        <source src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/images/footer_cta_mobile_v2.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section></div>
+
+
+<section class="section-footer">
+
+    <div class="container container--wide">
+        <div class="section-footer__top">
+
+            <div class="section-footer__left">
+
+                <a href="https://novee.security" class="section-footer__left_logo">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="149" height="37" viewBox="0 0 149 37"
+                             fill="none">
+                            <g clip-path="url(#clip0_884_10314)">
+                                <path d="M6.10471 3.07331C6.10471 1.37597 4.73812 0 3.05236 0C1.36659 0 0 1.37597 0 3.07331V33.2017C0 34.899 1.36659 36.275 3.05236 36.275C4.73812 36.275 6.10471 34.899 6.10471 33.2017V3.07331Z"
+                                      fill="url(#paint0_linear_884_10314)"></path>
+                                <path d="M28.0618 4.50748C29.0396 3.17821 28.712 1.3892 27.3223 0.504683C25.9326 -0.384827 24.0019 -0.0250251 23.0242 1.30924L0.605505 31.7025C-0.372241 33.0318 -0.0446711 34.8208 1.34502 35.7053C2.73471 36.5948 4.66539 36.235 5.64313 34.9007L28.0618 4.50748Z"
+                                      fill="url(#paint1_linear_884_10314)"></path>
+                                <path d="M28.6128 3.07331C28.6128 1.37597 27.2462 0 25.5604 0C23.8746 0 22.5081 1.37597 22.5081 3.07331V33.2017C22.5081 34.899 23.8746 36.275 25.5604 36.275C27.2462 36.275 28.6128 34.899 28.6128 33.2017V3.07331Z"
+                                      fill="url(#paint2_linear_884_10314)"></path>
+                                <path d="M0.600638 4.5475C-0.377108 3.20824 -0.0396118 1.40923 1.36 0.529712C2.75466 -0.344805 4.67044 0.0249907 5.64819 1.35426L27.9825 31.7925C28.9652 33.1267 28.6227 34.9307 27.2231 35.8103C25.8285 36.6848 23.9127 36.315 22.9349 34.9857L0.600638 4.5475Z"
+                                      fill="url(#paint3_linear_884_10314)"></path>
+                                <path class="logo_text"
+                                      d="M56.8681 26.4754V5.85675H61.3002V28.6092C61.3002 30.1933 59.5284 31.7375 58.0047 31.8374C56.0293 31.9624 54.8431 31.1328 53.8703 29.5337C50.2373 23.542 47.1998 16.9806 43.6214 10.9389C43.5618 10.839 43.5271 10.6891 43.3931 10.6691V31.3777H38.9609V8.62522C38.9609 7.53083 40.1074 6.09662 41.11 5.69684C43.2094 4.8523 45.155 5.67685 46.3015 7.52083C49.999 13.4626 53.0514 20.1489 56.6348 26.2055C56.6944 26.3055 56.7291 26.4554 56.8631 26.4754H56.8681Z"
+                                      fill="#ffffff"></path>
+                                <path class="logo_text"
+                                      d="M126.799 23.4371H112.366C112.887 26.9652 115.915 28.9041 119.34 28.1545C120.982 27.7947 122.129 26.8552 123.042 25.471C123.96 26.0107 125.35 26.4354 126.194 27.0351C126.343 27.1401 126.457 27.18 126.402 27.3899C126.353 27.5698 125.841 28.3094 125.692 28.5193C122.6 32.9968 116.123 33.4516 111.88 30.4033C106.381 26.4454 106.748 17.5004 112.351 13.8274C115.97 11.4537 121.469 11.9884 124.392 15.2616C126.417 17.5304 126.894 20.4537 126.794 23.4371H126.799ZM122.263 20.6786C121.652 14.8968 113.344 15.1267 112.55 20.6786H122.263Z"
+                                      fill="#ffffff"></path>
+                                <path class="logo_text"
+                                      d="M148.627 23.4371H134.184C134.785 27.3999 138.582 29.2989 142.2 27.8247C143.416 27.33 144.151 26.5454 144.87 25.471L148.255 27.1201C148.364 27.28 147.774 28.1845 147.645 28.3744C143.848 34.1262 134.686 33.4066 131.202 27.6948C128.71 23.602 129.574 17.7003 133.182 14.572C136.84 11.4038 143.103 11.6336 146.31 15.3516C148.275 17.6303 148.751 20.4837 148.622 23.4371H148.627ZM144.091 20.6836C143.505 14.8968 135.187 15.1367 134.373 20.6836H144.091Z"
+                                      fill="#ffffff"></path>
+                                <path class="logo_text"
+                                      d="M73.6884 12.4132C81.9322 11.6186 87.9079 19.8191 83.7736 27.26C79.6988 34.591 68.6954 33.8114 65.5091 26.1206C62.9878 20.039 67.2015 13.0378 73.6884 12.4132ZM74.2393 16.7558C66.7945 17.6053 68.4522 29.5987 76.2494 27.8297C82.8057 26.3405 81.3267 15.9462 74.2393 16.7558Z"
+                                      fill="#ffffff"></path>
+                                <path class="logo_text"
+                                      d="M90.9752 12.8629L96.5339 27.9746L96.7672 27.8347L102.048 12.8629H106.957L100.614 29.8436C99.889 31.2278 98.7078 32.2223 97.0948 32.3322C92.8016 32.632 92.1415 29.2989 90.9305 26.1006C89.2629 21.7131 87.6846 17.2705 86.1162 12.8579H90.9801L90.9752 12.8629Z"
+                                      fill="#ffffff"></path>
+                            </g>
+                            <defs>
+                                <linearGradient id="paint0_linear_884_10314" x1="3.02333" y1="-9.07" x2="18.0372"
+                                                y2="-2.0278" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#CDB5FB"></stop>
+                                    <stop offset="1" stop-color="#8E55FD"></stop>
+                                </linearGradient>
+                                <linearGradient id="paint1_linear_884_10314" x1="23.6828" y1="5.54279" x2="2.83455"
+                                                y2="34.0587" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#CDB5FB"></stop>
+                                    <stop offset="1" stop-color="#8E55FD"></stop>
+                                </linearGradient>
+                                <linearGradient id="paint2_linear_884_10314" x1="25.6983" y1="9.32194" x2="36.3533"
+                                                y2="14.3196" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#CDB5FB"></stop>
+                                    <stop offset="1" stop-color="#8E55FD"></stop>
+                                </linearGradient>
+                                <linearGradient id="paint3_linear_884_10314" x1="-2.01551" y1="-3.52719" x2="25.6747"
+                                                y2="33.084" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#CDB5FB"></stop>
+                                    <stop offset="1" stop-color="#8E55FD"></stop>
+                                </linearGradient>
+                                <clipPath id="clip0_884_10314">
+                                    <rect width="148.647" height="36.28" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                                    </a>
+
+            </div>
+
+                            <nav class="section-footer__top-nav">
+                    
+                        <div class="section-footer__top-nav__column">
+                            <h3 class="section-footer__top-nav__title" data-text-regular data-font-weight="700">
+                                Company                            </h3>
+
+                                                            <ul class="section-footer__top-nav__list">
+                                    
+                                        <li class="section-footer__top-nav__item">
+                                                                                            <a class="section-footer__top-nav__link" data-text-small
+                                                   href="https://novee.security/about/"
+                                                   >About</a>
+                                                                                    </li>
+
+                                    
+                                        <li class="section-footer__top-nav__item">
+                                                                                            <a class="section-footer__top-nav__link" data-text-small
+                                                   href="https://novee.security/blog/category/company-news/"
+                                                   >News</a>
+                                                                                    </li>
+
+                                    
+                                        <li class="section-footer__top-nav__item">
+                                                                                            <a class="section-footer__top-nav__link" data-text-small
+                                                   href="https://novee.security/careers/"
+                                                   >Careers</a>
+                                                                                    </li>
+
+                                                                    </ul>
+                            
+                        </div>
+
+                    
+                        <div class="section-footer__top-nav__column">
+                            <h3 class="section-footer__top-nav__title" data-text-regular data-font-weight="700">
+                                Resources                            </h3>
+
+                                                            <ul class="section-footer__top-nav__list">
+                                    
+                                        <li class="section-footer__top-nav__item">
+                                                                                            <a class="section-footer__top-nav__link" data-text-small
+                                                   href="https://novee.security/blog/"
+                                                   >Blog</a>
+                                                                                    </li>
+
+                                    
+                                        <li class="section-footer__top-nav__item">
+                                                                                            <a class="section-footer__top-nav__link" data-text-small
+                                                   href="https://novee.security/blog/category/novee-labs/"
+                                                   >Novee Labs</a>
+                                                                                    </li>
+
+                                    
+                                        <li class="section-footer__top-nav__item">
+                                                                                            <a class="section-footer__top-nav__link" data-text-small
+                                                   href="https://novee.security/glossary/"
+                                                   >Glossary</a>
+                                                                                    </li>
+
+                                    
+                                        <li class="section-footer__top-nav__item">
+                                                                                            <a class="section-footer__top-nav__link" data-text-small
+                                                   href="https://novee.security/blog/category/security-guides/"
+                                                   >Security Guides</a>
+                                                                                    </li>
+
+                                                                    </ul>
+                            
+                        </div>
+
+                    
+                        <div class="section-footer__top-nav__column">
+                            <h3 class="section-footer__top-nav__title" data-text-regular data-font-weight="700">
+                                Compare                            </h3>
+
+                                                            <ul class="section-footer__top-nav__list">
+                                    
+                                        <li class="section-footer__top-nav__item">
+                                                                                            <a class="section-footer__top-nav__link" data-text-small
+                                                   href="https://novee.security/novee-vs-dast/"
+                                                   >Novee vs DAST</a>
+                                                                                    </li>
+
+                                    
+                                        <li class="section-footer__top-nav__item">
+                                                                                            <a class="section-footer__top-nav__link" data-text-small
+                                                   href="https://novee.security/novee-vs-llms-pentesting/"
+                                                   >Novee v. DIY Generic LLMs</a>
+                                                                                    </li>
+
+                                                                    </ul>
+                            
+                        </div>
+
+                    
+                                            <div class="section-footer__top-nav__column">
+                            <h3 class="section-footer__top-nav__title" data-text-regular data-font-weight="700">
+                                Stay Connected
+                            </h3>
+
+                            <ul class="section-footer__top-nav__list">
+                                
+                                    <li class="section-footer__top-nav__item">
+                                        <a class="section-footer__top-nav__link" data-text-small
+                                           href="https://www.linkedin.com/company/novee-security" target="_blank">
+                                                                                            <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/01/ico_linkedin_s.svg"
+                                                     alt="Linkedin">
+                                                                                    </a>
+                                    </li>
+
+
+                                                            </ul>
+
+                                                            <div class="section-footer__left_badges">
+                                    
+                                                                                    <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/01/Group-1000002680.png" alt="SOC2">
+                                        
+                                    
+                                                                                    <img src="https://d2ooqtrark7773.cloudfront.net/wp-content/uploads/2026/05/ISO-20071.png" alt="">
+                                        
+                                                                    </div>
+                            
+                        </div>
+                    
+                </nav>
+            
+        </div>
+        <div class="section-footer__bottom">
+
+                            <nav class="section-footer__bottom-nav">
+                    <ul class="section-footer__bottom-list">
+                        
+                            <li class="section-footer__bottom-item">
+                                                                    <a class="section-footer__bottom-link" href="https://novee.security/privacy-policy/"
+                                       >Privacy Policy</a>
+                                                            </li>
+
+                        
+                            <li class="section-footer__bottom-item">
+                                                                    <a class="section-footer__bottom-link" href="https://novee.security/terms-of-service/"
+                                       >Terms of Service</a>
+                                                            </li>
+
+                                            </ul>
+                </nav>
+            
+                            <p data-text-small>
+                    © Novee. All Rights reserved.                </p>
+            
+        </div>
+
+    </div>
+</section>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/novee/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/javascript" src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/js/vendor/tocbot.min.js?ver=49" id="template-blog-toc-js"></script>
+<script type="text/javascript" src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/js/vendor/swiper-bundle.min.js?ver=49" id="swiper-bundle-js"></script>
+<script type="text/javascript" src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/js/templates/template-post.js?ver=49" id="template-blog-js"></script>
+<script type="text/javascript" id="template-blog-main-js-extra">
+/* <![CDATA[ */
+var wp_blog_object = {"ajax_url":"https://novee.security/wp-admin/admin-ajax.php"};
+//# sourceURL=template-blog-main-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/js/templates/template-blog.js?ver=49" id="template-blog-main-js"></script>
+<script type="text/javascript" src="https://d2ooqtrark7773.cloudfront.net/wp-content/themes/novee/assets/js/sections/section-header.js?ver=49" id="section-header-js"></script>
+
+<script class="inlinemenu">
+
+    let modalSelector = document.querySelector('.section-header__modal');
+    let headerSelector = document.querySelector('.section-header');
+    let headerToggleButton = document.querySelector('.section-header__toggle');
+
+    // Set the CSS custom properties directly on the body
+    document.body.style.setProperty('--header-total-height', headerSelector.offsetHeight + 'px');
+
+    // If Modal header exists, set its height as a CSS variable
+    if (modalSelector) {
+        document.body.style.setProperty(
+            '--header-extra-height',
+            modalSelector.offsetHeight + 'px'
+        );
+    }
+
+    // Click on toggle headerToggleButton to open/close modal
+    if (headerToggleButton) {
+        headerToggleButton.addEventListener('click', function () {
+            headerSelector.classList.toggle('open');
+            document.body.classList.toggle('no-scroll');
+        });
+    }
+
+    // Global variable to store the original padding
+    window.originalFirstSectionPadding = null;
+
+    // Global function to update first section padding
+    window.updateFirstSectionPadding = function () {
+        const firstSection = document.querySelector('.sections_wrap > section:first-child');
+        const headerSection = document.querySelector('.section-header.js-section-header');
+
+        if (!document.body.classList.contains('page-template-template-blog') &&
+            firstSection &&
+            headerSection &&
+            !headerSection.classList.contains('header-always-white')) {
+
+            // Store original padding if we haven't already
+            if (window.originalFirstSectionPadding === null) {
+                window.originalFirstSectionPadding = parseInt(window.getComputedStyle(firstSection).paddingTop);
+            }
+
+            const headerHeight = parseInt(getComputedStyle(document.body).getPropertyValue('--header-extra-height'));
+            const newPadding = window.originalFirstSectionPadding + headerHeight;
+
+            firstSection.style.setProperty('padding-top', `${newPadding}px`, 'important');
+        }
+    };
+
+    // Initial call to set the padding
+    updateFirstSectionPadding();
+
+    // Add this to your page
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('Script loaded, window width:', window.innerWidth);
+
+        // Only run on mobile screen sizes
+        if (window.innerWidth <= 768) {
+            console.log('Mobile screen detected');
+
+            const heroVideo = document.querySelector('.show-mobile .video-embed');
+
+            if (heroVideo) {
+                console.log('Hero video found:', heroVideo);
+
+                // Force play the mobile hero video
+                heroVideo.play()
+                    .then(() => {
+                        console.log('Video playing successfully!');
+                    })
+                    .catch((error) => {
+                        console.log('Autoplay blocked:', error);
+                        console.log('Waiting for user touch...');
+
+                        // If blocked, play on first touch anywhere
+                        document.addEventListener('touchstart', () => {
+                            console.log('Touch detected, trying to play video');
+                            heroVideo.play()
+                                .then(() => console.log('Video started after touch'))
+                                .catch((err) => console.log('Still failed after touch:', err));
+                        }, {once: true});
+                    });
+            } else {
+                console.log('Hero video NOT found!');
+            }
+        } else {
+            console.log('Desktop screen, skipping mobile video logic');
+        }
+    });
+
+</script>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/146555661.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fda960c9a1c1ecc',t:'MTc3OTEwNDQxNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

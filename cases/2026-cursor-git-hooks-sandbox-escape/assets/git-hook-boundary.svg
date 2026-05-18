@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="500" viewBox="0 0 1080 500" role="img" aria-labelledby="title desc">
+  <title id="title">Cursor Git hook sandbox boundary</title>
+  <desc id="desc">A visual explanation of how agent file writes to Git metadata can become delayed command execution.</desc>
+  <style>
+    .bg{fill:#f7f8fb}
+    .box{fill:#ffffff;stroke:#26364a;stroke-width:2;rx:12}
+    .risk{fill:#fff1ee;stroke:#bf3c2f}
+    .safe{fill:#edf8f3;stroke:#2b7756}
+    .line{stroke:#65758a;stroke-width:3}
+    .title{fill:#172235;font:700 24px Arial,sans-serif}
+    .text{fill:#27384f;font:18px Arial,sans-serif}
+    .small{fill:#65758a;font:15px Arial,sans-serif}
+    .num{fill:#172235;font:700 24px Arial,sans-serif}
+  </style>
+  <rect class="bg" width="1080" height="500"/>
+  <text x="48" y="54" class="title">Cursor agent and Git hook execution boundary</text>
+  <text x="48" y="84" class="small">The key risk is a delayed transition from file write to command execution.</text>
+
+  <rect class="box" x="54" y="132" width="230" height="150"/>
+  <text class="num" x="82" y="170">1</text>
+  <text class="title" x="116" y="170">Prompt input</text>
+  <text class="text" x="82" y="210">Repository text or</text>
+  <text class="text" x="82" y="238">rules steer the agent.</text>
+
+  <line class="line" x1="284" y1="206" x2="344" y2="206"/>
+
+  <rect class="box risk" x="344" y="132" width="230" height="150"/>
+  <text class="num" x="372" y="170">2</text>
+  <text class="title" x="406" y="170">Privileged write</text>
+  <text class="text" x="372" y="210">Agent alters .git</text>
+  <text class="text" x="372" y="238">settings or hooks.</text>
+
+  <line class="line" x1="574" y1="206" x2="634" y2="206"/>
+
+  <rect class="box risk" x="634" y="132" width="230" height="150"/>
+  <text class="num" x="662" y="170">3</text>
+  <text class="title" x="696" y="170">Git event</text>
+  <text class="text" x="662" y="210">Commit, checkout,</text>
+  <text class="text" x="662" y="238">merge, or similar.</text>
+
+  <line class="line" x1="864" y1="206" x2="924" y2="206"/>
+
+  <rect class="box risk" x="924" y="132" width="112" height="150"/>
+  <text class="num" x="948" y="170">4</text>
+  <text class="title" x="948" y="210">RCE</text>
+  <text class="text" x="948" y="240">on host</text>
+
+  <rect class="box safe" x="186" y="342" width="708" height="92"/>
+  <text class="title" x="216" y="380">Control objective</text>
+  <text class="text" x="216" y="412">Treat Git metadata and hook configuration as protected execution policy.</text>
+</svg>
