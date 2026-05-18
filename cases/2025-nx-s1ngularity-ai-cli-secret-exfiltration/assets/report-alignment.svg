@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="480" viewBox="0 0 1100 480" role="img" aria-labelledby="title desc">
+  <title id="title">Nx s1ngularity alignment with AI GenCode technical report</title>
+  <desc id="desc">Mapping the Nx incident to software supply chain risk, sensitive data leakage, red-team admission, sandboxing, DAST, SAST, and zero-trust governance.</desc>
+  <style>
+    .bg{fill:#f6faf9}
+    .box{fill:#fff;stroke:#21483f;stroke-width:2;rx:12}
+    .case{fill:#fff5e8;stroke:#c76b18}
+    .line{stroke:#557067;stroke-width:3}
+    .title{fill:#123026;font:700 24px Arial,sans-serif}
+    .text{fill:#223a33;font:18px Arial,sans-serif}
+    .small{fill:#557067;font:15px Arial,sans-serif}
+  </style>
+  <rect class="bg" width="1100" height="480"/>
+  <text class="title" x="48" y="56">Connection to the team report</text>
+  <text class="small" x="48" y="86">This case links supply-chain compromise, secret leakage, and AI agent execution in one incident.</text>
+
+  <rect class="box case" x="56" y="132" width="290" height="230"/>
+  <text class="title" x="88" y="174">Case signal</text>
+  <text class="text" x="88" y="214">GitHub Actions injection</text>
+  <text class="text" x="88" y="244">Malicious npm postinstall</text>
+  <text class="text" x="88" y="274">AI CLI file inventory</text>
+  <text class="text" x="88" y="304">GitHub secret exposure</text>
+
+  <line class="line" x1="346" y1="248" x2="406" y2="248"/>
+
+  <rect class="box" x="406" y="112" width="300" height="270"/>
+  <text class="title" x="436" y="154">Report risk class</text>
+  <text class="text" x="436" y="194">Software supply chain</text>
+  <text class="text" x="436" y="224">Sensitive data leakage</text>
+  <text class="text" x="436" y="254">RCE-adjacent postinstall</text>
+  <text class="text" x="436" y="284">Automation bias</text>
+  <text class="text" x="436" y="314">Agent tool misuse</text>
+
+  <line class="line" x1="706" y1="248" x2="766" y2="248"/>
+
+  <rect class="box" x="766" y="112" width="290" height="270"/>
+  <text class="title" x="796" y="154">Control path</text>
+  <text class="text" x="796" y="194">Red-team CI workflows</text>
+  <text class="text" x="796" y="224">Trusted publishing</text>
+  <text class="text" x="796" y="254">Sandbox AI CLIs</text>
+  <text class="text" x="796" y="284">DAST install tests</text>
+  <text class="text" x="796" y="314">SAST lifecycle scripts</text>
+</svg>
