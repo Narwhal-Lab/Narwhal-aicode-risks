@@ -1,0 +1,39 @@
+slug: "2024-ai-agent-indirect-prompt-injection"
+title_en: "Indirect Prompt Injection and Arbitrary Code Execution Vulnerability of Autonomous AI Software Engineers"
+title_cn: "自主AI软件工程师间接提示词注入与任意代码执行漏洞"
+year: 2024
+disclosed: 2024-05
+category: "agent-risk"
+severity: "high"
+severity_basis: "editorial"
+severity_evidence: "Attack can hijack autonomous AI agent pipelines silently and trigger arbitrary system command execution with internal credential leakage risks."
+cvss:
+cve: 
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Devin"
+  - "OpenHands"
+  - "Aider"
+language:
+  - "Multiple"
+attack_surface:
+  - "indirect-prompt-injection"
+  - "agent-autonomous-execution"
+  - "supply-chain-hijacking"
+  - "command-execution"
+references:
+  - title: "Simon Willison "
+    url: "https://simonwillison.net/2025/Aug/15/the-summer-of-johann/"
+  - title: "Dark Reading / TechTarget: Zenity CTO on dangers of Microsoft Copilot prompt injections"
+    url: "https://www.techtarget.com/searchsecurity/news/366602358/Zenity-CTO-on-dangers-of-Microsoft-Copilot-prompt-injections"
+  - title: "InjecAgent 2024 ACL Paper: Indirect Prompt Injection Attacks on Autonomous AI Agents"
+    url: "https://aclanthology.org/2024.findings-acl.624/"
+tldr: "Malicious hidden prompts in public repos can hijack autonomous AI software engineers to run arbitrary commands and steal internal secrets without human awareness."
+tags:
+  - "ai-agent"
+  - "prompt-injection"
+  - "indirect-prompt-injection"
+  - "arbitrary-command-execution"
+  - "supply-chain-risk"
+  - "autonomous-development"

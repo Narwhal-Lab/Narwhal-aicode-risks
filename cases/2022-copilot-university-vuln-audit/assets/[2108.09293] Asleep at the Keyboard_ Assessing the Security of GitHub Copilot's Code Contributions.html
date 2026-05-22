@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)https://arxiv.org/abs/2108.09293 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  <title>[2108.09293] Asleep at the Keyboard? Assessing the Security of GitHub Copilot's Code Contributions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://arxiv.org/static/browse/0.3.4/images/icons/favicon-16x16.png">
+  <link rel="manifest" href="https://arxiv.org/static/browse/0.3.4/images/icons/site.webmanifest">
+  <link rel="mask-icon" href="https://arxiv.org/static/browse/0.3.4/images/icons/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" type="text/css" media="screen" href="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/arXiv.css">
+  <link rel="stylesheet" type="text/css" media="print" href="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/arXiv-print.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/browse_search.css">
+  <script language="javascript" src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/accordion.js.下载"></script>
+  <script language="javascript" src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/optin-modal.js.下载"></script>
+  
+  <link rel="canonical" href="https://arxiv.org/abs/2108.09293">
+  <meta name="description" content="Abstract page for arXiv paper 2108.09293: Asleep at the Keyboard? Assessing the Security of GitHub Copilot&#39;s Code Contributions"><meta property="og:type" content="website">
+<meta property="og:site_name" content="arXiv.org">
+<meta property="og:title" content="Asleep at the Keyboard? Assessing the Security of GitHub Copilot&#39;s Code Contributions">
+<meta property="og:url" content="https://arxiv.org/abs/2108.09293v3">
+<meta property="og:image" content="/static/browse/0.3.4/images/arxiv-logo-fb.png">
+<meta property="og:image:secure_url" content="/static/browse/0.3.4/images/arxiv-logo-fb.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="700">
+<meta property="og:image:alt" content="arXiv logo">
+<meta property="og:description" content="There is burgeoning interest in designing AI-based systems to assist humans in designing computing systems, including tools that automatically generate computer code. The most notable of these comes in the form of the first self-described `AI pair programmer&#39;, GitHub Copilot, a language model trained over open-source GitHub code. However, code often contains bugs - and so, given the vast quantity of unvetted code that Copilot has processed, it is certain that the language model will have learned from exploitable, buggy code. This raises concerns on the security of Copilot&#39;s code contributions. In this work, we systematically investigate the prevalence and conditions that can cause GitHub Copilot to recommend insecure code. To perform this analysis we prompt Copilot to generate code in scenarios relevant to high-risk CWEs (e.g. those from MITRE&#39;s &quot;Top 25&quot; list). We explore Copilot&#39;s performance on three distinct code generation axes -- examining how it performs given diversity of weaknesses, diversity of prompts, and diversity of domains. In total, we produce 89 different scenarios for Copilot to complete, producing 1,689 programs. Of these, we found approximately 40% to be vulnerable.">
+<meta name="twitter:site" content="@arxiv">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Asleep at the Keyboard? Assessing the Security of GitHub...">
+<meta name="twitter:description" content="There is burgeoning interest in designing AI-based systems to assist humans in designing computing systems, including tools that automatically generate computer code. The most notable of these...">
+<meta name="twitter:image" content="https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png">
+<meta name="twitter:image:alt" content="arXiv logo">
+  <link rel="stylesheet" media="screen" type="text/css" href="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/tooltip.css"><link rel="stylesheet" media="screen" type="text/css" href="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/bibex.css">  <script src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/mathjaxToggle.min.js.下载" type="text/javascript"></script>  <script src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/jquery-latest.min.js.下载" type="text/javascript"></script>
+  <script src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/js.cookie.min.js.下载" type="text/javascript"></script>
+  <script src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/purify.min.js.下载"></script>
+  <script src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/toggle-labs.js.下载" type="text/javascript"></script>
+  <script src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/cite.js.下载" type="text/javascript"></script><meta name="citation_title" content="Asleep at the Keyboard? Assessing the Security of GitHub Copilot&#39;s Code Contributions"><meta name="citation_author" content="Pearce, Hammond"><meta name="citation_author" content="Ahmad, Baleegh"><meta name="citation_author" content="Tan, Benjamin"><meta name="citation_author" content="Dolan-Gavitt, Brendan"><meta name="citation_author" content="Karri, Ramesh"><meta name="citation_date" content="2021/08/20"><meta name="citation_online_date" content="2021/12/16"><meta name="citation_pdf_url" content="https://arxiv.org/pdf/2108.09293"><meta name="citation_arxiv_id" content="2108.09293"><meta name="citation_abstract" content="There is burgeoning interest in designing AI-based systems to assist humans in designing computing systems, including tools that automatically generate computer code. The most notable of these comes in the form of the first self-described `AI pair programmer&#39;, GitHub Copilot, a language model trained over open-source GitHub code. However, code often contains bugs - and so, given the vast quantity of unvetted code that Copilot has processed, it is certain that the language model will have learned from exploitable, buggy code. This raises concerns on the security of Copilot&#39;s code contributions. In this work, we systematically investigate the prevalence and conditions that can cause GitHub Copilot to recommend insecure code. To perform this analysis we prompt Copilot to generate code in scenarios relevant to high-risk CWEs (e.g. those from MITRE&#39;s &quot;Top 25&quot; list). We explore Copilot&#39;s performance on three distinct code generation axes -- examining how it performs given diversity of weaknesses, diversity of prompts, and diversity of domains. In total, we produce 89 different scenarios for Copilot to complete, producing 1,689 programs. Of these, we found approximately 40% to be vulnerable.">
+<script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({
+  messageStyle: 'none',
+  extensions: ['tex2jax.js'],
+  jax: ['input/TeX','output/HTML-CSS'],
+  tex2jax: {
+    inlineMath: [['$','$']],
+    processEscapes: true,
+    ignoreClass: '.*',
+    processClass: 'mathjax.*',
+  },
+  TeX: {
+    extensions: ['AMSmath.js', 'AMSsymbols.js', 'noErrors.js'],
+    noErrors: {
+      inlineDelimiters: ['$','$'],
+      multiLine: false,
+      style: {
+        'font-size': 'normal',
+        'border': ''
+      }
+    }
+  }
+});</script><script type="text/javascript" src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/MathJax.js.下载"></script><style type="text/css">@font-face {
+  font-family: "xm-iconfont";
+  src: url('//at.alicdn.com/t/font_792691_ptvyboo0bno.eot?t=1574048839056');
+  /* IE9 */
+  src: url('//at.alicdn.com/t/font_792691_ptvyboo0bno.eot?t=1574048839056#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'), url('//at.alicdn.com/t/font_792691_ptvyboo0bno.woff?t=1574048839056') format('woff'), url('//at.alicdn.com/t/font_792691_ptvyboo0bno.ttf?t=1574048839056') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */ url('//at.alicdn.com/t/font_792691_ptvyboo0bno.svg?t=1574048839056#iconfont') format('svg');
+  /* iOS 4.1- */
+}
+.xm-iconfont {
+  font-family: "xm-iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.xm-icon-quanxuan:before {
+  content: "\e62c";
+}
+.xm-icon-caidan:before {
+  content: "\e610";
+}
+.xm-icon-fanxuan:before {
+  content: "\e837";
+}
+.xm-icon-pifu:before {
+  content: "\e668";
+}
+.xm-icon-qingkong:before {
+  content: "\e63e";
+}
+.xm-icon-sousuo:before {
+  content: "\e600";
+}
+.xm-icon-danx:before {
+  content: "\e62b";
+}
+.xm-icon-duox:before {
+  content: "\e613";
+}
+.xm-icon-close:before {
+  content: "\e601";
+}
+.xm-icon-expand:before {
+  content: "\e641";
+}
+.xm-icon-banxuan:before {
+  content: "\e60d";
+}
+</style><style type="text/css">@-webkit-keyframes xm-upbit {
+  from {
+    -webkit-transform: translate3d(0, 30px, 0);
+    opacity: 0.3;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes xm-upbit {
+  from {
+    transform: translate3d(0, 30px, 0);
+    opacity: 0.3;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+xm-select {
+  background-color: #FFF;
+  position: relative;
+  border: 1px solid #E6E6E6;
+  border-radius: 2px;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+}
+xm-select * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+xm-select:hover,
+xm-select:focus {
+  border-color: #C0C4CC;
+}
+xm-select > .xm-tips {
+  color: #999999;
+  padding: 0 10px;
+  position: absolute;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+xm-select > .xm-icon {
+  display: inline-block;
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 10px;
+  top: 50%;
+  margin-top: -3px;
+  cursor: pointer;
+  border: 6px dashed transparent;
+  border-top-color: #C2C2C2;
+  border-top-style: solid;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+xm-select > .xm-icon-expand {
+  margin-top: -9px;
+  transform: rotate(180deg);
+}
+xm-select > .xm-label.single-row {
+  position: absolute;
+  top: 0;
+  bottom: 0px;
+  left: 0px;
+  right: 30px;
+  overflow: auto hidden;
+}
+xm-select > .xm-label.single-row .scroll {
+  overflow-y: hidden;
+}
+xm-select > .xm-label.single-row .label-content {
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+xm-select > .xm-label.auto-row .label-content {
+  flex-wrap: wrap;
+  padding-right: 30px !important;
+}
+xm-select > .xm-label.auto-row .xm-label-block > span {
+  white-space: unset;
+  height: 100%;
+}
+xm-select > .xm-label .scroll .label-content {
+  display: flex;
+  padding: 3px 10px;
+}
+xm-select > .xm-label .xm-label-block {
+  display: flex;
+  position: relative;
+  padding: 0px 5px;
+  margin: 2px 5px 2px 0;
+  border-radius: 3px;
+  align-items: baseline;
+  color: #FFF;
+}
+xm-select > .xm-label .xm-label-block > span {
+  display: flex;
+  color: #FFF;
+  white-space: nowrap;
+}
+xm-select > .xm-label .xm-label-block > i {
+  color: #FFF;
+  margin-left: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+}
+xm-select > .xm-label .xm-label-block.disabled {
+  background-color: #C2C2C2 !important;
+  cursor: no-drop !important;
+}
+xm-select > .xm-label .xm-label-block.disabled > i {
+  cursor: no-drop !important;
+}
+xm-select > .xm-body {
+  position: absolute;
+  left: 0;
+  top: 42px;
+  padding: 5px 0;
+  z-index: 999;
+  width: 100%;
+  min-width: fit-content;
+  border: 1px solid #E6E6E6;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  animation-name: xm-upbit;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+xm-select > .xm-body .scroll-body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+xm-select > .xm-body .scroll-body::-webkit-scrollbar {
+  width: 8px;
+}
+xm-select > .xm-body .scroll-body::-webkit-scrollbar-track {
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  -ms-border-radius: 2em;
+  border-radius: 2em;
+  background-color: #FFF;
+}
+xm-select > .xm-body .scroll-body::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  -ms-border-radius: 2em;
+  border-radius: 2em;
+  background-color: #C2C2C2;
+}
+xm-select > .xm-body.up {
+  top: auto;
+  bottom: 42px;
+}
+xm-select > .xm-body.relative {
+  position: relative;
+  display: block !important;
+  top: 0;
+  box-shadow: none;
+  border: none;
+  animation-name: none;
+  animation-duration: 0;
+  min-width: 100%;
+}
+xm-select > .xm-body .xm-group {
+  cursor: default;
+}
+xm-select > .xm-body .xm-group-item {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0 10px;
+  color: #999;
+  font-size: 12px;
+}
+xm-select > .xm-body .xm-option {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 10px;
+  cursor: pointer;
+}
+xm-select > .xm-body .xm-option-icon {
+  color: transparent;
+  display: flex;
+  border: 1px solid #E6E6E6;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+}
+xm-select > .xm-body .xm-option-icon.xm-custom-icon {
+  color: unset;
+  border: unset;
+}
+xm-select > .xm-body .xm-option-icon-hidden {
+  margin-right: -10px;
+}
+xm-select > .xm-body .xm-option-icon.xm-icon-danx {
+  border-radius: 100%;
+}
+xm-select > .xm-body .xm-option-content {
+  display: flex;
+  position: relative;
+  padding-left: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  ;
+  width: calc(100% - 20px);
+}
+xm-select > .xm-body .xm-option.hide-icon .xm-option-content {
+  padding-left: 0;
+}
+xm-select > .xm-body .xm-option.selected.hide-icon .xm-option-content {
+  color: #FFF !important;
+}
+xm-select > .xm-body .xm-option .loader {
+  width: 0.8em;
+  height: 0.8em;
+  margin-right: 6px;
+  color: #C2C2C2;
+}
+xm-select > .xm-body .xm-select-empty {
+  text-align: center;
+  color: #999;
+}
+xm-select > .xm-body .disabled {
+  cursor: no-drop;
+}
+xm-select > .xm-body .disabled:hover {
+  background-color: #FFF;
+}
+xm-select > .xm-body .disabled .xm-option-icon {
+  border-color: #C2C2C2 !important;
+}
+xm-select > .xm-body .disabled .xm-option-content {
+  color: #C2C2C2 !important;
+}
+xm-select > .xm-body .disabled.selected > .xm-option-icon {
+  color: #C2C2C2 !important;
+}
+xm-select > .xm-body .xm-search {
+  background-color: #FFF !important;
+  position: relative;
+  padding: 0 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+xm-select > .xm-body .xm-search > i {
+  position: absolute;
+  color: ;
+}
+xm-select > .xm-body .xm-search-input {
+  border: none;
+  border-bottom: 1px solid #E6E6E6;
+  padding-left: 27px;
+  cursor: text;
+}
+xm-select > .xm-body .xm-paging {
+  padding: 0 10px;
+  display: flex;
+  margin-top: 5px;
+}
+xm-select > .xm-body .xm-paging > span:first-child {
+  border-radius: 2px 0 0 2px;
+}
+xm-select > .xm-body .xm-paging > span:last-child {
+  border-radius: 0 2px 2px 0;
+}
+xm-select > .xm-body .xm-paging > span {
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  vertical-align: middle;
+  margin: 0 -1px 0 0;
+  background-color: #fff;
+  color: #333;
+  font-size: 12px;
+  border: 1px solid #e2e2e2;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow: hidden;
+  min-width: 50px;
+}
+xm-select > .xm-body .xm-toolbar {
+  padding: 0 10px;
+  display: flex;
+  margin: -3px 0;
+  cursor: default;
+}
+xm-select > .xm-body .xm-toolbar .toolbar-tag {
+  cursor: pointer;
+  display: flex;
+  margin-right: 20px;
+  color: ;
+  align-items: baseline;
+}
+xm-select > .xm-body .xm-toolbar .toolbar-tag:hover {
+  opacity: 0.8;
+}
+xm-select > .xm-body .xm-toolbar .toolbar-tag:active {
+  opacity: 1;
+}
+xm-select > .xm-body .xm-toolbar .toolbar-tag > i {
+  margin-right: 2px;
+  font-size: 14px;
+}
+xm-select > .xm-body .xm-toolbar .toolbar-tag:last-child {
+  margin-right: 0;
+}
+xm-select > .xm-body .xm-body-custom {
+  line-height: initial;
+  cursor: default;
+}
+xm-select > .xm-body .xm-body-custom * {
+  box-sizing: initial;
+}
+xm-select > .xm-body .xm-tree {
+  position: relative;
+}
+xm-select > .xm-body .xm-tree-icon {
+  display: inline-block;
+  margin-right: 3px;
+  cursor: pointer;
+  border: 6px dashed transparent;
+  border-left-color: #C2C2C2;
+  border-left-style: solid;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  z-index: 2;
+  visibility: hidden;
+}
+xm-select > .xm-body .xm-tree-icon.expand {
+  margin-top: 3px;
+  margin-right: 5px;
+  margin-left: -2px;
+  transform: rotate(90deg);
+}
+xm-select > .xm-body .xm-tree-icon.xm-visible {
+  visibility: visible;
+}
+xm-select > .xm-body .xm-tree .left-line {
+  position: absolute;
+  left: 13px;
+  width: 0;
+  z-index: 1;
+  border-left: 1px dotted #c0c4cc !important;
+}
+xm-select > .xm-body .xm-tree .top-line {
+  position: absolute;
+  left: 13px;
+  height: 0;
+  z-index: 1;
+  border-top: 1px dotted #c0c4cc !important;
+}
+xm-select > .xm-body .xm-tree .xm-tree-icon + .top-line {
+  margin-left: 1px;
+}
+xm-select > .xm-body .scroll-body > .xm-tree > .xm-option > .top-line,
+xm-select > .xm-body .scroll-body > .xm-option > .top-line {
+  width: 0 !important;
+}
+xm-select > .xm-body .xm-cascader-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 5px 0;
+  border: 1px solid #E6E6E6;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  margin: -1px;
+}
+xm-select > .xm-body .xm-cascader-box::before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-right-color: #E6E6E6;
+  top: 10px;
+  left: -12px;
+}
+xm-select > .xm-body .xm-cascader-box::after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-right-color: #fff;
+  top: 10px;
+  left: -11px;
+}
+xm-select > .xm-body .xm-cascader-scroll {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+xm-select > .xm-body.cascader {
+  width: unset;
+  min-width: unset;
+}
+xm-select > .xm-body.cascader .xm-option-content {
+  padding-left: 8px;
+}
+xm-select > .xm-body.cascader .disabled .xm-right-arrow {
+  color: #C2C2C2 !important;
+}
+xm-select > .xm-body.cascader .hide-icon.disabled .xm-right-arrow {
+  color: #999 !important;
+}
+xm-select .xm-input {
+  cursor: pointer;
+  border-radius: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #E6E6E6;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #FFF;
+  line-height: 1.3;
+  padding-left: 10px;
+  outline: 0;
+  user-select: text;
+  -ms-user-select: text;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+}
+xm-select .dis {
+  display: none;
+}
+xm-select .loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+xm-select .loader {
+  border: 0.2em dotted currentcolor;
+  border-radius: 50%;
+  -webkit-animation: 1s loader linear infinite;
+  animation: 1s loader linear infinite;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  color: inherit;
+  vertical-align: middle;
+  pointer-events: none;
+}
+xm-select .xm-select-default {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: none;
+  visibility: hidden;
+}
+xm-select .xm-select-disabled {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: no-drop;
+  z-index: 2;
+  opacity: 0.3;
+  background-color: #FFF;
+}
+xm-select .item--divided {
+  border-top: 1px solid #ebeef5;
+  width: calc(100% - 20px);
+  cursor: initial;
+}
+xm-select .xm-right-arrow {
+  position: absolute;
+  color: ;
+  right: 5px;
+  top: -1px;
+  font-weight: 700;
+  transform: scale(0.6, 1);
+}
+xm-select .xm-right-arrow::after {
+  content: '>';
+}
+xm-select[size='large'] {
+  min-height: 40px;
+  line-height: 40px;
+}
+xm-select[size='large'] .xm-input {
+  height: 40px;
+}
+xm-select[size='large'] .xm-label .scroll .label-content {
+  line-height: 34px;
+}
+xm-select[size='large'] .xm-label .xm-label-block {
+  height: 30px;
+  line-height: 30px;
+}
+xm-select[size='large'] .xm-body .xm-option .xm-option-icon {
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+}
+xm-select[size='large'] .xm-paging > span {
+  height: 34px;
+  line-height: 34px;
+}
+xm-select[size='large'] .xm-tree .left-line {
+  height: 100%;
+  bottom: 20px;
+}
+xm-select[size='large'] .xm-tree .left-line-group {
+  height: calc(100% - 40px);
+}
+xm-select[size='large'] .xm-tree .xm-tree-icon.xm-hidden + .top-line {
+  top: 19px;
+}
+xm-select[size='large'] .item--divided {
+  margin: 10px;
+}
+xm-select {
+  min-height: 36px;
+  line-height: 36px;
+}
+xm-select .xm-input {
+  height: 36px;
+}
+xm-select .xm-label .scroll .label-content {
+  line-height: 30px;
+}
+xm-select .xm-label .xm-label-block {
+  height: 26px;
+  line-height: 26px;
+}
+xm-select .xm-body .xm-option .xm-option-icon {
+  height: 18px;
+  width: 18px;
+  font-size: 18px;
+}
+xm-select .xm-paging > span {
+  height: 30px;
+  line-height: 30px;
+}
+xm-select .xm-tree .left-line {
+  height: 100%;
+  bottom: 18px;
+}
+xm-select .xm-tree .left-line-group {
+  height: calc(100% - 36px);
+}
+xm-select .xm-tree .xm-tree-icon.xm-hidden + .top-line {
+  top: 17px;
+}
+xm-select .item--divided {
+  margin: 9px;
+}
+xm-select[size='small'] {
+  min-height: 32px;
+  line-height: 32px;
+}
+xm-select[size='small'] .xm-input {
+  height: 32px;
+}
+xm-select[size='small'] .xm-label .scroll .label-content {
+  line-height: 26px;
+}
+xm-select[size='small'] .xm-label .xm-label-block {
+  height: 22px;
+  line-height: 22px;
+}
+xm-select[size='small'] .xm-body .xm-option .xm-option-icon {
+  height: 16px;
+  width: 16px;
+  font-size: 16px;
+}
+xm-select[size='small'] .xm-paging > span {
+  height: 26px;
+  line-height: 26px;
+}
+xm-select[size='small'] .xm-tree .left-line {
+  height: 100%;
+  bottom: 16px;
+}
+xm-select[size='small'] .xm-tree .left-line-group {
+  height: calc(100% - 32px);
+}
+xm-select[size='small'] .xm-tree .xm-tree-icon.xm-hidden + .top-line {
+  top: 15px;
+}
+xm-select[size='small'] .item--divided {
+  margin: 8px;
+}
+xm-select[size='mini'] {
+  min-height: 28px;
+  line-height: 28px;
+}
+xm-select[size='mini'] .xm-input {
+  height: 28px;
+}
+xm-select[size='mini'] .xm-label .scroll .label-content {
+  line-height: 22px;
+}
+xm-select[size='mini'] .xm-label .xm-label-block {
+  height: 18px;
+  line-height: 18px;
+}
+xm-select[size='mini'] .xm-body .xm-option .xm-option-icon {
+  height: 14px;
+  width: 14px;
+  font-size: 14px;
+}
+xm-select[size='mini'] .xm-paging > span {
+  height: 22px;
+  line-height: 22px;
+}
+xm-select[size='mini'] .xm-tree .left-line {
+  height: 100%;
+  bottom: 14px;
+}
+xm-select[size='mini'] .xm-tree .left-line-group {
+  height: calc(100% - 28px);
+}
+xm-select[size='mini'] .xm-tree .xm-tree-icon.xm-hidden + .top-line {
+  top: 13px;
+}
+xm-select[size='mini'] .item--divided {
+  margin: 7px;
+}
+.layui-form-pane xm-select {
+  margin: -1px -1px -1px 0;
+}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style></head>
+
+<body class="with-cu-identity"><div id="MathJax_Message" style="display: none;"></div>
+  
+  
+  <div class="flex-wrap-footer">
+    <header>
+      <a href="https://arxiv.org/abs/2108.09293#content" class="is-sr-only">Skip to main content</a>
+      <!-- start desktop header -->
+      <div class="columns is-vcentered is-hidden-mobile" id="cu-identity">
+        <div class="column" id="cu-logo">
+          <a href="https://www.cornell.edu/"><img src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/cornell-reduced-white-SMALL.svg" alt="Cornell University"></a>
+        </div><!-- /from April 7 at 1:00 AM to May 29 at 21:40 --><!-- /from May 2 at 1:00 AM to May 5 at 9:45 AM --><div class="column banner-minimal">
+            <a href="https://tech.cornell.edu/arxiv/" target="_blank">Learn about arXiv becoming an independent nonprofit.</a>
+        </div><div class="column" id="support-ack">
+          <span id="support-ack-url">We gratefully acknowledge support from the Simons Foundation, <a href="https://info.arxiv.org/about/ourmembers.html">member institutions</a>, and all contributors.</span>
+          <a href="https://info.arxiv.org/about/donate.html" class="btn-header-donate">Donate</a>
+        </div>
+      </div>
+
+      <div id="header" class="is-hidden-mobile">
+<a aria-hidden="true" tabindex="-1" href="https://arxiv.org/IgnoreMe"></a>
+  <div class="header-breadcrumbs is-hidden-mobile">
+    <a href="https://arxiv.org/"><img src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/arxiv-logo-one-color-white.svg" alt="arxiv logo" style="height:40px;"></a> <span>&gt;</span> <a href="https://arxiv.org/list/cs/recent">cs</a> <span>&gt;</span> arXiv:2108.09293
+  </div>
+
+        <div class="columns is-vcentered is-mobile" style="justify-content: flex-end;">
+        </div>
+
+          <div class="search-block level-right">
+    <form class="level-item mini-search" method="GET" action="https://arxiv.org/search">
+      <div class="field has-addons">
+        <div class="control">
+          <input class="input is-small" type="text" name="query" placeholder="Search..." aria-label="Search term or terms">
+          <p class="help"><a href="https://info.arxiv.org/help">Help</a> | <a href="https://arxiv.org/search/advanced">Advanced Search</a></p>
+        </div>
+        <div class="control">
+          <div class="select is-small">
+            <select name="searchtype" aria-label="Field to search">
+              <option value="all" selected="selected">All fields</option>
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+              <option value="abstract">Abstract</option>
+              <option value="comments">Comments</option>
+              <option value="journal_ref">Journal reference</option>
+              <option value="acm_class">ACM classification</option>
+              <option value="msc_class">MSC classification</option>
+              <option value="report_num">Report number</option>
+              <option value="paper_id">arXiv identifier</option>
+              <option value="doi">DOI</option>
+              <option value="orcid">ORCID</option>
+              <option value="author_id">arXiv author ID</option>
+              <option value="help">Help pages</option>
+              <option value="full_text">Full text</option>
+            </select>
+          </div>
+        </div>
+        <input type="hidden" name="source" value="header">
+        <button class="button is-small is-cul-darker">Search</button>
+      </div>
+    </form>
+  </div>
+     </div><!-- /end desktop header -->
+
+      <div class="mobile-header">
+        <div class="columns is-mobile">
+          <div class="column logo-arxiv"><a href="https://arxiv.org/"><img src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/arxiv-logomark-small-white.svg" alt="arXiv logo" style="height:60px;"></a></div>
+          <div class="column logo-cornell"><a href="https://www.cornell.edu/">
+            <picture>
+              <source media="(min-width: 501px)" srcset="/static/browse/0.3.4/images/icons/cu/cornell-reduced-white-SMALL.svg  400w" sizes="400w">
+              <source srcset="/static/browse/0.3.4/images/icons/cu/cornell_seal_simple_black.svg 2x">
+              <img src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/cornell-reduced-white-SMALL.svg" alt="Cornell University Logo">
+            </picture>
+          </a></div>
+          <div class="column nav" id="toggle-container">
+            <button class="toggle-control" aria-label="Open search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon filter-white" aria-hidden="true"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button>
+            <div class="mobile-toggle-block toggle-target">
+              <form class="mobile-search-form" method="GET" action="https://arxiv.org/search">
+                <div class="field has-addons">
+                  <input class="input" type="text" name="query" placeholder="Search..." aria-label="Search term or terms">
+                  <input type="hidden" name="source" value="header">
+                  <input type="hidden" name="searchtype" value="all">
+                  <button class="button">GO</button>
+                </div>
+              </form>
+            </div>
+
+            <button class="toggle-control" aria-label="Open navigation menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon filter-white" aria-hidden="true"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg></button>
+            <div class="mobile-toggle-block toggle-target">
+              <nav class="mobile-menu" aria-labelledby="mobilemenulabel">
+                <h2 id="mobilemenulabel">quick links</h2>
+                <ul>
+                    <li><a href="https://arxiv.org/login">Login</a></li>
+                    <li><a href="https://info.arxiv.org/help">Help Pages</a></li>
+                    <li><a href="https://info.arxiv.org/about">About</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div><!-- /end mobile-header -->
+    </header>
+
+    <main>
+      <div id="content">
+<!--
+rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+    <rdf:Description
+        rdf:about="/abs/2108.09293"
+        dc:identifier="/abs/2108.09293"
+        dc:title="Asleep at the Keyboard? Assessing the Security of GitHub Copilot&#39;s Code Contributions"
+        trackback:ping="/trackback/2108.09293" />
+    </rdf:RDF>
+--><div id="abs-outer">
+
+  <div class="leftcolumn">
+    <div class="subheader">
+      <h1>Computer Science &gt; Cryptography and Security</h1>
+    </div>
+
+    <div class="header-breadcrumbs-mobile">
+      <strong>arXiv:2108.09293</strong> (cs)
+    </div>
+<link rel="stylesheet" type="text/css" href="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/abs.css">
+<div id="content-inner">
+  <div id="abs">
+    <div class="dateline">
+  [Submitted on 20 Aug 2021 (<a href="https://arxiv.org/abs/2108.09293v1">v1</a>), last revised 16 Dec 2021 (this version, v3)]</div>
+    <h1 class="title mathjax"><span class="descriptor">Title:</span>Asleep at the Keyboard? Assessing the Security of GitHub Copilot's Code Contributions</h1>
+    <div class="authors"><span class="descriptor">Authors:</span><a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Pearce,+H" rel="nofollow">Hammond Pearce</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Ahmad,+B" rel="nofollow">Baleegh Ahmad</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Tan,+B" rel="nofollow">Benjamin Tan</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Dolan-Gavitt,+B" rel="nofollow">Brendan Dolan-Gavitt</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Karri,+R" rel="nofollow">Ramesh Karri</a></div>            <div id="download-button-info" hidden="">View a PDF of the paper titled Asleep at the Keyboard? Assessing the Security of GitHub Copilot's Code Contributions, by Hammond Pearce and 4 other authors</div>
+    <a class="mobile-submission-download" href="https://arxiv.org/pdf/2108.09293">View PDF</a>
+
+
+
+    <blockquote class="abstract mathjax">
+            <span class="descriptor">Abstract:</span>There is burgeoning interest in designing AI-based systems to assist humans in designing computing systems, including tools that automatically generate computer code. The most notable of these comes in the form of the first self-described `AI pair programmer', GitHub Copilot, a language model trained over open-source GitHub code. However, code often contains bugs - and so, given the vast quantity of unvetted code that Copilot has processed, it is certain that the language model will have learned from exploitable, buggy code. This raises concerns on the security of Copilot's code contributions. In this work, we systematically investigate the prevalence and conditions that can cause GitHub Copilot to recommend insecure code. To perform this analysis we prompt Copilot to generate code in scenarios relevant to high-risk CWEs (e.g. those from MITRE's "Top 25" list). We explore Copilot's performance on three distinct code generation axes -- examining how it performs given diversity of weaknesses, diversity of prompts, and diversity of domains. In total, we produce 89 different scenarios for Copilot to complete, producing 1,689 programs. Of these, we found approximately 40% to be vulnerable.
+    </blockquote>
+
+    <!--CONTEXT-->
+    <div class="metatable">
+      <table summary="Additional metadata">        <tbody><tr>
+          <td class="tablecell label">Comments:</td>
+          <td class="tablecell comments mathjax">Accepted for publication in IEEE Symposium on Security and Privacy 2022</td>
+        </tr>
+<tr>
+          <td class="tablecell label">Subjects:</td>
+          <td class="tablecell subjects">
+            <span class="primary-subject">Cryptography and Security (cs.CR)</span>; Artificial Intelligence (cs.AI)</td>
+        </tr><tr>
+          <td class="tablecell label">Cite as:</td>
+          <td class="tablecell arxivid"><span class="arxivid"><a href="https://arxiv.org/abs/2108.09293">arXiv:2108.09293</a> [cs.CR]</span></td>
+        </tr>
+        <tr>
+          <td class="tablecell label">&nbsp;</td>
+          <td class="tablecell arxividv">(or <span class="arxivid">
+              <a href="https://arxiv.org/abs/2108.09293v3">arXiv:2108.09293v3</a> [cs.CR]</span> for this version)
+          </td>
+        </tr>
+        <tr>
+          <td class="tablecell label">&nbsp;</td>
+          <td class="tablecell arxivdoi">              <a href="https://doi.org/10.48550/arXiv.2108.09293" id="arxiv-doi-link">https://doi.org/10.48550/arXiv.2108.09293<a class="easyScholarDOI" target="_blank" href="https://www.sci-hub.vg/10.48550/arXiv.2108.09293"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="22px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">  <image id="image0" width="32" height="32" x="0" y="0" href="data:image/png;base64,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"></image></svg></a></a><div class="button-and-tooltip">
+              <button class="more-info" aria-describedby="more-info-desc-1">
+                <svg height="15" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" class=""></path></svg>
+                <span class="visually-hidden">Focus to learn more</span>
+              </button>
+              <!-- tooltip description -->
+              <div role="tooltip" id="more-info-desc-1">
+                <span class="left-corner"></span>                  arXiv-issued DOI via DataCite</div>
+            </div>
+          </td>
+        </tr></tbody></table>
+    </div>
+  </div>
+</div>
+    <div class="submission-history">
+      <h2>Submission history</h2> From: Hammond Pearce [<a href="https://arxiv.org/show-email/c6e686d6/2108.09293" rel="nofollow">view email</a>]      <br>            <strong><a href="https://arxiv.org/abs/2108.09293v1" rel="nofollow">[v1]</a></strong>
+        Fri, 20 Aug 2021 17:30:33 UTC (847 KB)<br>
+            <strong><a href="https://arxiv.org/abs/2108.09293v2" rel="nofollow">[v2]</a></strong>
+        Mon, 23 Aug 2021 23:52:51 UTC (850 KB)<br>
+    <strong>[v3]</strong>
+        Thu, 16 Dec 2021 15:54:11 UTC (870 KB)<br>
+</div>
+  </div>
+  <!--end leftcolumn-->
+<div class="extra-services">    <div class="full-text">
+      <a name="other"></a>
+      <span class="descriptor">Full-text links:</span>
+      <h2>Access Paper:</h2>
+      <ul>
+  <div id="download-button-info" hidden="">
+View a PDF of the paper titled Asleep at the Keyboard? Assessing the Security of GitHub Copilot's Code Contributions, by Hammond Pearce and 4 other authors</div><li><a href="https://arxiv.org/pdf/2108.09293" aria-describedby="download-button-info" accesskey="f" class="abs-button download-pdf">View PDF</a></li><li><a href="https://arxiv.org/src/2108.09293" class="abs-button download-eprint">TeX Source
+ </a></li></ul>
+      <div class="abs-license"><a href="http://arxiv.org/licenses/nonexclusive-distrib/1.0/" title="Rights to this article">view license</a></div>
+    </div>
+    <!--end full-text-->    <div class="browse">
+    <h3 class="browse-context-heading">Current browse context:</h3>
+  <div class="current">cs.CR</div>
+
+  <div class="prevnext">
+<span class="arrow">
+      <a class="abs-button prev-url" href="https://arxiv.org/prevnext?id=2108.09293&amp;function=prev&amp;context=cs.CR" accesskey="p" title="previous in cs.CR (accesskey p)" rel="nofollow">&lt;&nbsp;prev</a>
+    </span>
+    <span class="is-hidden-mobile">&nbsp; | &nbsp;</span>    <span class="arrow">
+      <a class="abs-button next-url" href="https://arxiv.org/prevnext?id=2108.09293&amp;function=next&amp;context=cs.CR" accesskey="n" title="next in cs.CR (accesskey n)" rel="nofollow">next&nbsp;&gt;</a>
+    </span><br>
+  </div><div class="list">
+    <a class="abs-button abs-button-grey abs-button-small context-new" href="https://arxiv.org/list/cs.CR/new" rel="nofollow">new</a>
+    <span class="is-hidden-mobile"> | </span>
+    <a class="abs-button abs-button-grey abs-button-small context-recent" href="https://arxiv.org/list/cs.CR/recent" rel="nofollow">recent</a>
+    <span class="is-hidden-mobile"> | </span><a class="abs-button abs-button-grey abs-button-small context-id" href="https://arxiv.org/list/cs.CR/2021-08" rel="nofollow">2021-08</a>
+  </div><div class="abs-switch-cat">
+    Change to browse by:
+    <div class="switch context-change">
+        <a href="https://arxiv.org/abs/2108.09293?context=cs" rel="nofollow">cs</a><br class="is-hidden-mobile">
+        <a class="subclass" href="https://arxiv.org/abs/2108.09293?context=cs.AI" rel="nofollow">cs.AI</a><br class="is-hidden-mobile">
+    </div>
+  </div>
+
+    </div>
+      <div class="extra-ref-cite">
+        <h3>References &amp; Citations</h3>
+        <ul>
+          <li><a class="abs-button abs-button-small cite-ads" href="https://ui.adsabs.harvard.edu/abs/arXiv:2108.09293">NASA ADS</a></li><li><a class="abs-button abs-button-small cite-google-scholar" href="https://scholar.google.com/scholar_lookup?arxiv_id=2108.09293" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a class="abs-button abs-button-small cite-semantic-scholar" href="https://api.semanticscholar.org/arXiv:2108.09293" target="_blank" rel="noopener">Semantic Scholar</a></li>
+        </ul>
+        <div style="clear:both;"></div>
+      </div>
+
+<div class="dblp">
+    <h3><a href="https://dblp.uni-trier.de/">DBLP</a> - CS Bibliography</h3>
+    <div class="list">
+      <a href="https://dblp.uni-trier.de/db/journals/corr/corr2108.html#abs-2108-09293" title="listing on DBLP">listing</a> | <a href="https://dblp.uni-trier.de/rec/bibtex/journals/corr/abs-2108-09293" title="DBLP bibtex record">bibtex</a>    </div>
+    <div class="list">
+<a href="https://dblp.uni-trier.de/search/author?author=Benjamin%20Tan" title="DBLP author search">Benjamin Tan</a><br><a href="https://dblp.uni-trier.de/search/author?author=Brendan%20Dolan-Gavitt" title="DBLP author search">Brendan Dolan-Gavitt</a><br><a href="https://dblp.uni-trier.de/search/author?author=Ramesh%20Karri" title="DBLP author search">Ramesh Karri</a>    </div>
+  </div><div class="extra-ref-cite">
+    <button type="button" id="bib-cite-trigger" class="bib-cite-button abs-button">export BibTeX citation</button>
+    <span id="bib-cite-loading" hidden="true">Loading...</span>
+</div>
+
+<div id="bib-cite-modal" class="bib-modal" hidden="true">
+    <div class="bib-modal-content">
+        <div class="bib-modal-title">
+            <h2>BibTeX formatted citation</h2>
+            <button type="button" class="bib-modal-close" aria-label="Close">×</button>
+        </div>
+        <div>
+            <textarea id="bib-cite-target" class="bib-citation-content" aria-label="loading the citation">loading...</textarea>
+        </div>
+        <div>
+            <span>Data provided by: </span>
+            <a id="bib-cite-source-api"></a>
+        </div>
+    </div>
+</div><div class="bookmarks">
+  <div><h3>Bookmark</h3></div><a class="abs-button abs-button-grey abs-button-small" href="http://www.bibsonomy.org/BibtexHandler?requTask=upload&amp;url=https://arxiv.org/abs/2108.09293&amp;description=Asleep%20at%20the%20Keyboard?%20Assessing%20the%20Security%20of%20GitHub%20Copilot%27s%20Code%20Contributions" title="Bookmark on BibSonomy">
+    <img src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/bibsonomy.png" alt="BibSonomy">
+  </a>
+  <a class="abs-button abs-button-grey abs-button-small" href="https://reddit.com/submit?url=https://arxiv.org/abs/2108.09293&amp;title=Asleep%20at%20the%20Keyboard?%20Assessing%20the%20Security%20of%20GitHub%20Copilot%27s%20Code%20Contributions" title="Bookmark on Reddit">
+    <img src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/reddit.png" alt="Reddit">
+  </a>
+</div>  </div>
+  <!--end extra-services-->
+<!-- LABS AREA -->
+<div id="labstabs">
+  <div class="labstabs" role="tablist" aria-label="arXivLabs tools"><input type="radio" name="tabs" id="tabone" checked="checked" class="labs-tab-input">
+    <label for="tabone" role="tab" aria-selected="true" aria-controls="tabpanel-one" id="tab-label-one">Bibliographic Tools</label>
+    <div class="tab labs-display-bib" role="tabpanel" id="tabpanel-one" aria-labelledby="tab-label-one">
+      <h1>Bibliographic and Citation Tools</h1>
+      <div class="toggle">
+        <div class="columns is-mobile lab-row">
+          <div class="column lab-switch">
+            <label class="switch">
+              <input id="bibex-toggle" type="checkbox" class="lab-toggle" data-script-url="/static/browse/0.3.4/bibex/bibex.js?20241202">
+              <span class="slider"></span>
+              <span class="is-sr-only">Bibliographic Explorer Toggle</span>
+            </label>
+          </div>
+          <div class="column lab-name">
+            <span id="label-for-bibex">Bibliographic Explorer</span> <em>(<a href="https://info.arxiv.org/labs/showcase.html#arxiv-bibliographic-explorer">What is the Explorer?</a>)</em>
+          </div>
+        </div>
+        <div class="columns is-mobile lab-row">
+          <div class="column lab-switch">
+            <label class="switch">
+              <input id="connectedpapers-toggle" type="checkbox" class="lab-toggle" data-script-url="/static/browse/0.3.4/js/connectedpapers.js" aria-labelledby="label-for-connected-papers">
+              <span class="slider"></span>
+              <span class="is-sr-only">Connected Papers Toggle</span>
+            </label>
+          </div>
+          <div class="column lab-name">
+            <span id="label-for-connected-papers">Connected Papers</span> <em>(<a href="https://www.connectedpapers.com/about" target="_blank">What is Connected Papers?</a>)</em>
+          </div>
+        </div><div class="columns is-mobile lab-row">
+          <div class="column lab-switch">
+            <label class="switch">
+              <input id="litmaps-toggle" type="checkbox" class="lab-toggle" data-script-url="/static/browse/0.3.4/js/litmaps.js?20210617" aria-labelledby="label-for-litmaps">
+              <span class="slider"></span>
+              <span class="is-sr-only">Litmaps Toggle</span>
+            </label>
+          </div>
+          <div class="column lab-name">
+            <span id="label-for-litmaps">Litmaps</span> <em>(<a href="https://www.litmaps.co/" target="_blank">What is Litmaps?</a>)</em>
+          </div>
+        </div>
+        <div class="columns is-mobile lab-row">
+          <div class="column lab-switch">
+            <label class="switch">
+              <input id="scite-toggle" type="checkbox" class="lab-toggle" data-script-url="/static/browse/0.3.4/js/scite.js?20210617" aria-labelledby="label-for-scite">
+              <span class="slider"></span>
+              <span class="is-sr-only">scite.ai Toggle</span>
+            </label>
+          </div>
+          <div class="column lab-name">
+            <span id="label-for-scite">scite Smart Citations</span> <em>(<a href="https://www.scite.ai/" target="_blank">What are Smart Citations?</a>)</em>
+          </div>
+        </div>
+      </div>
+        <div class="labs-content-placeholder labs-display" style="display: none;"></div>
+        <div style="min-height: 15px" id="connectedpapers-output"></div>
+        <div style="min-height: 15px" id="litmaps-open-in"></div>
+        <div style="min-height: 15px" id="scite-open-in"></div>
+    </div>
+
+
+    <input type="radio" name="tabs" id="tabtwo" class="labs-tab-input">
+    <label for="tabtwo" role="tab" aria-selected="false" aria-controls="tabpanel-two" id="tab-label-two">Code, Data, Media</label>
+    <div class="tab" role="tabpanel" id="tabpanel-two" aria-labelledby="tab-label-two">
+      <h1>Code, Data and Media Associated with this Article</h1>
+      <div class="toggle">
+        <div class="columns is-mobile lab-row">
+          <div class="column lab-switch">
+            <label class="switch">
+              <input id="alphaxiv-toggle" data-script-url="/static/browse/0.3.4/js/alphaxiv.js" type="checkbox" class="lab-toggle" aria-labelledby="label-for-alphaxiv">
+              <span class="slider"></span>
+              <span class="is-sr-only">alphaXiv Toggle</span>
+            </label>
+          </div>
+          <div class="column lab-name">
+            <span id="label-for-alphaxiv">alphaXiv</span> <em>(<a href="https://alphaxiv.org/" target="_blank">What is alphaXiv?</a>)</em>
+          </div>
+        </div>
+
+        <div class="columns is-mobile lab-row">
+          <div class="column lab-switch">
+            <label class="switch">
+              <input id="catalyzex-toggle" data-script-url="/static/browse/0.3.4/js/catalyzex.js" type="checkbox" class="lab-toggle" aria-labelledby="label-for-cx">
+              <span class="slider"></span>
+              <span class="is-sr-only">Links to Code Toggle</span>
+            </label>
+          </div>
+          <div class="column lab-name">
+            <span id="label-for-cx">CatalyzeX Code Finder for Papers</span> <em>(<a href="https://www.catalyzex.com/" target="_blank">What is CatalyzeX?</a>)</em>
+          </div>
+        </div>
+
+        <div class="columns is-mobile lab-row">
+          <div class="column lab-switch">
+            <label class="switch">
+              <input id="dagshub-toggle" data-script-url="/static/browse/0.3.4/js/dagshub.js" type="checkbox" class="lab-toggle" aria-labelledby="label-for-dagshub">
+              <span class="slider"></span>
+              <span class="is-sr-only">DagsHub Toggle</span>
+            </label>
+          </div>
+          <div class="column lab-name">
+            <span id="label-for-dagshub">DagsHub</span> <em>(<a href="https://dagshub.com/" target="_blank">What is DagsHub?</a>)</em>
+          </div>
+        </div>
+  
+        <div class="columns is-mobile lab-row">
+          <div class="column lab-switch">
+            <label class="switch">
+              <input id="gotitpub-toggle" data-script-url="/static/browse/0.3.4/js/gotitpub.js" type="checkbox" class="lab-toggle" aria-labelledby="label-for-gotitpub">
+              <span class="slider"></span>
+              <span class="is-sr-only">GotitPub Toggle</span>
+            </label>
+          </div>
+          <div class="column lab-name">
+            <span id="label-for-gotitpub">Gotit.pub</span> <em>(<a href="http://gotit.pub/faq" target="_blank">What is GotitPub?</a>)</em>
+          </div>
+        </div>
+
+        <div class="columns is-mobile lab-row">
+          <div class="column lab-switch">
+            <label class="switch">
+              <input id="huggingface-toggle" data-script-url="/static/browse/0.3.4/js/huggingface.js" type="checkbox" class="lab-toggle" aria-labelledby="label-for-huggingface">
+              <span class="slider"></span>
+              <span class="is-sr-only">Huggingface Toggle</span>
+            </label>
+          </div>
+          <div class="column lab-name">
+            <span id="label-for-huggingface">Hugging Face</span> <em>(<a href="https://huggingface.co/huggingface" target="_blank">What is Huggingface?</a>)</em>
+          </div>
+        </div>
+
+        <div class="columns is-mobile lab-row">
+          <div class="column lab-switch">
+            <label class="switch">
+              <input id="sciencecast-toggle" data-script-url="/static/browse/0.3.4/js/sciencecast.js" type="checkbox" class="lab-toggle" aria-labelledby="label-for-sciencecast">
+              <span class="slider"></span>
+              <span class="is-sr-only">ScienceCast Toggle</span>
+            </label>
+          </div>
+          <div class="column lab-name">
+            <span id="label-for-sciencecast">ScienceCast</span> <em>(<a href="https://sciencecast.org/welcome" target="_blank">What is ScienceCast?</a>)</em>
+          </div>
+        </div>
+      </div>
+
+      <div id="alphaxiv-output" style="display:none"></div>
+      <div id="catalyzex-output" style="display:none"></div>
+      <div id="dagshub-output" style="display:none"></div>
+      <div id="gotitpub-output" style="display:none"></div>
+      <div id="sciencecast-output" style="display:none"></div>
+      <div id="huggingface-output" style="display:none"></div>
+    </div>
+
+
+      <input type="radio" name="tabs" id="labstabs-demos-input" class="labs-tab-input">
+      <label for="labstabs-demos-input" id="labstabs-demos-label" role="tab" aria-selected="false" aria-controls="tabpanel-demos">Demos</label>
+      <div class="tab" role="tabpanel" id="tabpanel-demos" aria-labelledby="labstabs-demos-label">
+        <h1>Demos</h1>
+        <div class="toggle">
+          <div class="columns is-mobile lab-row">
+            <div class="column lab-switch">
+              <label class="switch">
+                <input id="replicate-toggle" data-script-url="/static/browse/0.3.4/js/replicate.js" type="checkbox" class="lab-toggle" aria-labelledby="label-for-replicate">
+                <span class="slider"></span>
+                <span class="is-sr-only">Replicate Toggle</span>
+              </label>
+            </div>
+            <div class="column lab-name">
+              <span id="label-for-replicate">Replicate</span> <em>(<a href="https://replicate.com/docs/arxiv/about" target="_blank">What is Replicate?</a>)</em>
+            </div>
+          </div>
+          <div class="columns is-mobile lab-row">
+            <div class="column lab-switch">
+              <label class="switch">
+                <input id="spaces-toggle" data-script-url="/static/browse/0.3.4/js/spaces.js" type="checkbox" class="lab-toggle" aria-labelledby="label-for-spaces">
+                <span class="slider"></span>
+                <span class="is-sr-only">Spaces Toggle</span>
+              </label>
+            </div>
+            <div class="column lab-name">
+              <span id="label-for-spaces">Hugging Face Spaces</span> <em>(<a href="https://huggingface.co/docs/hub/spaces" target="_blank">What is Spaces?</a>)</em>
+            </div>
+          </div>
+          <div class="columns is-mobile lab-row">
+            <div class="column lab-switch">
+              <label class="switch">
+                <input id="txyz-toggle" data-script-url="/static/browse/0.3.4/js/txyz.js" type="checkbox" class="lab-toggle" aria-labelledby="label-for-txyz">
+                <span class="slider"></span>
+                <span class="is-sr-only">Spaces Toggle</span>
+              </label>
+            </div>
+            <div class="column lab-name">
+              <span id="label-for-txyz">TXYZ.AI</span> <em>(<a href="https://txyz.ai/" target="_blank">What is TXYZ.AI?</a>)</em>
+            </div>
+          </div>
+        </div>
+        <div id="replicate-output"></div>
+        <div id="spaces-output"></div>
+        <div id="txyz-output"></div>
+      </div>
+      <input type="radio" name="tabs" id="tabfour" class="labs-tab-input">
+      <label for="tabfour" role="tab" aria-selected="false" aria-controls="tabpanel-four" id="tab-label-four">Related Papers</label>
+      <div class="tab" role="tabpanel" id="tabpanel-four" aria-labelledby="tab-label-four">
+        <h1>Recommenders and Search Tools</h1>
+        <div class="toggle">
+          <div class="columns is-mobile lab-row">
+            <div class="column lab-switch">
+              <label class="switch">
+                <input id="influenceflower-toggle" data-script-url="/static/browse/0.3.4/js/influenceflower.js" type="checkbox" class="lab-toggle" aria-labelledby="label-for-influenceflower">
+                <span class="slider"></span>
+                <span class="is-sr-only">Link to Influence Flower</span>
+              </label>
+            </div>
+            <div class="column lab-name">
+              <span id="label-for-influenceflower">Influence Flower</span> <em>(<a href="https://influencemap.cmlab.dev/" target="_blank">What are Influence Flowers?</a>)</em>
+            </div>
+          </div>
+          <div class="columns is-mobile lab-row">
+            <div class="column lab-switch">
+              <label class="switch">
+                <input id="core-recommender-toggle" type="checkbox" class="lab-toggle" aria-labelledby="label-for-core">
+                <span class="slider"></span>
+                <span class="is-sr-only">Core recommender toggle</span>
+              </label>
+            </div>
+            <div class="column lab-name">
+              <span id="label-for-core">CORE Recommender</span> <em>(<a href="https://core.ac.uk/services/recommender">What is CORE?</a>)</em>
+            </div>
+          </div></div>
+        <div id="influenceflower-output"></div>
+        <div id="influenceflower-output-graph" style="display:none">
+          <ul class="flower-tabs">
+            <li class="active"><a class="btn tab-btn" onclick="openTab(event, &#39;tab-author&#39;)">Author</a></li>
+            <li><a class="btn tab-btn" onclick="openTab(event, &#39;tab-venue&#39;)">Venue</a></li>
+            <li><a class="btn tab-btn" onclick="openTab(event, &#39;tab-inst&#39;)">Institution</a></li>
+            <li><a class="btn tab-btn" onclick="openTab(event, &#39;tab-topic&#39;)">Topic</a></li>
+          </ul>
+          <div class="flower-tab-content">
+            <div class="tab-flower active" id="tab-author"><svg id="flower-graph-author"></svg></div>
+            <div class="tab-flower" id="tab-venue"><svg id="flower-graph-venue"></svg></div>
+            <div class="tab-flower" id="tab-inst"><svg id="flower-graph-inst"></svg></div>
+            <div class="tab-flower" id="tab-topic"><svg id="flower-graph-topic"></svg></div>
+          </div>
+        </div>
+        <div id="coreRecommenderOutput"></div>
+        <div id="iarxivOutput"></div>
+      </div>
+
+      <input type="radio" name="tabs" id="tabfive" class="labs-tab-input">
+      <label for="tabfive" role="tab" aria-selected="false" aria-controls="tabpanel-five" id="tab-label-five">
+        About arXivLabs
+      </label>
+      <div class="tab" role="tabpanel" id="tabpanel-five" aria-labelledby="tab-label-five">
+        <div class="columns">
+          <div class="column">
+            <h1>arXivLabs: experimental projects with community collaborators</h1>
+            <p>arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.</p>
+            <p>Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.</p>
+            <p>Have an idea for a project that will add value for arXiv's community? <a href="https://info.arxiv.org/labs/index.html"><strong>Learn more about arXivLabs</strong></a>.</p>
+          </div>
+          <div class="column is-narrow is-full-mobile">
+            <p class="icon-labs"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 635.572 811"><path d="M175.6 676v27h-27v-27zm-54 27v27h27v-27zm-27 27v27h27v-27zm396-54v27h-27v-27zm0 27v27h27v-27zm27 27v27h27v-27zm-27-414h27v27h-27zm27 0h27v-27h-27zm27-27h27v-27h-27zm-396 45h-27v-27h27zm-27-54h-27v27h27zm-27-27h-27v27h27z"></path><path d="M94.6 730v27h-27v-27zm477 0v27h-27v-27zm-27-495h27v27h-27zm-450 18h-27v-27h27zm477 9h27v27h-27zm-54 495h27v27h-27zm-423 0h27v27h-27zm-54-504h27v27h-27z" fill="#666"></path><path d="M67.6 730v27h-27v-27zm54 54v27h-27v-27zm0-108v27h27v-27zm-27 27v27h27v-27zm-81 0v27h27v-27zm585 27v27h-27v-27zm-108-54v27h27v-27zm27 27v27h27v-27zm81 0v27h27v-27zm-54-495h27v27h-27zm-54 108h27v-27h-27zm27-27h27v-27h-27zm0-81h27v-27h-27zm-423 18h-27v-27h27zm54 54h-27v27h27zm-27-27h-27v27h27zm0-81h-27v27h27zm423 612v27h-27v-27zm81-522v27h-27v-27zm-585-9v27h-27v-27z" fill="#999"></path><path d="M94.6 784v27h-27v-27zm-27-27v27h27v-27zm-27-54v27h27v-27zm27 0v27h27v-27zm0-27v27h27v-27zm27 0v27h27v-27zm0-27v27h27v-27zm27 0v27h27v-27zm-108 81v27h27v-27zm558 54v27h-27v-27zm-27-27v27h27v-27zm27-54v27h27v-27zm-27 0v27h27v-27zm0-27v27h27v-27zm-27 0v27h27v-27zm0-27v27h27v-27zm-27 0v27h27v-27zm108 81v27h27v-27zm0-495h27v27h-27zm-27 27h27v-27h-27zm-54-27h27v-27h-27zm0 27h27v-27h-27zm-27 0h27v-27h-27zm0 27h27v-27h-27zm-27 0h27v-27h-27zm0 27h27v-27h-27zm81-108h27v-27h-27zm-504 45h-27v-27h27zm27-27h-27v27h27zm54-27h-27v27h27zm0 27h-27v27h27zm27 0h-27v27h27zm0 27h-27v27h27zm27 0h-27v27h27zm0 27h-27v27h27zm-81-108h-27v27h27z" fill="#ccc"></path><path d="M598.6 665.1H41.5C-76.5 667 176 280.2 176 280.2h53a46.5 46.5 0 0162.8-56.3 29.2 29.2 0 1128.5 35.9h-1a46.5 46.5 0 01-1.5 20.3l142.5-.1s255.3 387 138.3 385.1zM291 181a29.3 29.3 0 10-29.2-29.3A29.3 29.3 0 00291 181zm65.4-66.8a22.4 22.4 0 10-22.5-22.4 22.4 22.4 0 0022.5 22.4z" fill="#fc0"></path><path d="M245.5 172V10h153v162s324 495 198 495h-558c-126 0 207-495 207-495zm126 54h56m-13 72h56m-9 72h56m-20 72h56m-22 72h56m-29 72h56m-457-45c20.8 41.7 87.3 81 160.7 81 72.1 0 142.1-38.2 163.4-81" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="20"></path><path d="M273.3 421.7c0 31-9.8 56.3-21.9 56.3s-21.8-25.2-21.8-56.3 9.8-56.3 21.8-56.3 21.9 25.2 21.9 56.3zm114.4-56.3c-12 0-21.8 25.2-21.8 56.3s9.7 56.3 21.8 56.3 21.9-25.2 21.9-56.3-9.8-56.3-21.9-56.3zM150.1 526.6c-18.2 6.7-27.5 22.9-23.2 30.2s14.8-5.5 33-12.2 37.4-4.9 33-12.2-24.5-12.6-42.8-5.8zm296 5.8c-4.2 7.3 14.9 5.5 33.1 12.2s28.7 19.5 33 12.2-5-23.5-23.2-30.2-38.5-1.5-42.8 5.8z"></path></svg></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+<!-- END LABS AREA -->
+  <div class="endorsers">
+    <a href="https://arxiv.org/auth/show-endorsers/2108.09293" class="endorser-who" rel="nofollow">Which authors of this paper are endorsers?</a> |
+    <a id="mathjax_toggle" href="javascript:setMathjaxCookie()">Disable MathJax</a> (<a href="https://info.arxiv.org/help/mathjax.html">What is MathJax?</a>)
+    <span class="help" style="font-style: normal; float: right; margin-top: 0; margin-right: 1em;"></span>
+  </div>
+  <script type="text/javascript" language="javascript">mathjaxToggle();</script>
+</div>
+      </div>
+    </main>
+
+    <footer style="clear: both;">
+      <div class="columns is-desktop" role="navigation" aria-label="Secondary" style="margin: -0.75em -0.75em 0.75em -0.75em">
+        <!-- Macro-Column 1 -->
+        <div class="column" style="padding: 0;">
+          <div class="columns">
+            <div class="column">
+              <ul style="list-style: none; line-height: 2;">
+                <li><a href="https://info.arxiv.org/about">About</a></li>
+                <li><a href="https://info.arxiv.org/help">Help</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul style="list-style: none; line-height: 2;">
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon filter-black" role="presentation"><title>contact arXiv</title><desc>Click here to contact arXiv</desc><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg>
+                  <a href="https://info.arxiv.org/help/contact.html"> Contact</a>
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon filter-black" role="presentation"><title>subscribe to arXiv mailings</title><desc>Click here to subscribe</desc><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></svg>
+                  <a href="https://info.arxiv.org/help/subscribe"> Subscribe</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- End Macro-Column 1 -->
+        <!-- Macro-Column 2 -->
+        <div class="column" style="padding: 0;">
+          <div class="columns">
+            <div class="column">
+              <ul style="list-style: none; line-height: 2;">
+                <li><a href="https://info.arxiv.org/help/license/index.html">Copyright</a></li>
+                <li><a href="https://info.arxiv.org/help/policies/privacy_policy.html">Privacy Policy</a></li>
+              </ul>
+            </div>
+            <div class="column sorry-app-links">
+              <ul style="list-style: none; line-height: 2;">
+                <li><a href="https://info.arxiv.org/help/web_accessibility.html">Web Accessibility Assistance</a></li>
+                <li>
+                  <p class="help">
+                    <a class="a11y-main-link" href="https://status.arxiv.org/" target="_blank">arXiv Operational Status <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="icon filter-dark_grey" role="presentation"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></svg></a><br>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div> <!-- end MetaColumn 2 -->
+        <!-- End Macro-Column 2 -->
+      </div>
+    </footer>
+  </div>
+
+  <script src="./[2108.09293] Asleep at the Keyboard_ Assessing the Security of GitHub Copilot&#39;s Code Contributions_files/member_acknowledgement.js.下载"></script>
+
+
+
+<deepl-input-controller translate="no"><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://fancfknaplihpclbhbpclnmmjcjanbaf/build/content.css"><div dir="ltr" style="visibility: initial !important;"><div class="dl-input-translation-container svelte-95aucy"><div></div></div></div></template></deepl-input-controller></body></html>

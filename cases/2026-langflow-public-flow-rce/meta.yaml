@@ -1,0 +1,47 @@
+slug: "2026-langflow-public-flow-rce"
+title_en: "Langflow Public Flow Build Endpoint RCE"
+title_cn: "Langflow 公共 Flow 构建端点远程代码执行事件"
+year: 2026
+disclosed: "2026-03-16"
+category: "agent-risk"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "CVE-2026-33017 is a critical unauthenticated RCE in Langflow, CVSS 9.8, added to CISA KEV after active exploitation was observed within 20 hours of disclosure."
+cvss: 9.8
+cve: "CVE-2026-33017"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "Langflow"
+  - "AI workflow builder"
+  - "AI agent framework"
+language:
+  - "Python"
+attack_surface:
+  - "Public AI workflow build endpoint"
+  - "Unauthenticated API"
+  - "Unsandboxed Python exec"
+  - "AI workflow execution"
+  - "Credential exfiltration"
+references:
+  - title: "GitHub Security Advisory: Unauthenticated Remote Code Execution in Langflow via Public Flow Build Endpoint"
+    url: "https://github.com/langflow-ai/langflow/security/advisories/GHSA-vwmf-pq79-vjvx"
+  - title: "NVD: CVE-2026-33017"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-33017"
+  - title: "Sysdig: CVE-2026-33017 — How attackers compromised Langflow AI pipelines in 20 hours"
+    url: "https://www.sysdig.com/blog/cve-2026-33017-how-attackers-compromised-langflow-ai-pipelines-in-20-hours"
+  - title: "BleepingComputer: CISA — New Langflow flaw actively exploited to hijack AI workflows"
+    url: "https://www.bleepingcomputer.com/news/security/cisa-new-langflow-flaw-actively-exploited-to-hijack-ai-workflows/"
+  - title: "CISA Known Exploited Vulnerabilities Catalog: CVE-2026-33017"
+    url: "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-33017"
+tldr: "Langflow public flow build endpoint allowed unauthenticated RCE and was exploited within 20 hours."
+tags:
+  - "langflow"
+  - "agent-risk"
+  - "rce"
+  - "cve-2026-33017"
+  - "cisa-kev"
+  - "ai-workflow"
+  - "credential-exfiltration"
+  - "unsandboxed-exec"
+verification_notes: "This case is based on GitHub advisory, NVD, CISA KEV, Sysdig exploitation telemetry, and independent media coverage. It is an AI workflow / AI agent infrastructure vulnerability rather than an AI-generated-code attribution case."

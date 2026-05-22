@@ -1,0 +1,185 @@
+(function ($) {
+
+    var menuOpen = false;
+    var menuItemOpen = {};
+
+    /**
+     *  Registering custom selector to find path names by attributes that are case insensitive
+     */
+ 
+
+
+$.expr.pseudos.attrCaseInsensitive = $.expr.createPseudo(function(properties) {
+	  
+       return function (node, stackIndex) {
+        
+        var args = properties[3].split(',').map(function (arg) {
+            return arg.replace(/^\s*["']|["']\s*$/g, '');
+        });
+        if ($(node).length > 0 && $(node).attr(args[0])) {
+            return $(node).attr(args[0]).toLowerCase() == args[1];
+        } else {
+            return "";
+        }
+    }
+    });
+    
+    
+    
+    function toggleMenu() {
+        console.log('toggleMenu(menuOpen)', menuOpen);
+        if (menuOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    }
+
+    function closeMenu() {
+        if (menuOpen) {
+            console.log('closeMenu()');
+            $('body').addClass('focus-mobile-menu');
+            $('#nvd-menu-button > a').removeClass('menu-toggled');
+            $('#main-menu-drop').slideUp(300);
+            menuOpen = false;
+        }
+    }
+
+    function openMenu() {
+        if (!menuOpen) {
+            console.log('openMenu()');
+            $('body').removeClass('focus-mobile-menu');
+            $('#nvd-menu-button > a').addClass('menu-toggled');
+            $('#main-menu-drop').slideDown(300);
+            menuOpen = true;
+        }
+    }
+
+    /**
+     * Expand the given expander, highlighting the link as active
+     * @param expander
+     */
+    function menuItemExpand(expander) {
+        if (expander && expander.attr('data-expanded') == 'false') {
+            expander.parent().addClass('is-active-trail');
+            menuItemToggle(expander);
+        }
+    }
+
+    function menuItemToggle(target) {
+        var name = $(target).attr('data-expander-name');
+        var expanded = ($(target).attr('data-expanded') === 'true');
+        console.log('menuItemToggle (name, expanded, menuItemOpen)', name, expanded, menuItemOpen);
+        for (var openMenu in menuItemOpen) {
+            if (openMenu != name && menuItemOpen[openMenu]) {
+                closeMenuItem(openMenu);
+            }
+        }
+        if (!menuItemOpen[name]) {
+            openMenuItem(name);
+        } else {
+            closeMenuItem(name);
+        }
+        console.log('menuItemOpen', menuItemOpen);
+    }
+
+
+    function openMenuItem(name) {
+        console.log('openMenuItem(name)', name);
+        var expander = $('span[data-expander-name=' + name + ']');
+        var subMenu = $('div[data-expander-trigger=' + name + ']');
+        $(subMenu).slideDown(300);
+        $(expander).removeClass('fa-plus');
+        $(expander).addClass('fa-minus');
+        $(expander).attr('data-expanded', 'true');
+        menuItemOpen[name] = true;
+    }
+
+    function closeMenuItem(name) {
+        console.log('closeMenuItem(name)', name);
+        var expander = $('span[data-expander-name=' + name + ']');
+        expander.parent().removeClass('is-active-trail');
+        $(expander).removeClass('fa-minus');
+        $(expander).addClass('fa-plus');
+        $(expander).attr('data-expanded', 'false');
+
+        var subMenu = $('div[data-expander-trigger=' + name + ']');
+        $(subMenu).slideUp(300);
+        menuItemOpen[name] = false;
+    }
+
+    function applyMenuStyles() {
+        var pathnameLC = location.pathname.toLowerCase();
+        var matchLink = $('#main-menu-drop a[href="' + pathnameLC + '" i]');
+        if ($(matchLink).length) {
+            $(matchLink).addClass('is-active-trail');
+            var parentLI = $(matchLink).closest('li');
+            if ($(parentLI).length) {
+                var expander = $(parentLI).find('span.expander');
+                menuItemExpand(expander);
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        console.log('$(document).ready');
+
+        // Positioning the menu at the location of the nav-brand image
+        var mainMenuDrop = $('#main-menu-drop');
+        var nvdMenuBtn = $('#nvd-menu-button');
+        var navBrandImg = $('#navbar-brand-image');
+        var navBar = $('#navbar');
+
+        // Menu Toggle on focus
+        $('#nvd-menu-button > a').on("click", function () {
+            toggleMenu();
+        });
+
+        // Toggle Menu Item
+        $('ul > li > a > span.expander').on("click", function (e) {
+            e.preventDefault();
+            menuItemToggle(e.target);
+        });
+
+        // When window resizes
+        $(window).on("resize", (function () {
+            closeMenu();
+        }));
+
+        // Applies the "is-active-trail" class to links when the page loads, expand active sections
+        applyMenuStyles();
+
+        // giving csrc-active-link class to all links that match current path
+        var currentPath = location.pathname.toLowerCase();
+        var matchLinks = $('a[href="' + currentPath + '" i]');
+        console.info('matchLinks', matchLinks);
+        if (matchLinks.length > 0) {
+            for (var i = 0; i < matchLinks.length; i++) {
+                $(matchLinks[i]).addClass('csrc-active-link');
+            }
+        }
+    }); 
+
+    $(window).on("load", function () {
+
+        //Close on Escape
+        $(document).on("keyup", function (e) {
+            if (e.keyCode == 27) {
+                closeMenu();
+            }
+        });
+
+        // close the menu if user clicks away from the menu
+        $(document).on('click', function (e) {
+            if (menuOpen &&
+                !$(e.target).closest('#nist-menu-container').length &&
+                !$(e.target).closest('.main-menu-row').length ) {
+                closeMenu();
+            }
+        })
+
+    });
+
+})(jQuery);
+
+
