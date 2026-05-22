@@ -1,0 +1,388 @@
+﻿(function ($) {
+
+    var advancedOpen = false;
+    var nvdForm = null;
+    var forms = [];
+    var advToggled = false;
+    var formSearchTriggered = false;
+    var targetDisabled = {};
+
+    $(document).ready(function () {
+
+        // finding any  forms
+
+        nvdForm = $('*[data-nvd-form="true"]');
+        
+        // checking for results
+        if (nvdForm.length) {
+
+            // Setting up all the forms
+            initForms();
+            console.log('forms', forms);
+        }
+       
+
+    });
+
+
+    /**
+     * Initiates any forms added to the page, checks their basic data, etc.
+     */
+    function initForms() {
+    	
+
+        // checking each form for required items; name, action, and method
+        for (var i = 0; i < nvdForm.length; i++) {
+            var formName = $(nvdForm[i]).attr('name');
+            var formAction = $(nvdForm[i]).attr('action');
+            var formMethod = $(nvdForm[i]).attr('method');
+            var formTarget = $(nvdForm[i]).attr('target');
+        	
+            console.log("Form Action is :"+ formAction);
+            
+            if (formName && formAction && formMethod) {
+                if (forms[formName]) {
+                    // This form already exists, checking to make sure it has the same action and method
+                    if (forms[formName].action !== formAction) {
+                        console.error('This form already exists, and it has a different action... expected: ' + forms[formName].action + '  actual: ' + formAction);
+                        continue;
+                    }
+                    if (forms[formName].method !== formMethod) {
+                        console.error('This form already exists, and it has a different method... expected: ' + forms[formName].method + '  actual: ' + formMethod);
+                    }
+                } else {
+                	  // we're pretty good, just checking to make sure the action starts with a / and the method is either GET or POST
+                    if (formAction.substring(0, 1) !== '/') {
+                        console.error('Form cannot be added, invalid form action');
+                        continue;
+                    }
+                    if (formMethod !== 'GET' && formMethod !== 'POST') {
+                        console.error('Form cannot be added, invalid form method, expected: GET or POST  actual: ' + formMethod);
+                        continue;
+                    }
+                    // initializing this form 
+                    initForm(formName, formAction, formMethod, formTarget);
+                }
+            } else {
+                // we're missing something here
+                if (!formAction) {
+                    console.error('Form cannot be added, it is missing an action');
+                    continue;
+                }
+                if (!formMethod) {
+                    console.error('Form cannot be added, it is missing a method');
+                    continue;
+                }
+            }
+        }
+        
+    }
+
+
+    function initForm(formName, formAction, formMethod, formTarget) {
+
+        // finding all the inputs, selects, textareas for this form
+        var namedInputs = $('*[name="' + formName + '"] *[name]');
+
+        // Getting querystring values
+        var search = location.search.substring(1);
+        var queryStr = null;
+        var queryobj = {};
+        var emptyobj = {};
+        var ignoreDefList = [];
+        var usingDefaultQuery = false;
+
+        if (search) {
+            queryStr = search;
+        }
+        
+        if (queryStr) {
+            queryobj = JSON.parse('{"' +
+                queryStr
+                    .replace(/"/g, '\\"')
+                    .replace(/&/g, '","')
+                    .replace(/=/g, '":"')
+                    .replace(/\+/g, ' ')
+                    .replace(/%2F/g, '/') +
+              '"}');
+        }
+        
+        
+
+        var formInfo = {
+            name: formName,
+            action: formAction,
+            method: formMethod,
+            target: formTarget,
+            inputs: namedInputs,
+            querystring: queryobj,
+            submitNewForm: submitNewForm
+        };
+
+        forms[formName] = formInfo;
+
+        // Initializing date picker fields
+        $('*[name="' + formName + '"] *[data-date-picker="true"]').each(function (idx, elem) {
+            var dp = $(elem).datetimepicker({
+                format: 'MM/DD/YYYY'
+            });
+        });
+        
+        console.log("Form Name in initForm " + formName);
+        // Setting actions for submit and reset buttons
+        var submitBtn = $('*[name="' + formName + '"] button[type="submit"]');
+        var resetBtn = $('*[name="' + formName + '"] button[type="reset"]');
+
+        submitBtn.click(submitForm);
+
+        resetBtn.click(resetForm);
+
+        //triggering the Vuln Search plugin
+        if ($.isFunction($(document).formsVulnSearch)) {
+            $(document).formsVulnSearch(formInfo);
+        }
+    }
+
+    /**
+     * Grabs the data from the csrc form and submits it, after validation and other things
+     * @param {any} evnt
+     */
+    function submitForm(evnt) {
+       evnt.preventDefault();
+        // finding parent form name and getting the form
+        var formName = $(evnt.target).closest('*[name]').attr('name');
+        var thisForm = forms[formName];
+        if (thisForm) {
+            var queryValues = {};
+            $.each(thisForm.inputs, function (i, field) {
+            	
+            	console.log("Field type:" + JSON.stringify(  $(field)[0].type));
+            	if(!(( $(field)[0].type == 'hidden') && $(field)[0].name.indexOf("_") == 0)){
+            		
+            	
+                var name = $(field)[0].name;
+                var value = getFieldValue(field);
+                if (value) {
+                    if (queryValues[name]) {
+                        queryValues[name] += ',' + value;
+                    } else {
+                        queryValues[name] = value;
+                    }
+                }
+            }
+            });
+
+            // checking for any validation rules
+            var valid = validateForm(formName);
+            
+            if(valid){
+            console.log('form valid - performing ' + thisForm.method + ' to actionUrl: ' + thisForm.action + ', with data:', queryValues);
+                   
+            submitNewForm(thisForm.action, queryValues, thisForm.method, thisForm.target);
+            }
+            
+            
+        } else {
+            console.error('Cannot find form for submit button pressed');
+        }
+    }
+
+    /**
+     * Creates a form on the page and submits the data through POST or GET
+     * @param {any} path - Where to submit the form
+     * @param {any} params - Parameters in a json object form
+     * @param {any} method - GET or POST
+     * @param {any} target - ID of element being targed when posting
+     */
+    function submitNewForm(path, params, method, target) {
+        method = method || "POST"; // Set method to post by default if not specified.
+
+        // The rest of this code assumes you are not using a library.
+        // It can be made less wordy if you use one.
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        if (target)
+            path += "#" + target;
+        form.setAttribute("action", path);
+
+        for (var key in params) {
+            if (params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+            }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+
+    function resetForm(evnt) {
+        // broadcasting to 
+		evnt.preventDefault();
+        location = location.pathname 
+    }
+
+
+    /**
+     * Returns the value of a field
+     * @param {any} field
+     */
+    function getFieldValue(field) {
+        var name = $(field)[0].name;
+        var value = null;
+        var tagName = $(field)[0].tagName;
+        switch (tagName) {
+            case "INPUT":
+                var inputType = $(field)[0].type;
+                switch (inputType) {
+                    case "hidden":
+                    case "text":
+                        value = $(field)[0].value;
+                        break;
+                    case "checkbox":
+                    case "radio":
+                        if ($(field)[0].checked === true) {
+                            value = $(field)[0].value;
+                        }
+                        break;
+                    default:
+                        console.error('unknown input type of ' + inputType + ' for tagName ' + tagName);
+                        break;
+                }
+                break;
+            case "SELECT":
+                // if multiple, we get selectedOptions
+                if ($(field)[0].multiple) {
+                    $.each($(field)[0].selectedOptions, function (idx, option) {
+                        value = (value) ?
+                            value + ',' + $(option)[0].value :
+                            $(option)[0].value;
+                    });
+                } else {
+                    value = $(field)[0].value;
+                }
+                break;
+            case "TEXTAREA":
+                value = $(field)[0].value;
+                break;
+            case "BUTTON":
+                // buttons are ignored
+                break;
+            default:
+                console.error('unknown tagName of ' + tagName);
+                break;
+        }
+        return value;
+    }
+
+    //-----
+
+
+
+
+    /**
+     * Validates the form on any input that has validation rules setup
+     * @param {any} formName
+     */
+    function validateForm(formName) {
+        var valid = true;
+        var validations = [];
+
+        $('*[name="' + formName + '"] *[data-validation="true"]').each(function (idx, elem) {
+            var validInput = true;
+            // Making sure each validation field has a message and a validation type
+            var validationMessage = $(elem).attr('data-validation-message');
+            var validationType = $(elem).attr('data-validation-type');
+            if (!validationMessage) {
+                console.error('Missing data-validation-message attribute on validated element');
+                validInput = false;
+            }
+            if (!validationType) {
+                console.error('Missing data-validation-type attribute on validated element');
+                validInput = false;
+            }
+            var currentValue = getFieldValue(elem);
+            if (validInput) {
+                var validation = {
+                    value: currentValue,
+                    message: validationMessage,
+                    type: validationType,
+                    valid: true
+                };
+                // checking validation type
+                switch (validation.type) {
+                    case 'greater-than-date':
+                        var compareFieldId = $(elem).attr('data-validation-compare-field');
+                        var compareFieldVal = getFieldValue($('#' + compareFieldId));
+                        // only running compare if both values are present
+                        if (validation.value && compareFieldVal) {
+                            var date1 = new Date(validation.value),
+                                date2 = new Date(compareFieldVal);
+                            validation.valid = (date1.valueOf() >= date2.valueOf());
+                        }
+                        break;
+                    case 'less-than-date':
+                        var compareFieldId = $(elem).attr('data-validation-compare-field');
+                        var compareFieldVal = $('#' + compareFieldId).val();
+                        // only running compare if both values are present
+                        if (validation.value && compareFieldVal) {
+                            var date1 = new Date(validation.value),
+                                date2 = new Date(compareFieldVal);
+                            validation.valid = (date1.valueOf() <= date2.valueOf());
+                        }
+                        break;
+                    case 'not-null':
+                        if (!validation.value) {
+                            validation.valid = false;
+                        }
+                        break;
+                    case 'match-regex':
+                        var regexPattern = $(elem).attr('data-validation-regex-pattern');
+                        var patt = new RegExp(regexPattern);
+                        if (validation.value && regexPattern) {
+                            validation.valid = patt.test(validation.value);
+                        }
+
+                        break;
+                    default:
+                        console.error('Unknown validation type of: ' + validationType);
+                        break;
+                }
+                validations.push(validation);
+            }
+
+        });
+
+        // clearing validations
+        $.each($('*[name="' + formName + '"] ul[data-form-error-list] li'), function (i, errorItem) {
+            $(errorItem).remove();
+        });
+
+        // adding new validation records
+        $.each(validations, function (i, validation) {
+            if (!validation.valid) {
+                valid = false;
+                var errorList = $('*[name="' + formName + '"] ul[data-form-error-list]');
+                var errorItem = $('<li>' + validation.message + '</li>');
+                $(errorList).append(errorItem);
+            }
+        });
+
+        if (!valid) {
+            // Showing non-valid form area
+            $('*[name="' + formName + '"] *[data-form-error-pane]').show();
+        } else {
+            // Hiding non-valid form area
+            $('*[name="' + formName + '"] *[data-form-error-pane]').hide();
+        }
+
+        return valid;
+    }
+
+//---
+})(jQuery);

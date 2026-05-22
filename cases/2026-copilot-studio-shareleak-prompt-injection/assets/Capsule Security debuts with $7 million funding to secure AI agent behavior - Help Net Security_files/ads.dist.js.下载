@@ -1,0 +1,1 @@
+const e=document.createElement("div");e.id="advertisement",e.classList.add("ad","ad-300x250","adloader"),e.innerHTML="&nbsp;",e.style.height="1px",e.style.overflow="hidden",e.style.backgroundColor="#000000",document.body.appendChild(e);

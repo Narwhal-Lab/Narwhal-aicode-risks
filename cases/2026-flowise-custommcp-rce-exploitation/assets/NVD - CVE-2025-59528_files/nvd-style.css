@@ -1,0 +1,96 @@
+#itl-header .nvd-header-logo {
+    margin-top: 40px;
+    margin-right: 40px;
+}
+
+a#nvd-header-link,
+a#nvd-header-link:hover,
+a#nvd-header-link:active {
+    text-decoration: none;
+}
+
+/* NVD Menu (megamenu) */
+#nvd-menu-button > a {
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    margin: 5px 10px 10px 20px;
+    margin-left: 0;
+    text-transform: uppercase;
+    height: 38px;
+    line-height: 38px;
+    display: block;
+    transition: color 300ms ease;
+    background: #595959;
+    text-decoration: none;
+}
+
+#nvd-menu-button > a:hover {
+    color: #f5c636;
+}
+
+#nvd-menu-button {
+    padding-top: 5px;
+}
+
+#nvd-menu-button > a.menu-toggled {
+    color: black;
+    background: white;
+    text-decoration: none;
+    outline: 0;
+}
+
+img.cvssNvdIcon {
+    width: 50px;
+    height: 40px;
+    vertical-align:middle;
+}
+
+img.cweNvdIcon {
+    width: 30px;
+    height: 20px;
+    vertical-align:middle;
+}
+
+.urlSnippet {
+    font-family:'Lucida Console', monospace;
+    font-size: smaller; 
+    margin-left: 40px;
+}
+
+.paramName {
+    position: relative;
+    min-height: 100%;
+    font-family:'Lucida Console', monospace;
+    font-weight: bold;
+}
+
+.paramRequired {
+    position: relative;
+    min-height: 100%;
+    font-family:'Lucida Console', monospace;
+    color: orangered;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.paramOptional {
+    position: relative;
+    min-height: 100%;
+    font-family:'Lucida Console', monospace;
+    font-weight: normal;
+    color:grey;
+}
+
+.commentInJson {
+    position: relative;
+    min-height: 100%;
+    font-family:'Source Sans Pro',Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    background-color:white;
+}
+
+
