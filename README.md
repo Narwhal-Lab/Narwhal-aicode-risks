@@ -7,7 +7,7 @@
 This repository documents the **risks** of AI-generated code through layered evidence buckets:
 
 - **Technical Report** — [English PDF](docs/report-en.pdf) · [中文 PDF](docs/report-cn.pdf) · [arXiv](https://arxiv.org/abs/2512.18567)
-- **`cases/`** — **31 verified real-world incidents** with primary sources, evidence archives, and bilingual analysis.
+- **`cases/`** — **32 verified real-world incidents** with primary sources, evidence archives, and bilingual analysis.
 - **`inferred/`** — partial-evidence cases: event appears real, but key facts (vendor advisory / CVE / postmortem) not yet pinned down. *(0 cases as of v1.0; submit one!)*
 - **`scenarios/`** — illustrative scenarios for a real risk pattern, not tied to a confirmed event.
 - **Risk Taxonomy** — 7 categories spanning supply chain, code-level vulnerabilities, cloud / IaC, agent risks, domain-specific risks, IP & compliance, and human factors. See [`docs/taxonomy.md`](docs/taxonomy.md).
@@ -27,7 +27,7 @@ This repository documents the **risks** of AI-generated code through layered evi
 </tr>
 </table>
 
-**31 cases · 7 active categories · 2022 → 2026 · 51+ AI tools implicated · 12 cases anchored to public CVEs (CVSS 5 / 7 / 9 / 10)**
+**32 cases · 7 active categories · 2022 → 2026 · 51+ AI tools implicated · 13 cases anchored to public CVEs (CVSS 5 / 7 / 8 / 9 / 10)**
 
 ---
 
