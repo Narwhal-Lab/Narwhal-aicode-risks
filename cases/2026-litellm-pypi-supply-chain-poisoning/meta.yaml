@@ -1,0 +1,38 @@
+slug: "2026-litellm-pypi-supply-chain-poisoning"
+title_en: "LiteLLM PyPI Supply Chain Poisoning"
+title_cn: "LiteLLM PyPI 供应链投毒事件"
+year: 2026
+disclosed: "2026-03-24"
+category: "supply-chain"
+severity: "high"
+severity_basis: "quantifiable-impact"
+severity_evidence: "LiteLLM versions 1.82.7 and 1.82.8 were maliciously published to PyPI; public reports describe credential theft, Kubernetes persistence, and wide downstream exposure for an AI gateway package."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "LiteLLM"
+language:
+  - "Python"
+attack_surface:
+  - "PyPI package"
+  - "Python startup hook"
+  - "LLM gateway credentials"
+  - "Kubernetes runtime"
+references:
+  - title: "FutureSearch: litellm 1.82.8 Supply Chain Attack on PyPI"
+    url: "https://futuresearch.ai/blog/litellm-pypi-supply-chain-attack/"
+  - title: "IONIX: LiteLLM Supply Chain Compromise — Backdoored PyPI Packages 1.82.7 & 1.82.8"
+    url: "https://www.ionix.io/threat-center/litellm-supply-chain-compromise-backdoored-pypi-packages-1-82-7-1-82-8/"
+  - title: "Bitsight: Major Security Event: Supply Chain Compromise in LiteLLM Versions 1.82.7 and 1.82.8"
+    url: "https://www.bitsight.com/blog/litellm-versions-1-82-7-1-82-8-supply-chain-compromise"
+  - title: "ITPro: LiteLLM PyPI compromise: Everything we know so far"
+    url: "https://www.itpro.com/security/litellm-pypi-compromise-everything-we-know-so-far"
+  - title: "阿里云开发者社区：深度解析 LiteLLM 供应链投毒事件"
+    url: "https://developer.aliyun.com/article/1719859"
+tldr: "Malicious LiteLLM 1.82.7/1.82.8 PyPI releases stole credentials and added host or Kubernetes persistence."
+tags:
+  - "supply-chain"
+  - "pypi"
+  - "credential-theft"
+  - "kubernetes"
+  - "llm-gateway"

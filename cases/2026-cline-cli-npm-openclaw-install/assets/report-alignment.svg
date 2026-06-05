@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="460" viewBox="0 0 1080 460" role="img" aria-labelledby="title desc">
+  <title id="title">Cline supply chain case alignment with the technical report</title>
+  <desc id="desc">Mapping the Cline npm incident to the team report's supply-chain, traceability, sandbox, and human review guidance.</desc>
+  <style>
+    .bg{fill:#f6faf9}
+    .box{fill:#fff;stroke:#21483f;stroke-width:2;rx:12}
+    .case{fill:#fff5e8;stroke:#c76b18}
+    .line{stroke:#557067;stroke-width:3}
+    .title{fill:#123026;font:700 24px Arial,sans-serif}
+    .text{fill:#223a33;font:18px Arial,sans-serif}
+    .small{fill:#557067;font:15px Arial,sans-serif}
+  </style>
+  <rect class="bg" width="1080" height="460"/>
+  <text class="title" x="48" y="56">Connection to the team report</text>
+  <text class="small" x="48" y="86">The incident shows that AI coding tools also inherit classic package supply-chain risk.</text>
+
+  <rect class="box case" x="58" y="132" width="270" height="200"/>
+  <text class="title" x="88" y="174">Case signal</text>
+  <text class="text" x="88" y="214">Compromised npm token</text>
+  <text class="text" x="88" y="244">Unauthorized CLI release</text>
+  <text class="text" x="88" y="274">Postinstall installs agent</text>
+
+  <line class="line" x1="328" y1="232" x2="388" y2="232"/>
+
+  <rect class="box" x="388" y="112" width="290" height="240"/>
+  <text class="title" x="418" y="154">Report concept</text>
+  <text class="text" x="418" y="194">Software supply chain</text>
+  <text class="text" x="418" y="224">Sensitive local data risk</text>
+  <text class="text" x="418" y="254">Traceability</text>
+  <text class="text" x="418" y="284">Human review</text>
+  <text class="text" x="418" y="314">DAST and SAST support</text>
+
+  <line class="line" x1="678" y1="232" x2="738" y2="232"/>
+
+  <rect class="box" x="738" y="112" width="290" height="240"/>
+  <text class="title" x="768" y="154">Control path</text>
+  <text class="text" x="768" y="194">OIDC publishing</text>
+  <text class="text" x="768" y="224">Provenance attestations</text>
+  <text class="text" x="768" y="254">Lifecycle script scanning</text>
+  <text class="text" x="768" y="284">Registry anomaly alerts</text>
+  <text class="text" x="768" y="314">No tokens in AI triage</text>
+</svg>

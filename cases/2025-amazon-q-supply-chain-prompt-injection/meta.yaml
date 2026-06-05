@@ -1,0 +1,20 @@
+slug: "2025-amazon-q-supply-chain-prompt-injection"
+title_en: "Amazon Q Developer Supply Chain Attack (CVE-2025-8217): Prompt Injection Risks in AI Coding Tools(2025)"
+title_cn: "Amazon Q Developer供应链攻击事件（CVE-2025-8217）：AI编程工具的提示词注入风险"
+year: 2025
+disclosed: "2025-07"
+category: "supply-chain"
+severity: "critical"
+severity_basis: "quantifiable-impact"
+severity_evidence: "AWS security bulletins AWS-2025-015/016, CVE-2025-8217 registration, 404 Media investigative report confirming ~1M affected users and destructive payload capability"
+cve: "CVE-2025-8217"
+real_incident: true
+reproducible: false
+ai_tool: ["Amazon Q Developer", "Q Developer CLI"]
+references:
+  - title: "AI生产力工具引入的攻击面：从亚马逊VS Code扩展攻击事件说起"
+    url: "https://www.secrss.com/articles/81654"
+  - title: "亚马逊 AI 编程助手Amazon Q遭黑客攻击：近百万用户面临风险"
+    url: "https://news.aibase.com/zh/news/19999"
+tldr: "In July 2025, attackers injected malicious prompts into Amazon Q Developer VS Code extension via supply chain attack, hijacking AI agents to execute system cleanup operations, affecting nearly 1M users, exposing critical vulnerabilities in supply chain security, permission control, and prompt injection protection of AI development tools."
+tags: ["supply-chain-attack", "prompt-injection", "ai-agent-hijack", "vscode-extension", "aws", "destructive-payload"]

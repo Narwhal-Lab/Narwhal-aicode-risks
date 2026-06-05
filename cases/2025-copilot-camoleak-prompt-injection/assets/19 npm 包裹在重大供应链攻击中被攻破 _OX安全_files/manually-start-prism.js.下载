@@ -1,0 +1,1 @@
+window.Prism=window.Prism||{};window.Prism.manual=!0;jQuery(document).ready(function($){$(".dm-code-snippet #dm-code-raw").each(function(){$(this).text(function(_,t){return $.trim(t)})});Prism.highlightAll()})

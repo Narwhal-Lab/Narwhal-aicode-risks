@@ -1,0 +1,78 @@
+{
+  "projectName": "narwhal-aicode-risks",
+  "projectOwner": "Narwhal-Lab",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": ["README.md", "README_CN.md"],
+  "imageSize": 64,
+  "commit": false,
+  "commitConvention": "angular",
+  "skipCi": true,
+  "contributors": [
+    {
+      "login": "TheBinKing",
+      "name": "Bin Wang",
+      "avatar_url": "https://avatars.githubusercontent.com/TheBinKing",
+      "profile": "https://github.com/TheBinKing",
+      "contributions": ["projectManagement", "research", "content", "review"]
+    },
+    {
+      "login": "yumkea",
+      "name": "Wenjie Yu",
+      "avatar_url": "https://avatars.githubusercontent.com/yumkea",
+      "profile": "https://github.com/yumkea",
+      "contributions": ["research", "content"]
+    },
+    {
+      "login": "YilZhong",
+      "name": "Yilu Zhong",
+      "avatar_url": "https://avatars.githubusercontent.com/YilZhong",
+      "profile": "https://github.com/YilZhong",
+      "contributions": ["research", "content"]
+    },
+    {
+      "login": "GioldDiorld",
+      "name": "Hao Yu",
+      "avatar_url": "https://avatars.githubusercontent.com/GioldDiorld",
+      "profile": "https://github.com/GioldDiorld",
+      "contributions": ["research", "content"]
+    },
+    {
+      "login": "jzquan",
+      "name": "Jiazheng Quan",
+      "avatar_url": "https://avatars.githubusercontent.com/jzquan",
+      "profile": "https://github.com/jzquan",
+      "contributions": ["content", "review"]
+    },
+    {
+      "login": "ZJN514",
+      "name": "Jianing Zhou",
+      "avatar_url": "https://avatars.githubusercontent.com/ZJN514",
+      "profile": "https://github.com/ZJN514",
+      "contributions": ["content"]
+    },
+    {
+      "login": "adcdl",
+      "name": "Liangliang Qian",
+      "avatar_url": "https://avatars.githubusercontent.com/adcdl",
+      "profile": "https://github.com/adcdl",
+      "contributions": ["content"]
+    },
+    {
+      "login": "Y0uYuGe",
+      "name": "Like Liu",
+      "avatar_url": "https://avatars.githubusercontent.com/Y0uYuGe",
+      "profile": "https://github.com/Y0uYuGe",
+      "contributions": ["content"]
+    },
+    {
+      "login": "utopiazzr",
+      "name": "Zherong Zhang",
+      "avatar_url": "https://avatars.githubusercontent.com/utopiazzr",
+      "profile": "https://github.com/utopiazzr",
+      "contributions": ["content"]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": false
+}

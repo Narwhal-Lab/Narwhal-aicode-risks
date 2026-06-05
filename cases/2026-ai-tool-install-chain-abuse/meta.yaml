@@ -1,0 +1,27 @@
+slug: 2026-ai-tool-install-chain-abuse
+title_en: "Fake Claude Code Install Pages & Bing-AI-Promoted Malicious OpenClaw Repos"
+title_cn: "AI 编码工具安装链路被滥用案"
+year: 2026
+disclosed: 2026-03
+category: supply-chain
+severity: high
+severity_basis: quantifiable-impact
+severity_evidence: "Confirmed delivery of Amatera Stealer (InstallFix) and Vidar+GhostSocks/AMOS (OpenClaw spoofing) to real victims per Push Security and Huntress reports."
+cvss: null
+cve: null
+real_incident: true
+ai_tool: [Claude Code, Bing AI Search]
+language: [Bash, PowerShell]
+attack_surface: [search-ads, ai-search-recommendation, install-script, github-org-spoofing]
+reproducible: false
+tldr: "Two parallel attacks (Mar 2026): Google Ads serving a fake Claude Code install page (Push Security: 'InstallFix' → Amatera Stealer); and Bing AI directly recommending a malicious GitHub org spoofing OpenClaw → Vidar + GhostSocks on Windows, AMOS on macOS."
+references:
+  - title: "Push Security — InstallFix"
+    url: "https://pushsecurity.com/blog/installfix"
+  - title: "Huntress — Fake OpenClaw Installers Spread GhostSocks Malware"
+    url: "https://www.huntress.com/blog/openclaw-github-ghostsocks-infostealer"
+  - title: "BleepingComputer — Fake Claude Code install guides push infostealers"
+    url: "https://www.bleepingcomputer.com/news/security/fake-claude-code-install-guides-push-infostealers-in-installfix-attacks/"
+  - title: "BleepingComputer — Bing AI promoted fake OpenClaw GitHub repo"
+    url: "https://www.bleepingcomputer.com/news/security/bing-ai-promoted-fake-openclaw-github-repo-pushing-info-stealing-malware/"
+tags: [installfix, infostealer, ghostsocks, search-ads, bing-ai, github-spoofing]

@@ -1,0 +1,49 @@
+slug: "2026-ollama-bleeding-llama-memory-leak"
+title_en: "Ollama Bleeding Llama Unauthenticated Memory Leak"
+title_cn: "Ollama Bleeding Llama 未认证进程内存泄露事件"
+year: 2026
+disclosed: "2026-05-04"
+category: "agent-risk"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "CVE-2026-7482 is a CVSS 3.1 9.1 critical unauthenticated heap out-of-bounds read in Ollama before 0.17.1, allowing process memory leakage including API keys, system prompts, environment variables, and conversation data."
+cvss: 9.1
+cve: "CVE-2026-7482"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "Ollama"
+  - "Local LLM runtime"
+  - "Open-source LLM inference server"
+language:
+  - "Go"
+attack_surface:
+  - "Local LLM inference server"
+  - "Unauthenticated API"
+  - "GGUF model loader"
+  - "Process memory disclosure"
+  - "Prompt and API key leakage"
+  - "Model artifact exfiltration"
+references:
+  - title: "NVD: CVE-2026-7482"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-7482"
+  - title: "Cyera Research: Bleeding Llama — Critical Unauthenticated Memory Leak in Ollama"
+    url: "https://www.cyera.com/research/bleeding-llama-critical-unauthenticated-memory-leak-in-ollama"
+  - title: "The Hacker News: Ollama Out-of-Bounds Read Vulnerability Allows Remote Process Memory Leak"
+    url: "https://thehackernews.com/2026/05/ollama-out-of-bounds-read-vulnerability.html"
+  - title: "RAXE Labs: Ollama GGUF Heap Out-of-Bounds Read"
+    url: "https://raxe.ai/labs/advisories/RAXE-2026-062"
+  - title: "Qualys: Ollama Heap Out-of-bounds Read Vulnerability"
+    url: "https://threatprotect.qualys.com/2026/05/11/ollama-heap-out-of-bounds-read-vulnerability-leads-to-remote-process-memory-leak-cve-2026-7482/"
+tldr: "Ollama CVE-2026-7482 leaked LLM server memory through unauthenticated /api/create and /api/push paths."
+tags:
+  - "ollama"
+  - "bleeding-llama"
+  - "cve-2026-7482"
+  - "local-llm"
+  - "memory-leak"
+  - "process-memory"
+  - "api-key-leak"
+  - "prompt-leak"
+  - "gguf"
+verification_notes: "This case is based on NVD, Cyera Research, The Hacker News, RAXE Labs, and Qualys. NVD displays CNA-provided CVSS 3.1 9.1 and CVSS 4.0 8.8 scores; NVD had not assigned its own primary CVSS score at the time of review."

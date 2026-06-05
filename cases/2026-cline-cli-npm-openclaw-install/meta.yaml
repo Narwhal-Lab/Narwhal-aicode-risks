@@ -1,0 +1,48 @@
+slug: 2026-cline-cli-npm-openclaw-install
+title_en: "Unauthorized Cline CLI npm Publish Installed OpenClaw"
+title_cn: "Cline CLI npm 未授权发布导致 OpenClaw 被安装"
+year: 2026
+disclosed: 2026-02-17
+category: supply-chain
+severity: medium
+severity_basis: editorial
+severity_evidence: "GitHub Advisory GHSA-9ppg-jx86-fqw7 rates the package impact Low because OpenClaw was non-malicious, but the official post-mortem confirms a compromised npm publish token and unauthorized package release in an AI coding CLI distribution channel."
+cvss: null
+cve: null
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Cline CLI"
+  - "OpenClaw"
+language:
+  - "JavaScript"
+  - "npm"
+attack_surface:
+  - "npm package"
+  - "AI coding CLI"
+  - "postinstall script"
+  - "CI/CD publish token"
+references:
+  - title: "Cline post-mortem: Unauthorized Cline CLI npm publish"
+    url: "https://cline.bot/blog/post-mortem-unauthorized-cline-cli-npm"
+  - title: "Cline security advisory GHSA-9ppg-jx86-fqw7"
+    url: "https://github.com/cline/cline/security/advisories/GHSA-9ppg-jx86-fqw7"
+  - title: "GitHub Advisory GHSA-9ppg-jx86-fqw7"
+    url: "https://github.com/advisories/GHSA-9ppg-jx86-fqw7"
+  - title: "Socket: Cline CLI npm package compromised"
+    url: "https://socket.dev/blog/cline-cli-npm-package-compromised-via-suspected-cache-poisoning-attack"
+  - title: "Endor Labs: Supply Chain Attack targeting Cline installs OpenClaw"
+    url: "https://www.endorlabs.com/learn/supply-chain-attack-targeting-cline-installs-openclaw"
+  - title: "arXiv: Your Agent, Their Asset"
+    url: "https://arxiv.org/abs/2604.04759"
+  - title: "AI GenCode Technical Capability Report CN"
+    url: "https://github.com/Narwhal-Lab/narwhal-aicode-risks/blob/main/docs/report-cn.pdf"
+tldr: "An unauthorized cline@2.3.0 npm publish added a postinstall script that globally installed OpenClaw."
+verification_notes: |
+  Verified against the Cline post-mortem and GHSA on 2026-05-18. The advisory states OpenClaw was a legitimate non-malicious package and that the VS Code and JetBrains plugins were not affected.
+tags:
+  - "cline"
+  - "npm"
+  - "postinstall"
+  - "ci-cd"
+  - "openclaw"

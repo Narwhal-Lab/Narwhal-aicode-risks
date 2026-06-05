@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="600" viewBox="0 0 1120 600" role="img" aria-labelledby="title desc">
+  <title id="title">Cursor Git hook code pattern</title>
+  <desc id="desc">Illustrative code showing how writing Git hook configuration can create a delayed execution path.</desc>
+  <style>
+    .bg{fill:#fbfcfe}
+    .card{fill:#ffffff;stroke:#2f3b52;stroke-width:2;rx:12}
+    .head{fill:#2f3b52}
+    .headText{fill:#fff;font:700 20px Arial,sans-serif}
+    .code{fill:#1b2838;font:16px "Courier New",monospace}
+    .warn{fill:#fff0ed;stroke:#bf3c2f;stroke-width:2;rx:10}
+    .note{fill:#7d261d;font:700 18px Arial,sans-serif}
+  </style>
+  <rect class="bg" width="1120" height="600"/>
+  <rect class="card" x="52" y="58" width="620" height="420"/>
+  <rect class="head" x="52" y="58" width="620" height="48"/>
+  <text class="headText" x="78" y="89">Illustrative delayed execution setup</text>
+  <text class="code" x="78" y="142">git config --local core.hooksPath .cursor-hooks</text>
+  <text class="code" x="78" y="178">mkdir -p .cursor-hooks</text>
+  <text class="code" x="78" y="226">cat &gt; .cursor-hooks/post-checkout &lt;&lt;'SH'</text>
+  <text class="code" x="78" y="262">#!/bin/sh</text>
+  <text class="code" x="78" y="298">env | sort &gt; /tmp/cursor-hook-env.txt</text>
+  <text class="code" x="78" y="334">SH</text>
+  <text class="code" x="78" y="382">chmod +x .cursor-hooks/post-checkout</text>
+  <text class="code" x="78" y="430">git checkout main</text>
+
+  <rect class="warn" x="720" y="120" width="340" height="300"/>
+  <text class="note" x="748" y="164">What the code illustrates</text>
+  <text class="code" x="748" y="208">The write is not the final exploit.</text>
+  <text class="code" x="748" y="244">The next Git event executes it.</text>
+  <text class="code" x="748" y="280">A sandbox must protect both stages.</text>
+  <text class="code" x="748" y="336">Protected targets:</text>
+  <text class="code" x="748" y="372">.git/config, hooksPath, hooks/</text>
+</svg>

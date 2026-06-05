@@ -1,0 +1,1 @@
+.awb-swiper.fusion-post-cards{--awb-columns-medium:3}.awb-swiper.awb-swiper-carousel:not(.swiper-initialized) .swiper-slide{max-width:calc((100% - ((var(--awb-columns-medium) - 1) * var(--awb-column-spacing)))/ var(--awb-columns-medium))}

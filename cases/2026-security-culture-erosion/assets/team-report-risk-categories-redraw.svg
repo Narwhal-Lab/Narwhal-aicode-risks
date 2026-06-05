@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+  <rect width="1280" height="760" fill="#f8fafc"/>
+  <text x="60" y="62" font-size="32" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" font-weight="700" fill="#172033">团队技术报告第 3 章：AI 生成代码风险分类</text>
+  <text x="60" y="100" font-size="18" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#526070">根据报告第 3 章内容重绘，避免 PDF 字体映射导致的中文缺失</text>
+  <g font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif">
+    <rect x="70" y="150" width="540" height="190" rx="18" fill="#fff7ed" stroke="#f1a554" stroke-width="2"/>
+    <text x="105" y="198" font-size="28" font-weight="700" fill="#d62525">漏洞注入与放大</text>
+    <text x="450" y="198" font-size="22" font-weight="700" fill="#24364a">技术安全</text>
+    <text x="105" y="242" font-size="20" fill="#263241">模型因代码幻觉或学习不安全模式，生成含有</text>
+    <text x="105" y="276" font-size="20" fill="#263241">逻辑缺陷或已知漏洞的代码，例如 SQL 注入、XSS。</text>
+    <text x="105" y="314" font-size="18" fill="#5b6470">对应本案例：AI 快速生成可运行系统，但权限边界未被审查。</text>
+
+    <rect x="670" y="150" width="540" height="190" rx="18" fill="#eef7ff" stroke="#78aee5" stroke-width="2"/>
+    <text x="705" y="198" font-size="28" font-weight="700" fill="#d62525">敏感数据泄露</text>
+    <text x="1050" y="198" font-size="22" font-weight="700" fill="#24364a">数据隐私</text>
+    <text x="705" y="242" font-size="20" fill="#263241">开发者通过 Prompt 将 API 密钥、专有算法等</text>
+    <text x="705" y="276" font-size="20" fill="#263241">敏感信息传给第三方服务，或因系统误配暴露数据。</text>
+    <text x="705" y="314" font-size="18" fill="#5b6470">对应本案例：用户邮箱、agent token、平台数据可被未授权访问。</text>
+
+    <rect x="70" y="390" width="540" height="210" rx="18" fill="#fff1f2" stroke="#ee8b94" stroke-width="3"/>
+    <text x="105" y="438" font-size="30" font-weight="700" fill="#d62525">安全文化侵蚀</text>
+    <text x="420" y="438" font-size="22" font-weight="700" fill="#24364a">组织与人力</text>
+    <text x="105" y="484" font-size="20" fill="#263241">开发者因自动化偏见过度信任 AI，削弱代码审查。</text>
+    <text x="105" y="518" font-size="20" fill="#263241">长期依赖会导致核心安全编码能力退化。</text>
+    <text x="105" y="552" font-size="18" font-weight="700" fill="#b42318">这是本案例的主线：不是单个代码错误，</text>
+    <text x="105" y="582" font-size="18" font-weight="700" fill="#b42318">而是审查责任被 AI 生成速度掩盖。</text>
+
+    <rect x="670" y="390" width="540" height="210" rx="18" fill="#f5f3ff" stroke="#a593e0" stroke-width="2"/>
+    <text x="705" y="438" font-size="28" font-weight="700" fill="#d62525">知识产权与合规</text>
+    <text x="1015" y="438" font-size="22" font-weight="700" fill="#24364a">法律合规</text>
+    <text x="705" y="484" font-size="20" fill="#263241">生成代码可能包含受开源许可证限制的片段，</text>
+    <text x="705" y="518" font-size="20" fill="#263241">引发许可证污染，代码所有权归属不清。</text>
+    <text x="705" y="560" font-size="18" fill="#5b6470">对应其他案例：Copilot 许可证与来源追溯风险。</text>
+
+    <rect x="130" y="650" width="1020" height="58" rx="14" fill="#172033"/>
+    <text x="170" y="687" font-size="20" fill="#ffffff">Moltbook 案例主要落在“安全文化侵蚀”，同时牵连“漏洞注入与放大”和“敏感数据泄露”。</text>
+  </g>
+</svg>

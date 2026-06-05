@@ -1,0 +1,25 @@
+slug: 2022-license-pollution-lawsuit
+title_en: "GitHub Copilot Class-Action Lawsuit & License Pollution"
+title_cn: "GitHub Copilot 开源许可证污染与版权诉讼事件"
+year: 2022
+disclosed: 2022-11-03
+category: ip-compliance
+severity: high
+severity_basis: editorial
+severity_evidence: "Legal/IP risk has no CVSS scale; rated High due to systemic class-action with documented enterprise compliance impact."
+cvss: null
+cve: null
+real_incident: true
+ai_tool: [GitHub Copilot, OpenAI Codex]
+language: []
+attack_surface: [training-data, code-attribution, oss-license]
+reproducible: false
+tldr: "First systemic class-action lawsuit (J. Doe 1 v. GitHub) over Copilot reproducing copyrighted OSS code without attribution or license, igniting industry-wide license-pollution panic."
+references:
+  - title: "The Verge — GitHub Copilot is facing a class-action lawsuit for piracy"
+    url: "https://www.theverge.com/2022/11/8/23446821/microsoft-openai-github-copilot-class-action-lawsuit-ai-copyright-violation-fair-use"
+  - title: "Matthew Butterick — GitHub Copilot litigation"
+    url: "https://githubcopilotlitigation.com/"
+  - title: "Case docket — J. Doe 1 v. GitHub, Inc., 4:22-cv-06823 (N.D. Cal.)"
+    url: "https://cand.uscourts.gov/cases-e-filing/cases/422-cv-06823-jst/doe-1-et-al-v-github-inc-et-al"
+tags: [copyright, license-pollution, gpl, copilot, lawsuit]

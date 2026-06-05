@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620" role="img" aria-labelledby="title desc">
+  <title id="title">脱敏复现代码图</title>
+  <desc id="desc">根据公开报道重建的脱敏代码示例，展示为什么整段复制业务代码到 Prompt 会造成源代码与业务数据泄露。</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfbf8; }
+      .panel { fill: #ffffff; stroke: #273333; stroke-width: 2; rx: 8; }
+      .bad { fill: #fff5f2; stroke: #c62828; stroke-width: 2; rx: 8; }
+      .good { fill: #eff8f7; stroke: #247a78; stroke-width: 2; rx: 8; }
+      .title { font: 700 30px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #182222; }
+      .sub { font: 20px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #273333; }
+      .hbad { font: 700 24px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #c62828; }
+      .hgood { font: 700 24px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #247a78; }
+      .code { font: 18px "Fira Code", "Consolas", monospace; fill: #182222; }
+      .note { font: 18px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #273333; }
+      .warn { fill: #c62828; font-weight: 700; }
+      .ok { fill: #247a78; font-weight: 700; }
+    </style>
+  </defs>
+  <rect class="bg" width="1180" height="620"/>
+  <text class="title" x="54" y="62">脱敏复现：把整段内部程序发给 AI 的风险</text>
+  <text class="sub" x="54" y="100">实际三星代码未公开，下例仅复现风险结构。红色区域代表不应出现在 Prompt 中的信息。</text>
+
+  <rect class="bad" x="54" y="135" width="510" height="405"/>
+  <text class="hbad" x="82" y="176">不安全 Prompt 片段</text>
+  <text class="code" x="82" y="220">Fix this error and optimize the query:</text>
+  <text class="code warn" x="82" y="252">FAB_DB_HOST = "fab-mes.internal"</text>
+  <text class="code warn" x="82" y="282">DB_TOKEN = "REDACTED_SECRET"</text>
+  <text class="code warn" x="82" y="312">LINE_ID = "P2-EUV-REDACTED"</text>
+  <text class="code" x="82" y="342">def load_measurement(lot_id):</text>
+  <text class="code warn" x="110" y="372">sql = "select yield, defect_code ..."</text>
+  <text class="code warn" x="110" y="402">return db.query(sql, token=DB_TOKEN)</text>
+  <text class="code" x="82" y="432">def optimize_test_pattern(vec):</text>
+  <text class="code warn" x="110" y="462">return reduce_probe_steps(vec, fab_rule)</text>
+  <text class="note" x="82" y="510">问题：源代码、内部主机、业务指标、测试策略一起外发。</text>
+
+  <rect class="good" x="616" y="135" width="510" height="405"/>
+  <text class="hgood" x="644" y="176">安全替代写法</text>
+  <text class="code" x="644" y="220">I have a KeyError in this pattern:</text>
+  <text class="code ok" x="644" y="252">DB_HOST = os.getenv("DB_HOST")</text>
+  <text class="code ok" x="644" y="282">token = secret_manager.get("db_token")</text>
+  <text class="code" x="644" y="312">def load_measurement(sample_id):</text>
+  <text class="code ok" x="672" y="342">rows = [{"metric": 0.91, "code": "D1"}]</text>
+  <text class="code" x="672" y="372">return group_by_code(rows)</text>
+  <text class="code" x="644" y="402">Error: KeyError("code")</text>
+  <text class="code ok" x="644" y="432">Please explain the bug only.</text>
+  <text class="note" x="644" y="510">做法：只给最小复现、假数据、错误栈，不上传业务实现。</text>
+
+  <rect class="panel" x="54" y="565" width="1072" height="34"/>
+  <text class="note" x="72" y="589">判定标准：如果片段能暴露系统结构、供应商流程、商业指标或访问路径，就不应进入外部 AI Prompt。</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="520" viewBox="0 0 1180 520" role="img" aria-labelledby="title desc">
+  <title id="title">Samsung ChatGPT 数据泄露事件时间线</title>
+  <desc id="desc">2023 年 3 月三星半导体开放 ChatGPT 后，20 天内出现 3 起内部资料输入外部 AI 服务的事件。</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfbf8; }
+      .axis { stroke: #2f3a3a; stroke-width: 4; stroke-linecap: round; }
+      .tick { stroke: #2f3a3a; stroke-width: 3; }
+      .card { fill: #ffffff; stroke: #273333; stroke-width: 2; rx: 8; }
+      .head { font: 700 28px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #182222; }
+      .date { font: 700 24px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #c62828; }
+      .body { font: 20px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #263333; }
+      .label { font: 700 18px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .chip-red { fill: #c62828; }
+      .chip-teal { fill: #247a78; }
+      .chip-blue { fill: #2e6ea5; }
+      .chip-gray { fill: #515b5b; }
+    </style>
+  </defs>
+  <rect class="bg" width="1180" height="520"/>
+  <text class="head" x="54" y="62">三星半导体 ChatGPT 数据泄露事件时间线</text>
+  <text class="body" x="54" y="98">场景是 AI 辅助编码中的 Prompt 输入泄露，核心资产是源代码、良率与缺陷分析逻辑、内部会议内容。</text>
+
+  <line class="axis" x1="90" y1="260" x2="1090" y2="260"/>
+  <line class="tick" x1="180" y1="244" x2="180" y2="276"/>
+  <line class="tick" x1="475" y1="244" x2="475" y2="276"/>
+  <line class="tick" x1="770" y1="244" x2="770" y2="276"/>
+  <line class="tick" x1="1000" y1="244" x2="1000" y2="276"/>
+
+  <rect class="card" x="70" y="135" width="250" height="92"/>
+  <rect class="chip-teal" x="90" y="155" width="90" height="30" rx="8"/>
+  <text class="label" x="106" y="177">放开使用</text>
+  <text class="date" x="90" y="214">2023-03-11</text>
+  <text class="body" x="86" y="310">DS 半导体部门</text>
+  <text class="body" x="86" y="338">允许员工使用 ChatGPT</text>
+
+  <rect class="card" x="350" y="300" width="260" height="126"/>
+  <rect class="chip-red" x="370" y="320" width="92" height="30" rx="8"/>
+  <text class="label" x="386" y="342">泄露 1</text>
+  <text class="body" x="370" y="382">设备计测 DB 下载程序</text>
+  <text class="body" x="370" y="410">源代码被整段输入</text>
+
+  <rect class="card" x="645" y="125" width="300" height="126"/>
+  <rect class="chip-red" x="665" y="145" width="92" height="30" rx="8"/>
+  <text class="label" x="681" y="167">泄露 2</text>
+  <text class="body" x="665" y="207">良率、缺陷设备识别</text>
+  <text class="body" x="665" y="235">程序代码被要求优化</text>
+
+  <rect class="card" x="860" y="306" width="260" height="126"/>
+  <rect class="chip-red" x="880" y="326" width="92" height="30" rx="8"/>
+  <text class="label" x="896" y="348">泄露 3</text>
+  <text class="body" x="880" y="388">会议录音转写后</text>
+  <text class="body" x="880" y="416">输入生成会议纪要</text>
+
+  <rect class="card" x="425" y="150" width="210" height="72"/>
+  <rect class="chip-blue" x="445" y="170" width="96" height="30" rx="8"/>
+  <text class="label" x="461" y="192">20 天内</text>
+  <text class="body" x="445" y="214">发生 3 起事件</text>
+
+  <rect class="card" x="960" y="140" width="154" height="92"/>
+  <rect class="chip-gray" x="980" y="160" width="74" height="30" rx="8"/>
+  <text class="label" x="997" y="182">处置</text>
+  <text class="body" x="980" y="218">单次提问</text>
+  <text class="body" x="980" y="246">限制 1024 字节</text>
+</svg>

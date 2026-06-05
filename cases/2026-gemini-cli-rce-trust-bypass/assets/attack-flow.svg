@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-labelledby="title desc">
+  <title id="title">Gemini CLI CI attack flow</title>
+  <desc id="desc">A numbered flow showing how untrusted repository input can influence a headless Gemini CLI workflow and reach CI runner command execution.</desc>
+  <style>
+    .bg{fill:#f7f9fc}
+    .panel{fill:#ffffff;stroke:#243447;stroke-width:2;rx:14}
+    .risk{fill:#fff1f0;stroke:#c0392b}
+    .safe{fill:#eef8f2;stroke:#26734d}
+    .line{stroke:#53687e;stroke-width:3}
+    .num{fill:#243447;font:700 24px Arial,sans-serif}
+    .title{fill:#14212f;font:700 25px Arial,sans-serif}
+    .text{fill:#243447;font:18px Arial,sans-serif}
+    .small{fill:#53687e;font:15px Arial,sans-serif}
+  </style>
+  <rect class="bg" width="1100" height="520"/>
+  <text x="48" y="54" class="title">Gemini CLI headless CI risk chain</text>
+  <text x="48" y="84" class="small">The failure appears before code review because the agent loads workspace state and then receives broad tool authority.</text>
+
+  <rect class="panel" x="48" y="130" width="230" height="170"/>
+  <text class="num" x="72" y="170">1</text>
+  <text class="title" x="106" y="170">Untrusted input</text>
+  <text class="text" x="72" y="212">Pull request, issue text</text>
+  <text class="text" x="72" y="238">or repository files are</text>
+  <text class="text" x="72" y="264">controlled by an attacker.</text>
+
+  <line class="line" x1="278" y1="215" x2="338" y2="215"/>
+
+  <rect class="panel risk" x="338" y="130" width="230" height="170"/>
+  <text class="num" x="362" y="170">2</text>
+  <text class="title" x="396" y="170">Workspace trust</text>
+  <text class="text" x="362" y="212">Headless CLI treated the</text>
+  <text class="text" x="362" y="238">checked-out workspace as</text>
+  <text class="text" x="362" y="264">trusted configuration.</text>
+
+  <line class="line" x1="568" y1="215" x2="628" y2="215"/>
+
+  <rect class="panel risk" x="628" y="130" width="230" height="170"/>
+  <text class="num" x="652" y="170">3</text>
+  <text class="title" x="686" y="170">Tool policy gap</text>
+  <text class="text" x="652" y="212">Fine-grained allowlists</text>
+  <text class="text" x="652" y="238">were not enforced under</text>
+  <text class="text" x="652" y="264">the old yolo path.</text>
+
+  <line class="line" x1="858" y1="215" x2="918" y2="215"/>
+
+  <rect class="panel risk" x="918" y="130" width="134" height="170"/>
+  <text class="num" x="940" y="170">4</text>
+  <text class="title" x="940" y="204">RCE</text>
+  <text class="text" x="940" y="240">Shell runs</text>
+  <text class="text" x="940" y="266">as CI job.</text>
+
+  <rect class="panel safe" x="168" y="360" width="764" height="96"/>
+  <text class="title" x="196" y="400">Patched boundary</text>
+  <text class="text" x="196" y="432">Explicit workspace trust, enforced allowlists, minimal workflow permissions, and auditable tool calls.</text>
+</svg>

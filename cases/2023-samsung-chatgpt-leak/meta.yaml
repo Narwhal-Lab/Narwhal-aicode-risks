@@ -1,0 +1,37 @@
+slug: "2023-samsung-chatgpt-leak"
+title_en: "Samsung Semiconductor ChatGPT Data Leak"
+title_cn: "三星半导体 ChatGPT 数据泄露事件"
+year: 2023
+disclosed: 2023-04
+category: "human-factor"
+severity: "high"
+severity_basis: "editorial"
+severity_evidence: "Publicly reported by TechCrunch, The Register, Dark Reading — Samsung DS staff leaked source code and internal data to ChatGPT; company responded with usage restrictions."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "ChatGPT"
+  - "Naver Clova"
+language:
+  - "Multiple"
+attack_surface:
+  - "Input-side data exfiltration"
+  - "Prompt leakage"
+references:
+  - title: "TechCrunch: Samsung bans use of generative AI tools after April internal data leak"
+    url: "https://techcrunch.com/2023/05/02/samsung-bans-use-of-generative-ai-tools-like-chatgpt-after-april-internal-data-leak/"
+  - title: "The Register: Samsung reportedly leaked its own secrets through ChatGPT"
+    url: "http://www.theregister.com/2023/04/06/samsung_reportedly_leaked_its_own_secrets_through_chatgpt/"
+  - title: "Dark Reading: Samsung Engineers Feed Sensitive Data to ChatGPT"
+    url: "https://www.darkreading.com/vulnerabilities-threats/samsung-engineers-sensitive-data-chatgpt-warnings-ai-use-workplace"
+  - title: "AI Incident Database: Incident 768"
+    url: "https://incidentdatabase.ai/cite/768/"
+  - title: "The Economist Korea: 삼성전자, 챗GPT 빗장 풀자마자 '오남용' 속출"
+    url: "https://economist.co.kr/article/view/ecn202303300057"
+tldr: "Samsung DS staff leaked source code, yield/defect code, and meeting transcripts to ChatGPT in March 2023, prompting a corporate ban on external AI tools."
+tags:
+  - "data-leak"
+  - "prompt-injection"
+  - "human-factor"
+  - "input-side-risk"
+  - "semiconductor"

@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+title: "narwhal-aicode-risks: Field Guide to Security Risks of AI-Generated Code"
+message: "If you use this material in academic work or industry reports, please cite as below."
+type: dataset
+authors:
+  - family-names: Wang
+    given-names: Bin
+    email: thebinking66@gmail.com
+  - family-names: Yu
+    given-names: Wenjie
+    email: uuykea@gmail.com
+  - family-names: Zhong
+    given-names: Yilu
+    email: tangaaang@gmail.com
+  - family-names: Yu
+    given-names: Hao
+    email: g.diorld@gmail.com
+  - name: "Tencent Security Platform Department"
+  - name: "Narwhal Lab"
+repository-code: "https://github.com/Narwhal-Lab/narwhal-aicode-risks"
+license: CC-BY-4.0
+year: 2025
+preferred-citation:
+  type: article
+  title: "AI Code in the Wild: Measuring Security Risks and Ecosystem Shifts of AI-Generated Code in Modern Software"
+  authors:
+    - family-names: Wang
+      given-names: Bin
+    - family-names: Yu
+      given-names: Wenjie
+    - family-names: Zhong
+      given-names: Yilu
+    - family-names: Yu
+      given-names: Hao
+    - family-names: Lian
+      given-names: Keke
+    - family-names: Lu
+      given-names: Chaohua
+    - family-names: Zheng
+      given-names: Hongfang
+    - family-names: Zhang
+      given-names: Dong
+    - family-names: Li
+      given-names: Hui
+  year: 2025
+  url: "https://arxiv.org/abs/2512.18567"
+  identifiers:
+    - type: other
+      value: "arXiv:2512.18567"

@@ -1,0 +1,18 @@
+/*
+Theme Name: Avada
+Description: The Avada Website Builder is the ultimate design and creation suite. Design Anything, Build Everything, Fast. The #1 selling product of all time on ThemeForest.
+Theme URI: https://avada.com/
+Author: ThemeFusion
+Author URI: https://themeforest.net/user/ThemeFusion
+License: Themeforest Split Licence
+Version: 7.15.3
+Requires PHP: 5.6
+Requires at least: 4.9
+Text Domain: Avada
+*/
+
+/* Classes needed by Theme Check */
+.wp-caption-text,
+.gallery-caption,
+.bypostauthor {
+}

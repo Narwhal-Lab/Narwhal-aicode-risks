@@ -1,0 +1,36 @@
+slug: 2025-iac-s3-bucket-leak
+title_en: "[SCENARIO] AI-Generated IaC Causing S3 Public-Read Leak"
+title_cn: "[示例性场景] AI 生成 IaC 脚本导致 S3 存储桶泄露"
+year: 2025
+disclosed: null
+category: cloud-iac
+type: scenario             # cases/* are real incidents; scenarios/* are illustrative
+severity: critical          # severity is illustrative within the scenario
+severity_basis: editorial   # cvss | quantifiable-impact | editorial
+severity_evidence: "Illustrative scenario; no real incident attached."
+cvss: null
+cve: null
+real_incident: false        # downgraded after verification (2026-05)
+ai_tool: [Cursor, GitHub Copilot]
+language: [Terraform]
+attack_surface: [s3, iac, cloud-storage]
+reproducible: false
+tldr: "Illustrative scenario showing how AI-generated Terraform can leave an S3 bucket world-readable when reviewers treat AI output as already-vetted."
+references:
+  - title: "CloudMagazin — AI-Generated Terraform Code Is the Cloud Stack's Biggest Unspoken Risk"
+    url: "https://www.cloudmagazin.com/en/2026/04/02/ai-generated-terraform-code-is-the-cloud-stacks-biggest-unspoken-risk/"
+  - title: "Security Boulevard — Cloud Posture for Lending Platforms: Misconfigurations That Leak PII"
+    url: "https://securityboulevard.com/2025/09/cloud-posture-for-lending-platforms-misconfigurations-that-leak-pii/"
+  - title: "CSA — State of Cloud and AI Security 2025"
+    url: "https://cloudsecurityalliance.org/artifacts/state-of-cloud-and-ai-security-2025"
+  - title: "AWS — S3 Block Public Access (4 settings, org-level enforcement Nov 2025)"
+    url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html"
+  - title: "Curated list of S3 leak incidents"
+    url: "https://github.com/nagwww/s3-leaks"
+verification_notes: |
+  2026-05 verification: The originally-cited primary sources (CSA "ai-generated-iac-risks" /
+  Unit 42 "llm-code-generation-cloud-security") returned 404. The product "Terraform-AI-Plugin"
+  does not exist. The "BlockCrossAccountAccess" setting does not exist (S3 BPA has 4 settings,
+  not 5). No breach-tracker / DPC / news source corroborates the specific company / 1.2TB / 1.2M-user
+  / 92-day / 4%-of-revenue claims. Reframed as illustrative scenario.
+tags: [scenario, illustrative, s3, terraform, public-read]

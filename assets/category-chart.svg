@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" preserveAspectRatio="xMidYMid meet" font-family="Arial, Helvetica, sans-serif">
+<path d="M 200.00 70.00 A 130 130 0 0 1 322.16 244.46 L 282.69 230.10 A 88 88 0 0 0 200.00 112.00 Z" fill="#3b82f6" />
+<path d="M 322.16 244.46 A 130 130 0 0 1 222.57 328.03 L 215.28 286.66 A 88 88 0 0 0 282.69 230.10 Z" fill="#ef4444" />
+<path d="M 222.57 328.03 A 130 130 0 0 1 200.00 330.00 L 200.00 288.00 A 88 88 0 0 0 215.28 286.66 Z" fill="#0ea5e9" />
+<path d="M 200.00 330.00 A 130 130 0 0 1 87.42 135.00 L 123.79 156.00 A 88 88 0 0 0 200.00 288.00 Z" fill="#a855f7" />
+<path d="M 87.42 135.00 A 130 130 0 0 1 116.44 100.41 L 143.43 132.59 A 88 88 0 0 0 123.79 156.00 Z" fill="#f59e0b" />
+<path d="M 116.44 100.41 A 130 130 0 0 1 155.54 77.84 L 169.90 117.31 A 88 88 0 0 0 143.43 132.59 Z" fill="#10b981" />
+<path d="M 155.54 77.84 A 130 130 0 0 1 200.00 70.00 L 200.00 112.00 A 88 88 0 0 0 169.90 117.31 Z" fill="#64748b" />
+<text x="200" y="196" text-anchor="middle" font-size="56" font-weight="700">36</text>
+<text x="200" y="224" text-anchor="middle" font-size="14" fill="#666">cases</text>
+<rect x="420" y="64" width="16" height="16" rx="3" fill="#3b82f6"/>
+<text x="446" y="77" font-size="14">Hallucination & Supply Chain <tspan fill="#666">(11)</tspan></text>
+<rect x="420" y="94" width="16" height="16" rx="3" fill="#ef4444"/>
+<text x="446" y="107" font-size="14">Code-Level Vulnerabilities <tspan fill="#666">(6)</tspan></text>
+<rect x="420" y="124" width="16" height="16" rx="3" fill="#0ea5e9"/>
+<text x="446" y="137" font-size="14">Cloud & IaC Misconfiguration <tspan fill="#666">(1)</tspan></text>
+<rect x="420" y="154" width="16" height="16" rx="3" fill="#a855f7"/>
+<text x="446" y="167" font-size="14">Agent Risks <tspan fill="#666">(12)</tspan></text>
+<rect x="420" y="184" width="16" height="16" rx="3" fill="#f59e0b"/>
+<text x="446" y="197" font-size="14">Domain-Specific Risks <tspan fill="#666">(2)</tspan></text>
+<rect x="420" y="214" width="16" height="16" rx="3" fill="#10b981"/>
+<text x="446" y="227" font-size="14">IP, License & Compliance <tspan fill="#666">(2)</tspan></text>
+<rect x="420" y="244" width="16" height="16" rx="3" fill="#64748b"/>
+<text x="446" y="257" font-size="14">Human Factors <tspan fill="#666">(2)</tspan></text>
+</svg>

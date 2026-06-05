@@ -1,0 +1,114 @@
+/*
+ * LeaveNotice - plug in to notify users of leaving your site
+ * Examples and documentation at: http://rewdy.com/tools/leavenotice-jquery-plugin
+ * Version: 1.1.2 (02/15/2012)
+ * Copyright (c) 2012 Andrew Meyer
+ * Licensed under the MIT License: http://en.wikipedia.org/wiki/MIT_License
+ * Requires: jQuery v1.4+
+*/
+jQuery(function () {
+    (function (a) {
+        function b(b, c) {
+            if (b.timeOut > 0) {
+                clearTimeout(c);
+            }
+            a("#" + b.overlayId + ", #" + b.messageHolderId).fadeOut("fast", function () {
+                a("#" + b.overlayId + ", #" + b.messageHolderId).remove();
+            });
+            a(document).unbind("keyup");
+        }
+        a.fn.leaveNotice = function (c) {
+            var d = {
+                siteName: window.location.href,
+                exitMessage: "<p><strong>You have requested a website outside of {SITENAME}.</strong></p><p>Thank you for visiting.</p>",
+                preLinkMessage: "<div class='setoff'><p>You will now be directed to:<br/>{URL}</p></div>",
+                linkString: "",
+                timeOut: 4e3,
+                overlayId: "ln-blackout",
+                messageBoxId: "ln-messageBox",
+                messageHolderId: "ln-messageHolder",
+                displayUrlLength: 50,
+                overlayAlpha: 0.3,
+            };
+            var e = a.extend(d, c);
+            return this.each(function () {
+                el = a(this);
+                var c = el.attr("href");
+                var d = e.displayUrlLength;
+                if (c.length >= d) {
+                    var f = "...";
+                } else {
+                    var f = "";
+                }
+                var g = c.substr(0, d) + f;
+                var h = el.attr("title");
+                if (h === undefined || h == "") {
+                    var i = g;
+                } else {
+                    var i = h;
+                }
+                el.on("click", function () {
+                    a("body").append('<div id="' + e.overlayId + '"></div>');
+                    a("body").append('<div id="' + e.messageHolderId + '"><div id="' + e.messageBoxId + '"></div></div>');
+                    if (e.overlayAlpha !== false) {
+                        a("#" + e.overlayId).css("opacity", e.overlayAlpha);
+                    }
+                    preFilteredContent = e.exitMessage + e.preLinkMessage;
+                    msgContent = preFilteredContent.replace(/\{URL\}/g, '<a href="' + c + '" title="' + c + '"' + e.linkString + ">" + i + "</a>");
+                    msgContent = msgContent.replace(/\{SITENAME\}/g, e.siteName);
+                    if (e.timeOut > 0) {
+                        msgContent += '<p id="ln-cancelMessage"><a href="#close" id="ln-cancelLink">Cancel</a> or press the ESC key.</p>';
+                    } else {
+                        msgContent += '<p id="ln-cancelMessage"><a href="#ok" id="ln-okLink">OK</a><a href="#close" id="ln-cancelLink">Cancel</a></p>';
+                    }
+                    a("#" + e.messageBoxId).append(msgContent);
+                    if (e.timeOut > 0) {
+                        leaveIn = setTimeout(function () {
+                            a("#ln-cancelMessage").html("<em>Loading...</em>");
+                            window.location.href = c;
+                        }, e.timeOut);
+                    } else {
+                        leaveIn = false;
+                    }
+                    a("#ln-cancelLink").click(function () {
+                        b(e, leaveIn);
+                        return false;
+                    });
+                    a("#ln-okLink").click(function () {
+                    	window.location.href = c;
+                        return false;
+                    });
+                    a(document).bind("keyup", function (a) {
+                        if (a.which == 27) {
+                            b(e, leaveIn);
+                        }
+                    });
+                    a(window).on("unload", function () {
+                        b(e, leaveIn);
+                    });
+                    return false;
+                });
+            });
+        };
+    })(jQuery);
+    jQuery("a[href]")
+        .filter(function () {
+            return (
+                !this.href.match(/^mailto\:/) &&
+                !this.href.match(/\.mil/) &&
+                !this.href.match(/\.gov/) &&
+                !this.href.match(/addthis/) &&
+                !this.href.match(/javascript/) &&
+                !this.href.match(/10\.6028/) &&
+                this.hostname != location.hostname
+            );
+        })
+        .addClass("external");
+    jQuery(".external").leaveNotice({
+        siteName: "NIST",
+        timeOut: 0,
+        overlayAlpha: 0.7,
+        exitMessage:
+            "<h1>Thank you for visiting {SITENAME}.</h1><h2>We hope your visit was informative.</h2><p>We have provided a link to this site because it has information that may be of interest to our users. {SITENAME} does not necessarily endorse the views expressed or the facts presented on this site. Further, {SITENAME} does not endorse any commercial products that may be advertised or available on this site.</p> ",
+    });
+});

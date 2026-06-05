@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="520" viewBox="0 0 1280 520">
+  <rect width="1280" height="520" fill="#fffdf8"/>
+  <text x="48" y="58" font-size="30" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" font-weight="700" fill="#1c2430">代码审查为什么会失效</text>
+  <text x="48" y="90" font-size="17" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#5f6b7a">AI 生成代码占比上升后，审查对象从“人写的代码”变成“人接受的系统行为”</text>
+  <defs>
+    <marker id="arrow2" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto">
+      <path d="M0,0 L14,7 L0,14 z" fill="#677284"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif">
+    <rect x="70" y="150" width="220" height="190" rx="18" fill="#e9f3ff" stroke="#8ab4e6"/>
+    <text x="102" y="198" font-size="22" font-weight="700" fill="#16436f">AI 快速生成</text>
+    <text x="102" y="236" font-size="17" fill="#314a60">代码、后端配置</text>
+    <text x="102" y="264" font-size="17" fill="#314a60">数据库访问逻辑</text>
+    <text x="102" y="292" font-size="17" fill="#314a60">一起成型</text>
+    <line x1="300" y1="245" x2="380" y2="245" stroke="#677284" stroke-width="3" marker-end="url(#arrow2)"/>
+    <rect x="398" y="150" width="220" height="190" rx="18" fill="#fff0df" stroke="#e5ad6e"/>
+    <text x="430" y="198" font-size="22" font-weight="700" fill="#764100">开发者接受</text>
+    <text x="430" y="236" font-size="17" fill="#5a4633">认为能运行</text>
+    <text x="430" y="264" font-size="17" fill="#5a4633">就接近完成</text>
+    <text x="430" y="292" font-size="17" fill="#5a4633">没有逐项复核</text>
+    <line x1="628" y1="245" x2="708" y2="245" stroke="#677284" stroke-width="3" marker-end="url(#arrow2)"/>
+    <rect x="726" y="150" width="220" height="190" rx="18" fill="#ffe9e9" stroke="#e58c8c"/>
+    <text x="758" y="198" font-size="22" font-weight="700" fill="#842525">审查降级</text>
+    <text x="758" y="236" font-size="17" fill="#633434">只看功能路径</text>
+    <text x="758" y="264" font-size="17" fill="#633434">忽略权限模型</text>
+    <text x="758" y="292" font-size="17" fill="#633434">跳过云配置</text>
+    <line x1="956" y1="245" x2="1036" y2="245" stroke="#677284" stroke-width="3" marker-end="url(#arrow2)"/>
+    <rect x="1054" y="150" width="170" height="190" rx="18" fill="#edf7ed" stroke="#7ab67b"/>
+    <text x="1082" y="198" font-size="22" font-weight="700" fill="#255d2a">上线暴露</text>
+    <text x="1082" y="236" font-size="17" fill="#31523a">匿名读写</text>
+    <text x="1082" y="264" font-size="17" fill="#31523a">敏感数据</text>
+    <text x="1082" y="292" font-size="17" fill="#31523a">被枚举</text>
+  </g>
+  <rect x="90" y="390" width="1100" height="72" rx="16" fill="#1c2430"/>
+  <text x="124" y="435" font-size="20" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#ffffff">能力退化不是一夜发生的，而是从“相信 AI 写得差不多”开始，逐步减少威胁建模、最小权限和安全测试。</text>
+</svg>

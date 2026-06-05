@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "💬 Discussion / 讨论"
+    url: https://github.com/Narwhal-Lab/narwhal-aicode-risks/discussions
+    about: "Open-ended discussion, half-baked leads, ecosystem questions. / 开放讨论、不确定线索、生态问题。"
+  - name: "📧 Email maintainers / 邮件联系"
+    url: mailto:thebinking66@gmail.com
+    about: "Sensitive submissions or partnership inquiries. / 敏感投稿或合作事宜。"

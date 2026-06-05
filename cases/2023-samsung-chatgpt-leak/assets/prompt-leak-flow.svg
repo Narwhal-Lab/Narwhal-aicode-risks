@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="540" viewBox="0 0 1180 540" role="img" aria-labelledby="title desc">
+  <title id="title">Prompt 输入引发的数据外泄链路</title>
+  <desc id="desc">开发者在 AI 辅助编码中把敏感代码输入外部服务，数据越过企业安全边界并形成存储、训练和跨用户泄露风险。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2f3a3a"/>
+    </marker>
+    <style>
+      .bg { fill: #fbfbf8; }
+      .box { fill: #ffffff; stroke: #273333; stroke-width: 2.2; rx: 8; }
+      .risk { fill: #fff5f2; stroke: #c62828; stroke-width: 2.2; rx: 8; }
+      .control { fill: #eff8f7; stroke: #247a78; stroke-width: 2.2; rx: 8; }
+      .title { font: 700 30px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #182222; }
+      .h { font: 700 23px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #182222; }
+      .r { font: 700 23px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #c62828; }
+      .c { font: 700 23px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #247a78; }
+      .body { font: 19px "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #273333; }
+      .line { stroke: #2f3a3a; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1180" height="540"/>
+  <text class="title" x="54" y="62">漏洞本质：Prompt 通道绕过了企业代码与数据边界</text>
+  <text class="body" x="54" y="100">这不是传统远程利用漏洞，而是 AI 辅助开发链路中的数据出口没有做分类、脱敏、审计和阻断。</text>
+
+  <rect class="box" x="56" y="165" width="230" height="150"/>
+  <text class="h" x="80" y="205">开发者 IDE</text>
+  <text class="body" x="80" y="242">复制报错代码</text>
+  <text class="body" x="80" y="272">包含内部 DB 名称</text>
+  <text class="body" x="80" y="302">包含测试与良率逻辑</text>
+
+  <rect class="risk" x="360" y="145" width="250" height="190"/>
+  <text class="r" x="384" y="185">敏感 Prompt</text>
+  <text class="body" x="384" y="224">源代码整段粘贴</text>
+  <text class="body" x="384" y="254">会议内容直接上传</text>
+  <text class="body" x="384" y="284">缺少最小化复现</text>
+  <text class="body" x="384" y="314">缺少脱敏处理</text>
+
+  <rect class="box" x="685" y="165" width="220" height="150"/>
+  <text class="h" x="709" y="205">外部 AI 服务</text>
+  <text class="body" x="709" y="242">请求进入第三方</text>
+  <text class="body" x="709" y="272">可能被存储审查</text>
+  <text class="body" x="709" y="302">可能进入训练流程</text>
+
+  <rect class="risk" x="955" y="145" width="180" height="190"/>
+  <text class="r" x="979" y="185">外泄面</text>
+  <text class="body" x="979" y="224">商业机密失控</text>
+  <text class="body" x="979" y="254">模型记忆风险</text>
+  <text class="body" x="979" y="284">跨用户复现风险</text>
+  <text class="body" x="979" y="314">合规取证困难</text>
+
+  <path class="line" d="M286 240 H348"/>
+  <path class="line" d="M610 240 H673"/>
+  <path class="line" d="M905 240 H943"/>
+
+  <rect class="control" x="110" y="385" width="290" height="105"/>
+  <text class="c" x="134" y="424">入口控制</text>
+  <text class="body" x="134" y="460">Prompt DLP、Secret 扫描、</text>
+  <text class="body" x="134" y="486">代码片段最小化与脱敏</text>
+
+  <rect class="control" x="445" y="385" width="290" height="105"/>
+  <text class="c" x="469" y="424">工具控制</text>
+  <text class="body" x="469" y="460">企业租户、禁用训练、</text>
+  <text class="body" x="469" y="486">审计日志与访问分级</text>
+
+  <rect class="control" x="780" y="385" width="290" height="105"/>
+  <text class="c" x="804" y="424">出口控制</text>
+  <text class="body" x="804" y="460">生成代码审查、SAST、</text>
+  <text class="body" x="804" y="486">凭据轮换和可追溯水印</text>
+</svg>

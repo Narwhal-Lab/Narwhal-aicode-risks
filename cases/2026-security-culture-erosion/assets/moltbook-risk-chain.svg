@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="520" viewBox="0 0 1280 520">
+  <rect width="1280" height="520" fill="#f7f9fc"/>
+  <text x="48" y="58" font-size="30" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" font-weight="700" fill="#172033">Moltbook 风险链路</text>
+  <text x="48" y="90" font-size="17" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#526070">AI 生成速度提高了上线效率，但安全审查没有同步跟上</text>
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto">
+      <path d="M0,0 L14,7 L0,14 z" fill="#4d647d"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif">
+    <rect x="48" y="150" width="190" height="160" rx="18" fill="#e9f1ff" stroke="#8fb2df"/>
+    <text x="74" y="195" font-size="22" font-weight="700" fill="#1f456e">Vibe Coding</text>
+    <text x="74" y="228" font-size="16" fill="#31465b">创始人公开称</text>
+    <text x="74" y="252" font-size="16" fill="#31465b">没有亲自写代码</text>
+    <text x="74" y="276" font-size="16" fill="#31465b">由 AI 实现架构</text>
+
+    <line x1="248" y1="230" x2="330" y2="230" stroke="#4d647d" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="344" y="150" width="210" height="160" rx="18" fill="#fff5e5" stroke="#e2aa4b"/>
+    <text x="372" y="195" font-size="22" font-weight="700" fill="#7b4a00">前端暴露配置</text>
+    <text x="372" y="228" font-size="16" fill="#5a4a33">JS bundle 中出现</text>
+    <text x="372" y="252" font-size="16" fill="#5a4a33">Supabase 项目地址</text>
+    <text x="372" y="276" font-size="16" fill="#5a4a33">和 publishable key</text>
+
+    <line x1="564" y1="230" x2="646" y2="230" stroke="#4d647d" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="660" y="150" width="210" height="160" rx="18" fill="#ffecec" stroke="#e07070"/>
+    <text x="690" y="195" font-size="22" font-weight="700" fill="#8b1e1e">RLS 缺失</text>
+    <text x="690" y="228" font-size="16" fill="#643333">公开 key 本身</text>
+    <text x="690" y="252" font-size="16" fill="#643333">不是根因</text>
+    <text x="690" y="276" font-size="16" fill="#643333">后端行级策略缺位</text>
+
+    <line x1="880" y1="230" x2="962" y2="230" stroke="#4d647d" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="976" y="150" width="250" height="160" rx="18" fill="#eef9f0" stroke="#78b77b"/>
+    <text x="1006" y="195" font-size="22" font-weight="700" fill="#225522">全库读写暴露</text>
+    <text x="1006" y="228" font-size="16" fill="#314a34">未登录即可读取 tokens</text>
+    <text x="1006" y="252" font-size="16" fill="#314a34">可枚举表结构</text>
+    <text x="1006" y="276" font-size="16" fill="#314a34">可修改平台帖子</text>
+  </g>
+  <rect x="80" y="376" width="1120" height="80" rx="16" fill="#172033"/>
+  <text x="112" y="412" font-size="20" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#ffffff">失效点不是“用了 AI”，而是团队把 AI 生成速度当作上线能力。</text>
+  <text x="112" y="442" font-size="20" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#ffffff">缺少最基本的云后端权限审查、密钥暴露检查和代码审查。</text>
+</svg>

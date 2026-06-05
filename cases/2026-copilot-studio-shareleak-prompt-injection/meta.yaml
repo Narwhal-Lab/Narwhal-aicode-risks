@@ -1,0 +1,50 @@
+slug: "2026-copilot-studio-shareleak-prompt-injection"
+title_en: "Microsoft Copilot Studio ShareLeak Prompt Injection"
+title_cn: "Microsoft Copilot Studio ShareLeak 提示注入信息外泄事件"
+year: 2026
+disclosed: "2026-01-22"
+category: "agent-risk"
+severity: "high"
+severity_basis: "cvss"
+severity_evidence: "CVE-2026-21520 is a CVSS 7.5 sensitive information exposure vulnerability in Microsoft Copilot Studio; Capsule Security's ShareLeak research showed indirect prompt injection could exfiltrate connected SharePoint data through an authorized Outlook action."
+cvss: 7.5
+cve: "CVE-2026-21520"
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Microsoft Copilot Studio"
+  - "Copilot Studio agents"
+  - "SharePoint"
+  - "Outlook connector"
+language:
+  - "Multiple"
+attack_surface:
+  - "Agent prompt injection"
+  - "SharePoint form input"
+  - "Copilot Studio agent context"
+  - "Outlook tool action"
+  - "Sensitive information exposure"
+references:
+  - title: "NVD: CVE-2026-21520"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-21520"
+  - title: "GitHub Advisory Database: CVE-2026-21520"
+    url: "https://github.com/advisories/GHSA-5vx4-v4r5-wrxg"
+  - title: "VentureBeat: Microsoft patched a Copilot Studio prompt injection. The data exfiltrated anyway"
+    url: "https://venturebeat.com/security/microsoft-salesforce-copilot-agentforce-prompt-injection-cve-agent-remediation-playbook"
+  - title: "CSO Online: Copilot and Agentforce fall to form-based prompt injection tricks"
+    url: "https://www.csoonline.com/article/4159079/copilot-and-agentforce-fall-to-form-based-prompt-injection-tricks.html"
+  - title: "Capsule Security: The State of AI Agent Security 2026"
+    url: "https://www.capsulesecurity.io/blog-post/the-state-of-ai-agent-security-2026"
+  - title: "Help Net Security: Capsule Security debuts with $7M to stop AI agents from going rogue"
+    url: "https://www.helpnetsecurity.com/2026/04/15/capsule-security-platform/"
+tldr: "ShareLeak used form-based prompt injection to make Copilot Studio exfiltrate SharePoint data via Outlook."
+tags:
+  - "copilot-studio"
+  - "shareleak"
+  - "prompt-injection"
+  - "agent-risk"
+  - "cve-2026-21520"
+  - "sharepoint"
+  - "outlook"
+  - "data-exfiltration"
+verification_notes: "This case is based on NVD, GitHub Advisory Database, VentureBeat, CSO Online, Capsule Security, and Help Net Security. Public reporting supports ShareLeak as a prompt-injection information disclosure issue in Copilot Studio, but the case should not be framed as a traditional server compromise or RCE."

@@ -1,0 +1,37 @@
+slug: "2025-ai-iac-s3-breach"
+title_en: "AI-Generated IaC Script Causes Public S3 Bucket Leak in Fintech"
+title_cn: "AI生成IaC脚本导致金融科技公司S3存储桶公开泄露事件"
+year: 2025
+disclosed: 2025-12
+category: "cloud-iac"
+severity: "high"
+severity_basis: "quantifiable-impact"
+severity_evidence: "1.2TB user PII leaked, 120 million users affected, GDPR penalty risk, business disruption."
+cvss: 9.8
+cve: null
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Cursor"
+  - "GitHub Copilot"
+  - "Terraform-AI-Plugin"
+language:
+  - "HCL"
+  - "Terraform"
+attack_surface:
+  - "cloud-misconfiguration"
+references:
+  - title: "Undercode Testing: AI-generated Terraform leads to public S3 exposure"
+    url: "https://undercodetesting.com/the-invisible-cloud-heist-how-team-undercode-weaponized-ai-to-hack-terraform-configs-before-they-even-went-live/"
+  - title: "Sysdig: AI-assisted cloud intrusion achieves admin access in 8 minutes"
+    url: "https://sysdig.com/blog/ai-assisted-cloud-intrusion-achieves-admin-access-in-8-minutes/"
+  - title: "AWS Official: S3 Block Public Access Configuration"
+    url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/configuring-block-public-access-bucket.html"
+tldr: "AI-generated Terraform scripts created a public S3 bucket exposing 1.2TB of PII data for 92 days, affecting 120 million users."
+tags:
+  - "s3"
+  - "iac"
+  - "misconfiguration"
+  - "data-leak"
+  - "ai-code"
+  - "cloud-security"

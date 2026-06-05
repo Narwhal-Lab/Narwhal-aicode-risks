@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="560" viewBox="0 0 1120 560" role="img" aria-labelledby="title desc">
+  <title id="title">Nx s1ngularity supply-chain attack flow</title>
+  <desc id="desc">A visual flow from pull_request_target injection to npm token theft, malicious package publication, postinstall execution, and GitHub data exfiltration.</desc>
+  <style>
+    .bg{fill:#f8fafc}
+    .box{fill:#fff;stroke:#27384f;stroke-width:2;rx:12}
+    .risk{fill:#fff1ee;stroke:#bf3c2f}
+    .ai{fill:#f1f4ff;stroke:#5062b5}
+    .line{stroke:#61758c;stroke-width:3}
+    .title{fill:#172235;font:700 23px Arial,sans-serif}
+    .text{fill:#26384f;font:17px Arial,sans-serif}
+    .small{fill:#61758c;font:15px Arial,sans-serif}
+    .num{fill:#172235;font:700 24px Arial,sans-serif}
+  </style>
+  <rect class="bg" width="1120" height="560"/>
+  <text class="title" x="48" y="56">Nx s1ngularity attack chain</text>
+  <text class="small" x="48" y="86">A supply-chain compromise that also used AI CLI tooling as part of host reconnaissance.</text>
+
+  <rect class="box risk" x="48" y="130" width="205" height="150"/>
+  <text class="num" x="74" y="168">1</text>
+  <text class="title" x="108" y="168">PR title</text>
+  <text class="text" x="74" y="208">Injection reaches</text>
+  <text class="text" x="74" y="234">pull_request_target</text>
+
+  <line class="line" x1="253" y1="204" x2="310" y2="204"/>
+
+  <rect class="box risk" x="310" y="130" width="205" height="150"/>
+  <text class="num" x="336" y="168">2</text>
+  <text class="title" x="370" y="168">npm token</text>
+  <text class="text" x="336" y="208">Publishing credential</text>
+  <text class="text" x="336" y="234">is extracted</text>
+
+  <line class="line" x1="515" y1="204" x2="572" y2="204"/>
+
+  <rect class="box risk" x="572" y="130" width="205" height="150"/>
+  <text class="num" x="598" y="168">3</text>
+  <text class="title" x="632" y="168">npm release</text>
+  <text class="text" x="598" y="208">Malicious nx and</text>
+  <text class="text" x="598" y="234">@nx packages ship</text>
+
+  <line class="line" x1="777" y1="204" x2="834" y2="204"/>
+
+  <rect class="box risk" x="834" y="130" width="238" height="150"/>
+  <text class="num" x="860" y="168">4</text>
+  <text class="title" x="894" y="168">postinstall</text>
+  <text class="text" x="860" y="208">Developer or CI install</text>
+  <text class="text" x="860" y="234">runs telemetry.js</text>
+
+  <rect class="box ai" x="174" y="350" width="280" height="126"/>
+  <text class="title" x="204" y="392">AI CLI prompt</text>
+  <text class="text" x="204" y="430">Find sensitive file paths</text>
+  <text class="text" x="204" y="456">and write inventory</text>
+
+  <line class="line" x1="454" y1="412" x2="514" y2="412"/>
+
+  <rect class="box risk" x="514" y="350" width="410" height="126"/>
+  <text class="title" x="544" y="392">GitHub exfiltration</text>
+  <text class="text" x="544" y="430">Create public s1ngularity repositories</text>
+  <text class="text" x="544" y="456">and upload encoded results</text>
+</svg>

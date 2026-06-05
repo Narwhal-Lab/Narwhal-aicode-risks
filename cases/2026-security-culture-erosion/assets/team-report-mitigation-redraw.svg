@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+  <rect width="1280" height="760" fill="#f8fafc"/>
+  <text x="60" y="62" font-size="32" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" font-weight="700" fill="#172033">团队技术报告第 6 章：AI 生成代码风险缓解框架</text>
+  <text x="60" y="100" font-size="18" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif" fill="#526070">根据报告第 6 章内容重绘，突出与 Moltbook 案例直接相关的治理点</text>
+  <defs>
+    <marker id="arr" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto">
+      <path d="M0,0 L14,7 L0,14 z" fill="#718096"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif">
+    <circle cx="640" cy="382" r="92" fill="#e8f2ff" stroke="#6aa0d8" stroke-width="4"/>
+    <text x="576" y="365" font-size="25" font-weight="700" fill="#17385f">纵深防御</text>
+    <text x="550" y="402" font-size="19" fill="#31465b">全生命周期安全闭环</text>
+
+    <rect x="80" y="180" width="360" height="210" rx="18" fill="#e8f2ff" stroke="#6aa0d8" stroke-width="2"/>
+    <text x="112" y="225" font-size="25" font-weight="700" fill="#17436d">维度一：评测基准</text>
+    <text x="112" y="266" font-size="19" fill="#283747">建立多维度动态评测机制</text>
+    <text x="112" y="304" font-size="18" fill="#41556a">安全单测、开源对抗样本集、</text>
+    <text x="112" y="334" font-size="18" fill="#41556a">企业级红队测试与准入门槛。</text>
+    <text x="112" y="360" font-size="16" fill="#b42318">Moltbook 映射：上线前检查 RLS、</text>
+    <text x="112" y="384" font-size="16" fill="#b42318">匿名访问和敏感字段。</text>
+
+    <rect x="840" y="180" width="360" height="210" rx="18" fill="#e9f7ef" stroke="#59a979" stroke-width="2"/>
+    <text x="872" y="225" font-size="25" font-weight="700" fill="#1c6841">维度二：模型安全</text>
+    <text x="872" y="266" font-size="19" fill="#283747">增强模型本体安全性</text>
+    <text x="872" y="304" font-size="18" fill="#41556a">训练阶段 RLHF 安全对齐，</text>
+    <text x="872" y="334" font-size="18" fill="#41556a">推理阶段 RAG 检索增强与受限解码。</text>
+    <text x="872" y="360" font-size="16" fill="#b42318">Moltbook 映射：模型可提示安全写法，</text>
+    <text x="872" y="384" font-size="16" fill="#b42318">但不能替代工程控制。</text>
+
+    <rect x="330" y="520" width="620" height="160" rx="18" fill="#fff3e9" stroke="#e68b45" stroke-width="3"/>
+    <text x="366" y="565" font-size="26" font-weight="700" fill="#9a4b13">维度三：人机协同治理</text>
+    <text x="366" y="606" font-size="19" fill="#283747">全流程可追溯、自动代码隔离、强化人工审查。</text>
+    <text x="366" y="640" font-size="18" fill="#41556a">开发者仍需检查业务逻辑、权限模型、敏感数据边界和安全测试结果。</text>
+    <text x="366" y="670" font-size="17" fill="#b42318">Moltbook 映射：AI 生成代码必须进入 PR 审查、云配置扫描和发布阻断流程。</text>
+
+    <line x1="440" y1="286" x2="548" y2="342" stroke="#718096" stroke-width="3" marker-end="url(#arr)"/>
+    <line x1="840" y1="286" x2="732" y2="342" stroke="#718096" stroke-width="3" marker-end="url(#arr)"/>
+    <line x1="640" y1="474" x2="640" y2="512" stroke="#718096" stroke-width="3" marker-end="url(#arr)"/>
+  </g>
+</svg>

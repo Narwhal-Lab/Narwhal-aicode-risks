@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+  <title id="title">Risky Gemini CLI workflow pattern</title>
+  <desc id="desc">An illustrative workflow snippet and allowlist snippet showing the risky pattern discussed in the case.</desc>
+  <style>
+    .bg{fill:#fbfbfd}
+    .card{fill:#ffffff;stroke:#2f3b52;stroke-width:2;rx:12}
+    .head{fill:#2f3b52}
+    .headText{fill:#ffffff;font:700 20px Arial,sans-serif}
+    .code{fill:#1d2a3a;font:16px "Courier New",monospace}
+    .note{fill:#6b1f1f;font:700 18px Arial,sans-serif}
+    .soft{fill:#fbe9e7;stroke:#c0392b;stroke-width:2;rx:10}
+  </style>
+  <rect class="bg" width="1120" height="620"/>
+  <rect class="card" x="46" y="54" width="500" height="500"/>
+  <rect class="head" x="46" y="54" width="500" height="48"/>
+  <text class="headText" x="70" y="85">Illustrative GitHub Actions shape</text>
+  <text class="code" x="70" y="132">name: ai-review</text>
+  <text class="code" x="70" y="160">on:</text>
+  <text class="code" x="90" y="188">pull_request:</text>
+  <text class="code" x="90" y="216">issues:</text>
+  <text class="code" x="70" y="260">steps:</text>
+  <text class="code" x="90" y="288">- uses: actions/checkout@v4</text>
+  <text class="code" x="90" y="316">- uses: google-github-actions/run-gemini-cli@v0.1.21</text>
+  <text class="code" x="110" y="344">with:</text>
+  <text class="code" x="130" y="372">gemini_cli_version: "0.39.0"</text>
+  <text class="code" x="130" y="400">prompt: "Review submitted input"</text>
+  <text class="code" x="110" y="428">env:</text>
+  <text class="code" x="130" y="456">GEMINI_CLI_ARGS: "--yolo"</text>
+
+  <rect class="card" x="588" y="54" width="486" height="260"/>
+  <rect class="head" x="588" y="54" width="486" height="48"/>
+  <text class="headText" x="612" y="85">Intended allowlist</text>
+  <text class="code" x="612" y="134">{</text>
+  <text class="code" x="632" y="164">"tools": {</text>
+  <text class="code" x="652" y="194">"allowed": [</text>
+  <text class="code" x="672" y="224">"run_shell_command(echo)"</text>
+  <text class="code" x="652" y="254">]</text>
+  <text class="code" x="632" y="284">}</text>
+  <text class="code" x="612" y="314">}</text>
+
+  <rect class="soft" x="588" y="356" width="486" height="150"/>
+  <text class="note" x="616" y="400">Old behavior under the advisory</text>
+  <text class="code" x="616" y="438">headless workspace trust loaded local config</text>
+  <text class="code" x="616" y="468">yolo path did not enforce the fine policy</text>
+  <text class="code" x="616" y="498">shell authority became broader than expected</text>
+</svg>

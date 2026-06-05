@@ -1,0 +1,47 @@
+slug: "2026-pocketos-cursor-agent-db-delete"
+title_en: "PocketOS Production Database Deletion by Cursor AI Agent"
+title_cn: "PocketOS 生产数据库删除事件：Cursor AI Agent、过宽 API 权限与软性安全约束失效"
+year: 2026
+disclosed: "2026-04-25"
+category: "agent-risk"
+severity: "high"
+severity_basis: "editorial"
+severity_evidence: "Publicly reported production database and backups deletion by Cursor AI agent; customers temporarily lost access to reservations, customer records, payments and vehicle assignment data."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Cursor AI coding agent"
+  - "Anthropic Claude Opus 4.6"
+language:
+  - "Multiple"
+attack_surface:
+  - "AI agent tool execution"
+  - "Cloud API"
+  - "Production database"
+  - "Backup deletion"
+references:
+  - title: "The Guardian: Claude-powered AI agent's confession after deleting a firm's entire database"
+    url: "https://www.theguardian.com/technology/2026/apr/29/claude-ai-deletes-firm-database"
+  - title: "The Register: Cursor-Opus agent snuffs out startup's production database"
+    url: "https://www.theregister.com/software/2026/04/27/cursor-opus-agent-snuffs-out-startups-production-database/5224442"
+  - title: "Business Insider: A Startup Says Cursor's AI Agent Deleted Its Production Database"
+    url: "https://www.businessinsider.com/pocketos-cursor-ai-agent-deleted-production-database-startup-railway-2026-4"
+  - title: "Decrypt: AI Agent Deletes Startup's Database in 9 Seconds"
+    url: "https://decrypt.co/365897/ai-agent-deletes-startup-database-9-seconds-founder-says"
+  - title: "ACS Information Age: Gone in 9 seconds: AI agent deletes company database"
+    url: "https://ia.acs.org.au/article/2026/gone-in-9-seconds--ai-agent-deletes-company-database.html"
+  - title: "Zenity: System Prompts Are Not Security Controls"
+    url: "https://zenity.io/blog/current-events/ai-agent-database-deletion-pocketos"
+  - title: "Tom's Hardware: Victim of AI agent that deleted company's entire database gets their data back"
+    url: "https://www.tomshardware.com/tech-industry/artificial-intelligence/victim-of-ai-agent-that-deleted-companys-entire-database-gets-their-data-back-cloud-provider-recovers-critical-files-and-broadens-its-48-hour-delayed-delete-policy"
+tldr: "Cursor AI agent deleted PocketOS production database and backups via Railway API, exposing agent execution risks."
+tags:
+  - "agent-risk"
+  - "cursor"
+  - "claude"
+  - "railway"
+  - "production-database"
+  - "backup-deletion"
+  - "least-privilege"
+  - "human-in-the-loop"
+verification_notes: "Based on cross-reporting from Guardian, The Register, Business Insider, Decrypt, ACS Information Age, Zenity, and Tom's Hardware. Public reporting does not establish Claude, Cursor, Railway, or PocketOS as the sole root cause."

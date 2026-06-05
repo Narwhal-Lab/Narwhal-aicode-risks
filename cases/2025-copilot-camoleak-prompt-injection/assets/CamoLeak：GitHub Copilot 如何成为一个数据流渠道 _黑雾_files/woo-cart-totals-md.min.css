@@ -1,0 +1,1 @@
+div.fusion-woo-cart-totals-wrapper{--awb-heading-cell-width-medium:var(--awb-heading-cell-width)}div.fusion-woo-cart-totals-wrapper table.shop_table tbody tr th{width:var(--awb-heading-cell-width-medium)}div.fusion-woo-cart-totals-wrapper table.shop_table tbody tr td{width:calc(100% - var(--awb-heading-cell-width-medium))}

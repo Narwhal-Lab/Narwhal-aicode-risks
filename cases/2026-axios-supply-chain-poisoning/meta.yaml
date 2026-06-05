@@ -1,0 +1,30 @@
+slug: 2026-axios-supply-chain-poisoning
+title_en: Axios Supply Chain Poisoning Incident Affecting OpenClaw AI Agent
+title_cn: Axios 开源库供应链投毒事件（波及 OpenClaw AI Agent）
+year: 2026
+disclosed: 2026-04
+category: "supply-chain"
+severity: critical
+severity_basis: quantifiable-impact
+severity_evidence: 36亿年下载量JS核心库遭投毒，影响数百万项目，OpenClaw 3.28默认携带带毒依赖，全平台可被远程控制
+real_incident: true
+reproducible: false
+ai_tool: 
+  - "OpenClaw"
+language: 
+  - "JavaScript"
+attack_surface: 
+  - "supply-chain"
+references:
+  - title: "突发！Axios 遭供应链投毒，36亿年下载量JS库沦陷，全平台面临远控风险（附自查/修复全教程）"
+    url: "https://blog.csdn.net/weixin_68340504/article/details/159717437"
+  - title: "Axios 供应链投毒事件响应：腾讯云安全已完成主动排查与风险防护升级"
+    url: "https://cloud.tencent.com/developer/article/2651941"
+tldr: "In 2026, official Axios releases were compromised via account hijacking, injecting a malicious dependency to enable cross-platform remote control. OpenClaw 3.28 shipped with the poisoned Axios version by default, exposing the AI Agent ecosystem to widespread supply-chain risks."
+tags: 
+  - "supply-chain-poisoning"
+  - "axios"
+  - "npm"
+  - "openclaw"
+  - "ai-agent-risk"
+  - "postinstall-hook"

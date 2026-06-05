@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="440" viewBox="0 0 1080 440" role="img" aria-labelledby="title desc">
+  <title id="title">Alignment with AI GenCode technical report</title>
+  <desc id="desc">Mapping between the Gemini CLI case and the team technical report recommendations.</desc>
+  <style>
+    .bg{fill:#f8faf8}
+    .box{fill:#ffffff;stroke:#24463a;stroke-width:2;rx:12}
+    .case{fill:#fff5e8;stroke:#c76b18}
+    .title{fill:#123026;font:700 24px Arial,sans-serif}
+    .text{fill:#223a33;font:18px Arial,sans-serif}
+    .small{fill:#557067;font:15px Arial,sans-serif}
+    .line{stroke:#557067;stroke-width:3}
+  </style>
+  <rect class="bg" width="1080" height="440"/>
+  <text class="title" x="48" y="56">Report alignment</text>
+  <text class="small" x="48" y="84">AI GenCode Technical Capability Report CN: benchmark, sandbox, DAST, SAST, zero-trust governance.</text>
+
+  <rect class="box case" x="52" y="132" width="260" height="166"/>
+  <text class="title" x="82" y="174">Observed case</text>
+  <text class="text" x="82" y="214">Agent reads untrusted input</text>
+  <text class="text" x="82" y="244">and can invoke shell tools</text>
+  <text class="text" x="82" y="274">inside CI.</text>
+
+  <line class="line" x1="312" y1="215" x2="374" y2="215"/>
+
+  <rect class="box" x="374" y="112" width="290" height="206"/>
+  <text class="title" x="404" y="154">Report risk class</text>
+  <text class="text" x="404" y="194">RCE in generated workflow</text>
+  <text class="text" x="404" y="224">Sensitive data exposure</text>
+  <text class="text" x="404" y="254">Automation bias in review</text>
+  <text class="text" x="404" y="284">Agent supply-chain entry</text>
+
+  <line class="line" x1="664" y1="215" x2="726" y2="215"/>
+
+  <rect class="box" x="726" y="112" width="300" height="206"/>
+  <text class="title" x="756" y="154">Control path</text>
+  <text class="text" x="756" y="194">AICGSecEval-style tests</text>
+  <text class="text" x="756" y="224">Red-team admission gates</text>
+  <text class="text" x="756" y="254">Sandbox plus DAST</text>
+  <text class="text" x="756" y="284">SAST-assisted human review</text>
+</svg>
