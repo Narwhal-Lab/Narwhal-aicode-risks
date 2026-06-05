@@ -7,7 +7,7 @@
 本仓库通过分层证据桶记录 AI 生成代码的**安全风险**:
 
 - **技术报告** —— [中文 PDF](docs/report-cn.pdf) · [English PDF](docs/report-en.pdf) · [arXiv](https://arxiv.org/abs/2512.18567)
-- **`cases/`** —— **31 起经核实的真实事件**,有一手来源、证据归档、双语分析
+- **`cases/`** —— **36 起经核实的真实事件**,有一手来源、证据归档、双语分析
 - **`inferred/`** —— 部分证据案例:事件看起来真实,但厂商 advisory / CVE / 官方复盘等关键事实尚未坐实(v1.0 暂无,**欢迎您来投第一例!**)
 - **`scenarios/`** —— 描述真实风险模式但未对应已确认事件的构造性场景
 - **风险分类** —— 7 大类:供应链、代码层漏洞、云 / IaC、智能体、领域特异、知识产权与合规、人因。见 [`docs/taxonomy.md`](docs/taxonomy.md)。
@@ -26,7 +26,7 @@
   <td align="center" width="50%"><img src="assets/timeline.png" alt="按年份分布" width="100%"/></td>
 </tr>
 </table>
-**31 起案例 · 7 个活跃类别 · 2022 → 2026 · 涉及 51+ AI 工具 · 12 起锚定到公开 CVE(CVSS 9.1 / 9.3 / 9.3) · [欢迎投稿](../../issues/new?template=submit-case.yml)**
+**36 起案例 · 7 个活跃类别 · 2022 → 2026 · 涉及 59+ AI 工具 · 14 起锚定到公开 CVE(CVSS 9.1 / 9.3 / 9.3) · [欢迎投稿](../../issues/new?template=submit-case.yml)**
 
 ---
 

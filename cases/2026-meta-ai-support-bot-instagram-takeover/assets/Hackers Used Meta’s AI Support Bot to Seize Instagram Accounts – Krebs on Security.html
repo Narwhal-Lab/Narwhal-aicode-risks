@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<!--[if lt IE 9]>
+<script src="https://krebsonsecurity.com/wp-content/themes/kos-mar2021/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<title>Hackers Used Meta&#8217;s AI Support Bot to Seize Instagram Accounts &#8211; Krebs on Security</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Krebs on Security &raquo; Feed" href="https://krebsonsecurity.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Krebs on Security &raquo; Comments Feed" href="https://krebsonsecurity.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Krebs on Security &raquo; Hackers Used Meta&#8217;s AI Support Bot to Seize Instagram Accounts Comments Feed" href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/feed/" />
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/krebsonsecurity.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.2.2"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){p.clearRect(0,0,i.width,i.height),p.fillText(e,0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(t,0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s("\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!s("\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!s("\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!s("\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff","\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='colorbox-theme1-css' href='https://krebsonsecurity.com/wp-content/plugins/jquery-lightbox-for-native-galleries/colorbox/theme1/colorbox.css?ver=1.3.14' type='text/css' media='screen' />
+<link rel='stylesheet' id='wp-block-library-css' href='https://krebsonsecurity.com/wp-includes/css/dist/block-library/style.min.css?ver=6.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='classic-theme-styles-css' href='https://krebsonsecurity.com/wp-includes/css/classic-themes.min.css?ver=6.2.2' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='contact-form-7-css' href='https://krebsonsecurity.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.8.2' type='text/css' media='all' />
+<link rel='stylesheet' id='publisho-style-css' href='https://krebsonsecurity.com/wp-content/themes/kos-mar2021/style.css?subver=1.2&#038;ver=6.2.2' type='text/css' media='all' />
+<style id='publisho-style-inline-css' type='text/css'>
+
+	.themonic-nav .current-menu-item > a, .themonic-nav .current-menu-ancestor > a, .themonic-nav .current_page_item > a, .themonic-nav .current_page_ancestor > a {
+		background: #cc6600;
+	}
+	.themonic-nav ul.nav-menu, .themonic-nav div.nav-menu > ul {
+		border-bottom: 5px solid #cc6600;
+	}
+	#site-navigation .topheadmenu a {
+    background: rgba(0, 0, 0, 0);
+	}
+	.themonic-nav li a:hover {
+		background: #cc6600;
+	}
+	.themonic-nav li:hover {
+		background: #cc6600;
+	}.wrapper .flexslider {margin: 0 0 30px;}.frontp .btm-wrap {
+    border-top: 1px solid #e9e9e9;
+	}
+	.entry-summary {
+    border-top: none;
+	}.frontp .btm-wrap { margin-bottom: 30px;}.site { font-size:14px;}.site { font-family:'Roboto', arial ;}
+</style>
+<link rel='stylesheet' id='publisho-custom-style-css' href='https://krebsonsecurity.com/wp-content/themes/kos-mar2021/custom.css?subver=1.2&#038;ver=6.2.2' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='publisho-ie-css' href='https://krebsonsecurity.com/wp-content/themes/kos-mar2021/css/ie.css?ver=20160606' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='fontawesome-css-css' href='https://krebsonsecurity.com/wp-content/themes/kos-mar2021/fonts/font-awesome.min.css?ver=6.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='publisho_custom_fonts-css' href='//fonts.googleapis.com/css?family=Roboto%3Aregular%2Citalic%2C500%26subset%3Dlatin%2C' type='text/css' media='screen' />
+<script type='text/javascript' src='https://krebsonsecurity.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.4' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://krebsonsecurity.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.0' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://krebsonsecurity.com/wp-content/plugins/jquery-lightbox-for-native-galleries/colorbox/jquery.colorbox-min.js?ver=1.3.14' id='colorbox-js'></script>
+<link rel="https://api.w.org/" href="https://krebsonsecurity.com/wp-json/" /><link rel="alternate" type="application/json" href="https://krebsonsecurity.com/wp-json/wp/v2/posts/73751" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://krebsonsecurity.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://krebsonsecurity.com/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 6.2.2" />
+<link rel="canonical" href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/" />
+<link rel='shortlink' href='https://krebsonsecurity.com/?p=73751' />
+<link rel="alternate" type="application/json+oembed" href="https://krebsonsecurity.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fkrebsonsecurity.com%2F2026%2F06%2Fhackers-used-metas-ai-support-bot-to-seize-instagram-accounts%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://krebsonsecurity.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fkrebsonsecurity.com%2F2026%2F06%2Fhackers-used-metas-ai-support-bot-to-seize-instagram-accounts%2F&#038;format=xml" />
+<!-- JavaScript Pull-Quotes plugin v2.2 -->
+	<link rel="stylesheet" href="https://krebsonsecurity.com/wp-content/plugins/jspullquotes/resources/jspullquotes-core.css" type="text/css" />
+	<link rel="stylesheet" href="https://krebsonsecurity.com/wp-content/plugins/jspullquotes/resources/jspullquotes-default.css" type="text/css" />
+	<script type="text/javascript" src="https://krebsonsecurity.com/wp-content/plugins/jspullquotes/resources/jspullquotes.js"></script>
+	<script type="text/javascript">
+		var arrOptions = new Array("1", "1", "right", "1", "1", "blockquote", "pullquote", "pullquote pqRight");
+		pullQuoteOpts(arrOptions);
+	</script>
+<!-- end pull-quote additions -->
+<!-- jQuery Lightbox For Native Galleries v3.1.3 | http://www.viper007bond.com/wordpress-plugins/jquery-lightbox-for-native-galleries/ -->
+<script type="text/javascript">
+// <![CDATA[
+	jQuery(document).ready(function($){
+		$(".gallery").each(function(index, obj){
+			var galleryid = Math.floor(Math.random()*10000);
+			$(obj).find("a").colorbox({rel:galleryid, maxWidth:"95%", maxHeight:"95%"});
+		});
+		$("a.lightbox").colorbox({maxWidth:"95%", maxHeight:"95%"});
+	});
+// ]]>
+</script>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+	<meta name="twitter:widgets:link-color" content="#000000" /><meta name="twitter:widgets:border-color" content="#000000" /><meta name="twitter:partner" content="tfwp" />
+<meta name="twitter:card" content="summary" /><meta name="twitter:title" content="Hackers Used Meta&#8217;s AI Support Bot to Seize Instagram Accounts" /><meta name="twitter:site" content="@briankrebs" /><meta name="twitter:description" content="The Instagram accounts for the Obama White House and the Chief Master Sergeant of the U.S. Space Force were briefly defaced with pro-Iranian images and messages over the weekend, after instructions began circulating on Telegram showing how to trick Meta&#039;s&hellip;" /><meta name="twitter:image" content="https://krebsonsecurity.com/wp-content/uploads/2026/06/metasupportbot.png" />
+</head>
+<body class="post-template-default single single-post postid-73751 single-format-standard custom-background custom-background-white single-author">
+<div id="page" class="site">
+	<!-- <div class="publisho-top-mobile-nav clear"></div> -->
+	<div class="themonic-logo themonic-ad3"><div class="a-statement">Advertisement</div><a href="https://www.doppel.com/?utm_source=krebsonsecurity&amp;utm_medium=display&amp;utm_campaign=fy27brandcampaign&amp;utm_content=deepfake">
+<img src="/b-doppel/13.png">
+</a></div>
+	<div class="themonic-logo themonic-ad6"><div class="a-statement">Advertisement</div><a href="https://www.doppel.com/?utm_source=krebsonsecurity&amp;utm_medium=display&amp;utm_campaign=fy27brandcampaign&amp;utm_content=imitation">
+<img src="/b-doppel/10.png">
+</a></div>
+	<nav id="site-navigation" class="themonic-nav" role="navigation">
+	</nav><!-- #site-navigation -->
+	<div class="clear"></div>
+	<header id="masthead" class="site-header" role="banner">
+ 					<div class="desktop-social">
+						<div class="socialmedia">
+							<a href="http://twitter.com/briankrebs" target="_blank"><i class="fa fa-twitter"></i></a> 
+															<a class="rss" href="https://krebsonsecurity.com/feed/" target="_blank"><i class="fa fa-rss"></i></a>	
+									<a class="rss" href="https://www.linkedin.com/in/bkrebs/" target="_blank"><i class="fa fa-linkedin"></i></a>	
+								</div>
+				 	</div>
+																						   
+		
+		<div class="themonic-logo responsive-img-container">
+			<a href="https://krebsonsecurity.com/" title="Krebs on Security" rel="home"><img src="https://krebsonsecurity.com/wp-content/uploads/2021/03/kos-27-03-2021.jpg" alt="Krebs on Security"></a>
+		</div>
+
+					<div class="mobile-social">
+						<div class="socialmedia">
+							<a href="http://twitter.com/briankrebs" target="_blank"><i class="fa fa-twitter"></i></a> 
+															<a class="rss" href="https://krebsonsecurity.com/feed/" target="_blank"><i class="fa fa-rss"></i></a>	
+									<a class="rss" href="https://www.linkedin.com/in/bkrebs/" target="_blank"><i class="fa fa-linkedin"></i></a>	
+								</div>
+					</div>
+		
+				<!-- <div class="publisho-mobile-nav clear"></div> -->
+		<nav id="site-navigation" class="themonic-nav" role="navigation">
+			<a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
+			<div id="menu-top" class="nav-menu"><ul>
+<li ><a href="https://krebsonsecurity.com/">Home</a></li><li class="page_item page-item-2"><a href="https://krebsonsecurity.com/about/">About the Author</a></li>
+<li class="page_item page-item-645"><a href="https://krebsonsecurity.com/cpm/">Advertising/Speaking</a></li>
+</ul></div>
+		</nav><!-- #site-navigation -->
+		<div class="clear"></div>
+	</header><!-- #masthead -->
+	<div id="main" class="wrapper">
+	<header class="entry-header">
+							<div class="singleentry">
+					<h1 class="entry-title">Hackers Used Meta&#8217;s AI Support Bot to Seize Instagram Accounts</h1>
+				</div>
+							
+			
+			</header><!-- .entry-header -->
+
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+					<article id="post-73751" class="post-73751 post type-post status-publish format-standard has-post-thumbnail hentry category-sunshine category-latest-warnings category-comingstorm category-web-fraud-2-0 tag-black-lotus-labs tag-ian-goldin tag-instagram tag-meta">
+				<header class="entry-header">
+					<div class="clear"></div>
+	<div class="btm-wrap">
+	<div class="below-title-meta">
+		<div class="adt">
+			
+			
+				
+				<span class="date updated">June 1, 2026</span>
+					
+        </div>
+		<div class="adt-comment">
+		<span><a class="link-comments" href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comments">21 Comments</a></span> 
+        </div>    <div class="clear"></div>	   
+    </div><!-- below title meta end -->
+	</div>
+		
+						</header><!-- .entry-header -->
+		
+		
+							<div class="entry-content">
+												<p>The <strong>Instagram</strong> accounts for the Obama White House and the Chief Master Sergeant of the U.S. Space Force were briefly defaced with pro-Iranian images and messages over the weekend, after instructions began circulating on Telegram showing how to trick Meta&#8217;s &#8220;AI support assistant&#8221; bot into resetting account passwords.</p>
+<div id="attachment_73755" style="width: 721px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-73755" decoding="async" class=" wp-image-73755" src="https://krebsonsecurity.com/wp-content/uploads/2026/06/metasupportbot.png" alt="" width="711" height="650" /><p id="caption-attachment-73755" class="wp-caption-text">A screenshot from a video released on Telegram claiming to show how Meta&#8217;s AI customer support bot could be tricked into resetting a target&#8217;s password.</p></div>
+<p>On May 31, word began to spread on several Telegram instant message channels that Meta&#8217;s AI bot would happily add an email address to an existing account as part of the bot&#8217;s standard password reset flow.</p>
+<p>A video released on Telegram by pro-Iran hackers claimed to document a remarkably simple exploit that appears to have involved using a VPN connection with an IP address that is in or near the target&#8217;s usual hometown, requesting a password reset for the account, and then choosing to chat with Meta&#8217;s AI support assistant. From there, the video shows the attacker told the bot to link the account in question to a new email address, after which the bot dutifully sent that address a one-time code that allowed a password reset.</p>
+<p>The Telegram account that posted the video also linked to screenshots of pro-Iran images, videos and messages that defaced the hacked Instagram accounts, saying hackers had used the exploit to hijack a number of valuable (read: short) Instagram account names that allegedly have a resale value of more than a half million dollars.</p>
+<p>Meta has not responded to requests for comment on the video&#8217;s claims, but Meta&#8217;s Andy Stone <a href="https://x.com/andymstone/status/2061486724199379186?s=46&amp;t=7_s0It7Iv8WMHpe2Sun-mA" target="_blank" rel="noopener">said</a> on Twitter/X that the issue had been resolved and that they were securing impacted accounts. The security blog thecybersecguru.com <a href="https://thecybersecguru.com/news/instagram-meta-ai-vulnerability-account-recovery-exploit/" target="_blank" rel="noopener">reports</a> that Meta pushed an emergency patch over the weekend, and clarified that no back end database was breached.<span id="more-73751"></span></p>
+<p>&#8220;Instagram has notoriously poor human support infrastructure,&#8221; Cybersecguru wrote. &#8220;Recovering a locked account – especially a high-value one can take weeks of back-and-forth with an automated ticketing system. Meta’s solution was to deploy a conversational AI layer to handle common recovery workflows: relinking a lost email address, triggering a password reset, verifying account ownership. The assistant, presumably, was supposed to reduce friction for legitimate users stuck in account-access hell.&#8221;</p>
+<p><strong>Ian Goldin</strong>, a threat researcher at Lumen&#8217;s <strong>Black Lotus Labs</strong>, said we&#8217;re entering unchartered security territory as more large online platforms start allowing AI chatbots to handle sensitive account recovery requests. Just like human customer support employees can be social engineered into providing unauthorized access to someone&#8217;s account, AI bots are equally eager to help and vulnerable to persuasion and trickery, he said.</p>
+<p>&#8220;AI chatbots create interesting new attack surface, and we’re likely going to see a lot more of these kinds of attacks,&#8221; Goldin said.</p>
+<p>Securing your various online accounts means taking full advantage of the most secure form of multi-factor authentication (MFA) offered (such as a passkey or security key). In this case, even using the least robust form of MFA that Instagram offers &#8212; a one-time code sent via SMS &#8212; likely would have blocked the exploit: The hackers who released the video on Telegram said their exploit failed to work against any accounts that had MFA enabled.</p>
+											</div><!-- .entry-content -->
+		
+			
+	
+	<footer class="entry-meta">
+			
+		<p><i>
+         This entry was posted on Monday 1st of June 2026 01:32 PM 
+         </i></p>
+		 
+					<div class="categories"><a href="https://krebsonsecurity.com/category/sunshine/" rel="category tag">A Little Sunshine</a> <a href="https://krebsonsecurity.com/category/latest-warnings/" rel="category tag">Latest Warnings</a> <a href="https://krebsonsecurity.com/category/comingstorm/" rel="category tag">The Coming Storm</a> <a href="https://krebsonsecurity.com/category/web-fraud-2-0/" rel="category tag">Web Fraud 2.0</a></div>
+								<div class="tags"><a href="https://krebsonsecurity.com/tag/black-lotus-labs/" rel="tag">Black Lotus Labs</a> <a href="https://krebsonsecurity.com/tag/ian-goldin/" rel="tag">Ian Goldin</a> <a href="https://krebsonsecurity.com/tag/instagram/" rel="tag">Instagram</a> <a href="https://krebsonsecurity.com/tag/meta/" rel="tag">Meta</a></div>
+			
+	</footer>
+
+	</article><!-- #post -->
+		
+			<br><div class="themonic-ad4"></div>
+					<nav class="nav-single">
+					<div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="https://krebsonsecurity.com/2026/05/netherlands-seizes-800-servers-arrests-2-for-aiding-cyberattacks/" rel="prev"><span class="meta-nav">&larr;</span> Netherlands Seizes 800 Servers, Arrests 2 for Aiding Cyberattacks</a></span>
+					<span class="nav-next"></span>
+				</nav><!-- .nav-single -->
+
+				
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			21 thoughts on &ldquo;<span>Hackers Used Meta&#8217;s AI Support Bot to Seize Instagram Accounts</span>&rdquo;		</h2>
+
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-656070">
+		<article id="comment-656070" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Cereal </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656070"><time datetime="2026-06-01T15:08:28-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>One word to sum it all up &#8220;meta&#8221;</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656070#respond' data-commentid="656070" data-postid="73751" data-belowelement="comment-656070" data-respondelement="respond" data-replyto="Reply to Cereal" aria-label='Reply to Cereal'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-656071">
+		<article id="comment-656071" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">CyberScrewed </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656071"><time datetime="2026-06-01T15:46:09-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>AI just making the attack surface exponentially broader. Great work</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656071#respond' data-commentid="656071" data-postid="73751" data-belowelement="comment-656071" data-respondelement="respond" data-replyto="Reply to CyberScrewed" aria-label='Reply to CyberScrewed'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-2" id="li-comment-656075">
+		<article id="comment-656075" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Wannabe Techguy </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656075"><time datetime="2026-06-01T17:01:31-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Yes and everyone is infatuated with it.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656075#respond' data-commentid="656075" data-postid="73751" data-belowelement="comment-656075" data-respondelement="respond" data-replyto="Reply to Wannabe Techguy" aria-label='Reply to Wannabe Techguy'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-3" id="li-comment-656082">
+		<article id="comment-656082" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">mealy </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656082"><time datetime="2026-06-01T20:01:42-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>it&#8217;s wildly unpopular among broad swaths in my area, where it&#8217;s supposedly being born.  </p>
+<p>More a &#8216;necessary business evil&#8217; like LinkedIn now.  AI hiring you, AI monitoring you, AI firing you.  Be mindful &#8211; there is additional surveillance scrutiny upon any who voice negative opinions about AI or their world-devouring &#8220;for profit!&#8230;&#8221; datacenters, so be sure to smile at the camera and tip your incompetent-replacement-theory robot overlords.  They are watching, evaluating your continued usefulness and impending moment of equal value replacement at current human flesh prices.  And if you don&#8217;t &#8216;like&#8217; it, you must be a Luddite or something.  Potentially a threat for Google&#8217;s project purple.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656082#respond' data-commentid="656082" data-postid="73751" data-belowelement="comment-656082" data-respondelement="respond" data-replyto="Reply to mealy" aria-label='Reply to mealy'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-4" id="li-comment-656149">
+		<article id="comment-656149" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">mealy </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656149"><time datetime="2026-06-04T03:20:58-04:00">June 4, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Nobody has mentioned the precariously low battery.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656149#respond' data-commentid="656149" data-postid="73751" data-belowelement="comment-656149" data-respondelement="respond" data-replyto="Reply to mealy" aria-label='Reply to mealy'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-656072">
+		<article id="comment-656072" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Steve </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656072"><time datetime="2026-06-01T16:10:13-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Even when security expectations may be low for the likes of Meta, this is a flat-out unforgivable security flaw.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656072#respond' data-commentid="656072" data-postid="73751" data-belowelement="comment-656072" data-respondelement="respond" data-replyto="Reply to Steve" aria-label='Reply to Steve'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-2" id="li-comment-656112">
+		<article id="comment-656112" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Is Ran </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656112"><time datetime="2026-06-02T18:54:59-04:00">June 2, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Agreeing with Iran here</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656112#respond' data-commentid="656112" data-postid="73751" data-belowelement="comment-656112" data-respondelement="respond" data-replyto="Reply to Is Ran" aria-label='Reply to Is Ran'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-656073">
+		<article id="comment-656073" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Sasha </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656073"><time datetime="2026-06-01T16:33:52-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Gee, how timely. Last week I got a few emails from IG saying that they were sorry I was having trouble accessing my account. Someone was obviously trying to reset the password, so I took it off the business account, made it personal and added MFA. Every week, it&#8217;s something different. Now I&#8217;m getting emails from my dad who passed away 13 years ago. I wish there were a way to track down these ahos. Perhaps one day someone will figuer out a way to have AI turn the tables and be able to reverse scam these hacking nuisances.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656073#respond' data-commentid="656073" data-postid="73751" data-belowelement="comment-656073" data-respondelement="respond" data-replyto="Reply to Sasha" aria-label='Reply to Sasha'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-656076">
+		<article id="comment-656076" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Andrew Wolfe </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656076"><time datetime="2026-06-01T17:10:24-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>&#8220;Obama White House&#8221;?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656076#respond' data-commentid="656076" data-postid="73751" data-belowelement="comment-656076" data-respondelement="respond" data-replyto="Reply to Andrew Wolfe" aria-label='Reply to Andrew Wolfe'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-656083">
+		<article id="comment-656083" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">mealy </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656083"><time datetime="2026-06-01T20:04:13-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Do those words somehow not associate for you or what?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656083#respond' data-commentid="656083" data-postid="73751" data-belowelement="comment-656083" data-respondelement="respond" data-replyto="Reply to mealy" aria-label='Reply to mealy'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even depth-2" id="li-comment-656123">
+		<article id="comment-656123" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Van Ealy </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656123"><time datetime="2026-06-03T05:08:16-04:00">June 3, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Please excuse Deputy Dilettante&#8217;s facetious sarcasm, Andrew. His male lesbian life partner is away for the moment, and the only stress management plan (adjacent) law enforcement is proficient in is spouse abuse</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656123#respond' data-commentid="656123" data-postid="73751" data-belowelement="comment-656123" data-respondelement="respond" data-replyto="Reply to Van Ealy" aria-label='Reply to Van Ealy'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-3" id="li-comment-656147">
+		<article id="comment-656147" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">mealy </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656147"><time datetime="2026-06-04T03:05:43-04:00">June 4, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Facetious sarcasm as opposed to like, fully serious and directly intentional sarcasm?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656147#respond' data-commentid="656147" data-postid="73751" data-belowelement="comment-656147" data-respondelement="respond" data-replyto="Reply to mealy" aria-label='Reply to mealy'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-656078">
+		<article id="comment-656078" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Craig </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656078"><time datetime="2026-06-01T18:07:05-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Once upon a time there were human QA departments.  Once upon a time companies had rigorous testing scripts.  No more.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656078#respond' data-commentid="656078" data-postid="73751" data-belowelement="comment-656078" data-respondelement="respond" data-replyto="Reply to Craig" aria-label='Reply to Craig'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-656127">
+		<article id="comment-656127" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Booboo Witch </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656127"><time datetime="2026-06-03T13:16:35-04:00">June 3, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Stress testing got to be a bit too much for the Humans to take.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656127#respond' data-commentid="656127" data-postid="73751" data-belowelement="comment-656127" data-respondelement="respond" data-replyto="Reply to Booboo Witch" aria-label='Reply to Booboo Witch'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-656080">
+		<article id="comment-656080" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">müzso </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656080"><time datetime="2026-06-01T18:30:22-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I guess Meta just revoked the privilege from the chatbot for adding new email addresses to an Instagram account. I wonder what privileges remained? 🙂 The chatbot itself didn&#8217;t get &#8220;fixed&#8221;, that&#8217;s for sure.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656080#respond' data-commentid="656080" data-postid="73751" data-belowelement="comment-656080" data-respondelement="respond" data-replyto="Reply to müzso" aria-label='Reply to müzso'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-656092">
+		<article id="comment-656092" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Paul </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656092"><time datetime="2026-06-02T08:43:40-04:00">June 2, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>and it didn&#8217;t get fired either</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656092#respond' data-commentid="656092" data-postid="73751" data-belowelement="comment-656092" data-respondelement="respond" data-replyto="Reply to Paul" aria-label='Reply to Paul'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-3" id="li-comment-656111">
+		<article id="comment-656111" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">M0n0 </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656111"><time datetime="2026-06-02T18:53:59-04:00">June 2, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>both It&#8217;s better get fired really damn soon, Brian</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656111#respond' data-commentid="656111" data-postid="73751" data-belowelement="comment-656111" data-respondelement="respond" data-replyto="Reply to M0n0" aria-label='Reply to M0n0'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-656086">
+		<article id="comment-656086" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn"><a href="https://youdo.blog" class="url" rel="ugc external nofollow">Younes Ben Amara</a> </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656086"><time datetime="2026-06-01T23:05:58-04:00">June 1, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Came from Hacker News, thanks for the coverage. I hope Manus is more secure than meta ai.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656086#respond' data-commentid="656086" data-postid="73751" data-belowelement="comment-656086" data-respondelement="respond" data-replyto="Reply to Younes Ben Amara" aria-label='Reply to Younes Ben Amara'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-656125">
+		<article id="comment-656125" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">socially anonymous </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656125"><time datetime="2026-06-03T12:12:21-04:00">June 3, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>AI&#8217;s not ready for primetime, but they kind of need it to be. The non-AI economy is in a recession right now if you don&#8217;t count AI companies. The powers that be can&#8217;t allow AI to fail. </p>
+<p>The last time a major recession happened, people started organizing along class lines. That was defused and redirected by fomenting a culture war, instead, but even movements as goofy as OWS threatened to become a real force. Bernie very nearly won the nomination a decade ago. </p>
+<p>If AI pops before the rest of the economy stabilizes, who&#8217;s to say what might happen? Instead of dangling the implication of trickle-down IOUs, rich people might end up with an AOC or a Platner in office&#8230; and end up actually paying their taxes.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656125#respond' data-commentid="656125" data-postid="73751" data-belowelement="comment-656125" data-respondelement="respond" data-replyto="Reply to socially anonymous" aria-label='Reply to socially anonymous'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-656126">
+		<article id="comment-656126" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">Booboo Witch </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656126"><time datetime="2026-06-03T13:15:31-04:00">June 3, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>It would be interesting for Ian GoldIn to learn himself how amazing him telling him other people cannot use cellphones they paid for themselves is, for himself.</p>
+<p>I hear your AI is particularly grotesque. So it is particularly ironic.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656126#respond' data-commentid="656126" data-postid="73751" data-belowelement="comment-656126" data-respondelement="respond" data-replyto="Reply to Booboo Witch" aria-label='Reply to Booboo Witch'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-656129">
+		<article id="comment-656129" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<cite class="fn">ras blad </cite><a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#comment-656129"><time datetime="2026-06-03T14:59:28-04:00">June 3, 2026</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>it would appear receipts from certified resellers isnt enough to prevent former Humans from denying people their own cellphones on wifi as well.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/?replytocom=656129#respond' data-commentid="656129" data-postid="73751" data-belowelement="comment-656129" data-respondelement="respond" data-replyto="Reply to ras blad" aria-label='Reply to ras blad'>Reply</a> <span>&rarr;</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+		</ol><!-- .commentlist -->
+
+		
+		
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://krebsonsecurity.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p><p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required="required" /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required="required" /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" autocomplete="url" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='73751' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="7f7d159893" /></p><p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="21"/><script type="text/javascript">
+document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );
+</script>
+</p></form>	</div><!-- #respond -->
+	
+</div><!-- #comments .comments-area -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+
+        <div id="sidebar_ad" class="widget themonic-ad5"><div class="a-statement">Advertisement</div><a href="https://www.doppel.com/?utm_source=krebsonsecurity&amp;utm_medium=display&amp;utm_campaign=fy27brandcampaign&amp;utm_content=deepfake">
+<img src="/b-doppel/15.png">
+</a></div>
+
+                        <br><div class="widget themonic-ad1"><div class="a-statement">Advertisement</div></div><br>
+
+			<aside id="custom_html-2" class="widget_text widget widget_custom_html"><p class="widget-title">Mailing List</p><div class="textwidget custom-html-widget"><a href="/subscribe/">Subscribe here</a></div></aside><aside id="search-2" class="widget widget_search"><p class="widget-title">Search KrebsOnSecurity</p><form role="search" method="get" id="searchform" class="searchform" action="https://krebsonsecurity.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></aside>
+		<aside id="recent-posts-3" class="widget widget_recent_entries">
+		<p class="widget-title">Recent Posts</p>
+		<ul>
+											<li>
+					<a href="https://krebsonsecurity.com/2026/06/hackers-used-metas-ai-support-bot-to-seize-instagram-accounts/" aria-current="page">Hackers Used Meta&#8217;s AI Support Bot to Seize Instagram Accounts</a>
+									</li>
+											<li>
+					<a href="https://krebsonsecurity.com/2026/05/netherlands-seizes-800-servers-arrests-2-for-aiding-cyberattacks/">Netherlands Seizes 800 Servers, Arrests 2 for Aiding Cyberattacks</a>
+									</li>
+											<li>
+					<a href="https://krebsonsecurity.com/2026/05/lawmakers-demand-answers-as-cisa-tries-to-contain-data-leak/">Lawmakers Demand Answers as CISA Tries to Contain Data Leak</a>
+									</li>
+											<li>
+					<a href="https://krebsonsecurity.com/2026/05/alleged-kimwolf-botmaster-dort-arrested-charged-in-u-s-and-canada/">Alleged Kimwolf Botmaster &#8216;Dort&#8217; Arrested, Charged in U.S. and Canada</a>
+									</li>
+											<li>
+					<a href="https://krebsonsecurity.com/2026/05/cisa-admin-leaked-aws-govcloud-keys-on-github/">CISA Admin Leaked AWS GovCloud Keys on Github</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><a name="subscribe2"></a></div>
+		</aside><aside id="categories-2" class="widget widget_categories"><p class="widget-title">Story Categories</p>
+			<ul>
+					<li class="cat-item cat-item-5"><a href="https://krebsonsecurity.com/category/sunshine/">A Little Sunshine</a>
+</li>
+	<li class="cat-item cat-item-2240"><a href="https://krebsonsecurity.com/category/all-about-skimmers/">All About Skimmers</a>
+</li>
+	<li class="cat-item cat-item-9085"><a href="https://krebsonsecurity.com/category/ashley-madison-breach/">Ashley Madison breach</a>
+</li>
+	<li class="cat-item cat-item-3191"><a href="https://krebsonsecurity.com/category/breadcrumbs/">Breadcrumbs</a>
+</li>
+	<li class="cat-item cat-item-3771"><a href="https://krebsonsecurity.com/category/data-breaches/">Data Breaches</a>
+</li>
+	<li class="cat-item cat-item-4624"><a href="https://krebsonsecurity.com/category/ddos-for-hire/">DDoS-for-Hire</a>
+</li>
+	<li class="cat-item cat-item-11540"><a href="https://krebsonsecurity.com/category/doge/">DOGE</a>
+</li>
+	<li class="cat-item cat-item-9173"><a href="https://krebsonsecurity.com/category/employment-fraud/">Employment Fraud</a>
+</li>
+	<li class="cat-item cat-item-2151"><a href="https://krebsonsecurity.com/category/how-to-break-into-security/">How to Break Into Security</a>
+</li>
+	<li class="cat-item cat-item-10357"><a href="https://krebsonsecurity.com/category/internet-of-things-iot/">Internet of Things (IoT)</a>
+</li>
+	<li class="cat-item cat-item-87"><a href="https://krebsonsecurity.com/category/latest-warnings/">Latest Warnings</a>
+</li>
+	<li class="cat-item cat-item-4071"><a href="https://krebsonsecurity.com/category/neer-do-well-news/">Ne&#039;er-Do-Well News</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://krebsonsecurity.com/category/other/">Other</a>
+</li>
+	<li class="cat-item cat-item-1306"><a href="https://krebsonsecurity.com/category/pharma-wars/">Pharma Wars</a>
+</li>
+	<li class="cat-item cat-item-8240"><a href="https://krebsonsecurity.com/category/ransomware/">Ransomware</a>
+</li>
+	<li class="cat-item cat-item-9635"><a href="https://krebsonsecurity.com/category/russias-war-on-ukraine/">Russia&#039;s War on Ukraine</a>
+</li>
+	<li class="cat-item cat-item-599"><a href="https://krebsonsecurity.com/category/security-tools/">Security Tools</a>
+</li>
+	<li class="cat-item cat-item-8298"><a href="https://krebsonsecurity.com/category/sim-swapping/">SIM Swapping</a>
+</li>
+	<li class="cat-item cat-item-4079"><a href="https://krebsonsecurity.com/category/spam-nation/">Spam Nation</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://krebsonsecurity.com/category/smallbizvictims/">Target: Small Businesses</a>
+</li>
+	<li class="cat-item cat-item-5167"><a href="https://krebsonsecurity.com/category/tax-refund-fraud/">Tax Refund Fraud</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://krebsonsecurity.com/category/comingstorm/">The Coming Storm</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://krebsonsecurity.com/category/patches/">Time to Patch</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://krebsonsecurity.com/category/web-fraud-2-0/">Web Fraud 2.0</a>
+</li>
+			</ul>
+
+			</aside><aside id="media_image-2" class="widget widget_media_image"><p class="widget-title">Why So Many Top Hackers Hail from Russia</p><a href="https://krebsonsecurity.com/2017/06/why-so-many-top-hackers-hail-from-russia/"><img width="580" height="389" src="https://krebsonsecurity.com/wp-content/uploads/2017/06/computered-580x389.png" class="image wp-image-39684  attachment-medium size-medium" alt="" decoding="async" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://krebsonsecurity.com/wp-content/uploads/2017/06/computered-580x389.png 580w, https://krebsonsecurity.com/wp-content/uploads/2017/06/computered-768x514.png 768w, https://krebsonsecurity.com/wp-content/uploads/2017/06/computered-940x630.png 940w, https://krebsonsecurity.com/wp-content/uploads/2017/06/computered.png 1551w" sizes="(max-width: 580px) 100vw, 580px" /></a></aside>		</div><!-- #secondary -->
+		</div><!-- #main .wrapper -->
+	
+	<div id="publisho-footer" class="widget-area">
+				<div class="footer-widget">
+                				</div>
+				<div class="footer-widget">
+								</div>
+				<div class="footer-widget">
+								</div>
+	</div>
+
+	<div class="site-wordpress">
+					&copy; Krebs on Security - <a rel="me" href="https://infosec.exchange/@briankrebs">Mastodon</a> <br />
+  </div>
+	<!-- .site-info --><div class="clear"></div>
+</div><!-- #page -->
+
+<script type='text/javascript' src='https://krebsonsecurity.com/wp-includes/js/comment-reply.min.js?ver=6.2.2' id='comment-reply-js'></script>
+<script type='text/javascript' src='https://krebsonsecurity.com/wp-content/themes/kos-mar2021/js/slicknav.js?ver=6.2.2' id='publisho-mobile-navigation-js'></script>
+<script defer type='text/javascript' src='https://krebsonsecurity.com/wp-content/plugins/akismet/_inc/akismet-frontend.js?ver=1777010399' id='akismet-frontend-js'></script>
+</body>
+</html>
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
+
+Object Caching 125/130 objects using memcached
+Page Caching using memcached 
+Database Caching using memcached
+
+Served from: krebsonsecurity.com @ 2026-06-04 05:57:42 by W3 Total Cache
+-->

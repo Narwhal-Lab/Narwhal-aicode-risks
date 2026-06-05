@@ -1,0 +1,29 @@
+slug: "2026-ai-crypto-drainer-injection"
+title_en: "AI-Driven Targeted Injection for Cryptocurrency Wallet Draining"
+title_cn: "AI 驱动的定向注入：加密货币钱包窃取供应链攻击"
+year: 2026
+disclosed: 2026-05
+category: "code-vulns"
+severity: "critical"
+severity_basis: "quantifiable-impact"
+severity_evidence: "Disclosed by Lyrie AI and SecRSS in May 2026. Attackers used LLMs to inject specific logic into crypto-wallet SDKs, resulting in millions of dollars in unauthorized withdrawals."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Custom LLM Agents"
+language:
+  - "TypeScript"
+  - "Solidity"
+attack_surface:
+  - "Targeted code injection"
+  - "Supply-chain dependency compromise"
+references:
+  - title: "Lyrie Threat Intelligence: Slopsquatting & Hallucinated Agents"
+    url: "https://lyrie.ai/research/research/2026-05-06-slopsquatting-hallucinated-npm-agents"
+  - title: "SecRSS: AI Targeted Injection Attacks in Crypto Supply Chains"
+    url: "https://www.secrss.com/articles/90658"
+tldr: "Attackers leveraged AI to inject malicious 'drainer' logic into popular crypto-wallet SDKs, bypassing automated security filters."
+tags:
+  - "crypto-drainer"
+  - "injection"
+  - "supply-chain"
