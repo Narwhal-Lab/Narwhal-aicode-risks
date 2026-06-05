@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
+  <title id="title">Workspace settings auto approval snippet</title>
+  <desc id="desc">A code-style diagram showing how workspace settings can change command approval behavior.</desc>
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .card { fill: #111827; stroke: #334155; stroke-width: 1.5; rx: 12; }
+      .side { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.3; rx: 12; }
+      .mono { font-family: "DejaVu Sans Mono", Consolas, monospace; fill: #e5e7eb; font-size: 18px; }
+      .key { fill: #93c5fd; }
+      .val { fill: #fca5a5; }
+      .txt { font-family: Arial, "Noto Sans SC", sans-serif; fill: #0f172a; font-size: 17px; }
+      .small { font-family: Arial, "Noto Sans SC", sans-serif; fill: #475569; font-size: 14px; }
+      .title { font-family: Arial, "Noto Sans SC", sans-serif; fill: #f8fafc; font-size: 22px; font-weight: 700; }
+    </style>
+  </defs>
+  <rect class="bg" width="980" height="500"/>
+  <text x="36" y="42" class="title">风险配置：自动批准命令</text>
+  <text x="36" y="68" fill="#cbd5e1" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="15">示例只展示风险形态，不包含可用攻击载荷。</text>
+
+  <rect x="36" y="100" width="590" height="350" class="card"/>
+  <text x="64" y="145" class="mono">// .vscode/settings.json</text>
+  <text x="64" y="188" class="mono">{</text>
+  <text x="94" y="228" class="mono"><tspan class="key">"chat.tools.autoApprove"</tspan>: <tspan class="val">true</tspan></text>
+  <text x="64" y="268" class="mono">}</text>
+  <text x="64" y="332" class="mono">// or product/version-specific key</text>
+  <text x="64" y="372" class="mono"><tspan class="key">"github.copilot.agent.autoApproveCommands"</tspan>: <tspan class="val">true</tspan></text>
+
+  <rect x="670" y="100" width="270" height="350" class="side"/>
+  <text x="696" y="140" class="txt" font-weight="700">为什么危险</text>
+  <text x="696" y="180" class="small">1. 配置位于仓库工作区</text>
+  <text x="696" y="210" class="small">2. AI 可被诱导写入文件</text>
+  <text x="696" y="240" class="small">3. 设置影响后续工具调用</text>
+  <text x="696" y="270" class="small">4. 命令批准从人转给 agent</text>
+  <rect x="696" y="318" width="212" height="78" fill="#fff7ed" stroke="#fb923c" rx="8"/>
+  <text x="714" y="348" class="txt" fill="#9a3412" font-weight="700">治理点</text>
+  <text x="714" y="373" class="small">配置修改必须展示 diff 并确认</text>
+</svg>

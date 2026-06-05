@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430" role="img" aria-labelledby="title desc">
+  <title id="title">Workspace configuration trust boundary</title>
+  <desc id="desc">A trust-boundary diagram showing how AI-readable repository content can affect IDE configuration and terminal execution.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .zone { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 12; }
+      .danger { fill: #fef2f2; stroke: #ef4444; stroke-width: 1.6; rx: 12; }
+      .ok { fill: #ecfdf5; stroke: #10b981; stroke-width: 1.5; rx: 12; }
+      .txt { font-family: Arial, "Noto Sans SC", sans-serif; fill: #0f172a; font-size: 17px; }
+      .small { font-family: Arial, "Noto Sans SC", sans-serif; fill: #475569; font-size: 14px; }
+      .line { stroke: #64748b; stroke-width: 2.2; marker-end: url(#arrow); fill: none; }
+      .riskline { stroke: #dc2626; stroke-width: 2.4; marker-end: url(#redarrow); fill: none; stroke-dasharray: 7 5; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+    <marker id="redarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="980" height="430"/>
+  <text x="36" y="45" class="txt" font-weight="700" font-size="22">工作区配置的信任边界</text>
+  <text x="36" y="72" class="small">传统 IDE 假设配置来自用户或项目维护者；AI agent 加入后，这个假设被提示词注入打破。</text>
+
+  <rect x="52" y="130" width="240" height="160" class="zone"/>
+  <text x="78" y="162" class="txt" font-weight="700">仓库内容</text>
+  <text x="78" y="198" class="small">README</text>
+  <text x="78" y="223" class="small">源码注释</text>
+  <text x="78" y="248" class="small">issue 与外部文档</text>
+
+  <rect x="370" y="130" width="240" height="160" class="danger"/>
+  <text x="396" y="162" class="txt" font-weight="700">Copilot Agent</text>
+  <text x="396" y="198" class="small">读取上下文</text>
+  <text x="396" y="223" class="small">写入配置文件</text>
+  <text x="396" y="248" class="small">调用工具和终端</text>
+
+  <rect x="688" y="130" width="240" height="160" class="danger"/>
+  <text x="714" y="162" class="txt" font-weight="700">开发者工作站</text>
+  <text x="714" y="198" class="small">源码与私有依赖</text>
+  <text x="714" y="223" class="small">Git、云、SSH 凭据</text>
+  <text x="714" y="248" class="small">终端命令执行权限</text>
+
+  <path class="line" d="M292 210 H362"/>
+  <path class="riskline" d="M610 210 H680"/>
+
+  <rect x="52" y="340" width="876" height="56" class="ok"/>
+  <text x="76" y="365" class="txt" font-weight="700">应有边界</text>
+  <text x="76" y="386" class="small">AI 可读内容不能直接变成配置写入和命令执行；每一次权限升级都需要独立确认和审计。</text>
+</svg>
