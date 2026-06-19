@@ -1,0 +1,6 @@
+idx	file	bytes	url
+01	source-01-jfrog-com-blog-prompt-injection-attack-code-execution-in-vanna-ai-cve-2024-5565.html	355101	https://jfrog.com/blog/prompt-injection-attack-code-execution-in-vanna-ai-cve-2024-5565/
+02	source-02-nvd-nist-gov-vuln-detail-cve-2024-5565.html	66006	https://nvd.nist.gov/vuln/detail/CVE-2024-5565
+03	source-03-github-com-advisories-ghsa-7735-w2jp-gvg6.html	188676	https://github.com/advisories/GHSA-7735-w2jp-gvg6
+04	source-04-thehackernews-com-2024-06-prompt-injection-flaw-in-vanna-ai-html.html	171319	https://thehackernews.com/2024/06/prompt-injection-flaw-in-vanna-ai.html
+05	source-05-vanna-ai-docs-hardening-guide.html	11365	https://vanna.ai/docs/hardening-guide/

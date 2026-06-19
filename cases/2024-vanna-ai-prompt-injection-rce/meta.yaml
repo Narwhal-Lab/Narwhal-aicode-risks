@@ -1,0 +1,47 @@
+slug: "2024-vanna-ai-prompt-injection-rce"
+title_en: "Vanna.AI Prompt Injection Remote Code Execution"
+title_cn: "Vanna.AI 提示注入远程代码执行漏洞"
+year: 2024
+disclosed: "2024-05-31"
+category: "agent-risk"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "GitHub Advisory rates CVE-2024-5565 as Critical 9.2; NVD records the JFrog vector with high confidentiality, integrity, and availability impact."
+cvss: 9.2
+cve: "CVE-2024-5565"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "Vanna.AI"
+  - "Vanna Python library"
+  - "LLM text-to-SQL application"
+  - "Plotly visualization generation"
+language:
+  - "Python"
+attack_surface:
+  - "Text-to-SQL prompt input"
+  - "LLM-generated visualization code"
+  - "ask method with visualize=True"
+  - "Prompt injection to Python code execution"
+  - "Database analysis workflow"
+references:
+  - title: "JFrog: When Prompts Go Rogue - Vanna.AI CVE-2024-5565"
+    url: "https://jfrog.com/blog/prompt-injection-attack-code-execution-in-vanna-ai-cve-2024-5565/"
+  - title: "NVD: CVE-2024-5565"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2024-5565"
+  - title: "GitHub Advisory Database: GHSA-7735-w2jp-gvg6"
+    url: "https://github.com/advisories/GHSA-7735-w2jp-gvg6"
+  - title: "The Hacker News: Prompt Injection Flaw in Vanna AI Exposes Databases to RCE Attacks"
+    url: "https://thehackernews.com/2024/06/prompt-injection-flaw-in-vanna-ai.html"
+  - title: "Vanna.AI Hardening Guide"
+    url: "https://vanna.ai/docs/hardening-guide/"
+tldr: "Vanna.AI turned user prompt input into LLM-generated Python visualization code, enabling RCE."
+tags:
+  - "vanna-ai"
+  - "prompt-injection"
+  - "text-to-sql"
+  - "remote-code-execution"
+  - "cve-2024-5565"
+  - "plotly"
+  - "database-agent"
+verification_notes: "Public evidence supports a confirmed prompt-injection-to-code-execution vulnerability in Vanna.AI. It does not prove a named enterprise breach or in-the-wild exploitation at scale."
