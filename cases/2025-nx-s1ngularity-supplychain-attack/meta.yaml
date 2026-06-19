@@ -1,0 +1,19 @@
+slug: 2025-nx-s1ngularity-supplychain-attack
+title_en: Nx "s1ngularity" NPM Supply Chain Attack Abuses LLM Prompt to Steal Credentials(2025)
+title_cn: Nx “s1ngularity” 供应链攻击：滥用大模型提示批量窃取密钥（2025）
+year: 2025
+disclosed: 2025-09
+category: supply-chain
+severity: critical
+severity_basis: quantifiable-impact
+real_incident: true
+reproducible: false
+ai_tool: ["Claude", "Amazon Q", "Gemini"]
+language: ["JavaScript", "Shell","Typecript"]
+references:
+  - title: "AI-powered malware hit 2,180 GitHub accounts in “s1ngularity” attack"
+    url: "https://www.bleepingcomputer.com/news/security/ai-powered-malware-hit-2-180-github-accounts-in-s1ngularity-attack/"
+  - title: "AI驱动恶意软件在“s1ngularity”攻击中入侵2180个GitHub账户"
+    url: "https://www.anquanke.com/post/id/311988"
+tldr: In 2025, Nx suffered supply-chain poisoning. Malware abused LLMs via optimized prompts to steal credentials in three-stage attacks, exposing thousands of repos. The project fixed CI rules and release policies afterward.
+tags: ["supply-chain-poison", "prompt-abuse", "credential-leak", "ci-misconfiguration"]

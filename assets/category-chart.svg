@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" preserveAspectRatio="xMidYMid meet" font-family="Arial, Helvetica, sans-serif">
-<path d="M 200.00 70.00 A 130 130 0 0 1 312.58 265.00 L 276.21 244.00 A 88 88 0 0 0 200.00 112.00 Z" fill="#3b82f6" />
-<path d="M 312.58 265.00 A 130 130 0 0 1 219.38 328.55 L 213.12 287.02 A 88 88 0 0 0 276.21 244.00 Z" fill="#ef4444" />
-<path d="M 219.38 328.55 A 130 130 0 0 1 180.62 328.55 L 186.88 287.02 A 88 88 0 0 0 213.12 287.02 Z" fill="#0ea5e9" />
-<path d="M 180.62 328.55 A 130 130 0 0 1 98.36 118.95 L 131.20 145.13 A 88 88 0 0 0 186.88 287.02 Z" fill="#a855f7" />
-<path d="M 98.36 118.95 A 130 130 0 0 1 126.77 92.59 L 150.43 127.29 A 88 88 0 0 0 131.20 145.13 Z" fill="#f59e0b" />
-<path d="M 126.77 92.59 A 130 130 0 0 1 161.68 75.78 L 174.06 115.91 A 88 88 0 0 0 150.43 127.29 Z" fill="#10b981" />
-<path d="M 161.68 75.78 A 130 130 0 0 1 200.00 70.00 L 200.00 112.00 A 88 88 0 0 0 174.06 115.91 Z" fill="#64748b" />
-<text x="200" y="196" text-anchor="middle" font-size="56" font-weight="700">42</text>
+<path d="M 200.00 70.00 A 130 130 0 0 1 305.73 275.64 L 271.57 251.20 A 88 88 0 0 0 200.00 112.00 Z" fill="#3b82f6" />
+<path d="M 305.73 275.64 A 130 130 0 0 1 209.49 329.65 L 206.42 287.77 A 88 88 0 0 0 271.57 251.20 Z" fill="#ef4444" />
+<path d="M 209.49 329.65 A 130 130 0 0 1 171.73 326.89 L 180.87 285.89 A 88 88 0 0 0 206.42 287.77 Z" fill="#0ea5e9" />
+<path d="M 171.73 326.89 A 130 130 0 0 1 100.08 116.84 L 132.36 143.71 A 88 88 0 0 0 180.87 285.89 Z" fill="#a855f7" />
+<path d="M 100.08 116.84 A 130 130 0 0 1 128.27 91.58 L 151.44 126.61 A 88 88 0 0 0 132.36 143.71 Z" fill="#f59e0b" />
+<path d="M 128.27 91.58 A 130 130 0 0 1 162.55 75.51 L 174.65 115.73 A 88 88 0 0 0 151.44 126.61 Z" fill="#10b981" />
+<path d="M 162.55 75.51 A 130 130 0 0 1 200.00 70.00 L 200.00 112.00 A 88 88 0 0 0 174.65 115.73 Z" fill="#64748b" />
+<text x="200" y="196" text-anchor="middle" font-size="56" font-weight="700">43</text>
 <text x="200" y="224" text-anchor="middle" font-size="14" fill="#666">cases</text>
 <rect x="420" y="64" width="16" height="16" rx="3" fill="#3b82f6"/>
-<text x="446" y="77" font-size="14">Hallucination & Supply Chain <tspan fill="#666">(14)</tspan></text>
+<text x="446" y="77" font-size="14">Hallucination & Supply Chain <tspan fill="#666">(15)</tspan></text>
 <rect x="420" y="94" width="16" height="16" rx="3" fill="#ef4444"/>
 <text x="446" y="107" font-size="14">Code-Level Vulnerabilities <tspan fill="#666">(6)</tspan></text>
 <rect x="420" y="124" width="16" height="16" rx="3" fill="#0ea5e9"/>
