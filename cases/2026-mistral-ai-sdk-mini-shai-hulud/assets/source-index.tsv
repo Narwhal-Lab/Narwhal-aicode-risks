@@ -1,0 +1,7 @@
+idx	file	bytes	url
+01	source-01-docs-mistral-ai-resources-security-advisories.html	889834	https://docs.mistral.ai/resources/security-advisories
+02	source-02-github-com-advisories-ghsa-wx9m-wx4f-4cmg.html	189252	https://github.com/advisories/GHSA-wx9m-wx4f-4cmg
+03	source-03-github-com-mistralai-client-python-issues-523.html	2077	https://github.com/mistralai/client-python/issues/523
+04	source-04-www-ox-security-blog-shai-hulud-here-we-go-again-170-packages-hit-across-npm-pyp.html	2540476	https://www.ox.security/blog/shai-hulud-here-we-go-again-170-packages-hit-across-npm-pypi/
+05	source-05-thehackernews-com-2026-05-mini-shai-hulud-worm-compromises-html.html	177011	https://thehackernews.com/2026/05/mini-shai-hulud-worm-compromises.html
+06	source-06-docs-litellm-ai-blog-mistral-supply-chain-attack-may-2026.html	31399	https://docs.litellm.ai/blog/mistral-supply-chain-attack-may-2026

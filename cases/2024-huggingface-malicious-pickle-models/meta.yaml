@@ -1,0 +1,47 @@
+slug: "2024-huggingface-malicious-pickle-models"
+title_en: "Hugging Face Malicious Pickle Model Backdoors"
+title_cn: "Hugging Face 恶意 Pickle 模型后门事件"
+year: 2024
+disclosed: "2024-02-27"
+category: "supply-chain"
+severity: "high"
+severity_basis: "quantifiable-impact"
+severity_evidence: "JFrog reported around 100 malicious Hugging Face model instances, including Pickle-based payloads that grant shell access on machines loading the model."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Hugging Face Hub"
+  - "PyTorch models"
+  - "TensorFlow Keras models"
+  - "Transformers model loading workflows"
+language:
+  - "Python"
+  - "Multiple"
+attack_surface:
+  - "AI model repository"
+  - "Pickle deserialization"
+  - "PyTorch model loading"
+  - "TensorFlow Keras Lambda layer loading"
+  - "Reverse shell payload"
+  - "Model supply chain"
+references:
+  - title: "JFrog: Data Scientists Targeted by Malicious Hugging Face ML Models with Silent Backdoor"
+    url: "https://jfrog.com/blog/data-scientists-targeted-by-malicious-hugging-face-ml-models-with-silent-backdoor/"
+  - title: "The Hacker News: Over 100 Malicious AI/ML Models Found on Hugging Face Platform"
+    url: "https://thehackernews.com/2024/03/over-100-malicious-aiml-models-found-on.html"
+  - title: "NSFOCUS: AI Supply Chain Security - Hugging Face Malicious ML Models"
+    url: "https://nsfocusglobal.com/ai-supply-chain-security-hugging-face-malicious-ml-models/"
+  - title: "JFrog and Hugging Face Team to Improve Machine Learning Security and Transparency"
+    url: "https://investors.jfrog.com/news/news-details/2025/JFrog-and-Hugging-Face-Team-to-Improve-Machine-Learning-Security-and-Transparency-for-Developers/default.aspx"
+  - title: "Hugging Face: Safetensors"
+    url: "https://github.com/huggingface/safetensors"
+tldr: "Malicious Hugging Face model files used unsafe deserialization to open shells on model-loading hosts."
+tags:
+  - "hugging-face"
+  - "malicious-model"
+  - "pickle"
+  - "deserialization"
+  - "reverse-shell"
+  - "model-supply-chain"
+  - "safetensors"
+verification_notes: "Public evidence supports malicious model payloads and a model-supply-chain risk. It does not establish how many real victims executed the models or whether a named enterprise breach occurred."

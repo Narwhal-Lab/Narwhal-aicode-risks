@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Archived evidence source - GitHub Issue #523</title>
+</head>
+<body>
+  <article>
+    <h1>Archived evidence source: GitHub Issue #523</h1>
+    <p><strong>Source URL:</strong> <a href="https://github.com/mistralai/client-python/issues/523">https://github.com/mistralai/client-python/issues/523</a></p>
+    <p><strong>Archived file:</strong> sanitized local HTML evidence page</p>
+    <p><strong>Reason for sanitization:</strong> the original issue page contains live indicator and payload strings from the reported supply-chain compromise. The local security scanner quarantined the raw HTML during archival, so this file preserves the evidence context while redacting executable or directly reusable malicious strings.</p>
+
+    <h2>Evidence Summary</h2>
+    <p>The GitHub issue reports a supply-chain compromise in <code>mistralai==2.4.6</code>. It describes an unexpected change in <code>src/mistralai/client/__init__.py</code> that runs a background task on Linux during import.</p>
+    <p>The report states that the added code checks an environment variable, downloads a second-stage payload from a suspicious IP address, stores it under a temporary filename, and starts it as a detached process. The IP address, payload filename, and command details are intentionally redacted in this local archive.</p>
+    <p>The issue is used in the case write-up as code-level ecosystem evidence supporting the import-time dropper behavior described by the GitHub Advisory and Mistral security advisory.</p>
+
+    <h2>Redacted Indicators</h2>
+    <ul>
+      <li>Suspicious IP address: [redacted-ioc-ip]</li>
+      <li>Payload filename: [redacted-payload-name]</li>
+      <li>Downloader command flags: [redacted-command-fragment]</li>
+    </ul>
+
+    <h2>Use in Case Package</h2>
+    <p>This file corresponds to <code>source-03</code> for the Mistral AI SDK Mini Shai-Hulud case. It should be treated as a safe local evidence snapshot rather than an executable reproduction artifact.</p>
+  </article>
+</body>
+</html>
