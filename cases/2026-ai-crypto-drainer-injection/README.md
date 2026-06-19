@@ -12,6 +12,7 @@
 | Disclosed | 2026-05 |
 
 ## TL;DR
+In May 2026, attackers launched targeted logic injection against the encrypted wallet SDK using customized AI Agents. Leveraging AI to automatically generate test cases embedded with malicious logic, the attackers successfully bypassed code audit safeguards during the Continuous Integration (CI) phase.
 2026年5月，攻击者通过定制化 AI 代理（Agent）对加密钱包 SDK 进行精准逻辑注入。该攻击利用 AI 自动化生成覆盖恶意逻辑的测试用例，成功突破了持续集成（CI）阶段的代码审计防线。
 
 ---
