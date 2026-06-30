@@ -1,0 +1,35 @@
+.extend-read-2018{position: relative;padding-top: 15px;margin: 24px 0;clear:both;}
+        .extend-read-2018 ul{border: 1px dashed #999999;padding-top: 40px;padding-left: 20px;padding-bottom: 30px;}
+        .extend-read-2018 h4{padding-right: 20px;padding-bottom: 20px;position: absolute;top: 0;left: 0;font-size: 30px;line-height: 30px;height: 30px;background: #fff;font-weight: normal;color: #4D4F53;}
+        .extend-read-2018 li{font-size: 18px;line-height: 38px;padding-left: 20px;}
+        .extend-read-2018 li a{color:#5e6faa;}
+        .extend-read-2018 li a:visited{color:#5e6faa;}
+        /*频道颜色*/
+        /* if 新闻*/
+        .extend-read-2018.er-news li{background: url(//simg.sinajs.cn/products/news/items/2017/pc_news_article/img/blue-point-77731c.jpg) 4px 18px no-repeat;}
+        
+        .extend-read-2018.er-news li a:hover{color:#d33a2b;text-decoration: none;}
+        /* if 军事*/
+        .extend-read-2018.er-mil li{background: url(//simg.sinajs.cn/products/news/items/2017/pc_news_article/img/blue-point-77731c.jpg) 4px 18px no-repeat;}
+          
+        .extend-read-2018.er-mil li a:hover{color:#009000;text-decoration: none;}
+        /* if 财经*/
+        .extend-read-2018.er-finance li{background: url(//n.sinaimg.cn/finance/home/cj_m_tags.png) -338px 18px no-repeat;}
+        
+        .extend-read-2018.er-finance li a:hover{color:#3753A2;text-decoration: none;}
+        /* if 科技 */
+        .extend-read-2018.er-tech li{background: url(//simg.sinajs.cn/products/news/items/2017/pc_news_article/img/blue-point-77731c.jpg) 4px 18px no-repeat;}
+        
+        .extend-read-2018.er-tech li a:hover{color:#4996C7;text-decoration: none;}
+
+        /* 正文页字体随动 */
+        .article-20 .extend-read-2018 li{font-size: 20px;}
+        .article-18 .extend-read-2018 li{font-size: 18px;}
+        .article-16 .extend-read-2018 li{font-size: 16px}
+
+.article-20 .extend-read-2018 .sub-tit{background: none;font-size: 24px;margin-top: 10px;}
+        .article-18 .extend-read-2018 .sub-tit{background: none;font-size: 22px;margin-top: 10px;}
+        .article-16 .extend-read-2018 .sub-tit{background: none;font-size: 20px;margin-top: 10px;}
+
+
+[cms-style~="table"] td {font-size:18px;}

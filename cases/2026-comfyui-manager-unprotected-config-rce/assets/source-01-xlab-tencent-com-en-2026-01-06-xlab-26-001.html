@@ -1,0 +1,256 @@
+<!-- Archived evidence source
+source_url: https://xlab.tencent.com/en/2026/01/06/xlab-26-001/
+fetched_at: 2026-06-24T20:16:08Z
+curl_returncode: 0
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Arbitrary File Upload Leading to RCE in ComfyUI-Manager"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/en/atom.xml" title="Tencent Xuanwu Lab">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/en/favicon.png?v=1.1" />
+
+
+
+<link rel="canonical" href="https://xlab.tencent.com/en/2026/01/06/xlab-26-001/"/>
+
+
+<meta name="description" content="Tencent Xuanwu Lab has identified a high-severity vulnerability (CVE-2025-67303) in ComfyUI-Manager, the integrated extension component of the visual AI workflow tool ComfyUI. In out-of-the-box config">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arbitrary File Upload Leading to RCE in ComfyUI-Manager">
+<meta property="og:url" content="https://xlab.tencent.com/en/2026/01/06/xlab-26-001/index.html">
+<meta property="og:site_name" content="Tencent Xuanwu Lab">
+<meta property="og:description" content="Tencent Xuanwu Lab has identified a high-severity vulnerability (CVE-2025-67303) in ComfyUI-Manager, the integrated extension component of the visual AI workflow tool ComfyUI. In out-of-the-box config">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-01-06T06:30:00.000Z">
+<meta property="article:modified_time" content="2026-02-28T12:17:58.735Z">
+<meta property="article:author" content="xlab">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/en/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?aa9e2b3d82e401695981c6b85c07f8c6";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+<script>
+  	var _mtac = {"senseQuery":1};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500719063");
+  		mta.setAttribute("cid", "500719064");
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-173165029-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+  <link rel="stylesheet" type="text/css" href="/en/fonts/font.css" />
+    <title> Arbitrary File Upload Leading to RCE in ComfyUI-Manager - Tencent Xuanwu Lab </title>
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/en/atom.xml" title="Tencent Xuanwu Lab" type="application/atom+xml">
+</head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <a href="/en/." class="logo-a">
+         <img src="/en/assest/XuanwuLogo.png" alt="Tencent Xuanwu Lab" class="logo" />
+    </a>
+
+    <nav id="nav-top">
+        <ul id="menu-top" class="nav-top-items">
+            <li class="menu-item">
+                <a href="/en/">Home</a>
+                <a href="/en/category/advisories/">Advisories</a>
+                <a href="/en/policy/">Disclosure Policy</a>
+                <a href="/en/about/">About</a>
+                <a href="/cn/">中文版</a>
+            </li>
+        </ul>
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Arbitrary File Upload Leading to RCE in ComfyUI-Manager
+        
+      </h1>
+
+      <time class="post-time">
+          2026-01-06
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>Tencent Xuanwu Lab has identified a high-severity vulnerability (CVE-2025-67303) in ComfyUI-Manager, the integrated extension component of the visual AI workflow tool ComfyUI. In out-of-the-box configurations, this flaw allows a remote attacker to compromise the system without any authentication. By bypassing security restrictions, an attacker can execute arbitrary code, leading to full server compromise.<br>The issue has been patched in the latest version of ComfyUI-Manager.</p>
+<a id="more"></a>
+
+<h2 id="Vulnerability-Details"><a href="#Vulnerability-Details" class="headerlink" title="Vulnerability Details"></a>Vulnerability Details</h2><p>ComfyUI is a node-based professional graphical interface for Stable Diffusion and serves as a cornerstone project in the open-source AI ecosystem. ComfyUI-Manager is its official extension manager, responsible for the installation and maintenance of custom nodes, models, and dependencies.</p>
+<p>In previous versions, the data and configuration directories of ComfyUI-Manager were insufficiently protected by ComfyUI’s Web API access control mechanisms. An attacker could leverage this vulnerability to achieve Unauthenticated Remote Code Execution (RCE) on the server, leading to full system compromise.</p>
+<p>The issue was resolved in ComfyUI-Manager v3.38 with the introduction of the System User Protection API, which ensures all configuration data is migrated to a secure, protected directory.</p>
+<h2 id="Credit"><a href="#Credit" class="headerlink" title="Credit"></a>Credit</h2><p>This vulnerability was discovered and responsibly reported by RicterZ, researcher at Tencent Xuanwu Lab.</p>
+<h2 id="Risk-Level"><a href="#Risk-Level" class="headerlink" title="Risk Level"></a>Risk Level</h2><p>High</p>
+<h2 id="Impact"><a href="#Impact" class="headerlink" title="Impact"></a>Impact</h2><p>An unauthenticated remote attacker could exploit this vulnerability to achieve full system compromise, leading to:</p>
+<ul>
+<li>Unauthorized access to system resources.</li>
+<li>Exfiltration of sensitive user data and private or proprietary AI models.</li>
+</ul>
+<h2 id="Affected-Versions"><a href="#Affected-Versions" class="headerlink" title="Affected Versions"></a>Affected Versions</h2><p>ComfyUI-Manager versions &lt; v3.38</p>
+<h2 id="Fixed-Versions"><a href="#Fixed-Versions" class="headerlink" title="Fixed Versions"></a>Fixed Versions</h2><p>ComfyUI-Manager versions ≥ v3.38</p>
+<h2 id="Mitigation-and-Remediation"><a href="#Mitigation-and-Remediation" class="headerlink" title="Mitigation and Remediation"></a>Mitigation and Remediation</h2><ol>
+<li>Immediate remediation is required: Update ComfyUI-Manager to v3.38+ and ensure the ComfyUI core is updated to v0.3.76+ to enable the System User Protection API.<ul>
+<li>You may upgrade using the built-in update mechanism in ComfyUI-Manager, or follow the official documentation for manual installation.</li>
+<li>After upgrading, manual data migration is required. Please refer to the official User Data Security Migration Guide.</li>
+</ul>
+</li>
+<li>Ensure that ComfyUI itself is updated to a version that supports the System User Protection API (e.g., v0.3.76 or later).</li>
+<li>Restrict network exposure of ComfyUI services, avoiding binding to 0.0.0.0 without proper firewalling.</li>
+</ol>
+<p>Note: It is strongly recommended to back up all data before upgrading to prevent accidental data loss.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li>Github Security Advisory: <a href="https://github.com/Comfy-Org/ComfyUI-Manager/security/advisories/GHSA-95pq-hr8p-f5g7" target="_blank" rel="noopener">https://github.com/Comfy-Org/ComfyUI-Manager/security/advisories/GHSA-95pq-hr8p-f5g7</a></li>
+<li>ComfyUI-Manager v3.38 User Data Security Migration Guide: <a href="https://github.com/Comfy-Org/ComfyUI-Manager/blob/main/docs/en/v3.38-userdata-security-migration.md" target="_blank" rel="noopener">https://github.com/Comfy-Org/ComfyUI-Manager/blob/main/docs/en/v3.38-userdata-security-migration.md</a> </li>
+<li>CVE Record: CVE-2025-67303: <a href="https://www.cve.org/CVERecord?id=CVE-2025-67303" target="_blank" rel="noopener">https://www.cve.org/CVERecord?id=CVE-2025-67303</a> </li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/en/2026/02/02/ai-browser-crawler-whitepaper/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">AI Web Crawler Security White Paper</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/en/2025/11/21/how-far-are-quantum-computers-from-breaking-rsa-2048/">
+        <span class="next-text nav-default">How Far Are Quantum Computers from Breaking RSA-2048?</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2015 -
+    
+    2026
+    <span class="power-by">
+        Tencent Xuanwu Lab. All Rights Reserved.
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/en/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/en/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/en/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

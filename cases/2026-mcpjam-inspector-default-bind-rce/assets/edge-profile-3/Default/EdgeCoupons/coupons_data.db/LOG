@@ -1,0 +1,5 @@
+2026/06/25-04:33:52.625 1e28 Creating DB D:\Downloads\安全案例\2026-mcpjam-inspector-default-bind-rce\assets\edge-profile-3\Default\EdgeCoupons/coupons_data.db since it was missing.
+2026/06/25-04:33:52.630 1e28 Reusing MANIFEST D:\Downloads\安全案例\2026-mcpjam-inspector-default-bind-rce\assets\edge-profile-3\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/06/25-04:33:59.808 c33c Level-0 table #5: started
+2026/06/25-04:33:59.810 c33c Level-0 table #5: 682704 bytes OK
+2026/06/25-04:33:59.811 c33c Delete type=0 #3

@@ -1,0 +1,283 @@
+[cms-style~="blockquote"] {
+  border-left: 3px solid #dbdbdb;
+  margin: 0.3rem;
+  padding-left: 10px;
+  font-size: 0.26rem !important;
+  color: #888 !important;
+}
+
+@media (max-width: 660px) {
+  [cms-style~="blockquote"] * {
+  color: #888 !important;
+  font-size: 0.26rem !important;
+  }
+}
+
+@media (min-width: 661px) {
+  [cms-style~="blockquote"] * {
+  color: #888 !important;
+  font-size: 18px !important;
+  }
+}
+
+@media (max-width: 660px) {
+  [cms-style~="font-L"] {
+    font-size: 0.34rem;
+      /* 补充正文颜色没有识别黑色的漏洞 */
+    color: #000;
+  }
+  .N_night [cms-style~="font-L"] {
+    font-size: 0.34rem;
+    color: inherit;
+  }
+  [cms-style~="font-M"] {
+    font-size: 0.26rem;
+    color: #666;
+    font-weight: normal;
+    margin-top: 0rem;
+  }
+}
+
+@media (min-width: 661px) {
+  [cms-style~="font-L"] {
+    font-size: 18px;
+    /* 补充正文颜色没有识别黑色的漏洞 */
+    color: #000;
+  }
+  .N_night [cms-style~="font-L"] {
+    font-size: 18px;
+    color: inherit;
+  }
+  [cms-style~="font-M"] {
+    font-size: 16px;
+    color: #666;
+    font-weight: normal;
+    margin-top: 0rem;
+  }
+}
+
+/* 正常模式 */
+
+[cms-style~="color0"] {
+  color: #731717 !important
+}
+
+[cms-style~="color30"] {
+  color: #734517 !important
+}
+
+[cms-style~="color60"] {
+  color: #737317 !important
+}
+
+[cms-style~="color90"] {
+  color: #457317 !important
+}
+
+[cms-style~="color120"] {
+  color: #177317 !important
+}
+
+[cms-style~="color150"] {
+  color: #177345 !important
+}
+
+[cms-style~="color180"] {
+  color: #177373 !important
+}
+
+[cms-style~="color210"] {
+  color: #174573 !important
+}
+
+[cms-style~="color240"] {
+  color: #171773 !important
+}
+
+[cms-style~="color270"] {
+  color: #451773 !important
+}
+
+[cms-style~="color300"] {
+  color: #731773 !important
+}
+
+[cms-style~="color330"] {
+  color: #731745 !important
+}
+
+/* 暗夜模式 */
+
+.N_night [cms-style~="color0"] {
+  color: #E6A1A1 !important
+}
+
+.N_night [cms-style~="color30"] {
+  color: #E6C3A1 !important
+}
+
+.N_night [cms-style~="color60"] {
+  color: #E6E6A1 !important
+}
+
+.N_night [cms-style~="color90"] {
+  color: #C3E6A1 !important
+}
+
+.N_night [cms-style~="color120"] {
+  color: #A1E6A1 !important
+}
+
+.N_night [cms-style~="color150"] {
+  color: #A1E6C3 !important
+}
+
+.N_night [cms-style~="color180"] {
+  color: #A1E6E6 !important
+}
+
+.N_night [cms-style~="color210"] {
+  color: #A1C3E6 !important
+}
+
+.N_night [cms-style~="color240"] {
+  color: #A1A1E6 !important
+}
+
+.N_night [cms-style~="color270"] {
+  color: #C3A1E6 !important
+}
+
+.N_night [cms-style~="color300"] {
+  color: #E6A1E6 !important
+}
+
+.N_night [cms-style~="color330"] {
+  color: #E6A1C3 !important
+}
+
+[cms-style~="strong-Bold"] {
+  font-weight: 800 !important;
+}
+
+[cms-style~="strong-Normal"] {
+  font-weight: 300 !important;
+}
+
+[cms-style~="align-Center"] {
+  text-align: center !important;
+}
+
+[cms-style~="legend"], [cms-style~="legend"] font {
+  text-align: center !important;
+  font-weight: normal !important;
+  font-size: 0.26rem !important;
+  color: #666 !important;
+  margin-top: 0rem;
+}
+
+[cms-style~="sup"] {
+  text-align: center !important;
+  font-size: 0.26rem !important;
+  color: #666;
+  font-weight: normal;
+  margin-top: 0rem;
+  vertical-align: super;
+}
+
+[cms-style~="sub"] {
+  text-align: center !important;
+  font-size: 0.26rem !important;
+  color: #666;
+  font-weight: normal;
+  margin-top: 0rem;
+  vertical-align: sub;
+}
+
+[cms-style~="table"] {
+  font-size: .3rem;
+  color: #666;
+  background-color: #f8f8f8!important;
+  border: 1px solid #e4e4e4!important;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  border-spacing: 0;
+  border-collapse: collapse
+}
+
+[cms-style~="table"][colspan], [cms-style~="table"][rowspan] {
+  text-align: center
+}
+
+[cms-style~="table"] tr {
+  font-size: .3rem;
+  color: #666;
+  background-color: #f8f8f8!important
+}
+
+[cms-style~="table"] td {
+  font-size: .3rem;
+  color: #666;
+  background-color: #f8f8f8!important;
+  border: 1px solid #e4e4e4!important;
+  padding: .06rem .12rem;
+  vertical-align: middle;
+  line-height: 1.5rem
+}
+
+[cms-style~="scroll"] {
+  overflow-y: scroll;
+}
+
+[cms-style~="minWidth"] {
+  min-width: max-content;
+}
+
+/* 响应端上字号调整 */
+
+.s_largemore [cms-style~="font-L"] {
+  font-size: 0.42rem;
+}
+
+.s_largemore [cms-style~="font-M"] {
+  font-size: 0.36rem;
+}
+
+.s_large [cms-style~="font-L"] {
+  font-size: 0.4rem;
+}
+
+.s_large [cms-style~="font-M"] {
+  font-size: 0.34rem;
+}
+
+.s_middle [cms-style~="font-L"] {
+  font-size: 0.36rem;
+}
+
+.s_middle [cms-style~="font-M"] {
+  font-size: 0.3rem;
+}
+
+.s_small [cms-style~="font-L"] {
+  font-size: 0.34rem;
+}
+
+.s_small [cms-style~="font-M"] {
+  font-size: 0.28rem;
+}
+
+
+[cms-style~="link"] {
+  color: #00e !important;
+  text-decoration: underline !important;
+}
+
+
+[cms-style~="table"] td:empty{
+  display: none;
+}
+
+i[cms-style] {
+  font-style: normal;
+}

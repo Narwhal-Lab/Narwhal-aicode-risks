@@ -1,0 +1,36 @@
+.cardlist__item{margin: 10px;padding: 10px;background: #ddd;}
+.cardlist-a__loading, .cardlist-a__tip, .cardlist-a__more{margin: 10px 0;padding: 10px;text-align: center;}
+.cardlist-a__more{color: #666;font-size: 16px;}
+.cardlist-a__loading{ font-size: 18px; color: #999;}
+.cardlist-a__loading .icon-loading{display: inline-block; margin-left: 15px; width: 100px;height: 20px;background: url(//n.sinaimg.cn/finance/c30320b4/20170512/loading.gif?1) 0 0 no-repeat;vertical-align: middle;}
+.cardlist__item_newsa{background: red;color: #fff;}
+.cardlist__item_newsb{border: 3px solid blue;color: #fff;}
+.cardlist-a__tab{border-top: 2px solid #F04C64;}
+.cardlist-a__tab, .cardlist-a__tab li{height: 50px;line-height: 50px;}
+.cardlist-a__tab li{float: left;display: inline;padding: 0 20px;font-size: 18px;cursor: pointer;}
+.cardlist-a__tab li.current{background: #F04C64;color: #fff;}
+
+/*到底后点击刷新*/
+.btn-clicktorefresh{color: #E43B5B;cursor: pointer;}
+
+/*分页*/
+.cardlist-a__pager{text-align: center;margin: 20px;}
+.cardlist-a__pager a{min-width: 10px;display: inline-block;padding: 2px 10px;margin: 10px;border: 1px solid #333;line-height: 20px;height: 20px;vertical-align: middle;cursor: pointer;}
+.cardlist-a__pager .page-cur{color: red;cursor: text;} 
+
+/*标签切换 */
+.tyfeed-card-tabs-w{width: 640px;height: 60px;font-family: 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', 'Arial';}
+.tyfeed-card-tabs{width: 638px;border-top: 2px solid #E43B5B;border-left: 1px solid #ddd;border-right: 1px solid #ddd;height: 58px; /*border-left: 1px solid #ddd; border-right: 1px solid #ddd;*/background: url(//n.sinaimg.cn/finance/pctianyi_wdg/apps/ent-feed/images/bg-feed-tt-normal.png) 0 0 repeat-x;}
+.tyfeed-card-tabs-fixed{position: fixed;z-index: 999;top: 0;box-shadow: 0 1px 3px #ccc;}
+.tyfeed-tab-i{float: left;width: 71px;height: 58px;line-height: 58px;text-align: center;font-size: 17px;color: #333;cursor: pointer;}
+.tyfeed-tab-selected{border: none;background: url(//n.sinaimg.cn/finance/pctianyi_wdg/apps/ent-feed/images/bg-feed-tt.png) 0 0 repeat-x;color: #fff;cursor: default;}
+.tyfeed-tab-i:nth-of-type(1){/*margin-left: -1px;*/}
+
+/*置顶部分*/
+.ty-top-ent{}
+.ty-top-prefix-video{ display: inline-block; margin-right: 5px; margin-left: 3px; width: 16px; height: 10px; vertical-align: 1px; background: url(//n.sinaimg.cn/finance/pctianyi_wdg/apps/ent-feed/images/icon-prefix-video.png) 0 0 no-repeat;}
+.ty-top-ent .ty-card-tt { margin-right: 0;}
+.ty-top-ent .ty-card-tt a.ty-card-link-em, .ty-top-ent .ty-card-tt a.ty-card-link-em:visited { color: #EA4C47;}
+.ty-top-ent .ty-card-tt a.ty-card-link-em:hover{ color: #FA536F;}
+.ty-top-ent .ty-card-tt a, .ty-top-ent .ty-card-tt a:visited { color: #333;}
+.ty-top-ent .ty-card-tt a:hover{ color: #666;}

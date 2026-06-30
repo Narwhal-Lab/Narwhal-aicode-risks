@@ -1,0 +1,776 @@
+<!-- Archived evidence source
+source_url: https://microsoft.github.io/autogen/dev//user-guide/autogenstudio-user-guide/index.html
+fetched_at: 2026-06-24T20:04:35Z
+curl_returncode: 0
+-->
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="User Guide for AutoGen Studio - A low code tool for building and debugging multi-agent systems " lang="en" name="description" xml:lang="en" />
+
+    <title>AutoGen Studio &#8212; AutoGen</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=069332a8" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=3ce10a4d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "lnxpe6skj1");</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user-guide/autogenstudio-user-guide/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/microsoft/autogen/refs/heads/main/docs/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/custom-icon.js?v=a32026ea"></script>
+    <script src="../../_static/banner-override.js?v=8cd4f749"></script>
+    <script src="../../_static/custom.js?v=70c1e88a"></script>
+    <link rel="canonical" href="/autogen/dev//user-guide/autogenstudio-user-guide/index.html" />
+    <link rel="icon" href="../../_static/favicon-512x512.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Azure AI Foundry Agent" href="../extensions-user-guide/azure-foundry-agent.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.4" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="AutoGen - Home"/>
+    <img src="../../_static/logo.svg" class="logo__image only-dark pst-js-only" alt="AutoGen - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../agentchat-user-guide/index.html">
+    AgentChat
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../core-user-guide/index.html">
+    Core
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extensions-user-guide/index.html">
+    Extensions
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Studio
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../reference/index.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://microsoft.github.io/autogen/dotnet/">
+    .NET
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://microsoft.github.io/autogen/0.2/">
+    0.2 Docs
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/microsoft/autogen" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://aka.ms/autogen-discord" title="Discord" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-discord fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pyautogen" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../agentchat-user-guide/index.html">
+    AgentChat
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../core-user-guide/index.html">
+    Core
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extensions-user-guide/index.html">
+    Extensions
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Studio
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../reference/index.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://microsoft.github.io/autogen/dotnet/">
+    .NET
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://microsoft.github.io/autogen/0.2/">
+    0.2 Docs
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/microsoft/autogen" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://aka.ms/autogen-discord" title="Discord" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-discord fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pyautogen" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+      <li class="toctree-l1">
+        <a target="_blank" class="reference internal" href="https://pypi.org/project/autogenstudio/">
+          <i class="fa-brands fa-python"></i>
+          PyPi
+          <i class="fa-solid fa-arrow-up-right-from-square fa-2xs"></i>
+        </a>
+      </li>
+      <li class="toctree-l1">
+        <a target="_blank" class="reference internal" href="https://github.com/microsoft/autogen/tree/main/python/packages/autogen-studio">
+          <i class="fa-brands fa-github"></i>
+          Source
+          <i class="fa-solid fa-arrow-up-right-from-square fa-2xs"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">AutoGen Studio</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="autogen-studio">
+<h1>AutoGen Studio<a class="headerlink" href="#autogen-studio" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://badge.fury.io/py/autogenstudio"><img alt="PyPI version" src="https://badge.fury.io/py/autogenstudio.svg" /></a>
+<a class="reference external" href="https://pepy.tech/project/autogenstudio"><img alt="Downloads" src="https://static.pepy.tech/badge/autogenstudio/week" /></a></p>
+<p>AutoGen Studio is a low-code interface built to help you rapidly prototype AI agents, enhance them with tools, compose them into teams and interact with them to accomplish tasks. It is built on <a class="reference external" href="https://microsoft.github.io/autogen">AutoGen AgentChat</a> - a high-level API for building multi-agent applications.</p>
+<blockquote>
+<div><p>See a video tutorial on AutoGen Studio v0.4 (02/25) - <a class="reference external" href="https://youtu.be/oum6EI7wohM">https://youtu.be/oum6EI7wohM</a></p>
+</div></blockquote>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=oum6EI7wohM"><img alt="A Friendly Introduction to AutoGen Studio v0.4" src="https://img.youtube.com/vi/oum6EI7wohM/maxresdefault.jpg" /></a></p>
+<p>Code for AutoGen Studio is on GitHub at <a class="reference external" href="https://github.com/microsoft/autogen/tree/main/python/packages/autogen-studio">microsoft/autogen</a></p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>AutoGen Studio is meant to help you rapidly prototype multi-agent workflows and demonstrate an example of end user interfaces built with AutoGen. It is not meant to be a production-ready app. Developers are encouraged to use the AutoGen framework to build their own applications, implementing authentication, security and other features required for deployed applications.</p>
+</div>
+<section id="capabilities-what-can-you-do-with-autogen-studio">
+<h2>Capabilities - What Can You Do with AutoGen Studio?<a class="headerlink" href="#capabilities-what-can-you-do-with-autogen-studio" title="Link to this heading">#</a></h2>
+<p>AutoGen Studio offers four main interfaces to help you build and manage multi-agent systems:</p>
+<ol class="arabic simple">
+<li><p><strong>Team Builder</strong></p>
+<ul class="simple">
+<li><p>A visual interface for creating agent teams through declarative specification (JSON) or drag-and-drop</p></li>
+<li><p>Supports configuration of all core components: teams, agents, tools, models, and termination conditions</p></li>
+<li><p>Fully compatible with AgentChat’s component definitions</p></li>
+</ul>
+</li>
+<li><p><strong>Playground</strong></p>
+<ul class="simple">
+<li><p>Interactive environment for testing and running agent teams</p></li>
+<li><p>Features include:</p>
+<ul>
+<li><p>Live message streaming between agents</p></li>
+<li><p>Visual representation of message flow through a control transition graph</p></li>
+<li><p>Interactive sessions with teams using UserProxyAgent</p></li>
+<li><p>Full run control with the ability to pause or stop execution</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Gallery</strong></p>
+<ul class="simple">
+<li><p>Central hub for discovering and importing community-created components</p></li>
+<li><p>Enables easy integration of third-party components</p></li>
+</ul>
+</li>
+<li><p><strong>Deployment</strong></p>
+<ul class="simple">
+<li><p>Export and run teams in python code</p></li>
+<li><p>Setup and test endpoints based on a team configuration</p></li>
+<li><p>Run teams in a docker container</p></li>
+</ul>
+</li>
+</ol>
+<section id="roadmap">
+<h3>Roadmap<a class="headerlink" href="#roadmap" title="Link to this heading">#</a></h3>
+<p>Review project roadmap and issues <a class="reference external" href="https://github.com/microsoft/autogen/issues/4006">here</a> .</p>
+</section>
+</section>
+<section id="contribution-guide">
+<h2>Contribution Guide<a class="headerlink" href="#contribution-guide" title="Link to this heading">#</a></h2>
+<p>We welcome contributions to AutoGen Studio. We recommend the following general steps to contribute to the project:</p>
+<ul class="simple">
+<li><p>Review the overall AutoGen project <a class="reference external" href="https://github.com/microsoft/autogen/blob/main/CONTRIBUTING.md">contribution guide</a></p></li>
+<li><p>Please review the AutoGen Studio <a class="reference external" href="https://github.com/microsoft/autogen/issues/4006">roadmap</a> to get a sense of the current priorities for the project. Help is appreciated especially with Studio issues tagged with <code class="docutils literal notranslate"><span class="pre">help-wanted</span></code></p></li>
+<li><p>Please use the tag <a class="reference external" href="https://github.com/microsoft/autogen/issues?q=is%3Aissue%20state%3Aopen%20label%3Aproj-studio"><code class="docutils literal notranslate"><span class="pre">proj-studio</span></code></a> tag for any issues, questions, and PRs related to Studio</p></li>
+<li><p>Please initiate a discussion on the roadmap issue or a new issue to discuss your proposed contribution.</p></li>
+<li><p>Submit a pull request with your contribution!</p></li>
+<li><p>If you are modifying AutoGen Studio, it has its own devcontainer. See instructions in <code class="docutils literal notranslate"><span class="pre">.devcontainer/README.md</span></code> to use it</p></li>
+</ul>
+</section>
+<section id="a-note-on-security">
+<h2>A Note on Security<a class="headerlink" href="#a-note-on-security" title="Link to this heading">#</a></h2>
+<p>AutoGen Studio is a research prototype and is <strong>not meant to be used</strong> in a production environment. Some baseline practices are encouraged e.g., using Docker code execution environment for your agents.</p>
+<p>However, other considerations such as rigorous tests related to jailbreaking, ensuring LLMs only have access to the right keys of data given the end user’s permissions, and other security features are not implemented in AutoGen Studio.</p>
+<p>If you are building a production application, please use the AutoGen framework and implement the necessary security features.</p>
+</section>
+<section id="acknowledgements-and-citation">
+<h2>Acknowledgements and Citation<a class="headerlink" href="#acknowledgements-and-citation" title="Link to this heading">#</a></h2>
+<p>AutoGen Studio is based on the <a class="reference external" href="https://microsoft.github.io/autogen">AutoGen</a> project. It was adapted from a research prototype built in October 2023 (original credits: Victor Dibia, Gagan Bansal, Adam Fourney, Piali Choudhury, Saleema Amershi, Ahmed Awadallah, Chi Wang).</p>
+<p>If you use AutoGen Studio in your research, please cite the following paper:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@inproceedings</span><span class="p">{</span><span class="n">autogenstudio</span><span class="p">,</span>
+  <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">AUTOGEN</span> <span class="n">STUDIO</span><span class="p">:</span> <span class="n">A</span> <span class="n">No</span><span class="o">-</span><span class="n">Code</span> <span class="n">Developer</span> <span class="n">Tool</span> <span class="k">for</span> <span class="n">Building</span> <span class="ow">and</span> <span class="n">Debugging</span> <span class="n">Multi</span><span class="o">-</span><span class="n">Agent</span> <span class="n">Systems</span><span class="p">},</span>
+  <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Dibia</span><span class="p">,</span> <span class="n">Victor</span> <span class="ow">and</span> <span class="n">Chen</span><span class="p">,</span> <span class="n">Jingya</span> <span class="ow">and</span> <span class="n">Bansal</span><span class="p">,</span> <span class="n">Gagan</span> <span class="ow">and</span> <span class="n">Syed</span><span class="p">,</span> <span class="n">Suff</span> <span class="ow">and</span> <span class="n">Fourney</span><span class="p">,</span> <span class="n">Adam</span> <span class="ow">and</span> <span class="n">Zhu</span><span class="p">,</span> <span class="n">Erkang</span> <span class="ow">and</span> <span class="n">Wang</span><span class="p">,</span> <span class="n">Chi</span> <span class="ow">and</span> <span class="n">Amershi</span><span class="p">,</span> <span class="n">Saleema</span><span class="p">},</span>
+  <span class="n">booktitle</span><span class="o">=</span><span class="p">{</span><span class="n">Proceedings</span> <span class="n">of</span> <span class="n">the</span> <span class="mi">2024</span> <span class="n">Conference</span> <span class="n">on</span> <span class="n">Empirical</span> <span class="n">Methods</span> <span class="ow">in</span> <span class="n">Natural</span> <span class="n">Language</span> <span class="n">Processing</span><span class="p">:</span> <span class="n">System</span> <span class="n">Demonstrations</span><span class="p">},</span>
+  <span class="n">pages</span><span class="o">=</span><span class="p">{</span><span class="mi">72</span><span class="o">--</span><span class="mi">79</span><span class="p">},</span>
+  <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2024</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<p>To begin, follow the <a class="reference internal" href="installation.html"><span class="std std-doc">installation instructions</span></a> to install AutoGen Studio.</p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../extensions-user-guide/azure-foundry-agent.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Azure AI Foundry Agent</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="installation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Installation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capabilities-what-can-you-do-with-autogen-studio">Capabilities - What Can You Do with AutoGen Studio?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#roadmap">Roadmap</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-guide">Contribution Guide</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-security">A Note on Security</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements-and-citation">Acknowledgements and Citation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/microsoft/autogen/edit/main/python/docs/src/user-guide/autogenstudio-user-guide/index.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/user-guide/autogenstudio-user-guide/index.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Microsoft.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p><a href="https://go.microsoft.com/fwlink/?LinkId=521839">Privacy Policy</a> | <a href="https://go.microsoft.com/fwlink/?linkid=2259814">Consumer Health Privacy</a> </p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+</p></div>
+      
+        <div class="footer-item"><script src="_static/banner-override.js"></script></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+.app-viplive{margin-top: 40px;position: relative;}
+            .slide-viplive{overflow: hidden;position: relative;}
+            .slide-viplive .slider-item{/*height: 292px;*/width: 880px;cursor:pointer;}
+            .slide-viplive .slider-item img{width: 100%;height: 314px;}
+            .slide-viplive .slider-item{position: relative;}
+            .slide-viplive-info{height: 40px;margin-top: 2px;background: rgba(0,0,0,0.8);width: 100%;    position: absolute; bottom: 0; border-top: 2px solid #fff;}
+            .slide-viplive-info .slide-viplive-state{display: inline-block;width: 46px;height: 20px;text-indent: -999em;background-image: url(https://n.sinaimg.cn/finance/cece9e13/20200729/0727_zyc_icons.png) 0 0 no-repeat;margin-left: 10px;margin-right: 9px;margin-top: 10px;background-image:-webkit-image-set(url(https://n.sinaimg.cn/finance/cece9e13/20200729/0727_zyc_icons.png) 1x,url(https://n.sinaimg.cn/finance/cece9e13/20200729/0727_zyc_icons_2x.png) 2x);vertical-align: middle;}
+            .slide-viplive-info .slide-viplive-state.state-01{background-position: 0 0;}
+            .slide-viplive-info .slide-viplive-state.state-02{background-position: 0 -30px;}
+            .slide-viplive-info .slide-viplive-state.state-03{background-position: 0 -60px;}
+            .slide-viplive-info .slide-viplive-title{display: inline-block;color: #fff;font-size: 16px;margin-top: 10px;vertical-align: middle;}
+            .slide-viplive-num{position: absolute;right: 9px;font-size: 16px;color: #fff;bottom: 10px;}
+            .slide-viplive-cur{color: #d5361d;}
+            .slide-viplive-time{position: absolute; top:0;right:0;display: block;width: 152px;height: 26px;line-height: 26px;background: rgba(0,0,0,0.5);color: #fff;;text-align: center;border-radius: 13px;top: 10px;right: 6px;}
+            /*遮罩*/
+            .viplive-popup-mask {position:fixed;left:0;top:0;width:100%;height:100%;z-index:9999;background-color:#fff;opacity:0.5;filter:alpha(opacity=50);}
+            .viplive-popup {position:fixed;z-index:10000;left:50%;top:50%;width:294px;height:282px;margin-top:-140px;margin-left:-147px;line-height:1.5;overflow:hidden;background-image: url(https://n.sinaimg.cn/finance/cece9e13/20200729/0727_zyc_ToAppback.png) 0 0 no-repeat;background-image:-webkit-image-set(url(https://n.sinaimg.cn/finance/cece9e13/20200729/0727_zyc_ToAppback.png) 1x,url(https://n.sinaimg.cn/finance/cece9e13/20200729/0727_zyc_ToAppback_2x.png) 2x);background-repeat: no-repeat;}
+            .viplive-popup .viplive-btn-close {position:absolute;z-index:10001;right:0;top:54px;width:36px;height:36px;background:url(//n.sinaimg.cn/finance/cece9e13/20171228/1229_zyc_popclose.png) center center no-repeat;cursor:pointer;opacity:0.8;filter:alpha(opacity=80);}
+            .viplive-popup .viplive-btn-close:hover {opacity:1;filter:alpha(opacity=100);}
+            .viplive-popup .item-text{padding-top: 80px;}
+            .viplive-popup .item-text h4{color: #4180ec;text-align: center;font-size: 20px;}
+            .viplive-qr .qr-tip{text-align: center;color: #fff;font-size: 16px;margin-top: 16px;}
+            .viplive-qr-img{height: 120px;width: 120px;margin: 0 auto;margin-top: 10px;}
+            .viplive-qr-img img{width: 100%;}
+            .viplive-arrow {position: absolute;width:32px;height:58px;overflow:hidden;background-image: url(https://n.sinaimg.cn/finance/cece9e13/20200729/0727_zyc_arrows.png) 0 0 no-repeat;background-image:-webkit-image-set(url(https://n.sinaimg.cn/finance/cece9e13/20200729/0727_zyc_arrows.png) 1x,url(https://n.sinaimg.cn/finance/cece9e13/20200729/0727_zyc_arrows_2x.png) 2x);background-repeat: no-repeat;text-indent: -999em;display: block;top: 118px;}
+            .viplive-next{right: 0;background-position: -52px -78px;}
+            .viplive-next:hover{background-position: -52px 0;}
+            .viplive-prev{left: 0;background-position: 0 -78px;}
+            .viplive-prev:hover{background-position: 0 0;}
+            @media screen and (min-width: 768px) and (max-width:1480px) {
+                .slide-viplive .slider-item{
+                    /*height:272px;*/
+                    width: 640px;
+                }
+                .slide-viplive .slider-item img{width: 100%;height: 229px;}
+                .viplive-arrow{
+                    top: 70px;
+                }
+            }

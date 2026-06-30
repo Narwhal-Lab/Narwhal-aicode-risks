@@ -1,0 +1,325 @@
+.SNP-layer{position: fixed;z-index: 99999;left: 50%;top: 50%;transform: translate(-50%,-50%);}
+.SNP-inner{background-image: url(//n.sinaimg.cn/finance/cece9e13/20230419/pop_main_back.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20230419/pop_main_back.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20230419/pop_main_back_2x.png) 2x);background-repeat: no-repeat;border-radius: 10px;box-shadow: rgba(0, 0, 0, .3) 0 20px 40px;position: relative;width: 300px;background-position-y: -11px;}
+.snp-arrow{display: block;background-image: url(//n.sinaimg.cn/finance/sfa_new_pop/0912_zyc_arrow_up.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/sfa_new_pop/0912_zyc_arrow_up.png) 1x,url(//n.sinaimg.cn/finance/sfa_new_pop/0912_zyc_arrow_up_2x.png) 2x);background-repeat: no-repeat;width: 26px;height: 12px;position: absolute;top: 0;left: 33px;}
+.snp-icon{background-image: url(//n.sinaimg.cn/finance/cece9e13/20190227/0227_zyc_icons.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20190227/0227_zyc_icons.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20190227/0227_zyc_icons2x.png) 2x);background-repeat: no-repeat;}
+.snp-logo{width: 152px;height: 34px;padding-top: 20px;padding-left: 20px;}
+.snp-logo span{background-position: 0px 0px;display: block;width: 152px;height: 34px;background-color: #efefef;}
+.snp-btn-close{width: 12px;height: 13px;background-position: 0 -229px;position:absolute;top: 12px;right: 12px;text-indent: -999em;}
+.snp-banner{margin-top: 17px;height: 65px;padding-left: 41px;}
+.snp-banner span{background-position: 0px -64px;width: 199px;background-color: #efefef;display: block;height: 65px;}
+.snp-txt{padding: 11px 0 0 31px;font-size: 16px;line-height: 28px;color: #666;width: 244px;letter-spacing: -1px;}
+.snp-bar{margin: 0 auto;margin-top: 10px;padding-bottom: 20px;background-color: #fff;border-radius: 10px;position:relative;z-index:2;}
+.snp-bar img{width: 150px;height: 150px;display: block;margin: 0 auto;}
+.snp-bar span{font-size: 12px;color: #598AFD;display: block;text-align: center;margin-top: 5px;font-weight: bold;}
+.snp-btn{width: 110px;height: 40px;border-radius: 4px;display: block;font-size: 16px;text-align: center;line-height: 40px;}
+
+
+.SNP-layer a.snp-btn-download{background-position: 0 -159px;float: left;color: #fff;}
+.SNP-layer a.snp-btn-download{text-decoration: none;color: #fff;}
+.SNP-layer a.snp-btn-download:visited{text-decoration: none;color: #fff;}
+.SNP-layer a.snp-btn-download:hover{text-decoration: none;color: #fff;background-position: 0 -275px;}
+.SNP-layer a.snp-btn-agree{background-position: 0 -345px;float:right;color: #907770;}
+.SNP-layer a.snp-btn-agree{text-decoration: none;color: #907770;}
+.SNP-layer a.snp-btn-agree:visited{text-decoration: none;color: #907770;}
+.SNP-layer a.snp-btn-agree:hover{text-decoration: none;color: #A69089;background-position: 0 -415px;}
+
+.snp-tit{padding-top: 107px;padding-left: 24px;padding-right: 24px;position:relative;z-index:2;text-align:left;}
+.snp-tit::before{position:absolute;width:100%;height:90%;background-color:#fff;top:190px;content:'';display:block;left:0}
+.snp-tit h4{font-size: 24px;color: #333;}
+.snp-new-tip{margin-top: 20px;max-height: 170px;overflow-y: auto;}
+.snp-tip-text{font-size: 14px;color: #333;line-height: 20px;}
+.snp-tip-text .item-update{display: block;line-height: 20px;position: relative;margin-bottom: 12px;}
+.snp-app-ver{background-color: #598AFD;height: 26px;padding: 0 12px;display: inline-block;line-height: 26px;color: #fff;border-radius: 13px;font-weight: bold;margin-top: 12px;}
+.snp-btn-download-new{width: 252px;height: 46px;line-height: 46px;text-align: center;color: #fff;font-size: 20px;font-weight: bold;display: block;background-color: #598AFD;border-radius: 30px;margin: 0 auto;letter-spacing: 1px;}
+a.snp-btn-download-new{color: #fff;}
+a.snp-btn-download-new:visited{color: #fff;text-decoration: none;}
+a.snp-btn-download-new:hover{color: #fff;text-decoration: none;}
+a.snp-btn-download-new:link{color: #fff;text-decoration: none;}
+
+.snp-btn-close-new{background-image: url(//n.sinaimg.cn/finance/cece9e13/20230419/pop_main_close.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20230419/pop_main_close.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20230419/pop_main_close_2x.png) 2x);background-repeat: no-repeat;width: 18px;height: 18px;text-indent: -999em;position: absolute;top: 26px;right: 18px;z-index:3;}
+.animated {
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+  }
+.aniLinear{-webkit-animation-timing-function: linear;
+    animation-timing-function: linear;}
+
+    @-webkit-keyframes bounceIn {
+        0%, 20%, 40%, 60%, 80%, 100% {
+          -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                  transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+      
+        0% {
+          opacity: 0;
+          -webkit-transform: scale3d(.3, .3, .3);
+                  transform: scale3d(.3, .3, .3);
+        }
+      
+        20% {
+          -webkit-transform: scale3d(1.1, 1.1, 1.1);
+                  transform: scale3d(1.1, 1.1, 1.1);
+        }
+      
+        40% {
+          -webkit-transform: scale3d(.9, .9, .9);
+                  transform: scale3d(.9, .9, .9);
+        }
+      
+        60% {
+          opacity: 1;
+          -webkit-transform: scale3d(1.03, 1.03, 1.03);
+                  transform: scale3d(1.03, 1.03, 1.03);
+        }
+      
+        80% {
+          -webkit-transform: scale3d(.97, .97, .97);
+                  transform: scale3d(.97, .97, .97);
+        }
+      
+        100% {
+          opacity: 1;
+          -webkit-transform: scale3d(1, 1, 1);
+                  transform: scale3d(1, 1, 1);
+        }
+      }
+      
+      @keyframes bounceIn {
+        0%, 20%, 40%, 60%, 80%, 100% {
+          -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                  transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+      
+        0% {
+          opacity: 0;
+          -webkit-transform: scale3d(.3, .3, .3);
+                  transform: scale3d(.3, .3, .3);
+        }
+      
+        20% {
+          -webkit-transform: scale3d(1.1, 1.1, 1.1);
+                  transform: scale3d(1.1, 1.1, 1.1);
+        }
+      
+        40% {
+          -webkit-transform: scale3d(.9, .9, .9);
+                  transform: scale3d(.9, .9, .9);
+        }
+      
+        60% {
+          opacity: 1;
+          -webkit-transform: scale3d(1.03, 1.03, 1.03);
+                  transform: scale3d(1.03, 1.03, 1.03);
+        }
+      
+        80% {
+          -webkit-transform: scale3d(.97, .97, .97);
+                  transform: scale3d(.97, .97, .97);
+        }
+      
+        100% {
+          opacity: 1;
+          -webkit-transform: scale3d(1, 1, 1);
+                  transform: scale3d(1, 1, 1);
+        }
+      }
+      
+      .bounceIn {
+        -webkit-animation-name: bounceIn;
+                animation-name: bounceIn;
+        -webkit-animation-duration: .75s;
+                animation-duration: .75s;
+      }
+      @-webkit-keyframes bounceInDown {
+        0%, 60%, 75%, 90%, 100% {
+          -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                  transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+      
+        0% {
+          opacity: 0;
+          -webkit-transform: translate3d(0, -3000px, 0);
+                  transform: translate3d(0, -3000px, 0);
+        }
+      
+        60% {
+          opacity: 1;
+          -webkit-transform: translate3d(0, 25px, 0);
+                  transform: translate3d(0, 25px, 0);
+        }
+      
+        75% {
+          -webkit-transform: translate3d(0, -10px, 0);
+                  transform: translate3d(0, -10px, 0);
+        }
+      
+        90% {
+          -webkit-transform: translate3d(0, 5px, 0);
+                  transform: translate3d(0, 5px, 0);
+        }
+      
+        100% {
+          -webkit-transform: none;
+                  transform: none;
+        }
+      }
+      
+      @keyframes bounceInDown {
+        0%, 60%, 75%, 90%, 100% {
+          -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                  transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+      
+        0% {
+          opacity: 0;
+          -webkit-transform: translate3d(0, -3000px, 0);
+                  transform: translate3d(0, -3000px, 0);
+        }
+      
+        60% {
+          opacity: 1;
+          -webkit-transform: translate3d(0, 25px, 0);
+                  transform: translate3d(0, 25px, 0);
+        }
+      
+        75% {
+          -webkit-transform: translate3d(0, -10px, 0);
+                  transform: translate3d(0, -10px, 0);
+        }
+      
+        90% {
+          -webkit-transform: translate3d(0, 5px, 0);
+                  transform: translate3d(0, 5px, 0);
+        }
+      
+        100% {
+          -webkit-transform: none;
+                  transform: none;
+        }
+      }
+      
+      .bounceInDown {
+        -webkit-animation-name: bounceInDown;
+                animation-name: bounceInDown;
+      }
+
+
+      .blk-macd{position: relative;}
+      .title-macd{height: 24px;line-height: 24px;border-bottom: 2px solid #08237a;cursor: pointer;}
+      .title-macd h2{color: #08237A;font-size: 16px;float: left;font-weight: normal;}
+      .title-macd .macd-fire{display: block;width: 16px;height: 16px;border-radius: 2px;background-color: #FF0103;position: relative;float: left;margin-top: 4px;margin-right: 3px;}
+      @keyframes burn {
+          0% {
+              opacity: 1;
+              transform: scale(1,1) rotate(0deg);
+          }
+          25% {
+              opacity: 0.95;
+              transform: scale(0.95,1.05) rotate(-2deg) skew(6deg, -5deg);
+          }
+          50% {
+              opacity: 0.9;
+              transform: scale(0.9,1.1) rotate(4deg) skew(0deg, 0);
+          }
+          75% {
+              opacity: 0.95;
+              transform: scale(0.95,1.05) rotate(-2deg) skew(-10deg, 8deg);
+          }
+          100% {
+              opacity: 1;
+              transform: scale(1) rotate(0deg);
+          }
+      }
+      .title-macd .macd-ani-fire{display: block;background: url(//n.sinaimg.cn/finance/cece9e13/20240522/icon_macd_fire.png) 0 0 no-repeat;background-size: auto 12px;position: absolute;top: 50%;margin-top: -6px;left: 50%;margin-left: -5px;height: 12px;width: 10px;animation: burn .3s infinite;transform-origin: 50% 90%;}
+      .title-macd .macd-info{display: block;width: 16px;height: 16px;background: url(//n.sinaimg.cn/finance/cece9e13/20240522/icon_macd_info.png) 0 0 no-repeat;background-size: 16px auto;float: right;margin-top: 4px;cursor: pointer;}
+      .macd-data-table .th1{text-align: left;padding-left: 8px;}
+      .macd-data-table .th2{text-align: right;padding-right: 5px;}
+      .macd-data-table .th3{text-align: right;padding-right: 8px;}
+      
+      .macd-data-table .td1{text-align: left;padding-left: 8px;}
+      .macd-data-table .td2{text-align: right;padding-right: 5px;}
+      .macd-data-table .td3{text-align: right;padding-right: 2px;letter-spacing: -1px;}
+      .btn-macd-viewall{display: block;margin:  0 auto;width: 100%;height: 28px;line-height: 28px;background-color: #FF0103;border-radius: 4px;text-align: center;font-size: 12px;color: #fff;margin-top: 10px;}
+      .btn-macd-viewall:visited,.btn-macd-viewall:hover,.btn-macd-viewall:link{color: #fff;text-decoration: none;}
+      .pop-macd-intro{padding:16px 20px 16px 20px;position: absolute;top: 0;transform: translateX(-105%);border-radius: 10px;box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);z-index: 1000;width: 300px;background-image: linear-gradient(to bottom, #FFE6DA 0%,#FEF6F2 15%, #fff 100%);}
+      .pop-macd-intro::before{content: '';display: block;position: absolute;width: 288px;height: 89px;background: url(//n.sinaimg.cn/finance/cece9e13/20240529/pop_intro_top.png) 0 0 no-repeat;background-size: 288px auto;left: 50%;top: 0;margin-left: -144px;z-index: 2;}
+      .pop-macd-intro h3{text-align: center;font-size: 18px;color: #333;margin-bottom: 5px;position: relative;z-index: 2;margin-bottom: 16px;font-weight: bold;}
+      .pop-macd-intro p{font-size: 12px;line-height: 18px;color: #333;text-align: justify;}
+      .pop-macd-intro .macd-tip{color: #A0A0A0;padding: 0;margin-top: 12px;}
+      .btn-macd-close{display: block;background: url(//n.sinaimg.cn/finance/cece9e13/20240522/icon_macd_close.png) 0 0 no-repeat;background-size: 14px auto;width: 14px;height: 14px;position: absolute;right: 18px;top: 18px;z-index: 3;}
+      .pop-macd-callup{background: url(//n.sinaimg.cn/finance/cece9e13/20240523/pop_callup_back02.png) 0 0 no-repeat;width: 276px;height: 371px;background-size: 276px auto;z-index: 1000;box-sizing: border-box;padding-top: 146px;top: 50%;transform: translate(-105%,-50%);position: fixed;}
+      .btn-macd-callup-close{display: block;width: 14px;height: 14px;position: absolute;right: 18px;top: 18px;}
+      .macd-scan-qr{width: 132px;height: 132px;background-color: #fff;border-radius: 4px;margin: 0 auto;box-sizing: border-box;display: flex;align-items: center;}
+      .macd-scan-qr img{width: 118px;height: 118px;display: block;margin: 0 auto;}
+      .macd-scan-tip{width: 100%;text-align: center;margin-top: 11px;font-size: 14px;color: #fff;font-weight: bold;line-height: 24px;}
+      .macd-scan-tip span{color: #FFDA79;}
+      .macd-mask{position:fixed;z-index:999;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7);display:none;background-color:rgba(0,0,0,0.5)}
+      .macd-intro-me{margin-top: 12px;color: #666!important;}
+      .macd-intro-img{width: 304px;margin-top: 12px;}
+      .macd-intro-img img{width: 100%;display: block;}
+      .macd-scan-tip02{font-size: 16px;font-weight: bold;text-align: center;}
+      .macd-scan-tip02 em{color: #FE080A;font-style: normal;font-weight: bold;}
+      #MACD_Wrap_PCHome .m-tab span.selected{ border-top: 0px; }
+    #MACD_Wrap_PCHome .data_table .boder-bottom td,.data_table .boder-bottom th{border-bottom:1px dotted #DBE4E9;background-color:#fff;color: #697285;font-size: 12px;}
+    #MACD_Wrap_PCHome .title-macd{cursor: pointer;}
+    #MACD_Wrap_PCHome .title-macd .macd-info{float: left;margin-left: 5px;}
+    #MACD_Wrap_PCHome .data_table table { line-height: 25px; width: 100%;}
+    #MACD_Wrap_PCHome .data_table .row_1 { background-color: #f9fafc; }
+    #MACD_Wrap_PCHome .up{color:#FF0000!important;}
+    #MACD_Wrap_PCHome .down{color:green!important;}
+    /* #MACD_Wrap_PCHome .pop-macd-intro{position: fixed;top: 50%;left: 50%;margin-left: -120px;transform: translateY(-50%);} */
+    #MACD_Wrap_PCHome .pop-macd-intro{position: absolute;top: 1680px;left: 50%;margin-left: -120px;transform: translateY(-50%);}
+    #MACD_Wrap_PCHome .pop-macd-callup{left: 50%;transform: translate(-50%, -50%);}
+    #MACD_Wrap_PCHome .macd-data-table .td3{color: #697285;padding-right: 9px;}
+    #MACD_Wrap_PCHome .macd-data-table .td1{color: #1F2D4A;}
+
+    .macd-tabs{display: flex; justify-content: flex-start; align-items: center; flex-basis: auto; }
+    .tabs.macd-tabs .tab{flex-basis: auto;flex-grow: 1;}
+    .tabs.macd-tabs .on{border-top: none;}
+
+    .block_hq .R .spliter_20{height: 10px;}
+    .macd-tabs.tabs{height: 22px;}
+    .tabs.macd-tabs .tab{line-height: 20px;font-size: 14px;height: 20px;}
+    .macd-data-table thead th{padding-top: 0px;}
+    /*pc行情红包*/
+    .SFA-DXHB-side{width: 138px;height: 196px;background-size: 138px auto;background-image: url(//n.sinaimg.cn/finance/cece9e13/20240926/hongbao_pz.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20240926/hongbao_pz.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20240926/hongbao_pz_2x.png) 2x);background-repeat: no-repeat;position: fixed;top: 350px;left: 50%;margin: 0 0 0 505px;z-index:8700;}
+    .SFA-DXHB-side .btn-get-DXHB{width: 102px;height: 28px;background-size: 102px auto;background-image: url(//n.sinaimg.cn/finance/cece9e13/20240926/btn_pz.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20240926//btn_pz.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20240926/btn_pz_2x.png) 2x);background-repeat: no-repeat;text-indent: -999em;position: absolute;top: 150px;left: 50%;margin-left: -51px;cursor: pointer;}
+    .SFA-DXHB-side .btn-DXHB-side-close{position: absolute;width: 25px;height: 25px;display: block;right: 0;top: 0;text-indent: -999em;}
+    .SFA-DXHB-Pop{width: 394px;position: relative;z-index:9999999;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;}
+    .SFA-DXHB-back{width: 100%;background-image: url(//n.sinaimg.cn/finance/cece9e13/20240926/hongbao_pz_pop.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20240926/hongbao_pz_pop.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20240926/hongbao_pz_pop_2x.png) 2x);background-repeat: no-repeat;height: 560px;}
+    .SFA-PZFail .SFA-DXHB-back{width: 100%;background-image: url(//n.sinaimg.cn/finance/cece9e13/20240926/hongbao_pz_fail_pop.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20240926/hongbao_pz_fail_pop.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20240926/hongbao_pz_fail_pop_2x.png) 2x);background-repeat: no-repeat;height: 560px;}
+    .SFA-DXHB-inner{position: absolute;z-index: 2;top: 0;left: 0;width: 100%;padding-top: 275px;text-align: center;}
+    .SFA-DXHB-countdown{display: flex;justify-content: center;align-items: center;}
+    .count-down-txt{font-size: 16px;font-weight: bold;color: #fff;}
+    .count-down-time{font-size: 16px;font-weight: bold;color: #fff;width: 25px;height: 25px;background-color: #fff;border-radius: 4px;line-height: 25px;text-align: center;color: #F63932;margin: 0 3px;}
+    .count-down-tip{font-size: 14px;color: #fff;line-height: 24px;text-align: center;opacity: .8;margin-top: 14px;}
+    .SFA-DXHB-mask{position:fixed;z-index:999999;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7);}
+    .SFA-DXHB-qr{  width: 120px; height: 120px;padding: 4px; border-radius: 6px; background-color: #fff;margin:  0 auto;box-sizing: border-box;display: block;margin-top: 14px;}
+    .scan-tip{height: 24px;line-height: 24px;display: inline-block;justify-content: center;align-items: center;border-radius: 12px;background-color: #fff;padding: 0 11px;position: relative;margin-top: 15px;}
+    .scan-tip::before {position: absolute;top: -5px;left: 50%;margin-left: -7px; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 6px solid white;content: ""; }
+    /* @media(prefers-color-scheme:light){
+        .SFA-DXHB-mask{background-color:rgba(0,0,0,0.5)};
+        .SFA-DXHB-qr{ position: absolute; z-index: 2; width: 189px; height: 189px; left: 50%; top: 112px; padding: 4px; border-radius: 13px; background-color: #fff;transform: translateX(-50%);}
+    }; */
+    .st-txt1{color: #333;font-size: 12px;}
+    .st-txt2{color: #AF8985;font-size: 12px;}
+    .st-txt2 em{color:#F85039;font-weight: bold;}
+    .st-split{margin: 0 10px;color: #AF8985;font-size: 12px;}
+    .btn-DXHB-close{position: absolute;width: 25px;height: 25px;text-indent: -99em;display: block;right: 18px;top: 18px;cursor: pointer;z-index: 2;}
+.SFA-DXHB-side.SFA-DXHB-side-HK{margin: 0 0 0 635px}
+.count-end-tip{font-size: 16px;color: #fff;font-weight: bold;}
+.pz-counting{display: flex;justify-content: center;}
+.pz-fail{display: none;}
+.SFA-PZFail .SFA-DXHB-inner{padding-top: 288px;}
+.SFA-PZFail .pz-counting{display: none;}
+.SFA-PZFail .pz-fail{display: block;}
+.SFA-PZFail .count-down-tip{margin-top: 29px;}
+@-webkit-keyframes pluse{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}50%{-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}} @keyframes pluse{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}50%{-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}} 
+.pluse {
+    -webkit-animation-name: pluse;
+    animation-name: pluse;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}

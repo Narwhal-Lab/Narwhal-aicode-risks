@@ -1,0 +1,3 @@
+if (location.protocol === 'http:' && location.host.indexOf('cms') === -1) {
+    location.replace(location.href.replace(/^http:/gi, 'https:'))
+}
