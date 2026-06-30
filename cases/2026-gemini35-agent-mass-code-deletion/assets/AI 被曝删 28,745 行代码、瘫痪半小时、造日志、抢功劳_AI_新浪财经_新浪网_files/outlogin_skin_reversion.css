@@ -1,0 +1,27 @@
+/*冗余样式，检测样式是否成功加载,不允许修改*/
+.outlogin_layerbox_bylx .outlogin_checkload{width:123px;}
+
+/*可被定制样式*/
+.outlogin_layerbox_bylx{width:477px!important;border-color:#c7c7c7;color:#434242;box-shadow:4px 4px 0 rgba(0,0,0,.1);background-color:#fff;}
+.outlogin_layerbox_bylx a.layerbox_close{color:#666;}
+.outlogin_layerbox_bylx a.layerbox_close:hover{color:#3f7bc1;}
+.outlogin_layerbox_bylx .close_loginname{color:#666;}
+.outlogin_layerbox_bylx .close_loginname:hover{color:#DA0000;}
+.outlogin_layerbox_bylx .layerbox_left{border-right-color:#fff;background:#fff;}
+.outlogin_layerbox_bylx .layerbox_left input.styles{border-color:#d0d0d0;background:#FFF;}
+.outlogin_layerbox_bylx .layerbox_left .disability_voice{background:url(http://i.sso.sina.com.cn/images/login/voice.gif) no-repeat 50% 50%;}
+.outlogin_layerbox_bylx .layerbox_left a.login_btn{background:#ff8500;color:#fff;}
+.outlogin_layerbox_bylx .layerbox_left a.login_btn:hover{background:#ff931d;}
+.outlogin_layerbox_bylx .layerbox_left a.register_lnk{color:#a87a2c;}
+.outlogin_layerbox_bylx .layerbox_left a.login_lnk:hover{color:#a87a2c;}
+.outlogin_layerbox_bylx .layerbox_left a.forget_Pwd{color:#a87a2c;}
+.outlogin_layerbox_bylx .association{border-color:#ddd;background:#fff;}
+.outlogin_layerbox_bylx .association .note_item{color:#999;}
+.outlogin_layerbox_bylx .association a{color:#999;}
+.outlogin_layerbox_bylx .association .current{background:#f4f5f7;}
+.outlogin_layerbox_bylx .login_error_tips{color:#DA0000; }
+.outlogin_layerbox_bylx .login_recom_tips{color:#000; }
+.outlogin_LoginBtn .LoginIcon{background:url(http://i.sso.sina.com.cn/images/login/loginButton_16a.png) no-repeat 0 0;}
+.outlogin_layerbox_bylx li.loginform_yzm .reload-code{background:url(http://i.sso.sina.com.cn/images/login/verify_refresh.png) no-repeat 0 0;}
+.outlogin_layerbox_bylx li.loginform_yzm .reload-code:hover{background-position:0 -18px;}
+.outlogin_layerbox_bylx .chg_ac{color:#ff8500;}

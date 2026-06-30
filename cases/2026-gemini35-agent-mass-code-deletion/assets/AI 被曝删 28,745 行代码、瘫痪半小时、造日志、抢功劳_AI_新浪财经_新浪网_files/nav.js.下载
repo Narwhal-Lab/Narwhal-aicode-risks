@@ -1,0 +1,610 @@
+$(document).ready(function () {
+  if (window.SinaCommonNav) return;
+  window.SinaCommonNav = !0;
+  (function (a) {
+    var b = {
+      init: function () {
+        /pad|phone|andriod/i.test(navigator.userAgent) || this.addStyleSheet();
+      },
+      addStyleSheet: function () {
+        var a = '';
+        if (document.createStyleSheet) {
+          a = document.createStyleSheet();
+          a.cssText = '.sina15-nav a:hover{ color:#e96a0d;text-decoration:none;}.sina15-client .sina15-more:hover{color:#e96a0d;}';
+        } else {
+          a = document.createElement('style');
+          a.type = 'text/css';
+          a.innerHTML = '.sina15-nav a:hover{ color:#e96a0d;text-decoration:none;}.sina15-client .sina15-more:hover{color:#e96a0d;}';
+          document.getElementsByTagName('head')[0].appendChild(a);
+        }
+      },
+    };
+    b.init();
+  })(jQuery);
+  (function (a) {
+    function c(c) {
+      var d = this.attr('data-target');
+      if (!d) return;
+      var f = a(document).data(d);
+      if (!f) {
+        a(document).data(d, (f = new b(this)));
+        e.push(d);
+      }
+      (c == 'show' || c == 'hide') && f[c](this);
+    }
+    var b = function (a) {
+      this.element = a;
+      this.touchNumber = 0;
+    };
+    b.version = '0.0.1';
+    b.prototype = {
+      constructor: b,
+      addEvent: function (b) {
+        var c = this;
+        if (f) {
+          b.on('touchstart', function (a) {
+            a.stopPropagation();
+          });
+          b.on('touchstart', 'a', function (b) {
+            b.preventDefault();
+            location.href = this.href;
+            c.hide(a(this));
+          });
+        } else {
+          b.on('mouseenter', function () {
+            c.preventHide();
+          });
+          b.on('mouseleave', function () {
+            c.hide(a(this));
+          });
+        }
+      },
+      show: function (b) {
+        this.current = b;
+        if (this.touchNumber < 1) {
+          this.hideId && clearTimeout(this.hideId);
+          var c = this,
+            d = b.attr('data-target'),
+            e = a('#' + d),
+            g = a.Event('dropdown.show');
+          if (g.isDefaultPrevented()) return;
+          b.trigger(g);
+          b.addClass('cur');
+          e.show();
+          b.trigger({
+            type: 'dropdown.shown',
+          });
+          if (!this.hasAddEvent) {
+            this.addEvent(e);
+            this.hasAddEvent = !0;
+          }
+          f && this.touchNumber++;
+        } else {
+          this.hide();
+          var h = b.attr('href');
+          /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(h) && window.open(h);
+        }
+      },
+      hide: function (b) {
+        this.current = this.current || b;
+        var c = this,
+          d = this.current.attr('data-target'),
+          e = a('#' + d);
+        this.current.removeClass('cur');
+        this.hideId = setTimeout(function () {
+          c.immediatelyHide(e);
+        }, 100);
+      },
+      preventHide: function () {
+        this.current.addClass('cur');
+        clearTimeout(this.hideId);
+      },
+      immediatelyHide: function (a) {
+        if (a.length) {
+          a.hide();
+          this.touchNumber = 0;
+        }
+      },
+    };
+    var d = a.fn.SMVDropdown;
+    a.fn.SMVDropdown = c;
+    a.fn.SMVDropdown.constructor = b;
+    a.fn.SMVDropdown.noConflict = function () {
+      a.fn.SMVDropdown = d;
+      return this;
+    };
+    var e = [],
+      f = /pad|phone|android/i.test(navigator.userAgent);
+    if (f) {
+      a(document).on('touchstart', "[data-action='dropdown']", function (b) {
+        b.preventDefault();
+        b.stopPropagation();
+        a.each(e, function (b, c) {
+          a(document).data(c).hide();
+        });
+        c.call(a(this), 'show');
+      });
+      a(document).on('touchstart', function () {
+        a.each(e, function (b, c) {
+          a(document).data(c).hide();
+        });
+      });
+    } else {
+      a(document).on('mouseenter', "[data-action='dropdown']", function () {
+        c.call(a(this), 'show');
+      });
+      a(document).on('mouseleave', "[data-action='dropdown']", function () {
+        c.call(a(this), 'hide');
+      });
+    }
+  })(jQuery);
+  (function (a) {
+    var b = function (a) {
+      this.element = a;
+    };
+    b.version = '0.0.1';
+    b.prototype = {
+      constructor: b,
+      setValue: function () {
+        $this = this.element;
+        var b = $this.attr('data-value'),
+          c = $this.find('[data-text]').text(),
+          d = $this.attr('data-group');
+        $target = a('#' + d);
+        $target.attr('data-value', b);
+        $target.find('[data-text]').text(c);
+        a('[data-group=' + d + ']').removeClass('cur');
+        $this.addClass('cur');
+        a(document).data($target.attr('data-target')).hide();
+        this.last = $this;
+      },
+    };
+    var c = function () {
+        var c = this.attr('data-value'),
+          d = this.attr('data-group');
+        if (c && d) {
+          var e = c + d,
+            f = a(document).data(e);
+          f || a(document).data(e, (f = new b(this)));
+          f.setValue();
+        }
+      },
+      d = a.fn.SMVSelect;
+    a.fn.SMVSelect = c;
+    a.fn.SMVSelect.constructor = b;
+    a.fn.SMVSelect.noConflict = function () {
+      a.fn.SMVSelect = d;
+      return this;
+    };
+    var e = /pad|phone|android/i.test(navigator.userAgent),
+      f = e ? 'touchstart' : 'click';
+    a(document).on(f, "[data-action='select']", function (b) {
+      b.stopPropagation();
+      c.call(a(this));
+    });
+  })(jQuery);
+  (function (a) {
+    if (!a('.sina15-channel-nav').length) return;
+    a("[data-action='dropdown']").on('dropdown.shown', function (b) {
+      var c = a(this).attr('data-target'),
+        d = a('.sina15-channel-nav').offset().left,
+        e = 0,
+        f = a('.sina15-channel-nav').width();
+      a.each(a('#' + c + ' li'), function (b, c) {
+        e += a(c).width();
+      });
+      var g = a(this).offset().left + a(this).width() / 2 - d,
+        h = f - g;
+      g > e / 2
+        ? h < e / 2
+          ? a('#' + c + ' ul').css({
+              left: f - e,
+            })
+          : a('#' + c + ' ul').css({
+              left: g - e / 2,
+            })
+        : a('#' + c + ' ul').css({
+            left: 0,
+          });
+    });
+  })(jQuery);
+  (function (a) {
+    var b = {
+      init: function () {
+        this.key = a('#nav_search [node=key]');
+        this.getDefaultWord();
+        this.bind();
+      },
+      bind: function () {
+        var a = this;
+        this.key.focus(function () {
+          a.placeHold('focus');
+        });
+        this.key.blur(function () {
+          a.placeHold('blur');
+        });
+      },
+      getDefaultWord: function () {
+        var b = this;
+        a.ajax({
+          url: '//s.weibo.com/ajax/jsonp/suggestion',
+          data: {
+            Refer: 'sina_sug',
+          },
+          dataType: 'jsonp',
+          jsonp: '_cb',
+          success: function (a) {
+            b.setDefaultWord(a);
+          },
+        });
+      },
+      setDefaultWord: function (a) {
+        var b = this.key,
+          c = a.data,
+          d = c[Math.floor(Math.random() * c.length)];
+        b.attr('data-default', d);
+        b.val(d);
+        b.addClass('default');
+      },
+      placeHold: function (b) {
+        var c = this.key,
+          d = c.val(),
+          e = c.attr('data-default'),
+          f = a('#nav_search [node=search] i');
+        if (b == 'focus') {
+          if (d == e) {
+            c.val('');
+            c.removeClass('default');
+            f.addClass('sina15-icon-search1');
+          }
+        } else if (a.trim(d) == '') {
+          c.val(e);
+          c.addClass('default');
+          f.removeClass('sina15-icon-search1');
+        }
+      },
+    };
+    b.init();
+  })(jQuery);
+  (function (a) {
+    var b = function (a, b) {
+        var c = function () {};
+        c.prototype = b.prototype;
+        a.prototype = new c();
+        a.prototype.constructor = a;
+        a.supperClass = b.prototype;
+        b.prototype.constructor == Object.prototype.constructor && (b.prototype.constructor = b);
+      },
+      c = {
+        submit: a.Callbacks(),
+      },
+      d = function (a) {
+        this.config = a;
+        this.searParams = {
+          url: '//search.sina.com.cn',
+          qs: {
+            ie: 'utf-8',
+            q: '',
+            c: '',
+          },
+        };
+        this.init();
+      };
+    d.prototype = {
+      init: function () {
+        this.bind();
+      },
+      bind: function () {
+        var a = this,
+          b = this.config;
+        b.key.keydown(function (b) {
+          b.keyCode == 13 && a.submit();
+        });
+        b.search.click(function () {
+          a.submit();
+        });
+      },
+      submit: function (b) {
+        var c, b, d, e, f;
+        f = this.config;
+        b = b || f.key.val();
+        b = a.trim(b);
+        e = this.searParams.qs;
+        e.q = b;
+        e.c = f.option.attr('data-value') || 'news';
+        e.from = 'channel';
+        d = a.param(e);
+        if (/pad|phone|android/i.test(navigator.userAgent)) window.open(this.searParams.url + '?' + d);
+        else {
+          if (!this._link) {
+            var g = (this._link = document.createElement('a'));
+            g.style.display = 'none';
+            g.setAttribute('target', '_blank');
+            document.body.appendChild(g);
+          }
+          this._link.href = this.searParams.url + '?' + d;
+          this._link.click();
+        }
+      },
+    };
+    var e = function (b) {
+      this.config = b;
+      this.keyWord = '';
+      this.listCurrent = -1;
+      this.evt = {
+        fetch: a.Callbacks(),
+      };
+      this.init();
+    };
+    e.prototype = {
+      init: function () {
+        this.bind();
+      },
+      bind: function () {
+        var b = this,
+          c = this.config.panel;
+        c.on('mouseover', '[node=search_suggest_list]', function (c) {
+          b.setCurrent(a(this).index());
+        });
+        c.on('click', '[node=search_suggest_list]', function (a) {
+          b.submit(this);
+        });
+      },
+      suggest: function (a) {
+        var b = {
+          Refer: 'sina_sug',
+          key: a,
+        };
+        this.getData(b, this.renderSuggest);
+      },
+      searching: function () {
+        if (this.hasSearching) this.renderSearching(this.searchingCache[0]);
+        else {
+          var a = {
+            Refer: 'sina_sug',
+          };
+          this.hasSearching = !0;
+          this.getData(a, this.renderSearching, (this.searchingCache = []));
+        }
+      },
+      getData: function (b, c, d) {
+        var e = this;
+        a.ajax({
+          url: '//s.weibo.com/ajax/jsonp/suggestion',
+          data: b,
+          dataType: 'jsonp',
+          jsonp: '_cb',
+          success: function (a) {
+            c.call(e, a);
+            d && d.push(a);
+          },
+          error: function () {},
+        });
+      },
+      renderSearching: function (a) {
+        var b, c;
+        b = a.data;
+        if (b.length) {
+          c = this.createSearchingHtml(b);
+          this.config.panel.html(c);
+          this.show();
+          this.setCurrent(-1);
+        }
+      },
+      createSearchingHtml: function (a) {
+        var b = '';
+        b += '<div class="sina15-search-first"><a href="#">大家正在搜</a></div><ul class="sina15-search-down">';
+        for (var c = 0, d = a.length; c < d; c++) b += '<li node="search_suggest_list" queryWord="' + a[c] + '"><a href="#">' + a[c] + '</a></li>';
+        b += '</ul><div class="sina15-search-last"><a href="//search.sina.com.cn/?channel=channel" target="_blank">进入搜索首页>></a></div>';
+        return b;
+      },
+      renderSuggest: function (a) {
+        var b, c;
+        b = a.data;
+        if (b.length) {
+          c = this.createSuggestHtml(b);
+          this.config.panel.html(c);
+          this.show();
+          this.setCurrent(-1);
+        } else this.hide();
+      },
+      createSuggestHtml: function (a) {
+        var b = '';
+        b += '<ul class="sina15-search-down">';
+        for (var c = 0, d = a.length; c < d; c++) b += '<li node="search_suggest_list" queryWord="' + a[c] + '"><a href="#">' + a[c] + '</a></li>';
+        b += '</ul>';
+        return b;
+      },
+      setCurrent: function (a) {
+        var b = this.config.panel.find('[node=search_suggest_list]');
+        (a == -1 || this.listCurrent != -1) && b.eq(this.listCurrent).removeClass('cur');
+        a != -1 && b.eq(a).addClass('cur');
+        this.listCurrent = a;
+      },
+      getPrevValue: function () {
+        var a = this.prev();
+        this.setCurrent(a);
+        return this.getValue(a);
+      },
+      getNextValue: function () {
+        var a = this.next();
+        this.setCurrent(a);
+        return this.getValue(a);
+      },
+      prev: function (a) {
+        var b, c, d;
+        b = this.config.panel.find('[node=search_suggest_list]');
+        c = b.length;
+        this.listCurrent == -1 ? (d = c - 1) : (d = (this.listCurrent + c - 1) % c);
+        return d;
+      },
+      next: function (a) {
+        var b, c;
+        b = this.config.panel.find('[node=search_suggest_list]');
+        this.listCurrent == -1 ? (c = 0) : (c = (this.listCurrent + 1) % b.length);
+        return c;
+      },
+      getValue: function (a) {
+        var b = this.config.panel.find('[node=search_suggest_list]');
+        return b.eq(a).attr('queryWord');
+      },
+      submit: function (b) {
+        var d, e;
+        d = a(b).index();
+        e = this.getValue(d);
+        this.config.key.val(e);
+        c.submit.fire(e);
+      },
+      show: function () {
+        this.config.panel.show();
+      },
+      hide: function () {
+        this.config.panel.hide();
+      },
+      hasList: function () {
+        var a = this.config.panel.find('[node=search_suggest_list]');
+        return a.length ? !0 : !1;
+      },
+      getLayer: function () {
+        return this.layer;
+      },
+    };
+    var f = function (a) {
+      f.supperClass.constructor.apply(this, arguments);
+      this.config = a;
+    };
+    b(f, d);
+    fn = f.prototype;
+    fn.init = function () {
+      var a = this;
+      this.suggestPanel = new e(this.config);
+      f.supperClass.init.apply(this, arguments);
+    };
+    fn.bind = function () {
+      var b = this,
+        d = this.config.key;
+      d.keydown(function (a) {
+        b.dealKeydown(a);
+      });
+      d.keyup(function (a) {
+        b.dealKeyup(a);
+      });
+      d.click(function (a) {
+        a.stopPropagation();
+        b.dealClick();
+      });
+      a(document.body).on('click', function () {
+        b.hidePanel();
+      });
+      c.submit.add(function (a) {
+        b.submit(a);
+      });
+      f.supperClass.bind.apply(this, arguments);
+    };
+    fn.dealClick = function () {
+      var b = this.config.option.attr('data-value');
+      if (b == 'news' || !b) a.trim(this.config.key.val()) == '' ? this.suggestPanel.searching() : this.addSearchListen();
+    };
+    fn.dealKeyup = function (b) {
+      var c = this.config.option.attr('data-value'),
+        d = this.config.key.val();
+      if (c == 'news' || !c)
+        if (a.trim(d) == '') {
+          this.suggestPanel.searching();
+          this.cancelListen();
+        } else this.addSearchListenByDel(b);
+    };
+    fn.dealKeydown = function (a) {
+      var b = this.config.option.attr('data-value'),
+        c = this.config.key.val();
+      if (b == 'news' || !b) a.keyCode == 38 || a.keyCode == 40 ? this.setValue(a) : (this.isCharKey(a) || a.keyCode == 8) && this.addSearchListen();
+    };
+    fn.addSearchListen = function () {
+      var a = this;
+      if (this.isListening) return;
+      this.isListening = !0;
+      this.sId = setInterval(function () {
+        a.search();
+      }, 200);
+    };
+    fn.addSearchListenByDel = function (b) {
+      var c = a.trim(this.config.key.val());
+      b.keyCode == 46 && this.searchValue != c && this.addSearchListen();
+    };
+    fn.search = function () {
+      var b = a.trim(this.config.key.val());
+      if (b && this.searchValue != b) {
+        this.suggestPanel.suggest(b);
+        this.searchValue = b;
+      }
+    };
+    fn.hidePanel = function () {
+      this.cancelListen();
+      this.suggestPanel.hide();
+    };
+    fn.cancelListen = function () {
+      this.sId && clearInterval(this.sId);
+      this.searchValue = '';
+      this.isListening = !1;
+    };
+    fn.setValue = function (a) {
+      var b;
+      if (!this.suggestPanel.hasList()) return;
+      this.cancelListen();
+      a.keyCode == 38 ? (b = this.suggestPanel.getPrevValue()) : (b = this.suggestPanel.getNextValue());
+      this.config.key.val(b);
+      a.preventDefault();
+    };
+    fn.isCharKey = function (a) {
+      var b = a.keyCode,
+        c;
+      (b >= 33 && b <= 40) ||
+      (b >= 112 && b <= 123) ||
+      b == 13 ||
+      b == 8 ||
+      b == 46 ||
+      b == 45 ||
+      b == 27 ||
+      b == 9 ||
+      b == 20 ||
+      b == 91 ||
+      a.ctrlKey ||
+      a.shiftKey ||
+      a.altKey
+        ? (c = !1)
+        : (c = !0);
+      return c;
+    };
+    var g = new f({
+      key: a('#nav_search [node=key]'),
+      option: a('#nav_search [node=option]'),
+      search: a('#nav_search [node=search]'),
+      panel: a('#nav_search [node=panel]'),
+    });
+  })(jQuery);
+  (function (a) {
+    function d() {
+      var c = a(this).width();
+      if (c < 1e3) {
+        b.addClass('sina15-top—bar-pad');
+        if (a('#more').is(':visible')) {
+          a("[data-target='more']").SMVDropdown('hide');
+          a("[data-target='pad-more']").SMVDropdown('show');
+        }
+      } else if (c >= 1e3) {
+        b.removeClass('sina15-top—bar-pad');
+        if (a('#pad-more').is(':visible')) {
+          a("[data-target='pad-more']").SMVDropdown('hide');
+          a("[data-target='more']").SMVDropdown('show');
+        }
+      }
+    }
+    var b = a("[data-action='nav-for-pad']"),
+      c = /pad/i.test(navigator.userAgent);
+    if (!b.length || !c) return;
+    d();
+    a(window).resize(function (a) {
+      d();
+    });
+  })(jQuery);
+});

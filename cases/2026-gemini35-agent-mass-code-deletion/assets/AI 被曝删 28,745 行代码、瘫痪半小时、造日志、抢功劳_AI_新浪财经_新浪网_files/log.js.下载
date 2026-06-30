@@ -1,0 +1,33 @@
+(function () {
+  if (window.top.tag_log) return;
+  window.top.tag_log = 1;
+  const url = window.location.href;
+  const referrer = document.referrer;
+  const userAgent = navigator.userAgent;
+  const reportData = {
+    url: url,
+    reportReferer: referrer,
+    "user-agent": userAgent,
+    timestamp: new Date().toISOString(),
+  };
+
+  const logApiUrl = `//newsapp.sina.cn/api/log/report?url=${encodeURIComponent(
+    url,
+  )}&reportReferer=${encodeURIComponent(
+    referrer,
+  )}&user-agent=${encodeURIComponent(userAgent)}`;
+
+  fetch(logApiUrl)
+    .then((response) => {
+      console.log("Log API response:", response);
+      return response.json();
+    })
+    .then((data) => {
+      if (data.status == -2) {
+        location.href = "https://www.sina.com";
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+})();

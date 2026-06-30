@@ -1,0 +1,15 @@
+(function ($){
+    window.bottomvipvideoFunction = function(d) {
+        var dataList = d.data
+        var htmlStr = ''
+        dataList.forEach(function(item) {
+            htmlStr += '\
+                <div class="vip-class-item">\
+                    <a suda-uatrack="key=vip_class_atc&value=click" href="' + item.url + '" target="_blank"><img class="vip-class-pic" src="' + item.pic + '"></a>\
+                    <p class="vip-class-text"><a suda-uatrack="key=vip_class_atc&value=click" href="' + item.url + '" target="_blank">' + item.title + '</a></p>\
+                </div>'
+        })
+        $('#vip-class-cont').html(htmlStr)
+    }
+    $.getScript('https://finance.sina.com.cn/tgdata/contentright/api_vipvideo.json')
+})(window.jQuery);

@@ -1,0 +1,529 @@
+// @ts-nocheck
+(function ($) {
+    var TPLS = {
+        bottomBar:'<div class="SFA-724-bottom-bar hide-SFA-bar"><div class="SFA-724-bb-content"><span class="content-date">@date724Short@</span><span class="content-txt"><a href="javascript:;">@title724@</a></span></div><div class="SFA-724-bb-close">关闭</div> </div>',
+    }
+    var CONFIG = {
+        domSelector:'.main-content',
+        dataName:'news',
+        sudaValue:'pc_zw724'
+    };
+    var hostWithPath = location.host + location.pathname;
+    var urlReg = /^(finance\.sina\.com\.cn\/realstock)|(money\.finance\.sina\.com\.cn\/bond)|(stock\.finance\.sina\.com\.cn\/usstock)|(stock\.finance\.sina\.com\.cn\/hkstock)|(finance\.sina\.com\.cn\/futures\/quotes)|(finance\.sina\.com\.cn\/money\/forex)/gi;
+    // var urlReg = /^testfinance\.sina\.cn/
+    if (hostWithPath.match(urlReg)) {
+        CONFIG = {
+            domSelector:'body',
+            extraCss:'.SFA-724-bottom-bar{z-index:100;left:50%;transform: translateX(-50%);}',
+            dataName:'724',
+            sudaValue:'pc_hq724'
+        }
+    }
+    // 弹窗
+    var _utils = {
+        addCSSByStyleSheet: function addCSSByStyleSheet(cssText) {
+            var style = document.createElement("style");
+            style.appendChild(document.createTextNode(cssText));
+            document.head.appendChild(style);
+        },
+        html2Dom: function html2Dom(html) {
+            var div = document.createElement("div");
+            div.innerHTML = html;
+            return div.firstElementChild;
+        },
+        sendSuda:function(key,val,sudaCallback){
+            try {
+                window.SUDA.uaTrack(
+                key,
+                val,
+                '', {
+                    callback: sudaCallback&&sudaCallback()
+                }
+            );
+                } catch (error) {
+                    
+                }
+            
+        },
+        getCookie : function(name) {
+            name = name.replace(/([\.\[\]\$])/g, '\\\$1');
+            var rep = new RegExp(name + '=([^;]*)?;', 'i');
+            var co = document.cookie + ';';
+            var res = co.match(rep);
+            if (res) {
+                return unescape(res[1]) || "";
+            } else {
+                return "";
+            }
+        },
+        setCookie : function(name, value, expire, path, domain, secure) {
+            var cstr = [];
+            cstr.push(name + '=' + escape(value));
+            if (expire) {
+                var dd = new Date();
+                var expires = dd.getTime() + expire * 3600000;
+                dd.setTime(expires);
+                cstr.push('expires=' + dd.toGMTString());
+            }
+            if (path) {
+                cstr.push('path=' + path);
+            }
+            if (domain) {
+                cstr.push('domain=' + domain);
+            }
+            if (secure) {
+                cstr.push(secure);
+            }
+            document.cookie = cstr.join(';');
+        },
+    };
+    var hxjDialog = (function () {
+        
+        _utils.addCSSByStyleSheet(
+            ".SFA-724-bottom-bar{position: fixed;width: 880px;height: 48px;background-color: #F9F5ED;bottom: 40px;border-radius: 8px;box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);overflow: hidden;transition-duration: .8s;cursor: pointer;transition-timing-function: ease;z-index: 100;} .hide-SFA-bar{width: 0!important;} .SFA-724-bottom-bar .SFA-724-bb-content{background-image: url(//n.sinaimg.cn/finance/cece9e13/20240903/tag_724_back.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20240903/tag_724_back.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20240903/tag_724_back_2x.png) 2x);background-repeat: no-repeat;background-size: 129px auto;height: 48px;box-sizing: border-box;padding-left: 140px;display: flex;justify-content: flex-start;align-items: center;} .SFA-724-bottom-mask{position: fixed; z-index: 9999999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); display: none;} .SFA-724-bottom-bar .content-date{font-size: 18px;color: #999;white-space: nowrap;} .SFA-724-bottom-bar .content-txt{font-size: 18px;color: #333;margin-left: 12px;display: block;width: 600px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;} .SFA-724-bottom-bar .content-txt a{color: #333;} .SFA-724-bottom-bar .content-txt a:visited{color: #333;} .SFA-724-bottom-bar .content-txt a:hover{color: #E1541C;} .SFA-724-bottom-bar .SFA-724-bb-close{position: absolute;right: 15px;top: 50%;width: 15px;height: 15px;transform: translateY(-50%);background-image: url(//n.sinaimg.cn/finance/cece9e13/20240903/724_bar_close.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20240903/724_bar_close.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20240903/724_bar_close_2x.png) 2x);background-repeat: no-repeat;background-size: 15px auto;text-indent: -999em;background-color:#F9F5ED;} /*浮层*/ .SFA-724-bottom{position: fixed; z-index: 9999999; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;} .SFA-724-bottom-popup{display: flex;align-items: flex-start;justify-content: space-between;} .SFA-724-bottom-popup .left-724-icon{background-image: url(//n.sinaimg.cn/finance/cece9e13/20240911/tag_724_back02N.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20240911/tag_724_back02N.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20240911/tag_724_back02_2xN.png) 2x);background-repeat: no-repeat;background-size: 129px 35px;height: 35px;width: 129px;} .left-724-date{font-size: 14px;margin-top: 12px;color: #999;} .left-724-cont{font-size: 18px;margin-top: 12px;color: #333;line-height: 24px;text-align: justify;height: 192px;overflow-y: auto;width: 290px;box-sizing: border-box;padding-right: 8px;overflow-x:hidden;} .SFA-724-bottom-left{display: flex;flex-direction: column;justify-content: flex-start;align-items: flex-start;width: 290px;} .SFA-724-bottom-right{display: flex;justify-content: space-between;flex-direction: column;align-items: flex-start;width: 327px;height: 255px;} .right-724-tit{font-size: 22px;font-weight: bold;color: #EA3E3F;line-height: 32px;text-align: left;} .right-724-qr{width: 140px;height: 140px;border-radius: 12px;background-color: #fff;margin-top: 0px;text-align: center;box-sizing: border-box;padding: 5px;box-shadow: 0 0 11px rgba(0, 0, 0, 0.05);} .right-724-logo{width: 170px;margin-top: 12px;} .right-724-logo img{width: 100%;} .middle-splitline{width: 1px;font-size: 0;height: 255px;background-color: #E9E3D7;margin:  0 16px;margin-left: 6px;} .SFA-724-bottom-close{position: absolute;right: 15px;top: 15px;width: 15px;height: 15px;background-image: url(//n.sinaimg.cn/finance/cece9e13/20240903/724_bar_close.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20240903/724_bar_close.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20240903/724_bar_close_2x.png) 2x);background-repeat: no-repeat;background-size: 8px auto;text-indent: -999em;cursor: pointer;} @media screen and (min-width: 768px) and (max-width:1480px) {.SFA-724-bottom-bar{width: 640px;}.SFA-724-bottom-bar .content-txt{width: 390px;}} .left-724-cont::-webkit-scrollbar {width: 5px; /* 设置滚动条宽度 */} .left-724-cont::-webkit-scrollbar-thumb {background-color: rgba(0, 0, 0, 0.1); /* 设置滚动条滑块颜色 */border-radius: 3px; /* 设置滑块圆角 */} .left-724-cont::-webkit-scrollbar-track { background-color: transparent; /* 设置滚动条轨道颜色为透明 */ } .left-724-cont::-moz-scrollbar { width: 5px; /* 设置滚动条宽度 */ } .left-724-cont::-moz-scrollbar-thumb { background-color: rgba(0, 0, 0, 0.1); /* 设置滚动条滑块颜色 */ border-radius: 3px; /* 设置滑块圆角 */ } .left-724-cont::-moz-scrollbar-track { background-color: transparent; /* 设置滚动条轨道颜色为透明 */ } .left-724-cont::-ms-scrollbar { width: 5px; /* 设置滚动条宽度 */ } .left-724-cont::-ms-scrollbar-thumb { background-color: rgba(0, 0, 0, 0.1); /* 设置滚动条滑块颜色 */ border-radius: 3px; /* 设置滑块圆角 */ } .left-724-cont::-ms-scrollbar-track { background-color: transparent; /* 设置滚动条轨道颜色为透明 */ }.SFA-724-bottom-wrap{border-radius: 20px;box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);background-color: #F9F5ED;width: 688px;box-sizing: border-box;padding: 24px;padding-bottom: 16px;}.SFA-724-bottom-logo{display: flex;justify-content: center;align-items: center;border-top: 1px solid #E9E3D7;padding-top: 14px;margin-top: 10px;}.right-724-qr img{width: 130px;}.SFA-724-bottom-logo .bottom-txt-logo{margin-right: 20px;}.SFA-724-bottom-right .editor-item{display: flex;justify-content: flex-start;align-items: center;cursor:pointer;}.SFA-724-bottom-right .editor-item.editor-item2{margin-bottom: 0px;margin-top: 0px;}.SFA-724-bottom-right .ei-index{background-color: #E9E3D7;width: 24px;height: 24px;border-radius: 12px;text-align: center;line-height: 24px;margin-right: 8px;color:#EA3E3F;font-weight:bold;}.SFA-724-bottom-right .eit-date{font-size: 14px;color: #999;}.SFA-724-bottom-right .ei-title{width: 295px;text-align: left;font-size: 18px;line-height: 24px;}.SFA-724-bottom-right .editor-icon{background-image: url(//n.sinaimg.cn/finance/cece9e13/20240911/tag_724_back03N.png);background-image: -webkit-image-set(url(//n.sinaimg.cn/finance/cece9e13/20240911/tag_724_back03N.png) 1x,url(//n.sinaimg.cn/finance/cece9e13/20240911/tag_724_back03_2xN.png) 2x);background-repeat: no-repeat;background-size: 129px 35px;height: 35px;width: 129px;}.eit-txt{display: -webkit-box;-webkit-line-clamp: 2; /* 控制显示的行数 */-webkit-box-orient: vertical;overflow: hidden;min-height:48px;}.selected .eit-txt{color:#E1541C;}@-webkit-keyframes shakeX{0%,to{-webkit-transform:translateZ(0);transform:translateZ(0)}10%,30%,50%,70%,90%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}20%,40%,60%,80%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}}@keyframes shakeX{0%,to{-webkit-transform:translateZ(0);transform:translateZ(0)}10%,30%,50%,70%,90%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}20%,40%,60%,80%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}}.animate__shakeX{-webkit-animation-name:shakeX;animation-name:shakeX;-webkit-animation-duration:.8s;animation-duration:.8s;-webkit-animation-fill-mode:both;animation-fill-mode:both}"
+        );
+        if(typeof(CONFIG.extraCss)!='undefined'){
+        _utils.addCSSByStyleSheet(CONFIG.extraCss);
+        }
+        document.body.appendChild(
+            _utils.html2Dom('<div class="SFA-724-bottom-mask"></div>')
+        );
+        document.body.appendChild(
+            _utils.html2Dom(
+                '<div class="SFA-724-bottom"><div class="SFA-724-bottom-wrap"></div></div>'
+            )
+        );
+        var elements = {
+            //弹窗
+            dialog: document.querySelector(".SFA-724-bottom"),
+            dialogBody: document.querySelector(".SFA-724-bottom-wrap"),
+            mask: document.querySelector(".SFA-724-bottom-mask"),
+            closeBtn: document.querySelector(".SFA-724-bottom-close"),
+        };
+        var bodyOverflow = getComputedStyle(document.body).overflow;
+        var closeByClickMash = function closeByClickMash() {
+            close();
+        };
+        var open = function open(_ref) {
+            var contentDom = _ref.contentDom,
+                contentHTML = _ref.contentHTML,
+                _ref$contentText = _ref.contentText,
+                contentText = _ref$contentText === void 0 ? "" : _ref$contentText,
+                duration = _ref.duration,
+                _ref$withMask = _ref.withMask,
+                withMask = _ref$withMask === void 0 ? true : _ref$withMask,
+                _ref$clickMaskToClose = _ref.clickMaskToClose,
+                clickMaskToClose =
+                    _ref$clickMaskToClose === void 0 ? false : _ref$clickMaskToClose;
+            if (contentDom instanceof HTMLElement) {
+                elements.dialogBody.innerHTML = "";
+                elements.dialogBody.appendChild(contentDom);
+            } else if (typeof contentHTML === "string") {
+                elements.dialogBody.innerHTML = contentHTML;
+            } else {
+                elements.dialogBody.innerText = contentText;
+            }
+            elements.dialog.style.display = "block";
+            if (withMask) {
+                elements.mask.style.display = "block";
+                document.body.style.overflow = "hidden";
+                if (clickMaskToClose) {
+                    elements.mask.addEventListener("click", closeByClickMash);
+                }
+            }
+            if (typeof duration === "number") {
+                setTimeout(function () {
+                    if (elements.dialog.style.display !== "none") {
+                        close();
+                    }
+                }, duration);
+            }
+        };
+        var close = function close() {
+            elements.dialogBody.innerHTML = "";
+            elements.dialog.style.display = "none";
+            elements.mask.style.display = "none";
+            document.body.style.overflow = bodyOverflow;
+            elements.mask.removeEventListener("click", closeByClickMash);
+        };
+        // elements.closeBtn.addEventListener("click", function () {
+        //     close();
+        // });
+        return {
+            open: open,
+            close: close
+        };
+    })();
+    var _bannerStyle = '';
+    var _sudaValue = CONFIG.sudaValue;
+    var cssArray = [
+        
+    ];
+    addCSSByStyleSheet(cssArray.join('\n'));
+    
+    jsonp('https://push.cj.sina.cn/msg/weibo/v1/list?num=1').then((response)=>{
+        var _data = response.data.list;
+        if(_data!=null&&_data.length!=0){
+            try {
+                var _id = _data[0].extra.id;
+                var _date = formatTimestamp(_data[0].send_time.replace(/-/g,'/'));
+                var _bottomBarHtml = TPLS.bottomBar.replace(/@date724Short@/g,_date).replace(/@title724@/g,_data[0].wtitle);
+                //获取cookie
+                var _curCookie = _utils.getCookie('PCZW_724_POP');
+                if(_curCookie==''||(_curCookie!=''&&_curCookie!=_id)){
+                    document.querySelector(CONFIG.domSelector).appendChild(
+                        _utils.html2Dom(
+                            _bottomBarHtml
+                        )
+                    );
+                    setTimeout(function(){
+                        document.querySelector('.SFA-724-bottom-bar').className = 'SFA-724-bottom-bar';
+                        _utils.sendSuda('callup_finance_app',_sudaValue+'_exp')
+                    },500);
+                    document.body.addEventListener('click', function (e) {
+                        if (e.target.classList.contains('SFA-724-bb-close')) {
+                            document.querySelector('.SFA-724-bottom-bar').className = 'SFA-724-bottom-bar hide-SFA-bar';
+                            _utils.sendSuda('callup_finance_app',_sudaValue+'_off')
+                        }
+                    });
+                    return jsonp('https://zhibo.sina.com.cn/api/content/detail?zhibo_id=152&id='+_id)
+                }
+            } catch (error) {
+                
+            }
+            
+        }
+    }).then((response)=>{
+        if(response&&response.result&&response.result.data){
+            var _res = response.result.data;
+            if(typeof(window.GenQRImage)=='undefined'){
+                loadScript('//finance.sina.com.cn/other/src/doc/GenQRImage.js', {
+                }).then(() => {
+                    genPop(_res);
+                });
+            }else{
+                genPop(_res);
+            }
+            
+            
+        }
+       
+        //console.log('detail',response)
+    });
+    function bindEvents(){
+        document.body.addEventListener('click', function (e) {
+            if (e.target.classList.contains('SFA-724-bottom-close')) {
+                var _closeMid = e.target.getAttribute('data-mid');
+                _utils.sendSuda('callup_finance_app',_sudaValue+'_tkoff');
+                hxjDialog.close();
+                _utils.setCookie('PCZW_724_POP',_closeMid,1 * 24, '/', 'finance.sina.com.cn');
+                //20240912 为了不打扰用户
+                document.querySelector('.SFA-724-bottom-bar').className = 'SFA-724-bottom-bar hide-SFA-bar';
+            }
+        });
+        $('.SFA-724-bottom-wrap').delegate('.j-editor-item','mouseover',function(){
+            $('.j-editor-item').removeClass('selected');
+            $(this).addClass('selected')
+        });
+        $('.SFA-724-bottom-wrap').delegate('.j-editor-item','mouseout',function(){
+            $('.j-editor-item').removeClass('selected');
+            // $(this).addClass('selected')
+        });
+        $('.SFA-724-bottom-wrap').delegate('.j-editor-item','click',function(){
+            $('.j-editor-item').removeClass('selected');
+            $('.right-724-qr').removeClass('animate__shakeX')
+            $(this).addClass('selected');
+            //增加打点
+            var _itemIndex = $(this).index()+1;
+            _utils.sendSuda('callup_finance_app','pc_724tk_more'+_itemIndex);
+            var _param = $(this).attr('data-param')
+            // var a = new GenQRImage({
+            //     size: 260,
+            //     showLogo:false,
+            //     outputType:'url',//[url,img]
+            //     onSuccess: function (d) {
+            
+            //     }
+            // });
+            // var qrImg = a.genQR('https://finance.sina.cn/app/QRtoSFA.shtml?sudatrackvalue=callup_finance_app--__--pc_zw724&schema='+encodeURIComponent('type=17&url='+encodeURIComponent(_url)));
+            var qrImg = generateQR({
+                type:CONFIG.dataName,
+                width:260,
+                param:_param
+            })
+            $('.right-724-qr img').attr('src',qrImg);
+            setTimeout(() => {
+                $('.right-724-qr').addClass('animate__shakeX')
+            }, 200);
+            
+        });
+    }
+    function genPop(_res){
+        //生成dom
+        var dateFull = '';
+        var _content = '';
+        var _qr = '';
+        var _mid = _res.id;
+        try {
+            dateFull = dateFormat(new Date(_res.update_time.replace(/-/g,'/')),'yyyy-MM-dd hh:mm:ss');
+            _content = _res.rich_text;
+            //生成二维码
+            
+            // var a = new GenQRImage({
+            //     size: 260,
+            //     showLogo:false,
+            //     outputType:'url',//[url,img]
+            //     onSuccess: function (d) {
+            //     }
+            // });
+            // var qrImg = a.genQR('https://finance.sina.cn/app/QRtoSFA.shtml?sudatrackvalue=callup_finance_app--__--pc_zw724&schema=client_path%3D%2Fnews%2Fnewsdetails%26mid%3D'+_mid);
+            var qrImg = generateQR({
+                type:'724',
+                width:260,
+                param:_mid
+            })
+            var _ttNews = [];
+            var _ttNewsStr = '';
+            loadScript('//hq.sinajs.cn/format=text&list=wap_push_list', {
+            }).then(() => {
+                //console.log(wap_push_list);
+                var d = wap_push_list;
+                //最新三条要闻 替换原数据
+                if(d&&d[CONFIG.dataName]&&d[CONFIG.dataName].length>0){}
+                // if(topnews&&topnews.result&&topnews.result.data){
+                    var _ttData = d[CONFIG.dataName];
+                    _ttData.sort((a, b) => {
+                        return new Date(b.ctime) - new Date(a.ctime);
+                    });
+                    var curIndex = 1;
+                    if(_ttData.length>0){
+                        for(var i=0;i<_ttData.length;i++){
+                            
+                            var _item = _ttData[i];
+                            if(_item.mid!=_mid&&curIndex!=4){
+                                var _param;
+                                var _title;
+                                if(_item.type-0==19){
+                                    _param = _item.mid;
+                                    _title = _item.content;
+                                }
+                                if(_item.type-0==1){
+                                    _param = _item.url;
+                                    _title = _item.title;
+                                }
+                                var _ttdate = formatTimestampNew(_item.pushTime.replace(/-/g,'/'));
+                                _ttNews.push('<div data-param="'+_param+'" class="j-editor-item editor-item editor-item'+(i+1)+'"><div class="ei-index">'+curIndex+'</div><div class="ei-title"><div class="eit-date">'+_ttdate+'</div><div class="eit-txt">'+_title+'</div></div></div>');
+                                curIndex++;
+                            }
+                            
+                        }
+                    }
+                    _ttNewsStr = _ttNews.join('');
+                    var BottomBar = document.querySelector('.SFA-724-bb-content');
+                    BottomBar.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        var _sudaValue = CONFIG.sudaValue;
+                        _utils.sendSuda('callup_finance_app',_sudaValue+'_click');
+                        hxjDialog.open({ 
+                            contentHTML: 
+                            '<div class="SFA-724-bottom-popup">\
+                                <div class="SFA-724-bottom-left">\
+                                    <div class="left-724-icon"></div>\
+                                    <div class="left-724-date">'+dateFull+'</div>\
+                                    <div class="left-724-cont">'+_content+'</div>\
+                                </div>\
+                                <div class="middle-splitline"></div>\
+                                <div class="SFA-724-bottom-right">\
+                                    <div class="editor-icon"></div>\
+                                    <div class="editor-list">'+_ttNewsStr+'</div>\
+                                </div>\
+                                <div class="SFA-724-bottom-close" data-mid="'+_mid+'">关闭</div>\
+                            </div>\
+                            <div class="SFA-724-bottom-logo">\
+                                <div class="bottom-txt-logo">\
+                                    <div class="right-724-tit">扫码下载新浪财经APP<br/>精彩内容抢先看！</div>\
+                                    <div class="right-724-logo"><img src="//n.sinaimg.cn/finance/cece9e13/20240903/sinafinance_log_2x.png" alt=""></div>\
+                                </div>\
+                                <div class="right-724-qr card">\
+                                    <img src="'+qrImg+'" />\
+                                </div>\
+                            </div>', 
+                            clickMaskToClose: true 
+                        });
+                    });
+                }
+                // console.log('三条',topnews)
+
+            );
+            //绑定事件
+            bindEvents();
+            
+
+        } catch (error) {
+            
+        }
+    }
+    function generateQR(config){
+        var ret = '';
+        var _type =config.type;
+        var _w =config.width;
+        switch (_type) {
+            case 'news':
+                var _url = config.param;
+                var a = new GenQRImage({
+                    size: _w,
+                    showLogo:false,
+                    outputType:'url',//[url,img]
+                    onSuccess: function (d) {
+                    }
+                });
+                ret = a.genQR('https://finance.sina.cn/app/QRtoSFA.shtml?sudatrackvalue=callup_finance_app--__--'+_sudaValue+'&schema='+encodeURIComponent('type=17&url='+encodeURIComponent(_url)));
+                
+                break;
+            case '724':
+                var _mid = config.param;
+                var b = new GenQRImage({
+                    size: _w,
+                    showLogo:false,
+                    outputType:'url',//[url,img]
+                    onSuccess: function (d) {
+                    }
+                });
+                ret = b.genQR('https://finance.sina.cn/app/QRtoSFA.shtml?sudatrackvalue=callup_finance_app--__--'+_sudaValue+'&schema=client_path%3D%2Fnews%2Fnewsdetails%26mid%3D'+_mid);
+                
+                break;
+            default:
+                break;
+        }
+        
+        return ret;
+    }
+    
+    function dateFormat(date,fmt){
+        var o = {
+            "M+" : date.getMonth()+1,                 //月份
+            "d+" : date.getDate(),                    //日
+            "h+" : date.getHours(),                   //小时
+            "m+" : date.getMinutes(),                 //分
+            "s+" : date.getSeconds(),                 //秒
+            "q+" : Math.floor((date.getMonth()+3)/3), //季度
+            "S"  : date.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt))
+            fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+        for(var k in o)
+            if(new RegExp("("+ k +")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        return fmt;
+    }
+    function formatTimestamp(timestamp) {
+        const now = new Date();
+        const date = new Date(timestamp);
+        const diffSec = Math.floor((now - date) / 1000);
+        const diffMin = Math.floor(diffSec / 60);
+        const diffHour = Math.floor(diffMin / 60);
+        const diffDay = Math.floor(diffHour / 24);
+
+        if (diffDay >= 1) {
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            return year + '.' + month + '.' + day;
+         } else if (diffMin >= 5) {
+            //  return diffHour + '小时前';
+            return dateFormat(date,'hh:mm');
+        } else if (diffMin >= 1) {
+            return diffMin + '分钟前';
+        } else {
+            return diffSec + '秒前';
+        }
+    }
+    function formatTimestampNew(timestamp) {
+        const now = new Date();
+        const date = new Date(timestamp);
+        const diffSec = Math.floor((now - date) / 1000);
+        const diffMin = Math.floor(diffSec / 60);
+        const diffHour = Math.floor(diffMin / 60);
+        const diffDay = Math.floor(diffHour / 24);
+
+        if (diffDay >= 1) {
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            return year + '.' + month + '.' + day;
+         } else if (diffHour >= 1) {
+             return diffHour + '小时前';
+            // return dateFormat(date,'hh:mm');
+        } else if (diffMin >= 1) {
+            return diffMin + '分钟前';
+        } else {
+            return diffSec + '秒前';
+        }
+    }
+    function isToday(timestamp) {
+        const date = new Date(timestamp);
+        const now = new Date();
+        return date.getDate() === now.getDate() && date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear();
+    }
+    
+    function printText(textWrap, text, interval) {
+        let i = 0;
+        let timer = setInterval(function () {
+            if (i < text.length) {
+                textWrap.classList.add('pc724_banner_printing');
+                textWrap.innerHTML += text.charAt(i);
+                i++;
+            } else {
+                clearInterval(timer);
+                textWrap.classList.remove('pc724_banner_printing');
+            }
+        }, interval);
+    }
+
+    function addCSSByStyleSheet(cssText) {
+        const style = document.createElement('style')
+        style.appendChild(document.createTextNode(cssText))
+        document.head.appendChild(style)
+    }
+
+    function jsonp(url, params) {
+        return new Promise((resolve, reject) => {
+            const callbackName = 'jsonp_callback_' + Math.floor(Math.random() * 100000);
+            window[callbackName] = (data) => {
+                delete window[callbackName];
+                const script = document.getElementById(callbackName);
+                script.parentNode.removeChild(script);
+                resolve(data);
+            };
+            const script = document.createElement('script');
+            script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName + (params ? ('&' + Object.keys(params).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key])).join('&')) : '');
+            script.id = callbackName;
+            script.onerror = (err) => {
+                delete window[callbackName];
+                const script = document.getElementById(callbackName);
+                script.parentNode.removeChild(script);
+                reject(err);
+            };
+            document.getElementsByTagName('head')[0].appendChild(script);
+        });
+    }
+    function loadScript(url, config){
+        return new Promise((resolve, reject) => {
+            var _script=document.createElement("script");
+            _script.type="text/javascript";
+            _script.src=url;
+            var _timeout = setTimeout(function(){
+                reject('timeout')
+            },config.timeout||5000);
+            _script.onload = function(){
+                clearTimeout(_timeout);
+                document.getElementsByTagName("head")[0].removeChild(_script);
+                resolve();
+            } 
+            _script.onerror = function(){
+                reject();
+            }
+            document.getElementsByTagName("head")[0].appendChild(_script);
+        })
+    }
+})(jQuery);

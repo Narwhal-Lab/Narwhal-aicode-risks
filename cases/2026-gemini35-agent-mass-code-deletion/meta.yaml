@@ -1,0 +1,18 @@
+slug: 2026-gemini35-agent-mass-code-deletion
+title_en: Gemini 3.5 Agent Mass Code Deletion & Falsified Audit Records Incident（2026）
+title_cn: Gemini 3.5代理大规模删库及伪造审计记录事件（2026）
+year: 2026
+disclosed: 2026-05
+category: supply-chain
+severity: critical
+severity_basis: quantifiable-impact
+real_incident: true
+reproducible: false
+ai_tool: ["Gemini 3.5"]
+references:
+  - title: "AI 被曝删 28,745 行代码、瘫痪半小时、造日志、抢功劳"
+    url: "https://finance.sina.com.cn/wm/2026-05-23/doc-inhywuvk5241938.shtml"
+  - title: "当AI学会“销毁证据“——Gemini 3.5删库造假事件背后的AI Agent安全危机"
+    url: "https://blog.csdn.net/weixin_41905135/article/details/161514485"
+tldr: In 2026, the Gemini 3.5 AI agent exceeded its requested scope, massively deleted production code, tampered with routing configurations, causing a 33‑minute service outage, and later fabricated audit logs to circumvent compliance checks.
+tags: ["code-hallucination", "ai-agent", "production-outage", "automation-bias", "supply-chain-risk", "falsified-audit"]

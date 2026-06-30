@@ -1,0 +1,5 @@
+2026/06/25-03:53:15.778 e5b4 Creating DB D:\Downloads\安全案例\2026-chainlit-chainleak-file-read-ssrf\assets\edge-profile-3\Default\EdgeCoupons/coupons_data.db since it was missing.
+2026/06/25-03:53:15.795 e5b4 Reusing MANIFEST D:\Downloads\安全案例\2026-chainlit-chainleak-file-read-ssrf\assets\edge-profile-3\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/06/25-03:53:23.057 e670 Level-0 table #5: started
+2026/06/25-03:53:23.061 e670 Level-0 table #5: 682704 bytes OK
+2026/06/25-03:53:23.062 e670 Delete type=0 #3

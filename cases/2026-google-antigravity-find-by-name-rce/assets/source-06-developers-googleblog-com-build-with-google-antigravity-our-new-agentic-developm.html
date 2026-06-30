@@ -1,0 +1,809 @@
+<!-- Archived evidence source
+source_url: https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/
+fetched_at: 2026-06-24T20:20:08Z
+curl_returncode: 0
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+        <meta charset="utf-8" />
+        
+        <title>
+            
+            Build with Google Antigravity, our new agentic development platform
+            
+            
+            - Google Developers Blog
+            
+        </title>
+        <meta property="og:title" content="Build with Google Antigravity, our new agentic development platform- Google Developers Blog" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+	<meta name="description" content="Google Antigravity: The agentic development platform that lets agents autonomously plan, execute, and verify complex tasks. Available now." />
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Google for Developers Blog - News about Web, Mobile, AI and Cloud" property="twitter:title"/>
+  <meta property="og:title" content="Build with Google Antigravity, our new agentic development platform" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Google for Developers Blog",
+      "item": "https://developers.googleblog.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Build with Google Antigravity, our new agentic development platform",
+      "item": "https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/"
+    }]
+  }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Build with Google Antigravity, our new agentic development platform",
+      "description": "Introducing Google Antigravity, a new agentic development platform for orchestrating code. It combines an AI-powered Editor View with a Manager Surface to deploy agents that autonomously plan, execute, and verify complex tasks across your editor, terminal, and browser. Agents communicate progress via Artifacts (screenshots, recordings) for easy verification. Available now in public preview.",
+      "image": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Experience_liftoff_1.2e16d0ba.fill-800x400.png",
+      "datePublished": "2025-11-20",
+      "author": [
+        
+        
+          { "@type": "Person", "name": "Google Antigravity Team", "url": "/search/?author=Google+Antigravity+Team" }
+        
+        
+      ]
+    }
+  </script>
+  
+  <meta content="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Experience_liftoff_1.2e16d0ba.fill-1200x600.png" property="og:image"/>
+  
+
+
+        
+        
+
+        <!-- Google Tag Manager -->
+        <script type="text/javascript" nonce="m4jj+1RqqKO8QFsiLc6oXg==" src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260519-162827/js/analytics.js"></script>
+        <!-- End Google Tag Manager -->
+
+        
+        <link href="//www.gstatic.com/glue/v27_1/glue.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260519-162827/css/dgc_blog.css">
+        <link rel="icon" href="https://storage.googleapis.com/gweb-developer-goog-blog-assets/meta/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="https://storage.googleapis.com/gweb-developer-goog-blog-assets/meta/apple-touch-icon.png">
+
+        
+				<link rel="preconnect" href="https://fonts.googleapis.com">
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+				<link rel="preload" href="https://fonts.googleapis.com/css2?family=Product+Sans&family=Google+Sans+Display:ital@0;1&family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" as="style">
+				<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Product+Sans&family=Google+Sans+Display:ital@0;1&family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap">
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&amp;family=Google+Sans+Flex:opsz,wght@6..144,1..1000&amp;display=swap" rel="stylesheet" data-page-link="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
+
+        
+        <link href="https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.css" rel="stylesheet">
+
+        
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260519-162827/css/blog_detail.css"
+  />
+  <link type="text/css" href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260519-162827/css/prism.css" rel="stylesheet" />
+
+    </head>
+
+    <body id="main-content" class="glue-body ">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVTLDSL "
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        
+
+				
+        
+
+<!-- HTML -->
+<header class="dgc-header">
+  <div class="dgc-header-inner">
+    <button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-label="Open Menu">
+      <svg role="presentation" aria-hidden="true" class="glue-icon">
+        <use href="/glue-icon/#menu"></use>
+      </svg>
+    </button>
+    <div class="product-name-wrapper">
+      <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+        <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260519-162827/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+      </a>
+    </div>
+    <div class="desktop-nav-wrapper">
+      <div class="upper-tabs-wrapper">
+        <div class="upper-tabs">
+          <nav class="tabs" aria-label="Upper Tabs">
+            <div class="tab">
+              <a
+                href="//developers.google.com/community"
+                class="top-nav-title">
+                Community/Events
+              </a>
+            </div>
+            <div class="tab">
+              <a
+                href="//developers.google.com/solutions/catalog"
+                class="top-nav-title">
+                Learn
+              </a>
+            </div>
+            <div class="tab">
+              <a
+                href="//developers.googleblog.com"
+                class="top-nav-title">
+                Blog
+              </a>
+            </div>
+            <div class="tab">
+              <a
+                href="https://www.youtube.com/user/GoogleDevelopers"
+                class="top-nav-title">
+                YouTube
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dgc-header-search">
+    <div class="search-wrapper glue-page">
+      <div class="glue-grid">
+        <form id="search-form"  action="/search/" method="get" class="search-content glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-9-md glue-grid__col--span-7-lg">
+          <div class="search-input-wrapper">
+            <svg role="presentation" aria-hidden="true" class="glue-icon search-icon">
+              <use href="/glue-icon/#search"></use>
+            </svg>
+            <input
+              type="text"
+              name="query"
+              
+              placeholder="Search all articles..."
+              aria-label="Search"
+              class="search-input-field"
+            />
+          </div>
+          <button class="glue-button glue-button--high-emphasis">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer" top-level-nav>
+  <nav class="nav-content" aria-label="Side menu">
+    <div class="mobile-header">
+      <button class="nav-close-btn nav-btn" aria-label="Close navigation">
+        <svg role="presentation" aria-hidden="true" class="glue-icon">
+          <use href="/glue-icon/#close"></use>
+        </svg>
+      </button>
+      <button class="nav-back-btn nav-btn hidden" aria-label="Back to Menu">
+        <svg role="presentation" aria-hidden="true" class="glue-icon">
+          <use href="/glue-icon/#arrow-back"></use>
+        </svg>
+      </button>
+      <div class="product-name-wrapper">
+        <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+          <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260519-162827/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+        </a>
+      </div>
+    </div>
+    <div class="nav-wrapper">
+      <div class="mobile-nav-top">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="//developers.google.com/community" class="nav-title" data-label="Tab: Community/Events">
+              <span class="nav-text" tooltip="">
+                Community/Events
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/solutions/catalog" class="nav-title" data-label="Tab: Learn">
+              <span class="nav-text" tooltip="">
+                Learn
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.googleblog.com" class="nav-title" data-label="Tab: Blog">
+              <span class="nav-text" tooltip="">
+                Blog
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.youtube.com/user/GoogleDevelopers" class="nav-title" data-label="Tab: YouTube">
+              <span class="nav-text" tooltip="">
+                YouTube
+             </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="backdrop"></div>
+
+        
+  <div class="blog-detail-container">
+
+    
+      <section class="tags-container glue-page glue-spacer-5-top">
+        <div class="glue-eyebrow"></div>
+      </section>
+    
+
+    <section class="heading-container glue-page  glue-spacer-1-top">
+      <h1 class="glue-headline glue-headline--headline-1">Build with Google Antigravity, our new agentic development platform</h1>
+    </section>
+
+    <section class="summary-container glue-page glue-spacer-4-top">
+      <div class="date-time">
+        <div class="published-date glue-font-weight-medium">NOV. 20, 2025</div>
+      </div>
+    </section>
+
+    <section class="glue-page glue-grid glue-spacer-1-top">
+
+      <section class="author-container glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-10-md">
+      
+        
+          <div class="author-obj">
+            <a class="glue-font-weight-medium" href="/search/?author=Google+Antigravity+Team">Google Antigravity Team</a>
+            
+            
+          </div>
+        
+
+      
+      </section>
+      <section class="social-container glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-2-md">
+        <button id="social-button" class="glue-button glue-button--low-emphasis glue-button--icon" aria-haspopup="true" aria-expanded="false">
+          <svg role="presentation" aria-hidden="true" class="glue-icon">
+            <use href="/glue-icon/#share"></use>
+          </svg>
+          <span>Share</span>
+        </button>
+        <ul id="social-menu" class="glue-elevation-level-1" role="menu" aria-labelledby="social-button">
+          <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={url}"
+                title="Share on Facebook" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#post-facebook"></use>
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/intent/tweet?text={url}"
+                title="Share on Twitter" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#twitter-x"></use>
+              </svg>
+              <span>Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/shareArticle?url={url}&amp;mini=true" title="Share on LinkedIn" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#post-linkedin"></use>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:name@example.com?subject=Check%20out%20this%20site&body=Check%20out%20{url}" title="Send via Email">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#email"></use>
+              </svg>
+              <span>Mail</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" title="Get shareable link" data-link="" data-copy-text="Copy Link" data-copied-text="Copied!">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#link"></use>
+              </svg>
+              <span></span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    
+    <section class="blocks-container glue-page glue-spacer-3-top">
+      <div class="block">
+          
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img
+                    class="regular-image"
+                    src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/AGYBlogHero.original.png"
+                    alt="AGYBlogHero"
+                />
+            
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <p data-block-key="7r34q">Development is lifting off. The tools of yesterday focused on helping you write code faster; the tools of tomorrow need to help you orchestrate it. Today, we’re introducing <a href="http://goo.gle/AGY"><b>Google Antigravity</b></a>, a new <b>agentic development platform</b> designed to help you operate at a higher, task-oriented level.</p><p data-block-key="tgeo">Antigravity isn&#x27;t just an editor—it&#x27;s a development platform that combines a familiar, AI-powered coding experience with a new agent-first interface. This allows you to deploy agents that autonomously plan, execute, and verify complex tasks across your editor, terminal, and browser.</p><h3 data-block-key="dhly3" id="a-new-way-to-work"><b>A new way to work</b></h3><p data-block-key="e13dl">We built Antigravity because we believe agents shouldn&#x27;t just be chatbots in a sidebar; they should have their own dedicated space to work. The platform introduces two distinct ways to interact with your code:</p><ul><li data-block-key="1l0n"><b>The Editor View:</b> When you need to be hands-on, you get a state-of-the-art, AI-powered IDE equipped with tab completions and inline commands for the synchronous workflow you already know.</li><li data-block-key="9h9fq"><b>The Manager Surface:</b> This is where the shift happens. It’s a dedicated interface where you can spawn, orchestrate, and observe multiple agents working asynchronously across different workspaces.<br/></li></ul>
+</div>   
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img
+                    class="regular-image"
+                    src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/editor-open-agent-manager.original.png"
+                    alt="editor-open-agent-manager"
+                />
+            
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <h3 data-block-key="9zlmr" id="practical-use-cases-for-your-workflow"><b>Practical use cases for your workflow</b></h3><p data-block-key="at3jo">Antigravity allows you to offload end-to-end tasks that previously required constant context switching. Here are three ways you can apply it to your daily development:</p><ul><li data-block-key="2t3d7"><b>Delegate complex, multi-tool software tasks to the agent:</b> The agent can autonomously plan and execute the task across the editor, terminal, and browser, for instance, by writing code for a new feature, using the terminal to launch the application, and then using the browser to test and verify that the new component is functioning as expected, all without synchronous human intervention.</li><li data-block-key="7rjlf"><b>Operate at a higher, task-oriented level by requesting UI changes:</b> The agent will autonomously modify the codebase (UI iteration) and then communicate its progress and results via Artifacts, such as screenshots and walkthroughs, which provide the necessary and sufficient context for you to easily review and validate the agent&#x27;s work and build trust.</li><li data-block-key="70c5p"><b>Utilize the agent-first Manager surface to dispatch agents for long-running maintenance tasks or bug fixes in the background</b>: This capability enables you to delegate entire tasks, such as reproducing an issue, generating a test case, and implementing a fix, allowing you to focus on your primary work while observing the agent&#x27;s progress asynchronously.<br/></li></ul>
+</div>   
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img
+                    class="regular-image"
+                    src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/settings-review-policy-manual.original.png"
+                    alt="settings-review-policy-manual"
+                />
+            
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <h3 data-block-key="rz819" id="verify-with-artifacts-not-logs"><b>Verify with Artifacts, not logs</b></h3><p data-block-key="amvqh">Delegating work to an agent requires trust, but scrolling through raw tool calls is tedious. Antigravity solves this by having agents generate <b>Artifacts</b>—tangible deliverables like task lists, implementation plans, screenshots, and browser recordings.</p><p data-block-key="83tcg">These Artifacts allow you to verify the agent&#x27;s logic at a glance. If something looks off, you can leave feedback directly on the Artifact—similar to commenting on a doc—and the agent will incorporate your input without stopping its execution flow.</p><p data-block-key="34a3c"></p><h3 data-block-key="grrco" id="built-for-choice-and-speed"><b>Built for choice and speed</b></h3><p data-block-key="64eac">We want Antigravity to be your home base for the era of agents. It treats learning as a core primitive, allowing agents to save useful context and code snippets to a knowledge base to improve future tasks.</p><p data-block-key="eqpb2">Google Antigravity is available today in public preview, at no cost for individuals. This cross-platform solution is compatible with MacOS, Windows, and Linux, offering model optionality with generous rate limits on Gemini 3 Pro, and full support for Anthropic&#x27;s Claude Sonnet 4.5 and OpenAI&#x27;s GPT-OSS.</p><p data-block-key="6mc6l">Download at <a href="http://goo.gle/AGY"><b>antigravity.google/download</b></a> and experience liftoff.</p>
+</div> 
+      </div>
+    </section>
+    
+
+    <section class="navigation-container glue-page glue-spacer-6-top">
+      <div class="posted-in-section">
+        <div class="posted-in-section__heading">
+          <span class="glue-caption">
+            posted in:
+          </span>
+        </div>
+        <div class="posted-in-section__tags">
+          <ul>
+              
+                  <li>
+                      <a href="/search/?technology_categories=AI" class="glue-caption">AI</a>
+                  </li>
+              
+                  <li>
+                      <a href="/search/?content_type_categories=Announcements" class="glue-caption">Announcements</a>
+                  </li>
+              
+                  <li>
+                      <a href="/search/?content_type_categories=Solutions" class="glue-caption">Solutions</a>
+                  </li>
+              
+              
+                  <li>
+                      <a href="/search/?tag=Solve" class="glue-caption">Solve</a>
+                  </li>
+              
+          </ul>
+      </div>
+      </div>
+      <div class="buttons-section">
+        <div class="buttons-section__left">
+          <a href="/unlocking-peak-performance-on-qualcomm-npu-with-litert/" class="glue-button--icon glue-elevation-level-1 " aria-label="Previous">
+            <svg role="presentation" aria-hidden="true" class="glue-icon">
+              <use href="/glue-icon/#chevron-left"></use>
+            </svg>
+          </a>
+          <span class="caption ">Previous</span>
+        </div>
+        <div class="buttons-section__right">
+          <span class="caption ">Next</span>
+          <a href="/building-ai-agents-with-google-gemini-3-and-open-source-frameworks/" class="glue-button--icon glue-elevation-level-1 "  aria-label="Next">
+            <svg role="presentation" aria-hidden="true" class="glue-icon">
+              <use href="/glue-icon/#chevron-right"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="related-posts-container glue-page glue-spacer-6-top glue-spacer-3-bottom">
+      <span class="glue-headline glue-headline--headline-3">Related Posts</span>
+      <div class="related-posts-container__carousel glue-page glue-spacer-5-top">
+        <div class="glue-carousel glue-carousel--cards glue-carousel-related-posts" aria-label="Related Posts">
+          <!-- Previous -->
+          <button class="glue-carousel__button glue-carousel__button--prev"
+              aria-label="Go to the previous slide">
+            <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--32px">
+              <use href="/glue-icon/#chevron-left"></use>
+            </svg>
+          </button>
+          <!-- Next -->
+          <button class="glue-carousel__button glue-carousel__button--next"
+              aria-label="Go to the next slide">
+            <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--32px">
+              <use href="/glue-icon/#chevron-right"></use>
+            </svg>
+          </button>
+          <!-- List -->
+          <div class="glue-carousel__viewport">
+            <div class="glue-carousel__list">
+              
+                <a class="glue-card glue-carousel__item" href="/build-cross-language-multi-agent-team-with-google-agent-development-kit-and-a2a/">
+                  <div aria-label="Build Cross-Language Multi-Agent Team with Google’s Agent Development Kit and A2A" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Build Cross-Language Multi-Agent Team with Google’s Agent Development Kit and A2A" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/banner.2e16d0ba.fill-800x400.jpg">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            <span class="glue-label">Cloud</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                            <span class="glue-label">Best Practices</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Build Cross-Language Multi-Agent Team with Google’s Agent Development Kit and A2A</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">JUNE 22, 2026</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+                <a class="glue-card glue-carousel__item" href="/how-a2a-is-building-a-world-of-collaborative-agents/">
+                  <div aria-label="How A2A is Building a World of Collaborative Agents" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="How A2A is Building a World of Collaborative Agents" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/image2.original_6xqVyTd.2e16d0ba.fill-800x400.jpg">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            <span class="glue-label">Cloud</span>
+                            
+                            
+                            <span class="glue-label">Case Studies</span>
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">How A2A is Building a World of Collaborative Agents</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">JUNE 18, 2026</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+                <a class="glue-card glue-carousel__item" href="/measuring-what-matters-with-jules/">
+                  <div aria-label="Measuring What Matters with Jules" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Measuring What Matters with Jules" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Measuring_What_Matters_with_Jules_.2e16d0ba.fill-800x400.png">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            
+                            <span class="glue-label">Web</span>
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            
+                            <span class="glue-label">Case Studies</span>
+                            
+                            <span class="glue-label">Learn</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Measuring What Matters with Jules</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">JUNE 22, 2026</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+          <!-- Navigation dots -->
+          <div class="glue-carousel__navigation" aria-label="Choose a page"
+               data-glue-carousel-navigation-label="Selected tab $glue_carousel_page_number$ of $glue_carousel_page_total$">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+
+
+				
+				
+
+<div class="footer-linkboxes__wrapper">
+  <nav class="footer-linkboxes" aria-label="Footer links">
+    <ul class="footer-linkboxes__list">
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Connect
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//googledevelopers.blogspot.com" class="footer-linkbox-list__link">
+                Blog
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/3FReQXN" class="footer-linkbox-list__link">
+                Bluesky
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/googlefordevs" class="footer-linkbox-list__link">
+                Instagram
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/gdevs-li" class="footer-linkbox-list__link">
+                LinkedIn
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/gdevs-tw" class="footer-linkbox-list__link">
+                X (Twitter)
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/developers" class="footer-linkbox-list__link">
+                YouTube
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Programs
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/program" class="footer-linkbox-list__link">
+                Google Developer Program
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/gdg" class="footer-linkbox-list__link">
+                Google Developer Groups
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/experts" class="footer-linkbox-list__link">
+                Google Developer Experts
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/accelerators" class="footer-linkbox-list__link">
+                Accelerators
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//www.womentechmakers.com" class="footer-linkbox-list__link">
+                Women Techmakers
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/nvidia" class="footer-linkbox-list__link">
+                Google Cloud &amp; NVIDIA
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Developer consoles
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.developers.google.com" class="footer-linkbox-list__link">
+                Google API Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.cloud.google.com" class="footer-linkbox-list__link">
+                Google Cloud Platform Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//play.google.com/apps/publish" class="footer-linkbox-list__link">
+                Google Play Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.firebase.google.com" class="footer-linkbox-list__link">
+                Firebase Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.actions.google.com" class="footer-linkbox-list__link">
+                Actions on Google Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//cast.google.com/publish" class="footer-linkbox-list__link">
+                Cast SDK Developer Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//chrome.google.com/webstore/developer/dashboard" class="footer-linkbox-list__link">
+                Chrome Web Store Dashboard
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.home.google.com/" class="footer-linkbox-list__link">
+                Google Home Developer Console
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="footer-utility__wrapper">
+  <div>
+    <nav class="footer-sites" aria-label="Other Google Developers websites">
+      <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+        <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260519-162827/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+      </a>
+      <ul class="footer-sites-list">
+        <li class="footer-sites-item">
+          <a href="//developer.android.com" class="footer-sites-link">
+            Android
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//developer.chrome.com/home" class="footer-sites-link">
+            Chrome
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//firebase.google.com" class="footer-sites-link">
+            Firebase
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//cloud.google.com" class="footer-sites-link">
+            Google Cloud Platform
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//developers.google.com/products" class="footer-sites-link">
+            All products
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <button aria-hidden="true" class="glue-cookie-notification-bar-control footer-sites-link">
+            Manage cookies
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <nav class="footer-utility-links">
+      <ul class="footer-utility-list">
+        <li class="footer-utility-item">
+          <a href="//developers.google.com/terms/site-terms" class="footer-utility-link">
+            Terms
+          </a>
+        </li>
+        <li class="footer-utility-item">
+          <a href="//policies.google.com/privacy" class="footer-utility-link">
+            Privacy
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+        
+				
+
+        
+        <script nonce="m4jj+1RqqKO8QFsiLc6oXg==" src="https://www.youtube.com/player_api"></script>
+        <script nonce="m4jj+1RqqKO8QFsiLc6oXg==" src="//www.gstatic.com/glue/v27_1/glue.min.js"></script>
+        <script nonce="m4jj+1RqqKO8QFsiLc6oXg==" type="text/javascript" src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260519-162827/js/dgc_blog.js"></script>
+
+        <script nonce="m4jj+1RqqKO8QFsiLc6oXg==" src="https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.js"
+            data-glue-cookie-notification-bar-category="2A"
+            data-glue-cookie-notification-bar-site-id="developers.googleblog.com"></script>
+
+        
+  <script src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260519-162827/js/blog_detail.js" nonce="m4jj+1RqqKO8QFsiLc6oXg=="></script>
+  <script src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260519-162827/js/prism.js" nonce="m4jj+1RqqKO8QFsiLc6oXg=="></script>
+
+    </body>
+</html>

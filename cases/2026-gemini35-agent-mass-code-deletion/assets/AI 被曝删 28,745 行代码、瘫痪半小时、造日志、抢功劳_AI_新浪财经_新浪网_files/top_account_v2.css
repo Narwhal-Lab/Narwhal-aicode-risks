@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* CSS Document */
+.TAP14{float:right!important;position:relative!important;width:160px!important;height:45px!important;font-size:14px!important;font-weight:normal!important;font-size:14px!important;font-family:'Microsoft Yahei'!important; overflow:visible!important;}
+.TAP14-logined{width:240px!important;}
+.TAP14 .ac-icon{background-repeat:no-repeat!important;display:inline-block!important;*display:inline!important;*zoom:1!important; vertical-align:text-bottom!important;overflow:hidden!important;}
+.TAP14 .ac-icon-message{width:14px!important;height:14px!important;background-position:0 0;!important}
+.TAP14 .ac-icon-ar{width:10px!important;height:6px!important;background-position:0 -20px!important;}
+.TAP14 .ac-client-active .ac-icon-ar,
+.TAP14 .ac-active .ac-icon-ar{width:10px!important;height:6px!important;background-position:0 -28px!important;}
+/*客户端ico*/
+.TAP14 .ico-client{width:25px!important;height:25px!important;background-image:url(//i.sso.sina.com.cn/images/login/client.png)!important;background-repeat:no-repeat!important;background-position:-999em -999em!important;}
+.TAP14 .ico-weibo{background-position:0 0!important;}
+.TAP14 .ico-news{background-position:0 -50px!important;}
+.TAP14 .ico-sports{background-position:0 -100px!important;}
+.TAP14 .ico-ent{background-position:0 -150px!important;}
+.TAP14 .ico-finance{background-position:0 -200px!important;}
+.TAP14 .ico-video{background-position:0 -250px!important;}
+.TAP14 .ico-games{background-position:0 -300px!important;}
+.TAP14 .ico-weather{background-position:0 -350px!important;}
+
+.TAP14 .ac-login{position:relative!important;float:right!important;width:100px!important;height:45px!important;z-index:1000;overflow:visible!important;}
+.TAP14 .ac-login-cnt{float:left!important;height:46px!important;font-size:14px!important;overflow:visible!important;}
+.TAP14 .ac-login-cnt a{display:block!important;width:100px!important;height:46px!important;zoom:1!important; cursor:pointer!important;}
+/*.TAP14 .ac-login-cnt a:hover,*/
+.TAP14 .ac-login-cnt a:active,
+.TAP14 .ac-login a.active{position:relative!important;left:-1px!important;border-width:0 1px!important;border-style:solid!important;width:98px!important;height:45px!important;}
+.TAP14 .ac-login .thumb{float:left!important;margin:6px 0 0 5px!important;width:32px!important;height:32px!important;overflow:hidden!important;border-radius:16px!important;border:none!important;_display:inline!important;_zoom:1!important;}
+.TAP14 .ac-logined .ac-login-cnt a.thumb{left:0!important;float:left!important;width:32px!important;height:32px!important;overflow:hidden!important;border:none!important;_zoom:1!important;outline:none!important;}
+.TAP14 .ac-logined .thumb img{float:left;border:none!important;outline:none!important;}
+.TAP14 .ac-login .log-links{float:left!important;height:46px!important;line-height:44px!important;padding-left:14px!important;}
+/*登录*/
+.TAP14 .ac-logined{width:95px!important;}
+.TAP14 .ac-logined .ac-login-cnt{width:75px!important;padding-left:17px!important;overflow:hidden!important;}
+.TAP14 .ac-logined .ac-active{width:78px!important;padding-left:16px!important;border-width:0 1px!important;border-style:solid!important;}
+.TAP14 .ac-logined .thumb img{width:32px!important;height:32px!important;outline:none!important;border:none!important;}
+.TAP14 .ac-logined .ac-icon-ar{position:absolute!important;right:21px!important;top:21px!important;}
+.TAP14 .ac-login-cnt .ac-icon-message{position:absolute!important;right:35px!important;top:4px!important;}
+/*下拉菜单*/
+.TAP14 .ac-dropdown{position:absolute!important;top:44px!important;left:0!important;border-width:0 1px 1px!important;border-style:solid!important;width:94px!important;z-index:1000!important;}
+.TAP14 .ac-dropdown li{position:relative!important;border-width:1px 0 0!important;border-style:dotted!important;vertical-align:top!important;text-align:left!important;height:45px!important;line-height:45px!important;overflow:hidden!important;}
+.TAP14 .ac-dropdown a{position:relative!important;display:block!important;height:45px!important;padding-left:10px;line-height:45px!important; word-break:break-all!important;overflow:hidden!important;font-size:14px!important;overflow:hidden!important;}
+
+.TAP14 .ac-dropdown a:hover{ text-decoration:none!important;}
+.TAP14 .ac-dropdown .ac-icon-message{position: absolute!important;right: 10px!important;top: 16px!important;}
+/*消息*/
+.TAP14 .ac-rgst{position:relative!important;float:right!important;width:60px!important;z-index:3}
+.TAP14 .ac-rgst .msg-link {position:relative!important;display:block!important;width:50px!important;height:44px!important;padding-left:10px!important;text-align:left!important;line-height:44px!important; text-decoration:none!important;font-size:14px!important;}
+/*客户端*/
+/*
+.TAP14 .ac-client{position:relative!important;float:right!important;width:128px!important;}
+.TAP14 .ac-client-tl{position:relative!important;height:44px!important;}
+.TAP14 .ac-client-tl a{display:block!important;height:44px!important;padding-left:16px!important;line-height:44px!important;text-align:left!important;}
+.TAP14 .ac-client-tl .ac-icon-ar{position:absolute!important;top:19px!important;right:14px!important;}
+
+.TAP14 .client-dropdown{display:none;position:absolute;top:44px;left:0;width:126px;border-width:0 1px 1px;border-style:solid;}
+.TAP14 .client-dropdown li{border-width:1px 0 0!important;border-style:dotted!important;vertical-align:top!important;text-align:left!important;}
+.TAP14 .client-dropdown a{position:relative!important;display:block!important;height:45px!important;padding-left:54px;line-height:45px!important; word-break:break-all!important;overflow:hidden!important;font-size:14px!important;}
+
+.TAP14 .client-dropdown a:hover{ text-decoration:none!important;}
+.TAP14 .client-dropdown .ico-client{position:absolute;top:9px;left:18px;}
+*/
+/*激活状态*/
+.TAP14 .ac-client-active .ac-client-tl{height:45px;}
+.TAP14 .ac-client-active .ac-client-tl a{background:#fff;border-width:0 1px;border-style:solid;}
+.TAP14 .ac-client-active .client-dropdown{display:block;}
+/*判断css是否加载完毕*/
+.TAP14 .css_check{visibility: hidden;height:0px;width:120px;}
+/*可定制内容*/
+/*icon*/
+.TAP14 .ac-icon{background-image:url(https://i.sso.sina.com.cn/images/login/top_account_icon_v2.png);_background-image:url(https://i.sso.sina.com.cn/images/login/top_account_icon_ie6_v2.png);}
+/*边框颜色*/
+.TAP14 .ac-login a.active,
+.TAP14 .ac-login .ac-active,
+/*.TAP14 .ac-login-cnt a:hover,*/
+.TAP14 .ac-dropdown,
+.TAP14 .ac-dropdown li,
+/*
+.TAP14 .client-dropdown,
+.TAP14 .client-dropdown li,
+.TAP14 .ac-client-active .ac-client-tl a,*/
+.TAP14 .message .msg-link:hover,
+.TAP14 .message .active{border-color:#c7c7c7;}
+/*背景色*/
+/*.TAP14 .client-dropdown,*/
+.TAP14 .ac-dropdown,
+.TAP14 .ac-login .ac-active{background:#fff;}
+/*.TAP14 .ac-login-cnt:hover{background:#fff;}*/
+.TAP14 .msg-lst li:hover,
+.TAP14 .ac-dropdown li a:hover
+/*,
+.TAP14 .client-dropdown a:hover*/{background:#fff6ed;}
+/*链接色*/
+.TAP14{color:#333;}
+.TAP14 a:link,
+.TAP14 a:visited{color:#333;text-decoration:none;}
+/*.TAP14 a:hover{color:#e96a0d;text-decoration:none;}*/
+.TAP14 .ac-login-cnt.active{background:#fff;}
+.TAP14 .active .log-links{color:#e96a0d;text-decoration:none;}
+.TAP14 .ac-login .log-links a:link,
+.TAP14 .ac-login .log-links a:visited,
+.TAP14 .ac-login a.msg-link:link,
+.TAP14 .ac-login a.msg-link:visited{color:#333}

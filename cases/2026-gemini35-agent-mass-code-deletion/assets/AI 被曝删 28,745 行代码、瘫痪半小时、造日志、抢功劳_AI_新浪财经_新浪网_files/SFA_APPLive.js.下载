@@ -1,0 +1,195 @@
+SinaPage.loadWidget({
+                require: [
+                    {//生成二维码js
+                        url: "//finance.sina.com.cn/other/src/doc/GenQRImage.js"
+                    },
+                    {//滚动图js
+                        url: "//n.sinaimg.cn/finance/fe/slider-min.js"
+                    }
+                ],
+                onAfterLoad: function () {
+                    var APPVipLive = {
+                        init:function($cont){
+                            this.$cont = $('#'+$cont);
+                            var body = $('body');
+                            this.$popMask = $('<div class="viplive-popup-mask" style="display: none;"></div>').appendTo(body),
+                            this.$popupWrap = $('<div class="viplive-popup" style="display: none;"><span class="viplive-btn-close"></span><div class="item-text"> <h4>APP专享直播</h4> </div> <div class="pop-body"> <div class="viplive-qr" > <div class="viplive-qr-img" id="finapp_viplive_qr"></div> <div class="text"> <p class="qr-tip">微信扫码打开APP 观看精彩直播</p> </div> </div> </div></div>').appendTo(body);
+                            this.loadStyle();
+                            this.request();
+                        },
+                        sendSuda:function(key,val){
+                            if(SUDA&&SUDA.uaTrack){
+                                SUDA.uaTrack(key,val);
+                            }
+                        },
+                        newsTmpl: '<div class="slider-item" data-qrimg="@qrImg@">\
+                                    <img src="@livePic@" />\
+                                        <span class="slide-viplive-time">开播时间 | @liveTime@</span>\
+                                        <div class="slide-viplive-info">\
+                                            <span class="slide-viplive-state @stateClass@"></span>\
+                                            <h5 class="slide-viplive-title">@title@</h5>\
+                                        </div>\
+                                    </div>',
+                        popupTmpl: '<div class="item-text">\
+                                <h4>APP专享直播</h4>\
+                            </div>\
+                            <div class="pop-body">\
+                                <div class="viplive-qr" >\
+                                    <div class="viplive-qr-img" id="finapp_viplive_qr"></div>\
+                                    <div class="text">\
+                                        <p class="qr-tip">微信扫码打开APP 观看精彩直播</p>\
+                                    </div>\
+                                </div>\
+                            </div>',
+                        dateFormat : function(date,fmt){
+                            var o = {   
+                                "M+" : date.getMonth()+1,                 
+                                "d+" : date.getDate(),                       
+                                "h+" : date.getHours(),                     
+                                "m+" : date.getMinutes(),                    
+                                "s+" : date.getSeconds(),                    
+                                "q+" : Math.floor((date.getMonth()+3)/3),    
+                                "S"  : date.getMilliseconds()                
+                            };   
+                            if(/(y+)/.test(fmt))   
+                                fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));   
+                            for(var k in o)   
+                                if(new RegExp("("+ k +")").test(fmt))   
+                            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+                            return fmt;   
+                        },
+                        formatData:function(data){
+                            var ret =[];
+                            var _contWidth = this.$cont.width();
+                            //console.log(this.$cont.width())
+                            for(var i = 0;i<data.length;i++){
+                                var temp = data[i];
+                                var title = temp.title;
+
+                                //var livePic = _contWidth=='880'?temp.img880_250:temp.img640_230;
+                                var livePic = temp.thumbnail_ori;
+                                
+                                var createTime = new Date(temp.start_time.replace(/\-/g,'/'));
+                                var liveTime = this.dateFormat(createTime,'M-dd hh:mm');
+                                var stateClass = 'state-0'+temp.state;
+                                var baseUrl = 'https://finance.sina.cn/app/QRtoSFA.shtml?sudatrackvalue=articleapplive&schema=';
+                                var _schema = encodeURIComponent('type=42&weexType=2&roadshow_id='+temp.id);
+                                var a = new GenQRImage({
+                                    size: 240,
+                                    showLogo:true,
+                                    outputType:'url',//[url,img]
+                                    onSuccess: function (d) {
+                                
+                                    }
+                                });
+                                var qrImg = a.genQR(baseUrl+_schema);
+                                ret.push({
+                                    title:title,
+                                    livePic:livePic,
+                                    //livePic:livePic,
+                                    liveTime:liveTime,
+                                    stateClass:stateClass,
+                                    qrImg:qrImg
+                                });
+                            }  
+                            return ret; 
+                        },
+                        loadStyle: function () {
+                            setTimeout(function(){
+                                $('<link rel="stylesheet" href="//finance.sina.com.cn/other/src/sinapagewidgets/SFA_APPLive.css">').appendTo($('head'));    
+                            },0);
+                        },
+                        request:function(){
+                            var _this = this;
+                            $.ajax({
+                                url: '//rl.cj.sina.com.cn/imeeting/api/hyt/get_list',
+                                data:{
+                                    page:1,
+                                    num:10,
+                                    state:11,
+                                    platform:'pc'
+                                },
+                                dataType: 'jsonp',
+                                success: function (res) {
+                                    //console.log(data)
+                                    if(res&&res.result&&res.result.data&&res.result.data.length>0){
+                                        var _data = res.result.data;
+                                        _this.renderNews(_this.formatData(_data));
+                                        _this.initSlide(function(){
+                                            _this.bindPopup();
+                                        });
+                                    }
+                                }
+                            });
+                        },
+                        initSlide:function(sucess){
+                            var _this = this;
+                            window.article_app_viplive = new Slider({
+                                wrap: "app_viplive",
+                                itemClass: "slider-item",
+                                startOn: 0,
+                                slideBy: 1,
+                                speed: 3,
+                                isVertical: false,
+                                isLoop: true,
+                                autoPlay: true,
+                                autoInterval: 5,
+                                onReady: function () {
+                                    var _self = this;
+                                    document.getElementById('slide_viplive_total').innerHTML = this.states.total / 2;
+                                    $('.viplive-prev').on('click',function(){
+                                        //增加suda
+                                        _this.sendSuda('pc_to_sfa','article_bottom_applive_prev');
+                                        _self.prev();
+                                    });
+                                    $('.viplive-next').on('click',function(){
+                                        //增加suda
+                                        _this.sendSuda('pc_to_sfa','article_bottom_applive_next');
+                                        _self.next();
+                                    });
+                                    sucess&&sucess();
+                                },
+                                onIndexChanged: function (e) {
+                                    var a = this.states.total / 2;
+                                    document.getElementById('slide_viplive_num').innerHTML = (e % a)+1;
+                                }
+                            })
+                        },
+                        renderNews: function (newsData) {
+                            var _this = this, contHtml = [];
+                            $(newsData).each(function (index, itemData) {
+                                contHtml.push(
+                                    _this.newsTmpl.replace(/@(\w+)@/g, function (m, p1) {
+                                        return itemData[p1];
+                                    })
+                                );
+                            });
+                            this.$cont.append(contHtml.join(''));
+                        },
+                        bindPopup: function (newsData) {
+                            var _this = this,
+                                newsItems = this.$cont.find('.slider-item');
+                            newsItems.on('click',function(){
+                                var _src = $(this).attr('data-qrImg');
+                                $('#finapp_viplive_qr').html('<img src="'+_src+'" />');
+                                _this.showPopup();    
+                            });
+                            _this.$popupWrap.on('click', '.viplive-btn-close', function () {
+                                //增加suda统计,关闭次数
+                                _this.sendSuda('pc_to_sfa','article_bottom_applive_close');
+                                _this.$popupWrap.fadeOut();
+                                _this.$popMask.hide();
+                            });
+                        },
+                        showPopup: function () {
+                            var _this = this;
+                            //增加suda统计,曝光率
+                            _this.sendSuda('pc_to_sfa','article_bottom_applive_open');
+                            _this.$popMask.show();
+                            _this.$popupWrap.show();
+                        }
+                    }
+                    APPVipLive.init('app_viplive');
+                    
+                }
+            });

