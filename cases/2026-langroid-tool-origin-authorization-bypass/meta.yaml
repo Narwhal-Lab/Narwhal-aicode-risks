@@ -1,0 +1,47 @@
+slug: 2026-langroid-tool-origin-authorization-bypass
+title_en: Langroid Raw Tool Invocation Origin Authorization Bypass
+title_cn: Langroid 原始工具调用来源授权绕过
+year: 2026
+disclosed: '2026-07-06'
+category: agent-risk
+severity: high
+severity_basis: cvss
+severity_evidence: The Langroid advisory assigns CVE-2026-54771 a CVSS 3.1 score of 8.1 for high confidentiality and integrity impact when an authenticated untrusted participant can invoke handle-only tools.
+real_incident: true
+reproducible: true
+ai_tool:
+- Langroid
+- ToolMessage
+- Multi-agent chat
+language:
+- Python
+- JSON
+attack_surface:
+- Raw JSON tool messages
+- handle_message
+- Sender-origin validation
+- Untrusted chat participant
+- Privileged tools
+references:
+- title: 'Langroid Advisory: GHSA-gjgq-w2m6-wr5q'
+  url: https://github.com/langroid/langroid/security/advisories/GHSA-gjgq-w2m6-wr5q
+- title: 'GitHub Advisory Database: GHSA-gjgq-w2m6-wr5q'
+  url: https://github.com/advisories/GHSA-gjgq-w2m6-wr5q
+- title: 'NVD: CVE-2026-54771'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-54771
+- title: 'GitLab Advisory Database: Langroid'
+  url: https://advisories.gitlab.com/pkg/pypi/langroid/
+- title: 'Tenable: CVE-2026-54771'
+  url: https://www.tenable.com/cve/CVE-2026-54771
+- title: Langroid Changelog
+  url: https://data.safetycli.com/packages/pypi/langroid/changelog
+tldr: Langroid dispatched user-supplied JSON as a registered tool message without first confirming that it came from an authorized tool-producing agent, bypassing use=False restrictions.
+tags:
+- langroid
+- tool-calling
+- authorization
+- raw-json
+- agent-framework
+verification_notes: The project advisory, GitHub Advisory Database, NVD, GitLab Advisory Database, and Tenable agree on the core issue and version 0.65.3 fix. A later release added hardening for content laundering; this case focuses on CVE-2026-54771 as originally disclosed.
+cve: CVE-2026-54771
+cvss: 8.1

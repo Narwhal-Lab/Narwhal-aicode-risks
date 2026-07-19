@@ -1,0 +1,45 @@
+slug: "2026-mindsdb-file-upload-path-traversal-rce"
+title_en: "MindsDB File Upload Path Traversal to RCE"
+title_cn: "MindsDB 文件上传路径穿越到远程代码执行"
+year: 2026
+disclosed: "2026-02-27"
+category: "domain-specific"
+severity: "high"
+severity_basis: "cvss"
+severity_evidence: "CVEProject cvelistV5 and GitHub Advisory report authenticated path traversal in MindsDB before 25.9.1.1 leading to remote command execution."
+cvss: 8.8
+cve: "CVE-2026-27483"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "MindsDB"
+  - "AI from enterprise data platform"
+  - "/api/files upload interface"
+language:
+  - "Python"
+attack_surface:
+  - "Authenticated file upload"
+  - "/api/files endpoint"
+  - "Path traversal filename"
+  - "Server-side executable file write"
+references:
+  - title: "GitHub Advisory: MindsDB Path Traversal in /api/files"
+    url: "https://github.com/advisories/GHSA-4894-xqv6-vrfq"
+  - title: "CVEProject cvelistV5: CVE-2026-27483"
+    url: "https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/27xxx/CVE-2026-27483.json"
+  - title: "OpenCVE: CVE-2026-27483"
+    url: "https://app.opencve.io/cve/CVE-2026-27483"
+  - title: "Tenable: CVE-2026-27483"
+    url: "https://www.tenable.com/cve/CVE-2026-27483"
+  - title: "GitHub PoC: thewhiteh4t/cve-2026-27483"
+    url: "https://github.com/thewhiteh4t/cve-2026-27483"
+  - title: "TheHackerWire: MindsDB Path Traversal to RCE"
+    url: "https://www.thehackerwire.com/mindsdb-path-traversal-to-rce-cve-2026-27483/"
+tldr: "MindsDB file upload path traversal let authenticated users write files and reach RCE."
+tags:
+  - "mindsdb"
+  - "path-traversal"
+  - "file-upload"
+  - "rce"
+  - "enterprise-data-ai"
+verification_notes: "Based on public advisories, CVE databases, technical analysis, and independent vulnerability databases. Public evidence supports the vulnerability and impact class; victim-specific compromise is only stated when the cited sources report it."

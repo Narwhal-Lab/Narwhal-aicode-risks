@@ -1,0 +1,47 @@
+slug: 2026-google-adk-builder-unauthenticated-rce
+title_en: Google ADK Builder Unauthenticated Code Injection RCE
+title_cn: Google ADK Builder 未认证代码注入远程执行
+year: 2026
+disclosed: '2026-04-13'
+category: agent-risk
+severity: critical
+severity_basis: cvss
+severity_evidence: Google Cloud assigned CVE-2026-4810 a CVSS v4.0 score of 9.3, describing unauthenticated remote code execution with high confidentiality, integrity, and availability impact.
+real_incident: true
+reproducible: true
+ai_tool:
+- Google Agent Development Kit
+- ADK Web
+- ADK Builder
+language:
+- Python
+- YAML
+attack_surface:
+- ADK Builder UI
+- Agent YAML configuration
+- Missing authentication
+- Cloud Run
+- GKE
+references:
+- title: 'NVD: CVE-2026-4810'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-4810
+- title: 'GitHub Advisory: GHSA-rg7c-g689-fr3x'
+  url: https://github.com/advisories/GHSA-rg7c-g689-fr3x
+- title: Google ADK Changelog 1.27.4
+  url: https://github.com/google/adk-python/blob/main/CHANGELOG.md#1274-2026-03-26
+- title: 'Snyk: Arbitrary Code Injection in google-adk'
+  url: https://security.snyk.io/vuln/SNYK-PYTHON-GOOGLEADK-16540571
+- title: 'Positive Technologies: CVE-2026-4810'
+  url: https://dbugs.ptsecurity.com/vulnerability/PT-2026-32287
+- title: 'Safety Package Database: google-adk'
+  url: https://getsafety.com/packages/pypi/google-adk
+tldr: Exposed Google ADK Web instances allowed unauthenticated users to submit agent configurations whose args reached executable paths, resulting in arbitrary code execution on the ADK host.
+tags:
+- google-adk
+- builder
+- code-injection
+- missing-authentication
+- rce
+verification_notes: Google Cloud, NVD, the project changelog, GitHub Advisory Database, and independent vulnerability databases agree on the affected version ranges and fixed releases. Technical descriptions of the builder endpoint are based on the public patch and downstream analysis.
+cve: CVE-2026-4810
+cvss: 9.3

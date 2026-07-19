@@ -1,0 +1,43 @@
+slug: 2026-devolutions-psu-ai-agent-token-exposure
+title_en: Devolutions PowerShell Universal AI Agent Token Exposure
+title_cn: Devolutions PowerShell Universal AI Agent 作业令牌暴露
+year: 2026
+disclosed: '2026-06-29'
+category: cloud-iac
+severity: high
+severity_basis: cvss
+severity_evidence: NVD and Devolutions advisory DEVO-2026-0022 list CVE-2026-13437 as high severity and recommend upgrading to PowerShell Universal 2026.2.1 or higher.
+cvss: 7.5
+cve: CVE-2026-13437
+real_incident: true
+reproducible: true
+ai_tool:
+- Devolutions PowerShell Universal
+- AI Agent job API
+- App Tokens
+language:
+- PowerShell
+- C#/.NET
+attack_surface:
+- AI Agent job API
+- job API responses
+- App Tokens serialized in plaintext
+references:
+- title: 'NVD: CVE-2026-13437'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-13437
+- title: 'Devolutions Advisory: DEVO-2026-0022'
+  url: https://devolutions.net/security/advisories/DEVO-2026-0022/
+- title: Devolutions Advisories
+  url: https://devolutions.net/security/advisories/
+- title: 'OpenCVE: CVE-2026-13437'
+  url: https://app.opencve.io/cve/CVE-2026-13437
+- title: 'Tenable: CVE-2026-13437'
+  url: https://www.tenable.com/cve/CVE-2026-13437
+tldr: PowerShell Universal 2026.2.0 exposed reusable App Tokens in AI Agent job API responses to authenticated users with AI Agent read access.
+tags:
+- devolutions
+- powershell-universal
+- ai-agent
+- token-exposure
+- api
+verification_notes: Based on public vulnerability advisories, vendor or project references, and security database records captured in assets. Exploitation impact depends on the documented deployment and privilege preconditions.

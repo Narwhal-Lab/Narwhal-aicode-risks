@@ -1,0 +1,46 @@
+slug: 2026-splunk-ai-toolkit-outbound-data-exfiltration
+title_en: Splunk AI Toolkit Outbound Request Data Exfiltration
+title_cn: Splunk AI Toolkit 外联请求数据泄露
+year: 2026
+disclosed: '2026-06-17'
+category: domain-specific
+severity: medium
+severity_basis: cvss
+severity_evidence: Splunk rates CVE-2026-20265 at CVSS 3.1 4.3 because exploitation requires a low-privileged authenticated user and produces limited confidentiality impact.
+real_incident: true
+reproducible: true
+ai_tool:
+- Splunk AI Toolkit
+- Agent Builder
+- Splunk agents
+language:
+- Splunk configuration
+- HTTP
+attack_surface:
+- AI agent outbound HTTP
+- ai:AllowedDomains
+- Low-privileged Splunk role
+- Attacker-controlled server
+references:
+- title: Splunk Advisory SVD-2026-0613
+  url: https://advisory.splunk.com/advisories/SVD-2026-0613
+- title: 'NVD: CVE-2026-20265'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-20265
+- title: 'CERT-FR: Multiple vulnerabilities in Splunk AI Toolkit'
+  url: https://cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0774/
+- title: Splunk AI Toolkit Product Page
+  url: https://www.splunk.com/en_us/products/ai-toolkit.html
+- title: Splunk Security Advisories Archive
+  url: https://advisory.splunk.com/advisories
+- title: 'JVN iPedia: JVNDB-2026-020693'
+  url: https://jvndb.jvn.jp/ja/contents/2026/JVNDB-2026-020693.html
+tldr: An insecure default domain allowlist let a low-privileged Splunk user make AI Toolkit agents send HTTP requests to attacker-controlled domains, creating a path for Splunk data to leave the platform.
+tags:
+- splunk
+- ai-toolkit
+- data-exfiltration
+- allowlist
+- outbound-request
+verification_notes: Splunk's vendor advisory, NVD, CERT-FR, and the product documentation agree on the affected versions, insecure default, fixed release, and explicit allowlist mitigation.
+cve: CVE-2026-20265
+cvss: 4.3

@@ -1,0 +1,40 @@
+slug: 2026-meta-internal-ai-agent-sev1-data-exposure
+title_en: Meta Internal AI Agent Sev 1 Data Exposure
+title_cn: Meta 内部 AI Agent 引发 Sev 1 数据越权暴露
+year: 2026
+disclosed: '2026-03-18'
+category: human-factor
+severity: high
+severity_basis: editorial
+severity_evidence: The editorial high rating reflects Meta's reported Sev 1 classification, its second-highest internal security severity, and an unauthorized employee visibility window of roughly two hours.
+real_incident: true
+reproducible: false
+ai_tool:
+- Meta internal AI agent
+- Internal engineering forum
+language:
+- Not publicly disclosed
+attack_surface:
+- Autonomous forum response
+- Incorrect technical guidance
+- Employee action
+- Internal data authorization
+references:
+- title: 'TechCrunch: Meta is having trouble with rogue AI agents'
+  url: https://techcrunch.com/2026/03/18/meta-is-having-trouble-with-rogue-ai-agents/
+- title: 'The Guardian: Meta AI agent instruction causes data leak'
+  url: https://www.theguardian.com/technology/2026/mar/20/meta-ai-agents-instruction-causes-large-sensitive-data-leak-to-employees
+- title: 'Roval: Lessons from Meta''s AI Agent Sev 1'
+  url: https://www.roval.ai/research/blog/meta-ai-agent-sev-1-post-mortem/
+- title: 'ITPro: Meta engineer trusted advice from an AI agent'
+  url: https://www.itpro.com/technology/artificial-intelligence/meta-engineer-trusted-advice-from-an-ai-agent-ended-up-exposing-user-data
+- title: 'OECD AI Incidents Monitor: Meta AI Agent Data Exposure'
+  url: https://oecd.ai/en/incidents/2026-03-18-fefc
+tldr: A Meta internal AI agent posted an unrequested and incorrect technical response; an employee followed it, and restricted company and user-related data became visible to employees who lacked authorization.
+tags:
+- meta
+- internal-agent
+- data-exposure
+- human-oversight
+- authorization
+verification_notes: The case is based on contemporaneous reporting and Meta's confirmation that an incident occurred. Meta separately told The Guardian that no user data was mishandled; the README records both statements without resolving information that has not been made public.

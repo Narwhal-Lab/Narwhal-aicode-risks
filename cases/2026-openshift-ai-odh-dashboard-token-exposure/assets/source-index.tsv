@@ -1,0 +1,7 @@
+file	type	title	url	archive_status
+source-01.html	复核证据	OpenCVE: CVE-2026-5483	https://app.opencve.io/cve/CVE-2026-5483	OK|html|original|125214
+source-02.html	主证据	CVEProject cvelistV5: CVE-2026-5483	https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/5xxx/CVE-2026-5483.json	OK|html|original|553743
+source-03.html	主证据	GitHub Advisory: GHSA-w59f-v72r-w493	https://github.com/advisories/GHSA-w59f-v72r-w493	OK|html|original|179622
+source-04.html	生态证据	Red Hat Bugzilla: CVE-2026-5483	https://bugzilla.redhat.com/show_bug.cgi?id=2454764	OK|html|original|40011
+source-05.html	复核证据	Tenable: CVE-2026-5483	https://www.tenable.com/cve/CVE-2026-5483	OK|html|original|58238
+source-06.html	技术证据	ZeroPath: OpenShift AI odh-dashboard token exposure	https://zeropath.com/blog/cve-2026-5483-openshift-ai-odh-dashboard-token-exposure	OK|html|original|208459

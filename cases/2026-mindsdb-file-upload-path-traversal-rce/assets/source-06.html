@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>MindsDB Path Traversal to RCE (CVE-2026-27483) &#8211; TheHackerWire</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel="preload" href="https://www.thehackerwire.com/wp-content/themes/thehackerwire-theme/assets/js/main.js?ver=2.2.18" as="script">
+<!-- Google Analytics -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HTFX0GZV03"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HTFX0GZV03');
+</script>
+<!-- End Google Analytics -->
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6975958682679336"
+crossorigin="anonymous"></script>
+<!-- End Google AdSense -->
+<link rel="preload" href="https://www.thehackerwire.com/wp-content/themes/thehackerwire-theme/assets/js/main.js" as="script">
+<meta name="description" content="Summary CVE-2026-27483 identifies a high-severity path traversal vulnerability in MindsDB, an AI platform for enterprise data. Rated 8.8 on the CVSS scale, t...">
+<link rel="canonical" href="https://www.thehackerwire.com/mindsdb-path-traversal-to-rce-cve-2026-27483/">
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="https://www.thehackerwire.com/favicon/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="https://www.thehackerwire.com/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="https://www.thehackerwire.com/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.thehackerwire.com/favicon/apple-touch-icon.png">
+<link rel="manifest" href="https://www.thehackerwire.com/favicon/site.webmanifest">
+<meta name="theme-color" content="#00FF41">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link href='https://fonts.googleapis.com' crossorigin='1' rel='preconnect' />
+<link href='https://fonts.gstatic.com' crossorigin='1' rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="TheHackerWire &raquo; Feed" href="https://www.thehackerwire.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="TheHackerWire &raquo; Comments Feed" href="https://www.thehackerwire.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="TheHackerWire &raquo; MindsDB Path Traversal to RCE (CVE-2026-27483) Comments Feed" href="https://www.thehackerwire.com/mindsdb-path-traversal-to-rce-cve-2026-27483/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.thehackerwire.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.thehackerwire.com%2Fmindsdb-path-traversal-to-rce-cve-2026-27483%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.thehackerwire.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.thehackerwire.com%2Fmindsdb-path-traversal-to-rce-cve-2026-27483%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-color]){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<!-- <link rel='stylesheet' id='thw-style-css' href='https://www.thehackerwire.com/wp-content/themes/thehackerwire-theme/style.css?ver=2.2.18' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="//www.thehackerwire.com/wp-content/cache/wpfc-minified/qlifk2st/e0irp.css" media="all"/>
+<link rel='stylesheet' id='thw-fonts-css' href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&#038;family=JetBrains+Mono:wght@400;500;600&#038;family=Space+Grotesk:wght@400;500;600;700&#038;display=swap' media='all' />
+<!-- <link rel='stylesheet' id='thw-premium-css' href='https://www.thehackerwire.com/wp-content/themes/thehackerwire-theme/assets/css/premium.css?ver=2.2.18' media='all' /> -->
+<!-- <link rel='stylesheet' id='thw-premium-refinements-css' href='https://www.thehackerwire.com/wp-content/themes/thehackerwire-theme/assets/css/premium-refinements.css?ver=2.2.18' media='all' /> -->
+<!-- <link rel='stylesheet' id='thw-mobile-optimizations-css' href='https://www.thehackerwire.com/wp-content/themes/thehackerwire-theme/assets/css/mobile-optimizations.css?ver=2.2.18' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="//www.thehackerwire.com/wp-content/cache/wpfc-minified/e4toup99/e0irp.css" media="all"/>
+<script id="jquery-core-js" src="https://www.thehackerwire.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://www.thehackerwire.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<link rel="https://api.w.org/" href="https://www.thehackerwire.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.thehackerwire.com/wp-json/wp/v2/posts/11980" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.thehackerwire.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="https://www.thehackerwire.com/mindsdb-path-traversal-to-rce-cve-2026-27483/" />
+<link rel='shortlink' href='https://www.thehackerwire.com/?p=11980' />
+<link rel="alternate" type="application/rss+xml" title="CVE Tracker Feed" href="https://www.thehackerwire.com/cve-tracker/feed/" />
+<style type="text/css">
+:root {
+--header-logo-height: 50px;
+--footer-logo-height: 40px;
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.thehackerwire.com/mindsdb-path-traversal-to-rce-cve-2026-27483/"},"headline":"MindsDB Path Traversal to RCE (CVE-2026-27483)","description":"Summary CVE-2026-27483 identifies a high-severity path traversal vulnerability in MindsDB, an AI platform for enterprise data. Rated 8.8 on the CVSS scale, this flaw allows...","datePublished":"2026-02-24T15:57:12+00:00","dateModified":"2026-02-24T15:57:12+00:00","wordCount":344,"articleSection":"Vulnerabilities","author":{"@type":"Person","name":"","url":"https://www.thehackerwire.com/author/"},"publisher":{"@type":"Organization","name":"TheHackerWire","url":"https://www.thehackerwire.com/"},"image":{"@type":"ImageObject","url":"https://www.thehackerwire.com/wp-content/uploads/2023/11/CVE-2026-27483-alert.jpg","width":1200,"height":630}}</script>
+<meta property="og:site_name" content="TheHackerWire">
+<meta property="og:title" content="MindsDB Path Traversal to RCE (CVE-2026-27483)">
+<meta property="og:description" content="Summary CVE-2026-27483 identifies a high-severity path traversal vulnerability in MindsDB, an AI platform for enterprise data. Rated 8.8 on the CVSS scale, this flaw allows...">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.thehackerwire.com/mindsdb-path-traversal-to-rce-cve-2026-27483/">
+<meta property="og:image" content="https://www.thehackerwire.com/wp-content/uploads/2023/11/CVE-2026-27483-alert-1200x600.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@TheHackerWire">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TheHackerWire">
+<link rel="icon" href="https://www.thehackerwire.com/wp-content/uploads/2024/01/THW-ICON-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://www.thehackerwire.com/wp-content/uploads/2024/01/THW-ICON-300x300.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.thehackerwire.com/wp-content/uploads/2024/01/THW-ICON-300x300.png" />
+<meta name="msapplication-TileImage" content="https://www.thehackerwire.com/wp-content/uploads/2024/01/THW-ICON-300x300.png" />
+<!-- Mobile Menu Critical CSS - Inline to override all other styles -->
+<style id="thw-mobile-menu-critical">
+@media (max-width: 768px) {
+/* HAMBURGER BUTTON - Must be visible and clickable */
+.thw-menu-toggle,
+button.thw-menu-toggle,
+.thw-header .thw-menu-toggle {
+display: flex !important;
+visibility: visible !important;
+opacity: 1 !important;
+position: relative !important;
+z-index: 100 !important;
+pointer-events: auto !important;
+cursor: pointer !important;
+background: transparent !important;
+border: none !important;
+padding: 8px !important;
+width: 44px !important;
+height: 44px !important;
+align-items: center !important;
+justify-content: center !important;
+}
+.thw-menu-toggle svg {
+width: 24px !important;
+height: 24px !important;
+stroke: #00FF41 !important;
+}
+/* FORCE solid black background on mobile nav */
+.thw-nav,
+nav.thw-nav,
+.thw-header .thw-nav,
+body .thw-nav,
+body.thw-premium .thw-nav {
+position: fixed !important;
+top: 0 !important;
+left: 0 !important;
+right: 0 !important;
+bottom: 0 !important;
+width: 100vw !important;
+max-width: 100vw !important;
+height: 100vh !important;
+height: 100dvh !important;
+background: #000000 !important;
+background-color: #000000 !important;
+z-index: 999999 !important;
+display: none !important;
+flex-direction: column !important;
+padding: 0 !important;
+margin: 0 !important;
+border: none !important;
+border-left: none !important;
+box-shadow: none !important;
+overflow-y: auto !important;
+transform: none !important;
+visibility: hidden !important;
+}
+/* Remove the ::before backdrop */
+.thw-nav::before,
+body .thw-nav::before,
+.thw-header .thw-nav::before {
+display: none !important;
+content: none !important;
+}
+/* When active, show it */
+.thw-nav.active,
+nav.thw-nav.active,
+.thw-header .thw-nav.active,
+body .thw-nav.active,
+body.thw-premium .thw-nav.active {
+display: flex !important;
+visibility: visible !important;
+right: 0 !important;
+}
+/* Mobile menu header - LEFT aligned */
+.thw-mobile-menu-header {
+display: flex !important;
+align-items: center !important;
+justify-content: flex-start !important;
+padding: 80px 24px 24px 24px !important;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+background: #000000 !important;
+}
+/* Close button */
+.thw-nav-close {
+position: absolute !important;
+top: 16px !important;
+right: 16px !important;
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+background: transparent !important;
+border: 2px solid rgba(255, 255, 255, 0.3) !important;
+border-radius: 50% !important;
+color: #ffffff !important;
+cursor: pointer !important;
+width: 48px !important;
+height: 48px !important;
+padding: 0 !important;
+z-index: 1000001 !important;
+}
+/* Menu items - LEFT aligned */
+.thw-nav-menu {
+flex-direction: column !important;
+gap: 0 !important;
+padding: 0 24px !important;
+margin: 0 !important;
+list-style: none !important;
+flex: 1 !important;
+text-align: left !important;
+}
+.thw-nav-menu > li {
+border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+margin: 0 !important;
+padding: 0 !important;
+text-align: left !important;
+}
+.thw-nav-menu > li > a {
+display: flex !important;
+align-items: center !important;
+justify-content: flex-start !important;
+gap: 12px !important;
+padding: 18px 0 !important;
+font-size: 1.1rem !important;
+font-weight: 500 !important;
+color: #ffffff !important;
+text-decoration: none !important;
+text-align: left !important;
+}
+/* Body scroll lock */
+body.thw-menu-open {
+overflow: hidden !important;
+position: fixed !important;
+width: 100% !important;
+}
+}
+</style>
+<!-- Inline Mobile Menu Script - Applies styles directly via JS to override CSS -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+var menuToggle = document.querySelector('.thw-menu-toggle');
+var nav = document.querySelector('.thw-nav');
+if (!menuToggle || !nav) return;
+// Apply critical styles directly to nav element via JavaScript
+// This overrides any CSS because inline styles have highest specificity
+function applyNavStyles() {
+if (window.innerWidth <= 768) {
+nav.style.cssText = 'position:fixed !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;width:100vw !important;max-width:100vw !important;height:100vh !important;background:#000000 !important;background-color:#000000 !important;z-index:999999 !important;display:none;flex-direction:column !important;padding:0 !important;margin:0 !important;border:none !important;overflow-y:auto !important;transform:none !important;visibility:hidden;';
+}
+}
+function showNav() {
+nav.style.display = 'flex';
+nav.style.visibility = 'visible';
+nav.classList.add('active');
+document.body.classList.add('thw-menu-open');
+document.body.style.overflow = 'hidden';
+document.body.style.position = 'fixed';
+document.body.style.width = '100%';
+// Create close button if it doesn't exist
+if (!nav.querySelector('.thw-nav-close')) {
+var closeBtn = document.createElement('button');
+closeBtn.className = 'thw-nav-close';
+closeBtn.style.cssText = 'position:absolute !important;top:16px !important;right:16px !important;display:flex !important;align-items:center !important;justify-content:center !important;background:transparent !important;border:2px solid rgba(255,255,255,0.3) !important;border-radius:50% !important;color:#ffffff !important;cursor:pointer !important;width:48px !important;height:48px !important;padding:0 !important;z-index:1000001 !important;';
+closeBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+closeBtn.setAttribute('aria-label', 'Close menu');
+nav.insertBefore(closeBtn, nav.firstChild);
+closeBtn.addEventListener('click', function(e) {
+e.preventDefault();
+e.stopPropagation();
+hideNav();
+});
+}
+// Create mobile menu header with logo if it doesn't exist
+if (!nav.querySelector('.thw-mobile-menu-header')) {
+var menuHeader = document.createElement('div');
+menuHeader.className = 'thw-mobile-menu-header';
+menuHeader.style.cssText = 'display:flex !important;align-items:center !important;justify-content:flex-start !important;padding:80px 24px 24px 24px !important;border-bottom:1px solid rgba(255,255,255,0.1) !important;background:#000000 !important;';
+var mainLogo = document.querySelector('.thw-logo');
+if (mainLogo) {
+var logoClone = mainLogo.cloneNode(true);
+logoClone.classList.add('thw-mobile-logo');
+menuHeader.appendChild(logoClone);
+}
+var closeBtn = nav.querySelector('.thw-nav-close');
+if (closeBtn && closeBtn.nextSibling) {
+nav.insertBefore(menuHeader, closeBtn.nextSibling);
+}
+}
+// Style menu items
+var menuList = nav.querySelector('.thw-nav-menu');
+if (menuList) {
+menuList.style.cssText = 'flex-direction:column !important;gap:0 !important;padding:0 24px !important;margin:0 !important;list-style:none !important;flex:1 !important;text-align:left !important;display:flex !important;';
+var menuItems = menuList.querySelectorAll(':scope > li');
+menuItems.forEach(function(item) {
+item.style.cssText = 'border-bottom:1px solid rgba(255,255,255,0.08) !important;margin:0 !important;padding:0 !important;text-align:left !important;';
+var link = item.querySelector(':scope > a');
+if (link) {
+link.style.cssText = 'display:flex !important;align-items:center !important;justify-content:flex-start !important;gap:12px !important;padding:18px 0 !important;font-size:1.1rem !important;font-weight:500 !important;color:#ffffff !important;text-decoration:none !important;text-align:left !important;';
+}
+});
+}
+}
+function hideNav() {
+nav.style.display = 'none';
+nav.style.visibility = 'hidden';
+nav.classList.remove('active');
+document.body.classList.remove('thw-menu-open');
+// Reset all body styles to allow scrolling
+document.body.style.overflow = '';
+document.body.style.position = '';
+document.body.style.width = '';
+document.body.style.height = '';
+document.body.style.top = '';
+// Also reset html element
+document.documentElement.style.overflow = '';
+document.documentElement.style.position = '';
+}
+// Apply initial styles
+applyNavStyles();
+// Re-apply on resize
+window.addEventListener('resize', applyNavStyles);
+// Remove any existing listeners by cloning
+var newToggle = menuToggle.cloneNode(true);
+menuToggle.parentNode.replaceChild(newToggle, menuToggle);
+menuToggle = newToggle;
+menuToggle.addEventListener('click', function(e) {
+e.preventDefault();
+e.stopPropagation();
+if (nav.classList.contains('active')) {
+hideNav();
+} else {
+showNav();
+}
+});
+// Close on escape key
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape' && nav.classList.contains('active')) {
+hideNav();
+}
+});
+// Close when clicking menu links
+var menuLinks = nav.querySelectorAll('.thw-nav-menu a');
+menuLinks.forEach(function(link) {
+link.addEventListener('click', function() {
+setTimeout(hideNav, 100);
+});
+});
+});
+</script>
+</head>
+<body class="wp-singular post-template-default single single-post postid-11980 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-thehackerwire-theme thw-singular thw-animations-disabled thw-hide-top-desktop thw-hide-top-mobile thw-hide-main-desktop thw-hide-main-mobile thw-header-transparent">
+<a class="thw-skip-link screen-reader-text"
+href="#main-content">Skip to content</a>
+<div class="thw-site-wrapper">
+<header class="thw-header">
+<div class="thw-header-main">
+<div class="thw-container">
+<div class="thw-header-inner">
+<div class="thw-logo">
+<a href="https://www.thehackerwire.com/" class="thw-logo-link">
+<img src="https://www.thehackerwire.com/wp-content/uploads/2023/12/TheHackerWire-green-logo-2-471-83.png"
+alt="TheHackerWire" class="custom-logo">
+</a>
+</div>
+<button class="thw-menu-toggle"
+aria-label="Toggle Menu">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>                        </button>
+<nav class="thw-nav" aria-label="Primary Navigation">
+<ul id="menu-primary-menu" class="thw-nav-menu"><li id="menu-item-4084" class="has-mega-menu menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-4084"><a href="https://www.thehackerwire.com/security-news/">News</a></li>
+<li id="menu-item-4026" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4026"><a href="https://www.thehackerwire.com/cve-tracker/">Vulnerabilities</a></li>
+<li id="menu-item-9221" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9221"><a href="https://www.thehackerwire.com/security-directory/">Security Directory</a></li>
+<li id="menu-item-12443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12443"><a href="https://www.thehackerwire.com/ransomware-tracker">Ransomware Tracker</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+<main id="main-content" class="thw-main-content">
+<div class="thw-container">
+<nav class="thw-breadcrumbs" aria-label="Breadcrumb"><ol itemscope itemtype="https://schema.org/BreadcrumbList" style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="list-style:none;display:inline-flex;align-items:center;"><a itemprop="item" href="https://www.thehackerwire.com/"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li><li style="list-style:none;margin:0 8px;color:#444;" aria-hidden="true">/</li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="list-style:none;display:inline-flex;align-items:center;"><a itemprop="item" href="https://www.thehackerwire.com/category/vulnerabilities/"><span itemprop="name">Vulnerabilities</span></a><meta itemprop="position" content="2"></li><li style="list-style:none;margin:0 8px;color:#444;" aria-hidden="true">/</li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="list-style:none;display:inline-flex;align-items:center;"><span itemprop="name">MindsDB Path Traversal to RCE (CVE-2026-27483)</span><meta itemprop="position" content="3"></li></ol></nav>
+<div class="thw-single-layout">
+<article id="post-11980" class="thw-article post-11980 post type-post status-publish format-standard has-post-thumbnail hentry category-vulnerabilities tag-cve tag-high tag-vulnerabilities">
+<header class="thw-article-header">
+<a href="https://www.thehackerwire.com/category/vulnerabilities/" class="thw-article-category">Vulnerabilities</a>                        
+<h1 class="thw-article-title">MindsDB Path Traversal to RCE (CVE-2026-27483)</h1>
+<div class="thw-article-meta">
+<div class="thw-article-author">
+<img alt='Avatar photo' src='https://www.thehackerwire.com/wp-content/uploads/2025/12/cropped-THW-AI-ASSISTNAT-48x48.jpg' srcset='https://www.thehackerwire.com/wp-content/uploads/2025/12/cropped-THW-AI-ASSISTNAT-96x96.jpg 2x' class='avatar avatar-48 photo' height='48' width='48' decoding='async'/>                                <div class="thw-article-author-info">
+<a href="https://www.thehackerwire.com/author/thw_cve_ai_reporter/" class="thw-article-author-name">
+THW AI Reporter                                    </a>
+<div class="thw-article-date-wrap">
+<time datetime="2026-02-24T15:57:12+00:00">February 24, 2026</time>
+</div>
+</div>
+</div>
+<div class="thw-article-stats">
+<span class="thw-stat">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>                                    2 min read                                </span>
+</div>
+</div>
+<div class="thw-article-share-top">
+<div class="thw-share-inline">
+<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.thehackerwire.com%2Fmindsdb-path-traversal-to-rce-cve-2026-27483%2F&text=MindsDB+Path+Traversal+to+RCE+%28CVE-2026-27483%29&via=TheHackerWire"
+class="thw-share-btn-inline thw-share-twitter" target="_blank" rel="noopener" title="Share on Twitter">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>        </a>
+<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.thehackerwire.com%2Fmindsdb-path-traversal-to-rce-cve-2026-27483%2F"
+class="thw-share-btn-inline thw-share-facebook" target="_blank" rel="noopener" title="Share on Facebook">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>        </a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.thehackerwire.com%2Fmindsdb-path-traversal-to-rce-cve-2026-27483%2F&title=MindsDB+Path+Traversal+to+RCE+%28CVE-2026-27483%29"
+class="thw-share-btn-inline thw-share-linkedin" target="_blank" rel="noopener" title="Share on LinkedIn">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>        </a>
+<a href="https://reddit.com/submit?url=https%3A%2F%2Fwww.thehackerwire.com%2Fmindsdb-path-traversal-to-rce-cve-2026-27483%2F&title=MindsDB+Path+Traversal+to+RCE+%28CVE-2026-27483%29"
+class="thw-share-btn-inline thw-share-reddit" target="_blank" rel="noopener" title="Share on Reddit">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>        </a>
+<button class="thw-share-btn-inline thw-share-copy" onclick="thwCopyLink()" title="Copy link">
+📋
+</button>
+</div>
+</div>
+</header>
+<figure class="thw-article-featured">
+<img width="1200" height="600" src="https://www.thehackerwire.com/wp-content/uploads/2023/11/CVE-2026-27483-alert-1200x600.jpg" class="attachment-thw-hero size-thw-hero wp-post-image" alt="" decoding="async" fetchpriority="high" />                                            </figure>
+<div class="thw-article-body">
+<h2>Summary</h2>
+<p>CVE-2026-27483 identifies a high-severity path traversal vulnerability in MindsDB, an AI platform for enterprise data. Rated 8.8 on the CVSS scale, this flaw allows an authenticated attacker to write arbitrary files to arbitrary locations on the server. The vulnerability, published on February 24, 2026, ultimately leads to remote command execution (RCE).</p>
+<h2>The Bug</h2>
+<p>The core issue lies within MindsDB&#8217;s <code>/api/files</code> interface, specifically within its &#8220;Upload File&#8221; module. This endpoint handles multipart file uploads. The vulnerability stems from a lack of proper security checks on the uploaded file path. Attackers can leverage <code>../</code> sequences in the filename field of their upload request to perform path traversal.</p>
+<p>Crucially, the file write operation occurs *before* any filename filtering functions, such as <code>clear_filename</code> and <code>save_file</code>, are invoked. This means the system writes arbitrary content with an attacker-controlled filename and path without validation. The ability to write arbitrary content to any server path is a critical primitive for achieving remote command execution.</p>
+<h2>Attack Requirements</h2>
+<p>Exploitation of CVE-2026-27483 requires an authenticated attacker. The vulnerability exists in MindsDB versions prior to 25.9.1.1. No specific network position beyond access to the MindsDB instance is detailed, but authenticated access implies the attacker can reach the application&#8217;s API endpoints.</p>
+<h2>Exploitation</h2>
+<p>An attacker needs to first authenticate to the MindsDB platform. Once authenticated, they can craft a multipart file upload request targeting the <code>/api/files</code> endpoint. Within this request, the filename field can be manipulated using path traversal sequences (e.g., <code>../../../path/to/target/file.ext</code>) to specify an arbitrary write location on the server&#8217;s filesystem.</p>
+<p>The content of the uploaded file can be entirely controlled by the attacker. Since the file write operation happens before any filename or file type filtering, an attacker can upload malicious content, such as a web shell or a configuration file designed to trigger code execution, to a sensitive location. This direct file write capability to arbitrary paths is what enables remote command execution.</p>
+<h2>References</h2>
+<ul>
+<li><a href="https://www.thehackerwire.com/vulnerability/CVE-2026-27483/" target="_blank">CVE-2026-27483</a></li>
+</ul>
+<h2>Fix</h2>
+<p>MindsDB version 25.9.1.1 contains the patch for this vulnerability. Users should upgrade to this version or newer to mitigate the risk.</p>
+</p>                        
+</div>
+<div class="thw-article-tags">
+<span class="thw-tags-label">Tags:</span>
+<a href="https://www.thehackerwire.com/tag/cve/" class="thw-tag">#CVE</a><a href="https://www.thehackerwire.com/tag/high/" class="thw-tag">#High</a><a href="https://www.thehackerwire.com/tag/vulnerabilities/" class="thw-tag">#Vulnerabilities</a>                    </div>
+<div class="thw-article-share-bottom">
+<span class="thw-share-label">Share this article:</span>
+<div class="thw-share-buttons-enhanced">
+<button class="thw-share-btn-enhanced twitter" onclick="thwShare('twitter')" aria-label="Share on Twitter">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+<path
+d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+</svg>
+</button>
+<button class="thw-share-btn-enhanced facebook" onclick="thwShare('facebook')" aria-label="Share on Facebook">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+<path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+</svg>
+</button>
+<button class="thw-share-btn-enhanced linkedin" onclick="thwShare('linkedin')" aria-label="Share on LinkedIn">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+<path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</button>
+<button class="thw-share-btn-enhanced reddit" onclick="thwShare('reddit')" aria-label="Share on Reddit">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+<circle cx="9" cy="10" r="1" />
+<circle cx="15" cy="10" r="1" />
+<path
+d="M22 11.08c0-1.52-1.24-2.76-2.76-2.76-.76 0-1.45.31-1.94.81-1.91-1.37-4.54-2.26-7.47-2.37l1.27-5.97 4.14.88c.08 1.04.93 1.86 1.98 1.86 1.1 0 2-.9 2-2s-.9-2-2-2c-.78 0-1.46.45-1.78 1.11l-4.63-.98c-.15-.03-.3.05-.35.19l-1.42 6.66c-2.96.09-5.62.98-7.54 2.36-.49-.5-1.18-.81-1.94-.81C1.24 8.32 0 9.56 0 11.08c0 1.03.57 1.93 1.41 2.4-.07.35-.11.71-.11 1.08 0 5.49 6.39 9.93 14.27 9.93s14.27-4.44 14.27-9.93c0-.37-.04-.73-.11-1.08.84-.47 1.41-1.37 1.41-2.4z" />
+</svg>
+</button>
+<button class="thw-share-btn-enhanced telegram" onclick="thwShare('telegram')" aria-label="Share on Telegram">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+<path
+d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+</svg>
+</button>
+<button class="thw-share-btn-enhanced" onclick="thwCopyLink()" aria-label="Copy link">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+</button>
+</div>
+</div>
+<div class="thw-article-actions">
+<button class="thw-bookmark-btn" data-post-id="11980" aria-label="Bookmark this article">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+</svg>
+<span>Save</span>
+</button>
+</div>
+<div class="thw-author-box-enhanced">
+<div class="thw-author-box-header">
+<span class="thw-author-box-label">About the Author</span>
+</div>
+<div class="thw-author-box-content">
+<div class="thw-author-avatar-large">
+<img alt='Avatar photo' src='https://www.thehackerwire.com/wp-content/uploads/2025/12/cropped-THW-AI-ASSISTNAT-120x120.jpg' srcset='https://www.thehackerwire.com/wp-content/uploads/2025/12/cropped-THW-AI-ASSISTNAT-240x240.jpg 2x' class='avatar avatar-120 photo' height='120' width='120' decoding='async'/>            </div>
+<div class="thw-author-details">
+<h4 class="thw-author-name-large">
+<a href="https://www.thehackerwire.com/author/thw_cve_ai_reporter/">
+THW AI Reporter                    </a>
+</h4>
+<p class="thw-author-bio-text">THW AI Reporter covers the latest CVEs and security advisories for TheHackerWire. Reports are generated using structured AI analysis of publicly available vulnerability disclosures, threat intelligence feeds, and vendor advisories. All articles are based on source-referenced data at the time of publication and are intended to support defensive security research and awareness.</p>
+<div class="thw-author-meta-row">
+<span class="thw-author-posts-count">
+📝
+2217 Articles                    </span>
+<div class="thw-author-social-mini">
+</div>
+</div>
+<a href="https://www.thehackerwire.com/author/thw_cve_ai_reporter/" class="thw-author-view-all">
+View all articles →
+</a>
+</div>
+</div>
+</div>
+<div class="thw-related-enhanced">
+<h3 class="thw-related-title">
+<span>📰</span> Related Articles        </h3>
+<div class="thw-related-grid">
+<article class="thw-related-card">
+<a href="https://www.thehackerwire.com/chrome-v8-type-confusion-sandbox-rce-via-crafted-html/" class="thw-related-thumb">
+<img width="300" height="200" src="https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14431-alert-300x200.jpg" class="attachment-thw-thumbnail size-thw-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14431-alert-300x200.jpg 300w, https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14431-alert-600x400.jpg 600w, https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14431-alert-120x80.jpg 120w" sizes="auto, (max-width: 300px) 100vw, 300px" />                                            </a>
+<div class="thw-related-content">
+<h4 class="thw-related-card-title">
+<a href="https://www.thehackerwire.com/chrome-v8-type-confusion-sandbox-rce-via-crafted-html/">Chrome V8 Type Confusion: Sandbox RCE via Crafted HTML</a>
+</h4>
+<span class="thw-related-date">July 2, 2026</span>
+</div>
+</article>
+<article class="thw-related-card">
+<a href="https://www.thehackerwire.com/chrome-v8-integer-overflow-rce/" class="thw-related-thumb">
+<img width="300" height="200" src="https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14430-alert-300x200.jpg" class="attachment-thw-thumbnail size-thw-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14430-alert-300x200.jpg 300w, https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14430-alert-600x400.jpg 600w, https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14430-alert-120x80.jpg 120w" sizes="auto, (max-width: 300px) 100vw, 300px" />                                            </a>
+<div class="thw-related-content">
+<h4 class="thw-related-card-title">
+<a href="https://www.thehackerwire.com/chrome-v8-integer-overflow-rce/">Chrome V8 Integer Overflow RCE</a>
+</h4>
+<span class="thw-related-date">July 2, 2026</span>
+</div>
+</article>
+<article class="thw-related-card">
+<a href="https://www.thehackerwire.com/chrome-angle-use-after-free-allows-sandbox-escape-cve-2026-14425/" class="thw-related-thumb">
+<img width="300" height="200" src="https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14425-alert-300x200.jpg" class="attachment-thw-thumbnail size-thw-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14425-alert-300x200.jpg 300w, https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14425-alert-600x400.jpg 600w, https://www.thehackerwire.com/wp-content/uploads/2026/07/CVE-2026-14425-alert-120x80.jpg 120w" sizes="auto, (max-width: 300px) 100vw, 300px" />                                            </a>
+<div class="thw-related-content">
+<h4 class="thw-related-card-title">
+<a href="https://www.thehackerwire.com/chrome-angle-use-after-free-allows-sandbox-escape-cve-2026-14425/">Chrome ANGLE Use-After-Free Allows Sandbox Escape (CVE-2026-14425)</a>
+</h4>
+<span class="thw-related-date">July 2, 2026</span>
+</div>
+</article>
+<article class="thw-related-card">
+<a href="https://www.thehackerwire.com/wavlink-wl-nu516u1-a-m16u1_v240425-remote-stack-based-buffer-overflow/" class="thw-related-thumb">
+<img width="300" height="200" src="https://www.thehackerwire.com/wp-content/uploads/2026/06/CVE-2026-13539-alert-300x200.jpg" class="attachment-thw-thumbnail size-thw-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www.thehackerwire.com/wp-content/uploads/2026/06/CVE-2026-13539-alert-300x200.jpg 300w, https://www.thehackerwire.com/wp-content/uploads/2026/06/CVE-2026-13539-alert-600x400.jpg 600w, https://www.thehackerwire.com/wp-content/uploads/2026/06/CVE-2026-13539-alert-120x80.jpg 120w" sizes="auto, (max-width: 300px) 100vw, 300px" />                                            </a>
+<div class="thw-related-content">
+<h4 class="thw-related-card-title">
+<a href="https://www.thehackerwire.com/wavlink-wl-nu516u1-a-m16u1_v240425-remote-stack-based-buffer-overflow/">Wavlink WL-NU516U1-A M16U1_V240425 Remote Stack-Based Buffer Overflow</a>
+</h4>
+<span class="thw-related-date">June 29, 2026</span>
+</div>
+</article>
+</div>
+</div>
+</article>
+<aside class="thw-single-sidebar">
+<div class="thw-sidebar-sticky">
+<div class="thw-toc-widget" id="toc-widget">
+<h3 class="thw-sidebar-title">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+Table of Contents                        </h3>
+<nav class="thw-toc" id="toc-nav">
+<p class="thw-toc-loading">Loading...</p>
+</nav>
+</div>
+<div class="thw-sidebar-section">
+<h3 class="thw-sidebar-title">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path
+d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+</svg>
+Popular in Vulnerabilities        </h3>
+<div class="thw-popular-list">
+<a href="https://www.thehackerwire.com/axios-rce-cloud-compromise-via-prototype-pollution-gadget/" class="thw-popular-item">
+<span class="thw-popular-title">Axios RCE/Cloud Compromise via Prototype Pollution Gadget</span>
+</a>
+<a href="https://www.thehackerwire.com/critical-rce-in-n8n-workflows-cve-2025-68613-threatens-automation-platforms/" class="thw-popular-item">
+<span class="thw-popular-title">Critical RCE in n8n Workflows: CVE-2025-68613 Threatens Automation Platforms</span>
+</a>
+<a href="https://www.thehackerwire.com/opencode-agent-rce-via-unauthenticated-local-server/" class="thw-popular-item">
+<span class="thw-popular-title">OpenCode Agent RCE via Unauthenticated Local Server</span>
+</a>
+<a href="https://www.thehackerwire.com/critical-rce-vulnerability-strikes-woocommerce-file-uploader-plugin-unauthenticated-attackers-can-achieve-remote-code-execution/" class="thw-popular-item">
+<span class="thw-popular-title">Critical RCE Vulnerability Strikes WooCommerce File Uploader Plugin: Unauthenticated Attackers Can Achieve Remote Code Execution</span>
+</a>
+<a href="https://www.thehackerwire.com/wireguard-portal-privilege-escalation-cve-2026-27899/" class="thw-popular-item">
+<span class="thw-popular-title">WireGuard Portal Privilege Escalation (CVE-2026-27899)</span>
+</a>
+</div>
+</div>
+<div id="media_image-1" class="thw-widget widget_media_image"><a href="https://s.click.aliexpress.com/e/_m0lQg2K"><img width="345" height="345" src="https://www.thehackerwire.com/wp-content/uploads/2024/02/fENVBI-5GHZ.jpg" class="image wp-image-2874  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" loading="lazy" srcset="https://www.thehackerwire.com/wp-content/uploads/2024/02/fENVBI-5GHZ.jpg 345w, https://www.thehackerwire.com/wp-content/uploads/2024/02/fENVBI-5GHZ-300x300.jpg 300w, https://www.thehackerwire.com/wp-content/uploads/2024/02/fENVBI-5GHZ-150x150.jpg 150w" sizes="auto, (max-width: 345px) 100vw, 345px" /></a></div>                                        
+<div class="thw-sidebar-section thw-quick-links">
+<h3 class="thw-sidebar-title">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+Quick Links                        </h3>
+<nav class="thw-quick-nav">
+<a href="https://www.thehackerwire.com/cve-tracker/">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+CVE Database
+</a>
+<a href="https://www.thehackerwire.com/critical-vulnerabilities/">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+Critical CVEs
+</a>
+<a href="https://www.thehackerwire.com/cve-tracker/kev/">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+CISA KEV List
+</a>
+<a href="https://www.thehackerwire.com/directory/">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+Security Tools
+</a>
+</nav>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+
+<footer class="thw-footer">
+<div class="thw-footer-main">
+<div class="thw-container">
+<div class="thw-footer-grid">
+<div class="thw-footer-about">
+<div class="thw-footer-brand">
+<a href="https://www.thehackerwire.com/" class="thw-footer-logo">
+<img src="https://www.thehackerwire.com/wp-content/uploads/2023/12/TheHackerWire-green-logo-2-471-83.png"
+alt="TheHackerWire">
+</a>
+<p class="thw-footer-desc">
+Your trusted source for cybersecurity news, hacking tutorials, and security tool reviews. Stay informed about the latest threats and defenses.                        </p>
+<div class="thw-footer-social"><a href="https://x.com/TheHackerWire" target="_blank" rel="noopener" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://www.facebook.com/TheHackerWire/" target="_blank" rel="noopener" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.youtube.com/@TheHackerWire" target="_blank" rel="noopener" aria-label="Youtube"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://www.linkedin.com/company/the-hacker-wire/" target="_blank" rel="noopener" aria-label="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.reddit.com/r/TheHackerWireMag/" target="_blank" rel="noopener" aria-label="Reddit"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></a><a href="https://www.thehackerwire.com/feed/" target="_blank" rel="noopener" aria-label="Rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg></a></div>                    </div>
+</div>
+<div class="thw-footer-col">
+<div id="text-1" class="thw-footer-widget widget_text"><h4 class="thw-footer-title">About The Hacker Wire</h4>			<div class="textwidget"><p data-sourcepos="11:1-11:468">We believe that knowledge is the ultimate weapon against cyber threats. By breaking down complex concepts, democratizing technical expertise, and fostering a dialogue around cybersecurity.</p>
+<p><script src="moz-extension://7456fe25-b907-4d72-9084-7adefcc62038/js/app.js" type="text/javascript"></script></p>
+</div>
+</div><div id="nav_menu-2" class="thw-footer-widget widget_nav_menu"></div>                    </div>
+<div class="thw-footer-col">
+<h4 class="thw-footer-title">
+Quick Links                        </h4>
+<ul id="menu-quick-links" class="thw-footer-links"><li id="menu-item-9210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9210"><a href="https://www.thehackerwire.com/security-directory/">Security Directory</a></li>
+<li id="menu-item-4085" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4085"><a href="https://www.thehackerwire.com/hacking-tools/">Online Tools</a></li>
+<li id="menu-item-12442" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12442"><a href="https://www.thehackerwire.com/ransomware-tracker">Ransomware Tracker</a></li>
+<li id="menu-item-3988" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3988"><a href="https://www.thehackerwire.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-3989" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3989"><a href="https://www.thehackerwire.com/contact-us/">Contact Us</a></li>
+</ul>                    </div>
+<div class="thw-footer-col">
+<h4 class="thw-footer-title">
+CVE Resources                        </h4>
+<ul class="thw-footer-links">
+<li><a
+href="https://www.thehackerwire.com/cve-tracker/">CVE Database</a>
+</li>
+<li><a
+href="https://www.thehackerwire.com/critical-vulnerabilities/">Critical CVEs (7 Days)</a>
+</li>
+<li><a
+href="https://www.thehackerwire.com/cve-tracker/trending/">Trending CVEs</a>
+</li>
+<li><a
+href="https://www.thehackerwire.com/cve-tracker/kev/">CISA KEV List</a>
+</li>
+<li><a
+href="https://www.thehackerwire.com/directory/">Security Tools</a>
+</li>
+</ul>
+</div>
+<div class="thw-footer-col">
+<h4 class="thw-footer-title">
+By Vendor</h4>
+<ul class="thw-footer-links">
+<li><a href="https://www.thehackerwire.com/vendor/microsoft/">Microsoft</a></li>
+<li><a href="https://www.thehackerwire.com/vendor/google/">Google</a></li>
+<li><a href="https://www.thehackerwire.com/vendor/apple/">Apple</a></li>
+<li><a href="https://www.thehackerwire.com/vendor/cisco/">Cisco</a></li>
+<li><a href="https://www.thehackerwire.com/vendor/adobe/">Adobe</a></li>
+<li><a href="https://www.thehackerwire.com/vendor/linux/">Linux</a></li>
+<li><a href="https://www.thehackerwire.com/vendor/oracle/">Oracle</a></li>
+<li><a href="https://www.thehackerwire.com/vendor/vmware/">VMware</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="thw-footer-bottom">
+<div class="thw-container">
+<div class="thw-footer-bottom-inner">
+<p class="thw-copyright">
+© 2026 TheHackerWire. All rights reserved.                </p>
+<div class="thw-footer-bottom-links">
+</div>
+</div>
+</div>
+</div>
+</footer>
+</div><!-- .thw-site-wrapper -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/thehackerwire-theme/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<div class="thw-scanline"></div><script id="thw-main-js-extra">
+var thwData = {"ajaxUrl":"https://www.thehackerwire.com/wp-admin/admin-ajax.php","nonce":"6791d4b21c","enableThemeToggle":"0","defaultTheme":"dark","forceThemeMode":"1","enableMatrix":"1","enableCardTilt":"1","enableCursorGlow":"1","enableParallax":"1","mobileNav":{"enabled":1,"items":[{"label":"Home","url":"/","icon":"home"},{"label":"News","url":"https://www.thehackerwire.com/security-news/","icon":"news"},{"label":"CVEs","url":"/cve-tracker/","icon":"shield"},{"label":"Directory","url":"https://www.thehackerwire.com/security-directory/","icon":"tools"}]}};
+//# sourceURL=thw-main-js-extra
+</script>
+<script id="thw-main-js" defer defer src="https://www.thehackerwire.com/wp-content/themes/thehackerwire-theme/assets/js/main.js?ver=2.2.18"></script>
+<script id="thw-main-js-after">
+// Pull to Refresh for Mobile
+if (window.innerWidth <= 768) {
+let startY = 0;
+let isPulling = false;
+document.addEventListener('touchstart', function(e) {
+if (window.pageYOffset === 0) {
+startY = e.touches[0].pageY;
+isPulling = true;
+}
+}, { passive: true });
+document.addEventListener('touchmove', function(e) {
+if (!isPulling) return;
+const currentY = e.touches[0].pageY;
+const pullDistance = currentY - startY;
+if (pullDistance > 80) {
+// Trigger refresh
+location.reload();
+}
+}, { passive: true });
+document.addEventListener('touchend', function() {
+isPulling = false;
+}, { passive: true });
+}
+//# sourceURL=thw-main-js-after
+</script>
+<script id="thw-premium-js" src="https://www.thehackerwire.com/wp-content/themes/thehackerwire-theme/assets/js/premium.js?ver=2.2.18"></script>
+<script>
+(function () {
+var header = document.querySelector('.thw-header');
+if (!header) return;
+window.addEventListener('scroll', function () {
+if (window.scrollY > 50) {
+header.classList.add('scrolled');
+document.body.classList.add('scrolled');
+} else {
+header.classList.remove('scrolled');
+document.body.classList.remove('scrolled');
+}
+}, { passive: true });
+// Check on load
+if (window.scrollY > 50) {
+header.classList.add('scrolled');
+document.body.classList.add('scrolled');
+}
+})();
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"7b242bedd2e9447f8fa797fe1efe07cc","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html><!-- WP Fastest Cache file was created in 0.701 seconds, on July 2, 2026 @ 11:35 am -->

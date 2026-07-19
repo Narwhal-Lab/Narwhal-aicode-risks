@@ -1,0 +1,1407 @@
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/static/js/cookieconsent-config.js" type="module"></script>
+        
+        <script src="/static/js/gtm.js" type="text/plain" data-category="analytics" defer></script>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>CVE-2026-27483 - Vulnerability Details - OpenCVE</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <meta name="description" content="MindsDB is a platform for building artificial intelligence from enterprise data. Prior to version 25.9.1.1, there is a path traversal vulnerability in Mindsdb&#x27;s /api/files interface, which an authenticated attacker can exploit to achieve remote command execution. The vulnerability exists in the &quot;Upload File&quot; module, which corresponds to the API endpoint /api/files. Since the multipart file upload does not perform security checks on the uploaded file path, an attacker can perform path traversal by using `../` sequences in the filename field. The file write operation occurs before calling clear_filename and save_file, meaning there is no filtering of filenames or file types, allowing arbitrary content to be written to any path on the server. Version 25.9.1.1 patches the issue.">
+        <meta name="csrf-token" content="mh1xU4lrOwnnGkAk3XI1AEUY6tStfrZkxWesUNO6doUuQcVBbOuosdzh5TS5mwwr">
+        <link rel="canonical" href="https://app.opencve.io/cve/CVE-2026-27483" />
+        
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/cookieconsent.css">
+<link rel="stylesheet" type="text/css" href="/static/css/spectrum.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/select2.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/gridstack.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/tippy-shift-away.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/tippy-light-border.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/AdminLTE.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/skin-blue.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/pricing.css">
+<link rel="stylesheet" type="text/css" href="/static/css/custom.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/img/opencve_32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/img/opencve_16.png">
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+
+    </head>
+    <body class="hold-transition skin-blue skin-opencve sidebar-mini">
+        
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJXRVLTJ" height="0" width="0" style="display:none;visibility:hidden" data-category="analytics"></iframe>
+        </noscript>
+        
+        <div class="wrapper">
+            <header class="main-header">
+
+                <a href="/" class="logo">
+                    <span class="logo-lg"><img src="/static/img/logo_opencve_white.svg" alt="Logo"/></span>
+                </a>
+
+                <nav class="navbar navbar-static-top">
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <h1 class="navbar-title"><a href="/cve/CVE-2026-27483" class="navbar-title-cve-link">CVE-2026-27483</a><small><i> - MindsDB has Path Traversal in /api/files Leading to Remote Code Execution</i></small></h1>
+
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            
+                            <li class="hidden-xs">
+                                <a href="/login/">Sign in</a>
+                            </li>
+                            
+                            <li class="hidden-xs">
+                                <a href="/signup/">Register</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <aside class="main-sidebar">
+                <section class="sidebar">
+                    
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">MAIN NAVIGATION</li>
+                        
+                        <li class="active"><a href="/cve/"><i class="fa fa-shield"></i> <span>Vulnerabilities</span></a></li>
+                        
+                        <li class=""><a href="/vendors/"><i class="fa fa-th-list"></i> <span> Vendors & Products</span></a></li>
+                        <li class=""><a href="/weaknesses/"><i class="fa fa-sitemap"></i> <span> Weaknesses</span></a></li>
+                        <li class=""><a href="/statistics"><i class="fa fa-bar-chart"></i> <span> Statistics</span></a></li>
+                        
+                    </ul>
+                </section>
+            </aside>
+
+            <div class="content-wrapper">
+                
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="cve-description-summary-wrapper" id="cve-overview">
+                <div class="row cve-description-summary-row">
+                    <div class="col-md-8 cve-description-col">
+                        <div class="box box-primary">
+    <div class="box-header">
+        <div class="box-title">Description</div>
+    </div>
+    <div class="box-body cve-description-box-body">
+        
+        <div class="cve-description-wrapper" id="cve-description-wrapper">
+            <div class="cve-description-text-shell">
+                <div class="cve-description-text" id="cve-description-text">
+                    MindsDB is a platform for building artificial intelligence from enterprise data. Prior to version 25.9.1.1, there is a path traversal vulnerability in Mindsdb&#x27;s /api/files interface, which an authenticated attacker can exploit to achieve remote command execution. The vulnerability exists in the &quot;Upload File&quot; module, which corresponds to the API endpoint /api/files. Since the multipart file upload does not perform security checks on the uploaded file path, an attacker can perform path traversal by using `../` sequences in the filename field. The file write operation occurs before calling clear_filename and save_file, meaning there is no filtering of filenames or file types, allowing arbitrary content to be written to any path on the server. Version 25.9.1.1 patches the issue.
+                </div>
+                <div class="cve-description-fade-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="cve-description-see-more-wrap" id="cve-description-see-more-wrap" style="display: none;">
+                <button type="button"
+                        class="cve-description-see-more-btn"
+                        id="cve-description-see-more-btn"
+                        aria-expanded="false"
+                        aria-label="Show more description">
+                    <span class="cve-description-see-more-inner">
+                        <span class="cve-description-see-more-label cve-description-see-more-label--more">Show more</span>
+                        <span class="cve-description-see-more-label cve-description-see-more-label--less">Show less</span>
+                        <span class="cve-description-see-more-icon cve-description-see-more-icon--down" aria-hidden="true"><i class="fa fa-chevron-down"></i></span>
+                        <span class="cve-description-see-more-icon cve-description-see-more-icon--up" aria-hidden="true"><i class="fa fa-chevron-up"></i></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+                    </div>
+                    <div class="col-md-4 cve-summary-col">
+                        
+
+<div class="box box-primary">
+    <div class="box-body">
+        
+        
+        
+        <div class="cve-summary-layout">
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">Published:</span>
+                <span class="cve-summary-value">
+                    
+                    2026-02-24
+                    
+                </span>
+            </div>
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">Score:</span>
+                <span class="cve-summary-value">
+                    
+                    <a href="#cve-metrics" class="cve-summary-cvss-link" data-toggle="tooltip" data-container="body" title="CVSS v3.1"><span class="label label-danger">8.8 High</span></a>
+                    
+                </span>
+            </div>
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">EPSS:</span>
+                <span class="cve-summary-value">
+                    
+                    <span class="label label-warning" data-toggle="tooltip" data-container="body" title="11.113%">11.1% Moderate</span>
+                    
+                </span>
+            </div>
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">KEV:</span>
+                <span class="cve-summary-value">
+                    
+                    <span class="label label-default">No</span>
+                    
+                </span>
+            </div>
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">Impact:</span>
+                <span class="cve-summary-value cve-summary-value--truncate js-cve-summary-truncate-tooltip">
+                    
+                    <span class="text-muted">n/a</span>
+                    
+                </span>
+            </div>
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">Action:</span>
+                <span class="cve-summary-value cve-summary-value--truncate js-cve-summary-truncate-tooltip">
+                    
+                    <span class="text-muted">n/a</span>
+                    
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+<div class="box box-primary" id="cve-analysis">
+    <div class="box-header">
+        <div class="box-title">
+            <img src="/static/img/ai-icon-black-32.png" class="provider-icon cve-tab-ai-icon" alt="AI" /> Analysis
+        </div>
+    </div>
+    <div class="box-body">
+        
+        
+        <article>
+        
+        <div class="cve-analysis-content">
+            
+            
+            <section>
+            <h3 class="cve-analysis-section-title">Impact</h3>
+            <div class="cve-analysis-section-text">
+            <p>MindsDB’s /api/files endpoint permits authenticated users to upload files without proper sanitization of the filename. The lack of checks on path traversal sequences, such as &quot;../&quot;, allows an attacker to write arbitrary files to any location on the server. By crafting a specially named upload, an attacker can inject executable content and then invoke remote commands, leading to full remote code execution on the underlying host. This flaw is an example of a path traversal vulnerability (CWE-22) that directly compromises confidentiality, integrity, and availability of the system.</p>
+            </div>
+            </section>
+            
+            
+            <section>
+            <h3 class="cve-analysis-section-title">Affected Systems</h3>
+            <div class="cve-analysis-section-text">
+            <p>The affected product is MindsDB, the data‑science platform by MindsDB. All releases prior to version 25.9.1.1 are vulnerable, as the issue exists in the Upload File module of the /api/files endpoint. Versions 25.9.1.1 and later contain the fix and are not impacted.</p>
+            </div>
+            </section>
+            
+            
+            <section>
+            <h3 class="cve-analysis-section-title">Risk and Exploitability</h3>
+            <div class="cve-analysis-section-text">
+            <p>The CVSS score of 8.8 indicates a high severity vulnerability with a high impact when exploited. The EPSS score of 11% shows that the likelihood of exploitation is significant, especially in environments that expose the API to authenticated users. Although the vulnerability is not listed in CISA’s KEV catalog, the combination of an authenticated attack vector and the ability to write arbitrary files gives an attacker direct control over the server. Successful exploitation would allow arbitrary code execution, enabling the attacker to gain persistence, exfiltrate data, or leverage the system for further attacks.</p>
+            </div>
+            </section>
+            
+            
+        </div>
+        <footer class="cve-analysis-footer">
+            <p class="text-muted small"><em>Generated by OpenCVE AI on June 18, 2026 at 10:45 UTC.</em></p>
+        </footer>
+        
+        </article>
+        
+        
+    </div>
+</div>
+
+
+            
+
+
+<div class="nav-tabs-custom nav-tabs-primary" id="cve-affected">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#mitre" data-toggle="tab"> <img src="/static/img/cve-icon.png" style="margin-top: -2px; width: 32px;" class="provider-icon" alt="cve-icon" /> Mitre Data <span class="nav-tab-has-data"></span></a>
+        </li>
+        <li>
+            <a href="#nvd" data-toggle="tab"> <img src="/static/img/nvd-icon.png" style="margin-top: -2px; width: 32px;" class="provider-icon" alt="cve-icon" /> CPE Configurations <span class="nav-tab-has-data"></span></a>
+        </li>
+        <li>
+            <a href="#redhat" data-toggle="tab"> <img src="/static/img/redhat-icon.png" style="margin-top: -2px; width: 20px;" class="provider-icon" alt="cve-icon" /> Affected Packages</a>
+        </li>
+        <li>
+            <a href="#enrichment" data-toggle="tab"> <img src="/static/img/opencve_32.png" style="margin-top: -2px; width: 20px;" class="provider-icon" alt="cve-icon" /> OpenCVE Enrichment <span class="nav-tab-has-data"></span></a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="mitre">
+            
+            <p class="text-muted small mb-3">
+              <strong>Default status</strong> is the baseline for the product, each <strong>version</strong> can override it (e.g. patched versions marked unaffected).
+            </p>
+            <div id="mitre-affected-wrapper" class="mitre-affected-wrapper" data-initial-rows="5">
+              <table class="table table-condensed" id="mitre-affected-table">
+                <thead>
+                  <tr>
+                    <th>Vendor</th>
+                    <th>Product</th>
+                    <th>Default status</th>
+                    <th>Versions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr class="mitre-affected-row">
+                    <td>mindsdb</td>
+                    <td>mindsdb</td>
+                    <td>
+                      <span class="label
+                        label-danger
+                        ">
+                        affected
+                      </span>
+                    </td>
+                    <td>
+                      
+                        <table class="table table-sm table-borderless mb-0 small">
+                          <thead class="table-light">
+                            <tr>
+                              <th>Version</th>
+                              <th>Status</th>
+                              <th>Constraints</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          
+                            <tr>
+                              <td class="text-break"><code>&lt; 25.9.1.1</code></td>
+                              <td>
+                                <span class="label label-danger">affected</span>
+                              </td>
+                              <td class="mitre-constraints-cell">
+                                <div class="mitre-constraints-content text-muted">
+                                
+                                
+                                —
+                                </div>
+                              </td>
+                            </tr>
+                          
+                          </tbody>
+                        </table>
+                      
+                    </td>
+                  </tr>
+                
+                </tbody>
+              </table>
+              <div class="mitre-affected-show-more-wrap" id="mitre-affected-show-more-wrap" style="display: none;">
+                <button type="button"
+                        class="mitre-affected-show-more-btn"
+                        id="mitre-affected-show-more-btn"
+                        aria-expanded="false"
+                        aria-label="Show more affected products">
+                  <span class="mitre-affected-show-more-inner">
+                    <span class="mitre-affected-show-more-label mitre-affected-show-more-label--more">Show more</span>
+                    <span class="mitre-affected-show-more-label mitre-affected-show-more-label--less">Show less</span>
+                    <span class="mitre-affected-show-more-icon mitre-affected-show-more-icon--down" aria-hidden="true"><i class="fa fa-chevron-down"></i></span>
+                    <span class="mitre-affected-show-more-icon mitre-affected-show-more-icon--up" aria-hidden="true"><i class="fa fa-chevron-up"></i></span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            
+        </div>
+
+        <div class="tab-pane" id="nvd">
+            
+
+            
+            <p><strong>Configuration 1</strong> <a class="pointer config-toggle"
+                                                                       id="config-1">[-]</a></p>
+            <table class="table table-configuration" id="config-1-table">
+                <tr>
+                    
+                    <td class="col-md-11 and">
+                        
+                        <table class="table table-bordered no-margin-bottom">
+                            
+                            <tr>
+                                
+                                <td>cpe:2.3:a:mindsdb:mindsdb:*:*:*:*:*:*:*:*</td>
+                            </tr>
+                            
+                        </table>
+                        
+                    </td>
+                </tr>
+            </table>
+            <hr/>
+            
+
+            
+        </div>
+        <div class="tab-pane" id="redhat">
+            
+            <p class="text-muted"><em>No data.</em></p>
+            
+        </div>
+        <div class="tab-pane" id="enrichment">
+          
+            
+
+<table class="table table-condensed" id="enrichment-affected-table">
+  <thead>
+    <tr>
+      <th>Vendor</th>
+      <th>Product</th>
+      <th>Confidence</th>
+      <th>Versions</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+    <tr class="enrichment-affected-row">
+      <td>
+        Mindsdb
+        <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Original from CNA<br />mindsdb"></i>
+      </td>
+      <td>
+        Mindsdb
+        <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Original from CNA<br />mindsdb"></i>
+      </td>
+      <td>
+        
+        <span class="label label-success">100% <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Matching: 100%"></i></span>
+        
+      </td>
+      <td>
+        
+        <table class="table table-sm table-borderless mb-0 small">
+          <thead class="table-light">
+            <tr>
+              <th>Version</th>
+              <th>Status</th>
+              <th>Scheme</th>
+              <th>Platform</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+          <tr>
+            <td class="enrichment-version-cell"><div class="enrichment-version-content"><code>[0,25.9.1.1)</code></div></td>
+            <td>
+              <span class="label label-danger">affected</span>
+            </td>
+            <td class="text-muted">generic</td>
+            <td class="text-muted">—</td>
+          </tr>
+          
+          </tbody>
+        </table>
+        
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>
+
+            <p class="text-muted small"><em>
+              Found an issue or want to improve our Enrichment? You can suggest it directly by opening an issue on our <a href="https://github.com/opencve/opencve-enrichment/" target="_blank" rel="noopener">dedicated GitHub repository <i class="fa fa-external-link"></i></a>.
+            </em></p>
+          
+        </div>
+    </div>
+</div>
+
+
+            
+
+<div class="box box-primary" id="cve-remediation">
+    <div class="box-header">
+        <div class="box-title">Remediation</div>
+    </div>
+    <div class="box-body">
+        
+
+            
+
+            
+
+            
+            <p class="text-muted"><em>No vendor fix or workaround currently provided.</em></p>
+            
+
+            
+            
+            <p><strong>OpenCVE Recommended Actions</strong></p>
+            <ul>
+                
+                <li>Upgrade MindsDB to version 25.9.1.1 or later to apply the vendor patch.</li>
+                
+                <li>Restrict the /api/files endpoint to a minimal set of trusted administrators and audit their usage; enforce principle of least privilege for API credentials.</li>
+                
+                <li>Enable logging and alerts for anomalous upload patterns that include path traversal sequences or unusually large file paths, and consider a WAF rule to block &quot;../&quot; sequences until patching is complete.</li>
+                
+            </ul>
+            <p class="text-muted small"><em>Generated by OpenCVE AI on June 18, 2026 at 10:45 UTC.</em></p>
+            
+
+        
+    </div>
+</div>
+
+
+            <div class="box box-primary" id="cve-tracking">
+    <div class="box-header">
+        <h3 class="box-title">Tracking</h3>
+        <div class="box-tools pull-right">
+            <i class="fa fa-info-circle" data-toggle="tooltip" data-container="body" data-placement="left" title="Projects appear here if they subscribe to at least one vendor or product affected by this CVE."></i>
+        </div>
+    </div>
+    <div class="box-body" id="cves-tracking-list">
+        
+            <p class="text-muted"><em><a href="/login/">Sign in</a> to view the affected projects.</em></p>
+        
+    </div>
+</div>
+
+
+            
+
+<div class="box box-primary" id="cve-advisories">
+    <div class="box-header">
+        <div class="box-title">Advisories</div>
+    </div>
+    <div class="box-body">
+        
+        <table class="table table-striped table-bordered">
+            <thead>
+                <th class="col-md-2">Source</th>
+                <th class="col-md-2">ID</th>
+                <th class="col-md-8">Title</th>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td><img src="/static/img/sources/ghsa.png" alt="Github GHSA" style="width: 22px; margin-right: 4px; vertical-align: middle;"> Github GHSA</td>
+                <td><a href="https://github.com/advisories/GHSA-4894-xqv6-vrfq" target="_blank">GHSA-4894-xqv6-vrfq</a></td>
+                <td>MindsDB: Path Traversal in /api/files Leading to Remote Code Execution</td>
+            </tr>
+            
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+
+
+            
+
+
+
+
+<div class="nav-tabs-custom nav-tabs-primary" id="cve-metrics">
+    <ul class="nav nav-tabs">
+        <li>
+            
+            <a href="#cvss40" data-toggle="tab">CVSS v4.0 <span class="label label-default label-cvss">N/A</span></a>
+            
+        </li>
+        <li class="active">
+            
+            <a href="#cvss31" data-toggle="tab">CVSS v3.1 <span class="label label-danger label-cvss">8.8 High</span></a>
+            
+        </li>
+        <li>
+            
+            <a href="#cvss30" data-toggle="tab">CVSS v3.0 <span class="label label-default label-cvss">N/A</span></a>
+            
+        </li>
+        <li>
+            
+            <a href="#cvss2" data-toggle="tab">CVSS v2 <span class="label label-default label-cvss">N/A</span></a>
+            
+        </li>
+        <li>
+            
+            <a href="#kev" data-toggle="tab">KEV <span class="label label-default label-cvss">no</span></a>
+            
+        </li>
+        <li>
+            
+            <a href="#epss" data-toggle="tab">EPSS <span class="label label-danger label-cvss">0.11113</span></a>
+            
+        </li>
+        <li>
+            
+            <a href="#ssvc" data-toggle="tab">SSVC <span class="label label-danger label-cvss">yes</span></a>
+            
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="cvss40">
+            
+            <p class="text-muted"><em>No CVSS v4.0</em></p>
+            
+        </div>
+        <div class="tab-pane active" id="cvss31">
+            
+            
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Attack Vector</span>
+                        <span class="pull-right label label-danger">Network</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Attack Complexity</span>
+                        <span class="pull-right label label-danger">Low</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Privileges Required</span>
+                        <span class="pull-right label label-warning">Low</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Scope</span>
+                        <span class="pull-right label label-default">Unchanged</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Confidentiality Impact</span>
+                        <span class="pull-right label label-danger">High</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Integrity Impact</span>
+                        <span class="pull-right label label-danger">High</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Availability Impact</span>
+                        <span class="pull-right label label-danger">High</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">User Interaction</span>
+                        <span class="pull-right label label-danger">None</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <canvas class="cvss-radar" data-chart="{&quot;labels&quot;: [&quot;Attack Vector&quot;, &quot;Attack Complexity&quot;, &quot;Privileges Required&quot;, &quot;User Interaction&quot;, &quot;Scope&quot;, &quot;Confidentiality Impact&quot;, &quot;Integrity Impact&quot;, &quot;Availability Impact&quot;], &quot;datasets&quot;: [{&quot;data&quot;: [2, 2, 1, 2, 0, 2, 2, 2], &quot;backgroundColor&quot;: &quot;rgba(221,75,57,0.2)&quot;, &quot;borderColor&quot;: &quot;rgba(221,75,57,1)&quot;, &quot;pointBackgroundColor&quot;: &quot;rgba(221,75,57,1)&quot;, &quot;borderWidth&quot;: 2, &quot;pointRadius&quot;: 1}]}"></canvas>
+    </div>
+</div>
+
+            
+        </div>
+        <div class="tab-pane" id="cvss30">
+            
+            <p class="text-muted"><em>No CVSS v3.0</em></p>
+            
+        </div>
+        <div class="tab-pane" id="cvss2">
+            
+            <p class="text-muted"><em>No CVSS v2</em></p>
+            
+        </div>
+        <div class="tab-pane" id="kev">
+            
+            <p class="text-muted"><em>This CVE is not in the KEV list.</em></p>
+            
+        </div>
+        <div class="tab-pane" id="epss">
+            
+            
+
+
+<p>The EPSS score is <strong>0.11113</strong>.</p>
+
+            
+        </div>
+        <div class="tab-pane" id="ssvc">
+            
+            
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Exploitation</span>
+                        <span class="pull-right label label-warning">poc</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Automatable</span>
+                        <span class="pull-right label label-default">no</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Technical Impact</span>
+                        <span class="pull-right label label-danger">total</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+        </div>
+    </div>
+</div>
+
+
+            
+<div class="box box-primary" id="cve-references">
+    <div class="box-header">
+        <div class="box-title">References</div>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+    <div class="box-body">
+        
+        <table class="table table-bordered">
+            <thead>
+                <th>Link</th>
+                <th>Providers</th>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://github.com/mindsdb/mindsdb/commit/87a44bdb2b97f963e18f10a068e1a1e2690505ef" target="_blank">https://github.com/mindsdb/mindsdb/commit/87a44bdb2b97f963e18f10a068e1a1e2690505ef</a></td>
+                <td>
+                    <img src="/static/img/cve-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    <img src="/static/img/nvd-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://github.com/mindsdb/mindsdb/releases/tag/v25.9.1.1" target="_blank">https://github.com/mindsdb/mindsdb/releases/tag/v25.9.1.1</a></td>
+                <td>
+                    <img src="/static/img/cve-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    <img src="/static/img/nvd-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://github.com/mindsdb/mindsdb/security/advisories/GHSA-4894-xqv6-vrfq" target="_blank">https://github.com/mindsdb/mindsdb/security/advisories/GHSA-4894-xqv6-vrfq</a></td>
+                <td>
+                    <img src="/static/img/cve-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    <img src="/static/img/nvd-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    
+                    
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+
+
+            
+
+<div class="box box-primary" id="cve-history">
+    <div class="box-header">
+        <div class="box-title">History</div>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+
+    
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Fri, 27 Feb 2026 19:15:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Metrics</td>
+    
+    <td class="col-md-5">
+        
+
+        
+    </td>
+    <td class="col-md-5">
+        
+        <u>ssvc</u>
+        <p><code>{&#x27;options&#x27;: {&#x27;Automatable&#x27;: &#x27;no&#x27;, &#x27;Exploitation&#x27;: &#x27;poc&#x27;, &#x27;Technical Impact&#x27;: &#x27;total&#x27;}, &#x27;version&#x27;: &#x27;2.0.3&#x27;}</code></p>
+        
+
+        
+    </td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Thu, 26 Feb 2026 15:45:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">CPEs</td>
+    
+    <td class="col-md-5"><s></s></td>
+    <td class="col-md-5">cpe:2.3:a:mindsdb:mindsdb:*:*:*:*:*:*:*:*</td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Wed, 25 Feb 2026 12:00:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            
+<tr>
+    
+    <td class="col-md-2">First Time appeared</td>
+    
+    <td class="col-md-5"></td>
+    <td class="col-md-5">
+        
+        Mindsdb
+        <br />
+        
+        Mindsdb mindsdb
+        <br />
+        
+    </td>
+</tr>
+
+                            
+                        
+                            
+                            
+<tr>
+    
+    <td class="col-md-2">Vendors & Products</td>
+    
+    <td class="col-md-5">
+        
+    </td>
+    <td class="col-md-5">
+        
+        Mindsdb
+        <br />
+        
+        Mindsdb mindsdb
+        <br />
+        
+    </td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Tue, 24 Feb 2026 14:30:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Description</td>
+    
+    <td class="col-md-5"></td>
+    <td class="col-md-5">MindsDB is a platform for building artificial intelligence from enterprise data. Prior to version 25.9.1.1, there is a path traversal vulnerability in Mindsdb&#x27;s /api/files interface, which an authenticated attacker can exploit to achieve remote command execution. The vulnerability exists in the &quot;Upload File&quot; module, which corresponds to the API endpoint /api/files. Since the multipart file upload does not perform security checks on the uploaded file path, an attacker can perform path traversal by using `../` sequences in the filename field. The file write operation occurs before calling clear_filename and save_file, meaning there is no filtering of filenames or file types, allowing arbitrary content to be written to any path on the server. Version 25.9.1.1 patches the issue.</td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Title</td>
+    
+    <td class="col-md-5"></td>
+    <td class="col-md-5">MindsDB has Path Traversal in /api/files Leading to Remote Code Execution</td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Weaknesses</td>
+    
+    <td class="col-md-5"></td>
+    <td class="col-md-5">CWE-22</td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">References</td>
+    
+    <td class="col-md-5">
+        <ul>
+        
+        </ul>
+    <td class="col-md-5">
+        <ul>
+        
+            <li><a href="https://github.com/mindsdb/mindsdb/commit/87a44bdb2b97f963e18f10a068e1a1e2690505ef" target="_blank">https://github.com/mindsdb/mindsdb/commit/87a44bdb2b97f963e18f10a068e1a1e2690505ef</a></li>
+        
+            <li><a href="https://github.com/mindsdb/mindsdb/releases/tag/v25.9.1.1" target="_blank">https://github.com/mindsdb/mindsdb/releases/tag/v25.9.1.1</a></li>
+        
+            <li><a href="https://github.com/mindsdb/mindsdb/security/advisories/GHSA-4894-xqv6-vrfq" target="_blank">https://github.com/mindsdb/mindsdb/security/advisories/GHSA-4894-xqv6-vrfq</a></li>
+        
+        </ul>
+    </td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Metrics</td>
+    
+    <td class="col-md-5">
+        
+
+        
+    </td>
+    <td class="col-md-5">
+        
+        <u>cvssV3_1</u>
+        <p><code>{&#x27;score&#x27;: 8.8, &#x27;vector&#x27;: &#x27;CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H&#x27;}</code></p>
+        
+
+        
+    </td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+        </div>
+
+        <div class="col-md-3">
+            <div class="box box-primary">
+    <div class="box-body cve-section-nav-body">
+        <div class="cve-section-nav-row">
+            <nav class="cve-section-nav" aria-label="Page sections">
+            <a href="#cve-overview" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Description &amp; summary">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-analysis" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Analysis">
+                <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-affected" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Affected products">
+                <i class="fa fa-cubes" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-remediation" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Remediation">
+                <i class="fa fa-wrench" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-tracking" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Tracking">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-advisories" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Advisories">
+                <i class="fa fa-bullhorn" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-metrics" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Metrics">
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-references" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="References">
+                <i class="fa fa-link" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-history" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="History">
+                <i class="fa fa-history" aria-hidden="true"></i>
+            </a>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+            
+
+            <div class="box box-primary" id="project-subscriptions-box">
+                <div class="box-header">
+                    <h3 class="box-title">Subscriptions</h3>
+                </div>
+                <div class="box-body project-subscriptions-body">
+                    
+
+
+<div class="subscription-grid">
+
+    <span class="subscription-vendor-name">
+        <span class="subscription-vendor-name-text">Mindsdb</span>
+    </span>
+    
+        <a href="/signup/" class="btn btn-default btn-xs subscribe-vendor-link" aria-label="Sign up to subscribe to Mindsdb">
+            <i class="fa fa-bell-o" aria-hidden="true"></i> <span class="subscribe-btn-label">Subscribe</span>
+        </a>
+    
+    
+    <span class="subscription-product-name subscription-product-name-first">
+        <span class="subscription-product-name-text">Mindsdb</span>
+        
+            
+        
+    </span>
+    
+        <a href="/signup/" class="btn btn-default btn-xs subscribe-product-link" aria-label="Sign up to subscribe to Mindsdb">
+            <i class="fa fa-bell-o" aria-hidden="true"></i> <span class="subscribe-btn-label">Subscribe</span>
+        </a>
+    
+    
+    
+
+</div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">
+                        <img src="/static/img/cve-icon.png" class="provider-icon" alt="cve-icon" />
+                        MITRE
+                    </div>
+                    
+                    <div class="box-tools pull-right">
+                        <div class="btn-group" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-mitre-json"><i class="fa fa-code"></i></button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="box-body">
+                    <p><strong>Status:</strong> PUBLISHED</p>
+                    <p><strong>Assigner:</strong> GitHub_M</p>
+                    <p><strong>Published:</strong>
+                        
+                        <time datetime="2026-02-24T14:00:05">
+                            2026-02-24T14:00:05.402Z
+                        </time>
+                        
+                    </p>
+                    <p><strong>Updated:</strong> 2026-02-27T18:19:11.743Z</p>
+                    <p><strong>Reserved:</strong> 2026-02-19T19:46:03.540Z</p>
+                    <p><strong>Link:</strong> <a href="https://www.cve.org/CVERecord?id=CVE-2026-27483" target="_blank">CVE-2026-27483 <i class="fa fa-external-link"></i></a></p>
+                </div>
+                
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">
+                        <img src="/static/img/cisa-icon.png" class="provider-icon" style="width: 28px;" alt="cve-icon" />
+                        Vulnrichment
+                    </div>
+                    
+                    <div class="box-tools pull-right">
+                        <div class="btn-group" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-vulnrichment-json"><i class="fa fa-code"></i></button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="box-body">
+                    <p><strong>Updated:</strong> 2026-02-27T18:19:08.302Z</p>
+                </div>
+                
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">
+                        <img src="/static/img/nvd-icon.png" class="provider-icon" alt="cve-icon" />
+                        NVD
+                    </div>
+                    
+                    <div class="box-tools pull-right">
+                        <div class="btn-group" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-nvd-json"><i class="fa fa-code"></i></button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="box-body">
+                    <p><strong>Status :</strong> Analyzed</p>
+                    <p><strong>Published:</strong> 2026-02-24T15:21:38.060</p>
+                    <p><strong>Modified:</strong> 2026-06-17T10:27:13.927</p>
+                    <p><strong>Link:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-27483" target="_blank">CVE-2026-27483 <i class="fa fa-external-link"></i></a></p>
+                </div>
+                
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">
+                        <img src="/static/img/redhat-icon.png" class="provider-icon" style="width: 28px;" alt="cve-icon" />
+                        Redhat
+                    </div>
+                    
+                </div>
+                
+                <div class="box-body">
+                    <p class="text-muted"><em>No data.</em></p>
+                </div>
+                
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">
+                        <img src="/static/img/opencve_32.png" class="provider-icon" style="width: 28px;" alt="cve-icon" />
+                        OpenCVE Enrichment
+                    </div>
+                    
+                    <div class="box-tools pull-right">
+                        <div class="btn-group" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-enrichment-json"><i class="fa fa-code"></i></button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="box-body">
+                    <p><strong>Updated:</strong> 2026-06-18T11:00:04Z</p>
+                </div>
+                
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">Weaknesses</div>
+                </div>
+                <div class="box-body">
+                    
+                        <ul>
+                        
+                        <li>
+                            <a href="/cve/?weakness=CWE-22">CWE-22</a>
+                            <p class="cwe-name">Improper Limitation of a Pathname to a Restricted Directory (&#x27;Path Traversal&#x27;)</p>
+                        </li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<div class="modal fade" id="modal-mitre-json">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">JSON object</h4>
+            </div>
+            <div class="modal-body codejson">
+                {&quot;dataType&quot;: &quot;CVE_RECORD&quot;, &quot;dataVersion&quot;: &quot;5.2&quot;, &quot;cveMetadata&quot;: {&quot;cveId&quot;: &quot;CVE-2026-27483&quot;, &quot;assignerOrgId&quot;: &quot;a0819718-46f1-4df5-94e2-005712e83aaa&quot;, &quot;state&quot;: &quot;PUBLISHED&quot;, &quot;assignerShortName&quot;: &quot;GitHub_M&quot;, &quot;dateReserved&quot;: &quot;2026-02-19T19:46:03.540Z&quot;, &quot;datePublished&quot;: &quot;2026-02-24T14:00:05.402Z&quot;, &quot;dateUpdated&quot;: &quot;2026-02-27T18:19:11.743Z&quot;}, &quot;containers&quot;: {&quot;cna&quot;: {&quot;title&quot;: &quot;MindsDB has Path Traversal in /api/files Leading to Remote Code Execution&quot;, &quot;problemTypes&quot;: [{&quot;descriptions&quot;: [{&quot;cweId&quot;: &quot;CWE-22&quot;, &quot;lang&quot;: &quot;en&quot;, &quot;description&quot;: &quot;CWE-22: Improper Limitation of a Pathname to a Restricted Directory (&#x27;Path Traversal&#x27;)&quot;, &quot;type&quot;: &quot;CWE&quot;}]}], &quot;metrics&quot;: [{&quot;cvssV3_1&quot;: {&quot;attackComplexity&quot;: &quot;LOW&quot;, &quot;attackVector&quot;: &quot;NETWORK&quot;, &quot;availabilityImpact&quot;: &quot;HIGH&quot;, &quot;baseScore&quot;: 8.8, &quot;baseSeverity&quot;: &quot;HIGH&quot;, &quot;confidentialityImpact&quot;: &quot;HIGH&quot;, &quot;integrityImpact&quot;: &quot;HIGH&quot;, &quot;privilegesRequired&quot;: &quot;LOW&quot;, &quot;scope&quot;: &quot;UNCHANGED&quot;, &quot;userInteraction&quot;: &quot;NONE&quot;, &quot;vectorString&quot;: &quot;CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H&quot;, &quot;version&quot;: &quot;3.1&quot;}}], &quot;references&quot;: [{&quot;name&quot;: &quot;https://github.com/mindsdb/mindsdb/security/advisories/GHSA-4894-xqv6-vrfq&quot;, &quot;tags&quot;: [&quot;x_refsource_CONFIRM&quot;], &quot;url&quot;: &quot;https://github.com/mindsdb/mindsdb/security/advisories/GHSA-4894-xqv6-vrfq&quot;}, {&quot;name&quot;: &quot;https://github.com/mindsdb/mindsdb/commit/87a44bdb2b97f963e18f10a068e1a1e2690505ef&quot;, &quot;tags&quot;: [&quot;x_refsource_MISC&quot;], &quot;url&quot;: &quot;https://github.com/mindsdb/mindsdb/commit/87a44bdb2b97f963e18f10a068e1a1e2690505ef&quot;}, {&quot;name&quot;: &quot;https://github.com/mindsdb/mindsdb/releases/tag/v25.9.1.1&quot;, &quot;tags&quot;: [&quot;x_refsource_MISC&quot;], &quot;url&quot;: &quot;https://github.com/mindsdb/mindsdb/releases/tag/v25.9.1.1&quot;}], &quot;affected&quot;: [{&quot;vendor&quot;: &quot;mindsdb&quot;, &quot;product&quot;: &quot;mindsdb&quot;, &quot;versions&quot;: [{&quot;version&quot;: &quot;&lt; 25.9.1.1&quot;, &quot;status&quot;: &quot;affected&quot;}]}], &quot;providerMetadata&quot;: {&quot;orgId&quot;: &quot;a0819718-46f1-4df5-94e2-005712e83aaa&quot;, &quot;shortName&quot;: &quot;GitHub_M&quot;, &quot;dateUpdated&quot;: &quot;2026-02-24T14:00:05.402Z&quot;}, &quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;MindsDB is a platform for building artificial intelligence from enterprise data. Prior to version 25.9.1.1, there is a path traversal vulnerability in Mindsdb&#x27;s /api/files interface, which an authenticated attacker can exploit to achieve remote command execution. The vulnerability exists in the \&quot;Upload File\&quot; module, which corresponds to the API endpoint /api/files. Since the multipart file upload does not perform security checks on the uploaded file path, an attacker can perform path traversal by using `../` sequences in the filename field. The file write operation occurs before calling clear_filename and save_file, meaning there is no filtering of filenames or file types, allowing arbitrary content to be written to any path on the server. Version 25.9.1.1 patches the issue.&quot;}], &quot;source&quot;: {&quot;advisory&quot;: &quot;GHSA-4894-xqv6-vrfq&quot;, &quot;discovery&quot;: &quot;UNKNOWN&quot;}}, &quot;adp&quot;: [{&quot;metrics&quot;: [{&quot;other&quot;: {&quot;type&quot;: &quot;ssvc&quot;, &quot;content&quot;: {&quot;timestamp&quot;: &quot;2026-02-27T18:19:02.972702Z&quot;, &quot;id&quot;: &quot;CVE-2026-27483&quot;, &quot;options&quot;: [{&quot;Exploitation&quot;: &quot;poc&quot;}, {&quot;Automatable&quot;: &quot;no&quot;}, {&quot;Technical Impact&quot;: &quot;total&quot;}], &quot;role&quot;: &quot;CISA Coordinator&quot;, &quot;version&quot;: &quot;2.0.3&quot;}}}], &quot;title&quot;: &quot;CISA ADP Vulnrichment&quot;, &quot;providerMetadata&quot;: {&quot;orgId&quot;: &quot;134c704f-9b21-4f2e-91b3-4a467353bcc0&quot;, &quot;shortName&quot;: &quot;CISA-ADP&quot;, &quot;dateUpdated&quot;: &quot;2026-02-27T18:19:11.743Z&quot;}}]}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-vulnrichment-json">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">JSON object</h4>
+            </div>
+            <div class="modal-body codejson">
+                {&quot;dataType&quot;: &quot;CVE_RECORD&quot;, &quot;containers&quot;: {&quot;adp&quot;: [{&quot;title&quot;: &quot;CISA ADP Vulnrichment&quot;, &quot;metrics&quot;: [{&quot;other&quot;: {&quot;type&quot;: &quot;ssvc&quot;, &quot;content&quot;: {&quot;id&quot;: &quot;CVE-2026-27483&quot;, &quot;role&quot;: &quot;CISA Coordinator&quot;, &quot;options&quot;: [{&quot;Exploitation&quot;: &quot;poc&quot;}, {&quot;Automatable&quot;: &quot;no&quot;}, {&quot;Technical Impact&quot;: &quot;total&quot;}], &quot;version&quot;: &quot;2.0.3&quot;, &quot;timestamp&quot;: &quot;2026-02-27T18:19:02.972702Z&quot;}}}], &quot;providerMetadata&quot;: {&quot;orgId&quot;: &quot;134c704f-9b21-4f2e-91b3-4a467353bcc0&quot;, &quot;shortName&quot;: &quot;CISA-ADP&quot;, &quot;dateUpdated&quot;: &quot;2026-02-27T18:19:08.302Z&quot;}}], &quot;cna&quot;: {&quot;title&quot;: &quot;MindsDB has Path Traversal in /api/files Leading to Remote Code Execution&quot;, &quot;source&quot;: {&quot;advisory&quot;: &quot;GHSA-4894-xqv6-vrfq&quot;, &quot;discovery&quot;: &quot;UNKNOWN&quot;}, &quot;metrics&quot;: [{&quot;cvssV3_1&quot;: {&quot;scope&quot;: &quot;UNCHANGED&quot;, &quot;version&quot;: &quot;3.1&quot;, &quot;baseScore&quot;: 8.8, &quot;attackVector&quot;: &quot;NETWORK&quot;, &quot;baseSeverity&quot;: &quot;HIGH&quot;, &quot;vectorString&quot;: &quot;CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H&quot;, &quot;integrityImpact&quot;: &quot;HIGH&quot;, &quot;userInteraction&quot;: &quot;NONE&quot;, &quot;attackComplexity&quot;: &quot;LOW&quot;, &quot;availabilityImpact&quot;: &quot;HIGH&quot;, &quot;privilegesRequired&quot;: &quot;LOW&quot;, &quot;confidentialityImpact&quot;: &quot;HIGH&quot;}}], &quot;affected&quot;: [{&quot;vendor&quot;: &quot;mindsdb&quot;, &quot;product&quot;: &quot;mindsdb&quot;, &quot;versions&quot;: [{&quot;status&quot;: &quot;affected&quot;, &quot;version&quot;: &quot;&lt; 25.9.1.1&quot;}]}], &quot;references&quot;: [{&quot;url&quot;: &quot;https://github.com/mindsdb/mindsdb/security/advisories/GHSA-4894-xqv6-vrfq&quot;, &quot;name&quot;: &quot;https://github.com/mindsdb/mindsdb/security/advisories/GHSA-4894-xqv6-vrfq&quot;, &quot;tags&quot;: [&quot;x_refsource_CONFIRM&quot;]}, {&quot;url&quot;: &quot;https://github.com/mindsdb/mindsdb/commit/87a44bdb2b97f963e18f10a068e1a1e2690505ef&quot;, &quot;name&quot;: &quot;https://github.com/mindsdb/mindsdb/commit/87a44bdb2b97f963e18f10a068e1a1e2690505ef&quot;, &quot;tags&quot;: [&quot;x_refsource_MISC&quot;]}, {&quot;url&quot;: &quot;https://github.com/mindsdb/mindsdb/releases/tag/v25.9.1.1&quot;, &quot;name&quot;: &quot;https://github.com/mindsdb/mindsdb/releases/tag/v25.9.1.1&quot;, &quot;tags&quot;: [&quot;x_refsource_MISC&quot;]}], &quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;MindsDB is a platform for building artificial intelligence from enterprise data. Prior to version 25.9.1.1, there is a path traversal vulnerability in Mindsdb&#x27;s /api/files interface, which an authenticated attacker can exploit to achieve remote command execution. The vulnerability exists in the \&quot;Upload File\&quot; module, which corresponds to the API endpoint /api/files. Since the multipart file upload does not perform security checks on the uploaded file path, an attacker can perform path traversal by using `../` sequences in the filename field. The file write operation occurs before calling clear_filename and save_file, meaning there is no filtering of filenames or file types, allowing arbitrary content to be written to any path on the server. Version 25.9.1.1 patches the issue.&quot;}], &quot;problemTypes&quot;: [{&quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;type&quot;: &quot;CWE&quot;, &quot;cweId&quot;: &quot;CWE-22&quot;, &quot;description&quot;: &quot;CWE-22: Improper Limitation of a Pathname to a Restricted Directory (&#x27;Path Traversal&#x27;)&quot;}]}], &quot;providerMetadata&quot;: {&quot;orgId&quot;: &quot;a0819718-46f1-4df5-94e2-005712e83aaa&quot;, &quot;shortName&quot;: &quot;GitHub_M&quot;, &quot;dateUpdated&quot;: &quot;2026-02-24T14:00:05.402Z&quot;}}}, &quot;cveMetadata&quot;: {&quot;cveId&quot;: &quot;CVE-2026-27483&quot;, &quot;state&quot;: &quot;PUBLISHED&quot;, &quot;dateUpdated&quot;: &quot;2026-02-27T18:19:11.743Z&quot;, &quot;dateReserved&quot;: &quot;2026-02-19T19:46:03.540Z&quot;, &quot;assignerOrgId&quot;: &quot;a0819718-46f1-4df5-94e2-005712e83aaa&quot;, &quot;datePublished&quot;: &quot;2026-02-24T14:00:05.402Z&quot;, &quot;assignerShortName&quot;: &quot;GitHub_M&quot;}, &quot;dataVersion&quot;: &quot;5.2&quot;}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-nvd-json">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">JSON object</h4>
+            </div>
+            <div class="modal-body codejson">
+                {&quot;affected&quot;: [{&quot;affectedData&quot;: [{&quot;product&quot;: &quot;mindsdb&quot;, &quot;vendor&quot;: &quot;mindsdb&quot;, &quot;versions&quot;: [{&quot;status&quot;: &quot;affected&quot;, &quot;version&quot;: &quot;&lt; 25.9.1.1&quot;}]}], &quot;source&quot;: &quot;security-advisories@github.com&quot;}], &quot;configurations&quot;: [{&quot;nodes&quot;: [{&quot;cpeMatch&quot;: [{&quot;criteria&quot;: &quot;cpe:2.3:a:mindsdb:mindsdb:*:*:*:*:*:*:*:*&quot;, &quot;matchCriteriaId&quot;: &quot;DF40BEB1-6A28-403A-8AC1-6488A2EF402D&quot;, &quot;versionEndExcluding&quot;: &quot;25.9.1.1&quot;, &quot;vulnerable&quot;: true}], &quot;negate&quot;: false, &quot;operator&quot;: &quot;OR&quot;}]}], &quot;cveTags&quot;: [], &quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;MindsDB is a platform for building artificial intelligence from enterprise data. Prior to version 25.9.1.1, there is a path traversal vulnerability in Mindsdb&#x27;s /api/files interface, which an authenticated attacker can exploit to achieve remote command execution. The vulnerability exists in the \&quot;Upload File\&quot; module, which corresponds to the API endpoint /api/files. Since the multipart file upload does not perform security checks on the uploaded file path, an attacker can perform path traversal by using `../` sequences in the filename field. The file write operation occurs before calling clear_filename and save_file, meaning there is no filtering of filenames or file types, allowing arbitrary content to be written to any path on the server. Version 25.9.1.1 patches the issue.&quot;}, {&quot;lang&quot;: &quot;es&quot;, &quot;value&quot;: &quot;MindsDB es una plataforma para construir inteligencia artificial a partir de datos empresariales. Antes de la versi\u00f3n 25.9.1.1, existe una vulnerabilidad de salto de ruta en la interfaz /api/files de MindsDB, que un atacante autenticado puede explotar para lograr la ejecuci\u00f3n remota de comandos. La vulnerabilidad existe en el m\u00f3dulo &#x27;Cargar archivo&#x27;, que corresponde al endpoint de la API /api/files. Dado que la carga de archivos multipart no realiza comprobaciones de seguridad en la ruta del archivo cargado, un atacante puede realizar un salto de ruta mediante el uso de secuencias &#x27;../&#x27; en el campo del nombre de archivo. La operaci\u00f3n de escritura de archivos ocurre antes de llamar a clear_filename y save_file, lo que significa que no hay filtrado de nombres de archivo o tipos de archivo, permitiendo que se escriba contenido arbitrario en cualquier ruta del servidor. La versi\u00f3n 25.9.1.1 corrige el problema.&quot;}], &quot;id&quot;: &quot;CVE-2026-27483&quot;, &quot;lastModified&quot;: &quot;2026-06-17T10:27:13.927&quot;, &quot;metrics&quot;: {&quot;cvssMetricV31&quot;: [{&quot;cvssData&quot;: {&quot;attackComplexity&quot;: &quot;LOW&quot;, &quot;attackVector&quot;: &quot;NETWORK&quot;, &quot;availabilityImpact&quot;: &quot;HIGH&quot;, &quot;baseScore&quot;: 8.8, &quot;baseSeverity&quot;: &quot;HIGH&quot;, &quot;confidentialityImpact&quot;: &quot;HIGH&quot;, &quot;integrityImpact&quot;: &quot;HIGH&quot;, &quot;privilegesRequired&quot;: &quot;LOW&quot;, &quot;scope&quot;: &quot;UNCHANGED&quot;, &quot;userInteraction&quot;: &quot;NONE&quot;, &quot;vectorString&quot;: &quot;CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H&quot;, &quot;version&quot;: &quot;3.1&quot;}, &quot;exploitabilityScore&quot;: 2.8, &quot;impactScore&quot;: 5.9, &quot;source&quot;: &quot;security-advisories@github.com&quot;, &quot;type&quot;: &quot;Secondary&quot;}], &quot;ssvcV203&quot;: [{&quot;source&quot;: &quot;134c704f-9b21-4f2e-91b3-4a467353bcc0&quot;, &quot;ssvcData&quot;: {&quot;id&quot;: &quot;CVE-2026-27483&quot;, &quot;options&quot;: [{&quot;exploitation&quot;: &quot;poc&quot;}, {&quot;automatable&quot;: &quot;no&quot;}, {&quot;technicalImpact&quot;: &quot;total&quot;}], &quot;role&quot;: &quot;CISA Coordinator&quot;, &quot;timestamp&quot;: &quot;2026-02-27T18:19:02.972702Z&quot;, &quot;version&quot;: &quot;2.0.3&quot;}}]}, &quot;published&quot;: &quot;2026-02-24T15:21:38.060&quot;, &quot;references&quot;: [{&quot;source&quot;: &quot;security-advisories@github.com&quot;, &quot;tags&quot;: [&quot;Patch&quot;], &quot;url&quot;: &quot;https://github.com/mindsdb/mindsdb/commit/87a44bdb2b97f963e18f10a068e1a1e2690505ef&quot;}, {&quot;source&quot;: &quot;security-advisories@github.com&quot;, &quot;tags&quot;: [&quot;Product&quot;, &quot;Release Notes&quot;], &quot;url&quot;: &quot;https://github.com/mindsdb/mindsdb/releases/tag/v25.9.1.1&quot;}, {&quot;source&quot;: &quot;security-advisories@github.com&quot;, &quot;tags&quot;: [&quot;Exploit&quot;, &quot;Vendor Advisory&quot;], &quot;url&quot;: &quot;https://github.com/mindsdb/mindsdb/security/advisories/GHSA-4894-xqv6-vrfq&quot;}], &quot;sourceIdentifier&quot;: &quot;security-advisories@github.com&quot;, &quot;vulnStatus&quot;: &quot;Analyzed&quot;, &quot;weaknesses&quot;: [{&quot;description&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;CWE-22&quot;}], &quot;source&quot;: &quot;security-advisories@github.com&quot;, &quot;type&quot;: &quot;Secondary&quot;}]}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-redhat-json">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">JSON object</h4>
+            </div>
+            <div class="modal-body codejson">
+                {}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-enrichment-json">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">JSON object</h4>
+            </div>
+            <div class="modal-body codejson">
+                {&quot;affected&quot;: [{&quot;configurations&quot;: [{&quot;platform&quot;: null, &quot;status&quot;: &quot;affected&quot;, &quot;versions&quot;: {&quot;scheme&quot;: &quot;generic&quot;, &quot;value&quot;: &quot;[0,25.9.1.1)&quot;}}], &quot;enrichment&quot;: {&quot;confidence&quot;: 100.0, &quot;confidence_source&quot;: &quot;matching&quot;, &quot;scores&quot;: [{&quot;score&quot;: 100.0, &quot;source&quot;: &quot;matching&quot;}]}, &quot;original&quot;: {&quot;product&quot;: &quot;mindsdb&quot;, &quot;source&quot;: &quot;cna&quot;, &quot;vendor&quot;: &quot;mindsdb&quot;}, &quot;product&quot;: &quot;mindsdb&quot;, &quot;vendor&quot;: &quot;mindsdb&quot;}], &quot;created&quot;: &quot;2026-02-25T11:39:02.900090+00:00&quot;, &quot;updated&quot;: &quot;2026-06-18T11:00:04.204250+00:00&quot;, &quot;vendors&quot;: [&quot;mindsdb&quot;, &quot;mindsdb$PRODUCT$mindsdb&quot;]}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+            </div>
+
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2026 OpenCVE.</strong>
+            </footer>
+        </div>
+
+        
+<script type="text/javascript">
+    const SUBSCRIBE_URL = "/vendors/subscribe";
+    const CHANGE_ORGANIZATION_URL = "/ajax/change_organization";
+    const SAVE_DASHBOARD_URL = "/ajax/save_dashboard";
+    const LOAD_DASHBOARD_URL = "/ajax/load_dashboard";
+    const CREATE_DASHBOARD_URL = "/ajax/create_dashboard";
+    const UPDATE_DASHBOARD_URL = "/ajax/update_dashboard";
+    const DELETE_DASHBOARD_URL = "/ajax/delete_dashboard";
+    const LOAD_WIDGET_DATA_URL = "/ajax/load_widget_data/$WIDGET_ID$";
+    const LOAD_WIDGET_CONFIG_URL = "/ajax/load_widget_config/$WIDGET_TYPE$";
+    const RENDER_WIDGET_DATA_URL = "/ajax/render_widget_data/$WIDGET_TYPE$";
+    const CVES_URL = "/cve/";
+    const ORGANIZATION_ID = "";
+    const ORGANIZATION_NAME = "";
+    const USER_EMAIL = "";
+    
+    
+    
+    
+    
+</script>
+<script src="/static/js/jquery.min.js" type="text/javascript"></script>
+<script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/static/js/adminlte.min.js" type="text/javascript"></script>
+<script src="/static/js/jquery.rainbowJSON.js" type="text/javascript"></script>
+<script src="/static/js/spectrum.min.js" type="text/javascript"></script>
+<script src="/static/js/select2.full.min.js" type="text/javascript"></script>
+<script src="/static/js/chart.min.js" type="text/javascript"></script>
+<script src="/static/js/gridstack-all.js" type="text/javascript"></script>
+<script src="/static/js/popper.min.js" type="text/javascript"></script>
+<script src="/static/js/tippy.min.js" type="text/javascript"></script>
+<script src="/static/js/custom.js" type="text/javascript"></script>
+
+<script src="/static/js/billing_f70fd05d.js" type="text/javascript"></script>
+
+
+        
+    </body>
+</html>

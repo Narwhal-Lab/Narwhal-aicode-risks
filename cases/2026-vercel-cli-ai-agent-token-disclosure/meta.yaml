@@ -1,0 +1,46 @@
+slug: 2026-vercel-cli-ai-agent-token-disclosure
+title_en: Vercel CLI AI Agent Token Disclosure
+title_cn: Vercel CLI AI Agent 非交互模式令牌泄露
+year: 2026
+disclosed: '2026-04-30'
+category: cloud-iac
+severity: medium
+severity_basis: cvss
+severity_evidence: NVD and GitHub Advisory list CVE-2026-44479 as a medium severity information disclosure issue fixed in Vercel CLI 52.0.1.
+cvss: 5.5
+cve: CVE-2026-44479
+real_incident: true
+reproducible: true
+ai_tool:
+- Vercel CLI
+- Vercel AI Cloud
+- CI/CD agent environments
+language:
+- JavaScript
+- TypeScript
+attack_surface:
+- CLI --non-interactive mode
+- auto-detected AI agent mode
+- --token / -t command argument
+- CI logs and agent transcripts
+references:
+- title: 'NVD: CVE-2026-44479'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-44479
+- title: 'Vercel Advisory: GHSA-pgf8-2hgj-grqg'
+  url: https://github.com/vercel/vercel/security/advisories/GHSA-pgf8-2hgj-grqg
+- title: 'GitHub Advisory Database: GHSA-pgf8-2hgj-grqg'
+  url: https://github.com/advisories/GHSA-pgf8-2hgj-grqg
+- title: 'GitLab Advisory: CVE-2026-44479'
+  url: https://advisories.gitlab.com/npm/vercel/CVE-2026-44479/
+- title: 'Snyk: SNYK-JS-VERCEL-16638653'
+  url: https://security.snyk.io/vuln/SNYK-JS-VERCEL-16638653
+- title: 'Vercel Docs: CLI Global Options'
+  url: https://vercel.com/docs/cli/global-options
+tldr: Vercel CLI included command-line tokens in suggested follow-up command JSON when running non-interactively or under auto-detected AI agent conditions.
+tags:
+- vercel
+- cli
+- token-disclosure
+- ci-cd
+- agent-transcript
+verification_notes: Based on public vulnerability advisories, vendor or project references, and security database records captured in assets. Exploitation impact depends on the documented deployment and privilege preconditions.

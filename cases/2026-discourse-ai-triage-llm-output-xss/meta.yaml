@@ -1,0 +1,46 @@
+slug: 2026-discourse-ai-triage-llm-output-xss
+title_en: Discourse AI Triage LLM Output XSS
+title_cn: Discourse AI Triage 大模型输出跨站脚本漏洞
+year: 2026
+disclosed: '2026-03-19'
+category: code-vulns
+severity: medium
+severity_basis: cvss
+severity_evidence: NVD records CVE-2026-27740 as medium severity; the vendor advisory and downstream databases describe the patched Discourse versions.
+cvss: 5.1
+cve: CVE-2026-27740
+real_incident: true
+reproducible: true
+ai_tool:
+- Discourse
+- Discourse AI
+- AI triage automation
+language:
+- Ruby
+- JavaScript
+attack_surface:
+- AI triage automation
+- Review Queue
+- LLM output rendering
+- flagged posts
+references:
+- title: 'NVD: CVE-2026-27740'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-27740
+- title: 'Discourse Advisory: GHSA-95hc-42c6-wvvr'
+  url: https://github.com/discourse/discourse/security/advisories/GHSA-95hc-42c6-wvvr
+- title: 'Mondoo: CVE-2026-27740'
+  url: https://mondoo.com/vulnerability-intelligence/vulnerability/CVE-2026-27740
+- title: 'SentinelOne: CVE-2026-27740'
+  url: https://www.sentinelone.com/vulnerability-database/cve-2026-27740/
+- title: 'Discourse Meta: AI triage'
+  url: https://meta.discourse.org/t/discourse-ai-ai-triage/281227?tl=en
+- title: 'Tenable: CVE-2026-27740'
+  url: https://www.tenable.com/cve/CVE-2026-27740
+tldr: Discourse AI triage rendered raw LLM output with htmlSafe in the staff review queue, allowing prompt injection to become stored XSS.
+tags:
+- discourse
+- ai-triage
+- xss
+- prompt-injection
+- moderation
+verification_notes: Based on public vulnerability advisories, vendor or project references, and security database records captured in assets. Exploitation impact depends on the documented deployment and privilege preconditions.

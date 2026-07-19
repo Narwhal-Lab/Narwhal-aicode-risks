@@ -1,0 +1,45 @@
+slug: "2026-azure-ai-foundry-m365-agent-eop"
+title_en: "Azure AI Foundry M365 Agent Privilege Escalation"
+title_cn: "Azure AI Foundry M365 已发布 Agent 权限提升"
+year: 2026
+disclosed: "2026-05-07"
+category: "agent-risk"
+severity: "high"
+severity_basis: "cvss"
+severity_evidence: "CVEFeed and CVEProject cvelistV5 record CVE-2026-35435 as an Azure AI Foundry M365 published-agent elevation-of-privilege issue with CVSS 8.6."
+cvss: 8.6
+cve: "CVE-2026-35435"
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Azure AI Foundry"
+  - "Microsoft 365 published agents"
+  - "Microsoft hosted AI agent service"
+language:
+  - "Cloud service"
+attack_surface:
+  - "Published M365 agents"
+  - "Access control policy"
+  - "Network-accessible hosted service"
+  - "Tenant data permissions"
+references:
+  - title: "CVEFeed: CVE-2026-35435"
+    url: "https://cvefeed.io/vuln/detail/CVE-2026-35435"
+  - title: "CVEProject cvelistV5: CVE-2026-35435"
+    url: "https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/35xxx/CVE-2026-35435.json"
+  - title: "OpenCVE: CVE-2026-35435"
+    url: "https://app.opencve.io/cve/CVE-2026-35435"
+  - title: "Tenable: CVE-2026-35435"
+    url: "https://www.tenable.com/cve/CVE-2026-35435"
+  - title: "NCSC-NL: CVE-2026-35435"
+    url: "https://vulnerabilities.ncsc.nl/vulnerability.html?id=2026%2Fcve-2026-35435"
+  - title: "Mallory: Microsoft Azure AI Foundry privilege escalation issue"
+    url: "https://mallory.ai/stories/019e4d6c-275c-7f5c-9b73-199e0b675229"
+tldr: "Azure AI Foundry M365 published agents had an access-control flaw enabling privilege escalation."
+tags:
+  - "azure-ai-foundry"
+  - "m365-agents"
+  - "access-control"
+  - "privilege-escalation"
+  - "hosted-service"
+verification_notes: "Based on public advisories, CVE databases, technical analysis, and independent vulnerability databases. Public evidence supports the vulnerability and impact class; victim-specific compromise is only stated when the cited sources report it."

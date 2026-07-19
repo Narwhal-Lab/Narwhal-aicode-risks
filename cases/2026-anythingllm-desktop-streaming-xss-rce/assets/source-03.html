@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ─── RAXE Analytics: True Opt-In GA4 ──────────────────────────── -->
+<!-- gtag.js is NOT loaded until user explicitly grants consent.      -->
+<!-- raxeTrack(name, params) is the ONLY analytics API page scripts   -->
+<!-- should call. It no-ops silently when GA4 is not loaded.          -->
+<!-- ─────────────────────────────────────────────────────────────── -->
+<script>
+window._raxeGaId = 'G-NM7S1PMCL7';
+window._raxeAnalyticsEnabled = true;
+window._raxeFirstPartyAnalytics = true;
+
+window.raxeTrack = function(name, params) {
+  var consentGranted = localStorage.getItem('raxe_analytics_consent') === 'granted';
+  if (!consentGranted && !window._raxeFirstPartyAnalytics) return;
+  if (typeof gtag === 'function' && consentGranted) gtag('event', name, params || {});
+  if (window.posthog && window.posthog.capture) posthog.capture(name, params || {});
+};
+
+window._raxeLoadGA = function() {
+  if (!window._raxeAnalyticsEnabled || !window._raxeGaId) return;
+  if (document.querySelector('script[src*="googletagmanager.com/gtag"]')) return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window._raxeGaId;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', window._raxeGaId, { send_page_view: true });
+};
+
+window['ga-disable-' + window._raxeGaId] = (localStorage.getItem('raxe_analytics_consent') !== 'granted');
+
+if (localStorage.getItem('raxe_analytics_consent') === 'granted' && window._raxeAnalyticsEnabled) {
+  window._raxeLoadGA();
+}
+</script>
+
+<!-- ─── PostHog Analytics (first-party for enterprise/intel/labs, otherwise consent-gated) ──────────────── -->
+<script>
+window._raxePhKey = 'phc_tkgpdenTx8T4AMMRABTratXRfZwYtgpPiUiBWAZzpsua';
+window._raxePhHost = 'https://z.raxe.ai';
+window._raxePhEnabled = true;
+window._raxePhReplay = true;
+window._raxePhDebug = false;
+
+window._raxeLoadPostHog = function() {
+  if (!window._raxePhEnabled || !window._raxePhKey) return;
+  if (window.posthog && window.posthog.__loaded) return;
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ii init Di qi Sr Bi Zi Pi capture calculateEventProperties Yi register register_once register_for_session unregister unregister_for_session Xi getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Ji identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Wi Vi createPersonProfile setInternalOrTestUser Gi Fi tn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing $i debug Tr Ui getPageViewId captureTraceFeedback captureTraceMetric Ri".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init(window._raxePhKey, {
+    api_host: window._raxePhHost,
+    ui_host: 'https://eu.posthog.com',
+    disable_compression: true,
+    person_profiles: 'identified_only',
+    capture_pageview: true,
+    capture_pageleave: true,
+    autocapture: true,
+    disable_session_recording: !window._raxePhReplay,
+    before_send: function(event) {
+      if (event && event.properties) {
+        // Required by PostHog's /i/v0/e/ ingestion endpoint; this is the public project token, not a secret.
+        event.properties.token = window._raxePhKey;
+      }
+      return event;
+    },
+    loaded: function(ph) {
+      if (window._raxePhDebug) ph.debug();
+    }
+  });
+};
+
+if ((localStorage.getItem('raxe_analytics_consent') === 'granted' || window._raxeFirstPartyAnalytics) && window._raxePhEnabled) {
+  window._raxeLoadPostHog();
+}
+</script>
+
+<!-- Favicon -->
+<link rel="icon" href="/assets/logo/logo-square.png" type="image/png">
+<link rel="alternate" type="application/atom+xml" title="RAXE Labs Feed" href="/feed.xml">
+
+<!-- Design System CSS (load order matters) -->
+<link rel="stylesheet" href="/assets/css/reset.css">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/components/buttons.css">
+<link rel="stylesheet" href="/assets/css/components/badges.css">
+<link rel="stylesheet" href="/assets/css/components/cards.css">
+<link rel="stylesheet" href="/assets/css/components/nav.css">
+<link rel="stylesheet" href="/assets/css/components/code.css">
+<link rel="stylesheet" href="/assets/css/components/data-panel.css">
+<link rel="stylesheet" href="/assets/css/components/motion.css">
+<link rel="stylesheet" href="/assets/css/components/forms.css">
+<link rel="stylesheet" href="/assets/css/components/tabs.css">
+<link rel="stylesheet" href="/assets/css/components/tables.css">
+<link rel="stylesheet" href="/assets/css/components/toc.css">
+<link rel="stylesheet" href="/assets/css/components/consent.css">
+<link rel="stylesheet" href="/assets/css/components/subscribe.css">
+
+  <title>RAXE-2026-038: AnythingLLM Desktop: Streaming XSS to Remote Code Execution | RAXE Labs</title>
+  <meta name="description" content="A critical cross-site scripting (XSS) vulnerability in AnythingLLM Desktop versions `1.11.1` and earlier escalates to full remote code execution (RCE) on the host operating system due to insecure Electron configuration (NVD) [1].">
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RAXE-2026-038: AnythingLLM Desktop: Streaming XSS to Remote Code Execution | RAXE Labs">
+  <meta property="og:description" content="A critical cross-site scripting (XSS) vulnerability in AnythingLLM Desktop versions `1.11.1` and earlier escalates to full remote code execution (RCE) on the host operating system due to insecure Electron configuration (NVD) [1].">
+  <meta property="og:url" content="https://raxe.ai/labs/advisories/RAXE-2026-038">
+  <meta property="og:image" content="https://raxe.ai/assets/og/advisories.png">
+  <meta property="og:image:alt" content="RAXE-2026-038: AnythingLLM Desktop: Streaming XSS to Remote Code Execution | RAXE Labs">
+  <meta property="og:site_name" content="RAXE">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RAXE-2026-038: AnythingLLM Desktop: Streaming XSS to Remote Code Execution | RAXE Labs">
+  <meta name="twitter:description" content="A critical cross-site scripting (XSS) vulnerability in AnythingLLM Desktop versions `1.11.1` and earlier escalates to full remote code execution (RCE) on the host operating system due to insecure Electron configuration (NVD) [1].">
+  <meta name="twitter:image" content="https://raxe.ai/assets/og/advisories.png">
+  <meta name="twitter:image:alt" content="RAXE-2026-038: AnythingLLM Desktop: Streaming XSS to Remote Code Execution | RAXE Labs">
+
+  
+  <link rel="canonical" href="https://raxe.ai/labs/advisories/RAXE-2026-038">
+
+  
+  
+<meta name="keywords" content="AI security, vulnerability research, S4: Prompt Injection / Input Handling, RAXE-2026-038, anythingllm, authentication-bypass, cve, prompt-injection, rce, CVE-2026-32626">
+<meta property="article:published_time" content="2026-03-20">
+<meta property="article:section" content="Security Advisories">
+<meta property="article:tag" content="anythingllm">
+<meta property="article:tag" content="authentication-bypass">
+<meta property="article:tag" content="cve">
+<meta property="article:tag" content="prompt-injection">
+<meta property="article:tag" content="rce">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "RAXE-2026-038: AnythingLLM Desktop: Streaming XSS to Remote Code Execution", "description": "RAXE-2026-038: AnythingLLM Desktop: Streaming XSS to Remote Code Execution. Severity: CRITICAL. CVSS 9.6. S4: Prompt Injection / Input Handling research from RAXE Labs with detection signatures.", "url": "https://raxe.ai/labs/advisories/RAXE-2026-038", "image": "https://raxe.ai/assets/og/advisories.png", "datePublished": "2026-03-20T00:00:00Z", "author": {"@type": "Person", "name": "M. Hirani", "url": "https://raxe.ai/labs"}, "publisher": {"@type": "Organization", "name": "RAXE Labs", "url": "https://raxe.ai/labs"}, "about": "S4: Prompt Injection / Input Handling", "keywords": "anythingllm, authentication-bypass, cve, prompt-injection, rce", "citation": ["https://nvd.nist.gov/vuln/detail/CVE-2026-32626"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://raxe.ai/"}, {"@type": "ListItem", "position": 2, "name": "Labs", "item": "https://raxe.ai/labs"}, {"@type": "ListItem", "position": 3, "name": "Advisories", "item": "https://raxe.ai/labs/advisories"}, {"@type": "ListItem", "position": 4, "name": "RAXE-2026-038", "item": "https://raxe.ai/labs/advisories/RAXE-2026-038"}]}</script>
+<link rel="stylesheet" href="/assets/css/pages/advisory-report.css">
+
+</head>
+<body class="labs-page advisory-report-page">
+
+  <!-- ── Main Navigation ──
+     Structure per Section 6.1 UX plan:
+     [Logo]  Platform v  Solutions v  Developers v  Research v  Pricing  [Get a Demo]
+-->
+<nav class="nav" role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" class="nav-logo" aria-label="RAXE Home">
+      <img src="/assets/logo/logo-name-only.png" alt="RAXE" height="27">
+    </a>
+
+    <div class="nav-links" id="nav-links">
+
+      <!-- Platform -->
+      <div class="nav-dropdown" data-dropdown>
+        <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Platform
+          <svg class="nav-chevron" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="/platform" class="nav-dropdown-item" role="menuitem">Platform Overview</a>
+          <a href="/gateway" class="nav-dropdown-item" role="menuitem">Gateway</a>
+          <a href="/sensor" class="nav-dropdown-item" role="menuitem">Sensor</a>
+          <a href="/intelligence" class="nav-dropdown-item" role="menuitem">Intelligence</a>
+          <hr class="divider">
+          <a href="/integrations" class="nav-dropdown-item" role="menuitem">Integrations</a>
+          <a href="/live-demo" class="nav-dropdown-item" role="menuitem">Live Demo</a>
+        </div>
+      </div>
+
+      <!-- Solutions -->
+      <div class="nav-dropdown" data-dropdown>
+        <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Solutions
+          <svg class="nav-chevron" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="/solutions#agents" class="nav-dropdown-item" role="menuitem">Secure AI Agents</a>
+          <a href="/solutions#traffic" class="nav-dropdown-item" role="menuitem">Govern AI Traffic</a>
+          <a href="/solutions#shadow-ai" class="nav-dropdown-item" role="menuitem">Detect Shadow AI</a>
+          <a href="/solutions#compliance" class="nav-dropdown-item" role="menuitem">SOC &amp; Compliance</a>
+          <hr class="divider">
+          <a href="/solutions#security-leaders" class="nav-dropdown-item" role="menuitem">For Security Leaders</a>
+          <a href="/solutions#platform-engineers" class="nav-dropdown-item" role="menuitem">For Platform Engineers</a>
+          <a href="/solutions#ai-teams" class="nav-dropdown-item" role="menuitem">For AI Teams</a>
+        </div>
+      </div>
+
+      <!-- Developers -->
+      <div class="nav-dropdown" data-dropdown>
+        <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Developers
+          <svg class="nav-chevron" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="/developers" class="nav-dropdown-item" role="menuitem">Get Started</a>
+          <a href="https://docs.raxe.ai" class="nav-dropdown-item" role="menuitem" target="_blank" rel="noopener">Documentation ↗</a>
+          <a href="https://github.com/raxe-ai/raxe-ce" class="nav-dropdown-item" role="menuitem" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="/live-demo" class="nav-dropdown-item" role="menuitem">Live Scanner Demo</a>
+        </div>
+      </div>
+
+      <!-- Research -->
+      <div class="nav-dropdown" data-dropdown>
+        <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Research
+          <svg class="nav-chevron" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="/labs" class="nav-dropdown-item" role="menuitem">RAXE Labs</a>
+          <a href="/labs/threat-intelligence" class="nav-dropdown-item" role="menuitem">Threat Intelligence</a>
+          <a href="/labs/advisories" class="nav-dropdown-item" role="menuitem">Security Advisories</a>
+          <a href="/labs/radar" class="nav-dropdown-item" role="menuitem">Research Radar</a>
+          <hr class="divider">
+          <a href="/labs/cold-validation" class="nav-dropdown-item" role="menuitem">Cold Validation</a>
+        </div>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="nav-dropdown" data-dropdown>
+        <button class="nav-link nav-dropdown-toggle" data-nav-section="enterprise" aria-expanded="false" aria-haspopup="true">
+          Enterprise
+          <svg class="nav-chevron" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="/enterprise" class="nav-dropdown-item" role="menuitem"
+             data-track="nav-enterprise" data-nav-target="overview">Enterprise Overview</a>
+          <hr class="divider">
+          <a href="/enterprise/prospectus" class="nav-dropdown-item" role="menuitem"
+             data-track="nav-enterprise" data-nav-target="briefing">Executive Briefing</a>
+          <a href="/enterprise/runtime-control" class="nav-dropdown-item" role="menuitem"
+             data-track="nav-enterprise" data-nav-target="runtime-control">Runtime Control</a>
+          <a href="/enterprise/governance" class="nav-dropdown-item" role="menuitem"
+             data-track="nav-enterprise" data-nav-target="governance">Governance &amp; Evidence</a>
+        </div>
+      </div>
+
+      <!-- Services (direct link — advisory engagements, distinct from product) -->
+      <a href="/services" class="nav-link">Services</a>
+
+      <!-- Pricing (direct link) -->
+      <a href="/pricing" class="nav-link">Pricing</a>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <a href="/contact" class="btn btn-ghost btn-sm nav-cta-secondary">Talk to an Engineer</a>
+    <a href="/enterprise" class="btn btn-primary btn-sm">Request a Demo</a>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+</nav>
+
+  <main id="main" role="main">
+    
+  <!-- Back navigation -->
+  <nav class="adv-nav" aria-label="Advisory navigation">
+    <div class="container">
+      <a href="/labs/advisories" class="adv-nav-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        All Advisories
+      </a>
+      <span class="adv-nav-id">RAXE-2026-038</span>
+    </div>
+  </nav>
+
+  <!-- TLP classification band -->
+  <div class="adv-tlp-band adv-tlp-green" role="presentation"></div>
+
+  <!-- Header -->
+  <header class="adv-header">
+    <div class="container">
+      <div class="adv-header-badges">
+        <span class="adv-badge adv-badge-id">RAXE-2026-038</span>
+        
+        <span class="adv-badge adv-badge-severity adv-severity-critical">CRITICAL</span>
+        
+        <span class="adv-badge adv-badge-cvss">CVSS 9.6 <span class="adv-badge-cvss-ver">v3.1</span></span>
+        
+        
+        <span class="adv-badge adv-badge-stream">S4</span>
+        
+      </div>
+      <h1 class="adv-title">AnythingLLM Desktop: Streaming XSS to Remote Code Execution</h1>
+      <div class="adv-header-meta">
+        <span class="adv-meta-item adv-meta-stream">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          S4: Prompt Injection / Input Handling
+        </span>
+        
+        <span class="adv-meta-item adv-meta-date">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          2026-03-20
+        </span>
+        <span class="adv-meta-item adv-meta-analyst">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          M. Hirani
+        </span>
+        <span class="adv-meta-item adv-meta-tlp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          TLP:GREEN
+        </span>
+      </div>
+      
+      <div class="adv-header-cves">
+        
+        <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-32626" class="adv-cve-pill" target="_blank" rel="noopener noreferrer">CVE-2026-32626</a>
+        
+      </div>
+      
+    </div>
+  </header>
+
+  <!-- Sidebar TOC + Content -->
+  <div class="container adv-layout">
+    <aside class="adv-sidebar" id="adv-sidebar">
+      <nav class="adv-toc" id="adv-toc" aria-label="Table of Contents">
+        <!-- JS populates from content H2/H3 headings -->
+      </nav>
+    </aside>
+    <article class="adv-content" id="adv-content">
+      <section class="adv-section" id="section-1-executive-summary"><h2 id="1-executive-summary">1. Executive Summary</h2>
+<p>A critical cross-site scripting (XSS) vulnerability in AnythingLLM Desktop versions <code>1.11.1</code> and earlier escalates to full remote code execution (RCE) on the host operating system due to insecure Electron configuration (NVD) <a href="#ref-1" class="cite-ref"><sup>1</sup></a>. The vulnerability resides in the streaming chat rendering pipeline: the custom markdown image renderer in <code>frontend/src/utils/chat/markdown.js</code> fails to escape HTML entities in the <code>token.content</code> field before inserting it into <code>&lt;img&gt;</code> tag <code>alt</code> attributes, and the <code>PromptReply</code> component renders the resulting HTML via <code>dangerouslySetInnerHTML</code> without DOMPurify sanitisation (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. Because the Electron application runs with <code>nodeIntegration: true</code> and <code>contextIsolation: false</code>, injected JavaScript gains direct access to Node.js APIs, enabling arbitrary command execution with the full privileges of the AnythingLLM Desktop process (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>.</p>
+<p><strong>Exploitation prerequisites:</strong> This vulnerability affects only the <strong>Electron Desktop variant</strong> of AnythingLLM. The server/Docker deployment does not include Electron and therefore does not expose the XSS-to-RCE escalation path (RAXE assessment). Exploitation requires <strong>user interaction</strong>; a victim must view a streaming chat response containing the malicious payload (NVD: <code class="data data-cvss-metric">UI:R</code>) <a href="#ref-1" class="cite-ref"><sup>1</sup></a>. No authentication is required from the attacker's perspective (NVD: <code class="data data-cvss-metric">PR:N</code>) <a href="#ref-1" class="cite-ref"><sup>1</sup></a>.</p>
+<p><strong>So What:</strong> AnythingLLM is an open-source application for RAG (Retrieval-Augmented Generation) deployments, available in both Desktop (Electron) and server/Docker variants. Organisations running the Desktop variant on employee workstations face a network-reachable, unauthenticated attack path that delivers arbitrary OS command execution when a user views a chat response containing a malicious payload. The delivery vector (poisoned RAG documents, a compromised LLM endpoint, or indirect prompt injection) is realistic in enterprise environments where data sources are aggregated from multiple trust boundaries (RAXE assessment).</p>
+<p><strong>Now What:</strong> Upgrade to AnythingLLM Desktop version <code>1.11.2</code> or later immediately. The patch commit <code>9e2d144</code> applies DOMPurify sanitisation to the streaming rendering path (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. Organisations unable to patch immediately should migrate to the Docker/server deployment variant and restrict RAG document ingestion to trusted sources (RAXE assessment).</p>
+<hr />
+</section><section class="adv-section" id="section-2-risk-rating"><h2 id="2-risk-rating">2. Risk Rating</h2>
+<table class="adv-table">
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Rating</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Severity</strong></td>
+<td>CRITICAL (9.6)</td>
+<td>CNA-submitted <code class="data data-cvss-ver">CVSS v3.1</code>: <code>CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H</code> (NVD) <a href="#ref-1" class="cite-ref"><sup>1</sup></a>. NVD has not published a Primary score as of 2026-03-20; the 9.6 is submitted by <code>security-advisories@github.com</code> (NVD Secondary) <a href="#ref-1" class="cite-ref"><sup>1</sup></a>. The GHSA advisory displays 9.7 using the same vector string; this is a display rounding variance (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. This publication uses the NVD-published 9.6 figure.</td>
+</tr>
+<tr>
+<td><strong>Urgency</strong></td>
+<td><span class="adv-sev-label sev-high">HIGH</span></td>
+<td>Patch available (version <code>1.11.2</code>). Advisory-disclosed PoC payload lowers the exploitation barrier. EPSS: <code class="data data-pct">0.16%</code> (36th percentile) as of 2026-03-19, indicating limited current exploitation activity (FIRST.org EPSS) <a href="#ref-3" class="cite-ref"><sup>3</sup></a>.</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Changed (<code class="data data-cvss-metric">S:C</code>)</td>
+<td>The attack escapes the Electron renderer context to the host operating system (NVD) <a href="#ref-1" class="cite-ref"><sup>1</sup></a>.</td>
+</tr>
+<tr>
+<td><strong>Confidence</strong></td>
+<td>HIGH (<code class="data data-pct">90%</code>)</td>
+<td>Vendor-confirmed via GHSA with patch commit. CVE assigned and NVD vulnStatus is "Analyzed". Technical details are consistent between GHSA and NVD sources (RAXE assessment).</td>
+</tr>
+<tr>
+<td><strong>Business Impact</strong></td>
+<td><span class="adv-sev-label sev-high">HIGH</span></td>
+<td>Arbitrary OS command execution on employee workstations. Successful exploitation grants access to local file system, credentials, SSH keys, browser sessions, and network position for lateral movement (RAXE assessment).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cvss-scoring-attribution">CVSS Scoring Attribution</h3>
+<p>The NVD entry for <code>CVE-2026-32626</code> carries vulnStatus "Analyzed" with a <strong>CNA-submitted (Secondary)</strong> CVSS score of 9.6 from <code>security-advisories@github.com</code> (NVD) <a href="#ref-1" class="cite-ref"><sup>1</sup></a>. NVD has not published its own Primary score as of this publication date. The GHSA advisory displays a score of 9.7 using the identical vector string <code>CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H</code> (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>; this discrepancy is a display rounding variance inherent to the <code class="data data-cvss-ver">CVSS v3.1</code> specification equation. This publication uses the NVD-published 9.6 figure throughout.</p>
+<hr />
+</section><section class="adv-section" id="section-3-affected-products"><h2 id="3-affected-products">3. Affected Products</h2>
+<table class="adv-table">
+<thead>
+<tr>
+<th>Product</th>
+<th>Variant</th>
+<th>Affected Versions</th>
+<th>Fixed Version</th>
+<th>Patch Reference</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AnythingLLM</td>
+<td>Desktop (Electron)</td>
+<td>All versions up to and including <code>1.11.1</code></td>
+<td><code>1.11.2</code></td>
+<td>Commit <code>9e2d144</code> <a href="#ref-4" class="cite-ref"><sup>4</sup></a></td>
+<td>Patch available</td>
+</tr>
+<tr>
+<td>AnythingLLM</td>
+<td>Server / Docker</td>
+<td>Not affected by RCE escalation</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>The underlying XSS may exist in the web interface but cannot escalate to OS-level RCE without Electron (RAXE assessment)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>CPE:</strong> <code>cpe:2.3:a:mintplexlabs:anythingllm:*:*:*:*:*:*:*:*</code> (versions up to and including <code>1.11.1</code>) (NVD) <a href="#ref-1" class="cite-ref"><sup>1</sup></a></p>
+<h3 id="am-i-affected">Am I Affected?</h3>
+<ul>
+<li><strong>Check deployment variant:</strong> This vulnerability's RCE impact applies only to the Electron Desktop application. If you run AnythingLLM via Docker or as a hosted server, the XSS-to-RCE escalation path does not apply. The underlying XSS in the markdown renderer may still exist in non-Desktop variants, but without Electron's <code>nodeIntegration</code> it cannot escalate to OS command execution (RAXE assessment).</li>
+<li><strong>Check version:</strong> Within the AnythingLLM Desktop application, navigate to Settings to view the installed version. Versions <code>1.11.1</code> and earlier are affected. Version <code>1.11.2</code> and later contain the patch.</li>
+<li><strong>Check configuration:</strong> The insecure Electron configuration (<code>nodeIntegration: true</code>, <code>contextIsolation: false</code>) is the application default, not a user-toggled option. All Desktop installations running affected versions are vulnerable (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>.</li>
+</ul>
+<hr />
+</section><section class="adv-section" id="section-4-abstract"><h2 id="4-abstract">4. Abstract</h2>
+<p><code>CVE-2026-32626</code> is a cross-site scripting vulnerability in the AnythingLLM Desktop streaming chat renderer that chains with insecure Electron configuration to achieve remote code execution (NVD) <a href="#ref-1" class="cite-ref"><sup>1</sup></a> (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. The vulnerability has two compounding components:</p>
+<ol>
+<li>
+<p><strong>Unsanitised markdown image rendering (<code class="data data-cwe">CWE-79</code>: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')):</strong> The custom markdown-it image renderer in <code>frontend/src/utils/chat/markdown.js</code> (lines 70-77) interpolates <code>token.content</code> directly into the HTML <code>alt</code> attribute of generated <code>&lt;img&gt;</code> tags without HTML entity escaping. Malicious content in the image alt text breaks out of the attribute context to inject arbitrary HTML attributes, including event handlers (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>.</p>
+</li>
+<li>
+<p><strong>Missing DOMPurify sanitisation in the streaming path:</strong> The <code>PromptReply</code> component (responsible for rendering assistant responses during the real-time streaming phase) uses React's unsafe HTML injection to insert the rendered markdown output directly into the DOM without DOMPurify sanitisation. By contrast, the <code>HistoricalMessage</code> component (used for saved, non-streaming messages) correctly applies <code>DOMPurify.sanitize()</code> before DOM injection (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>.</p>
+</li>
+</ol>
+<p>These two weaknesses combine with the Electron Desktop application's insecure configuration (<code>nodeIntegration: true</code> and <code>contextIsolation: false</code>) which grants renderer-process JavaScript direct access to Node.js built-in modules. The result is a chain from markdown content injection through XSS to arbitrary operating system command execution (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>.</p>
+<hr />
+</section><section class="adv-section" id="section-5-key-findings"><h2 id="5-key-findings">5. Key Findings</h2>
+<ol>
+<li>
+<p><strong>Streaming-specific attack surface.</strong> The vulnerability manifests only during the streaming rendering phase of chat responses. Saved/historical message display uses DOMPurify and is not vulnerable to this specific attack chain (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>.</p>
+</li>
+<li>
+<p><strong>Unauthenticated, network-reachable attack path.</strong> No authentication is required (CVSS <code class="data data-cvss-metric">PR:N</code>). The attacker must deliver the payload through a vector that causes the LLM to include it in a streaming response: poisoned RAG documents, compromised LLM endpoints, or indirect prompt injection are plausible delivery mechanisms (NVD) <a href="#ref-1" class="cite-ref"><sup>1</sup></a> (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>.</p>
+</li>
+<li>
+<p><strong>Scope: Changed, XSS to RCE escalation.</strong> The Electron <code>nodeIntegration: true</code> and <code>contextIsolation: false</code> configuration grants renderer-process JavaScript direct Node.js API access, enabling the XSS to escalate to arbitrary OS command execution. The attack escapes the browser sandbox to the host operating system (NVD: <code class="data data-cvss-metric">S:C</code>) <a href="#ref-1" class="cite-ref"><sup>1</sup></a> (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>.</p>
+</li>
+<li>
+<p><strong>Advisory-disclosed proof-of-concept.</strong> The GHSA advisory includes a complete PoC payload that demonstrates the attack chain from markdown injection to OS command execution (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. This lowers the exploitation barrier.</p>
+</li>
+<li>
+<p><strong>Patch addresses DOM injection, not root cause.</strong> The patch (commit <code>9e2d144</code>) adds DOMPurify sanitisation to the <code>PromptReply</code> component but does not appear to fix the underlying entity escaping gap in the markdown image renderer, nor does it address the insecure Electron configuration (RAXE assessment based on commit diff scope) <a href="#ref-4" class="cite-ref"><sup>4</sup></a>. Future XSS vulnerabilities in any component would similarly escalate to RCE while the Electron misconfiguration persists.</p>
+</li>
+<li>
+<p><strong>Low current exploitation probability.</strong> EPSS score is <code class="data data-pct">0.16%</code> (36th percentile) as of 2026-03-19 (FIRST.org EPSS) <a href="#ref-3" class="cite-ref"><sup>3</sup></a>, indicating limited current exploitation activity. No confirmed in-the-wild exploitation has been reported at time of publication.</p>
+</li>
+</ol>
+<hr />
+</section><section class="adv-section" id="section-6-attack-flow"><h2 id="6-attack-flow">6. Attack Flow</h2>
+<p>The following attack flow is derived from the advisory-disclosed exploitation chain (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>:</p>
+<div class="codehilite adv-attack-flow"><pre><span></span><code>ATTACKER                          ANYTHINGLLM DESKTOP                    HOST OS
+   |                                     |                                  |
+   |  1. Embed malicious markdown        |                                  |
+   |     payload in RAG document         |                                  |
+   |     or LLM endpoint response        |                                  |
+   |------------------------------------&gt;|                                  |
+   |                                     |                                  |
+   |  2. Victim queries workspace        |                                  |
+   |     (normal chat interaction)       |                                  |
+   |                                     |                                  |
+   |              3. LLM streams response containing payload                |
+   |                                     |                                  |
+   |              4. markdown.js parses  |                                  |
+   |                 image token;        |                                  |
+   |                 token.content       |                                  |
+   |                 interpolated into   |                                  |
+   |                 alt=&quot;&quot; WITHOUT      |                                  |
+   |                 entity escaping     |                                  |
+   |                                     |                                  |
+   |              5. PromptReply injects |                                  |
+   |                 HTML via            |                                  |
+   |                 dangerouslySet-     |                                  |
+   |                 InnerHTML WITHOUT   |                                  |
+   |                 DOMPurify           |                                  |
+   |                                     |                                  |
+   |              6. Browser fires       |                                  |
+   |                 onerror handler     |                                  |
+   |                 on invalid &lt;img&gt;    |                                  |
+   |                                     |                                  |
+   |              7. onerror JS executes |                                  |
+   |                 with Node.js access |                                  |
+   |                 (nodeIntegration:   |                                  |
+   |                 true, context-      |                                  |
+   |                 Isolation: false)   |                                  |
+   |                                     |                                  |
+   |              8. Node.js child_process module                           |
+   |                 invoked from renderer  ---------------------------&gt;    |
+   |                                     |              ARBITRARY           |
+   |                                     |              COMMAND             |
+   |                                     |              EXECUTION           |
+</code></pre></div>
+
+<p><strong>Kill chain summary (RAXE assessment):</strong></p>
+<div class="codehilite"><pre><span></span><code>Poisoned Content --&gt; Markdown Parse --&gt; Attribute Breakout XSS
+       --&gt; dangerouslySetInnerHTML (no DOMPurify) --&gt; onerror fires
+       --&gt; Node.js API access (nodeIntegration) --&gt; OS Command Execution
+</code></pre></div>
+
+<hr />
+</section><section class="adv-section" id="section-7-technical-details"><h2 id="7-technical-details">7. Technical Details</h2>
+<h3 id="71-vulnerable-component-markdown-image-renderer">7.1 Vulnerable Component: Markdown Image Renderer</h3>
+<p><strong>File:</strong> <code>frontend/src/utils/chat/markdown.js</code> (lines 70-77 per GHSA) <a href="#ref-2" class="cite-ref"><sup>2</sup></a></p>
+<p>The AnythingLLM frontend uses a custom markdown-it renderer for image tokens. The renderer interpolates <code>token.content</code> directly into the HTML <code>alt</code> attribute of generated <code>&lt;img&gt;</code> tags without HTML entity escaping (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. When the token content contains a double-quote character, it breaks out of the <code>alt</code> attribute context, allowing the attacker to inject additional HTML attributes including event handlers.</p>
+<p><strong>Advisory-disclosed PoC payload (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>:</strong></p>
+<div class="codehilite"><pre><span></span><code>![&quot; onerror=&quot;require(&#39;child_process&#39;).exec(&#39;open -a calculator&#39;)](x)
+</code></pre></div>
+
+<p><strong>Resulting HTML output (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;x&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">onerror</span><span class="o">=</span><span class="s">&quot;require(&#39;child_process&#39;).exec(&#39;open -a calculator&#39;)&quot;</span> <span class="p">/&gt;</span>
+</code></pre></div>
+
+<p>The double-quote in the payload closes the <code>alt</code> attribute, and the remainder is parsed by the browser as an <code>onerror</code> event handler attribute.</p>
+<h3 id="72-vulnerable-component-promptreply-streaming-renderer">7.2 Vulnerable Component: PromptReply Streaming Renderer</h3>
+<p><strong>File:</strong> <code>frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/PromptReply/index.jsx</code> (line 99 per GHSA) <a href="#ref-2" class="cite-ref"><sup>2</sup></a></p>
+<p>The <code>PromptReply</code> component is responsible for rendering assistant responses in real time during the streaming phase. It uses <code>dangerouslySetInnerHTML</code> to inject the rendered markdown output directly into the DOM without DOMPurify sanitisation (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">dangerouslySetInnerHTML</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">__html</span><span class="o">:</span><span class="w"> </span><span class="nx">renderMarkdown</span><span class="p">(</span><span class="nx">contentRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="p">}}</span>
+</code></pre></div>
+
+<h3 id="73-non-vulnerable-contrast-historicalmessage">7.3 Non-Vulnerable Contrast: HistoricalMessage</h3>
+<p><strong>File:</strong> <code>HistoricalMessage</code> component (line 280 per GHSA) <a href="#ref-2" class="cite-ref"><sup>2</sup></a></p>
+<p>The <code>HistoricalMessage</code> component, used for saved/non-streaming messages, correctly applies <code>DOMPurify.sanitize()</code> before DOM injection (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. The vulnerability is therefore specific to the real-time streaming code path.</p>
+<h3 id="74-escalation-factor-insecure-electron-configuration">7.4 Escalation Factor: Insecure Electron Configuration</h3>
+<p>The AnythingLLM Desktop Electron application runs with (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>:</p>
+<ul>
+<li><code>nodeIntegration: true</code>: grants renderer-process JavaScript direct access to Node.js built-in modules</li>
+<li><code>contextIsolation: false</code>: disables the security boundary between the web page context and the Electron preload script context</li>
+</ul>
+<p>This configuration is the application default, not a user-toggled option (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. Together, these settings allow any JavaScript executing in the renderer process to invoke Node.js built-in modules and execute arbitrary operating system commands with the full privileges of the AnythingLLM Desktop process.</p>
+<h3 id="75-patch-analysis">7.5 Patch Analysis</h3>
+<p><strong>Commit:</strong> <code>9e2d144dc8be6fab29f560f5bcdaa9ef7dbb4214</code> <a href="#ref-4" class="cite-ref"><sup>4</sup></a>
+<strong>Change:</strong> 4 additions, 1 deletion in <code>PromptReply/index.jsx</code></p>
+<p>The patch wraps the <code>renderMarkdown()</code> output in <code>DOMPurify.sanitize()</code> before DOM injection (commit <code>9e2d144</code>) <a href="#ref-4" class="cite-ref"><sup>4</sup></a>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Before (vulnerable):</span>
+<span class="nx">dangerouslySetInnerHTML</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">__html</span><span class="o">:</span><span class="w"> </span><span class="nx">renderMarkdown</span><span class="p">(</span><span class="nx">contentRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="p">}}</span>
+
+<span class="c1">// After (patched):</span>
+<span class="nx">dangerouslySetInnerHTML</span><span class="o">=</span><span class="p">{{</span>
+<span class="w">  </span><span class="nx">__html</span><span class="o">:</span><span class="w"> </span><span class="nx">DOMPurify</span><span class="p">.</span><span class="nx">sanitize</span><span class="p">(</span><span class="nx">renderMarkdown</span><span class="p">(</span><span class="nx">contentRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)),</span>
+<span class="p">}}</span>
+</code></pre></div>
+
+<p>An import for DOMPurify from the existing project utility is also added (commit <code>9e2d144</code>) <a href="#ref-4" class="cite-ref"><sup>4</sup></a>:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">DOMPurify</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/utils/chat/purify&quot;</span><span class="p">;</span>
+</code></pre></div>
+
+<p><strong>Residual risk (RAXE assessment):</strong> The patch addresses the DOM injection point but does not fix the underlying entity escaping gap in the markdown image renderer (<code>markdown.js</code>). The DOMPurify layer provides defence in depth by stripping event handler attributes before the content reaches the DOM. However, the unescaped markdown renderer remains a latent weakness that could be exploited if DOMPurify is bypassed or removed in future refactoring. The insecure Electron configuration (<code>nodeIntegration: true</code>, <code>contextIsolation: false</code>) is also not addressed by this patch, meaning any future XSS vulnerability in any component would similarly escalate to RCE.</p>
+<hr />
+</section><section class="adv-section" id="section-8-confidence-and-validation"><h2 id="8-confidence-and-validation">8. Confidence and Validation</h2>
+<p><strong>Assessment Confidence:</strong> HIGH (<code class="data data-pct">90%</code>)</p>
+<table class="adv-table">
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Status</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Vendor Advisory</strong></td>
+<td>Confirmed</td>
+<td><code>GHSA-rrmw-2j6x-4mf2</code> published by Mintplex-Labs with full technical details (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a></td>
+</tr>
+<tr>
+<td><strong>CVE Assigned</strong></td>
+<td>Confirmed</td>
+<td><code>CVE-2026-32626</code> published 2026-03-16. NVD vulnStatus: "Analyzed" (NVD) <a href="#ref-1" class="cite-ref"><sup>1</sup></a></td>
+</tr>
+<tr>
+<td><strong>PoC Available</strong></td>
+<td>Advisory-disclosed</td>
+<td>Complete PoC payload published in the GHSA advisory (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. No independent laboratory reproduction performed by RAXE Labs</td>
+</tr>
+<tr>
+<td><strong>Patch Available</strong></td>
+<td>Confirmed</td>
+<td>Version <code>1.11.2</code> contains the fix. Commit <code>9e2d144</code> verified in GHSA references (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a></td>
+</tr>
+<tr>
+<td><strong>Exploited in Wild</strong></td>
+<td>No known exploitation</td>
+<td>EPSS: <code class="data data-pct">0.16%</code> (36th percentile) as of 2026-03-19 (FIRST.org EPSS) <a href="#ref-3" class="cite-ref"><sup>3</sup></a>. No confirmed in-the-wild exploitation reported at time of publication</td>
+</tr>
+</tbody>
+</table>
+<h3 id="validation-limitations">Validation Limitations</h3>
+<ul>
+<li>No independent laboratory reproduction was performed. The conceptual analysis is derived entirely from the GHSA advisory disclosure and patch commit analysis.</li>
+<li>The exact rendering behaviour may differ across AnythingLLM versions or Electron builds.</li>
+<li>Whether the markdown image renderer entity-escaping gap was addressed in a separate commit (beyond <code>9e2d144</code>) has not been verified.</li>
+<li>Whether the underlying XSS exists in the server/Docker web interface (without the RCE escalation) has not been independently confirmed.</li>
+</ul>
+<hr />
+</section><section class="adv-section" id="section-9-detection-signatures"><h2 id="9-detection-signatures">9. Detection Signatures</h2>
+<p>The following detection rules are <strong>Lane 3: Hunting / Heuristic</strong> grade. They detect suspicious patterns that may indicate exploitation or exposure but will produce false positives in certain environments. They are experimental and should be tuned to the specific deployment before production use (RAXE assessment).</p>
+<h3 id="91-sigma-rule-suspicious-child-process-spawned-by-anythingllm-desktop-windows">9.1 Sigma Rule: Suspicious Child Process Spawned by AnythingLLM Desktop (Windows)</h3>
+<p>This rule detects the post-exploitation indicator: anomalous child processes spawned by the AnythingLLM Electron process. Successful exploitation of <code>CVE-2026-32626</code> results in the Electron process invoking Node.js APIs to spawn operating system commands (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. This is the primary externally observable artefact of initial exploitation; subsequent post-exploitation activity may generate additional network, filesystem, or persistence indicators (RAXE assessment).</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Suspicious Child Process Spawned by AnythingLLM Desktop (Electron)</span>
+<span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">b4e7c3a1-9f02-4d8e-a6b5-1c3d5e7f9a0b</span>
+<span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experimental</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">  </span><span class="no">Detects child processes spawned by the AnythingLLM Desktop Electron</span>
+<span class="w">  </span><span class="no">process that are inconsistent with normal application behaviour.</span>
+<span class="w">  </span><span class="no">CVE-2026-32626 (GHSA-rrmw-2j6x-4mf2) allows XSS in the streaming</span>
+<span class="w">  </span><span class="no">chat renderer to escalate to arbitrary OS command execution.</span>
+<span class="w">  </span><span class="no">Classification: Lane 3, Hunting / Heuristic.</span>
+<span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RAXE Labs</span>
+<span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026/03/20</span>
+<span class="nt">references</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://nvd.nist.gov/vuln/detail/CVE-2026-32626</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/Mintplex-Labs/anything-llm/security/advisories/GHSA-rrmw-2j6x-4mf2</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cve.2026.32626</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attack.execution</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attack.t1059</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attack.t1059.004</span>
+<span class="nt">logsource</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process_creation</span>
+<span class="w">  </span><span class="nt">product</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">windows</span>
+<span class="nt">detection</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selection_parent_windows</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ParentImage|endswith</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\AnythingLLM.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\Electron.exe&#39;</span>
+<span class="w">    </span><span class="nt">ParentImage|contains</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;AnythingLLM&#39;</span>
+<span class="w">  </span><span class="nt">selection_suspicious_child</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Image|endswith</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\cmd.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\powershell.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\pwsh.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\bash.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\wscript.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\cscript.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\mshta.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\certutil.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\bitsadmin.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\curl.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\whoami.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\net.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\net1.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\reg.exe&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;\rundll32.exe&#39;</span>
+<span class="w">  </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">selection_parent_windows and selection_suspicious_child</span>
+<span class="nt">falsepositives</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnythingLLM auto-update mechanisms that invoke system utilities</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Electron runtime spawning helper processes during normal operation</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Plugin or extension systems within AnythingLLM that execute shell commands</span>
+<span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high</span>
+</code></pre></div>
+
+<p><strong>Detection caveat (RAXE assessment):</strong> The <code>condition</code> requires both <code>selection_parent_windows</code> filters to match: <code>ParentImage|endswith</code> (matching <code>\AnythingLLM.exe</code> or <code>\Electron.exe</code>) AND <code>ParentImage|contains: 'AnythingLLM'</code>. This means a generic <code>Electron.exe</code> parent whose path does not include "AnythingLLM" will not trigger the rule. Consequently, renamed or relocated AnythingLLM installations where the install directory no longer contains "AnythingLLM" in the path will evade this detection. Organisations with non-standard installation paths should adjust the <code>ParentImage|contains</code> filter accordingly.</p>
+<h3 id="92-sigma-rule-suspicious-child-process-spawned-by-anythingllm-desktop-macos">9.2 Sigma Rule: Suspicious Child Process Spawned by AnythingLLM Desktop (macOS)</h3>
+<p>The advisory-disclosed PoC specifically demonstrates macOS exploitation using the <code>open</code> command (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>.</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Suspicious Child Process Spawned by AnythingLLM Desktop (macOS)</span>
+<span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">c5f8d4b2-a013-5e9f-b7c6-2d4e6f8a0b1c</span>
+<span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experimental</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">  </span><span class="no">macOS variant. Detects child processes spawned by the AnythingLLM</span>
+<span class="w">  </span><span class="no">Desktop Electron process on macOS. Classification: Lane 3 --</span>
+<span class="w">  </span><span class="no">Hunting / Heuristic. Note: this rule uses logsource.product: macos</span>
+<span class="w">  </span><span class="no">and does not cover Linux deployments.</span>
+<span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RAXE Labs</span>
+<span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026/03/20</span>
+<span class="nt">references</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://nvd.nist.gov/vuln/detail/CVE-2026-32626</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/Mintplex-Labs/anything-llm/security/advisories/GHSA-rrmw-2j6x-4mf2</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cve.2026.32626</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attack.execution</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attack.t1059</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attack.t1059.004</span>
+<span class="nt">logsource</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process_creation</span>
+<span class="w">  </span><span class="nt">product</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">macos</span>
+<span class="nt">detection</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selection_parent_macos</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ParentImage|endswith</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/AnythingLLM&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/Electron&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/anythingllm&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/electron&#39;</span>
+<span class="w">    </span><span class="nt">ParentCommandLine|contains</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;AnythingLLM&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;anythingllm&#39;</span>
+<span class="w">  </span><span class="nt">selection_suspicious_child_unix</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Image|endswith</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/sh&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/bash&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/zsh&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/dash&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/python3&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/python&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/perl&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/ruby&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/curl&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/wget&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/nc&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/ncat&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/open&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/osascript&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/xdg-open&#39;</span>
+<span class="w">  </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">selection_parent_macos and selection_suspicious_child_unix</span>
+<span class="nt">falsepositives</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnythingLLM auto-update mechanisms on macOS</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Electron runtime spawning GPU or utility helper processes</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The macOS &#39;open&#39; command is common in legitimate Electron usage</span>
+<span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high</span>
+</code></pre></div>
+
+<h3 id="93-sigma-rule-malicious-markdown-image-payload-in-content">9.3 Sigma Rule: Malicious Markdown Image Payload in Content</h3>
+<p>This rule requires non-standard log sources: custom log forwarding from the application database, RAG document ingestion logs, or network-level LLM API response inspection. AnythingLLM Desktop does not produce standard application logs containing chat message content (RAXE assessment).</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Malicious Markdown Image Payload in AnythingLLM Chat Content</span>
+<span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">d6a9e5c3-b124-6fa0-c8d7-3e5f7a9b1c2d</span>
+<span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experimental</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">  </span><span class="no">Detects markdown image syntax containing HTML event handler injection</span>
+<span class="w">  </span><span class="no">patterns in content associated with AnythingLLM chat sessions or RAG</span>
+<span class="w">  </span><span class="no">document ingestion. Classification: Lane 3, Hunting / Heuristic.</span>
+<span class="w">  </span><span class="no">Requires non-standard log sources.</span>
+<span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RAXE Labs</span>
+<span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026/03/20</span>
+<span class="nt">references</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://nvd.nist.gov/vuln/detail/CVE-2026-32626</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/Mintplex-Labs/anything-llm/security/advisories/GHSA-rrmw-2j6x-4mf2</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cve.2026.32626</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attack.initial_access</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attack.t1190</span>
+<span class="nt">logsource</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application</span>
+<span class="w">  </span><span class="nt">product</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anythingllm</span>
+<span class="nt">detection</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selection_onerror_require</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">message_content|contains</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;onerror=&quot;require&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;onerror=&#39;require&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;onerror=require&#39;</span>
+<span class="w">  </span><span class="nt">selection_markdown_event_handlers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">message_content|contains</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;&quot;</span><span class="nv"> </span><span class="s">onerror=&quot;&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&#39;</span><span class="nv"> </span><span class="s">onerror=&#39;&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;&quot;</span><span class="nv"> </span><span class="s">onload=&quot;&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&#39;</span><span class="nv"> </span><span class="s">onload=&#39;&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;&quot;</span><span class="nv"> </span><span class="s">onfocus=&quot;&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&#39;</span><span class="nv"> </span><span class="s">onfocus=&#39;&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;&quot;</span><span class="nv"> </span><span class="s">onmouseover=&quot;&#39;</span>
+<span class="w">  </span><span class="nt">selection_node_api_in_content</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">message_content|contains</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;require(&#39;child_process&#39;)&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;require(&quot;child_process&quot;)&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;process.mainModule&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;require(&quot;fs&quot;)&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;require(&#39;fs&#39;)&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;require(&quot;os&quot;)&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;require(&#39;os&#39;)&quot;</span>
+<span class="w">  </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">    </span><span class="no">selection_onerror_require or</span>
+<span class="w">    </span><span class="no">(selection_markdown_event_handlers and selection_node_api_in_content)</span>
+<span class="nt">falsepositives</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security training materials containing XSS payload examples</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Code review discussions referencing the CVE-2026-32626 PoC payload</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Legitimate markdown content quoting HTML event handler syntax in code blocks</span>
+<span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">critical</span>
+</code></pre></div>
+
+<h3 id="94-yara-rules-vulnerable-installation-detection-and-payload-content-scan">9.4 YARA Rules: Vulnerable Installation Detection and Payload Content Scan</h3>
+<p>Two YARA rules are provided for file-based detection (RAXE assessment):</p>
+<ul>
+<li>
+<p><strong>Rule 1 (<code>RAXE_2026_038_Vulnerable_AnythingLLM_Streaming_Renderer</code>):</strong> Identifies vulnerable AnythingLLM Desktop installations by matching the pre-patch code pattern, specifically <code>dangerouslySetInnerHTML</code> with <code>renderMarkdown()</code> in the <code>PromptReply</code> component without <code>DOMPurify</code> wrapping. Must be run against extracted Electron application contents (asar archive or <code>resources/app/</code> directory), not the binary executable.</p>
+</li>
+<li>
+<p><strong>Rule 2 (<code>RAXE_2026_038_AnythingLLM_XSS_Payload_In_Content</code>):</strong> Identifies the advisory-disclosed exploit payload pattern in files that could be ingested into RAG pipelines or stored in chat databases: markdown image syntax with attribute breakout injecting event handlers that invoke Node.js APIs.</p>
+</li>
+</ul>
+<p>The full YARA rule source is maintained in the finding detection artefacts. Both rules are Lane 3: Hunting / Heuristic grade and should be tuned before production deployment (RAXE assessment).</p>
+<h3 id="detection-coverage-gaps">Detection Coverage Gaps</h3>
+<p>Neither Sigma nor YARA rules detect the XSS injection at the application layer within the Electron renderer process. The vulnerability fires entirely within the browser context before any externally observable artefact is created. Only the post-exploitation process spawning (Sigma Rules 1/2) or pre-delivery content inspection (Sigma Rule 3, YARA Rule 2) are detectable with conventional security tooling (RAXE assessment).</p>
+<hr />
+</section><section class="adv-section" id="section-10-detection-and-mitigation"><h2 id="10-detection-and-mitigation">10. Detection and Mitigation</h2>
+<h3 id="101-immediate-actions">10.1 Immediate Actions</h3>
+<p><strong>Priority 1: Patch.</strong>
+- Upgrade all AnythingLLM Desktop installations to version <code>1.11.2</code> or later. The patch applies DOMPurify sanitisation to the streaming rendering path, blocking the XSS injection (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>.</p>
+<p><strong>Priority 2: Deployment Variant Assessment.</strong>
+- Organisations running the Desktop variant should evaluate migration to the Docker or server deployment. The server variant does not include Electron and therefore does not expose the XSS-to-RCE escalation path (RAXE assessment).</p>
+<h3 id="102-interim-mitigations-if-patching-is-delayed">10.2 Interim Mitigations (If Patching Is Delayed)</h3>
+<ul>
+<li><strong>Restrict RAG document sources</strong> to trusted, vetted origins until patching is complete. The primary attack vector is poisoned content delivered through the RAG ingestion pipeline (RAXE assessment).</li>
+<li><strong>Monitor Electron child processes</strong> using endpoint detection and response (EDR) tooling. Deploy Sigma Rule 1 (Section 9.1/9.2) to detect anomalous process spawning from the AnythingLLM Electron process (RAXE assessment).</li>
+<li><strong>Network-level content inspection</strong> of LLM API responses may detect payload delivery before it reaches the client. Deploy Sigma Rule 3 (Section 9.3) if log forwarding infrastructure is available (RAXE assessment).</li>
+</ul>
+<h3 id="103-ongoing-monitoring">10.3 Ongoing Monitoring</h3>
+<ul>
+<li>Monitor for NVD Primary CVSS score publication, which may adjust the current CNA-submitted 9.6 score (NVD) <a href="#ref-1" class="cite-ref"><sup>1</sup></a>.</li>
+<li>Monitor EPSS score trajectory; an increase from the current <code class="data data-pct">0.16%</code> would indicate growing exploitation interest (FIRST.org EPSS) <a href="#ref-3" class="cite-ref"><sup>3</sup></a>.</li>
+<li>Review the Electron configuration in future AnythingLLM Desktop releases for hardening of the <code>nodeIntegration</code> and <code>contextIsolation</code> settings (RAXE assessment).</li>
+</ul>
+<hr />
+</section><section class="adv-section" id="section-11-indicators-of-compromise"><h2 id="11-indicators-of-compromise">11. Indicators of Compromise</h2>
+<p>The following are <strong>behavioural indicators</strong> derived from the advisory-disclosed exploitation chain (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a>. No confirmed in-the-wild IOCs (hashes, IPs, domains) exist for this vulnerability at time of publication. These indicators are Lane 3: Hunting grade and will produce false positives in some environments (RAXE assessment).</p>
+<table class="adv-table">
+<thead>
+<tr>
+<th>Type</th>
+<th>Indicator</th>
+<th>Context</th>
+<th>False Positive Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Process</strong></td>
+<td>Shell process (<code>cmd.exe</code>, <code>powershell.exe</code>, <code>bash</code>, <code>sh</code>, <code>zsh</code>) spawned as child of AnythingLLM/Electron process</td>
+<td>Post-exploitation: Node.js APIs invoked from renderer (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a></td>
+<td>Medium; Electron apps may legitimately spawn child processes for updates or plugins (RAXE assessment)</td>
+</tr>
+<tr>
+<td><strong>Process</strong></td>
+<td><code>open</code> (macOS), <code>xdg-open</code> (Linux) spawned as child of AnythingLLM/Electron process</td>
+<td>Advisory-disclosed PoC uses <code>open -a calculator</code> on macOS (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a></td>
+<td>High; <code>open</code> is common in legitimate Electron usage on macOS (RAXE assessment)</td>
+</tr>
+<tr>
+<td><strong>Content</strong></td>
+<td>Markdown image syntax containing <code>onerror=</code>, <code>onload=</code>, or other HTML event handler attributes in RAG documents or chat content</td>
+<td>Pre-delivery payload pattern: attribute breakout in markdown image alt text (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a></td>
+<td>Medium; security documentation may contain example payloads (RAXE assessment)</td>
+</tr>
+<tr>
+<td><strong>Content</strong></td>
+<td>Node.js module references (<code>child_process</code>, <code>fs</code>, <code>os</code>) or <code>process.mainModule</code> appearing in LLM chat responses or RAG document content</td>
+<td>Payload invokes Node.js APIs for command execution (<code>GHSA-rrmw-2j6x-4mf2</code>) <a href="#ref-2" class="cite-ref"><sup>2</sup></a></td>
+<td>Low; these strings should not appear in normal RAG content (RAXE assessment)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</section><section class="adv-section" id="section-12-strategic-context"><h2 id="12-strategic-context">12. Strategic Context</h2>
+<h3 id="121-llm-platform-security">12.1 LLM Platform Security</h3>
+<p>This vulnerability exemplifies a class of security risks emerging in LLM-powered applications where the rendering layer, designed for dynamic, real-time content display, introduces injection surfaces that traditional web application security patterns do not fully address (RAXE assessment). The distinction between streaming and historical message rendering paths, and the inconsistent application of sanitisation between the two, represents a pattern likely replicated across other LLM chat interfaces.</p>
+<h3 id="122-electron-based-ai-application-risk">12.2 Electron-Based AI Application Risk</h3>
+<p>The AnythingLLM Desktop configuration (<code>nodeIntegration: true</code>, <code>contextIsolation: false</code>) represents a well-documented Electron security anti-pattern that converts any XSS vulnerability into a full RCE. The Electron security documentation explicitly warns against this configuration. Its presence in a security-sensitive AI application underscores the gap between AI/ML development velocity and secure application engineering practices (RAXE assessment). Defenders should audit all Electron-based AI desktop applications in their environment for similar misconfigurations.</p>
+<h3 id="123-rag-pipeline-as-attack-surface">12.3 RAG Pipeline as Attack Surface</h3>
+<p>The viable delivery vectors for this vulnerability (poisoned RAG documents and compromised LLM endpoints) highlight the RAG ingestion pipeline as a trust boundary that many organisations do not adequately monitor or constrain. Content entering a RAG pipeline may traverse multiple trust boundaries before being rendered to an end user, and the rendering layer may not be designed to handle adversarial input. This aligns with emerging threat patterns around indirect prompt injection and data poisoning in AI systems (RAXE assessment).</p>
+<h3 id="124-streaming-vs-rendered-output-security">12.4 Streaming vs Rendered Output Security</h3>
+<p>The fact that the vulnerability exists only in the streaming path (not in saved message display) introduces a subtlety: security testing that focuses on the final rendered state of chat messages would miss this vulnerability entirely, because the DOMPurify sanitisation in <code>HistoricalMessage</code> would mask the underlying injection. This suggests that security assessments of LLM chat interfaces should specifically test the streaming/incremental rendering path as a distinct attack surface (RAXE assessment).</p>
+<hr />
+</section><section class="adv-section" id="section-13-references"><h2 id="13-references">13. References</h2>
+<ol>
+<li id="ref-1"><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-32626">CVE-2026-32626, NVD</a> · CVSS v3.1: 9.6 (CNA-submitted Secondary) · vulnStatus: Analyzed · Published 2026-03-16</li>
+<li id="ref-2"><a href="https://github.com/Mintplex-Labs/anything-llm/security/advisories/GHSA-rrmw-2j6x-4mf2">GHSA-rrmw-2j6x-4mf2: AnythingLLM Desktop Streaming XSS to RCE</a> · CVSS v3.1: 9.7 · Reporters: P3ngu1nW, jackfromeast, chenjj</li>
+<li id="ref-3"><a href="https://api.first.org/data/v1/epss?cve=CVE-2026-32626">EPSS: CVE-2026-32626</a> · Score: 0.16% (36th percentile), 2026-03-19</li>
+<li id="ref-4"><a href="https://github.com/Mintplex-Labs/anything-llm/commit/9e2d144dc8be6fab29f560f5bcdaa9ef7dbb4214">Patch commit 9e2d144</a> · Mintplex-Labs/anything-llm</li>
+</ol></section>
+    </article>
+  </div>
+
+  <!-- Footer -->
+  <footer class="adv-footer">
+    <div class="container">
+      <div class="adv-footer-tlp">TLP:GREEN · Distribution as per TLP protocol</div>
+      <div class="adv-footer-attribution">RAXE Labs Security Research</div>
+      <div class="adv-footer-classification">RAXE-2026-038 · CRITICAL</div>
+    </div>
+  </footer>
+
+  </main>
+
+  
+
+  <!-- ── Footer ── -->
+<footer class="section" style="border-top: 1px solid var(--border-default);">
+  <div class="container">
+
+    <!-- Footer columns -->
+    <div class="grid-footer-cols">
+
+      <!-- Brand column -->
+      <div>
+        <a href="/" class="nav-logo" aria-label="RAXE Home" style="margin-bottom: var(--space-4); display: inline-block;">
+          <img src="/assets/logo/logo-name-only.png" alt="RAXE" height="27">
+        </a>
+        <p style="font-size: var(--fs-caption); color: var(--text-muted); max-width: 260px; margin-top: var(--space-3);">
+          Runtime AI Security Platform.<br>
+          Secure AI traffic. Secure AI execution.<br>
+          Research-powered threat intelligence.
+        </p>
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-5);">
+          <a href="https://github.com/raxe-ai" class="nav-link" target="_blank" rel="noopener" aria-label="GitHub" style="font-size: var(--fs-label); color: var(--text-dim);">GitHub</a>
+          <a href="https://twitter.com/raxe_ai" class="nav-link" target="_blank" rel="noopener" aria-label="Twitter" style="font-size: var(--fs-label); color: var(--text-dim);">Twitter</a>
+          <a href="https://linkedin.com/company/raxe-ai" class="nav-link" target="_blank" rel="noopener" aria-label="LinkedIn" style="font-size: var(--fs-label); color: var(--text-dim);">LinkedIn</a>
+        </div>
+      </div>
+
+      <!-- Platform -->
+      <div>
+        <h4 style="font-family: var(--font-mono); font-size: 10px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-dim); margin-bottom: var(--space-4);">Platform</h4>
+        <ul style="display: flex; flex-direction: column; gap: var(--space-2);">
+          <li><a href="/platform" style="font-size: var(--fs-caption); color: var(--text-muted); transition: color var(--duration-fast) var(--ease-default);">Overview</a></li>
+          <li><a href="/gateway" style="font-size: var(--fs-caption); color: var(--text-muted);">Gateway</a></li>
+          <li><a href="/sensor" style="font-size: var(--fs-caption); color: var(--text-muted);">Sensor</a></li>
+          <li><a href="/intelligence" style="font-size: var(--fs-caption); color: var(--text-muted);">Threat Intelligence</a></li>
+          <li><a href="/integrations" style="font-size: var(--fs-caption); color: var(--text-muted);">Integrations</a></li>
+          <li><a href="/solutions" style="font-size: var(--fs-caption); color: var(--text-muted);">Solutions</a></li>
+        </ul>
+      </div>
+
+      <!-- Research -->
+      <div>
+        <h4 style="font-family: var(--font-mono); font-size: 10px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-dim); margin-bottom: var(--space-4);">Research</h4>
+        <ul style="display: flex; flex-direction: column; gap: var(--space-2);">
+          <li><a href="/labs" style="font-size: var(--fs-caption); color: var(--text-muted);">RAXE Labs</a></li>
+          <li><a href="/labs/threat-intelligence" style="font-size: var(--fs-caption); color: var(--text-muted);">Threat Intelligence</a></li>
+          <li><a href="/labs/advisories" style="font-size: var(--fs-caption); color: var(--text-muted);">Security Advisories</a></li>
+          <li><a href="/labs/radar" style="font-size: var(--fs-caption); color: var(--text-muted);">Research Radar</a></li>
+          <li><a href="/labs/cold-validation" style="font-size: var(--fs-caption); color: var(--text-muted);">Cold Validation</a></li>
+        </ul>
+      </div>
+
+      <!-- Enterprise -->
+      <div>
+        <h4 style="font-family: var(--font-mono); font-size: 10px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-dim); margin-bottom: var(--space-4);">Enterprise</h4>
+        <ul style="display: flex; flex-direction: column; gap: var(--space-2);">
+          <li><a href="/enterprise" style="font-size: var(--fs-caption); color: var(--text-muted);">Enterprise Overview</a></li>
+          <li><a href="/enterprise/prospectus" style="font-size: var(--fs-caption); color: var(--text-muted);">Executive Briefing</a></li>
+          <li><a href="/enterprise/runtime-control" style="font-size: var(--fs-caption); color: var(--text-muted);">Runtime Control</a></li>
+          <li><a href="/enterprise/governance" style="font-size: var(--fs-caption); color: var(--text-muted);">Governance &amp; Evidence</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 style="font-family: var(--font-mono); font-size: 10px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-dim); margin-bottom: var(--space-4);">Company</h4>
+        <ul style="display: flex; flex-direction: column; gap: var(--space-2);">
+          <li><a href="/about" style="font-size: var(--fs-caption); color: var(--text-muted);">About</a></li>
+          <li><a href="/contact" style="font-size: var(--fs-caption); color: var(--text-muted);">Talk to an Engineer</a></li>
+          <li><a href="/pricing" style="font-size: var(--fs-caption); color: var(--text-muted);">Pricing</a></li>
+          <li><a href="/trust" style="font-size: var(--fs-caption); color: var(--text-muted);">Trust &amp; Security</a></li>
+          <li><a href="/compare" style="font-size: var(--fs-caption); color: var(--text-muted);">Why RAXE</a></li>
+        </ul>
+      </div>
+
+      <!-- Developers -->
+      <div>
+        <h4 style="font-family: var(--font-mono); font-size: 10px; font-weight: var(--weight-bold); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-dim); margin-bottom: var(--space-4);">Developers</h4>
+        <ul style="display: flex; flex-direction: column; gap: var(--space-2);">
+          <li><a href="/developers" style="font-size: var(--fs-caption); color: var(--text-muted);">Get Started</a></li>
+          <li><a href="https://docs.raxe.ai" style="font-size: var(--fs-caption); color: var(--text-muted);" target="_blank" rel="noopener">Documentation</a></li>
+          <li><a href="https://github.com/raxe-ai/raxe-ce" style="font-size: var(--fs-caption); color: var(--text-muted);" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="/live-demo" style="font-size: var(--fs-caption); color: var(--text-muted);">Live Demo</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <hr class="divider">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-6); flex-wrap: wrap; gap: var(--space-4);">
+      <p style="font-size: var(--fs-label); color: var(--text-dim);">
+        &copy; 2026 RAXE AI. All rights reserved.
+      </p>
+      <div style="display: flex; gap: var(--space-6);">
+        <a href="/trust" style="font-size: var(--fs-label); color: var(--text-dim);">Trust</a>
+        <a href="/.well-known/security.txt" style="font-size: var(--fs-label); color: var(--text-dim);">security.txt</a>
+        <a href="/privacy" style="font-size: var(--fs-label); color: var(--text-dim);">Privacy</a>
+        <a href="/terms" style="font-size: var(--fs-label); color: var(--text-dim);">Terms</a>
+        <a href="#" id="manage-cookies" style="font-size: var(--fs-label); color: var(--text-dim);">Cookies</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+  <!-- Cookie Consent Banner — true opt-in, no auto-accept -->
+<div id="cookie-consent" class="cookie-consent" style="display: none;">
+  <div class="cookie-consent-inner">
+    <p>Optional analytics cookies help us understand site usage. No ads or cross-site tracking. <a href="/privacy#cookies">Privacy</a></p>
+    <div class="cookie-consent-actions">
+      <button id="cookie-accept" class="btn btn-primary btn-sm">OK</button>
+      <button id="cookie-decline" class="btn btn-ghost btn-sm">Decline</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var consent = localStorage.getItem('raxe_analytics_consent');
+
+  function hideBanner() {
+    var banner = document.getElementById('cookie-consent');
+    if (banner) banner.style.display = 'none';
+  }
+
+  if (consent === null) {
+    setTimeout(function() {
+      var banner = document.getElementById('cookie-consent');
+      if (banner) banner.style.display = 'flex';
+
+    }, 1000);
+  }
+
+  document.addEventListener('click', function(e) {
+    if (e.target.id === 'cookie-accept') {
+      if (window.raxeConsent) window.raxeConsent.grant();
+      hideBanner();
+    }
+    if (e.target.id === 'cookie-decline') {
+      if (window.raxeConsent) window.raxeConsent.deny();
+      hideBanner();
+    }
+    if (e.target.id === 'manage-cookies') {
+      e.preventDefault();
+      if (window.raxeConsent) window.raxeConsent.revoke();
+      var banner = document.getElementById('cookie-consent');
+      if (banner) banner.style.display = 'flex';
+    }
+  });
+})();
+</script>
+
+  
+
+  <!-- Core JS modules -->
+  <script type="module" src="/assets/js/lib/dom.js"></script>
+  <script type="module" src="/assets/js/lib/utils.js"></script>
+  <script type="module" src="/assets/js/modules/nav.js"></script>
+  <script type="module" src="/assets/js/modules/copy.js"></script>
+  <script src="/assets/js/lib/attribution.js"></script>
+  <script src="/assets/js/lib/intent-score.js"></script>
+  <script type="module" src="/assets/js/lib/analytics.js"></script>
+  
+<script src="/assets/js/pages/advisory-report.js"></script>
+
+</body>
+</html>

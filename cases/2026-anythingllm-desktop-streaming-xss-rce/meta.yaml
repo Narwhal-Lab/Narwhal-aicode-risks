@@ -1,0 +1,47 @@
+slug: "2026-anythingllm-desktop-streaming-xss-rce"
+title_en: "AnythingLLM Desktop Streaming XSS to RCE"
+title_cn: "AnythingLLM Desktop 流式响应 XSS 到远程代码执行"
+year: 2026
+disclosed: "2026-03-20"
+category: "domain-specific"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "GitHub CNA assigns CVSS 9.6 critical to CVE-2026-32626; the affected Desktop renderer can escalate streaming XSS into host command execution."
+cvss: 9.6
+cve: "CVE-2026-32626"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "AnythingLLM Desktop"
+  - "Electron"
+  - "LLM chat rendering pipeline"
+language:
+  - "JavaScript"
+  - "TypeScript"
+attack_surface:
+  - "Streaming LLM response"
+  - "Desktop chat renderer"
+  - "Electron integration"
+  - "Host OS command execution"
+references:
+  - title: "GitHub Security Advisory: Streaming Phase XSS to RCE via LLM Response Injection"
+    url: "https://github.com/Mintplex-Labs/anything-llm/security/advisories/GHSA-rrmw-2j6x-4mf2"
+  - title: "CVEProject cvelistV5: CVE-2026-32626"
+    url: "https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/32xxx/CVE-2026-32626.json"
+  - title: "RAXE Labs: AnythingLLM Desktop Streaming XSS to RCE"
+    url: "https://raxe.ai/labs/advisories/RAXE-2026-038"
+  - title: "Endor Labs: CVE-2026-32626"
+    url: "https://www.endorlabs.com/vulnerability/cve-2026-32626"
+  - title: "Tenable: CVE-2026-32626"
+    url: "https://www.tenable.com/cve/CVE-2026-32626"
+  - title: "OpenCVE: AnythingLLM CVE listing"
+    url: "https://app.opencve.io/cve/?product=anythingllm&vendor=mintplexlabs"
+tldr: "AnythingLLM Desktop let a malicious streaming LLM response escalate from XSS to host RCE."
+tags:
+  - "anythingllm"
+  - "electron"
+  - "xss"
+  - "rce"
+  - "llm-response"
+  - "desktop-ai"
+verification_notes: "Based on public advisories, CVE databases, technical analysis, and independent vulnerability databases. Public evidence supports the vulnerability and impact class; victim-specific compromise is only stated when the cited sources report it."
