@@ -8,8 +8,7 @@ severity: "critical"
 severity_basis: "cvss"
 severity_evidence: "CVE-2026-42824 assigned CVSS 9.0 critical score; one malicious URL click allows attackers to steal all internal corporate documents accessible to the victim's Office account via M365 Copilot prompt injection."
 cvss: "9.0"
-cve:
-  - "CVE-2026-42824"
+cve: "CVE-2026-42824"
 real_incident: true
 reproducible: true
 ai_tool:
