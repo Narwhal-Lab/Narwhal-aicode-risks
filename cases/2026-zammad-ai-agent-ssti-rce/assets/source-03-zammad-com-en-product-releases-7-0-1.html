@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" data-template="press-article" id="top" data-page-theme="Navy">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Security release: Zammad 7.0.1</title>
+	<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Security release: Zammad 7.0.1">
+	  
+	<meta name="description" content="Zammad 7.0.1 is a security patch that resolves vulnerabilities in Zammad 7.0. We recommend that all self-hosted users update promptly.">
+	<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Zammad 7.0.1 is a security patch that resolves vulnerabilities in Zammad 7.0. We recommend that all self-hosted users update promptly.">
+			  
+	<meta prefix="og: http://ogp.me/ns#" name="image" property="og:image" content="https://zammad.com/media/assets/assets/images/1601169394-1783437966/sharing-preview-1200x630-crop-q85.jpg">
+	<meta prefix="og: http://ogp.me/ns#" property="og:image:width" content="1200">
+	<meta prefix="og: http://ogp.me/ns#" property="og:image:height" content="630">
+	  
+	<meta prefix="og: http://ogp.me/ns#" property="og:type" content="website">
+	<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://zammad.com/en/product/releases/7-0-1">
+	<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en" />
+			  
+	<link rel="alternate" hreflang="de" href="https://zammad.com/de/produkt/releases/7-0-1">
+		  
+	<link rel="alternate" hreflang="en" href="https://zammad.com/en/product/releases/7-0-1">
+			  
+	<link rel="canonical" href="https://zammad.com/en/product/releases/7-0-1">
+			<link rel="alternate" type="application/rss+xml" title="Zammad Releases" href="https://zammad.com/en/product/releases.rss"/>
+		
+	  
+	<link rel="preload" href="https://zammad.com/assets/fonts/ClashDisplay-Semibold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+	  
+	<link rel="preload" href="https://zammad.com/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+	
+	
+		  
+	<link rel="icon" type="image/png" href="https://zammad.com/media/site/29cab0b9f8-1698589017/favicon-16x16.png" sizes="16x16">
+			  
+	<link rel="icon" type="image/png" href="https://zammad.com/media/site/b0c52ef9a0-1698589021/favicon-32x32.png" sizes="32x32">
+			  
+	<link rel="icon" type="image/svg" href="https://zammad.com/media/site/1ef14402d2-1698589017/favicon-32x32.svg" sizes="32x32">
+			  
+	<link rel="icon" type="image/png" href="https://zammad.com/media/site/2994b37827-1698589020/favicon-152x152.png" sizes="152x152">
+		
+	<link href="https://zammad.com/assets/css/style.1783437966.css" rel="stylesheet">  
+</head>
+<body>
+	<div class="secretPath"></div>
+
+	<header class="header">
+		<nav class="topbar">
+			<div class="topbar-inner container">
+												<a class="topbar-link" href="https://zammad.com/en/blog/de-long-iu-zammad-consultant">
+					<strong>Backstage with De Long:</strong> Between Workshops, Volunteering and River Surfing -&gt;				</a>
+								<ul class="topbar-menu">
+																	<li class="topbar-menu-entry">
+												<div class="dropdown" data-controller="Dropdown">
+							<button class="dropdown-button" type="button">
+								<span class="dropdown-button-label">Company</span>
+								<span class="icon icon-arrow-down-small dropdown-button-arrow" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#arrow-down-small" /></svg>
+	</span>
+</span>							</button>
+							<ul class="dropdown-menu">
+																<li>
+									<a href="https://zammad.com/en/company/about-us">About us</a>
+								</li>
+																<li>
+									<a href="https://zammad.com/en/company/open-source">Open Source</a>
+								</li>
+																<li>
+									<a href="https://zammad.com/en/company/spirit">Spirit</a>
+								</li>
+																<li>
+									<a href="https://zammad.com/en/company/jobs">Jobs</a>
+								</li>
+																<li>
+									<a href="https://zammad.com/en/company/press">Press</a>
+								</li>
+																<li>
+									<a href="https://zammad.com/en/company/contact">Contact</a>
+								</li>
+															</ul>
+						</div>
+											</li>
+																					<li class="topbar-menu-entry">
+												<a class="topbar-menu-entry-link" href="https://zammad.com/en/company/contact">
+														<span class="icon icon-contact topbar-menu-entry-link-icon" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#contact" /></svg>
+	</span>
+</span>														<span class="topbar-menu-entry-link-text">Contact</span>
+						</a>
+											</li>
+													<li class="topbar-menu-entry">
+						<div class="language-switch dropdown" data-controller="Dropdown">
+	<button class="language-switch-current dropdown-button" type="button">
+		<span class="icon icon-world dropdown-button-icon" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#world" /></svg>
+	</span>
+</span>		<span class="dropdown-button-label">English</span>
+		<span class="icon icon-arrow-down-small dropdown-button-arrow" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#arrow-down-small" /></svg>
+	</span>
+</span>	</button>
+	<nav class="language-switch-popover dropdown-menu">
+				<li>
+			<a href="https://zammad.com/de/produkt/releases/7-0-1" hreflang="de">
+								Deutsch			</a>
+		</li>
+				<li class="is-active">
+			<a href="https://zammad.com/en/product/releases/7-0-1" hreflang="en">
+								<span class="icon icon-checkmark" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 85.714285714286%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#checkmark" /></svg>
+	</span>
+</span>								English			</a>
+		</li>
+			</nav>
+</div>					</li>
+				</ul>
+			</div>
+		</nav>
+		<nav class="menu container" data-controller="Menu">
+	<a class="logo" href="https://zammad.com/en" title="Zammad"><span class="icon icon-logo" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 21.768707482993%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#logo" /></svg>
+	</span>
+</span></a>
+	<div class="menu-main">
+						<div class="menu-entry">
+			<a href="https://zammad.com/en/artificial-intelligence" class="menu-btn btn btn--menu">
+								<img src="https://zammad.com/media/pages/artificial-intelligence/a09ac182c8-1772031451/smart-assist.svg" alt="Zammad AI smart assistant icon" class="btn-icon" width="24" height="24">
+								<span class="btn-text">Zammad AI</span>
+							</a>
+					</div>
+						<div class="menu-entry">
+			<a href="https://zammad.com/en/product" class="menu-btn btn btn--menu menu-btn--has-submenu" aria-controls="menu" aria-expanded="false" id="product-menu-button">
+								<span class="btn-text">Product</span>
+								<span class="icon icon-open-small menu-btn-icon menu-btn-icon--arrow" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#open-small" /></svg>
+	</span>
+</span>				<span class="icon icon-close-small menu-btn-icon menu-btn-icon--close" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#close-small" /></svg>
+	</span>
+</span>							</a>
+						<div class="menu-page" data-mode="teaser" id="product-menu" role="dialog" aria-expanded="false" aria-labelledby="product-menu-button">
+				<svg class="menu-page-mouse-guard menu-page-mouse-guard--left" viewBox="0 0 1 1" preserveAspectRatio="none"><path d="M0,1 C0.5,1 1,0.5 1,0 L1,1 L0,1" /></svg>
+				<div class="menu-page-mouse-guard menu-page-mouse-guard--center"></div>
+				<svg class="menu-page-mouse-guard menu-page-mouse-guard--right" viewBox="0 0 1 1" preserveAspectRatio="none"><path d="m1 1c-.5 0-1-.5-1-1v1h1" /></svg>
+				<div class="menu-page-links">
+										<div class="menu-groups" data-width="half">
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">The Zammad Advantage</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/product">
+		Zammad at a Glance			</a>
+				</div>
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Inside the Product</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/product/features">
+		Features Overview			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/product/releases">
+		Releases			</a>
+				</div>
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Highlights</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/product/zammad-7-0">
+		Major Release: Zammad 7.0			</a>
+				</div>
+</div>				</div>
+												<div class="menu-page-teaser" data-theme="Navy">
+					<div class="menu-page-teaser-text">
+												<h2 class="menu-page-teaser-title">10 Reasons </h2>
+																		<div class="menu-page-teaser-description text-content"><p>Why teams of all sizes choose Zammad for structured, reliable support.</p></div>
+																		<a class="menu-page-teaser-btn btn btn--small btn--secondary" href="https://zammad.com/en/product/10-reasons-for-zammad">
+							<span class="icon icon-arrow-right-long btn-icon" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 40.740740740741%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#arrow-right-long" /></svg>
+	</span>
+</span>							<span class="btn-text">View all 10 reasons</span>
+						</a>
+											</div>
+					<figure class="media menu-page-teaser-media" style="--ratio: 1" data-orientation="landscape">
+									<img class="media-entry menu-page-teaser-media-element" src="https://zammad.com/media/pages/product/cd826f1e0b-1773046568/14ec68992fb1e5bdea23063cba61679ded26cc5b-300x300-crop-44-8-50-2.jpg" srcset="https://zammad.com/media/pages/product/cd826f1e0b-1773046568/14ec68992fb1e5bdea23063cba61679ded26cc5b-300x300-crop-44-8-50-2.jpg 300w 300h, https://zammad.com/media/pages/product/cd826f1e0b-1773046568/14ec68992fb1e5bdea23063cba61679ded26cc5b-600x600-crop-44-8-50-2.jpg 600w 600h, https://zammad.com/media/pages/product/cd826f1e0b-1773046568/14ec68992fb1e5bdea23063cba61679ded26cc5b-900x900-crop-44-8-50-2.jpg 900w 900h" sizes="300px" width="300" height="300" alt="Three people discuss together at a table with a laptop while collaborating on a project." loading="eager">
+								</figure>
+				</div>
+							</div>
+					</div>
+						<div class="menu-entry">
+			<a href="https://zammad.com/en/solutions" class="menu-btn btn btn--menu menu-btn--has-submenu" aria-controls="menu" aria-expanded="false" id="solutions-menu-button">
+								<span class="btn-text">Solutions</span>
+								<span class="icon icon-open-small menu-btn-icon menu-btn-icon--arrow" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#open-small" /></svg>
+	</span>
+</span>				<span class="icon icon-close-small menu-btn-icon menu-btn-icon--close" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#close-small" /></svg>
+	</span>
+</span>							</a>
+						<div class="menu-page" data-mode="teaser" id="solutions-menu" role="dialog" aria-expanded="false" aria-labelledby="solutions-menu-button">
+				<svg class="menu-page-mouse-guard menu-page-mouse-guard--left" viewBox="0 0 1 1" preserveAspectRatio="none"><path d="M0,1 C0.5,1 1,0.5 1,0 L1,1 L0,1" /></svg>
+				<div class="menu-page-mouse-guard menu-page-mouse-guard--center"></div>
+				<svg class="menu-page-mouse-guard menu-page-mouse-guard--right" viewBox="0 0 1 1" preserveAspectRatio="none"><path d="m1 1c-.5 0-1-.5-1-1v1h1" /></svg>
+				<div class="menu-page-links">
+										<div class="menu-groups" data-width="half">
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Zammad for</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/solutions/zammad-for-enterprises">
+		Enterprise			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/solutions/zammad-for-small-and-medium-sized-businesses">
+		Growing Business			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/solutions/zammad-for-startups">
+		Startup			</a>
+				</div>
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Use Cases</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/solutions/product-service-support">
+		Product &amp; Service			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/solutions/support-for-wholesale-and-retail">
+		Wholesale &amp; Retail			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/solutions/zammad-at-the-it-service-desk">
+		IT Service Desk			</a>
+				</div>
+</div>				</div>
+												<div class="menu-page-teaser" data-theme="Navy">
+					<div class="menu-page-teaser-text">
+												<h2 class="menu-page-teaser-title">Customer Stories</h2>
+																		<div class="menu-page-teaser-description text-content"><p>Discover how teams worldwide turn their support into a success story.</p></div>
+																		<a class="menu-page-teaser-btn btn btn--small btn--secondary" href="https://zammad.com/en/customers">
+							<span class="icon icon-arrow-right-long btn-icon" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 40.740740740741%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#arrow-right-long" /></svg>
+	</span>
+</span>							<span class="btn-text">Get inspired</span>
+						</a>
+											</div>
+					<figure class="media menu-page-teaser-media" style="--ratio: 1" data-orientation="landscape">
+									<img class="media-entry menu-page-teaser-media-element" src="https://zammad.com/media/pages/solutions/b995a360aa-1769770216/7rv09388web-300x300-crop.jpg" srcset="https://zammad.com/media/pages/solutions/b995a360aa-1769770216/7rv09388web-300x300-crop.jpg 300w 300h, https://zammad.com/media/pages/solutions/b995a360aa-1769770216/7rv09388web-600x600-crop.jpg 600w 600h, https://zammad.com/media/pages/solutions/b995a360aa-1769770216/7rv09388web-900x900-crop.jpg 900w 900h" sizes="300px" width="300" height="300" alt="image of a open notebook" loading="eager">
+								</figure>
+				</div>
+							</div>
+					</div>
+						<div class="menu-entry">
+			<a href="https://zammad.com/en/pricing" class="menu-btn btn btn--menu">
+								<span class="btn-text">Pricing</span>
+							</a>
+					</div>
+						<div class="menu-entry">
+			<a href="https://zammad.com/en/services" class="menu-btn btn btn--menu menu-btn--has-submenu" aria-controls="menu" aria-expanded="false" id="services-menu-button">
+								<span class="btn-text">Services</span>
+								<span class="icon icon-open-small menu-btn-icon menu-btn-icon--arrow" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#open-small" /></svg>
+	</span>
+</span>				<span class="icon icon-close-small menu-btn-icon menu-btn-icon--close" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#close-small" /></svg>
+	</span>
+</span>							</a>
+						<div class="menu-page" data-mode="teaser" id="services-menu" role="dialog" aria-expanded="false" aria-labelledby="services-menu-button">
+				<svg class="menu-page-mouse-guard menu-page-mouse-guard--left" viewBox="0 0 1 1" preserveAspectRatio="none"><path d="M0,1 C0.5,1 1,0.5 1,0 L1,1 L0,1" /></svg>
+				<div class="menu-page-mouse-guard menu-page-mouse-guard--center"></div>
+				<svg class="menu-page-mouse-guard menu-page-mouse-guard--right" viewBox="0 0 1 1" preserveAspectRatio="none"><path d="m1 1c-.5 0-1-.5-1-1v1h1" /></svg>
+				<div class="menu-page-links">
+										<div class="menu-groups" data-width="half">
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Consulting</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/services/workshops/migration-workshop">
+		Migration Support			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/services/workshops/workshop-for-conception-configuration">
+		Conception &amp; Configuration			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/services/workshops/system-review-workshop">
+		System Review			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/services/workshops/workshop-on-troubleshooting">
+		Troubleshooting			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/services/workshops">
+		All Workshops				<span class="icon icon-arrow-right menu-groups-item-arrow" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#arrow-right" /></svg>
+	</span>
+</span>			</a>
+				</div>
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Learning </h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/services/professional-training">
+		Admin &amp; Agent Training			</a>
+				</div>
+</div>				</div>
+												<div class="menu-page-teaser" data-theme="Navy">
+					<div class="menu-page-teaser-text">
+												<h2 class="menu-page-teaser-title">Professional Services </h2>
+																		<div class="menu-page-teaser-description text-content"><p>Full-day or half-day, group or exclusive—we’ve got you covered.</p></div>
+																		<a class="menu-page-teaser-btn btn btn--small btn--secondary" href="https://zammad.com/en/services">
+							<span class="icon icon-arrow-right-long btn-icon" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 40.740740740741%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#arrow-right-long" /></svg>
+	</span>
+</span>							<span class="btn-text">Explore all our Services</span>
+						</a>
+											</div>
+					<figure class="media menu-page-teaser-media" style="--ratio: 1" data-orientation="square">
+									<img class="media-entry menu-page-teaser-media-element" src="https://zammad.com/media/pages/services/4e08f6155f-1765192906/fd1c4b4f43126982f7338bfa765fd619f85c77d8-300x300-crop.jpg" srcset="https://zammad.com/media/pages/services/4e08f6155f-1765192906/fd1c4b4f43126982f7338bfa765fd619f85c77d8-300x300-crop.jpg 300w 300h, https://zammad.com/media/pages/services/4e08f6155f-1765192906/fd1c4b4f43126982f7338bfa765fd619f85c77d8-600x600-crop.jpg 600w 600h, https://zammad.com/media/pages/services/4e08f6155f-1765192906/fd1c4b4f43126982f7338bfa765fd619f85c77d8-900x900-crop.jpg 900w 900h" sizes="300px" width="300" height="300" alt="A man with grey hair and glasses wearing a dark blue Zammad t-shirt smiles at the camera while sitting at a table with colleagues in a bright office setting with large windows." loading="eager">
+								</figure>
+				</div>
+							</div>
+					</div>
+						<div class="menu-entry">
+			<a href="https://zammad.com/en/resources" class="menu-btn btn btn--menu menu-btn--has-submenu" aria-controls="menu" aria-expanded="false" id="resources-menu-button">
+								<span class="btn-text">Resources</span>
+								<span class="icon icon-open-small menu-btn-icon menu-btn-icon--arrow" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#open-small" /></svg>
+	</span>
+</span>				<span class="icon icon-close-small menu-btn-icon menu-btn-icon--close" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#close-small" /></svg>
+	</span>
+</span>							</a>
+						<div class="menu-page" data-mode="teaser" id="resources-menu" role="dialog" aria-expanded="false" aria-labelledby="resources-menu-button">
+				<svg class="menu-page-mouse-guard menu-page-mouse-guard--left" viewBox="0 0 1 1" preserveAspectRatio="none"><path d="M0,1 C0.5,1 1,0.5 1,0 L1,1 L0,1" /></svg>
+				<div class="menu-page-mouse-guard menu-page-mouse-guard--center"></div>
+				<svg class="menu-page-mouse-guard menu-page-mouse-guard--right" viewBox="0 0 1 1" preserveAspectRatio="none"><path d="m1 1c-.5 0-1-.5-1-1v1h1" /></svg>
+				<div class="menu-page-links">
+										<div class="menu-groups" data-width="half">
+	<div class="menu-groups-group">
+					<a class="menu-groups-item" href="https://zammad.com/en/resources/webinars">
+		Free Webinars			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/blog">
+		Blog			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/company/press">
+		Newsroom			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/zammad-10-years-anniversary">
+		Events			</a>
+				</div>
+</div>				</div>
+												<div class="menu-page-teaser" data-theme="Navy">
+					<div class="menu-page-teaser-text">
+												<h2 class="menu-page-teaser-title">Why Helpdesk?</h2>
+																		<div class="menu-page-teaser-description text-content"><p>Still handling support through shared inboxes? There is a better way.</p></div>
+																		<a class="menu-page-teaser-btn btn btn--small btn--secondary" href="https://zammad.com/en/resources/new-introduction-of-a-helpdesk-software">
+							<span class="icon icon-arrow-right-long btn-icon" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 40.740740740741%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#arrow-right-long" /></svg>
+	</span>
+</span>							<span class="btn-text">Learn more</span>
+						</a>
+											</div>
+					<figure class="media menu-page-teaser-media" style="--ratio: 1" data-orientation="portrait">
+									<img class="media-entry menu-page-teaser-media-element" src="https://zammad.com/media/pages/resources/de74c85a75-1769501636/agent_image-300x300-crop.jpg" srcset="https://zammad.com/media/pages/resources/de74c85a75-1769501636/agent_image-300x300-crop.jpg 300w 300h, https://zammad.com/media/pages/resources/de74c85a75-1769501636/agent_image-600x600-crop.jpg 600w 600h, https://zammad.com/media/pages/resources/de74c85a75-1769501636/agent_image-900x900-crop.jpg 900w 900h" sizes="300px" width="300" height="300" alt="A person wearing a black headset with a microphone smiles while looking at a computer screen during what appears to be a customer support or live chat session." loading="eager">
+								</figure>
+				</div>
+							</div>
+					</div>
+				<div class="menu-main-mobile">
+						<a class="menu-sidebtn btn btn--secondary" href="https://zammad.com/en/resources/webinars">Demo</a>
+						<a href="https://zammad.com/en/getting-started" class="menu-sidebtn btn btn--cta">Start free trial!</a>
+		</div>
+	</div>
+	<div class="menu-toggle js-toggle-menu">
+		<span class="icon icon-burger" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#burger" /></svg>
+	</span>
+</span>		<span class="icon icon-close" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#close" /></svg>
+	</span>
+</span>	</div>
+	<div class="menu-right">
+				<a class="menu-sidebtn btn btn--menu btn--outline" href="https://zammad.com/en/resources/webinars">Demo</a>
+				<a href="https://zammad.com/en/getting-started" class="menu-sidebtn btn btn--menu btn--cta">Start free trial!</a>
+	</div>
+</nav>	</header>
+<article class="article article--navy layout" data-theme="Sand">
+	<div class="article-intro round-bottom" data-theme="Sand">
+		<div class="text-section section text-content" data-alignment="centered">
+			<div class="article-intro-tag tag">Security Release</div>
+			<h1>Zammad 7.0.1 &amp; 6.5.4</h1>
+			<p><time class="article-date" datetime="2026-04-08 11:00:00">April 8, 2026</time> · Our latest security updates address vulnerabilities in Zammad versions 7.0 and 6.5. For users who cannot yet upgrade to version 7.0, we have provided back-portable fixes for version 6.5. </p>
+<p>Read on for full details:</p>		</div>
+	</div>
+	<div class="article-body round-bottom" data-theme="Navy">
+					<section class="layout"><div class="article-columns container">
+			<aside class="article-aside">
+				<div class="article-toc" data-controller="TOC">
+					<button class="article-toc-toggle" type="button">
+						<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+</svg>
+					</button>
+					<div class="article-toc-backdrop"></div>
+					<div class="article-toc-main">
+						<h2 class="article-toc-heading">In this article</h2>
+						<ol class="article-toc-list">
+													<li class="article-toc-list-entry">
+								<a class="article-toc-list-entry-link" href="#recommended-resolution">Recommended Resolution</a>
+							</li>
+													<li class="article-toc-list-entry">
+								<a class="article-toc-list-entry-link" href="#zammad-7-0-1">Zammad 7.0.1</a>
+							</li>
+													<li class="article-toc-list-entry">
+								<a class="article-toc-list-entry-link" href="#zammad-6-5-4">Zammad 6.5.4</a>
+							</li>
+																									<li class="article-toc-list-entry">
+								<a class="article-toc-list-entry-link" href="#downloads">Infos & Advisories / Downloads</a>
+							</li>
+																		</ol>
+					</div>
+				</div>
+			</aside>
+			<div class="article-main">
+										
+		<div class="text-section section text-content" data-alignment="left">
+			<h2 id="recommended-resolution"><a href="#recommended-resolution"  tabindex="-1">Recommended Resolution</a></h2>
+<p><strong>SaaS Customers:</strong> No action is required. Your instances have already been patched and secured by our team.</p>
+<p><strong>Self-Hosted Installations:</strong> We strongly advise upgrading to the latest version of Zammad immediately to ensure your system is protected.</p>
+<h2 id="zammad-7-0-1"><a href="#zammad-7-0-1"  tabindex="-1">Zammad 7.0.1</a></h2>
+<p>For full technical details, please refer to the security advisories on GitHub.</p>
+<h3 id="vulnerabilities-patched"><a href="#vulnerabilities-patched"  tabindex="-1">Vulnerabilities patched</a></h3>
+<ul>
+<li>Information disclosure in ticket detail view of customers in shared organizations<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-prww-84vh-w978">https://github.com/zammad/zammad/security/advisories/GHSA-prww-84vh-w978</a></li>
+<li>Incorrect access control in getting_started_controller<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-hcm9-ch62-5727">https://github.com/zammad/zammad/security/advisories/GHSA-hcm9-ch62-5727</a></li>
+<li>Improper neutralization of script-related HTML tags in ticket articles<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-c2cf-9fc7-jhf3">https://github.com/zammad/zammad/security/advisories/GHSA-c2cf-9fc7-jhf3</a></li>
+<li>Improper access control in AI assistance controller for text tools<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-96r7-29c8-2j7q">https://github.com/zammad/zammad/security/advisories/GHSA-96r7-29c8-2j7q</a></li>
+<li>Server-Side Template Injection leading to RCE via AI Agent type_enrichment_data<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-fg9w-jg8f-4j94">https://github.com/zammad/zammad/security/advisories/GHSA-fg9w-jg8f-4j94</a></li>
+<li>Missing authorization in AI assistance controller for context data used in text tools<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-89vv-6639-wcv8">https://github.com/zammad/zammad/security/advisories/GHSA-89vv-6639-wcv8</a></li>
+<li>Server-side request forgery (SSRF) via webhooks<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-2vgc-vfh2-rw75">https://github.com/zammad/zammad/security/advisories/GHSA-2vgc-vfh2-rw75</a></li>
+<li>Cross-site request forgery (CSRF) in OAuth callback endpoints<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-mfwp-hx66-626c">https://github.com/zammad/zammad/security/advisories/GHSA-mfwp-hx66-626c</a></li>
+<li>Origin validation error in SSO mechanism<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-hcv6-w4h9-p2p7">https://github.com/zammad/zammad/security/advisories/GHSA-hcv6-w4h9-p2p7</a></li>
+<li>Missing authorization in ticket create endpoint <a href="https://github.com/zammad/zammad/security/advisories/GHSA-28m3-wwgv-ppw8">https://github.com/zammad/zammad/security/advisories/GHSA-28m3-wwgv-ppw8</a></li>
+</ul>
+<h2 id="zammad-6-5-4"><a href="#zammad-6-5-4"  tabindex="-1">Zammad 6.5.4</a></h2>
+<p>For full technical details, please refer to the security advisories on GitHub.</p>
+<h3 id="vulnerabilities-patched"><a href="#vulnerabilities-patched"  tabindex="-1">Vulnerabilities patched</a></h3>
+<ul>
+<li>Incorrect access control in getting_started_controller<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-hcm9-ch62-5727">https://github.com/zammad/zammad/security/advisories/GHSA-hcm9-ch62-5727</a></li>
+<li>Improper neutralization of script-related HTML tags in ticket articles<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-c2cf-9fc7-jhf3">https://github.com/zammad/zammad/security/advisories/GHSA-c2cf-9fc7-jhf3</a></li>
+<li>Server-side request forgery (SSRF) via webhooks<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-2vgc-vfh2-rw75">https://github.com/zammad/zammad/security/advisories/GHSA-2vgc-vfh2-rw75</a></li>
+<li>Cross-site request forgery (CSRF) in OAuth callback endpoints<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-mfwp-hx66-626c">https://github.com/zammad/zammad/security/advisories/GHSA-mfwp-hx66-626c</a></li>
+<li>Origin validation error in SSO mechanism<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-hcv6-w4h9-p2p7">https://github.com/zammad/zammad/security/advisories/GHSA-hcv6-w4h9-p2p7</a></li>
+<li>Missing authorization in ticket create endpoint<br />
+<a href="https://github.com/zammad/zammad/security/advisories/GHSA-28m3-wwgv-ppw8">https://github.com/zammad/zammad/security/advisories/GHSA-28m3-wwgv-ppw8</a></li>
+</ul>	</div>			
+		<div class="divider section">
+	<div class="divider-line divider-line--left"></div>
+	<span class="icon icon-phoenix" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 89.285714285714%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#phoenix" /></svg>
+	</span>
+</span>	<div class="divider-line divider-line--right"></div>
+</div>				</div>
+	</div></section>
+			</div>
+</article>
+
+			<section class="layout" id="downloads" data-theme="Sand"><div class="text-section section text-content" data-alignment="centered" data-attach-to="next">
+			<h2 id="infos"><a href="#infos"  tabindex="-1">Infos</a></h2>	</div>			
+		<div class="teaser-cards section" data-mobile-layout="vertical">
+  <ol class="teaser-cards-list container">
+        <li class="teaser-card" data-theme="outline">
+            <div class="teaser-card-text">
+                                        <h3 class="teaser-card-title">
+                    <span class="teaser-card-icon teaser-card-icon--title">
+            <img src="https://zammad.com//assets/icons/settings.svg" alt="" class="teaser-card-icon-element" width="24" height="24">
+          </span>
+                    Technical Requirements        </h3>
+                        <div class="teaser-card-description text-content"><p>As a web-based application, Zammad requires an up-to-date browser. We support the latest stable versions of the following browsers:</p>
+<ul>
+<li>Firefox</li>
+<li>Chrome (and Chromium-based browsers such as Edge)</li>
+<li>Opera</li>
+<li>Safari</li>
+</ul></div>
+                        </div>
+    </li>
+        <li class="teaser-card" data-theme="outline">
+            <div class="teaser-card-text">
+                                        <h3 class="teaser-card-title">
+                    <span class="teaser-card-icon teaser-card-icon--title">
+            <img src="https://zammad.com//assets/icons/lock.svg" alt="" class="teaser-card-icon-element" width="24" height="24">
+          </span>
+                    Advisories        </h3>
+                        <div class="teaser-card-description text-content"><ul>
+<li><a href="https://github.com/zammad/zammad/security/advisories/GHSA-prww-84vh-w978">GHSA-prww-84vh-w978</a></li>
+<li><a href="https://github.com/zammad/zammad/security/advisories/GHSA-hcm9-ch62-5727">GHSA-hcm9-ch62-5727</a></li>
+<li><a href="https://github.com/zammad/zammad/security/advisories/GHSA-c2cf-9fc7-jhf3">GHSA-c2cf-9fc7-jhf3</a></li>
+<li><a href="https://github.com/zammad/zammad/security/advisories/GHSA-96r7-29c8-2j7q">GHSA-96r7-29c8-2j7q</a></li>
+<li><a href="https://github.com/zammad/zammad/security/advisories/GHSA-89vv-6639-wcv8">GHSA-89vv-6639-wcv8</a></li>
+<li><a href="https://github.com/zammad/zammad/security/advisories/GHSA-fg9w-jg8f-4j94">GHSA-fg9w-jg8f-4j94</a></li>
+<li><a href="https://github.com/zammad/zammad/security/advisories/GHSA-2vgc-vfh2-rw75">GHSA-2vgc-vfh2-rw75</a></li>
+<li><a href="https://github.com/zammad/zammad/security/advisories/GHSA-mfwp-hx66-626c">GHSA-mfwp-hx66-626c</a></li>
+<li><a href="https://github.com/zammad/zammad/security/advisories/GHSA-hcv6-w4h9-p2p7">GHSA-hcv6-w4h9-p2p7</a></li>
+<li><a href="https://github.com/zammad/zammad/security/advisories/GHSA-28m3-wwgv-ppw8">GHSA-28m3-wwgv-ppw8</a></li>
+</ul></div>
+                        </div>
+    </li>
+        <li class="teaser-card" data-theme="outline">
+            <div class="teaser-card-text">
+                                        <h3 class="teaser-card-title">
+                    <span class="teaser-card-icon teaser-card-icon--title">
+            <img src="https://zammad.com//assets/icons/package.svg" alt="" class="teaser-card-icon-element" width="24" height="24">
+          </span>
+                    Packages        </h3>
+                        <div class="teaser-card-description text-content"><ul>
+<li><a href="https://docs.zammad.org/en/latest/install-ubuntu.html">Ubuntu / Debian</a></li>
+<li><a href="https://docs.zammad.org/en/latest/install-centos.html">OpenSUSE / SLES</a></li>
+<li><a href="https://docs.zammad.org/en/latest/install-centos.html">CentOS / RHEL</a></li>
+<li><a href="https://docs.zammad.org/en/latest/install-docker-compose.html">Docker-Compose</a></li>
+</ul></div>
+                        </div>
+    </li>
+        <li class="teaser-card" data-theme="outline">
+            <div class="teaser-card-text">
+                                        <h3 class="teaser-card-title">
+                    <span class="teaser-card-icon teaser-card-icon--title">
+            <img src="https://zammad.com//assets/icons/circle-fading-arrow-up.svg" alt="" class="teaser-card-icon-element" width="24" height="24">
+          </span>
+                    Upgrade        </h3>
+                        <div class="teaser-card-description text-content"><p>Here you can find information on upgrading your Zammad installation:</p>
+<ul>
+<li><a href="https://docs.zammad.org/en/latest/install-update.html">With Package</a></li>
+<li><a href="https://docs.zammad.org/en/latest/install-update.html">With Docker</a></li>
+</ul></div>
+                        </div>
+    </li>
+        <li class="teaser-card" data-theme="outline">
+            <div class="teaser-card-text">
+                                        <h3 class="teaser-card-title">
+                    <span class="teaser-card-icon teaser-card-icon--title">
+            <img src="https://zammad.com//assets/icons/file-plus.svg" alt="" class="teaser-card-icon-element" width="24" height="24">
+          </span>
+                    Changelogs        </h3>
+                        <div class="teaser-card-description text-content"><p>All improvements can be found in: </p>
+<ul>
+<li><a href="https://github.com/zammad/zammad/blob/7.0.1/CHANGELOG.md">Changelog 7.0.1</a></li>
+<li><a href="https://github.com/zammad/zammad/blob/6.5.4/CHANGELOG.md">Changelog 6.5.4</a></li>
+</ul></div>
+                        </div>
+    </li>
+      </ol>
+</div></section>
+		
+<div class="cta-bar">
+	<div class="cta-bar-inner container">
+				<div class="cta-bar-entry cta-bar-entry--cta">
+			<div class="cta-bar-entry-text">Together we turn your customers into fans.</div>
+			<a href="https://zammad.com/en/getting-started" class="btn btn--navy">Start free trial!</a>
+		</div>
+						<div class="cta-bar-entry cta-bar-entry--newsletter">
+			<div class="cta-bar-entry-text">All releases and news directly in your inbox.</div>
+			<a href="https://zammad.m-pages.com/sign-up-en?utm_source=website&utm_medium=banner&utm_campaign=nl_cta" class="btn btn--navy">Subscribe to the newsletter</a>
+		</div>
+					</div>
+</div>
+
+<footer class="footer">
+	<div class="footer-inner container">
+		<div class="menu-groups" data-width="full">
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Product</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/product">
+		Zammad at a Glance			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/product/features">
+		Features Overview			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/advisories">
+		Advisories			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/product/releases">
+		Releases			</a>
+				</div>
+	<div class="menu-groups-group">
+			<a class="menu-groups-item menu-groups-item--external" href="https://docs.zammad.org/en/latest/" target="_blank">Documentation<span class="icon icon-external-arrow" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 110%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#external-arrow" /></svg>
+	</span>
+</span></a>
+		</div>
+	<div class="menu-groups-group">
+			<a class="menu-groups-item menu-groups-item--external" href="https://support.zammad.com/help/en-us/3" target="_blank">FAQ<span class="icon icon-external-arrow" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 110%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#external-arrow" /></svg>
+	</span>
+</span></a>
+		</div>
+	<div class="menu-groups-group">
+			<a class="menu-groups-item menu-groups-item--external" href="https://user-docs.zammad.org/en/latest/basics/zammad-glossary.html" target="_blank">Glossary<span class="icon icon-external-arrow" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 110%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#external-arrow" /></svg>
+	</span>
+</span></a>
+		</div>
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Use Cases</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/solutions/product-service-support">
+		Product &amp; Service			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/solutions/support-for-wholesale-and-retail">
+		Wholesale &amp; Retail			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/solutions/zammad-at-the-it-service-desk">
+		IT Service Desk			</a>
+				</div>
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Zammad for</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/solutions/zammad-for-enterprises">
+		Enterprises			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/solutions/zammad-for-small-and-medium-sized-businesses">
+		SMEs			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/solutions/zammad-for-startups">
+		Startups			</a>
+				</div>
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Customers</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/customers">
+		Customer Stories			</a>
+				</div>
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Comparing Zammad</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/zammad-as-an-alternative-to-otrs-7">
+		OTRS 7			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/zammad-as-an-alternative-to-otrs">
+		OTRS Community Edition			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/zammad-alternative-to-zendesk">
+		Zendesk			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/zammad-alternative-to-freshdesk">
+		Freshdesk			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/zammad-alternative-to-kayako">
+		Kayako			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/zammad-alternative-to-jira">
+		Jira			</a>
+				</div>
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Switching to Zammad</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/zendesk-to-zammad">
+		From Zendesk			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/freshdesk-to-zammad">
+		From Freshdesk			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/mailbox-to-zammad">
+		From Mailbox			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/otrs-to-zammad">
+		From OTRS			</a>
+				</div>
+	<div class="menu-groups-group">
+		<h2 class="menu-groups-headline">Company</h2>
+					<a class="menu-groups-item" href="https://zammad.com/en/company">
+		Company			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/company/open-source">
+		Open Source			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/company/spirit">
+		Spirit			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/company/jobs">
+		Jobs			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/company/contact">
+		Contact			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/company/press">
+		Press			</a>
+				<a class="menu-groups-item" href="https://zammad.com/en/company/imprint">
+		Imprint			</a>
+				</div>
+	<div class="menu-groups-group">
+				<div class="certificates">
+		<figure class="media certificates-entry" style="--ratio: 1" data-orientation="square">
+												<img class="media-entry certificates-entry-element" src="https://zammad.com/media/site/af9ed45a2d-1781005569/iso-zammad.svg" srcset="https://zammad.com/media/site/af9ed45a2d-1781005569/iso-zammad.svg 80w, https://zammad.com/media/site/af9ed45a2d-1781005569/iso-zammad.svg 128w, https://zammad.com/media/site/af9ed45a2d-1781005569/iso-zammad.svg 256w, https://zammad.com/media/site/af9ed45a2d-1781005569/iso-zammad.svg 384w" sizes="84px" width="591" height="591" alt="ISO 27001 badge" loading="eager">
+											</figure>
+		<figure class="media certificates-entry" style="--ratio: 1" data-orientation="square">
+												<img class="media-entry certificates-entry-element" src="https://zammad.com/media/site/472ecc0455-1782727072/gdpr.svg" srcset="https://zammad.com/media/site/472ecc0455-1782727072/gdpr.svg 80w, https://zammad.com/media/site/472ecc0455-1782727072/gdpr.svg 128w, https://zammad.com/media/site/472ecc0455-1782727072/gdpr.svg 256w, https://zammad.com/media/site/472ecc0455-1782727072/gdpr.svg 384w" sizes="84px" width="591" height="591" alt="GDPR Badge" loading="eager">
+											</figure>
+	</div>
+			</div>
+</div>		<div class="social-links">
+					<a href="https://mastodon.social/@zammad_hq" rel="me" title="Zammad on Mastodon">
+				<span class="icon icon-mastodon" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#mastodon" /></svg>
+	</span>
+</span>			</a>
+					<a href="https://www.linkedin.com/company/zammad" rel="me" title="Zammad on LinkedIn">
+				<span class="icon icon-linkedin" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#linkedin" /></svg>
+	</span>
+</span>			</a>
+					<a href="https://github.com/zammad" rel="me" title="Zammad on Github">
+				<span class="icon icon-github" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#github" /></svg>
+	</span>
+</span>			</a>
+					<a href="https://www.facebook.com/zammadhq/" rel="me" title="Zammad on Facebook">
+				<span class="icon icon-facebook" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#facebook" /></svg>
+	</span>
+</span>			</a>
+					<a href="https://www.instagram.com/zammad_hq" rel="me" title="Zammad on Instagram">
+				<span class="icon icon-instagram" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 100%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#instagram" /></svg>
+	</span>
+</span>			</a>
+				</div>
+		<div class="footer-row">
+			<a class="logo" href="https://zammad.com/en" title="Zammad"><span class="icon icon-logo" aria-hidden="true">
+	<span class="icon-ratio" style="padding-bottom: 21.768707482993%">
+		<svg><use xlink:href="https://zammad.com/assets/images/icons.1783437966.svg#logo" /></svg>
+	</span>
+</span></a>
+			<nav class="footer-small-menu">
+				<ul>
+										<li><a href="https://zammad.com/en/company/privacy">Privacy Policy</a></li>
+										<li><a href="https://zammad.com/en/company/imprint">Imprint</a></li>
+										<li><a href="https://zammad.com/en/company/terms">Terms and Conditions</a></li>
+									</ul>
+			</nav>
+		</div>
+	</div>
+</footer>
+
+<script src="https://support.zammad.com/assets/chat/chat-no-jquery.js"></script>
+
+
+	<script>
+	  	var _paq = window._paq || [];
+                    _paq.push(['disableCookies']);
+                		_paq.push(['trackPageView']);
+	  	_paq.push(['enableLinkTracking']);
+	    (function() {
+	    	var u='https://zammad.matomo.cloud/';
+	    	_paq.push(['setTrackerUrl', u+'matomo.php']);
+	    	_paq.push(['setSiteId', 1]);
+	    	var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	    	g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+	  	})();
+	</script>
+
+<script>
+	var rootUrl = 'https://zammad.com/en';
+	var basePath = 'product/releases/7-0-1';
+</script>
+<script src="https://zammad.com/assets/js/main.1783437966.js"></script></body>
+</html><!-- static 2026-07-08T16:57:54+02:00 -->

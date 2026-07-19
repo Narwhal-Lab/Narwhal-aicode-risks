@@ -1,0 +1,43 @@
+slug: 2026-agentgateway-mcp-openapi-parameter-injection
+title_en: Agentgateway MCP to OpenAPI Parameter Injection
+title_cn: Agentgateway MCP 到 OpenAPI 转换参数注入
+year: 2026
+disclosed: '2026-03-05'
+category: agent-risk
+severity: medium
+severity_basis: cvss
+severity_evidence: NVD and GitHub Advisory list CVE-2026-29791 as an input validation flaw in agentgateway prior to 0.12.0.
+cvss: 4.9
+cve: CVE-2026-29791
+real_incident: true
+reproducible: true
+ai_tool:
+- agentgateway
+- MCP to OpenAPI bridge
+- agentic AI data plane
+language:
+- Go
+attack_surface:
+- MCP tools/call request
+- OpenAPI path parameters
+- query parameters
+- headers
+references:
+- title: 'NVD: CVE-2026-29791'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-29791
+- title: 'agentgateway Advisory: GHSA-v2x6-wwfw-r2rq'
+  url: https://github.com/agentgateway/agentgateway/security/advisories/GHSA-v2x6-wwfw-r2rq
+- title: 'GitLab Advisory: CVE-2026-29791'
+  url: https://advisories.gitlab.com/golang/github.com/agentgateway/agentgateway/CVE-2026-29791/
+- title: 'Corgea: CVE-2026-29791'
+  url: https://corgea.com/advisories/vulnerabilities/CVE-2026-29791
+- title: 'OpenCVE: CVE-2026-29791'
+  url: https://app.opencve.io/cve/CVE-2026-29791
+tldr: agentgateway failed to sanitize MCP tool call values before converting them into OpenAPI path, query and header parameters.
+tags:
+- agentgateway
+- mcp
+- openapi
+- input-validation
+- gateway
+verification_notes: Based on public vulnerability advisories, vendor or project references, and security database records captured in assets. Exploitation impact depends on the documented deployment and privilege preconditions.

@@ -1,0 +1,47 @@
+slug: "2026-weknora-database-query-sqli-rce"
+title_en: "WeKnora Database Query SQL Injection to RCE"
+title_cn: "WeKnora 数据库查询工具 SQL 注入到远程代码执行"
+year: 2026
+disclosed: "2026-03-07"
+category: "agent-risk"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "CVE-2026-30860 is reported as critical, with SQL validation bypass leading to database-server RCE before version 0.2.12."
+cvss: 9.9
+cve: "CVE-2026-30860"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "Tencent WeKnora"
+  - "LLM-powered document understanding"
+  - "Database query tool"
+language:
+  - "Go"
+  - "PostgreSQL"
+attack_surface:
+  - "AI database query functionality"
+  - "SQL validation AST"
+  - "PostgreSQL array expressions"
+  - "Large object and library loading path"
+references:
+  - title: "GitHub Advisory: WeKnora RCE via SQL Injection Bypass"
+    url: "https://github.com/advisories/GHSA-8w32-6mrw-q5wv"
+  - title: "CVEProject cvelistV5: CVE-2026-30860"
+    url: "https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/30xxx/CVE-2026-30860.json"
+  - title: "Endor Labs: CVE-2026-30860"
+    url: "https://www.endorlabs.com/vulnerability/cve-2026-30860"
+  - title: "OpenCVE: CVE-2026-30860"
+    url: "https://app.opencve.io/cve/CVE-2026-30860"
+  - title: "Miggo: WeKnora SQLi AST Bypass RCE"
+    url: "https://www.miggo.io/vulnerability-database/cve/CVE-2026-30860"
+  - title: "Snyk: SQL Injection in github.com/tencent/weknora/internal/utils"
+    url: "https://security.snyk.io/vuln/SNYK-GOLANG-GITHUBCOMTENCENTWEKNORAINTERNALUTILS-15470409"
+tldr: "WeKnora's AI query validation missed nested PostgreSQL expressions, enabling SQLi-to-RCE."
+tags:
+  - "weknora"
+  - "sql-injection"
+  - "rce"
+  - "llm-query"
+  - "postgresql"
+  - "semantic-retrieval"
+verification_notes: "Based on public advisories, CVE databases, technical analysis, and independent vulnerability databases. Public evidence supports the vulnerability and impact class; victim-specific compromise is only stated when the cited sources report it."

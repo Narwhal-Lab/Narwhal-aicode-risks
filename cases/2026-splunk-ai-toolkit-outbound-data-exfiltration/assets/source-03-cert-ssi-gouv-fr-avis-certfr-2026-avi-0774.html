@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="fr_FR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="icon" type="image/png" href="/static/images/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg" />
+  <link rel="shortcut icon" href="/static/images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png" />
+
+  <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+    <![endif]-->
+  <!--[if lt IE 11]>
+      <link href="/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+  <link rel="stylesheet" type="text/css" media="all" id="custom-css"
+    href="/static/css/custom.css" />
+  <link rel="stylesheet" type="text/css" media="all" id="core-css"
+    href="/static/css/core.css" />
+  <link rel="stylesheet" type="text/css" media="print" id="print-css"
+    href="/static/css/print.css" />
+  <link rel="stylesheet" type="text/css" media="all" id="tlp-css"
+    href="/static/css/tlp.css" />
+  <link rel="stylesheet" type="text/css" media="all" id="bootstrap-css"
+    href="/static/css/bootstrap.css" />
+
+  <title>Multiples vulnérabilités dans Splunk AI Toolkit - CERT-FR</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-static-top navbar-anssi" id="header">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img src="/static/images/logo_rf_header.svg" alt="Logo République Française"
+            class="navbar-brand-logo" />
+          <img src="/static/images/logo_anssi.svg" alt="Logo ANSSI"
+            class="navbar-brand-logo" />
+          <img src="/static/images/logo_cert_fr.svg" alt="Logo CertFR"
+            class="navbar-brand-logo" />
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">Publications <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/alerte/" class="menu-cert-alert">Alertes de sécurité</a>
+              </li>
+              <li>
+                <a href="/cti/" class="menu-cert-cti">Rapports menaces
+                  et incidents</a>
+              </li>
+              <li>
+                <a href="/avis/" class="menu-cert-avis">Avis de sécurité</a>
+              </li>
+              <li>
+                <a href="/ioc/" class="menu-cert-ioc">Indicateurs de
+                  compromission</a>
+              </li>
+              <li>
+                <a href="/dur/" class="menu-cert-dur">Durcissement et
+                  recommandations</a>
+              </li>
+              <li>
+                <a href="/actualite/" class="menu-cert-news">Bulletins
+                  d'actualité</a>
+              </li>
+              <li>
+                <a href="/fiche/" class="menu-cert-fiche">Fiches
+                  réflexes</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="/scans/" role="button">Services</a>
+          </li>
+          <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" class="dropdown">
+            <a title="Réseaux de CSIRT" href="#" data-toggle="dropdown" class="dropdown-toggle"
+              aria-haspopup="true">Réseaux de CSIRT <span class="caret"></span></a>
+            <ul role="menu" class=" dropdown-menu">
+              <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+                <a title="Les réseaux de CSIRT" href="/csirt/">Les réseaux de CSIRT</a>
+              </li>
+              <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+                <a title="InterCERT France" href="/csirt/intercert-fr/">InterCERT France</a>
+              </li>
+              <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+                <a title="Les CSIRT ministériels" href="/csirt/csirt-ministeriels/">Les CSIRT ministériels</a>
+              </li>
+               <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+                <a title="Les CSIRT sectoriels" href="/csirt/csirt-sectoriels/">Les CSIRT sectoriels</a>
+              </li>
+              <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+                <a title="Les CSIRT territoriaux" href="/csirt/csirt-territoriaux/">Les CSIRT territoriaux</a>
+              </li>
+              <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+                <a title="Le CSIRTs Network" href="/csirt/csirts-network/">Le CSIRTs Network</a>
+              </li>
+              <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+                <a title="Le FIRST" href="/csirt/first/">Le FIRST</a>
+              </li>
+              <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+                <a title="Politique de partage et d'utilisation des informations à caractère opérationnel"
+                  href="/csirt/politique-partage/">Politique de partage et d’utilisation des informations à caractère
+                  opérationnel</a>
+              </li>
+            </ul>
+          </li>
+          <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+            <a title="Recrutement" href="https://www.welcometothejungle.com/fr/companies/anssi">Recrutement</a>
+          </li>
+          <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+            <a title="À propos" href="/a-propos/">À propos</a>
+          </li>
+          <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-incident" class="menu-item-incident">
+            <a id="menu-item-contact" title="Incident" href="/contact/" class="fa-icon-container">
+              <img src="/static/images/triangle-exclamation.svg" alt="Incident" class="fa-icon-white">Incident</a>
+          </li>
+          <li>
+            <a href="#" class="dropdown-toggle fa-icon-container" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">
+              <img src="/static/images/rss.svg" alt="RSS" class="fa-rss">
+              <span class="caret fa-caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/feed/">Flux RSS complet</a></li>
+              <li><a href="/feed/scada/">Flux RSS SCADA</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/alerte/feed/">Flux RSS des alertes</a>
+              </li>
+              <li><a href="/cti/feed/">Flux RSS des menaces et
+                  incidents</a></li>
+              <li><a href="/avis/feed/">Flux RSS des avis</a></li>
+              <li><a href="/ioc/feed/">Flux RSS des indicateurs de
+                  compromission</a></li>
+              <li><a href="/dur/feed/">Flux RSS des durcissement et
+                  recommandations</a></li>
+              <li><a href="/actualite/feed/">Flux RSS des bulletins
+                  d'actualité</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content">
+    
+    <div class="container">
+  <article class="article">
+    
+      <section class="article-meta">
+  
+    <div class="row row-toolbox row-flex">
+      <div class="link-print">
+  <button onclick="window.print()" title="Imprimer ou exporter au format PDF">
+    <img src="/static/images/print.svg" aria-hidden="true" alt="Imprimer" class="fa-icon">
+  </a>
+</div>
+      
+        <div class="link-json">
+  <a href="/avis/CERTFR-2026-AVI-0774/json/" title="Exporter au format JSON">
+    <img src="/static/images/json_icon.svg" class="fa-icon">
+  </a>
+</div>
+      
+    </div>
+
+    <div class="row meta-logo ">
+  <img src="/static/images/logo_rf.png" class="logo-rf" alt="Logo République Française" />
+  <div class="premier-ministre">Premier Ministre</div>
+</div>
+
+<div class="row meta-certfr">
+  <div class="row">
+    <div class="col-md-4 meta-gauche">
+      <p>S.G.D.S.N</p>
+      <p>Agence nationale<br />de la sécurité des<br />systèmes d'information</p>
+    </div>
+    <div class="col-md-4 col-md-offset-4 meta-droite">
+      
+        <div>Paris, le 18 juin 2026</div>
+      
+      <div>N° CERTFR-2026-AVI-0774</div>
+    </div>
+  </div>
+</div>
+<div class="row meta-affaire">
+  <div class="col-md-12">Affaire suivie par: CERT-FR</div>
+</div>
+
+    <div class="row meta-post-type">
+      <div class="post-type-title cert-avis col-md-12">
+        <h2>Avis du CERT-FR</h2>
+        <hr />
+      </div>
+    </div>
+    <div class="row meta-title">
+  <div class="col-md-12">
+      <h1>Objet: Multiples vulnérabilités dans Splunk AI Toolkit</h1>
+  </div>
+</div>
+    <div class="row meta-document">
+  <div class="col-md-12">
+    <h2>Gestion du document</h2>
+    <div class="col-md-8 col-md-offset-2 meta-table">
+      <table class="table table-condensed">
+        <tbody>
+          <tr>
+            <td class="col-xs-4">Référence</td>
+            <td class="col-xs-8">CERTFR-2026-AVI-0774</td>
+          </tr>
+          <tr>
+            <td class="col-xs-4">Titre</td>
+            <td class="col-xs-8">
+              Multiples vulnérabilités dans Splunk AI Toolkit
+            </td>
+          </tr><tr>
+              <td class="col-xs-4">Date de la première version</td><td class="col-xs-8">18 juin 2026</td>
+            </tr>
+            <tr>
+              <td class="col-xs-4">Date de la dernière version</td><td class="col-xs-8">18 juin 2026</td>
+            </tr><tr>
+            <td class="col-xs-4">Source(s)</td>
+            <td class="col-xs-8">Bulletin de sécurité Splunk SVD-2026-0613 du 17 juin 2026<br />Bulletin de sécurité Splunk SVD-2026-0614 du 17 juin 2026<br /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+    <div class="row" style="margin-bottom: 15px;">
+  <div class="col-md-12">
+    <p>Une gestion de version détaillée se trouve à la fin de ce document.</p>
+  </div>
+</div>
+  
+</section>
+      <section class="article-content">
+  <div class="row">
+    <div class="col-md-12">
+      
+
+        
+          <h2>Risques</h2>
+        
+
+        <ul>
+          
+            <li>Contournement de la politique de sécurité</li>
+          
+            <li>Exécution de code arbitraire à distance</li>
+          
+        </ul>
+      
+
+      
+        <h2>Systèmes affectés</h2>
+        <ul>
+          
+            <li>Splunk AI Toolkit versions antérieures à 5.7.4</li>
+          
+        </ul>
+      
+
+      
+
+      <div>
+          <h2>Résumé</h2>
+          <p>De multiples vulnérabilités ont été découvertes dans Splunk AI Toolkit. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance et un contournement de la politique de sécurité.</p>
+
+        </div>
+
+      <div>
+        <h2 id="solutions">Solutions</h2>
+<p>Se référer au bulletin de sécurité de l'éditeur pour l'obtention des correctifs (cf. section Documentation).</p>
+
+      </div>
+
+      
+        <h2>Documentation</h2>
+
+        <ul>
+          
+          
+              <li>Bulletin de sécurité Splunk SVD-2026-0613 du 17 juin 2026</li>
+              <a href="https://advisory.splunk.com/advisories/SVD-2026-0613">https://advisory.splunk.com/advisories/SVD-2026-0613</a>
+          
+              <li>Bulletin de sécurité Splunk SVD-2026-0614 du 17 juin 2026</li>
+              <a href="https://advisory.splunk.com/advisories/SVD-2026-0614">https://advisory.splunk.com/advisories/SVD-2026-0614</a>
+          
+
+          
+          
+
+          
+            <li>Référence CVE CVE-2026-20265</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-20265">https://www.cve.org/CVERecord?id=CVE-2026-20265</a>
+          
+            <li>Référence CVE CVE-2026-20266</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-20266">https://www.cve.org/CVERecord?id=CVE-2026-20266</a>
+          
+        </ul>
+      
+    </div>
+  </div>
+</section>
+      <section class="article-footer">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Gestion détaillée du document</h2>
+      <ol>
+        <dl>
+          
+          <dt><strong>le 18 juin 2026</strong></dt>
+          <dd>Version initiale</dd>
+          
+        </dl>
+      </ol>
+    </div>
+  </div>
+</section>
+    
+  </article>
+
+  <section class="row">
+  <div class="col-md-12 text-center page-up" style="margin: 20px 0;">
+    <a href="" title="Remonter en haut de la page">
+      <img src="/static/images/icon_toppage.png" alt="" />
+    </a>
+  </div>
+</section>
+</div>
+  </div>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="menu-footer-internal">
+        <ul id="menu-liens-internes-pied-de-page" class="menu">
+          <li>
+            <a href="/alerte/">Alertes</a>
+          </li>
+          <li>
+            <a href="/avis/">Avis</a>
+          </li>
+          <li>
+            <a href="/actualite/">Bulletins d’actualités</a>
+          </li>
+          <li>
+            <a href="/mentions-legales/">Mentions légales</a>
+          </li>
+          <li>
+            <a href="/conditions-generales-reponse-incident/">Conditions générales</a>
+          </li>
+          <li>
+            <a href="/a-propos/">À propos</a>
+          </li>
+          <li>
+            <a href="/contact/">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-footer-external">
+        <ul id="menu-liens-externes-pied-de-page" class="menu">
+          <li>
+            <a href="https://cyber.gouv.fr/">cyber.gouv.fr</a>
+          </li>
+          <li>
+            <a href="https://www.service-public.fr/">service-public.fr</a>
+          </li>
+          <li>
+            <a href="https://www.legifrance.gouv.fr/">legifrance.gouv.fr</a>
+          </li>
+          <li>
+            <a href="https://www.info.gouv.fr/">info.gouv.fr</a>
+          </li>
+          <li>
+            <a href="https://www.france.fr/">france.fr</a>
+          </li>
+          <li>
+            <a href="https://www.info.gouv.fr/risques">info.gouv.fr/risques</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-footer-external menu-footer-social-networks">
+        <ul id="menu-liens-reseaux-sociaux-pied-de-page" class="menu">
+          <li id="menu-item-mastodon" class="menu-item-mastodon">
+            <a rel="me" href="https://social.numerique.gouv.fr/@cert_fr">
+              <img src="/static/images/mastodon.svg" alt="Mastodon" class="fa-icon fa-icon-white">
+            </a>
+          </li>
+          <li id="menu-item-twitter" class="menu-item-twitter">
+            <a href="https://x.com/CERT_FR/">
+              <img src="/static/images/square-x-twitter.svg" alt="X" class="fa-icon fa-icon-white">
+            </a>
+          </li>
+          <li id="menu-item-bluesky" class="menu-item-bluesky">
+            <a href="https://bsky.app/profile/cert-fr.bsky.social">
+              <img src="/static/images/bluesky.svg" alt="Bluesky" class="fa-icon fa-icon-white">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <img src="/static/images/logo_rf.png" class="logo-rf"
+          alt="Logo République Française" />
+        <p>
+          Premier Ministre / Secrétariat Général de la Défense et de la Sécurité Nationale / Agence nationale de la
+          sécurité des systèmes d'information
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript" src="/static/js/jquery.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/static/js/cert.js"></script>
+</body>
+
+</html>

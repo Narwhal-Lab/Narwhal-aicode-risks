@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>llama.cpp远程代码执行漏洞(CVE-2026-34159)安全风险通告 - 安全内参 | 决策者的网络安全知识库</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval';" />
+    <meta name="keywords" content="漏洞,企业安全,政务信息安全,国家安全,大数据安全,最佳安全实践,首席安全官,漏洞,病毒木马蠕虫,勒索软件,安全管理,安全参考,互联网安全内参,securityinsight">
+    <meta name="description" content="通过构造 GRAPH_COMPUTE 消息实现任意内存读写，并通过函数指针劫持（如覆盖 iface.clear 为 system()）达成远程代码执行。">
+    <meta property="og:url" content="https://www.secrss.com/article/89833">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="llama.cpp远程代码执行漏洞(CVE-2026-34159)安全风险通告">
+    <meta property="og:description" content="通过构造 GRAPH_COMPUTE 消息实现任意内存读写，并通过函数指针劫持（如覆盖 iface.clear 为 system()）达成远程代码执行。">
+    <meta property="og:image" content="https://www.secrss.com/logo.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link id="icon" rel="apple-touch-icon" href="https://www.secrss.com/logo.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://www.secrss.com/logo.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="https://www.secrss.com/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.secrss.com/logo.png">
+    <link rel="icon" id="favicon" href="https://www.secrss.com/logo.png" type="image/x-icon">
+    <link href="https://www.secrss.com/bower_components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://www.secrss.com/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://www.secrss.com/css/navbar-customed.css" rel="stylesheet">
+    <link href="https://www.secrss.com/css/common.css" rel="stylesheet">
+
+</head>
+<body>
+<header class="header">
+    <nav class="navbar navbar-customed navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://www.secrss.com" title="首页">
+                    <div class="logo" style="width: 147px">
+                        <img src="https://www.secrss.com/logo_lg.png" alt="logo" style="height: 40px;">
+                    </div>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" style="width: 1080px;" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="https://www.secrss.com"><span>首页</span></a>
+                    </li>
+                                        <li class="dropdown">
+                                                <a href="https://www.secrss.com/articles?tag=政策法规"><span>政策法规</span></a>
+                                                                    </li>
+                                        <li class="dropdown">
+                                                <a href="https://www.secrss.com/articles?tag=威胁态势"><span>威胁态势</span></a>
+                                                                    </li>
+                                        <li class="dropdown">
+                                                <a href="https://www.secrss.com/articles?tag=技术前沿"><span>技术前沿</span></a>
+                                                                    </li>
+                                        <li class="dropdown">
+                                                <a href="https://www.secrss.com/articles?tag=安全实践"><span>安全实践</span></a>
+                                                                    </li>
+                                        <li class="dropdown">
+                                                <a href="https://www.secrss.com/articles?tag=产业研究"><span>产业研究</span></a>
+                                                                    </li>
+                                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="https://www.secrss.com/login">登录/注册</a></li>
+                                        <!-- <li class="download-app"><a href="https://www.secrss.com/app"><span class="fa fa-mobile fa-2x"></span><span>APP下载</span></a> -->
+                    </li>
+
+                    <li>
+
+                        <form class="navbar-form navbar-right" action="https://www.secrss.com/search">
+                            <div class="form-group form-group-sm search-bar">
+                                </lo><input name="keywords" type="text" class="form-control" placeholder="搜索" required>
+                                <button class="btn btn-sm search-btn" type="submit"><span class="fa fa-search"></span></button>
+                            </div>
+                        </form>
+
+                    </li>
+
+                </ul>
+                
+                    
+                        
+                        
+                    
+                
+            </div>
+        </div>
+    </nav>
+</header>
+    <section class="container main-container">
+        <div class="row article-row">
+            <article class="article">
+                <h1>
+                    llama.cpp远程代码执行漏洞(CVE-2026-34159)安全风险通告
+                </h1>
+                <div class="info text-info">
+                    <div class="meta">
+                        <div class="meta-left">
+                            <input type="hidden" name="_token" value="8WNVd149os7bV8jpKYCKhYGH3aektDN40dK0Dic7">
+                                                            <span class="tag"><a href="https://www.secrss.com/articles?tag=漏洞" target="_blank">漏洞</a></span>
+                                                        <span class="author"><a target="_blank" style="color: #999"  href="https://www.secrss.com/articles?author=奇安信 CERT">奇安信 CERT</a></span>
+                            <span class="time">2026-04-28</span>
+                        </div>
+                        <div class="meta-right">
+                                                            <a href="https://www.secrss.com/login" title="登录后才可以收藏，请先登录" style="padding-right: 10px"><i class="fa fa-heart-o" style="color: #bbb"></i></a>
+                                                    </div>
+                    </div>
+                </div>
+                                <div class="summary">
+                    通过构造 GRAPH_COMPUTE 消息实现任意内存读写，并通过函数指针劫持（如覆盖 iface.clear 为 system()）达成远程代码执行。
+                </div>
+                                <div class="article-body">
+                    <table style="background-color: rgb(255, 255, 255);"><tbody><tr><td colspan="4"><p><strong>漏洞概述</strong></p><p></p><p></p></td></tr><tr><td width="136"><p><strong>漏洞名称</strong></p></td><td colspan="3"><p>llama.cpp 远程代码执行漏洞</p></td></tr><tr><td width="136"><p><strong>漏洞编号</strong></p></td><td colspan="3"><p>QVD-2026-17535，CVE-2026-34159</p></td></tr><tr><td width="136"><p><strong><strong>公开时间</strong></strong></p></td><td width="157"><p>2026-03-26</p></td><td width="166"><p><strong><strong>影响量级</strong></strong></p></td><td width="98"><p>万级</p></td></tr><tr><td width="136"><p><strong>奇安信评级</strong></p></td><td width="157"><p><strong>高危</strong></p></td><td width="166"><p><strong>CVSS 3.1分数</strong></p></td><td width="98"><p><strong>9.8</strong></p></td></tr><tr><td width="136"><p><strong>威胁类型</strong></p></td><td width="157"><p>代码执行</p></td><td width="166"><p><strong>利用可能性</strong></p></td><td width="98"><p><strong><strong>高</strong></strong></p></td></tr><tr><td width="136"><p><strong>POC状态</strong></p></td><td width="157"><p><strong>已公开</strong></p></td><td width="166"><p><strong>在野利用状态</strong></p></td><td width="98"><p>未发现</p></td></tr><tr><td width="136"><p><strong>EXP状态</strong></p></td><td width="157"><p><strong>已公开</strong></p></td><td width="166"><p><strong>技术细节状态</strong></p></td><td width="98"><p><strong>已公开</strong></p></td></tr><tr><td colspan="4"><p><strong>危害描述：</strong>攻击者可结合 ALLOC_BUFFER 和 BUFFER_GET_BASE 消息实现指针泄露，绕过 ASLR，最终通过构造 GRAPH_COMPUTE 消息实现任意内存读写，并通过函数指针劫持（如覆盖 iface.clear 为 system()）达成远程代码执行。</p></td></tr></tbody></table><p></p><p></p><p></p><p><strong>0</strong><strong>1&nbsp;</strong><strong>漏洞详情</strong></p><p></p><p></p><p></p><p></p><p><strong>影响组件</strong></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p>llama.cpp 是一款由 GGML 社区开发的高性能 C/C++ 大语言模型推理引擎，支持 LLaMA、Falcon、Mistral 等数十种主流开源 LLM 的本地与分布式部署，通过轻量级 RPC 架构实现多节点分布式推理、负载均衡与模型并行计算，广泛应用于 AI 私有化部署、边缘计算、科研实验与企业级 LLM 服务场景，具备跨平台、低资源占用、高推理效率特性，是全球最流行的 LLM 本地推理框架之一，被大量 AI 基础设施与应用集成使用。</p><p></p><p></p><p><strong>漏洞描述</strong></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p>近日，奇安信CERT监测到官方修复llama.cpp 远程代码执行漏洞(CVE-2026-34159)，该漏洞源于 RPC 后端的 deserialize_tensor() 函数，在处理 GRAPH_COMPUTE 消息时，当 tensor 的 buffer 字段为 0 时会完全跳过所有边界和有效性验证，导致攻击者可直接控制 result-&gt;data 指针。攻击者可结合 ALLOC_BUFFER 和 BUFFER_GET_BASE 消息实现指针泄露，绕过 ASLR，最终通过构造 GRAPH_COMPUTE 消息实现任意内存读写，并通过函数指针劫持（如覆盖 iface.clear 为 system()）达成远程代码执行。目前该漏洞PoC和技术细节已公开。鉴于该漏洞影响范围较大，建议客户尽快做好自查及防护。</p><p></p><p></p><p><strong>利用条件</strong></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p>攻击者能够访问RPC 服务端口。</p><p></p><p></p><p></p><p><strong>02&nbsp;</strong><strong>影响范围</strong></p><p></p><p></p><p></p><p></p><p><strong>影响版本</strong></p><p></p><p></p><p></p><p></p><p></p><p></p><p>llama.cpp &lt; b8492</p><p></p><p></p><p></p><p></p><p><strong>其他受影响组件</strong></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p>无</p><p></p><p></p><p></p><p><strong>03&nbsp;</strong><strong>复现情况</strong></p><p></p><p></p><p></p><p></p><p></p><p>目前，奇安信威胁情报中心安全研究员已成功复现llama.cpp 远程代码执行漏洞(CVE-2026-34159)，截图如下：</p><p></p><p><img src="https://s.secrss.com/anquanneican/81975ca2b3431d43bc6b707d2dd1795c.jpg"/></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p><strong>04&nbsp;</strong><strong>处置建议</strong></p><p></p><p></p><p></p><p></p><p><strong>安全更新</strong></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p>官方已发布安全补丁，请及时更新至最新版本：</p><p>llama.cpp &gt;= b8492</p><p>下载地址：</p><p>https://github.com/ggml-org/llama.cpp/commit/39bf0d3c6a95803e0f41aaba069ffbee26721042</p><p></p><p></p><p></p><p></p><p></p><p><strong>05&nbsp;</strong><strong>参考资料</strong></p><p></p><p></p><p></p><p></p><p></p><p>[1]https://github.com/ggml-org/llama.cpp/security/advisories/GHSA-j8rj-fmpv-wcxw</p><p>[2]https://github.com/ggml-org/llama.cpp/pull/20908</p><p>[3]https://github.com/ggml-org/llama.cpp/commit/39bf0d3c6a95803e0f41aaba069ffbee26721042</p><p></p>
+
+                    
+                    <p style="color: #999; font-size: 14px;padding-top: 15px">声明：本文来自奇安信 CERT，版权归作者所有。文章内容仅代表作者独立观点，不代表安全内参立场，转载目的在于传递更多信息。如有侵权，请联系 anquanneican@163.com。</p>
+                </div>
+                                <div class="tags article-tags">
+                                        <a href="https://www.secrss.com/articles?tag=漏洞" class="tag" target="_blank">漏洞</a>
+                                    </div>
+                                                <section class="article-list">
+                    <div class="article-list-title">相关资讯</div>
+                    <ul class="list" id="article-list">
+                        <li class="list-item">
+    <div class="info text-info">
+        <h2 class="title">
+            <a target="_blank" href="https://www.secrss.com/articles/92152">
+                微软认证的UEFI引导程序，反倒成了绕过安全启动的捷径
+            </a>
+        </h2>
+        <div class="meta">
+            <div class="meta-left">
+                                    <span class="tag"><a target="_blank" href="https://www.secrss.com/articles?tag=漏洞">漏洞</a></span>
+                                <span class="author"><a target="_blank" style="color: #999"  href="https://www.secrss.com/articles?author=黑鸟">黑鸟</a></span>
+                <span class="time">2026-07-14</span>
+            </div>
+        </div>
+        <p class="intro hidden-xs">
+            <a target="_blank" href="https://www.secrss.com/articles/92152">
+                最近网络安全厂商 ESET 的研究团队披露了一项潜藏多年的底层安全风险。
+            </a>
+        </p>
+    </div>
+</li><li class="list-item">
+    <div class="info text-info">
+        <h2 class="title">
+            <a target="_blank" href="https://www.secrss.com/articles/92137">
+                Windows HTTP.sys整数溢出漏洞(CVE-2026-47291，利用难度高)安全风险通告
+            </a>
+        </h2>
+        <div class="meta">
+            <div class="meta-left">
+                                    <span class="tag"><a target="_blank" href="https://www.secrss.com/articles?tag=漏洞">漏洞</a></span>
+                                <span class="author"><a target="_blank" style="color: #999"  href="https://www.secrss.com/articles?author=奇安信 CERT">奇安信 CERT</a></span>
+                <span class="time">2026-07-14</span>
+            </div>
+        </div>
+        <p class="intro hidden-xs">
+            <a target="_blank" href="https://www.secrss.com/articles/92137">
+                成功利用可获取目标系统的完全控制权限，导致敏感数据泄露、系统服务中断，或作为跳板进一步渗透内网其他资产。
+            </a>
+        </p>
+    </div>
+</li><li class="list-item">
+    <div class="info text-info">
+        <h2 class="title">
+            <a target="_blank" href="https://www.secrss.com/articles/92018">
+                用友U8cloud XChangeServlet SQL注入漏洞安全风险通告
+            </a>
+        </h2>
+        <div class="meta">
+            <div class="meta-left">
+                                    <span class="tag"><a target="_blank" href="https://www.secrss.com/articles?tag=漏洞">漏洞</a></span>
+                                <span class="author"><a target="_blank" style="color: #999"  href="https://www.secrss.com/articles?author=奇安信 CERT">奇安信 CERT</a></span>
+                <span class="time">2026-07-09</span>
+            </div>
+        </div>
+        <p class="intro hidden-xs">
+            <a target="_blank" href="https://www.secrss.com/articles/92018">
+                该漏洞可造成任意命令执行，攻击者可进一步获取服务器控制权限。
+            </a>
+        </p>
+    </div>
+</li>                    </ul>
+                </section>
+                
+                <!-- <section class="comments">
+                    <h3 class="comments-title text-center">评论（0）</h3>
+                    <div class="comment-box">
+                                                    <div class="text-center comment-login-box">
+                            登录后才能发表评论，请先 <a class="login-btn" href="https://www.secrss.com/login">登录 / 注册</a>
+                            </div>
+                                            </div>
+                                    </section> -->
+
+
+            </article>
+        </div>
+    </section>
+<footer class="footer">
+    <ul class='links'>
+                        <li><a href="https://www.secrss.com/info/about">关于我们</a></li>
+                <li><a href="https://www.secrss.com/info/contactus">联系我们</a></li>
+                <li><a href="https://www.secrss.com/info/agreement">用户协议</a></li>
+                <li><a href="https://www.secrss.com/info/privacy">隐私政策</a></li>
+                        <!-- <li><a href="https://www.secrss.com/app">移动客户端</a></li> -->
+    </ul>
+    <p class="meta"><span>安全内参 &copy; 2026 <a href="https://beian.miit.gov.cn" style="color: #707682;" target="_blank">沪ICP备19008222号-1</a></span></p>
+</footer>
+<div class="right-tools hidden-xs">
+    <a class="qrcode">
+        <i class="fa fa-qrcode"></i>
+        <div class="qrcode-box">
+            <img src="https://www.secrss.com/wx_qrcode.jpg" width="100">
+            <p class="text-center">微信公众号</p>
+        </div>
+    </a>
+    <a class="gototop" style="display: none;">
+        <i class="fa fa-angle-double-up"></i>
+        <div class="gototop-box">回到顶部</div>
+    </a>
+</div>
+<script src="https://www.secrss.com/js/app.js"></script>
+<script src="https://www.secrss.com/bower_components/jquery_lazyload/jquery.lazyload.js"></script>
+<script src="https://www.secrss.com/js/common.js"></script>
+<script>
+    $("img.lazyload").lazyload();
+</script>
+<script src="https://www.secrss.com/js/layer/layer.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+    $(".article-body a").attr("target", "_blank");
+    /* 评论 */
+    // $(".comment-btn").click(function(){
+    //     var content = $("#comment-content").val();
+    //     if(content=="") {
+    //         $("#comment-content").focus();
+    //         return;
+    //     }
+
+    //     var article_id = $(this).attr("data-article_id");
+    //     $.post('/article_comments', {"content":content, "article_id":article_id, "_token": $("input[name=_token]").val()}, function(re){
+    //         if(re) {
+    //             layer.msg(re.msg);
+    //             $("#comment-content").val("");
+    //         }
+    //     });
+    // });
+    /*收藏*/
+    $("#star").click(function () {
+        var article_id = $(this).attr("data-article_id");
+        $.post('/article_stars', {"article_id":article_id, "_token": $("input[name=_token]").val()}, function(re){
+            if(re) {
+                layer.msg(re.msg);
+                window.location = location.href;
+            }
+        });
+    });
+
+    /*取消收藏*/
+    $("#unstar").click(function () {
+        var article_id = $(this).attr("data-article_id");
+        $.post('/article_unstars', {"article_id":article_id, "_token": $("input[name=_token]").val()}, function(re){
+            if(re) {
+                layer.msg(re.msg);
+                window.location = location.href;
+            }
+        });
+    });
+
+    /* 微信分享 */
+    wx.config({"debug":false,"beta":false,"jsApiList":["onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","onMenuShareQZone"],"appId":"","nonceStr":"","timestamp":"","url":"","signature":""});
+    wx.ready(function(){
+        var data = {
+            "imgUrl": "https://s.secrss.com/anquanneican/81975ca2b3431d43bc6b707d2dd1795c.jpg!m",
+            "link": "https://www.secrss.com/articles/89833",
+            "desc": "通过构造 GRAPH_COMPUTE 消息实现任意内存读写，并通过函数指针劫持（如覆盖 iface.clear 为 system()）达成远程代码执行。",
+            "title": "llama.cpp远程代码执行漏洞(CVE-2026-34159)安全风险通告"
+        };
+        wx.onMenuShareTimeline(data);
+        wx.onMenuShareAppMessage(data);
+        wx.onMenuShareQQ(data);
+        wx.onMenuShareWeibo(data);
+        wx.onMenuShareQZone(data);
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?75bd0223beb9520a49897a3bfbefa004";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

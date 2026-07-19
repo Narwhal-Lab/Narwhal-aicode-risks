@@ -1,0 +1,52 @@
+slug: 2026-ghostapproval-ai-coding-agent-symlink-bypass
+title_en: GhostApproval Symlink Approval Bypass Across AI Coding Agents
+title_cn: GhostApproval 利用符号链接绕过 AI 编程代理审批
+year: 2026
+disclosed: '2026-07-08'
+category: agent-risk
+severity: high
+severity_basis: cvss
+severity_evidence: Amazon assigns CVE-2026-12958 CVSS 4.0 score 8.5 and CVSS 3.1 score 7.8 because a malicious workspace symlink can redirect an approved AI-agent write outside the trusted workspace with high confidentiality, integrity, and availability impact.
+real_incident: true
+reproducible: true
+ai_tool:
+- Amazon Q Developer
+- Claude Code
+- Augment
+- Cursor
+- Google Antigravity
+- Windsurf
+language:
+- AI coding agents
+- Filesystem operations
+attack_surface:
+- Agent file-write approval
+- Malicious repository
+- Symbolic link
+- Misleading displayed path
+- Files outside workspace
+references:
+- title: 'Wiz: GhostApproval — A Trust Boundary Gap in AI Coding Assistants'
+  url: https://www.wiz.io/blog/ghostapproval-a-trust-boundary-gap-in-ai-coding-assistants
+- title: AWS Security Bulletin 2026-047
+  url: https://aws.amazon.com/security/security-bulletins/2026-047-aws/
+- title: 'NVD: CVE-2026-12958'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-12958
+- title: 'The Hacker News: GhostApproval Symlink Flaws'
+  url: https://thehackernews.com/2026/07/ghostapproval-symlink-flaws-could-let.html
+- title: 'ITPro: Flaws in Popular AI Coding Tools'
+  url: https://www.itpro.com/security/flaws-in-some-of-the-most-popular-ai-coding-tools-left-developers-wide-open-to-attack
+- title: 'The Register: GhostApproval in AI Coding Agents'
+  url: https://www.theregister.com/security/2026/07/08/bug-in-top-ai-coding-agents-shows-that-unix-era-security-headaches-never-really-die/5268025
+- title: 'NVD: CVE-2026-50549'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-50549
+tldr: GhostApproval showed that six AI coding agents could follow repository symlinks while presenting a harmless path or writing before approval, redirecting agent actions to sensitive files outside the workspace.
+tags:
+- ghostapproval
+- ai-coding-agent
+- symlink
+- approval-bypass
+- arbitrary-file-write
+verification_notes: Wiz tested six named products. Amazon and Cursor assigned CVEs and shipped fixes; Google also fixed its variant. Anthropic disputed the vulnerability classification, while Augment and Windsurf had not shipped fixes when Wiz published.
+cve: CVE-2026-12958
+cvss: 7.8

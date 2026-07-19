@@ -1,0 +1,47 @@
+slug: "2026-sglang-zmq-pickle-deserialization-rce"
+title_en: "SGLang ZMQ Pickle Deserialization RCE"
+title_cn: "SGLang ZMQ Pickle 反序列化远程代码执行"
+year: 2026
+disclosed: "2026-03-12"
+category: "domain-specific"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "CERT/CC and Orca report unauthenticated pickle deserialization RCE in SGLang ZMQ components with CVSS 9.8."
+cvss: 9.8
+cve: "CVE-2026-3059, CVE-2026-3060"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "SGLang"
+  - "LLM serving framework"
+  - "ZMQ broker"
+  - "Multimodal generation runtime"
+language:
+  - "Python"
+attack_surface:
+  - "ZMQ broker"
+  - "pickle.loads deserialization"
+  - "LLM serving runtime"
+  - "Network-exposed model service"
+references:
+  - title: "Orca Security: Critical RCE Vulnerabilities in SGLang LLM Framework"
+    url: "https://orca.security/resources/blog/sglang-llm-framework-rce-vulnerabilities/"
+  - title: "CERT/CC VU#665416: SGLang code execution via unsafe pickle"
+    url: "https://www.kb.cert.org/vuls/id/665416"
+  - title: "GitHub Advisory: CVE-2026-3059"
+    url: "https://github.com/advisories/GHSA-rgq9-fqf5-fv58"
+  - title: "Tenable: CVE-2026-3060"
+    url: "https://www.tenable.com/cve/CVE-2026-3060"
+  - title: "CVEProject cvelistV5: CVE-2026-3059"
+    url: "https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/3xxx/CVE-2026-3059.json"
+  - title: "Endor Labs: CVE-2026-3059"
+    url: "https://www.endorlabs.com/vulnerability/cve-2026-3059"
+tldr: "SGLang exposed unauthenticated ZMQ pickle deserialization paths in LLM serving components."
+tags:
+  - "sglang"
+  - "llm-serving"
+  - "pickle"
+  - "deserialization"
+  - "zmq"
+  - "rce"
+verification_notes: "Based on public advisories, CVE databases, technical analysis, and independent vulnerability databases. Public evidence supports the vulnerability and impact class; victim-specific compromise is only stated when the cited sources report it."

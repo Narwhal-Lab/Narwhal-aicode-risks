@@ -1,0 +1,7 @@
+file	type	title	url	archive_status
+source-01.html	主证据	CVEFeed: CVE-2026-35435	https://cvefeed.io/vuln/detail/CVE-2026-35435	OK|html|original|113185
+source-02.html	主证据	CVEProject cvelistV5: CVE-2026-35435	https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/35xxx/CVE-2026-35435.json	OK|html|original|354407
+source-03.html	主证据	OpenCVE: CVE-2026-35435	https://app.opencve.io/cve/CVE-2026-35435	OK|html|original|64784
+source-04.html	复核证据	Tenable: CVE-2026-35435	https://www.tenable.com/cve/CVE-2026-35435	OK|html|original|54061
+source-05.html	复核证据	NCSC-NL: CVE-2026-35435	https://vulnerabilities.ncsc.nl/vulnerability.html?id=2026%2Fcve-2026-35435	OK|html|original|17422
+source-06.html	生态证据	Mallory: Microsoft Azure AI Foundry privilege escalation issue	https://mallory.ai/stories/019e4d6c-275c-7f5c-9b73-199e0b675229	OK|html|original|229482

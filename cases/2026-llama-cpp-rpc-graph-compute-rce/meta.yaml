@@ -1,0 +1,55 @@
+slug: 2026-llama-cpp-rpc-graph-compute-rce
+title_en: llama.cpp RPC GRAPH_COMPUTE Unauthenticated RCE
+title_cn: llama.cpp RPC GRAPH_COMPUTE 未认证远程代码执行
+year: 2026
+disclosed: '2026-03-26'
+category: code-vulns
+severity: critical
+severity_basis: cvss
+severity_evidence: The llama.cpp advisory and NVD assign CVE-2026-34159 a CVSS 3.1 score of 9.8 for unauthenticated arbitrary memory read and write leading to remote code execution.
+real_incident: true
+reproducible: true
+ai_tool:
+- llama.cpp
+- GGML RPC backend
+- Distributed inference
+language:
+- C++
+- Binary RPC
+attack_surface:
+- RPC server port 50052
+- GRAPH_COMPUTE
+- deserialize_tensor
+- Raw pointer handles
+- Distributed GPU inference
+references:
+- title: 'llama.cpp Advisory: GHSA-j8rj-fmpv-wcxw'
+  url: https://github.com/ggml-org/llama.cpp/security/advisories/GHSA-j8rj-fmpv-wcxw
+- title: 'NVD: CVE-2026-34159'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-34159
+- title: llama.cpp Fix Commit 39bf0d3
+  url: https://github.com/ggml-org/llama.cpp/commit/39bf0d3c6a95803e0f41aaba069ffbee26721042
+- title: 'llama.cpp Pull Request #20908'
+  url: https://github.com/ggml-org/llama.cpp/pull/20908
+- title: llama.cpp Security Policy
+  url: https://github.com/ggml-org/llama.cpp/security
+- title: 'Aqua Security: CVE-2026-34159'
+  url: https://avd.aquasec.com/nvd/2026/cve-2026-34159/
+- title: '安全内参: llama.cpp 远程代码执行漏洞通告'
+  url: https://www.secrss.com/articles/89833
+- title: 'CVE Brief: CVE-2026-34159'
+  url: https://cvebrief.com/cve/CVE-2026-34159/
+- title: 'Debian Security Tracker: CVE-2026-34159'
+  url: https://security-tracker.debian.org/tracker/CVE-2026-34159
+- title: 'Ubuntu Security: CVE-2026-34159'
+  url: https://ubuntu.com/security/CVE-2026-34159
+tldr: Crafted unauthenticated GRAPH_COMPUTE messages could bypass tensor bounds checks when buffer was zero, yielding arbitrary process-memory access, ASLR bypass, and code execution on the llama.cpp RPC server.
+tags:
+- llama-cpp
+- rpc
+- graph-compute
+- memory-corruption
+- rce
+verification_notes: The upstream advisory provides a complete proof of concept and CVSS 9.8 rating. NVD identifies b8492 as the patched version, while the advisory page has no tagged patched version; the README reports both records directly.
+cve: CVE-2026-34159
+cvss: 9.8

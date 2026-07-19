@@ -1,0 +1,46 @@
+slug: "2026-fastgpt-nosql-auth-bypass-account-takeover"
+title_en: "FastGPT NoSQL Auth Bypass Account Takeover"
+title_cn: "FastGPT NoSQL 注入认证绕过与账号接管"
+year: 2026
+disclosed: "2026-04-24"
+category: "agent-risk"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "CVE-2026-40351 is rated critical with unauthenticated NoSQL login bypass; CVE-2026-40352 affects password-change verification."
+cvss: 9.8
+cve: "CVE-2026-40351, CVE-2026-40352"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "FastGPT"
+  - "AI Agent building platform"
+  - "MongoDB-backed account service"
+language:
+  - "TypeScript"
+  - "MongoDB"
+attack_surface:
+  - "Password login endpoint"
+  - "Password change endpoint"
+  - "MongoDB query operators"
+  - "Agent platform account boundary"
+references:
+  - title: "GitHub Advisory: FastGPT loginByPassword NoSQL Injection"
+    url: "https://github.com/labring/FastGPT/security/advisories/GHSA-x8mx-2mr7-h9xg"
+  - title: "GitHub Advisory: FastGPT updatePasswordByOld NoSQL Injection"
+    url: "https://github.com/labring/FastGPT/security/advisories/GHSA-422w-vrfj-72g6"
+  - title: "CVEProject cvelistV5: CVE-2026-40351"
+    url: "https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/40xxx/CVE-2026-40351.json"
+  - title: "Tenable: CVE-2026-40352"
+    url: "https://www.tenable.com/cve/CVE-2026-40352"
+  - title: "Tenable: CVE-2026-40351"
+    url: "https://www.tenable.com/cve/CVE-2026-40351"
+  - title: "OpenCVE: FastGPT CVE listing"
+    url: "https://app.opencve.io/cve/?vendor=fastgpt"
+tldr: "FastGPT accepted MongoDB operators in account flows, enabling auth bypass and takeover."
+tags:
+  - "fastgpt"
+  - "nosql-injection"
+  - "auth-bypass"
+  - "account-takeover"
+  - "agent-platform"
+verification_notes: "Based on public advisories, CVE databases, technical analysis, and independent vulnerability databases. Public evidence supports the vulnerability and impact class; victim-specific compromise is only stated when the cited sources report it."

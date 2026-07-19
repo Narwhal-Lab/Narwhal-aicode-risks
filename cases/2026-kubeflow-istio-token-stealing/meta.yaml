@@ -1,0 +1,45 @@
+slug: 2026-kubeflow-istio-token-stealing
+title_en: Kubeflow Istio Permissions Authorization Token Stealing
+title_cn: Kubeflow Istio 过宽权限导致授权令牌窃取
+year: 2026
+disclosed: '2026-05-19'
+category: cloud-iac
+severity: high
+severity_basis: cvss
+severity_evidence: The Kubeflow advisory rates CVE-2026-47237 at CVSS 3.0 8.0, with high confidentiality, integrity, and availability impact after a low-privileged authenticated user and victim interaction.
+real_incident: true
+reproducible: true
+ai_tool:
+- Kubeflow
+- Istio
+- Kubeflow Notebooks
+language:
+- Kubernetes YAML
+- Istio VirtualService
+attack_surface:
+- kubeflow-edit ClusterRole
+- default-editor ServiceAccount
+- Shared Istio gateway
+- Dashboard assets
+- Session cookies
+references:
+- title: 'Kubeflow Advisory: GHSA-v824-8gxh-pgjw'
+  url: https://github.com/kubeflow/manifests/security/advisories/GHSA-v824-8gxh-pgjw
+- title: 'ERNW Insinuator: CVE-2026-47237'
+  url: https://insinuator.net/2026/05/cve-2026-47237-overly-permissive-istio-permissions-allow-kubeflow-authorization-token-stealing/
+- title: Kubeflow Manifests Security Overview
+  url: https://github.com/kubeflow/manifests/security
+- title: 'Kubeflow Fix PR #3043'
+  url: https://github.com/kubeflow/manifests/pull/3043
+- title: 'Kubeflow Docs: Access the Dashboard'
+  url: https://www.kubeflow.org/docs/components/central-dash/access/
+tldr: A Kubeflow contributor could create Istio VirtualServices on the shared gateway, route a commonly loaded dashboard asset to an attacker-controlled pod, capture session cookies, and impersonate other users.
+tags:
+- kubeflow
+- istio
+- kubernetes-rbac
+- session-hijacking
+- multi-tenant
+verification_notes: The upstream advisory contains a full proof of concept and CVSS rating. ERNW's publication and Kubeflow documentation independently establish the affected permission model, shared gateway path, and remediation.
+cve: CVE-2026-47237
+cvss: 8.0

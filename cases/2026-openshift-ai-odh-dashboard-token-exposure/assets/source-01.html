@@ -1,0 +1,2067 @@
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/static/js/cookieconsent-config.js" type="module"></script>
+        
+        <script src="/static/js/gtm.js" type="text/plain" data-category="analytics" defer></script>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>CVE-2026-5483 - Vulnerability Details - OpenCVE</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <meta name="description" content="A flaw was found in odh-dashboard in Red Hat Openshift AI. This vulnerability in the `odh-dashboard` component of Red Hat OpenShift AI (RHOAI) allows for the disclosure of Kubernetes Service Account tokens through a NodeJS endpoint. This could enable an attacker to gain unauthorized access to Kubernetes resources.">
+        <meta name="csrf-token" content="im95GDRoKXCUIWxekm6h7q2Q8pEAFhBpoEa1s1ERBT6VEdyzT686PmZIOmUMTFcU">
+        <link rel="canonical" href="https://app.opencve.io/cve/CVE-2026-5483" />
+        
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/cookieconsent.css">
+<link rel="stylesheet" type="text/css" href="/static/css/spectrum.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/select2.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/gridstack.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/tippy-shift-away.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/tippy-light-border.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/AdminLTE.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/skin-blue.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/pricing.css">
+<link rel="stylesheet" type="text/css" href="/static/css/custom.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/img/opencve_32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/img/opencve_16.png">
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+
+    </head>
+    <body class="hold-transition skin-blue skin-opencve sidebar-mini">
+        
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJXRVLTJ" height="0" width="0" style="display:none;visibility:hidden" data-category="analytics"></iframe>
+        </noscript>
+        
+        <div class="wrapper">
+            <header class="main-header">
+
+                <a href="/" class="logo">
+                    <span class="logo-lg"><img src="/static/img/logo_opencve_white.svg" alt="Logo"/></span>
+                </a>
+
+                <nav class="navbar navbar-static-top">
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <h1 class="navbar-title"><a href="/cve/CVE-2026-5483" class="navbar-title-cve-link">CVE-2026-5483</a><small><i> - Odh-dashboard: odh dashboard kubernetes service account exposure</i></small></h1>
+
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            
+                            <li class="hidden-xs">
+                                <a href="/login/">Sign in</a>
+                            </li>
+                            
+                            <li class="hidden-xs">
+                                <a href="/signup/">Register</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <aside class="main-sidebar">
+                <section class="sidebar">
+                    
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">MAIN NAVIGATION</li>
+                        
+                        <li class="active"><a href="/cve/"><i class="fa fa-shield"></i> <span>Vulnerabilities</span></a></li>
+                        
+                        <li class=""><a href="/vendors/"><i class="fa fa-th-list"></i> <span> Vendors & Products</span></a></li>
+                        <li class=""><a href="/weaknesses/"><i class="fa fa-sitemap"></i> <span> Weaknesses</span></a></li>
+                        <li class=""><a href="/statistics"><i class="fa fa-bar-chart"></i> <span> Statistics</span></a></li>
+                        
+                    </ul>
+                </section>
+            </aside>
+
+            <div class="content-wrapper">
+                
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="cve-description-summary-wrapper" id="cve-overview">
+                <div class="row cve-description-summary-row">
+                    <div class="col-md-8 cve-description-col">
+                        <div class="box box-primary">
+    <div class="box-header">
+        <div class="box-title">Description</div>
+    </div>
+    <div class="box-body cve-description-box-body">
+        
+        <div class="cve-description-wrapper" id="cve-description-wrapper">
+            <div class="cve-description-text-shell">
+                <div class="cve-description-text" id="cve-description-text">
+                    A flaw was found in odh-dashboard in Red Hat Openshift AI. This vulnerability in the `odh-dashboard` component of Red Hat OpenShift AI (RHOAI) allows for the disclosure of Kubernetes Service Account tokens through a NodeJS endpoint. This could enable an attacker to gain unauthorized access to Kubernetes resources.
+                </div>
+                <div class="cve-description-fade-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="cve-description-see-more-wrap" id="cve-description-see-more-wrap" style="display: none;">
+                <button type="button"
+                        class="cve-description-see-more-btn"
+                        id="cve-description-see-more-btn"
+                        aria-expanded="false"
+                        aria-label="Show more description">
+                    <span class="cve-description-see-more-inner">
+                        <span class="cve-description-see-more-label cve-description-see-more-label--more">Show more</span>
+                        <span class="cve-description-see-more-label cve-description-see-more-label--less">Show less</span>
+                        <span class="cve-description-see-more-icon cve-description-see-more-icon--down" aria-hidden="true"><i class="fa fa-chevron-down"></i></span>
+                        <span class="cve-description-see-more-icon cve-description-see-more-icon--up" aria-hidden="true"><i class="fa fa-chevron-up"></i></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+                    </div>
+                    <div class="col-md-4 cve-summary-col">
+                        
+
+<div class="box box-primary">
+    <div class="box-body">
+        
+        
+        
+        <div class="cve-summary-layout">
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">Published:</span>
+                <span class="cve-summary-value">
+                    
+                    2026-04-10
+                    
+                </span>
+            </div>
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">Score:</span>
+                <span class="cve-summary-value">
+                    
+                    <a href="#cve-metrics" class="cve-summary-cvss-link" data-toggle="tooltip" data-container="body" title="CVSS v3.1"><span class="label label-danger">8.5 High</span></a>
+                    
+                </span>
+            </div>
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">EPSS:</span>
+                <span class="cve-summary-value">
+                    
+                    <span class="label label-default" data-toggle="tooltip" data-container="body" title="0.492%">&lt; 1% Very Low</span>
+                    
+                </span>
+            </div>
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">KEV:</span>
+                <span class="cve-summary-value">
+                    
+                    <span class="label label-default">No</span>
+                    
+                </span>
+            </div>
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">Impact:</span>
+                <span class="cve-summary-value cve-summary-value--truncate js-cve-summary-truncate-tooltip">
+                    
+                    <span class="cve-summary-value-text">Kubernetes Service Account Token Disclosure</span>
+                    
+                </span>
+            </div>
+            <div class="cve-summary-item">
+                <span class="cve-summary-label">Action:</span>
+                <span class="cve-summary-value cve-summary-value--truncate js-cve-summary-truncate-tooltip">
+                    
+                    <span class="cve-summary-value-text">Patch Now</span>
+                    
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+<div class="box box-primary" id="cve-analysis">
+    <div class="box-header">
+        <div class="box-title">
+            <img src="/static/img/ai-icon-black-32.png" class="provider-icon cve-tab-ai-icon" alt="AI" /> Analysis
+        </div>
+    </div>
+    <div class="box-body">
+        
+        
+        <article>
+        
+        <div class="cve-analysis-content">
+            
+            
+            <section>
+            <h3 class="cve-analysis-section-title">Impact</h3>
+            <div class="cve-analysis-section-text">
+            <p>The flaw resides in the odh-dashboard component of Red Hat OpenShift AI and allows an attacker to obtain Kubernetes Service Account tokens via a NodeJS endpoint. Exposed service account tokens are sensitive authentication credentials; their disclosure can lead to unauthorized access or manipulation of Kubernetes resources, threatening the confidentiality and integrity of cluster data.</p>
+            </div>
+            </section>
+            
+            
+            <section>
+            <h3 class="cve-analysis-section-title">Affected Systems</h3>
+            <div class="cve-analysis-section-text">
+            <p>The vulnerability applies to Red Hat OpenShift AI releases 2.16, 2.25, 3.2, and 3.3. Any deployment of the odh-dashboard component in these RHOAI versions is susceptible to token exposure.</p>
+            </div>
+            </section>
+            
+            
+            <section>
+            <h3 class="cve-analysis-section-title">Risk and Exploitability</h3>
+            <div class="cve-analysis-section-text">
+            <p>The CVSS score of 8.5 indicates a high severity, and the absence of an EPSS score or KEV listing does not diminish the potential risk. Based on the description, it is inferred that an attacker who can reach the NodeJS endpoint of the dashboard service may obtain service account tokens; the extent of damage depends on the privileges granted to those tokens. Consequently, the flaw poses a significant risk of unauthorized Kubernetes resource access.</p>
+            </div>
+            </section>
+            
+            
+        </div>
+        <footer class="cve-analysis-footer">
+            <p class="text-muted small"><em>Generated by OpenCVE AI on April 10, 2026 at 23:05 UTC.</em></p>
+        </footer>
+        
+        </article>
+        
+        
+    </div>
+</div>
+
+
+            
+
+
+<div class="nav-tabs-custom nav-tabs-primary" id="cve-affected">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#mitre" data-toggle="tab"> <img src="/static/img/cve-icon.png" style="margin-top: -2px; width: 32px;" class="provider-icon" alt="cve-icon" /> Mitre Data <span class="nav-tab-has-data"></span></a>
+        </li>
+        <li>
+            <a href="#nvd" data-toggle="tab"> <img src="/static/img/nvd-icon.png" style="margin-top: -2px; width: 32px;" class="provider-icon" alt="cve-icon" /> CPE Configurations <span class="nav-tab-has-data"></span></a>
+        </li>
+        <li>
+            <a href="#redhat" data-toggle="tab"> <img src="/static/img/redhat-icon.png" style="margin-top: -2px; width: 20px;" class="provider-icon" alt="cve-icon" /> Affected Packages <span class="nav-tab-has-data"></span></a>
+        </li>
+        <li>
+            <a href="#enrichment" data-toggle="tab"> <img src="/static/img/opencve_32.png" style="margin-top: -2px; width: 20px;" class="provider-icon" alt="cve-icon" /> OpenCVE Enrichment <span class="nav-tab-has-data"></span></a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="mitre">
+            
+            <p class="text-muted small mb-3">
+              <strong>Default status</strong> is the baseline for the product, each <strong>version</strong> can override it (e.g. patched versions marked unaffected).
+            </p>
+            <div id="mitre-affected-wrapper" class="mitre-affected-wrapper" data-initial-rows="5">
+              <table class="table table-condensed" id="mitre-affected-table">
+                <thead>
+                  <tr>
+                    <th>Vendor</th>
+                    <th>Product</th>
+                    <th>Default status</th>
+                    <th>Versions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr class="mitre-affected-row">
+                    <td>Red Hat</td>
+                    <td>Red Hat OpenShift AI 2.16</td>
+                    <td>
+                      <span class="label
+                        label-danger
+                        ">
+                        affected
+                      </span>
+                    </td>
+                    <td>
+                      
+                        <table class="table table-sm table-borderless mb-0 small">
+                          <thead class="table-light">
+                            <tr>
+                              <th>Version</th>
+                              <th>Status</th>
+                              <th>Constraints</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          
+                            <tr>
+                              <td class="text-break"><code>1775230902</code></td>
+                              <td>
+                                <span class="label label-success">unaffected</span>
+                              </td>
+                              <td class="mitre-constraints-cell">
+                                <div class="mitre-constraints-content text-muted">
+                                < *
+                                
+                                
+                                </div>
+                              </td>
+                            </tr>
+                          
+                          </tbody>
+                        </table>
+                      
+                    </td>
+                  </tr>
+                
+                  <tr class="mitre-affected-row">
+                    <td>Red Hat</td>
+                    <td>Red Hat OpenShift AI 2.25</td>
+                    <td>
+                      <span class="label
+                        label-danger
+                        ">
+                        affected
+                      </span>
+                    </td>
+                    <td>
+                      
+                        <table class="table table-sm table-borderless mb-0 small">
+                          <thead class="table-light">
+                            <tr>
+                              <th>Version</th>
+                              <th>Status</th>
+                              <th>Constraints</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          
+                            <tr>
+                              <td class="text-break"><code>1775234711</code></td>
+                              <td>
+                                <span class="label label-success">unaffected</span>
+                              </td>
+                              <td class="mitre-constraints-cell">
+                                <div class="mitre-constraints-content text-muted">
+                                < *
+                                
+                                
+                                </div>
+                              </td>
+                            </tr>
+                          
+                          </tbody>
+                        </table>
+                      
+                    </td>
+                  </tr>
+                
+                  <tr class="mitre-affected-row">
+                    <td>Red Hat</td>
+                    <td>Red Hat OpenShift AI 3.2</td>
+                    <td>
+                      <span class="label
+                        label-danger
+                        ">
+                        affected
+                      </span>
+                    </td>
+                    <td>
+                      
+                        <table class="table table-sm table-borderless mb-0 small">
+                          <thead class="table-light">
+                            <tr>
+                              <th>Version</th>
+                              <th>Status</th>
+                              <th>Constraints</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          
+                            <tr>
+                              <td class="text-break"><code>1775523049</code></td>
+                              <td>
+                                <span class="label label-success">unaffected</span>
+                              </td>
+                              <td class="mitre-constraints-cell">
+                                <div class="mitre-constraints-content text-muted">
+                                < *
+                                
+                                
+                                </div>
+                              </td>
+                            </tr>
+                          
+                          </tbody>
+                        </table>
+                      
+                    </td>
+                  </tr>
+                
+                  <tr class="mitre-affected-row">
+                    <td>Red Hat</td>
+                    <td>Red Hat OpenShift AI 3.3</td>
+                    <td>
+                      <span class="label
+                        label-danger
+                        ">
+                        affected
+                      </span>
+                    </td>
+                    <td>
+                      
+                        <table class="table table-sm table-borderless mb-0 small">
+                          <thead class="table-light">
+                            <tr>
+                              <th>Version</th>
+                              <th>Status</th>
+                              <th>Constraints</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          
+                            <tr>
+                              <td class="text-break"><code>1775239958</code></td>
+                              <td>
+                                <span class="label label-success">unaffected</span>
+                              </td>
+                              <td class="mitre-constraints-cell">
+                                <div class="mitre-constraints-content text-muted">
+                                < *
+                                
+                                
+                                </div>
+                              </td>
+                            </tr>
+                          
+                          </tbody>
+                        </table>
+                      
+                    </td>
+                  </tr>
+                
+                  <tr class="mitre-affected-row">
+                    <td>Red Hat</td>
+                    <td>Red Hat OpenShift AI (RHOAI)</td>
+                    <td>
+                      <span class="label
+                        label-success
+                        ">
+                        unaffected
+                      </span>
+                    </td>
+                    <td>
+                      
+                        <span class="text-muted">—</span>
+                      
+                    </td>
+                  </tr>
+                
+                  <tr class="mitre-affected-row">
+                    <td>Red Hat</td>
+                    <td>Red Hat OpenShift AI (RHOAI)</td>
+                    <td>
+                      <span class="label
+                        label-success
+                        ">
+                        unaffected
+                      </span>
+                    </td>
+                    <td>
+                      
+                        <span class="text-muted">—</span>
+                      
+                    </td>
+                  </tr>
+                
+                  <tr class="mitre-affected-row">
+                    <td>Red Hat</td>
+                    <td>Red Hat OpenShift AI (RHOAI)</td>
+                    <td>
+                      <span class="label
+                        label-success
+                        ">
+                        unaffected
+                      </span>
+                    </td>
+                    <td>
+                      
+                        <span class="text-muted">—</span>
+                      
+                    </td>
+                  </tr>
+                
+                </tbody>
+              </table>
+              <div class="mitre-affected-show-more-wrap" id="mitre-affected-show-more-wrap" style="display: none;">
+                <button type="button"
+                        class="mitre-affected-show-more-btn"
+                        id="mitre-affected-show-more-btn"
+                        aria-expanded="false"
+                        aria-label="Show more affected products">
+                  <span class="mitre-affected-show-more-inner">
+                    <span class="mitre-affected-show-more-label mitre-affected-show-more-label--more">Show more</span>
+                    <span class="mitre-affected-show-more-label mitre-affected-show-more-label--less">Show less</span>
+                    <span class="mitre-affected-show-more-icon mitre-affected-show-more-icon--down" aria-hidden="true"><i class="fa fa-chevron-down"></i></span>
+                    <span class="mitre-affected-show-more-icon mitre-affected-show-more-icon--up" aria-hidden="true"><i class="fa fa-chevron-up"></i></span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            
+        </div>
+
+        <div class="tab-pane" id="nvd">
+            
+
+            
+            <p><strong>Configuration 1</strong> <a class="pointer config-toggle"
+                                                                       id="config-1">[-]</a></p>
+            <table class="table table-configuration" id="config-1-table">
+                <tr>
+                    
+                    <td class="col-md-11 and">
+                        
+                        <table class="table table-bordered no-margin-bottom">
+                            
+                            <tr>
+                                
+                                <td class="col-md-1 rowspaned" rowspan="4">OR</td>
+                                
+                                <td>cpe:2.3:a:redhat:openshift_ai:*:*:*:*:*:*:*:*</td>
+                            </tr>
+                            
+                            <tr>
+                                
+                                <td>cpe:2.3:a:redhat:openshift_ai:*:*:*:*:*:*:*:*</td>
+                            </tr>
+                            
+                            <tr>
+                                
+                                <td>cpe:2.3:a:redhat:openshift_ai:3.2:*:*:*:*:*:*:*</td>
+                            </tr>
+                            
+                            <tr>
+                                
+                                <td>cpe:2.3:a:redhat:openshift_ai:3.3:*:*:*:*:*:*:*</td>
+                            </tr>
+                            
+                        </table>
+                        
+                    </td>
+                </tr>
+            </table>
+            <hr/>
+            
+
+            
+        </div>
+        <div class="tab-pane" id="redhat">
+            
+            
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <th>Package</th>
+                    <th>CPE</th>
+                    <th>Advisory</th>
+                    <th>Released Date</th>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td colspan="4" class="td-grouper"><strong>Red Hat OpenShift AI 2.16</strong></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>rhoai/odh-dashboard-rhel8:sha256:0a983da3de4ce816435e23da23c4b6f373008aaf2df2b9820bdcc77a9a110341</td>
+                        <td>cpe:/a:redhat:openshift_ai:2.16::el8</td>
+                        <td><a href="https://access.redhat.com/errata/RHSA-2026:7397" target="_blank">RHSA-2026:7397</a></td>
+                        <td>2026-04-10T00:00:00Z</td>
+                    </tr>
+                    
+                    
+                    <tr>
+                        <td colspan="4" class="td-grouper"><strong>Red Hat OpenShift AI 2.25</strong></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>rhoai/odh-dashboard-rhel9:sha256:15ee3fb5fedf759e82c8de8020da1931c9de8138737f1cc7cf6622847a52887f</td>
+                        <td>cpe:/a:redhat:openshift_ai:2.25::el9</td>
+                        <td><a href="https://access.redhat.com/errata/RHSA-2026:7398" target="_blank">RHSA-2026:7398</a></td>
+                        <td>2026-04-10T00:00:00Z</td>
+                    </tr>
+                    
+                    
+                    <tr>
+                        <td colspan="4" class="td-grouper"><strong>Red Hat OpenShift AI 3.2</strong></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>rhoai/odh-dashboard-rhel9:sha256:0bdb9912d41d799b0237fe75f3fdc843983ab4ebfe6b5a47f7d4a00a642c72cd</td>
+                        <td>cpe:/a:redhat:openshift_ai:3.2::el9</td>
+                        <td><a href="https://access.redhat.com/errata/RHSA-2026:7404" target="_blank">RHSA-2026:7404</a></td>
+                        <td>2026-04-10T00:00:00Z</td>
+                    </tr>
+                    
+                    
+                    <tr>
+                        <td colspan="4" class="td-grouper"><strong>Red Hat OpenShift AI 3.3</strong></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>rhoai/odh-dashboard-rhel9:sha256:14ee2bbd445b8a988c487d4b4a7b02ff9afe1c07034b4bba073a5a8263e3293e</td>
+                        <td>cpe:/a:redhat:openshift_ai:3.3::el9</td>
+                        <td><a href="https://access.redhat.com/errata/RHSA-2026:7403" target="_blank">RHSA-2026:7403</a></td>
+                        <td>2026-04-10T00:00:00Z</td>
+                    </tr>
+                    
+                    
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="tab-pane" id="enrichment">
+          
+            
+
+<table class="table table-condensed" id="enrichment-affected-table">
+  <thead>
+    <tr>
+      <th>Vendor</th>
+      <th>Product</th>
+      <th>Confidence</th>
+      <th>Versions</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+    <tr class="enrichment-affected-row">
+      <td>
+        Redhat
+        <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Original from CNA<br />Red Hat"></i>
+      </td>
+      <td>
+        Openshift Ai
+        <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Original from CNA<br />Red Hat OpenShift AI 2.16"></i>
+      </td>
+      <td>
+        
+        <span>—</span>
+        
+      </td>
+      <td>
+        
+        <table class="table table-sm table-borderless mb-0 small">
+          <thead class="table-light">
+            <tr>
+              <th>Version</th>
+              <th>Status</th>
+              <th>Scheme</th>
+              <th>Platform</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+          <tr>
+            <td class="enrichment-version-cell"><div class="enrichment-version-content"><code>[0,sha256:0a983da3de4ce816435e23da23c4b6f373008aaf2df2b9820bdcc77a9a110341)</code></div></td>
+            <td>
+              <span class="label label-danger">affected</span>
+            </td>
+            <td class="text-muted">generic</td>
+            <td class="text-muted">—</td>
+          </tr>
+          
+          </tbody>
+        </table>
+        
+      </td>
+    </tr>
+
+    <tr class="enrichment-affected-row">
+      <td>
+        Redhat
+        <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Original from CNA<br />Red Hat"></i>
+      </td>
+      <td>
+        Openshift Ai
+        <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Original from CNA<br />Red Hat OpenShift AI 3.3"></i>
+      </td>
+      <td>
+        
+        <span>—</span>
+        
+      </td>
+      <td>
+        
+        <table class="table table-sm table-borderless mb-0 small">
+          <thead class="table-light">
+            <tr>
+              <th>Version</th>
+              <th>Status</th>
+              <th>Scheme</th>
+              <th>Platform</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+          <tr>
+            <td class="enrichment-version-cell"><div class="enrichment-version-content"><code>[0,sha256:14ee2bbd445b8a988c487d4b4a7b02ff9afe1c07034b4bba073a5a8263e3293e)</code></div></td>
+            <td>
+              <span class="label label-success">unaffected</span>
+            </td>
+            <td class="text-muted">generic</td>
+            <td class="text-muted">—</td>
+          </tr>
+          
+          </tbody>
+        </table>
+        
+      </td>
+    </tr>
+
+    <tr class="enrichment-affected-row">
+      <td>
+        Redhat
+        <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Original from CNA<br />Red Hat"></i>
+      </td>
+      <td>
+        Openshift Ai 2.16
+        <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Original from CNA<br />Red Hat OpenShift AI 2.16"></i>
+      </td>
+      <td>
+        
+        <span class="label label-success">100% <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Manual: 100%"></i></span>
+        
+      </td>
+      <td>
+        
+        <table class="table table-sm table-borderless mb-0 small">
+          <thead class="table-light">
+            <tr>
+              <th>Version</th>
+              <th>Status</th>
+              <th>Scheme</th>
+              <th>Platform</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+          <tr>
+            <td class="enrichment-version-cell"><div class="enrichment-version-content"><code>[0,sha256:0a983da3de4ce816435e23da23c4b6f373008aaf2df2b9820bdcc77a9a110341)</code></div></td>
+            <td>
+              <span class="label label-danger">affected</span>
+            </td>
+            <td class="text-muted">generic</td>
+            <td class="text-muted">—</td>
+          </tr>
+          
+          </tbody>
+        </table>
+        
+      </td>
+    </tr>
+
+    <tr class="enrichment-affected-row">
+      <td>
+        Redhat
+        <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Original from CNA<br />Red Hat"></i>
+      </td>
+      <td>
+        Openshift Ai 3.3
+        <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Original from CNA<br />Red Hat OpenShift AI 3.3"></i>
+      </td>
+      <td>
+        
+        <span class="label label-success">100% <i class="fa fa-info-circle pointer" data-toggle="tooltip" data-html="true" title="Manual: 100%"></i></span>
+        
+      </td>
+      <td>
+        
+        <table class="table table-sm table-borderless mb-0 small">
+          <thead class="table-light">
+            <tr>
+              <th>Version</th>
+              <th>Status</th>
+              <th>Scheme</th>
+              <th>Platform</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+          <tr>
+            <td class="enrichment-version-cell"><div class="enrichment-version-content"><code>[0,sha256:14ee2bbd445b8a988c487d4b4a7b02ff9afe1c07034b4bba073a5a8263e3293e)</code></div></td>
+            <td>
+              <span class="label label-success">unaffected</span>
+            </td>
+            <td class="text-muted">generic</td>
+            <td class="text-muted">—</td>
+          </tr>
+          
+          </tbody>
+        </table>
+        
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>
+
+            <p class="text-muted small"><em>
+              Found an issue or want to improve our Enrichment? You can suggest it directly by opening an issue on our <a href="https://github.com/opencve/opencve-enrichment/" target="_blank" rel="noopener">dedicated GitHub repository <i class="fa fa-external-link"></i></a>.
+            </em></p>
+          
+        </div>
+    </div>
+</div>
+
+
+            
+
+<div class="box box-primary" id="cve-remediation">
+    <div class="box-header">
+        <div class="box-title">Remediation</div>
+    </div>
+    <div class="box-body">
+        
+
+            
+
+            
+            
+            <p><strong>Vendor Workaround</strong></p>
+            <p>If applying the update is not immediately possible, the vulnerability can be mitigated by disabling or removing the NIM (NVIDIA Inference Microservice) integration from the Red Hat OpenShift AI (RHOAI) environment.</p>
+            
+
+            
+
+            
+            <hr>
+            <p><strong>OpenCVE Recommended Actions</strong></p>
+            <ul>
+                
+                <li>Apply the Red Hat security updates RHSA-2026:7397, RHSA-2026:7398, RHSA-2026:7403, and RHSA-2026:7404 to update the odh-dashboard component. </li>
+                
+                <li>If an immediate update is not possible, disable or remove the NVIDIA Inference Microservice integration from the RHOAI environment. </li>
+                
+                <li>Continuously monitor RHOAI logs for abnormal API usage that may indicate token misuse or exploitation.</li>
+                
+            </ul>
+            <p class="text-muted small"><em>Generated by OpenCVE AI on April 10, 2026 at 23:05 UTC.</em></p>
+            
+
+        
+    </div>
+</div>
+
+
+            <div class="box box-primary" id="cve-tracking">
+    <div class="box-header">
+        <h3 class="box-title">Tracking</h3>
+        <div class="box-tools pull-right">
+            <i class="fa fa-info-circle" data-toggle="tooltip" data-container="body" data-placement="left" title="Projects appear here if they subscribe to at least one vendor or product affected by this CVE."></i>
+        </div>
+    </div>
+    <div class="box-body" id="cves-tracking-list">
+        
+            <p class="text-muted"><em><a href="/login/">Sign in</a> to view the affected projects.</em></p>
+        
+    </div>
+</div>
+
+
+            
+
+<div class="box box-primary" id="cve-advisories">
+    <div class="box-header">
+        <div class="box-title">Advisories</div>
+    </div>
+    <div class="box-body">
+        
+            <p class="text-muted"><em>No advisories yet.</em></p>
+        
+    </div>
+</div>
+
+
+            
+
+
+
+
+<div class="nav-tabs-custom nav-tabs-primary" id="cve-metrics">
+    <ul class="nav nav-tabs">
+        <li>
+            
+            <a href="#cvss40" data-toggle="tab">CVSS v4.0 <span class="label label-default label-cvss">N/A</span></a>
+            
+        </li>
+        <li class="active">
+            
+            <a href="#cvss31" data-toggle="tab">CVSS v3.1 <span class="label label-danger label-cvss">8.5 High</span></a>
+            
+        </li>
+        <li>
+            
+            <a href="#cvss30" data-toggle="tab">CVSS v3.0 <span class="label label-default label-cvss">N/A</span></a>
+            
+        </li>
+        <li>
+            
+            <a href="#cvss2" data-toggle="tab">CVSS v2 <span class="label label-default label-cvss">N/A</span></a>
+            
+        </li>
+        <li>
+            
+            <a href="#kev" data-toggle="tab">KEV <span class="label label-default label-cvss">no</span></a>
+            
+        </li>
+        <li>
+            
+            <a href="#epss" data-toggle="tab">EPSS <span class="label label-danger label-cvss">0.00492</span></a>
+            
+        </li>
+        <li>
+            
+            <a href="#ssvc" data-toggle="tab">SSVC <span class="label label-danger label-cvss">yes</span></a>
+            
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="cvss40">
+            
+            <p class="text-muted"><em>No CVSS v4.0</em></p>
+            
+        </div>
+        <div class="tab-pane active" id="cvss31">
+            
+            
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Attack Vector</span>
+                        <span class="pull-right label label-danger">Network</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Attack Complexity</span>
+                        <span class="pull-right label label-warning">High</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Privileges Required</span>
+                        <span class="pull-right label label-warning">Low</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Scope</span>
+                        <span class="pull-right label label-danger">Changed</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Confidentiality Impact</span>
+                        <span class="pull-right label label-danger">High</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Integrity Impact</span>
+                        <span class="pull-right label label-danger">High</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Availability Impact</span>
+                        <span class="pull-right label label-danger">High</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">User Interaction</span>
+                        <span class="pull-right label label-danger">None</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <canvas class="cvss-radar" data-chart="{&quot;labels&quot;: [&quot;Attack Vector&quot;, &quot;Attack Complexity&quot;, &quot;Privileges Required&quot;, &quot;User Interaction&quot;, &quot;Scope&quot;, &quot;Confidentiality Impact&quot;, &quot;Integrity Impact&quot;, &quot;Availability Impact&quot;], &quot;datasets&quot;: [{&quot;data&quot;: [2, 1, 1, 2, 2, 2, 2, 2], &quot;backgroundColor&quot;: &quot;rgba(221,75,57,0.2)&quot;, &quot;borderColor&quot;: &quot;rgba(221,75,57,1)&quot;, &quot;pointBackgroundColor&quot;: &quot;rgba(221,75,57,1)&quot;, &quot;borderWidth&quot;: 2, &quot;pointRadius&quot;: 1}]}"></canvas>
+    </div>
+</div>
+
+            
+        </div>
+        <div class="tab-pane" id="cvss30">
+            
+            <p class="text-muted"><em>No CVSS v3.0</em></p>
+            
+        </div>
+        <div class="tab-pane" id="cvss2">
+            
+            <p class="text-muted"><em>No CVSS v2</em></p>
+            
+        </div>
+        <div class="tab-pane" id="kev">
+            
+            <p class="text-muted"><em>This CVE is not in the KEV list.</em></p>
+            
+        </div>
+        <div class="tab-pane" id="epss">
+            
+            
+
+
+<p>The EPSS score is <strong>0.00492</strong>.</p>
+
+            
+        </div>
+        <div class="tab-pane" id="ssvc">
+            
+            
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Exploitation</span>
+                        <span class="pull-right label label-default">none</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Automatable</span>
+                        <span class="pull-right label label-default">no</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel-group panel-group-cvss">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="panel-title-text">Technical Impact</span>
+                        <span class="pull-right label label-danger">total</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+        </div>
+    </div>
+</div>
+
+
+            
+<div class="box box-primary" id="cve-references">
+    <div class="box-header">
+        <div class="box-title">References</div>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+    <div class="box-body">
+        
+        <table class="table table-bordered">
+            <thead>
+                <th>Link</th>
+                <th>Providers</th>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://access.redhat.com/errata/RHSA-2026:7397" target="_blank">https://access.redhat.com/errata/RHSA-2026:7397</a></td>
+                <td>
+                    <img src="/static/img/cve-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    <img src="/static/img/nvd-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://access.redhat.com/errata/RHSA-2026:7398" target="_blank">https://access.redhat.com/errata/RHSA-2026:7398</a></td>
+                <td>
+                    <img src="/static/img/cve-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    <img src="/static/img/nvd-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://access.redhat.com/errata/RHSA-2026:7403" target="_blank">https://access.redhat.com/errata/RHSA-2026:7403</a></td>
+                <td>
+                    <img src="/static/img/cve-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    <img src="/static/img/nvd-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://access.redhat.com/errata/RHSA-2026:7404" target="_blank">https://access.redhat.com/errata/RHSA-2026:7404</a></td>
+                <td>
+                    <img src="/static/img/cve-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    <img src="/static/img/nvd-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://access.redhat.com/security/cve/CVE-2026-5483" target="_blank">https://access.redhat.com/security/cve/CVE-2026-5483</a></td>
+                <td>
+                    <img src="/static/img/cve-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    <img src="/static/img/nvd-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://bugzilla.redhat.com/show_bug.cgi?id=2454764" target="_blank">https://bugzilla.redhat.com/show_bug.cgi?id=2454764</a></td>
+                <td>
+                    <img src="/static/img/cve-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    <img src="/static/img/nvd-icon.png" class="provider-icon" style="width: 32px;" alt="cve-icon" />
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-5483" target="_blank">https://nvd.nist.gov/vuln/detail/CVE-2026-5483</a></td>
+                <td>
+                    
+                    
+                    <img src="/static/img/redhat-icon.png" class="provider-icon" style="width: 18px;" alt="cve-icon" />
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-8 td-ellipsis"><a href="https://www.cve.org/CVERecord?id=CVE-2026-5483" target="_blank">https://www.cve.org/CVERecord?id=CVE-2026-5483</a></td>
+                <td>
+                    
+                    
+                    <img src="/static/img/redhat-icon.png" class="provider-icon" style="width: 18px;" alt="cve-icon" />
+                    
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+
+
+            
+
+<div class="box box-primary" id="cve-history">
+    <div class="box-header">
+        <div class="box-title">History</div>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+
+    
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Wed, 22 Apr 2026 00:00:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">CPEs</td>
+    
+    <td class="col-md-5"><s></s></td>
+    <td class="col-md-5">cpe:2.3:a:redhat:openshift_ai:*:*:*:*:*:*:*:*<br/>cpe:2.3:a:redhat:openshift_ai:3.2:*:*:*:*:*:*:*<br/>cpe:2.3:a:redhat:openshift_ai:3.3:*:*:*:*:*:*:*</td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Mon, 13 Apr 2026 13:00:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            
+<tr>
+    
+    <td class="col-md-2">First Time appeared</td>
+    
+    <td class="col-md-5"></td>
+    <td class="col-md-5">
+        
+        Redhat openshift Ai 2.16
+        <br />
+        
+        Redhat openshift Ai 3.3
+        <br />
+        
+    </td>
+</tr>
+
+                            
+                        
+                            
+                            
+<tr>
+    
+    <td class="col-md-2">Vendors & Products</td>
+    
+    <td class="col-md-5">
+        
+    </td>
+    <td class="col-md-5">
+        
+        Redhat openshift Ai 2.16
+        <br />
+        
+        Redhat openshift Ai 3.3
+        <br />
+        
+    </td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Sat, 11 Apr 2026 00:15:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">References</td>
+    
+    <td class="col-md-5">
+        <ul>
+        
+        </ul>
+    <td class="col-md-5">
+        <ul>
+        
+            <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-5483" target="_blank">https://nvd.nist.gov/vuln/detail/CVE-2026-5483</a></li>
+        
+            <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-5483" target="_blank">https://www.cve.org/CVERecord?id=CVE-2026-5483</a></li>
+        
+        </ul>
+    </td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Metrics</td>
+    
+    <td class="col-md-5">
+        
+
+        
+        <u>threat_severity</u>
+        <p><code>None</code></p>
+        
+    </td>
+    <td class="col-md-5">
+        
+
+        
+        <u>threat_severity</u>
+        <p><code>Important</code></p>
+        
+    </td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Fri, 10 Apr 2026 21:15:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">CPEs</td>
+    
+    <td class="col-md-5"><s></s></td>
+    <td class="col-md-5">cpe:/a:redhat:openshift_ai:2.25::el9<br/>cpe:/a:redhat:openshift_ai:3.2::el9</td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">References</td>
+    
+    <td class="col-md-5">
+        <ul>
+        
+        </ul>
+    <td class="col-md-5">
+        <ul>
+        
+            <li><a href="https://access.redhat.com/errata/RHSA-2026:7398" target="_blank">https://access.redhat.com/errata/RHSA-2026:7398</a></li>
+        
+            <li><a href="https://access.redhat.com/errata/RHSA-2026:7404" target="_blank">https://access.redhat.com/errata/RHSA-2026:7404</a></li>
+        
+        </ul>
+    </td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Fri, 10 Apr 2026 19:15:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Metrics</td>
+    
+    <td class="col-md-5">
+        
+
+        
+    </td>
+    <td class="col-md-5">
+        
+        <u>ssvc</u>
+        <p><code>{&#x27;options&#x27;: {&#x27;Automatable&#x27;: &#x27;no&#x27;, &#x27;Exploitation&#x27;: &#x27;none&#x27;, &#x27;Technical Impact&#x27;: &#x27;total&#x27;}, &#x27;version&#x27;: &#x27;2.0.3&#x27;}</code></p>
+        
+
+        
+    </td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Fri, 10 Apr 2026 18:45:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">CPEs</td>
+    
+    <td class="col-md-5"><s></s></td>
+    <td class="col-md-5">cpe:/a:redhat:openshift_ai:3.3::el9</td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">References</td>
+    
+    <td class="col-md-5">
+        <ul>
+        
+        </ul>
+    <td class="col-md-5">
+        <ul>
+        
+            <li><a href="https://access.redhat.com/errata/RHSA-2026:7403" target="_blank">https://access.redhat.com/errata/RHSA-2026:7403</a></li>
+        
+        </ul>
+    </td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+                <p class="report-change-title"><i class="fa fa-clock-o"></i> Fri, 10 Apr 2026 18:00:00 +0000</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Type</th>
+                            <th>Values Removed</th>
+                            <th>Values Added</th>
+                        </thead>
+                        <tbody>
+
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Description</td>
+    
+    <td class="col-md-5"></td>
+    <td class="col-md-5">A flaw was found in odh-dashboard in Red Hat Openshift AI. This vulnerability in the `odh-dashboard` component of Red Hat OpenShift AI (RHOAI) allows for the disclosure of Kubernetes Service Account tokens through a NodeJS endpoint. This could enable an attacker to gain unauthorized access to Kubernetes resources.</td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Title</td>
+    
+    <td class="col-md-5"></td>
+    <td class="col-md-5">Odh-dashboard: odh dashboard kubernetes service account exposure</td>
+</tr>
+
+                            
+                        
+                            
+                            
+<tr>
+    
+    <td class="col-md-2">First Time appeared</td>
+    
+    <td class="col-md-5"></td>
+    <td class="col-md-5">
+        
+        Redhat
+        <br />
+        
+        Redhat openshift Ai
+        <br />
+        
+    </td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Weaknesses</td>
+    
+    <td class="col-md-5"></td>
+    <td class="col-md-5">CWE-201</td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">CPEs</td>
+    
+    <td class="col-md-5"><s></s></td>
+    <td class="col-md-5">cpe:/a:redhat:openshift_ai<br/>cpe:/a:redhat:openshift_ai:2.16::el8</td>
+</tr>
+
+                            
+                        
+                            
+                            
+<tr>
+    
+    <td class="col-md-2">Vendors & Products</td>
+    
+    <td class="col-md-5">
+        
+    </td>
+    <td class="col-md-5">
+        
+        Redhat
+        <br />
+        
+        Redhat openshift Ai
+        <br />
+        
+    </td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">References</td>
+    
+    <td class="col-md-5">
+        <ul>
+        
+        </ul>
+    <td class="col-md-5">
+        <ul>
+        
+            <li><a href="https://access.redhat.com/errata/RHSA-2026:7397" target="_blank">https://access.redhat.com/errata/RHSA-2026:7397</a></li>
+        
+            <li><a href="https://access.redhat.com/security/cve/CVE-2026-5483" target="_blank">https://access.redhat.com/security/cve/CVE-2026-5483</a></li>
+        
+            <li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=2454764" target="_blank">https://bugzilla.redhat.com/show_bug.cgi?id=2454764</a></li>
+        
+        </ul>
+    </td>
+</tr>
+
+                            
+                        
+                            
+                            <tr>
+    
+    <td class="col-md-2">Metrics</td>
+    
+    <td class="col-md-5">
+        
+
+        
+    </td>
+    <td class="col-md-5">
+        
+        <u>cvssV3_1</u>
+        <p><code>{&#x27;score&#x27;: 8.5, &#x27;vector&#x27;: &#x27;CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H&#x27;}</code></p>
+        
+
+        
+    </td>
+</tr>
+
+                            
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+        </div>
+
+        <div class="col-md-3">
+            <div class="box box-primary">
+    <div class="box-body cve-section-nav-body">
+        <div class="cve-section-nav-row">
+            <nav class="cve-section-nav" aria-label="Page sections">
+            <a href="#cve-overview" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Description &amp; summary">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-analysis" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Analysis">
+                <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-affected" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Affected products">
+                <i class="fa fa-cubes" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-remediation" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Remediation">
+                <i class="fa fa-wrench" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-tracking" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Tracking">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-advisories" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Advisories">
+                <i class="fa fa-bullhorn" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-metrics" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="Metrics">
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-references" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="References">
+                <i class="fa fa-link" aria-hidden="true"></i>
+            </a>
+            <a href="#cve-history" class="cve-section-nav-item" data-toggle="tooltip" data-container="body" title="History">
+                <i class="fa fa-history" aria-hidden="true"></i>
+            </a>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+            
+
+            <div class="box box-primary" id="project-subscriptions-box">
+                <div class="box-header">
+                    <h3 class="box-title">Subscriptions</h3>
+                </div>
+                <div class="box-body project-subscriptions-body">
+                    
+
+
+<div class="subscription-grid">
+
+    <span class="subscription-vendor-name">
+        <span class="subscription-vendor-name-text">Redhat</span> <i class="fa fa-exclamation-circle pointer" data-toggle="tooltip" data-container="body" title="Warning: This vendor/product is frequently associated with CVEs; you may receive numerous notifications."></i>
+    </span>
+    
+        <a href="/signup/" class="btn btn-default btn-xs subscribe-vendor-link" aria-label="Sign up to subscribe to Redhat">
+            <i class="fa fa-bell-o" aria-hidden="true"></i> <span class="subscribe-btn-label">Subscribe</span>
+        </a>
+    
+    
+    <span class="subscription-product-name subscription-product-name-first">
+        <span class="subscription-product-name-text">Openshift Ai</span>
+        
+            
+        
+    </span>
+    
+        <a href="/signup/" class="btn btn-default btn-xs subscribe-product-link" aria-label="Sign up to subscribe to Openshift Ai">
+            <i class="fa fa-bell-o" aria-hidden="true"></i> <span class="subscribe-btn-label">Subscribe</span>
+        </a>
+    
+    
+    <span class="subscription-product-name">
+        <span class="subscription-product-name-text">Openshift Ai 2.16</span>
+        
+            
+        
+    </span>
+    
+        <a href="/signup/" class="btn btn-default btn-xs subscribe-product-link" aria-label="Sign up to subscribe to Openshift Ai 2.16">
+            <i class="fa fa-bell-o" aria-hidden="true"></i> <span class="subscribe-btn-label">Subscribe</span>
+        </a>
+    
+    
+    <span class="subscription-product-name">
+        <span class="subscription-product-name-text">Openshift Ai 3.3</span>
+        
+            
+        
+    </span>
+    
+        <a href="/signup/" class="btn btn-default btn-xs subscribe-product-link" aria-label="Sign up to subscribe to Openshift Ai 3.3">
+            <i class="fa fa-bell-o" aria-hidden="true"></i> <span class="subscribe-btn-label">Subscribe</span>
+        </a>
+    
+    
+    
+
+</div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">
+                        <img src="/static/img/cve-icon.png" class="provider-icon" alt="cve-icon" />
+                        MITRE
+                    </div>
+                    
+                    <div class="box-tools pull-right">
+                        <div class="btn-group" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-mitre-json"><i class="fa fa-code"></i></button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="box-body">
+                    <p><strong>Status:</strong> PUBLISHED</p>
+                    <p><strong>Assigner:</strong> redhat</p>
+                    <p><strong>Published:</strong>
+                        
+                        <time datetime="2026-04-10T17:33:25">
+                            2026-04-10T17:33:25.055Z
+                        </time>
+                        
+                    </p>
+                    <p><strong>Updated:</strong> 2026-06-30T12:11:16.457Z</p>
+                    <p><strong>Reserved:</strong> 2026-04-03T12:27:18.589Z</p>
+                    <p><strong>Link:</strong> <a href="https://www.cve.org/CVERecord?id=CVE-2026-5483" target="_blank">CVE-2026-5483 <i class="fa fa-external-link"></i></a></p>
+                </div>
+                
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">
+                        <img src="/static/img/cisa-icon.png" class="provider-icon" style="width: 28px;" alt="cve-icon" />
+                        Vulnrichment
+                    </div>
+                    
+                    <div class="box-tools pull-right">
+                        <div class="btn-group" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-vulnrichment-json"><i class="fa fa-code"></i></button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="box-body">
+                    <p><strong>Updated:</strong> 2026-06-30T03:18:40.418Z</p>
+                </div>
+                
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">
+                        <img src="/static/img/nvd-icon.png" class="provider-icon" alt="cve-icon" />
+                        NVD
+                    </div>
+                    
+                    <div class="box-tools pull-right">
+                        <div class="btn-group" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-nvd-json"><i class="fa fa-code"></i></button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="box-body">
+                    <p><strong>Status :</strong> Analyzed</p>
+                    <p><strong>Published:</strong> 2026-04-10T18:16:46.567</p>
+                    <p><strong>Modified:</strong> 2026-06-17T10:59:06.583</p>
+                    <p><strong>Link:</strong> <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-5483" target="_blank">CVE-2026-5483 <i class="fa fa-external-link"></i></a></p>
+                </div>
+                
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">
+                        <img src="/static/img/redhat-icon.png" class="provider-icon" style="width: 28px;" alt="cve-icon" />
+                        Redhat
+                    </div>
+                    
+                    <div class="box-tools pull-right">
+                        <div class="btn-group" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-redhat-json"><i class="fa fa-code"></i></button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="box-body">
+                    <p><strong>Severity :</strong> Important</p>
+                    <p><strong>Publid Date:</strong> 2026-04-10T17:16:00Z</p>
+                    <p><strong>Links:</strong> <a href="https://access.redhat.com/security/cve/CVE-2026-5483" target="_blank">CVE-2026-5483 <i class="fa fa-external-link"></i></a> - <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2454764" target="_blank">Bugzilla <i class="fa fa-bug"></i></a></p>
+                </div>
+                
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">
+                        <img src="/static/img/opencve_32.png" class="provider-icon" style="width: 28px;" alt="cve-icon" />
+                        OpenCVE Enrichment
+                    </div>
+                    
+                    <div class="box-tools pull-right">
+                        <div class="btn-group" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-enrichment-json"><i class="fa fa-code"></i></button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="box-body">
+                    <p><strong>Updated:</strong> 2026-04-13T13:00:04Z</p>
+                </div>
+                
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="box-title">Weaknesses</div>
+                </div>
+                <div class="box-body">
+                    
+                        <ul>
+                        
+                        <li>
+                            <a href="/cve/?weakness=CWE-201">CWE-201</a>
+                            <p class="cwe-name">Insertion of Sensitive Information Into Sent Data</p>
+                        </li>
+                        
+                        </ul>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<div class="modal fade" id="modal-mitre-json">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">JSON object</h4>
+            </div>
+            <div class="modal-body codejson">
+                {&quot;dataType&quot;: &quot;CVE_RECORD&quot;, &quot;dataVersion&quot;: &quot;5.2&quot;, &quot;cveMetadata&quot;: {&quot;cveId&quot;: &quot;CVE-2026-5483&quot;, &quot;assignerOrgId&quot;: &quot;53f830b8-0a3f-465b-8143-3b8a9948e749&quot;, &quot;state&quot;: &quot;PUBLISHED&quot;, &quot;assignerShortName&quot;: &quot;redhat&quot;, &quot;dateReserved&quot;: &quot;2026-04-03T12:27:18.589Z&quot;, &quot;datePublished&quot;: &quot;2026-04-10T17:33:25.055Z&quot;, &quot;dateUpdated&quot;: &quot;2026-06-30T12:11:16.457Z&quot;}, &quot;containers&quot;: {&quot;cna&quot;: {&quot;title&quot;: &quot;Odh-dashboard: odh dashboard kubernetes service account exposure&quot;, &quot;metrics&quot;: [{&quot;other&quot;: {&quot;content&quot;: {&quot;value&quot;: &quot;Important&quot;, &quot;namespace&quot;: &quot;https://access.redhat.com/security/updates/classification/&quot;}, &quot;type&quot;: &quot;Red Hat severity rating&quot;}}, {&quot;cvssV3_1&quot;: {&quot;attackComplexity&quot;: &quot;HIGH&quot;, &quot;attackVector&quot;: &quot;NETWORK&quot;, &quot;availabilityImpact&quot;: &quot;HIGH&quot;, &quot;baseScore&quot;: 8.5, &quot;baseSeverity&quot;: &quot;HIGH&quot;, &quot;confidentialityImpact&quot;: &quot;HIGH&quot;, &quot;integrityImpact&quot;: &quot;HIGH&quot;, &quot;privilegesRequired&quot;: &quot;LOW&quot;, &quot;scope&quot;: &quot;CHANGED&quot;, &quot;userInteraction&quot;: &quot;NONE&quot;, &quot;vectorString&quot;: &quot;CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H&quot;, &quot;version&quot;: &quot;3.1&quot;}, &quot;format&quot;: &quot;CVSS&quot;}], &quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;A flaw was found in odh-dashboard in Red Hat Openshift AI. This vulnerability in the `odh-dashboard` component of Red Hat OpenShift AI (RHOAI) allows for the disclosure of Kubernetes Service Account tokens through a NodeJS endpoint. This could enable an attacker to gain unauthorized access to Kubernetes resources.&quot;}], &quot;affected&quot;: [{&quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 2.16&quot;, &quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel8&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;versions&quot;: [{&quot;version&quot;: &quot;1775230902&quot;, &quot;lessThan&quot;: &quot;*&quot;, &quot;versionType&quot;: &quot;rpm&quot;, &quot;status&quot;: &quot;unaffected&quot;}], &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:2.16::el8&quot;]}, {&quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 2.25&quot;, &quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel9&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;versions&quot;: [{&quot;version&quot;: &quot;1775234711&quot;, &quot;lessThan&quot;: &quot;*&quot;, &quot;versionType&quot;: &quot;rpm&quot;, &quot;status&quot;: &quot;unaffected&quot;}], &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:2.25::el9&quot;]}, {&quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 3.2&quot;, &quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel9&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;versions&quot;: [{&quot;version&quot;: &quot;1775523049&quot;, &quot;lessThan&quot;: &quot;*&quot;, &quot;versionType&quot;: &quot;rpm&quot;, &quot;status&quot;: &quot;unaffected&quot;}], &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:3.2::el9&quot;]}, {&quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 3.3&quot;, &quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel9&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;versions&quot;: [{&quot;version&quot;: &quot;1775239958&quot;, &quot;lessThan&quot;: &quot;*&quot;, &quot;versionType&quot;: &quot;rpm&quot;, &quot;status&quot;: &quot;unaffected&quot;}], &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:3.3::el9&quot;]}, {&quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;collectionURL&quot;: &quot;https://access.redhat.com/downloads/content/package-browser/&quot;, &quot;packageName&quot;: &quot;rhoai/odh-mod-arch-gen-ai-rhel9&quot;, &quot;defaultStatus&quot;: &quot;unaffected&quot;, &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;]}, {&quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;collectionURL&quot;: &quot;https://access.redhat.com/downloads/content/package-browser/&quot;, &quot;packageName&quot;: &quot;rhoai/odh-mod-arch-maas-rhel9&quot;, &quot;defaultStatus&quot;: &quot;unaffected&quot;, &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;]}, {&quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;collectionURL&quot;: &quot;https://access.redhat.com/downloads/content/package-browser/&quot;, &quot;packageName&quot;: &quot;rhoai/odh-mod-arch-model-registry-rhel9&quot;, &quot;defaultStatus&quot;: &quot;unaffected&quot;, &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;]}], &quot;references&quot;: [{&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7397&quot;, &quot;name&quot;: &quot;RHSA-2026:7397&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7398&quot;, &quot;name&quot;: &quot;RHSA-2026:7398&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7403&quot;, &quot;name&quot;: &quot;RHSA-2026:7403&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7404&quot;, &quot;name&quot;: &quot;RHSA-2026:7404&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/security/cve/CVE-2026-5483&quot;, &quot;tags&quot;: [&quot;vdb-entry&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://bugzilla.redhat.com/show_bug.cgi?id=2454764&quot;, &quot;name&quot;: &quot;RHBZ#2454764&quot;, &quot;tags&quot;: [&quot;issue-tracking&quot;, &quot;x_refsource_REDHAT&quot;]}], &quot;datePublic&quot;: &quot;2026-04-10T17:16:00.000Z&quot;, &quot;problemTypes&quot;: [{&quot;descriptions&quot;: [{&quot;cweId&quot;: &quot;CWE-201&quot;, &quot;description&quot;: &quot;Insertion of Sensitive Information Into Sent Data&quot;, &quot;lang&quot;: &quot;en&quot;, &quot;type&quot;: &quot;CWE&quot;}]}], &quot;x_redhatCweChain&quot;: &quot;CWE-201: Insertion of Sensitive Information Into Sent Data&quot;, &quot;workarounds&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;If applying the update is not immediately possible, the vulnerability can be mitigated by disabling or removing the NIM (NVIDIA Inference Microservice) integration from the Red Hat OpenShift AI (RHOAI) environment.&quot;}], &quot;timeline&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;time&quot;: &quot;2026-04-03T00:00:00.000Z&quot;, &quot;value&quot;: &quot;Reported to Red Hat.&quot;}, {&quot;lang&quot;: &quot;en&quot;, &quot;time&quot;: &quot;2026-04-10T17:16:00.000Z&quot;, &quot;value&quot;: &quot;Made public.&quot;}], &quot;providerMetadata&quot;: {&quot;orgId&quot;: &quot;53f830b8-0a3f-465b-8143-3b8a9948e749&quot;, &quot;shortName&quot;: &quot;redhat&quot;, &quot;dateUpdated&quot;: &quot;2026-04-29T05:20:59.210Z&quot;}, &quot;x_generator&quot;: {&quot;engine&quot;: &quot;cvelib 1.8.0&quot;}}, &quot;adp&quot;: [{&quot;metrics&quot;: [{&quot;other&quot;: {&quot;type&quot;: &quot;ssvc&quot;, &quot;content&quot;: {&quot;timestamp&quot;: &quot;2026-04-10T18:33:58.848733Z&quot;, &quot;id&quot;: &quot;CVE-2026-5483&quot;, &quot;options&quot;: [{&quot;Exploitation&quot;: &quot;none&quot;}, {&quot;Automatable&quot;: &quot;no&quot;}, {&quot;Technical Impact&quot;: &quot;total&quot;}], &quot;role&quot;: &quot;CISA Coordinator&quot;, &quot;version&quot;: &quot;2.0.3&quot;}}}], &quot;title&quot;: &quot;CISA ADP Vulnrichment&quot;, &quot;providerMetadata&quot;: {&quot;orgId&quot;: &quot;134c704f-9b21-4f2e-91b3-4a467353bcc0&quot;, &quot;shortName&quot;: &quot;CISA-ADP&quot;, &quot;dateUpdated&quot;: &quot;2026-04-10T18:34:06.822Z&quot;}}, {&quot;affected&quot;: [{&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:2.16::el8&quot;], &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 2.16&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:2.25::el9&quot;], &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 2.25&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:3.2::el9&quot;], &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 3.2&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:3.3::el9&quot;], &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 3.3&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;], &quot;defaultStatus&quot;: &quot;unaffected&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}], &quot;datePublic&quot;: &quot;2026-04-10T17:16:00.000Z&quot;, &quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;A flaw was found in odh-dashboard in Red Hat Openshift AI. This vulnerability in the `odh-dashboard` component of Red Hat OpenShift AI (RHOAI) allows for the disclosure of Kubernetes Service Account tokens through a NodeJS endpoint. This could enable an attacker to gain unauthorized access to Kubernetes resources.&quot;}], &quot;metrics&quot;: [{&quot;other&quot;: {&quot;content&quot;: {&quot;namespace&quot;: &quot;https://access.redhat.com/security/updates/classification/&quot;, &quot;value&quot;: &quot;Important&quot;}, &quot;type&quot;: &quot;Red Hat severity rating&quot;}}, {&quot;cvssV3_1&quot;: {&quot;attackComplexity&quot;: &quot;HIGH&quot;, &quot;attackVector&quot;: &quot;NETWORK&quot;, &quot;availabilityImpact&quot;: &quot;HIGH&quot;, &quot;baseScore&quot;: 8.5, &quot;baseSeverity&quot;: &quot;HIGH&quot;, &quot;confidentialityImpact&quot;: &quot;HIGH&quot;, &quot;integrityImpact&quot;: &quot;HIGH&quot;, &quot;privilegesRequired&quot;: &quot;LOW&quot;, &quot;scope&quot;: &quot;CHANGED&quot;, &quot;userInteraction&quot;: &quot;NONE&quot;, &quot;vectorString&quot;: &quot;CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H&quot;, &quot;version&quot;: &quot;3.1&quot;}, &quot;format&quot;: &quot;CVSS&quot;}], &quot;problemTypes&quot;: [{&quot;descriptions&quot;: [{&quot;cweId&quot;: &quot;CWE-201&quot;, &quot;description&quot;: &quot;Insertion of Sensitive Information Into Sent Data&quot;, &quot;lang&quot;: &quot;en&quot;, &quot;type&quot;: &quot;CWE&quot;}]}], &quot;references&quot;: [{&quot;tags&quot;: [&quot;vdb-entry&quot;, &quot;x_refsource_REDHAT&quot;], &quot;url&quot;: &quot;https://access.redhat.com/security/cve/CVE-2026-5483&quot;}, {&quot;name&quot;: &quot;RHBZ#2454764&quot;, &quot;tags&quot;: [&quot;issue-tracking&quot;, &quot;x_refsource_REDHAT&quot;], &quot;url&quot;: &quot;https://bugzilla.redhat.com/show_bug.cgi?id=2454764&quot;}, {&quot;tags&quot;: [&quot;x_sadp-csaf-vex&quot;], &quot;url&quot;: &quot;https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-5483.json&quot;}, {&quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;], &quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7397&quot;}, {&quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;], &quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7398&quot;}, {&quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;], &quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7404&quot;}, {&quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;], &quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7403&quot;}], &quot;solutions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;RHSA-2026:7397: Red Hat OpenShift AI 2.16&quot;}, {&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;RHSA-2026:7398: Red Hat OpenShift AI 2.25&quot;}, {&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;RHSA-2026:7404: Red Hat OpenShift AI 3.2&quot;}, {&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;RHSA-2026:7403: Red Hat OpenShift AI 3.3&quot;}], &quot;timeline&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;time&quot;: &quot;2026-04-03T00:00:00.000Z&quot;, &quot;value&quot;: &quot;Reported to Red Hat.&quot;}, {&quot;lang&quot;: &quot;en&quot;, &quot;time&quot;: &quot;2026-04-10T17:16:00.000Z&quot;, &quot;value&quot;: &quot;Made public.&quot;}], &quot;title&quot;: &quot;odh-dashboard: ODH Dashboard Kubernetes Service Account Exposure&quot;, &quot;workarounds&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;If applying the update is not immediately possible, the vulnerability can be mitigated by disabling or removing the NIM (NVIDIA Inference Microservice) integration from the Red Hat OpenShift AI (RHOAI) environment.&quot;}], &quot;x_adpType&quot;: &quot;supplier&quot;, &quot;x_generator&quot;: {&quot;engine&quot;: &quot;sadp-cli 1.0.0&quot;}, &quot;providerMetadata&quot;: {&quot;orgId&quot;: &quot;0b0ca135-0b70-47e7-9f44-1890c2a1c46c&quot;, &quot;shortName&quot;: &quot;redhat-SADP&quot;, &quot;dateUpdated&quot;: &quot;2026-06-30T12:11:16.457Z&quot;}}]}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-vulnrichment-json">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">JSON object</h4>
+            </div>
+            <div class="modal-body codejson">
+                {&quot;dataType&quot;: &quot;CVE_RECORD&quot;, &quot;containers&quot;: {&quot;adp&quot;: [{&quot;title&quot;: &quot;odh-dashboard: ODH Dashboard Kubernetes Service Account Exposure&quot;, &quot;metrics&quot;: [{&quot;other&quot;: {&quot;type&quot;: &quot;Red Hat severity rating&quot;, &quot;content&quot;: {&quot;value&quot;: &quot;Important&quot;, &quot;namespace&quot;: &quot;https://access.redhat.com/security/updates/classification/&quot;}}}, {&quot;format&quot;: &quot;CVSS&quot;, &quot;cvssV3_1&quot;: {&quot;scope&quot;: &quot;CHANGED&quot;, &quot;version&quot;: &quot;3.1&quot;, &quot;baseScore&quot;: 8.5, &quot;attackVector&quot;: &quot;NETWORK&quot;, &quot;baseSeverity&quot;: &quot;HIGH&quot;, &quot;vectorString&quot;: &quot;CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H&quot;, &quot;integrityImpact&quot;: &quot;HIGH&quot;, &quot;userInteraction&quot;: &quot;NONE&quot;, &quot;attackComplexity&quot;: &quot;HIGH&quot;, &quot;availabilityImpact&quot;: &quot;HIGH&quot;, &quot;privilegesRequired&quot;: &quot;LOW&quot;, &quot;confidentialityImpact&quot;: &quot;HIGH&quot;}}], &quot;affected&quot;: [{&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:2.16::el8&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 2.16&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:2.25::el9&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 2.25&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:3.2::el9&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 3.2&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:3.3::el9&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 3.3&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;defaultStatus&quot;: &quot;unaffected&quot;}], &quot;timeline&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;time&quot;: &quot;2026-04-03T00:00:00.000Z&quot;, &quot;value&quot;: &quot;Reported to Red Hat.&quot;}, {&quot;lang&quot;: &quot;en&quot;, &quot;time&quot;: &quot;2026-04-10T17:16:00.000Z&quot;, &quot;value&quot;: &quot;Made public.&quot;}], &quot;solutions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;RHSA-2026:7397: Red Hat OpenShift AI 2.16&quot;}, {&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;RHSA-2026:7398: Red Hat OpenShift AI 2.25&quot;}, {&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;RHSA-2026:7404: Red Hat OpenShift AI 3.2&quot;}, {&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;RHSA-2026:7403: Red Hat OpenShift AI 3.3&quot;}], &quot;x_adpType&quot;: &quot;supplier&quot;, &quot;datePublic&quot;: &quot;2026-04-10T17:16:00.000Z&quot;, &quot;references&quot;: [{&quot;url&quot;: &quot;https://access.redhat.com/security/cve/CVE-2026-5483&quot;, &quot;tags&quot;: [&quot;vdb-entry&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://bugzilla.redhat.com/show_bug.cgi?id=2454764&quot;, &quot;name&quot;: &quot;RHBZ#2454764&quot;, &quot;tags&quot;: [&quot;issue-tracking&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-5483.json&quot;, &quot;tags&quot;: [&quot;x_sadp-csaf-vex&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7397&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7398&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7404&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7403&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}], &quot;workarounds&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;If applying the update is not immediately possible, the vulnerability can be mitigated by disabling or removing the NIM (NVIDIA Inference Microservice) integration from the Red Hat OpenShift AI (RHOAI) environment.&quot;}], &quot;x_generator&quot;: {&quot;engine&quot;: &quot;sadp-cli 1.0.0&quot;}, &quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;A flaw was found in odh-dashboard in Red Hat Openshift AI. This vulnerability in the `odh-dashboard` component of Red Hat OpenShift AI (RHOAI) allows for the disclosure of Kubernetes Service Account tokens through a NodeJS endpoint. This could enable an attacker to gain unauthorized access to Kubernetes resources.&quot;}], &quot;problemTypes&quot;: [{&quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;type&quot;: &quot;CWE&quot;, &quot;cweId&quot;: &quot;CWE-201&quot;, &quot;description&quot;: &quot;Insertion of Sensitive Information Into Sent Data&quot;}]}], &quot;providerMetadata&quot;: {&quot;orgId&quot;: &quot;0b0ca135-0b70-47e7-9f44-1890c2a1c46c&quot;, &quot;shortName&quot;: &quot;redhat-SADP&quot;, &quot;dateUpdated&quot;: &quot;2026-06-30T03:18:40.418Z&quot;}}, {&quot;title&quot;: &quot;CISA ADP Vulnrichment&quot;, &quot;metrics&quot;: [{&quot;other&quot;: {&quot;type&quot;: &quot;ssvc&quot;, &quot;content&quot;: {&quot;id&quot;: &quot;CVE-2026-5483&quot;, &quot;role&quot;: &quot;CISA Coordinator&quot;, &quot;options&quot;: [{&quot;Exploitation&quot;: &quot;none&quot;}, {&quot;Automatable&quot;: &quot;no&quot;}, {&quot;Technical Impact&quot;: &quot;total&quot;}], &quot;version&quot;: &quot;2.0.3&quot;, &quot;timestamp&quot;: &quot;2026-04-10T18:33:58.848733Z&quot;}}}], &quot;providerMetadata&quot;: {&quot;orgId&quot;: &quot;134c704f-9b21-4f2e-91b3-4a467353bcc0&quot;, &quot;shortName&quot;: &quot;CISA-ADP&quot;, &quot;dateUpdated&quot;: &quot;2026-04-10T18:34:03.174Z&quot;}}], &quot;cna&quot;: {&quot;title&quot;: &quot;Odh-dashboard: odh dashboard kubernetes service account exposure&quot;, &quot;metrics&quot;: [{&quot;other&quot;: {&quot;type&quot;: &quot;Red Hat severity rating&quot;, &quot;content&quot;: {&quot;value&quot;: &quot;Important&quot;, &quot;namespace&quot;: &quot;https://access.redhat.com/security/updates/classification/&quot;}}}, {&quot;format&quot;: &quot;CVSS&quot;, &quot;cvssV3_1&quot;: {&quot;scope&quot;: &quot;CHANGED&quot;, &quot;version&quot;: &quot;3.1&quot;, &quot;baseScore&quot;: 8.5, &quot;attackVector&quot;: &quot;NETWORK&quot;, &quot;baseSeverity&quot;: &quot;HIGH&quot;, &quot;vectorString&quot;: &quot;CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H&quot;, &quot;integrityImpact&quot;: &quot;HIGH&quot;, &quot;userInteraction&quot;: &quot;NONE&quot;, &quot;attackComplexity&quot;: &quot;HIGH&quot;, &quot;availabilityImpact&quot;: &quot;HIGH&quot;, &quot;privilegesRequired&quot;: &quot;LOW&quot;, &quot;confidentialityImpact&quot;: &quot;HIGH&quot;}}], &quot;affected&quot;: [{&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:2.16::el8&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 2.16&quot;, &quot;versions&quot;: [{&quot;status&quot;: &quot;unaffected&quot;, &quot;version&quot;: &quot;1775230902&quot;, &quot;lessThan&quot;: &quot;*&quot;, &quot;versionType&quot;: &quot;rpm&quot;}], &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel8&quot;, &quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:2.25::el9&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 2.25&quot;, &quot;versions&quot;: [{&quot;status&quot;: &quot;unaffected&quot;, &quot;version&quot;: &quot;1775234711&quot;, &quot;lessThan&quot;: &quot;*&quot;, &quot;versionType&quot;: &quot;rpm&quot;}], &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel9&quot;, &quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:3.2::el9&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 3.2&quot;, &quot;versions&quot;: [{&quot;status&quot;: &quot;unaffected&quot;, &quot;version&quot;: &quot;1775523049&quot;, &quot;lessThan&quot;: &quot;*&quot;, &quot;versionType&quot;: &quot;rpm&quot;}], &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel9&quot;, &quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:3.3::el9&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 3.3&quot;, &quot;versions&quot;: [{&quot;status&quot;: &quot;unaffected&quot;, &quot;version&quot;: &quot;1775239958&quot;, &quot;lessThan&quot;: &quot;*&quot;, &quot;versionType&quot;: &quot;rpm&quot;}], &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel9&quot;, &quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;defaultStatus&quot;: &quot;affected&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;packageName&quot;: &quot;rhoai/odh-mod-arch-gen-ai-rhel9&quot;, &quot;collectionURL&quot;: &quot;https://access.redhat.com/downloads/content/package-browser/&quot;, &quot;defaultStatus&quot;: &quot;unaffected&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;packageName&quot;: &quot;rhoai/odh-mod-arch-maas-rhel9&quot;, &quot;collectionURL&quot;: &quot;https://access.redhat.com/downloads/content/package-browser/&quot;, &quot;defaultStatus&quot;: &quot;unaffected&quot;}, {&quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;], &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;packageName&quot;: &quot;rhoai/odh-mod-arch-model-registry-rhel9&quot;, &quot;collectionURL&quot;: &quot;https://access.redhat.com/downloads/content/package-browser/&quot;, &quot;defaultStatus&quot;: &quot;unaffected&quot;}], &quot;timeline&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;time&quot;: &quot;2026-04-03T00:00:00.000Z&quot;, &quot;value&quot;: &quot;Reported to Red Hat.&quot;}, {&quot;lang&quot;: &quot;en&quot;, &quot;time&quot;: &quot;2026-04-10T17:16:00.000Z&quot;, &quot;value&quot;: &quot;Made public.&quot;}], &quot;datePublic&quot;: &quot;2026-04-10T17:16:00.000Z&quot;, &quot;references&quot;: [{&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7397&quot;, &quot;name&quot;: &quot;RHSA-2026:7397&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7398&quot;, &quot;name&quot;: &quot;RHSA-2026:7398&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7403&quot;, &quot;name&quot;: &quot;RHSA-2026:7403&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7404&quot;, &quot;name&quot;: &quot;RHSA-2026:7404&quot;, &quot;tags&quot;: [&quot;vendor-advisory&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://access.redhat.com/security/cve/CVE-2026-5483&quot;, &quot;tags&quot;: [&quot;vdb-entry&quot;, &quot;x_refsource_REDHAT&quot;]}, {&quot;url&quot;: &quot;https://bugzilla.redhat.com/show_bug.cgi?id=2454764&quot;, &quot;name&quot;: &quot;RHBZ#2454764&quot;, &quot;tags&quot;: [&quot;issue-tracking&quot;, &quot;x_refsource_REDHAT&quot;]}], &quot;workarounds&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;If applying the update is not immediately possible, the vulnerability can be mitigated by disabling or removing the NIM (NVIDIA Inference Microservice) integration from the Red Hat OpenShift AI (RHOAI) environment.&quot;}], &quot;x_generator&quot;: {&quot;engine&quot;: &quot;cvelib 1.8.0&quot;}, &quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;A flaw was found in odh-dashboard in Red Hat Openshift AI. This vulnerability in the `odh-dashboard` component of Red Hat OpenShift AI (RHOAI) allows for the disclosure of Kubernetes Service Account tokens through a NodeJS endpoint. This could enable an attacker to gain unauthorized access to Kubernetes resources.&quot;}], &quot;problemTypes&quot;: [{&quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;type&quot;: &quot;CWE&quot;, &quot;cweId&quot;: &quot;CWE-201&quot;, &quot;description&quot;: &quot;Insertion of Sensitive Information Into Sent Data&quot;}]}], &quot;providerMetadata&quot;: {&quot;orgId&quot;: &quot;53f830b8-0a3f-465b-8143-3b8a9948e749&quot;, &quot;shortName&quot;: &quot;redhat&quot;, &quot;dateUpdated&quot;: &quot;2026-04-29T05:20:59.210Z&quot;}, &quot;x_redhatCweChain&quot;: &quot;CWE-201: Insertion of Sensitive Information Into Sent Data&quot;}}, &quot;cveMetadata&quot;: {&quot;cveId&quot;: &quot;CVE-2026-5483&quot;, &quot;state&quot;: &quot;PUBLISHED&quot;, &quot;dateUpdated&quot;: &quot;2026-06-30T03:18:40.418Z&quot;, &quot;dateReserved&quot;: &quot;2026-04-03T12:27:18.589Z&quot;, &quot;assignerOrgId&quot;: &quot;53f830b8-0a3f-465b-8143-3b8a9948e749&quot;, &quot;datePublished&quot;: &quot;2026-04-10T17:33:25.055Z&quot;, &quot;assignerShortName&quot;: &quot;redhat&quot;}, &quot;dataVersion&quot;: &quot;5.2&quot;}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-nvd-json">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">JSON object</h4>
+            </div>
+            <div class="modal-body codejson">
+                {&quot;affected&quot;: [{&quot;affectedData&quot;: [{&quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:2.16::el8&quot;], &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel8&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 2.16&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;versions&quot;: [{&quot;lessThan&quot;: &quot;*&quot;, &quot;status&quot;: &quot;unaffected&quot;, &quot;version&quot;: &quot;1775230902&quot;, &quot;versionType&quot;: &quot;rpm&quot;}]}, {&quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:2.25::el9&quot;], &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel9&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 2.25&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;versions&quot;: [{&quot;lessThan&quot;: &quot;*&quot;, &quot;status&quot;: &quot;unaffected&quot;, &quot;version&quot;: &quot;1775234711&quot;, &quot;versionType&quot;: &quot;rpm&quot;}]}, {&quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:3.2::el9&quot;], &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel9&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 3.2&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;versions&quot;: [{&quot;lessThan&quot;: &quot;*&quot;, &quot;status&quot;: &quot;unaffected&quot;, &quot;version&quot;: &quot;1775523049&quot;, &quot;versionType&quot;: &quot;rpm&quot;}]}, {&quot;collectionURL&quot;: &quot;https://catalog.redhat.com/software/containers/&quot;, &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai:3.3::el9&quot;], &quot;defaultStatus&quot;: &quot;affected&quot;, &quot;packageName&quot;: &quot;rhoai/odh-dashboard-rhel9&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI 3.3&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;, &quot;versions&quot;: [{&quot;lessThan&quot;: &quot;*&quot;, &quot;status&quot;: &quot;unaffected&quot;, &quot;version&quot;: &quot;1775239958&quot;, &quot;versionType&quot;: &quot;rpm&quot;}]}, {&quot;collectionURL&quot;: &quot;https://access.redhat.com/downloads/content/package-browser/&quot;, &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;], &quot;defaultStatus&quot;: &quot;unaffected&quot;, &quot;packageName&quot;: &quot;rhoai/odh-mod-arch-gen-ai-rhel9&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}, {&quot;collectionURL&quot;: &quot;https://access.redhat.com/downloads/content/package-browser/&quot;, &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;], &quot;defaultStatus&quot;: &quot;unaffected&quot;, &quot;packageName&quot;: &quot;rhoai/odh-mod-arch-maas-rhel9&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}, {&quot;collectionURL&quot;: &quot;https://access.redhat.com/downloads/content/package-browser/&quot;, &quot;cpes&quot;: [&quot;cpe:/a:redhat:openshift_ai&quot;], &quot;defaultStatus&quot;: &quot;unaffected&quot;, &quot;packageName&quot;: &quot;rhoai/odh-mod-arch-model-registry-rhel9&quot;, &quot;product&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}], &quot;source&quot;: &quot;secalert@redhat.com&quot;}], &quot;configurations&quot;: [{&quot;nodes&quot;: [{&quot;cpeMatch&quot;: [{&quot;criteria&quot;: &quot;cpe:2.3:a:redhat:openshift_ai:*:*:*:*:*:*:*:*&quot;, &quot;matchCriteriaId&quot;: &quot;EC21D011-396C-42E3-B7F2-CF79863E4453&quot;, &quot;versionEndExcluding&quot;: &quot;2.16.4&quot;, &quot;versionStartIncluding&quot;: &quot;2.16&quot;, &quot;vulnerable&quot;: true}, {&quot;criteria&quot;: &quot;cpe:2.3:a:redhat:openshift_ai:*:*:*:*:*:*:*:*&quot;, &quot;matchCriteriaId&quot;: &quot;9B729435-71F1-4C57-B796-5081D3DEDDA1&quot;, &quot;versionEndExcluding&quot;: &quot;2.25.4&quot;, &quot;versionStartIncluding&quot;: &quot;2.25&quot;, &quot;vulnerable&quot;: true}, {&quot;criteria&quot;: &quot;cpe:2.3:a:redhat:openshift_ai:3.2:*:*:*:*:*:*:*&quot;, &quot;matchCriteriaId&quot;: &quot;603ED0F1-4724-45D6-A188-8FF41EF55587&quot;, &quot;vulnerable&quot;: true}, {&quot;criteria&quot;: &quot;cpe:2.3:a:redhat:openshift_ai:3.3:*:*:*:*:*:*:*&quot;, &quot;matchCriteriaId&quot;: &quot;8DF87246-7B43-47F1-84AF-FCC2CFAC1270&quot;, &quot;vulnerable&quot;: true}], &quot;negate&quot;: false, &quot;operator&quot;: &quot;OR&quot;}]}], &quot;cveTags&quot;: [], &quot;descriptions&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;A flaw was found in odh-dashboard in Red Hat Openshift AI. This vulnerability in the `odh-dashboard` component of Red Hat OpenShift AI (RHOAI) allows for the disclosure of Kubernetes Service Account tokens through a NodeJS endpoint. This could enable an attacker to gain unauthorized access to Kubernetes resources.&quot;}], &quot;id&quot;: &quot;CVE-2026-5483&quot;, &quot;lastModified&quot;: &quot;2026-06-17T10:59:06.583&quot;, &quot;metrics&quot;: {&quot;cvssMetricV31&quot;: [{&quot;cvssData&quot;: {&quot;attackComplexity&quot;: &quot;HIGH&quot;, &quot;attackVector&quot;: &quot;NETWORK&quot;, &quot;availabilityImpact&quot;: &quot;HIGH&quot;, &quot;baseScore&quot;: 8.5, &quot;baseSeverity&quot;: &quot;HIGH&quot;, &quot;confidentialityImpact&quot;: &quot;HIGH&quot;, &quot;integrityImpact&quot;: &quot;HIGH&quot;, &quot;privilegesRequired&quot;: &quot;LOW&quot;, &quot;scope&quot;: &quot;CHANGED&quot;, &quot;userInteraction&quot;: &quot;NONE&quot;, &quot;vectorString&quot;: &quot;CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H&quot;, &quot;version&quot;: &quot;3.1&quot;}, &quot;exploitabilityScore&quot;: 1.8, &quot;impactScore&quot;: 6.0, &quot;source&quot;: &quot;secalert@redhat.com&quot;, &quot;type&quot;: &quot;Secondary&quot;}, {&quot;cvssData&quot;: {&quot;attackComplexity&quot;: &quot;LOW&quot;, &quot;attackVector&quot;: &quot;NETWORK&quot;, &quot;availabilityImpact&quot;: &quot;HIGH&quot;, &quot;baseScore&quot;: 9.9, &quot;baseSeverity&quot;: &quot;CRITICAL&quot;, &quot;confidentialityImpact&quot;: &quot;HIGH&quot;, &quot;integrityImpact&quot;: &quot;HIGH&quot;, &quot;privilegesRequired&quot;: &quot;LOW&quot;, &quot;scope&quot;: &quot;CHANGED&quot;, &quot;userInteraction&quot;: &quot;NONE&quot;, &quot;vectorString&quot;: &quot;CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H&quot;, &quot;version&quot;: &quot;3.1&quot;}, &quot;exploitabilityScore&quot;: 3.1, &quot;impactScore&quot;: 6.0, &quot;source&quot;: &quot;nvd@nist.gov&quot;, &quot;type&quot;: &quot;Primary&quot;}], &quot;ssvcV203&quot;: [{&quot;source&quot;: &quot;134c704f-9b21-4f2e-91b3-4a467353bcc0&quot;, &quot;ssvcData&quot;: {&quot;id&quot;: &quot;CVE-2026-5483&quot;, &quot;options&quot;: [{&quot;exploitation&quot;: &quot;none&quot;}, {&quot;automatable&quot;: &quot;no&quot;}, {&quot;technicalImpact&quot;: &quot;total&quot;}], &quot;role&quot;: &quot;CISA Coordinator&quot;, &quot;timestamp&quot;: &quot;2026-04-10T18:33:58.848733Z&quot;, &quot;version&quot;: &quot;2.0.3&quot;}}]}, &quot;published&quot;: &quot;2026-04-10T18:16:46.567&quot;, &quot;references&quot;: [{&quot;source&quot;: &quot;secalert@redhat.com&quot;, &quot;tags&quot;: [&quot;Vendor Advisory&quot;], &quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7397&quot;}, {&quot;source&quot;: &quot;secalert@redhat.com&quot;, &quot;tags&quot;: [&quot;Vendor Advisory&quot;], &quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7398&quot;}, {&quot;source&quot;: &quot;secalert@redhat.com&quot;, &quot;tags&quot;: [&quot;Vendor Advisory&quot;], &quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7403&quot;}, {&quot;source&quot;: &quot;secalert@redhat.com&quot;, &quot;tags&quot;: [&quot;Vendor Advisory&quot;], &quot;url&quot;: &quot;https://access.redhat.com/errata/RHSA-2026:7404&quot;}, {&quot;source&quot;: &quot;secalert@redhat.com&quot;, &quot;tags&quot;: [&quot;Vendor Advisory&quot;], &quot;url&quot;: &quot;https://access.redhat.com/security/cve/CVE-2026-5483&quot;}, {&quot;source&quot;: &quot;secalert@redhat.com&quot;, &quot;tags&quot;: [&quot;Issue Tracking&quot;, &quot;Vendor Advisory&quot;], &quot;url&quot;: &quot;https://bugzilla.redhat.com/show_bug.cgi?id=2454764&quot;}], &quot;sourceIdentifier&quot;: &quot;secalert@redhat.com&quot;, &quot;vulnStatus&quot;: &quot;Analyzed&quot;, &quot;weaknesses&quot;: [{&quot;description&quot;: [{&quot;lang&quot;: &quot;en&quot;, &quot;value&quot;: &quot;CWE-201&quot;}], &quot;source&quot;: &quot;secalert@redhat.com&quot;, &quot;type&quot;: &quot;Secondary&quot;}]}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-redhat-json">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">JSON object</h4>
+            </div>
+            <div class="modal-body codejson">
+                {&quot;affected_release&quot;: [{&quot;advisory&quot;: &quot;RHSA-2026:7397&quot;, &quot;cpe&quot;: &quot;cpe:/a:redhat:openshift_ai:2.16::el8&quot;, &quot;package&quot;: &quot;rhoai/odh-dashboard-rhel8:sha256:0a983da3de4ce816435e23da23c4b6f373008aaf2df2b9820bdcc77a9a110341&quot;, &quot;product_name&quot;: &quot;Red Hat OpenShift AI 2.16&quot;, &quot;release_date&quot;: &quot;2026-04-10T00:00:00Z&quot;}, {&quot;advisory&quot;: &quot;RHSA-2026:7398&quot;, &quot;cpe&quot;: &quot;cpe:/a:redhat:openshift_ai:2.25::el9&quot;, &quot;package&quot;: &quot;rhoai/odh-dashboard-rhel9:sha256:15ee3fb5fedf759e82c8de8020da1931c9de8138737f1cc7cf6622847a52887f&quot;, &quot;product_name&quot;: &quot;Red Hat OpenShift AI 2.25&quot;, &quot;release_date&quot;: &quot;2026-04-10T00:00:00Z&quot;}, {&quot;advisory&quot;: &quot;RHSA-2026:7404&quot;, &quot;cpe&quot;: &quot;cpe:/a:redhat:openshift_ai:3.2::el9&quot;, &quot;package&quot;: &quot;rhoai/odh-dashboard-rhel9:sha256:0bdb9912d41d799b0237fe75f3fdc843983ab4ebfe6b5a47f7d4a00a642c72cd&quot;, &quot;product_name&quot;: &quot;Red Hat OpenShift AI 3.2&quot;, &quot;release_date&quot;: &quot;2026-04-10T00:00:00Z&quot;}, {&quot;advisory&quot;: &quot;RHSA-2026:7403&quot;, &quot;cpe&quot;: &quot;cpe:/a:redhat:openshift_ai:3.3::el9&quot;, &quot;package&quot;: &quot;rhoai/odh-dashboard-rhel9:sha256:14ee2bbd445b8a988c487d4b4a7b02ff9afe1c07034b4bba073a5a8263e3293e&quot;, &quot;product_name&quot;: &quot;Red Hat OpenShift AI 3.3&quot;, &quot;release_date&quot;: &quot;2026-04-10T00:00:00Z&quot;}], &quot;bugzilla&quot;: {&quot;description&quot;: &quot;odh-dashboard: ODH Dashboard Kubernetes Service Account Exposure&quot;, &quot;id&quot;: &quot;2454764&quot;, &quot;url&quot;: &quot;https://bugzilla.redhat.com/show_bug.cgi?id=2454764&quot;}, &quot;csaw&quot;: false, &quot;cvss3&quot;: {&quot;cvss3_base_score&quot;: &quot;8.5&quot;, &quot;cvss3_scoring_vector&quot;: &quot;CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H&quot;, &quot;status&quot;: &quot;verified&quot;}, &quot;cwe&quot;: &quot;CWE-201&quot;, &quot;details&quot;: [&quot;A flaw was found in odh-dashboard in Red Hat Openshift AI. This vulnerability in the `odh-dashboard` component of Red Hat OpenShift AI (RHOAI) allows for the disclosure of Kubernetes Service Account tokens through a NodeJS endpoint. This could enable an attacker to gain unauthorized access to Kubernetes resources.&quot;], &quot;mitigation&quot;: {&quot;lang&quot;: &quot;en:us&quot;, &quot;value&quot;: &quot;If applying the update is not immediately possible, the vulnerability can be mitigated by disabling or removing the NIM (NVIDIA Inference Microservice) integration from the Red Hat OpenShift AI (RHOAI) environment.&quot;}, &quot;name&quot;: &quot;CVE-2026-5483&quot;, &quot;package_state&quot;: [{&quot;cpe&quot;: &quot;cpe:/a:redhat:openshift_ai&quot;, &quot;fix_state&quot;: &quot;Not affected&quot;, &quot;package_name&quot;: &quot;rhoai/odh-mod-arch-gen-ai-rhel9&quot;, &quot;product_name&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;}, {&quot;cpe&quot;: &quot;cpe:/a:redhat:openshift_ai&quot;, &quot;fix_state&quot;: &quot;Not affected&quot;, &quot;package_name&quot;: &quot;rhoai/odh-mod-arch-maas-rhel9&quot;, &quot;product_name&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;}, {&quot;cpe&quot;: &quot;cpe:/a:redhat:openshift_ai&quot;, &quot;fix_state&quot;: &quot;Not affected&quot;, &quot;package_name&quot;: &quot;rhoai/odh-mod-arch-model-registry-rhel9&quot;, &quot;product_name&quot;: &quot;Red Hat OpenShift AI (RHOAI)&quot;}], &quot;public_date&quot;: &quot;2026-04-10T17:16:00Z&quot;, &quot;references&quot;: [&quot;https://www.cve.org/CVERecord?id=CVE-2026-5483\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-5483&quot;], &quot;statement&quot;: &quot;A flaw in the `odh-dashboard` component of Red Hat OpenShift AI allows for the disclosure of Kubernetes Service Account tokens through a NodeJS endpoint. This vulnerability could enable an attacker to gain unauthorized access to Kubernetes resources within the OpenShift AI environment.\nThe NIM serving API endpoint (`/api/nim-serving/:nimResource`) returns the full K8 client response including the dashboard&#x27;s service account token. \nRequirements to exploit:\n- Authenticated access to the dashboard\n- The NIM account CR must exist on the cluster for 2.25+ \n- The target secret must exist and if the secret referenced by the Account CR hasn&#x27;t been created yet, the endpoint returns a 404 and no token is leaked&quot;, &quot;threat_severity&quot;: &quot;Important&quot;}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-enrichment-json">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">JSON object</h4>
+            </div>
+            <div class="modal-body codejson">
+                {&quot;affected&quot;: [{&quot;configurations&quot;: [{&quot;platform&quot;: null, &quot;status&quot;: &quot;affected&quot;, &quot;versions&quot;: {&quot;scheme&quot;: &quot;generic&quot;, &quot;value&quot;: &quot;[0,sha256:0a983da3de4ce816435e23da23c4b6f373008aaf2df2b9820bdcc77a9a110341)&quot;}}], &quot;original&quot;: {&quot;product&quot;: &quot;Red Hat OpenShift AI 2.16&quot;, &quot;source&quot;: &quot;cna&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}, &quot;product&quot;: &quot;openshift_ai&quot;, &quot;vendor&quot;: &quot;redhat&quot;}, {&quot;configurations&quot;: [{&quot;platform&quot;: null, &quot;status&quot;: &quot;unaffected&quot;, &quot;versions&quot;: {&quot;scheme&quot;: &quot;generic&quot;, &quot;value&quot;: &quot;[0,sha256:14ee2bbd445b8a988c487d4b4a7b02ff9afe1c07034b4bba073a5a8263e3293e)&quot;}}], &quot;original&quot;: {&quot;product&quot;: &quot;Red Hat OpenShift AI 3.3&quot;, &quot;source&quot;: &quot;cna&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}, &quot;product&quot;: &quot;openshift_ai&quot;, &quot;vendor&quot;: &quot;redhat&quot;}, {&quot;configurations&quot;: [{&quot;platform&quot;: null, &quot;status&quot;: &quot;affected&quot;, &quot;versions&quot;: {&quot;scheme&quot;: &quot;generic&quot;, &quot;value&quot;: &quot;[0,sha256:0a983da3de4ce816435e23da23c4b6f373008aaf2df2b9820bdcc77a9a110341)&quot;}}], &quot;enrichment&quot;: {&quot;confidence&quot;: 100.0, &quot;confidence_source&quot;: &quot;manual&quot;, &quot;scores&quot;: [{&quot;score&quot;: 100.0, &quot;source&quot;: &quot;manual&quot;}]}, &quot;original&quot;: {&quot;product&quot;: &quot;Red Hat OpenShift AI 2.16&quot;, &quot;source&quot;: &quot;cna&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}, &quot;product&quot;: &quot;openshift_ai_2.16&quot;, &quot;vendor&quot;: &quot;redhat&quot;}, {&quot;configurations&quot;: [{&quot;platform&quot;: null, &quot;status&quot;: &quot;unaffected&quot;, &quot;versions&quot;: {&quot;scheme&quot;: &quot;generic&quot;, &quot;value&quot;: &quot;[0,sha256:14ee2bbd445b8a988c487d4b4a7b02ff9afe1c07034b4bba073a5a8263e3293e)&quot;}}], &quot;enrichment&quot;: {&quot;confidence&quot;: 100.0, &quot;confidence_source&quot;: &quot;manual&quot;, &quot;scores&quot;: [{&quot;score&quot;: 100.0, &quot;source&quot;: &quot;manual&quot;}]}, &quot;original&quot;: {&quot;product&quot;: &quot;Red Hat OpenShift AI 3.3&quot;, &quot;source&quot;: &quot;cna&quot;, &quot;vendor&quot;: &quot;Red Hat&quot;}, &quot;product&quot;: &quot;openshift_ai_3.3&quot;, &quot;vendor&quot;: &quot;redhat&quot;}], &quot;analysis&quot;: {&quot;en&quot;: {&quot;generated_at&quot;: &quot;2026-04-10T23:05:20.303137+00:00&quot;, &quot;value&quot;: {&quot;mitigation_remediation&quot;: [&quot;Apply the Red\u00a0Hat security updates RHSA-2026:7397, RHSA-2026:7398, RHSA-2026:7403, and RHSA-2026:7404 to update the odh-dashboard component. &quot;, &quot;If an immediate update is not possible, disable or remove the NVIDIA Inference Microservice integration from the RHOAI environment. &quot;, &quot;Continuously monitor RHOAI logs for abnormal API usage that may indicate token misuse or exploitation.&quot;], &quot;summary&quot;: {&quot;action&quot;: &quot;Patch Now&quot;, &quot;impact&quot;: &quot;Kubernetes Service Account Token Disclosure&quot;}, &quot;threat_synthesis&quot;: {&quot;affected_systems&quot;: &quot;The vulnerability applies to Red\u00a0Hat OpenShift AI releases 2.16, 2.25, 3.2, and 3.3. Any deployment of the odh-dashboard component in these RHOAI versions is susceptible to token exposure.&quot;, &quot;description_and_impact&quot;: &quot;The flaw resides in the odh-dashboard component of Red\u00a0Hat OpenShift AI and allows an attacker to obtain Kubernetes Service Account tokens via a NodeJS endpoint. Exposed service account tokens are sensitive authentication credentials; their disclosure can lead to unauthorized access or manipulation of Kubernetes resources, threatening the confidentiality and integrity of cluster data.&quot;, &quot;risk_and_exploitability&quot;: &quot;The CVSS score of 8.5 indicates a high severity, and the absence of an EPSS score or KEV listing does not diminish the potential risk. Based on the description, it is inferred that an attacker who can reach the NodeJS endpoint of the dashboard service may obtain service account tokens; the extent of damage depends on the privileges granted to those tokens. Consequently, the flaw poses a significant risk of unauthorized Kubernetes resource access.&quot;}}}}, &quot;created&quot;: &quot;2026-04-13T12:43:41.278755+00:00&quot;, &quot;updated&quot;: &quot;2026-04-13T13:00:04.916269+00:00&quot;, &quot;vendors&quot;: [&quot;redhat&quot;, &quot;redhat$PRODUCT$openshift_ai&quot;, &quot;redhat$PRODUCT$openshift_ai_2.16&quot;, &quot;redhat$PRODUCT$openshift_ai_3.3&quot;]}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+            </div>
+
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2026 OpenCVE.</strong>
+            </footer>
+        </div>
+
+        
+<script type="text/javascript">
+    const SUBSCRIBE_URL = "/vendors/subscribe";
+    const CHANGE_ORGANIZATION_URL = "/ajax/change_organization";
+    const SAVE_DASHBOARD_URL = "/ajax/save_dashboard";
+    const LOAD_DASHBOARD_URL = "/ajax/load_dashboard";
+    const CREATE_DASHBOARD_URL = "/ajax/create_dashboard";
+    const UPDATE_DASHBOARD_URL = "/ajax/update_dashboard";
+    const DELETE_DASHBOARD_URL = "/ajax/delete_dashboard";
+    const LOAD_WIDGET_DATA_URL = "/ajax/load_widget_data/$WIDGET_ID$";
+    const LOAD_WIDGET_CONFIG_URL = "/ajax/load_widget_config/$WIDGET_TYPE$";
+    const RENDER_WIDGET_DATA_URL = "/ajax/render_widget_data/$WIDGET_TYPE$";
+    const CVES_URL = "/cve/";
+    const ORGANIZATION_ID = "";
+    const ORGANIZATION_NAME = "";
+    const USER_EMAIL = "";
+    
+    
+    
+    
+    
+</script>
+<script src="/static/js/jquery.min.js" type="text/javascript"></script>
+<script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/static/js/adminlte.min.js" type="text/javascript"></script>
+<script src="/static/js/jquery.rainbowJSON.js" type="text/javascript"></script>
+<script src="/static/js/spectrum.min.js" type="text/javascript"></script>
+<script src="/static/js/select2.full.min.js" type="text/javascript"></script>
+<script src="/static/js/chart.min.js" type="text/javascript"></script>
+<script src="/static/js/gridstack-all.js" type="text/javascript"></script>
+<script src="/static/js/popper.min.js" type="text/javascript"></script>
+<script src="/static/js/tippy.min.js" type="text/javascript"></script>
+<script src="/static/js/custom.js" type="text/javascript"></script>
+
+<script src="/static/js/billing_f70fd05d.js" type="text/javascript"></script>
+
+
+        
+    </body>
+</html>

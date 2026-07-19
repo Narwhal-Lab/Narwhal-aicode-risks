@@ -1,0 +1,7 @@
+index	filename	title	url	status	bytes	sha256	captured_at
+1	source-01-nvd-nist-gov-vuln-detail-cve-2026-44479.html	NVD: CVE-2026-44479	https://nvd.nist.gov/vuln/detail/CVE-2026-44479	200	68068	5d4812b6171eba5d24e95c81acbf734e75448508c84be8323aff330bd741969a	2026-07-09T10:46:26+00:00
+2	source-02-github-com-vercel-vercel-security-advisories-ghsa-pgf8-2hgj-grqg.html	Vercel Advisory: GHSA-pgf8-2hgj-grqg	https://github.com/vercel/vercel/security/advisories/GHSA-pgf8-2hgj-grqg	200	209846	c9856882e4f150bafb8890552ceece7edf2967699e9ba5213860cd099ad92c7d	2026-07-09T10:46:26+00:00
+3	source-03-github-com-advisories-ghsa-pgf8-2hgj-grqg.html	GitHub Advisory Database: GHSA-pgf8-2hgj-grqg	https://github.com/advisories/GHSA-pgf8-2hgj-grqg	200	185785	8b6ffadccb3a92e156327fb529ea9e0536582e8dfce04317a488c8d6c06bae7a	2026-07-09T10:46:26+00:00
+4	source-04-advisories-gitlab-com-npm-vercel-cve-2026-44479.html	GitLab Advisory: CVE-2026-44479	https://advisories.gitlab.com/npm/vercel/CVE-2026-44479/	200	20184	8eb0b29f1833407c10136d18a626575bbea334fe5d0c1cffbe40b1565f06b809	2026-07-09T10:46:26+00:00
+5	source-05-security-snyk-io-vuln-snyk-js-vercel-16638653.html	Snyk: SNYK-JS-VERCEL-16638653	https://security.snyk.io/vuln/SNYK-JS-VERCEL-16638653	200	223326	7881c088d6438c6951da3cda48a7ec942d383ee2df342f73b66cc5a00e8bade6	2026-07-09T10:46:26+00:00
+6	source-06-vercel-com-docs-cli-global-options.html	Vercel Docs: CLI Global Options	https://vercel.com/docs/cli/global-options	200	966437	a9b82e0da140c75aa4111757ec8356b734fa1b29c501e8b557b4d030d910b4c1	2026-07-09T10:46:26+00:00

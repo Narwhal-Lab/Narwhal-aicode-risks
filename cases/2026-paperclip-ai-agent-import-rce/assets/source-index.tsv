@@ -1,0 +1,7 @@
+file	type	title	url	archive_status
+source-01.html	主证据	GitHub Advisory: Paperclip Import Authorization Bypass RCE	https://github.com/advisories/GHSA-68qg-g8mg-6pr7	OK|html|original|210241
+source-02.html	主证据	CVEProject cvelistV5: CVE-2026-41679	https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/41xxx/CVE-2026-41679.json	OK|html|original|380461
+source-03.html	复核证据	Endor Labs: CVE-2026-41679	https://www.endorlabs.com/vulnerability/cve-2026-41679	OK|html|original|178120
+source-04.html	复核证据	TheHackerWire: Paperclip RCE via six API calls	https://www.thehackerwire.com/paperclip-rce-unauthenticated-remote-code-execution-via-six-api-calls/	OK|html|original|68860
+source-05.html	复核证据	Tenable: CVE-2026-41679	https://www.tenable.com/cve/CVE-2026-41679	OK|html|original|56182
+source-06.html	生态证据	Mondoo Vulnerability Intelligence: GHSA-68qg-g8mg-6pr7	https://mondoo.com/vulnerability-intelligence/vulnerability/GHSA-68qg-g8mg-6pr7	OK|html|original|121961

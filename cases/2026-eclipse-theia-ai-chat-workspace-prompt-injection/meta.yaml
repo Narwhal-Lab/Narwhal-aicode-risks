@@ -1,0 +1,47 @@
+slug: 2026-eclipse-theia-ai-chat-workspace-prompt-injection
+title_en: Eclipse Theia AI Chat Workspace Prompt Injection
+title_cn: Eclipse Theia AI Chat 工作区提示注入与数据外带
+year: 2026
+disclosed: '2026-06-18'
+category: agent-risk
+severity: high
+severity_basis: cvss
+severity_evidence: NVD and GitHub Advisory rate CVE-2026-44688 as high severity; related CVE-2026-22551 documents Markdown image based exfiltration in the same Theia AI Chat release window.
+cvss: 8.8
+cve: CVE-2026-44688
+real_incident: true
+reproducible: true
+ai_tool:
+- Eclipse Theia
+- Theia AI IDE
+- AI Chat
+language:
+- TypeScript
+attack_surface:
+- Workspace file names
+- AI chat prompt context
+- Markdown image rendering
+- malicious repository
+references:
+- title: 'NVD: CVE-2026-44688'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-44688
+- title: 'GitHub Advisory: GHSA-3jww-hxqj-wfq2'
+  url: https://github.com/advisories/GHSA-3jww-hxqj-wfq2
+- title: 'GitLab Advisory: CVE-2026-44688'
+  url: https://advisories.gitlab.com/npm/%40theia/ai-ide/CVE-2026-44688/
+- title: 'NVD: CVE-2026-22551'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-22551
+- title: 'GitHub Advisory: GHSA-qwjm-9c66-w4q4'
+  url: https://github.com/advisories/GHSA-qwjm-9c66-w4q4
+- title: 'Tenable: CVE-2026-44688'
+  url: https://www.tenable.com/cve/CVE-2026-44688
+- title: 'Cyber Defence: CVE-2026-22551'
+  url: https://www.cyber-defence.io/tools/cve/CVE-2026-22551
+tldr: Theia AI Chat treated workspace-controlled file names as prompt context, and a related Markdown image rendering flaw could turn prompt injection into external data exfiltration.
+tags:
+- theia
+- ai-ide
+- prompt-injection
+- workspace
+- data-exfiltration
+verification_notes: Based on public vulnerability advisories, vendor or project references, and security database records captured in assets. Exploitation impact depends on the documented deployment and privilege preconditions.

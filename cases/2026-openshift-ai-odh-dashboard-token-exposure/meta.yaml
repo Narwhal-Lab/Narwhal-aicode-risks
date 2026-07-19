@@ -1,0 +1,48 @@
+slug: "2026-openshift-ai-odh-dashboard-token-exposure"
+title_en: "OpenShift AI odh-dashboard Kubernetes Token Exposure"
+title_cn: "OpenShift AI odh-dashboard Kubernetes 服务账号令牌泄露"
+year: 2026
+disclosed: "2026-04-10"
+category: "cloud-iac"
+severity: "high"
+severity_basis: "cvss"
+severity_evidence: "Red Hat and CVEProject cvelistV5 rate CVE-2026-5483 as high severity; token exposure can enable unauthorized Kubernetes resource access."
+cvss: 8.5
+cve: "CVE-2026-5483"
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Red Hat OpenShift AI"
+  - "odh-dashboard"
+  - "Kubernetes service accounts"
+language:
+  - "JavaScript"
+  - "Node.js"
+  - "Kubernetes"
+attack_surface:
+  - "NodeJS dashboard endpoint"
+  - "Kubernetes service account tokens"
+  - "OpenShift AI dashboard"
+  - "Cluster resource access"
+references:
+  - title: "OpenCVE: CVE-2026-5483"
+    url: "https://app.opencve.io/cve/CVE-2026-5483"
+  - title: "CVEProject cvelistV5: CVE-2026-5483"
+    url: "https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/5xxx/CVE-2026-5483.json"
+  - title: "GitHub Advisory: GHSA-w59f-v72r-w493"
+    url: "https://github.com/advisories/GHSA-w59f-v72r-w493"
+  - title: "Red Hat Bugzilla: CVE-2026-5483"
+    url: "https://bugzilla.redhat.com/show_bug.cgi?id=2454764"
+  - title: "Tenable: CVE-2026-5483"
+    url: "https://www.tenable.com/cve/CVE-2026-5483"
+  - title: "ZeroPath: OpenShift AI odh-dashboard token exposure"
+    url: "https://zeropath.com/blog/cve-2026-5483-openshift-ai-odh-dashboard-token-exposure"
+tldr: "OpenShift AI odh-dashboard leaked Kubernetes service account tokens through a NodeJS endpoint."
+tags:
+  - "openshift-ai"
+  - "red-hat"
+  - "kubernetes"
+  - "token-exposure"
+  - "odh-dashboard"
+  - "cloud-iac"
+verification_notes: "Based on public advisories, CVE databases, technical analysis, and independent vulnerability databases. Public evidence supports the vulnerability and impact class; victim-specific compromise is only stated when the cited sources report it."
