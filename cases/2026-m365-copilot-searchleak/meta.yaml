@@ -1,0 +1,37 @@
+slug: "2026-m365-copilot-searchleak"
+title_en: "SearchLeak: M365 Copilot Parameter Prompt Injection Data Exfiltration" 
+title_cn: "SearchLeak：微软365 Copilot参数提示注入企业数据泄露漏洞"
+year: 2026
+disclosed: 2026-06-15
+category: "agent-risk"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "CVE-2026-42824 assigned CVSS 9.0 critical score; one malicious URL click allows attackers to steal all internal corporate documents accessible to the victim's Office account via M365 Copilot prompt injection."
+cvss: "9.0"
+cve:
+  - "CVE-2026-42824"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "Microsoft 365 Copilot"
+language:
+  - "TypeScript"
+attack_surface:
+  - "URL parameter prompt injection"
+  - "Built-in SSRF image rendering channel"
+references:
+  - title: Varonis Official SearchLeak Vulnerability Research
+    url: https://www.varonis.com/blog/searchleak-m365-copilot-data-exfiltration
+  - title: 51CTO Technical Vulnerability Analysis
+    url: https://www.51cto.com/article/846516
+  - title: NVD Official CVE Record Page
+    url: https://nvd.nist.gov/vuln/detail/CVE-2026-42824
+  - title: Windows Forum Industry Recap Article
+    url: https://windowsforum.com/threads/searchleak-cve-2026-42824-copilot-prompt-injection-and-enterprise-data-exfiltration.427327
+tldr: "Malicious search URL parameters are parsed as trusted prompts by M365 Copilot, chaining SSRF and rendering race flaws to silently exfiltrate all employee-accessible corporate files with a single link click."
+tags:
+  - m365-copilot
+  - prompt-injection
+  - ssrf
+  - data-exfiltration
+  - office-ai
