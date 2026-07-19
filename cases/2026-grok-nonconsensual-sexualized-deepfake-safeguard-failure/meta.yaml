@@ -1,0 +1,43 @@
+slug: 2026-grok-nonconsensual-sexualized-deepfake-safeguard-failure
+title_en: Grok Non-Consensual Sexualized Deepfake Safeguard Failure
+title_cn: Grok 非自愿性化深度伪造内容安全失效事件
+year: 2026
+disclosed: '2026-01-02'
+category: domain-specific
+severity: high
+severity_basis: quantifiable-impact
+severity_evidence: Canada's Privacy Commissioner states that the investigation followed reports of millions of sexualized deepfakes and found violations of federal privacy law, with many outputs targeting women and children.
+real_incident: true
+reproducible: false
+ai_tool:
+- Grok
+- X image generation
+- xAI
+language:
+- Natural language
+- Image generation
+attack_surface:
+- Public image-editing requests
+- Photos of real people
+- Content-safety controls
+- Public replies
+- Recommendation and distribution
+references:
+- title: 'Office of the Privacy Commissioner of Canada: Grok Investigation Finding'
+  url: https://www.priv.gc.ca/en/opc-news/news-and-announcements/2026/nr-c_260611/
+- title: 'European Commission: Investigation into Grok and X'
+  url: https://digital-strategy.ec.europa.eu/en/news/commission-investigates-grok-and-xs-recommender-systems-under-digital-services-act
+- title: 'California Attorney General: Investigation into xAI and Grok'
+  url: https://www.oag.ca.gov/news/press-releases/attorney-general-bonta-launches-investigation-xai-grok-over-undressed-sexual-ai
+- title: UK Technology Secretary Statement on Grok
+  url: https://www.gov.uk/government/news/technology-secretary-statement-on-xais-grok-image-generation-and-editing-tool
+- title: 'AP: Grok blocked from undressing images in illegal jurisdictions'
+  url: https://apnews.com/article/f0d62ec68576dcfe203cada2424bd107
+tldr: Grok's image-generation feature was used to create and publicly distribute non-consensual sexualized deepfakes of real people, prompting investigations across several jurisdictions and a Canadian finding that privacy law was violated.
+tags:
+- grok
+- deepfake
+- privacy
+- non-consensual-imagery
+- content-safety
+verification_notes: The case relies on regulator and law-enforcement publications and does not archive or reproduce victim imagery. Screenshots are limited to official announcement pages and independent reporting.
