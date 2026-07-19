@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" preserveAspectRatio="xMidYMid meet" font-family="Arial, Helvetica, sans-serif">
-<path d="M 200.00 70.00 A 130 130 0 0 1 326.17 168.67 L 285.41 178.79 A 88 88 0 0 0 200.00 112.00 Z" fill="#3b82f6" />
-<path d="M 326.17 168.67 A 130 130 0 0 1 310.62 268.29 L 274.88 246.23 A 88 88 0 0 0 285.41 178.79 Z" fill="#ef4444" />
-<path d="M 310.62 268.29 A 130 130 0 0 1 260.81 314.90 L 241.16 277.78 A 88 88 0 0 0 274.88 246.23 Z" fill="#0ea5e9" />
-<path d="M 260.81 314.90 A 130 130 0 0 1 73.83 168.67 L 114.59 178.79 A 88 88 0 0 0 241.16 277.78 Z" fill="#a855f7" />
-<path d="M 73.83 168.67 A 130 130 0 0 1 134.17 87.90 L 155.44 124.12 A 88 88 0 0 0 114.59 178.79 Z" fill="#f59e0b" />
-<path d="M 134.17 87.90 A 130 130 0 0 1 154.94 78.06 L 169.50 117.46 A 88 88 0 0 0 155.44 124.12 Z" fill="#10b981" />
-<path d="M 154.94 78.06 A 130 130 0 0 1 200.00 70.00 L 200.00 112.00 A 88 88 0 0 0 169.50 117.46 Z" fill="#64748b" />
-<text x="200" y="196" text-anchor="middle" font-size="56" font-weight="700">71</text>
+<path d="M 200.00 70.00 A 130 130 0 0 1 325.57 166.35 L 285.00 177.22 A 88 88 0 0 0 200.00 112.00 Z" fill="#3b82f6" />
+<path d="M 325.57 166.35 A 130 130 0 0 1 312.58 265.00 L 276.21 244.00 A 88 88 0 0 0 285.00 177.22 Z" fill="#ef4444" />
+<path d="M 312.58 265.00 A 130 130 0 0 1 265.00 312.58 L 244.00 276.21 A 88 88 0 0 0 276.21 244.00 Z" fill="#0ea5e9" />
+<path d="M 265.00 312.58 A 130 130 0 0 1 71.97 177.43 L 113.34 184.72 A 88 88 0 0 0 244.00 276.21 Z" fill="#a855f7" />
+<path d="M 71.97 177.43 A 130 130 0 0 1 125.44 93.51 L 149.53 127.91 A 88 88 0 0 0 113.34 184.72 Z" fill="#f59e0b" />
+<path d="M 125.44 93.51 A 130 130 0 0 1 145.06 82.18 L 162.81 120.24 A 88 88 0 0 0 149.53 127.91 Z" fill="#10b981" />
+<path d="M 145.06 82.18 A 130 130 0 0 1 200.00 70.00 L 200.00 112.00 A 88 88 0 0 0 162.81 120.24 Z" fill="#64748b" />
+<text x="200" y="196" text-anchor="middle" font-size="56" font-weight="700">72</text>
 <text x="200" y="224" text-anchor="middle" font-size="14" fill="#666">cases</text>
 <rect x="420" y="64" width="16" height="16" rx="3" fill="#3b82f6"/>
 <text x="446" y="77" font-size="14">Hallucination & Supply Chain <tspan fill="#666">(15)</tspan></text>
@@ -21,5 +21,5 @@
 <rect x="420" y="214" width="16" height="16" rx="3" fill="#10b981"/>
 <text x="446" y="227" font-size="14">IP, License & Compliance <tspan fill="#666">(2)</tspan></text>
 <rect x="420" y="244" width="16" height="16" rx="3" fill="#64748b"/>
-<text x="446" y="257" font-size="14">Human Factors <tspan fill="#666">(4)</tspan></text>
+<text x="446" y="257" font-size="14">Human Factors <tspan fill="#666">(5)</tspan></text>
 </svg>
