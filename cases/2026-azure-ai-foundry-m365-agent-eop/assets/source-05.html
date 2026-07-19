@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="NCSC NL Vulnerabilities Index" />
+
+    <meta
+      name="keywords"
+      content="ncsc, vulnerability, nl, cve, kwetsbaarheid, index"
+    />
+    <meta name="author" content="NCSC" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NCSC NL | Kwetsbaarheden</title>
+
+    <script defer src="/vendor/alpine.min.js"></script>
+    <script src="/vendor/showdown.min.js"></script>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="/common.css" />
+    <style>
+      h4 {
+        margin-top: 0;
+        margin-bottom: 0.2em;
+      }
+      #csaf-link {
+        float: right;
+      }
+      #products_container {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .productBranch summary {
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .productBranch > *:not(summary) {
+        margin-left: 0.5em;
+      }
+      table.products {
+        table-layout: fixed;
+        min-width: 500px;
+      }
+      table.products td:nth-child(2) {
+        width: 150px;
+      }
+      table.products td:nth-child(3) {
+        width: 200px;
+      }
+      .affected {
+        color: red;
+      }
+      .affected::after {
+        content: " (affected)";
+      }
+      .notAffected::after {
+        content: " (not affected)";
+      }
+      #changes {
+        display: flex;
+        flex-direction: column;
+      }
+      #changes dt {
+        color: var(--vmt-text-gray-color);
+        font-style: italic;
+        font-size: 0.8rem;
+      }
+      #changes dd {
+        margin-bottom: 0.5em;
+        margin-left: 0;
+      }
+      #disclaimer {
+        background-color: rgb(231, 247, 242);
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body x-data="cveData">
+    <div id="header-container">
+      <header>
+        <a href="https://www.ncsc.nl" id="logo">
+          <img src="/assets/ncsc.svg" alt="Logo NCSC" />
+        </a>
+        <div id="title_bar">
+          <div>NCSC | Kwetsbaarheden</div>
+        </div>
+      </header>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="https://www.ncsc.nl">Home</a></li>
+        <li><a href="/">Kwetsbaarheden</a></li>
+        <li class="current">
+          <a x-text="cve" href="#"></a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Kwetsbaarheden</h1>
+      <section id="cve">
+        <noscript>Om de lijst te tonen heb je Javascript nodig.</noscript>
+        <span x-show="csaf === null">Laden...</span>
+        <template x-if="csaf">
+          <article>
+            <a id="csaf-link" :href="csafLink">Download CSAF</a>
+            <dl>
+              <dt>CVE</dt>
+              <dd x-text="cve"></dd>
+              <dt>Label</dt>
+              <dd x-text="csaf.document.distribution.tlp.label"></dd>
+              <template x-if="cvss">
+                <dt>CVSS Score</dt>
+              </template>
+              <template x-if="cvss">
+                <dd x-text="cvss"></dd>
+              </template>
+              <template x-if="epss">
+                <dt>EPSS Score</dt>
+              </template>
+              <template x-if="epss">
+                <dd x-text="epss"></dd>
+              </template>
+            </dl>
+            <template x-if="ncscScore">
+              <section>
+                <h3>
+                  NCSC Score
+                  <div class="tooltip-container">
+                    <span class="question-mark" tabindex="0">?</span>
+                    <div class="tooltip-content">
+                      <p>
+                        NCSC heeft een automatisch gegenereerde score ontwikkeld
+                        om de relevantie van bekende kwetsbaarheden en
+                        blootstellingen per CVE-ID (Common Vulnerabilities and
+                        Exposures) te bepalen. De score geeft een inschatting
+                        van de relevantie voor Nederlandse organisaties.
+                      </p>
+                      <p>
+                        De NCSC-score is machine-learning gedreven en weegt
+                        verschillende eigenschappen van een CVE, waaronder
+                        Common Vulnerability Scoring System (CVSS) informatie,
+                        geraakte producten, gerelateerd nieuws en vele andere
+                        aspecten. De score is voor elke CVE in onze
+                        kwetsbaarheden-database beschikbaar en wordt automatisch
+                        geactualiseerd wanneer er nieuwe informatie over de CVE
+                        beschikbaar komt.
+                      </p>
+                      <a href="/ncsc-score.html">Meer informatie</a>
+                    </div>
+                  </div>
+                </h3>
+                <div>
+                  <span x-text="ncscScore"></span>
+                  <div class="tooltip-container">
+                    <span class="question-mark" tabindex="0">?</span>
+                    <div class="tooltip-content">
+                      <h4 style="margin: 0">Positive</h4>
+                      <ul>
+                        <template x-for="feat in ncscScoreInc">
+                          <li x-text="feat"></li>
+                        </template>
+                      </ul>
+                      <h4 style="margin: 0">Negative</h4>
+                      <ul>
+                        <template x-for="feat in ncscScoreDec">
+                          <li x-text="feat"></li>
+                        </template>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </template>
+            <template x-if="notes">
+              <section>
+                <h3>Notes</h3>
+                <div>
+                  <template x-for="note in notes">
+                    <div>
+                      <h4 class="break-anywhere" x-text="note.title"></h4>
+                      <div x-html="markdown(note.text)"></div>
+                    </div>
+                  </template>
+                </div>
+              </section>
+            </template>
+            <template x-if="products">
+              <section>
+                <h3>Products</h3>
+                <div>
+                  <template x-for="group in products">
+                    <details open class="productBranch">
+                      <summary x-text="group.name"></summary>
+                      <div>
+                        <table class="striped compact products">
+                          <template x-for="product in group.products">
+                            <tr>
+                              <td x-text="product.name"></td>
+                              <td x-text="product.versions.join(', ')"></td>
+                              <td x-text="product.status"></td>
+                            </tr>
+                          </template>
+                        </table>
+                      </div>
+                    </details>
+                  </template>
+                </div>
+              </section>
+            </template>
+            <template x-if="csaf.vulnerabilities[0].threats">
+              <section>
+                <h3>Threats</h3>
+                <div>
+                  <template x-for="threat in csaf.vulnerabilities[0].threats">
+                    <div>
+                      <h4 x-text="threat.category"></h4>
+                      <div>
+                        <p x-text="threat.details"></p>
+                        <template x-for="id in threat.product_ids">
+                          <div x-text="productNameById(id, csaf)"></div>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </section>
+            </template>
+            <template x-if="vendorAssessment">
+              <section>
+                <h3>Vendor assessment</h3>
+                <div x-text="vendorAssessment.text"></div>
+              </section>
+            </template>
+            <template x-if="csaf.vulnerabilities[0].remediations">
+              <section>
+                <h3>Remediations</h3>
+                <div>
+                  <template
+                    x-for="remediation in csaf.vulnerabilities[0].remediations"
+                  >
+                    <div>
+                      <h4 x-text="remediation.category"></h4>
+                      <template x-if="remediation.url">
+                        <a :href="remediation.url" x-text="remediation.url"></a>
+                      </template>
+                      <div>
+                        <p x-text="remediation.details"></p>
+                        <template x-for="id in remediation.product_ids">
+                          <div x-text="productNameById(id, csaf)"></div>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </section>
+            </template>
+            <template
+              x-if="csaf.vulnerabilities[0].references && csaf.vulnerabilities[0].references.length"
+            >
+              <section>
+                <h3>Referenties</h3>
+                <ul>
+                  <template
+                    x-for="reference in csaf.vulnerabilities[0].references"
+                  >
+                    <li>
+                      <a :href="reference.url" x-text="reference.summary"></a>
+                    </li>
+                  </template>
+                </ul>
+              </section>
+            </template>
+            <template
+              x-if="csaf.document.tracking.revision_history  && csaf.document.tracking.revision_history.length"
+            >
+              <section>
+                <h3>Veranderingen</h3>
+                <dl id="changes">
+                  <template
+                    x-for="change in csaf.document.tracking.revision_history"
+                  >
+                    <div>
+                      <dt x-text="dateDisplay(change.date)"></dt>
+                      <dd x-text="change.summary"></dd>
+                    </div>
+                  </template>
+                </dl>
+              </section>
+            </template>
+            <template x-if="disclaimer">
+              <section>
+                <h3>Disclaimer</h3>
+                <div id="disclaimer" x-text="disclaimer.text"></div>
+              </section>
+            </template>
+          </article>
+        </template>
+      </section>
+    </main>
+
+    <script>
+      const searchParams = new URLSearchParams(document.location.search);
+      const id = searchParams.get("id") || window.location.pathname.slice(1);
+      const [year, cve] = id.split("/");
+
+      const csafLink = !year || !cve ? null : `/csaf/v2/${year}/${cve}.json`;
+
+      const getCsaf = async () => {
+        if (!year || !cve) throw new Error("No year / cve params");
+        const response = await fetch(csafLink);
+        return await response.json();
+      };
+
+      const getNoteTextByTitle = (csaf, title) => {
+        const matchingNote = csaf.vulnerabilities[0].notes.find(
+          (note) => note.title === title,
+        );
+        return matchingNote ? matchingNote.text : undefined;
+      };
+
+      const getCvssScore = (csaf) => {
+        const cvssV4Score = csaf.vulnerabilities[0].notes?.find(
+          (note) => note.title === "CVSSV4 base score",
+        )?.text;
+        if (cvssV4Score) {
+          const cvssStr = csaf.vulnerabilities[0].notes?.find(
+            (note) => note.title === "CVSSV4",
+          )?.text;
+          return `${cvssV4Score} ${cvssStr}`;
+        }
+        const cvss = csaf.vulnerabilities[0].scores?.find(
+          (score) => score.cvss_v3,
+        )?.cvss_v3;
+        if (!cvss) {
+          return null;
+        }
+        return `${cvss.baseScore} ${cvss.vectorString}`;
+      };
+
+      const getEpssScore = (csaf) => getNoteTextByTitle(csaf, "EPSS");
+      const getNcscScore = (csaf) => getNoteTextByTitle(csaf, "NCSC Score");
+      const getNcscScoreIncreasing = (csaf) =>
+        getNoteTextByTitle(csaf, "NCSC Score top increasing factors")?.split(
+          ",",
+        );
+      const getNcscScoreDecreasing = (csaf) =>
+        getNoteTextByTitle(csaf, "NCSC Score top decreasing factors")?.split(
+          ",",
+        );
+
+      const getNotes = (csaf) => {
+        const notes = csaf.vulnerabilities[0].notes.filter(
+          (note) => note.category === "description",
+        );
+        if (!notes || notes.length === 0) return null;
+        return notes;
+      };
+
+      const getVendorAssessment = (csaf) => {
+        const notes = csaf.vulnerabilities[0].notes.filter(
+          (note) =>
+            note.category === "details" && note.title === "Vendor assessment",
+        );
+        if (!notes || notes.length === 0) return null;
+        return notes[0];
+      };
+
+      function findParentNodes(productTree, predicate) {
+        function traverse(node, parents = []) {
+          const currentPath = [...parents, node];
+          if (predicate(node)) {
+            return currentPath;
+          }
+
+          if (node.branches) {
+            for (const branch of node.branches) {
+              const result = traverse(branch, currentPath);
+              if (result) {
+                return result;
+              }
+            }
+          }
+        }
+
+        return traverse(productTree, []);
+      }
+
+      const productNameById = (id, csaf) => {
+        const parents = findParentNodes(
+          csaf.product_tree,
+          (node) => node.product?.product_id === id,
+        );
+        const name = parents
+          .map((node) => node.name?.replace(/^vers:.*?\//, ""))
+          .filter((node) => node)
+          .join(" ");
+
+        return name;
+      };
+
+      const dateDisplay = (date) => new Date(date).toLocaleString("nl-NL");
+
+      const addParent = (branch, parent) => {
+        branch.parent = parent;
+        branch.branches?.forEach((subBranch) => addParent(subBranch, branch));
+      };
+
+      const statusByPid = (pid, csaf) => {
+        for (const [status, pids] of Object.entries(
+          csaf.vulnerabilities[0].product_status,
+        )) {
+          if (pids.includes(pid)) {
+            return status;
+          }
+        }
+        return "known_not_affected";
+      };
+
+      const getProducts = (csaf) => {
+        if (!csaf.product_tree) {
+          return [];
+        }
+        addParent(csaf.product_tree);
+
+        const leaves = [];
+        const addLeaves = (branch) => {
+          if (
+            !branch.branches &&
+            (branch.category === "product_version_range" ||
+              branch.category === "product_version")
+          ) {
+            leaves.push(branch);
+          } else {
+            branch.branches?.forEach((subBranch) => addLeaves(subBranch));
+          }
+        };
+        addLeaves(csaf.product_tree);
+
+        const groupName = (branch) => {
+          if (branch.parent?.name) {
+            return `${groupName(branch.parent)} - ${branch.name}`;
+          }
+          return branch.name || "";
+        };
+
+        const groups = new Map();
+
+        leaves.forEach((leave) => {
+          const version = leave.name.replace(/^vers:(unknown\/)?/, "");
+          const productName = leave.parent.name;
+          const group = groupName(leave.parent.parent);
+          const status = statusByPid(leave.product.product_id, csaf);
+          if (!groups.has(group)) {
+            groups.set(group, new Map());
+          }
+          const key = productName + "_" + status;
+          if (!groups.get(group).has(key)) {
+            groups.get(group).set(key, {
+              name: productName,
+              status: status,
+              versions: [],
+            });
+          }
+          groups.get(group).get(key).versions.push(version);
+        });
+
+        return Array.from(groups).map(([name, products]) => ({
+          name,
+          products: Array.from(products.values()),
+        }));
+      };
+
+      /** END Products */
+
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("cveData", () => ({
+          productNameById,
+          dateDisplay,
+          year,
+          cve,
+          csafLink,
+          csaf: null,
+
+          updateComputed() {
+            this.cvss = getCvssScore(this.csaf);
+            this.epss = getEpssScore(this.csaf);
+            this.ncscScore = getNcscScore(this.csaf);
+            if (this.ncscScore) {
+              this.ncscScoreInc = getNcscScoreIncreasing(this.csaf);
+              this.ncscScoreDec = getNcscScoreDecreasing(this.csaf);
+            }
+            this.notes = getNotes(this.csaf);
+            this.vendorAssessment = getVendorAssessment(this.csaf);
+            this.products = getProducts(this.csaf);
+            this.disclaimer =
+              this.csaf.document.notes?.find(
+                (note) => note.category === "legal_disclaimer",
+              ) || null;
+          },
+          async init() {
+            try {
+              this.csaf = await getCsaf();
+              this.markdownConverter = new showdown.Converter();
+              this.markdown = (text) =>
+                this.markdownConverter?.makeHtml(text) || text;
+              this.updateComputed();
+            } catch (e) {
+              console.error(e);
+              this.csaf = undefined;
+            }
+          },
+        }));
+      });
+    </script>
+  </body>
+</html>

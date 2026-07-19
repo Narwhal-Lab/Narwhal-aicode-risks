@@ -1,0 +1,46 @@
+slug: 2026-zammad-ai-agent-ssti-rce
+title_en: Zammad AI Agent SSTI to RCE
+title_cn: Zammad AI Agent 服务端模板注入到远程代码执行
+year: 2026
+disclosed: '2026-04-08'
+category: code-vulns
+severity: high
+severity_basis: cvss
+severity_evidence: NVD, Zammad's GitHub advisory and the Zammad 7.0.1 release identify CVE-2026-34724 as a high severity SSTI-to-RCE issue fixed in 7.0.1.
+cvss: 7.2
+cve: CVE-2026-34724
+real_incident: true
+reproducible: true
+ai_tool:
+- Zammad
+- Zammad AI Agent
+language:
+- Ruby
+- Template engine
+attack_surface:
+- AI Agent type enrichment data
+- administrative configuration
+- template rendering path
+references:
+- title: 'NVD: CVE-2026-34724'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-34724
+- title: 'Zammad Advisory: GHSA-fg9w-jg8f-4j94'
+  url: https://github.com/zammad/zammad/security/advisories/GHSA-fg9w-jg8f-4j94
+- title: Zammad Release 7.0.1
+  url: https://zammad.com/en/product/releases/7-0-1
+- title: 'SentinelOne: CVE-2026-34724'
+  url: https://www.sentinelone.com/vulnerability-database/cve-2026-34724/
+- title: 'Debian Security Tracker: CVE-2026-34724'
+  url: https://security-tracker.debian.org/tracker/CVE-2026-34724
+- title: 'Tenable: CVE-2026-34724'
+  url: https://www.tenable.com/cve/CVE-2026-34724
+- title: 'Cyber Defence: CVE-2026-34724'
+  url: https://www.cyber-defence.io/tools/cve/CVE-2026-34724
+tldr: Zammad's AI Agent feature allowed server-side template injection through type enrichment data, enabling RCE when an attacker could influence that configuration.
+tags:
+- zammad
+- ai-agent
+- ssti
+- rce
+- helpdesk
+verification_notes: Based on public vulnerability advisories, vendor or project references, and security database records captured in assets. Exploitation impact depends on the documented deployment and privilege preconditions.

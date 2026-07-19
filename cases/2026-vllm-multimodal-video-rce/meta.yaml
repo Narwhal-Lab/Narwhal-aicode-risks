@@ -1,0 +1,44 @@
+slug: 2026-vllm-multimodal-video-rce
+title_en: vLLM Multimodal Video Processing RCE
+title_cn: vLLM 多模态视频处理远程代码执行
+year: 2026
+disclosed: '2026-02-02'
+category: domain-specific
+severity: critical
+severity_basis: cvss
+severity_evidence: GitHub Advisory and NVD list CVE-2026-22778 as critical with CVSS 9.8 for vLLM versions before 0.14.1.
+cvss: 9.8
+cve: CVE-2026-22778
+real_incident: true
+reproducible: true
+ai_tool:
+- vLLM
+- Multimodal inference endpoint
+- Video model serving
+language:
+- Python
+- C/C++ media stack
+attack_surface:
+- OpenAI-compatible multimodal API
+- Video URL ingestion
+- PIL error handling
+- OpenCV / FFmpeg JPEG2000 decoder
+references:
+- title: 'NVD: CVE-2026-22778'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-22778
+- title: 'GitHub Advisory: GHSA-4r2x-xpjr-7cvv'
+  url: https://github.com/advisories/GHSA-4r2x-xpjr-7cvv
+- title: 'Orca Security: vLLM RCE via malicious video'
+  url: https://orca.security/resources/blog/cve-2026-22778-vllm-rce-vulnerability/
+- title: 'OX Security: CVE-2026-22778'
+  url: https://www.ox.security/blog/cve-2026-22778-vllm-rce-vulnerability/
+- title: 'Miggo: CVE-2026-22778'
+  url: https://www.miggo.io/vulnerability-database/cve/CVE-2026-22778
+tldr: A malicious video URL sent to vulnerable vLLM multimodal endpoints could chain an information leak with a media-decoder heap overflow to execute code on the inference server.
+tags:
+- vllm
+- multimodal
+- video
+- rce
+- inference-serving
+verification_notes: Based on public vulnerability advisories, vendor or project references, and security database records captured in assets. Exploitation impact depends on the documented deployment and privilege preconditions.

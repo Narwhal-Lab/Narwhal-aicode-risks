@@ -1,0 +1,7 @@
+file	type	title	url	archive_status
+source-01.html	主证据	GitHub Advisory: MindsDB Path Traversal in /api/files	https://github.com/advisories/GHSA-4894-xqv6-vrfq	OK|html|original|195842
+source-02.html	主证据	CVEProject cvelistV5: CVE-2026-27483	https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/27xxx/CVE-2026-27483.json	OK|html|original|383560
+source-03.html	复核证据	OpenCVE: CVE-2026-27483	https://app.opencve.io/cve/CVE-2026-27483	OK|html|original|71992
+source-04.html	技术证据	Tenable: CVE-2026-27483	https://www.tenable.com/cve/CVE-2026-27483	OK|html|original|58358
+source-05.html	技术证据	GitHub PoC: thewhiteh4t/cve-2026-27483	https://github.com/thewhiteh4t/cve-2026-27483	OK|html|original|251523
+source-06.html	复核证据	TheHackerWire: MindsDB Path Traversal to RCE	https://www.thehackerwire.com/mindsdb-path-traversal-to-rce-cve-2026-27483/	OK|html|original|68202

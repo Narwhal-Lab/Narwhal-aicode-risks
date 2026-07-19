@@ -1,0 +1,6 @@
+index	filename	title	url	status	bytes	sha256	captured_at
+1	source-01-nvd-nist-gov-vuln-detail-cve-2026-22778.html	NVD: CVE-2026-22778	https://nvd.nist.gov/vuln/detail/CVE-2026-22778	200	112488	1703b3079e38f7dcf44a836bd87f600ca295ba1235918b28b340fbbedbfa7e3f	2026-07-09T10:46:26+00:00
+2	source-02-github-com-advisories-ghsa-4r2x-xpjr-7cvv.html	GitHub Advisory: GHSA-4r2x-xpjr-7cvv	https://github.com/advisories/GHSA-4r2x-xpjr-7cvv	200	201026	9cdb6cf538d9a1ab6af992a0be43e71fa3d95145646fdcc38fa964aebae1836e	2026-07-09T10:46:26+00:00
+3	source-03-orca-security-resources-blog-cve-2026-22778-vllm-rce-vulnerability.html	Orca Security: vLLM RCE via malicious video	https://orca.security/resources/blog/cve-2026-22778-vllm-rce-vulnerability/	200	233874	ba4b0f71059b553fce7f83efc9bb47ef4cadc25f5266a286a68f172367ce0697	2026-07-09T10:46:26+00:00
+4	source-04-www-ox-security-blog-cve-2026-22778-vllm-rce-vulnerability.html	OX Security: CVE-2026-22778	https://www.ox.security/blog/cve-2026-22778-vllm-rce-vulnerability/	200	343500	e3eff4860e7c4a6abdfcba2d1c95ced67a193857d2465ade112fb51ac93ce158	2026-07-09T10:46:26+00:00
+5	source-05-www-miggo-io-vulnerability-database-cve-cve-2026-22778.html	Miggo: CVE-2026-22778	https://www.miggo.io/vulnerability-database/cve/CVE-2026-22778	200	264785	512236efc28ba0fbcf3b2decfbcdf1f6ccfbb035c50d658357a52f4506e384aa	2026-07-09T10:46:26+00:00

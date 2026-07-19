@@ -1,0 +1,43 @@
+slug: 2026-crawl4ai-docker-api-hooks-rce
+title_en: Crawl4AI Docker API Hooks RCE
+title_cn: Crawl4AI Docker API hooks 参数远程代码执行
+year: 2026
+disclosed: '2026-01-16'
+category: domain-specific
+severity: critical
+severity_basis: cvss
+severity_evidence: NVD, GitHub Advisory and GitLab Advisory record CVE-2026-26216 as a critical Crawl4AI Docker API RCE with CVSS 10.0, affecting versions prior to 0.8.0.
+cvss: 10.0
+cve: CVE-2026-26216
+real_incident: true
+reproducible: true
+ai_tool:
+- Crawl4AI
+- Docker API
+- LLM-friendly crawler
+language:
+- Python
+attack_surface:
+- Docker API /crawl endpoint
+- hooks parameter
+- Python exec sandbox
+- crawler deployment
+references:
+- title: 'NVD: CVE-2026-26216'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-26216
+- title: 'GitHub Advisory: GHSA-5882-5rx9-xgxp'
+  url: https://github.com/advisories/GHSA-5882-5rx9-xgxp
+- title: 'GitLab Advisory: CVE-2026-26216'
+  url: https://advisories.gitlab.com/pypi/crawl4ai/CVE-2026-26216/
+- title: 'VulnCheck: Crawl4AI Docker API RCE'
+  url: https://www.vulncheck.com/advisories/crawl4ai-docker-api-unauthenticated-remote-code-execution-via-hooks-parameter
+- title: 'SentinelOne: CVE-2026-26216'
+  url: https://www.sentinelone.com/vulnerability-database/cve-2026-26216/
+tldr: Crawl4AI's Docker API accepted Python hook code on the /crawl endpoint, leaving unauthenticated deployments exposed to direct command execution.
+tags:
+- crawl4ai
+- docker-api
+- rce
+- python-exec
+- crawler
+verification_notes: Based on public vulnerability advisories, vendor or project references, and security database records captured in assets. Exploitation impact depends on the documented deployment and privilege preconditions.

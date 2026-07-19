@@ -1,0 +1,46 @@
+slug: "2026-paperclip-ai-agent-import-rce"
+title_en: "Paperclip AI Agent Import Authorization Bypass RCE"
+title_cn: "Paperclip AI Agent 导入授权绕过到远程代码执行"
+year: 2026
+disclosed: "2026-04-23"
+category: "agent-risk"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "GitHub Advisory and CVEProject cvelistV5 describe unauthenticated RCE in Paperclip before 2026.416.0 with CVSS 10.0."
+cvss: 10
+cve: "CVE-2026-41679"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "Paperclip"
+  - "@paperclipai/server"
+  - "AI agent orchestration server"
+language:
+  - "Node.js"
+  - "React"
+attack_surface:
+  - "Agent import API"
+  - "Authorization bypass"
+  - "Default authenticated mode"
+  - "Server-side command execution"
+references:
+  - title: "GitHub Advisory: Paperclip Import Authorization Bypass RCE"
+    url: "https://github.com/advisories/GHSA-68qg-g8mg-6pr7"
+  - title: "CVEProject cvelistV5: CVE-2026-41679"
+    url: "https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/41xxx/CVE-2026-41679.json"
+  - title: "Endor Labs: CVE-2026-41679"
+    url: "https://www.endorlabs.com/vulnerability/cve-2026-41679"
+  - title: "TheHackerWire: Paperclip RCE via six API calls"
+    url: "https://www.thehackerwire.com/paperclip-rce-unauthenticated-remote-code-execution-via-six-api-calls/"
+  - title: "Tenable: CVE-2026-41679"
+    url: "https://www.tenable.com/cve/CVE-2026-41679"
+  - title: "Mondoo Vulnerability Intelligence: GHSA-68qg-g8mg-6pr7"
+    url: "https://mondoo.com/vulnerability-intelligence/vulnerability/GHSA-68qg-g8mg-6pr7"
+tldr: "Paperclip default deployments could be taken over through a six-call unauthenticated import chain."
+tags:
+  - "paperclip"
+  - "agent-orchestration"
+  - "authorization-bypass"
+  - "rce"
+  - "cvss-10"
+verification_notes: "Based on public advisories, CVE databases, technical analysis, and independent vulnerability databases. Public evidence supports the vulnerability and impact class; victim-specific compromise is only stated when the cited sources report it."

@@ -1,0 +1,8 @@
+index	filename	title	url	status	bytes	sha256	captured_at
+1	source-01-nvd-nist-gov-vuln-detail-cve-2026-44688.html	NVD: CVE-2026-44688	https://nvd.nist.gov/vuln/detail/CVE-2026-44688	200	71499	46a48545c6f9c577cde0817c938cc4f7636a40ab89653196f4d4e41547291dec	2026-07-09T11:42:23+00:00
+2	source-02-github-com-advisories-ghsa-3jww-hxqj-wfq2.html	GitHub Advisory: GHSA-3jww-hxqj-wfq2	https://github.com/advisories/GHSA-3jww-hxqj-wfq2	200	196066	4e6560d994e5395178b8de06e0cc2d66f6def2f5322ac273e1796cff52365edc	2026-07-09T11:42:23+00:00
+3	source-03-advisories-gitlab-com-npm-40theia-ai-ide-cve-2026-44688.html	GitLab Advisory: CVE-2026-44688	https://advisories.gitlab.com/npm/%40theia/ai-ide/CVE-2026-44688/	200	21240	6aaef5c28884188b807a980a08f3042d0b53e91df97f33d088b6fdb2c1f7ca3f	2026-07-09T11:42:23+00:00
+4	source-04-nvd-nist-gov-vuln-detail-cve-2026-22551.html	NVD: CVE-2026-22551	https://nvd.nist.gov/vuln/detail/CVE-2026-22551	200	70819	4ee38db4d4ef6c1458ba97d76268ce318cc8a4cb75196db8f906dec71640ef1d	2026-07-09T11:42:23+00:00
+5	source-05-github-com-advisories-ghsa-qwjm-9c66-w4q4.html	GitHub Advisory: GHSA-qwjm-9c66-w4q4	https://github.com/advisories/GHSA-qwjm-9c66-w4q4	200	195861	9e0e0af5d4146568c5f2822a931759c869fd0ec7e88b5ee2ba13ea6df153d816	2026-07-09T11:42:23+00:00
+6	source-06-www-tenable-com-cve-cve-2026-44688.html	Tenable: CVE-2026-44688	https://www.tenable.com/cve/CVE-2026-44688	200	57233	5527c01df4e34fbdaaf2ff01a797a8859db2ad335ca1f49c09041f6b1c5ee1c0	2026-07-09T11:42:23+00:00
+7	source-07-www-cyber-defence-io-tools-cve-cve-2026-22551.html	Cyber Defence: CVE-2026-22551	https://www.cyber-defence.io/tools/cve/CVE-2026-22551	200	46774	2aee99757cf3a9a20752a1ef91406d6301a12b82ef0a3a306c5922577d8b76c8	2026-07-09T11:42:23+00:00

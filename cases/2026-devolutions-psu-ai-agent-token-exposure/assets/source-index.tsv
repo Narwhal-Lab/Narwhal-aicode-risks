@@ -1,0 +1,6 @@
+index	filename	title	url	status	bytes	sha256	captured_at
+1	source-01-nvd-nist-gov-vuln-detail-cve-2026-13437.html	NVD: CVE-2026-13437	https://nvd.nist.gov/vuln/detail/CVE-2026-13437	200	67547	4a21f141644799c2139e6cef90c436dc0e083c5b3a045a07c732e758cd184a29	2026-07-09T11:29:46+00:00
+2	source-02-devolutions-net-security-advisories-devo-2026-0022.html	Devolutions Advisory: DEVO-2026-0022	https://devolutions.net/security/advisories/DEVO-2026-0022/	200	266587	0aa294f5c395ef6e7028c54cb77cef0846fe49b48505f1d9656fe053ad898f2a	2026-07-09T11:29:46+00:00
+3	source-03-devolutions-net-security-advisories.html	Devolutions Advisories	https://devolutions.net/security/advisories/	200	563722	f540e4e1b58f813bde49056438d39911baf548660098ba9252634fb8ac9c1410	2026-07-09T11:29:46+00:00
+4	source-04-app-opencve-io-cve-cve-2026-13437.html	OpenCVE: CVE-2026-13437	https://app.opencve.io/cve/CVE-2026-13437	200	59707	b34bf198ff5f41b5c75d15494606fbfeeedf510f8751e8b5a059ddb6f444b6bc	2026-07-09T11:29:46+00:00
+5	source-05-www-tenable-com-cve-cve-2026-13437.html	Tenable: CVE-2026-13437	https://www.tenable.com/cve/CVE-2026-13437	200	54776	8490818c727b8a8418f7eeef0e566c112586446236e40d2ffecfed96d0d90f30	2026-07-09T11:29:46+00:00

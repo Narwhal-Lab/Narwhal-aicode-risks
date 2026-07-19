@@ -1,0 +1,7 @@
+index	filename	title	url	status	bytes	sha256	captured_at
+1	source-01-nvd-nist-gov-vuln-detail-cve-2026-48814.html	NVD: CVE-2026-48814	https://nvd.nist.gov/vuln/detail/CVE-2026-48814	200	65323	af6b7a6a966642f02cc436b33c0bf6ff6898dc8eb500c98c87e0a2b4522739f2	2026-07-09T10:46:26+00:00
+2	source-02-github-com-advisories-ghsa-r78r-rwrf-rjwp.html	GitHub Advisory: GHSA-r78r-rwrf-rjwp	https://github.com/advisories/GHSA-r78r-rwrf-rjwp	200	189871	3a9b1fa43beff9d8b4cc59bcabafe751560ef660a35b11ade950c2a24575fe7e	2026-07-09T10:46:26+00:00
+3	source-03-security-snyk-io-vuln-snyk-js-networkai-17753986.html	Snyk: SNYK-JS-NETWORKAI-17753986	https://security.snyk.io/vuln/SNYK-JS-NETWORKAI-17753986	200	223847	f9f9d9c796358cbc90ce51d656076c7e3c4e614e0a9d147b2897d2ade4dafb31	2026-07-09T10:46:26+00:00
+4	source-04-www-kodemsecurity-com-cve-archive-cve-2026-48814.html	Kodem: CVE-2026-48814	https://www.kodemsecurity.com/cve-archive/cve-2026-48814	200	103825	81f009c4bf8b008d383fc72c79ac60d45acf28297fe3eebe6f5dfeeb2d2ead37	2026-07-09T10:46:26+00:00
+5	source-05-app-opencve-io-cve-cve-2026-48814.html	OpenCVE: CVE-2026-48814	https://app.opencve.io/cve/CVE-2026-48814	200	64750	40d649d888a1a8039cdccb0f0328ba746b661617a57de07860467c2edcd684db	2026-07-09T10:46:26+00:00
+6	source-06-snailsploit-com-security-research-cves-cve-2026-48814.html	SnailSploit: CVE-2026-48814	https://snailsploit.com/security-research/cves/cve-2026-48814/	200	38631	6020f565b519baa25064498c40d963f51937c61fd03fc8d913832900a7e8c28d	2026-07-09T10:46:26+00:00
