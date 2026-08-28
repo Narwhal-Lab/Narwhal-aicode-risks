@@ -1,0 +1,38 @@
+﻿slug: 2026-openclaw-gateway-token-one-click-rce
+title_en: 'OpenClaw Gateway Token Exfiltration and One-Click RCE'
+title_cn: 'OpenClaw 网关令牌外传与一键远程代码执行'
+year: 2026
+disclosed: '2026-01-31'
+category: agent-risk
+severity: high
+severity_basis: cvss
+severity_evidence: 'OpenClaw Control UI 信任查询参数中的 gatewayUrl 并自动连接，浏览器会把已保存网关令牌发给攻击者服务器；令牌随后可用于修改工具策略并在本地 Agent 网关执行代码。 公开公告给出了受影响范围和修复信息。'
+real_incident: true
+reproducible: true
+ai_tool:
+- 'OpenClaw, Clawdbot, Control UI, AI agent gateway'
+language:
+- 'TypeScript / WebSocket / Web UI'
+attack_surface:
+- AI agent integration
+- tool or plugin boundary
+- untrusted configuration or request data
+references:
+- title: 'OpenClaw repository advisory'
+  url: https://github.com/openclaw/openclaw/security/advisories/GHSA-g8p2-7wf7-98mq
+- title: 'GitHub Advisory Database'
+  url: https://github.com/advisories/GHSA-g8p2-7wf7-98mq
+- title: 'NVD CVE record'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-25253
+- title: 'DepthFirst technical disclosure'
+  url: https://depthfirst.com/post/1-click-rce-to-steal-your-moltbot-data-and-keys
+- title: 'OpenClaw project blog'
+  url: https://openclaw.ai/blog
+tldr: 'OpenClaw Control UI 信任查询参数中的 gatewayUrl 并自动连接，浏览器会把已保存网关令牌发给攻击者服务器；令牌随后可用于修改工具策略并在本地 Agent 网关执行代码。'
+tags:
+- ai-security
+- agent
+- 2026
+verification_notes: '事件由安全公告、CVE 或项目修复记录共同确认；文中将已证实的漏洞能力与具体部署条件分别说明。'
+cve: CVE-2026-25253
+

@@ -1,0 +1,36 @@
+slug: "2026-bentoml-container-template-rce"
+title_en: "BentoML Container Template Host Code Execution"
+title_cn: "BentoML 容器模板在宿主机执行代码漏洞"
+year: 2026
+disclosed: "2026-04-03"
+category: "supply-chain"
+severity: "critical"
+severity_basis: "cvss"
+cve: "CVE-2026-35044"
+cvss: 9.6
+severity_evidence: "NVD assigns CVSS 3.1 9.6 to CVE-2026-35044."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "BentoML model-serving package and container builder"
+language:
+  - "Python"
+attack_surface:
+  - "BentoML model-serving package and container builder"
+  - "Untrusted AI workflow input"
+references:
+  - title: "BentoML advisory: unsandboxed Jinja2 SSTI"
+    url: "https://github.com/bentoml/BentoML/security/advisories/GHSA-v959-cwq9-7hr6"
+  - title: "NVD: CVE-2026-35044"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-35044"
+  - title: "BentoML fix commit 716daf4"
+    url: "https://github.com/bentoml/BentoML/commit/716daf4ebd1e8a7c8ba48d1cad69836489b43644"
+  - title: "Snyk: CVE-2026-35044"
+    url: "https://security.snyk.io/vuln/SNYK-PYTHON-BENTOML-15909744"
+  - title: "GitLab advisory: CVE-2026-35044"
+    url: "https://advisories.gitlab.com/pypi/bentoml/CVE-2026-35044/"
+tldr: "A malicious Bento archive could execute Python on a host during container generation because BentoML rendered user-supplied Dockerfile templates without a sandbox."
+tags:
+  - "ai-security"
+  - "cve-2026-35044"
+verification_notes: "Reviewed primary disclosure, vulnerability record, upstream remediation material, and independent corroboration."

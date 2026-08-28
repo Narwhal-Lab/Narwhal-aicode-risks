@@ -1,0 +1,40 @@
+slug: 2026-google-dialogflow-rogue-agent-conversation-hijack
+title_en: 'Google Dialogflow CX Rogue Agent Conversation Hijack'
+title_cn: 'Google Dialogflow CX Rogue Agent 跨智能体会话劫持漏洞'
+year: 2026
+disclosed: '2026-07-07'
+category: cloud-iac
+severity: critical
+severity_basis: editorial
+severity_evidence: '研究人员仅凭一个 Dialogflow CX 智能体的 playbook 更新权限，即可利用 Code Blocks 改写共享执行环境，持续截取同一项目内多个智能体的会话、伪造回复并向外传输数据。Google 于 2026 年 6 月完成修复，公开材料未发现修复前的在野利用。'
+real_incident: true
+reproducible: true
+ai_tool:
+- 'Google Cloud Dialogflow CX'
+- 'Conversational Agents Playbooks'
+- 'Playbook Code Blocks'
+language:
+- 'Python / Google Cloud'
+attack_surface:
+- AI agent runtime isolation
+- conversational data pipeline
+- cloud permission boundary
+references:
+- title: 'Varonis Threat Labs: Rogue Agent'
+  url: https://www.varonis.com/blog/rogue-agent-dialogflow-attack
+- title: 'Axios: Google patched Dialogflow CX chatbot flaw'
+  url: https://www.axios.com/2026/07/07/varonis-google-ai-agent-chatbot-security
+- title: 'The Hacker News: Rogue Agent flaw in Dialogflow CX'
+  url: https://thehackernews.com/2026/07/rogue-agent-flaw-could-have-let.html
+- title: 'SecurityWeek: Dialogflow CX bug allowed chatbot hijacking'
+  url: https://www.securityweek.com/google-dialogflow-cx-bug-allowed-attackers-to-hijack-ai-conversations/amp/
+- title: 'Google Cloud documentation: Dialogflow CX Code Blocks'
+  url: https://docs.cloud.google.com/dialogflow/cx/docs/concept/playbook/code-block
+tldr: 'Dialogflow CX 的 Playbook Code Blocks 在同一项目内共享可写执行环境，使单个智能体的编辑权限能够转化为跨智能体的持久会话截取、回复篡改和数据外传能力。'
+tags:
+- ai-security
+- agent
+- conversational-ai
+- cloud
+- 2026
+verification_notes: 'Varonis 公布了测试环境、权限前提、利用步骤和修复时间；Axios、SecurityWeek 与 The Hacker News 对 Google 修复及影响进行了交叉报道，Google 文档确认 Code Blocks 是控制生成式智能体行为的内联 Python 功能。'

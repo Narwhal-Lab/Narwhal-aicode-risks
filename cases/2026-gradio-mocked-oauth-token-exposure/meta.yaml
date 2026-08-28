@@ -1,0 +1,45 @@
+slug: 2026-gradio-mocked-oauth-token-exposure
+title_en: Gradio Mocked OAuth Hugging Face Token Exposure
+title_cn: Gradio Mocked OAuth 路径导致 Hugging Face 令牌暴露
+year: 2026
+disclosed: '2026-02-27'
+category: domain-specific
+severity: high
+severity_basis: cvss
+severity_evidence: NVD rates CVE-2026-27167 at 5.9 and identifies remote disclosure of the server owner's Hugging Face token. CISA SSVC records a PoC and partial technical impact; the token can grant access beyond the affected demo depending on its scope.
+real_incident: true
+reproducible: true
+ai_tool:
+- Gradio
+- Hugging Face OAuth components
+- AI demo applications
+language:
+- Python
+- OAuth
+- HTTP
+attack_surface:
+- Mocked OAuth route
+- LoginButton
+- hardcoded session secret
+- server Hugging Face token
+references:
+- title: 'GitHub Advisory: GHSA-h3h8-3v2v-rg7m'
+  url: https://github.com/advisories/GHSA-h3h8-3v2v-rg7m
+- title: 'NVD: CVE-2026-27167'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-27167
+- title: 'OSV: CVE-2026-27167'
+  url: https://osv.dev/vulnerability/CVE-2026-27167
+- title: Gradio release 6.6.0
+  url: https://github.com/gradio-app/gradio/releases/tag/gradio%406.6.0
+- title: 'Gradio version comparison: 6.5.1 to 6.6.0'
+  url: https://github.com/gradio-app/gradio/compare/gradio%406.5.1...gradio%406.6.0
+tldr: Network-accessible Gradio apps using mocked OAuth could place the server's Hugging Face token in a visitor-controlled session cookie, exposing credentials through a hardcoded signing secret.
+tags:
+- gradio
+- oauth
+- hugging-face-token
+- credential-exposure
+- demo-app
+verification_notes: GitHub's advisory, NVD, OSV, the upstream release record, and national security bulletins agree on the mocked OAuth route, token exposure, hardcoded secret, and version 6.6.0 fix. The severity depends on what the leaked Hugging Face token can access.
+cve: CVE-2026-27167
+cvss: 5.9

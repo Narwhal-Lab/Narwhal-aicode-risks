@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZDI-26-135 - TrendAI™ Zero Day Initiative™ (ZDI)</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="/css/tailwindcss.54e82d19.css">
+
+    <!-- External Libraries -->
+    <script src="/js/jquery-3.7.1.min.823f0b1a.js"></script>
+    <script src="/js/gsap-3.12.2.min.24b20e7a.js"></script>
+    <script src="/js/ScrollTrigger-3.12.2.min.0372b932.js"></script>
+    <script src="/js/lucide-1.7.0.min.255fa1e2.js"></script>
+    <script src="/js/lenis-1.0.29.min.7ee26cf8.js"></script>
+
+	<link rel="preload stylesheet" href="/css/style.0e43049b.css" as="style">
+	<link rel="preload stylesheet" href="/css/page-style.96e05057.css" as="style">
+
+
+</head>
+<body class="bg-black text-white">
+
+    <!-- GLOBAL FIXED BACKGROUND -->
+    <div id="global-fixed-bg" class="fixed inset-0 z-0 pointer-events-none opacity-0">
+        <div class="absolute inset-0 bg-cover bg-center" style="filter: brightness(0.5) saturate(.5);">
+			<picture class="w-full h-full object-cover">
+				<source srcset="/images/main-body-bg.f41fcc6a.webp" type="image/webp" media="(min-width: 1280px)">
+				<source srcset="/images/main-body-bg.0b5ec022.jpg" type="image/jpeg" media="(min-width: 1280px)">
+				<source srcset="/images/main-body-bg-1300.19790b0d.webp" type="image/webp" media="(min-width: 768px)">
+				<source srcset="/images/main-body-bg-1300.c2e211ed.jpg" type="image/jpeg" media="(min-width: 768px)">
+				<source srcset="/images/main-body-bg-800.d6f33bd1.webp" type="image/webp" media="(max-width: 767px)">
+				<source srcset="/images/main-body-bg-800.cbdfaf3e.jpg" type="image/jpeg" media="(max-width: 767px)">
+				<img src="/images/main-body-bg-800.cbdfaf3e.jpg" alt="Body Background" class="w-full h-full object-cover">
+			</picture>
+			<!-- HAND-SWAP FALLBACK: minimal single-source <picture> (from the old blog.html shell).
+			     Swap this in if the full responsive set above causes background styling issues.
+			<picture class="w-full h-full object-cover">
+				<source srcset="/images/main-body-bg.f41fcc6a.webp" type="image/webp" media="(min-width: 1280px)">
+				<img src="/images/main-body-bg-800.cbdfaf3e.jpg" alt="Body Background" class="w-full h-full object-cover">
+			</picture>
+			-->
+		</div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80"></div>
+    </div>
+
+<!-- 1. MAIN HEADER -->
+ <header id="main-header" class="xl:max-w-[2000px] xl:w-[90%] xl:mx-auto relative top-0  w-full z-40 px-4 md:px-6 xl:px-0 py-6 flex justify-between items-center text-white">
+  <div class="flex items-center gap-2 cursor-pointer">
+   <a href="/" class="logo-holder font-bold text-xl tracking-tighter block w-[90%] max-w-[400px]" aria-label="ZDI Home"><img src="/images/RGB_ZDI_TrendAI_Horizontal-Inverse.a838cf16.svg" class="w-[100%]" alt="TrendAI™ Zero Day Initiative™ Logo"></a>
+  </div>
+  
+  <nav class="hidden xl:flex items-center gap-8" aria-label="Main Navigation">
+   <a href="/about/" class="text-sm font-medium hover: transition-colors uppercase tracking-widest border-b-2 border-transparent hover:border-zdi-blue">About</a>
+   <a href="/about/benefits/" class="text-sm font-medium hover: transition-colors uppercase tracking-widest border-b-2 border-transparent hover:border-zdi-blue">How It Works</a>
+   <a href="/about/faq/" class="text-sm font-medium hover: transition-colors uppercase tracking-widest border-b-2 border-transparent hover:border-zdi-blue">FAQ<span class="lowercase">s</span></a>
+   <a href="/blog/" class="text-sm font-medium hover: transition-colors uppercase tracking-widest border-b-2 border-transparent hover:border-zdi-blue">Blog</a>
+   <a href="/advisories/published/" class="text-sm font-medium hover: transition-colors uppercase tracking-widest border-b-2 border-zdi-blue hover:border-zdi-blue">Advisories</a>
+   <div class="xl:flex items-center gap-2">
+    <a href="/portal/register/" class="px-4 md:px-4 py-2 hover:bg-zdi-blue hover:text-white rounded-full transition-all text-zdi-blue duration-300 text-sm font-bold uppercase" aria-label="Sign Up">
+     Sign Up
+    </a>
+    <a href="/portal/login/" class="px-4 md:px-8 py-2 border-2 border-zdi-yellow rounded-full hover:bg-zdi-yellow hover:text-white transition-all text-zdi-yellow duration-300 text-sm font-bold uppercase" aria-label="Log In">
+     Log In
+    </a>
+   </div>
+  </nav>
+  <button class="xl:hidden text-white menu-trigger" aria-label="Open Menu">
+   <i data-lucide="menu"></i>
+  </button>
+ </header>
+
+ <!-- 2. STICKY FLOATING NAV -->
+ <div id="sticky-header" class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-6 floating-nav-gradient transform -translate-y-full transition-transform duration-500 ease-out pointer-events-none" aria-hidden="true">
+  <a href="/" class="flex items-center gap-2 pointer-events-auto cursor-pointer" aria-label="ZDI Home" tabindex="-1">
+   <div class="w-9 h-9 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+    <span class="text-black font-bold text-xs"><img src="/images/zdi-emblem.973e04e2.svg" class="w-[100%]" alt="ZDI Emblem" loading="lazy"></span>
+   </div>
+  </a>
+  <button class="text-white menu-trigger pointer-events-auto hover:scale-110 transition-transform bg-white/10 p-3 rounded-full backdrop-blur-md border border-white/10 cursor-pointer" aria-label="Open Menu" tabindex="-1">
+   <i data-lucide="menu" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+  </button>
+ </div>
+ <!-- 3. FULL SCREEN MENU -->
+ <div id="menu-overlay" class="fixed inset-0 z-[60] menu-overlay transform -translate-y-full transition-transform duration-500 ease-in-out flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+  <div class="flex justify-between items-center px-6 py-6">
+   <div class="flex items-center gap-2">
+    <div class="w-9 h-9 rounded-full flex items-center justify-center">
+     <span class="text-black font-bold text-xs"><a href="/"><img src="/images/zdi-emblem.973e04e2.svg" class="w-[100%]" alt="ZDI Emblem" loading="lazy"></a></span>
+    </div>
+   </div>
+   <button id="menu-close" class="text-white hover:rotate-90 transition-transform" aria-label="Close Menu">
+    <i data-lucide="x" class="w-9 h-9"></i>
+   </button>
+  </div>
+  <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 p-10">
+   <nav class="flex flex-col gap-6 text-center md:text-left" aria-label="Mobile Navigation">
+    <a href="/about/" class="text-3xl md:text-5xl font-bold hover:text-zdi-blue  transition-colors">About</a>
+    <a href="/about/benefits/" class="text-3xl md:text-5xl font-bold hover:text-zdi-blue  transition-colors">How It Works</a>
+    <a href="/about/faq/" class="text-3xl md:text-5xl font-bold hover:text-zdi-blue  transition-colors">FAQ<span class="lowercase">s</span></a>
+    <a href="/blog/" class="text-3xl md:text-5xl font-bold hover:text-zdi-blue  transition-colors">Blog</a>
+    <a href="/advisories/published/" class="text-3xl md:text-5xl font-bold hover:text-zdi-blue border-b-2 border-zdi-blue transition-colors">Advisories</a>
+   </nav>
+   <div class=" xl:flex flex-col gap-6 border-0 md:border-l border-white/10 md:pl-10">
+    <div class="flex items-center gap-2">
+     <a href="/portal/register/" class="px-4 md:px-4 py-2 hover:bg-zdi-blue hover:text-white rounded-full transition-all text-zdi-blue duration-300 text-sm font-bold uppercase" aria-label="Sign Up">
+      Sign Up
+     </a>
+     <a href="/portal/login/" class="px-4 md:px-8 py-2 border-2 border-zdi-yellow rounded-full hover:bg-zdi-yellow hover:text-white transition-all text-zdi-yellow duration-300 text-sm font-bold uppercase" aria-label="Log In">
+      Log In
+     </a>
+    </div>
+    <div class="text-gray-400 mt-[20px] lg:mt-[20px] text-center">
+     <p class="mb-2">Find us on</p>
+     <div class="flex gap-4 " aria-label="Social Media Links">
+      <div class="flex gap-6 items-center justify-center lg:justify-left w-full">
+       <a href="https://x.com/thezdi" target="_blank" rel="noopener noreferrer" class="footer-link text-white" aria-label="X">
+        <img alt="X" src="/images/X-icon.d9e0d627.svg" class="w-[24px]">
+       </a>
+       <a href="https://infosec.exchange/@thezdi" target="_blank" rel="noopener noreferrer" class="footer-link text-white" aria-label="Mastodon">
+        <img alt="Mastodon" src="/images/Mastodon-icon.a7b0fcfc.svg" class="w-[24px]">
+       </a>
+       <a href="https://bsky.app/profile/thezdi.bsky.social" target="_blank" rel="noopener noreferrer" class="footer-link text-white" aria-label="BlueSky">
+        <img alt="BlueSky" src="/images/BlueSky-icon.3301535c.svg" class="w-[24px]">
+       </a>
+
+       <a href="https://www.linkedin.com/company/zerodayinitiative" target="_blank" rel="noopener noreferrer" class="footer-link text-white" aria-label="LinkedIn">
+        <img alt="LinkedIn" src="/images/LinkedIn-icon.5cff3469.svg" class="w-[24px]">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+    <!-- MAIN CONTENT -->
+    <main role="main" data-content-field="main-content">
+    <!-- 4. ADVISORY ARTICLE SECTION -->
+    <article class="min-h-screen w-full relative pt-20 lg:pt-48 pb-20 z-10">
+        <div class="max-w-[1600px] w-[90%] mx-auto relative">
+            
+            <div class="w-full text-left mb-16 relative">
+               <h1 class="text-4xl sm:text-4xl md:text-4xl lg:text-5xl font-semibold tracking-relaxed mb-6 text-white  w-[90%] leading-snug ">
+                   LangChain LangGraph BaseCache Deserialization of Untrusted Data Remote Code Execution Vulnerability
+               </h1>
+               <div class="inline-flex items-center gap-2 mb-8 px-4 py-1 rounded-full border border-zdi-blue/30 bg-zdi-blue/10">
+                   <i data-lucide="calendar" class="w-4 h-4 text-zdi-blue"></i>
+                   <span class="text-zdi-blue text-xs uppercase tracking-widest font-bold">March 3rd, 2026</span>
+               </div>
+               <div class="w-full h-px bg-zdi-blue opacity-30"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-10 items-start left-content-holder">
+                
+                <div id="metadata-col" class="w-full lg:w-[30%] shrink-0 grid grid-cols-1 sm:grid-cols-6 md:grid-cols-2 gap-x-6 gap-y-6 bg-black/10 p-[20px] rounded-xl backdrop-blur-md border border-zdi-blue/30">
+                    
+                    <div class="metadata-row col-span-1 sm:col-span-2 md:col-span-1">
+                        
+                        <div class="flex flex-col gap-1">
+                            <span class="metadata-value">ZDI-26-135</span>
+                            <span class="metadata-value text-gray-400">ZDI-CAN-28385</span>
+                        </div>
+                        <div class="metadata-curtain"></div>
+                    </div>
+
+                    <div class="metadata-row col-span-1 sm:col-span-2 md:col-span-1">
+                        <p class="metadata-label">CVE ID</p>
+
+                        <span class="metadata-value text-white underline text-zdi-blue"><a href="https://www.cve.org/CVERecord?id=CVE-2026-27794" class="text-underline ">CVE-2026-27794</a></span>
+
+                        <div class="metadata-curtain"></div>
+                    </div>
+
+                    <div class="metadata-row col-span-1 sm:col-span-2 md:col-span-2 ">
+                        <p class="metadata-label">CVSS Score</p>
+                        <div class="flex items-center gap-3">
+                            <span class="metadata-value rounded border text-orange-400 bg-orange-900/30 border-orange-900 px-2 py-0.5">8.1</span>
+                            <span class="text-sm border border-blue-900 bg-blue-900/30  px-2 py-0.5 rounded break-all hover:opacity-80 underline text-zdi-blue"><a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H" rel="noopener noreferrer" target="_blank">AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H</a></span>
+                        </div>
+                        <div class="metadata-curtain"></div>
+                    </div>
+
+                    <div class="metadata-row col-span-1 sm:col-span-3 md:col-span-1">
+                        <p class="metadata-label">Affected Vendors</p>
+
+
+                        <span class="metadata-value underline text-zdi-blue">
+                        <a href="https://www.langchain.com/" rel="noopener noreferrer" target="_blank">
+                        LangChain
+                        </a>
+                        </span><br>
+
+
+                        <div class="metadata-curtain"></div>
+                    </div>
+
+                    <div class="metadata-row col-span-1 sm:col-span-3 md:col-span-1">
+                        <p class="metadata-label">Affected Products</p>
+
+                        <span class="metadata-value underline text-zdi-blue">
+                        <a href="https://github.com/langchain-ai/langgraph" rel="noopener noreferrer" target="_blank">
+                        LangGraph
+                        </a>
+                        </span><br>
+
+                        <div class="metadata-curtain"></div>
+                    </div>
+
+                </div>
+
+                <!-- Right Col (Content) 70% -->
+                <div class="w-full lg:w-[70%] content-article glass-panel p-5 rounded-xl">
+                    <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">Vulnerability Details</h3>
+                        <p>This vulnerability allows remote attackers to execute arbitrary code on affected installations of LangChain LangGraph. Authentication is not required to exploit this vulnerability.</p>
+
+<p>The specific flaw exists within the BaseCache class. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the service account.<br></p>
+						<h3 class="text-2xl font-bold text-white mt-12 mb-4">Additional Details</h3>
+
+
+
+                        <p>
+LangChain has issued an update to correct this vulnerability. More details can be found at:
+                            <br />
+                            <a href="https://github.com/langchain-ai/langgraph/security/advisories/GHSA-mhr3-j7m5-c7c9">https://github.com/langchain-ai/langgraph/security/advisories/GHSA-mhr3-j7m5-c7c9</a>
+                            <br />
+                        </p>
+
+
+
+
+						<h3 class="text-2xl font-bold text-white mt-12 mb-4">Disclosure Timeline</h3>
+                        <ul class="list-disc pl-5 space-y-2 ml-2">
+                            <li><strong class="text-white">2025-12-09</strong> - Vulnerability reported to vendor</li>
+                            <li><strong class="text-white">2026-03-03</strong> - Coordinated public release of advisory</li>
+                            <li><strong class="text-white">2026-03-03 </strong> - Advisory Updated </li>
+                        </ul>
+						
+						<h3 class="text-2xl font-bold text-white mt-12 mb-4">Credit</h3>
+						<p>Peter Girnus (@gothburz), Demeng Chen, and Brandon Niemczyk  of Trend Zero Day Initiative<br /></p>
+						
+						<ul class="blog-tags">
+
+
+            </ul>
+			
+			
+						<p>
+							<a href="/advisories/published/" class="btn-white-text mt-12 text-sm !text-gray-400 hover:!text-white flex items-center gap-2 border border-white/20 px-4 py-2 rounded-full w-fit transition-colors group">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-left" class="lucide lucide-arrow-left w-4 h-4 group-hover:-translate-x-1 transition-transform"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+							 Back to Advisories</a>
+						</p>
+						
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </article>
+</main>
+
+  <!-- CTA BANNER (FIXED ANIMATION) -->
+  <!-- Default is the standard "proactive security" banner. Pages with a different
+       CTA (index, how-it-works, faqs, the portal/auth dashboard) override this block;
+       pages with no CTA (advisories, upcoming-advisories, blog) override it empty. -->
+
+    <section id="cta-section" class="h-auto md:h-[90vh] min-h-[90vh] w-full relative bg-black flex items-center justify-center overflow-hidden z-10  py-20 md:py-0">
+		<video autoplay muted loop playsinline class="w-full h-full object-cover opacity-30 scale-100 absolute inset-0 hidden md:block " id="hero-video-fixed" aria-hidden="true">
+			<source src="/vid/ZDI-BANNER-01.webm" type="video/webm">
+            <source src="/vid/ZDI-BANNER-01.mp4" type="video/mp4"> 
+		</video>
+		<div class="absolute inset-0 bg-cover bg-center block md:hidden" style="filter: brightness(0.5) saturate(.5);">
+			<picture class="w-full h-full object-cover">
+				<!-- Mobile (small) -->
+				<source srcset="/images/hero-banner-bg-800.fc96308a.webp" type="image/webp" media="(max-width: 767px)">
+				<source srcset="/images/hero-banner-bg-800.561ddfb0.jpg" type="image/jpeg" media="(max-width: 767px)">
+				<!-- Fallback -->
+				<img src="/images/hero-banner-bg.be3c67f3.jpg" alt="Hero Background" class="w-full h-full object-cover">
+			</picture>
+		</div>
+        <div class="gradient-full-bg"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80"></div>
+		
+        <div id="cta-content" class="xl:max-w-[2000px] xl:w-[90%] xl:mx-auto relative z-10 w-[90vw] mx-auto flex flex-col items-start text-left">
+            <div class="overflow-hidden mb-8">
+                <h2 id="cta-title" class="text-5xl md:text-7xl font-bold tracking-tighter text-white max-w-7xl origin-left" style="clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);">
+                    Stand at the front line of <span class="gradient-text">proactive security</span>
+                </h2>
+            </div>
+             <div class="overflow-hidden mb-16">
+                <p id="cta-sub" class="text-xl md:text-2xl max-w-5xl font-light origin-left" style="clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);">
+                    TrendAI™ ZDI connects the experts who discover, remediate, and defend. <br>Add your voice to the work that pushes attackers back.
+
+                </p>
+             </div>
+
+            <div id="cta-buttons" class="w-full max-w-[1600px]  grid grid-cols-1 md:grid-cols-3 gap-8 opacity-0 translate-y-20">
+                <a href="/portal/login/" class="bg-gradient-to-t to-zdi-blue/15 from-transparent group p-8 border border-white/10 rounded-xl hover:bg-white/5 transition-all hover:border-zdi-blue cursor-pointer backdrop-blur-sm" aria-label="For Researchers">
+                    <h4 class="text-gray-500 font-bold tracking-widest text-xs md:text-sm mb-4">RESEARCHERS</h4>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg md:text-xl font-bold text-white group-hover:text-zdi-blue transition-colors">Submit a vulnerability</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                    </div>
+                </a>
+                <a href="/about/benefits/" class="bg-gradient-to-t to-zdi-blue/15 from-transparent group p-8 border border-white/10 rounded-xl hover:bg-white/5 transition-all hover:border-zdi-blue cursor-pointer backdrop-blur-sm" aria-label="For Vendors">
+                    <h4 class="text-gray-500 font-bold tracking-widest text-xs md:text-sm mb-4">VENDORS</h4>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg md:text-xl font-bold text-white group-hover:text-zdi-blue transition-colors">Learn how it works</span>
+                       <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                    </div>
+                </a>
+                <a href="/advisories/published/" class="bg-gradient-to-t to-zdi-blue/15 from-transparent group p-8 border border-white/10 rounded-xl hover:bg-white/5 transition-all hover:border-zdi-blue cursor-pointer backdrop-blur-sm" aria-label="For Organizations">
+                    <h4 class="text-gray-500 font-bold tracking-widest text-xs md:text-sm mb-4">ORGANIZATIONS</h4>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg md:text-xl font-bold text-white group-hover:text-zdi-blue transition-colors">See how you're protected</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+  <!-- FOOTER -->
+ <footer class="w-full bg-black  text-white py-20 px-6 md:px-16 border-t border-white/10 relative z-20 bg-gradient-to-b from-zdi-blue/10 to-zdi-blue/20">
+  <div class="xl:max-w-[2000px]  xl:mx-auto relative flex flex-col-reverse md:flex-row gap-16 md:gap-10 lg:gap-0 ">
+  <!-- HAND-SWAP FALLBACK: non-max-width inner wrapper (from the old blog.html shell).
+       Swap this opening tag in (and remove the line above) if the max-width footer
+       causes layout issues:
+  <div class="flex flex-col-reverse md:flex-row gap-16 md:gap-10 lg:gap-0 ">
+  -->
+   <!-- Column 1: 40% -->
+   <div class="w-full md:w-[30%] lg:w-[40%] flex flex-col items-start pt-0 items-center md:items-start">
+    <a href="/" class="block w-[90%] max-w-[300px] mb-[60px]">
+     <img src="/images/RGB_ZDI_TrendAI_Horizontal-White.05e0b6ed.svg" alt="TrendAI™ Zero Day Initiative™ Logo" class="w-full">
+    </a>
+    <div class="mb-[50px] md:p-[10px]">
+     <p class="text-sm font-bold uppercase tracking-widest text-white mb-6 text-center md:text-left">Find us on</p>
+     <div class="flex gap-6 items-center">
+      <!-- X SVG -->
+      <a href="https://x.com/thezdi" target="_blank" rel="noopener noreferrer" class="footer-link text-white" aria-label="X">
+       <img alt="X" src="/images/X-icon.d9e0d627.svg" class="w-[24px]">
+      </a>
+      <!-- Mastodon SVG -->
+      <a href="https://infosec.exchange/@thezdi" target="_blank" rel="noopener noreferrer" class="footer-link text-white" aria-label="Mastodon">
+       <img alt="Mastodon" src="/images/Mastodon-icon.a7b0fcfc.svg" class="w-[24px]">
+      </a>
+      <!-- BlueSky SVG -->
+      <a href="https://bsky.app/profile/thezdi.bsky.social" target="_blank" rel="noopener noreferrer" class="footer-link text-white" aria-label="BlueSky">
+       <img alt="BlueSky" src="/images/BlueSky-icon.3301535c.svg" class="w-[24px]">
+      </a>
+      <!-- LinkedIn SVG -->
+      <a href="https://www.linkedin.com/company/zerodayinitiative" target="_blank" rel="noopener noreferrer" class="footer-link text-white" aria-label="LinkedIn">
+       <img alt="LinkedIn" src="/images/LinkedIn-icon.5cff3469.svg" class="w-[24px]">
+      </a>
+     </div>
+    </div>
+    <p class="copyright text-xs text-gray-500 uppercase tracking-widest mt-auto leading-relaxed text-center md:text-left">
+     ©2026 TrendAI™ Zero Day Initiative™ (ZDI). <br>All rights reserved.
+    </p>
+   </div>
+   <!-- Column 2: 60% -->
+   <div class="w-full md:w-[70%] lg:w-[60%] flex flex-col items-start pt-0">
+    <!-- Row 1: Emails (Vertical List) -->
+    <div class="w-full flex flex-col gap-6 mb-8">
+     <div class="flex flex-col w-full">
+      <span class="text-xs font-bold uppercase tracking-widest text-white mb-2">General inquiries</span>
+      <a href="mailto:zdi@trendmicro.com" class="footer-link-blue text-sm">zdi@trendmicro.com</a>
+     </div>
+     <div class="flex flex-col w-full">
+      <span class="text-xs font-bold uppercase tracking-widest text-white mb-2">Media inquiries</span>
+      <a href="mailto:media_relations@trendmicro.com" class="footer-link-blue text-sm">media_relations@trendmicro.com</a>
+     </div>
+     <div class="flex flex-col w-full">
+      <span class="text-xs font-bold uppercase tracking-widest text-white mb-2">Sensitive email communications</span>
+      <a href="/documents/zdi-pgp-key.asc" class="footer-link-blue text-sm">PGP key</a>
+     </div>
+    </div>
+    <!-- 5px Blue Line -->
+    <div class="w-full h-[5px] mb-10 bg-linear-[266deg] from-zdi-yellow via-zdi-blue to-zdi-darkblue"></div>
+
+    <!-- Row 2: 4 Columns of Links -->
+    <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+     <!-- Section 1 -->
+     <div class="text-center md:text-left">
+      <a href="/about/" class="block text-sm font-bold text-white mb-6 footer-link uppercase tracking-wider">Who We Are</a>
+      <ul class="flex flex-col gap-4">
+       <li><a href="/about/" class="footer-link text-sm">Our Mission</a></li>
+       <li><a href="https://www.trendmicro.com/" class="footer-link text-sm">TrendAI™</a></li>
+       <li><a href="https://www.trendmicro.com/en_us/business/products/one-platform.html" class="footer-link text-sm">TrendAI Vision One™</a></li>
+      </ul>
+     </div>
+     <!-- Section 2 -->
+     <div class="text-center md:text-left">
+      <a href="/about/benefits/" class="block text-sm font-bold text-white mb-6 footer-link uppercase tracking-wider">How It Works</a>
+      <ul class="flex flex-col gap-4">
+       <li><a href="/about/benefits/#submission-process" class="footer-link text-sm">Process</a></li>
+       <li><a href="/about/benefits/#rewards-program" class="footer-link text-sm">Researcher Rewards</a></li>
+       <li><a href="/about/faq/" class="footer-link text-sm">FAQs</a></li>
+       <li><a href="https://www.trendmicro.com/privacy/" class="footer-link text-sm">Privacy</a></li>
+      </ul>
+     </div>
+     <!-- Section 3 -->
+     <div class="text-center md:text-left">
+      <a href="/advisories/published/" class="block text-sm font-bold text-white mb-6 footer-link uppercase tracking-wider">Advisories</a>
+      <ul class="flex flex-col gap-4">
+       <li><a href="/advisories/published/" class="footer-link text-sm">Published Advisories</a></li>
+       <li><a href="/advisories/upcoming/" class="footer-link text-sm">Upcoming Advisories</a></li>
+       <li><a href="/rss/" class="footer-link text-sm">RSS Feeds</a></li>
+      </ul>
+     </div>
+     <!-- Section 4 -->
+     <div class="text-center md:text-left">
+      <a href="/blog/" class="block text-sm font-bold text-white mb-6 footer-link uppercase tracking-wider">Blog</a>
+     </div>
+    </div>
+    <button onclick="lenis.scrollTo(0)" class="absolute bottom-10 right-10 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors hidden xl:block" aria-label="Back to top"><i data-lucide="arrow-up" class="w-6 h-6 text-white"></i></button>
+   </div>
+  </div>
+ </footer>
+
+    <!-- SCRIPTS -->
+    <script src="/js/script.63e9cc7e.js"></script>
+
+</body>
+</html>

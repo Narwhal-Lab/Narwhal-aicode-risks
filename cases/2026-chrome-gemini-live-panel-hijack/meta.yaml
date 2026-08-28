@@ -1,0 +1,45 @@
+slug: 2026-chrome-gemini-live-panel-hijack
+title_en: Chrome Gemini Live AI Panel Hijacking
+title_cn: Chrome Gemini Live AI 面板劫持
+year: 2026
+disclosed: '2026-03-02'
+category: code-vulns
+severity: high
+severity_basis: cvss
+severity_evidence: Google classified CVE-2026-0628 as High and fixed it in Chrome 143.0.7499.192/.193. Public vulnerability
+  databases record CVSS 3.1 8.8.
+real_incident: true
+reproducible: true
+ai_tool:
+- Gemini Live in Chrome
+- Chrome AI side panel
+- browser extensions
+language:
+- JavaScript
+- C++
+attack_surface:
+- Gemini side panel WebView
+- declarativeNetRequest
+- browser extension permissions
+- local files and media devices
+references:
+- title: Unit 42 Gemini panel hijacking research
+  url: https://unit42.paloaltonetworks.com/gemini-live-in-chrome-hijacking/
+- title: Google Chrome stable channel update
+  url: https://chromereleases.googleblog.com/2026/01/stable-channel-update-for-desktop.html
+- title: SANS NewsBites CVE-2026-0628 review
+  url: https://www.sans.org/newsletters/newsbites/xxviii-16
+- title: Malwarebytes Gemini Live report
+  url: https://www.malwarebytes.com/blog/news/2026/03/chrome-flaw-let-extensions-hijack-geminis-camera-mic-and-file-access
+- title: Google Chrome Help for Gemini Live
+  url: https://support.google.com/chrome/answer/16363185?hl=en
+tldr: CVE-2026-0628 允许仅有基础网络请求权限的恶意 Chrome 扩展向 Gemini Live 侧边面板注入 JavaScript，借面板的浏览器级能力访问摄像头、麦克风、本地文件和 HTTPS 标签页截图。Google
+  于 2026 年 1 月发布修复。
+tags:
+- ai-security
+- code-vulns
+- gemini-live-in-chrome
+verification_notes: Google classified CVE-2026-0628 as High and fixed it in Chrome 143.0.7499.192/.193. Public vulnerability
+  databases record CVSS 3.1 8.8.
+cve: CVE-2026-0628
+fixed_version: 143.0.7499.192

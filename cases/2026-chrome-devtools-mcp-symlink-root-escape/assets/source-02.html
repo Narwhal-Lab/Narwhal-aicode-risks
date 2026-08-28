@@ -1,0 +1,484 @@
+<!doctype html><html lang="en"><head><meta name="description" content="Comprehensive vulnerability database for your open source projects and dependencies."><meta name="viewport" content="width=device-width,initial-scale=1"><script>// Early inline script element here is necessary to prevent the "flash of
+    // unstyled content" problem where the dark default theme is first rendered
+    // followed by a sudden flash to light mode.
+    // See https://en.wikipedia.org/wiki/Flash_of_unstyled_content.
+    const theme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);</script><link rel="icon" type="image/png" href="/static/img/favicon-32x32.png" sizes="32x32"><link rel="icon" type="image/png" href="/static/img/favicon-16x16.png" sizes="16x16"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/blog/index.xml"><link rel="preload" href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="preload" href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&family=Overpass:ital,wght@0,400;0,700;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons&display=block"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&family=Overpass:ital,wght@0,400;0,700;1,400&display=swap"></noscript><meta charset="utf-8"><title id="title">OSV - Open Source Vulnerabilities</title><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXG9G6HTBR"></script><script>window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZXG9G6HTBR', { 'anonymize_ip': true });</script>
+<link rel="preload" fetchpriority="high" as="image" href="/static/img/external-link.svg" type="image/webp">
+<script defer="defer" src="/static/vendors.cfa2aac0c42c86b7dc83.js"></script><script defer="defer" src="/static/main.339f3cc21435c5d12ecb.js"></script><link href="/static/main.2e33b25ab02baccaa4fd.css" rel="stylesheet"></head><body><div class="wrapper "><header class="top-bar"><div class="logo"><a href="/" aria-label="Home page"><img alt="OSV logo" class="logo-img-light" src="/static/img/logo.png" srcset="/static/img/logo.png, /static/img/logo@4x.png 4x" width="54" height="20"> <img alt="OSV logo" class="logo-img-dark" src="/static/img/logo-dark.png" srcset="/static/img/logo-dark.png, /static/img/logo-dark@4x.png 4x" width="54" height="20"></a></div><input type="checkbox" id="hamburger-checkbox" aria-label="Hamburger Menu"> <label class="hamburger" for="hamburger-checkbox"><span></span> <span></span> <span></span></label><ul class="tabs"><li class="active page-link"><a href="/list">Vulnerability Database</a></li><li class=" page-link"><a href="/blog/">Blog</a></li><li class=" page-link external-link"><a href="https://google.github.io/osv.dev/faq/" target="_blank">FAQ</a></li><li class=" page-link external-link"><a href="https://google.github.io/osv.dev/" target="_blank">Docs</a></li><ul class="push social-icons"><li class="search-container-nav"><div class="search-toggle-container"><form class="search-form search-suggestions-container" action="/list"><input name="q" class="search-input" placeholder="Search vulnerabilities..." maxlength="300" autocomplete="off"> <button type="submit" class="search-submit" aria-label="Search"><span class="material-icons">arrow_forward</span></button></form><button class="search-toggle" aria-label="Toggle search" aria-expanded="false"><span class="material-icons">search</span></button></div></li><li class="theme-toggle-container"><button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme"><span class="material-icons icon-light-mode">light_mode</span> <span class="material-icons icon-dark-mode">dark_mode</span></button></li><li class="github-container"><a class="logo-img" href="https://github.com/google/osv.dev" target="_blank" aria-label="Go to our github page"><img class="logo-link" src="/static/img/github-mark-white.svg" alt="Github Logo" width="24" height="24"></a></li></ul></ul></header> <div class="vulnerability-page">
+  <div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell--span-12 vulnerability-title">
+        <h1 class="title">
+          GHSA-8qf9-62x2-82pp
+        </h1>
+        <a class="vulnerability-improvement-link" href="https://github.com/advisories/GHSA-8qf9-62x2-82pp/improve" rel="nofollow">
+            Suggest an improvement
+          </a>
+        </div>
+      <div class="mdc-layout-grid__cell--span-12">
+        <dl class="vulnerability-details"><dt>Source</dt>
+          <dd><a href="https://github.com/advisories/GHSA-8qf9-62x2-82pp" target="_blank" rel="nofollow noopener noreferrer">https://github.com/advisories/GHSA-8qf9-62x2-82pp</a>
+          </dd><dt>Import Source</dt>
+          <dd><a href="https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/08/GHSA-8qf9-62x2-82pp/GHSA-8qf9-62x2-82pp.json" target="_blank" rel="nofollow noopener noreferrer">https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/08/GHSA-8qf9-62x2-82pp/GHSA-8qf9-62x2-82pp.json</a></dd>
+
+          <dt>JSON Data</dt>
+          <dd><a href="https://api.osv.dev/v1/vulns/GHSA-8qf9-62x2-82pp" target="_blank" rel="noopener noreferrer">
+            https://api.osv.dev/v1/vulns/GHSA-8qf9-62x2-82pp</a>
+          </dd>
+          <dt>Aliases</dt>
+          <dd>
+            <ul class="aliases">
+              <li>
+                <a href="/vulnerability/CVE-2026-53766">CVE-2026-53766</a>
+                </li>
+              </ul>
+          </dd>
+          <dt>Published</dt>
+          <dd>2026-08-17T21:56:12Z</dd>
+          <dt>Modified</dt>
+          <dd>2026-08-17T22:00:07.057625756Z</dd><dt>Severity</dt>
+          <dd>
+            <ul class="severity">
+              <li>
+                
+                  <span class="severity-level severity-medium">6.1 (Medium)</span>
+                  CVSS_V3 - CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L
+                  <a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L" target="_blank" rel="nofollow noopener noreferrer">
+                    CVSS Calculator</a>
+                
+              </li>
+              </ul>
+          </dd><dt class="summary">Summary</dt>
+          <dd class="summary ">
+            
+            chrome-devtools-mcp: validatePath() does not canonicalize symlinks before enforcing roots
+            
+          </dd>
+          <dt>Details</dt>
+          <dd class="details">
+            <h3>Summary</h3>
+
+<p>I originally reported this through Google Bug Hunters. The Google Bug Hunters team said this is in OSS VRP scope but not reward-eligible due to the project tier, and asked me to file an issue or PR directly with this repository. I am reporting it privately here first because it is an unfixed security issue.</p>
+
+<p><code>McpContext.validatePath()</code> enforces workspace <code>roots</code> by checking whether <code>path.resolve(filePath)</code> textually falls under one of the configured root paths. <code>path.resolve()</code> does not canonicalize symbolic links. As a result, a symlink inside a configured workspace root can point to a file outside that root, pass validation, and then be followed by downstream file read/write operations.</p>
+
+<p>This bypass applies even when the MCP client correctly declares the <code>roots</code> capability with a non-empty list. It is separate from the documented legacy behavior where missing <code>roots</code> capability allows all paths.</p>
+
+<p>The practical impact is a workspace-boundary bypass. In the write direction, filePath-writing tools can overwrite out-of-root files through an in-root symlink. In the read direction, <code>upload_file</code> can read through the symlink and send the file to the currently selected web page.</p>
+
+<h3>Details</h3>
+
+<p>Affected code:</p>
+
+<p><code>src/McpContext.ts:178-199</code></p>
+
+<pre><code>validatePath(filePath?: string): void {
+  if (filePath === undefined) {
+    return;
+  }
+  const roots = this.roots();
+  if (roots === undefined) {
+    return;
+  }
+  const absolutePath = path.resolve(filePath);
+  for (const root of roots) {
+    const rootPath = path.resolve(fileURLToPath(root.uri));
+    if (
+      absolutePath === rootPath ||
+      absolutePath.startsWith(rootPath + path.sep)
+    ) {
+      return;
+    }
+  }
+  throw new Error(
+    `Access denied: path ${filePath} is not within any of the workspace roots ${JSON.stringify(roots)}.`,
+  );
+}
+</code></pre>
+
+<p><code>path.resolve()</code> only normalizes path text such as <code>.</code> and <code>..</code>. It does not call <code>realpath()</code> and does not resolve symlinks. Therefore, a path like:</p>
+
+<pre><code>/workspace/project/cache/profile
+</code></pre>
+
+<p>can textually pass the <code>/workspace</code> prefix check even when <code>cache/profile</code> is a symlink to:</p>
+
+<pre><code>/home/user/.aws/credentials
+</code></pre>
+
+<p>Downstream consumers then perform real filesystem operations without <code>O_NOFOLLOW</code>:</p>
+
+<ul>
+<li><code>src/McpContext.ts:720-738</code> <code>saveFile()</code> uses <code>fs.mkdir({recursive: true})</code> and <code>fs.writeFile()</code>.</li>
+<li><code>src/tools/input.ts:454-497</code> <code>upload_file</code> calls <code>puppeteer.uploadFile(filePath)</code> or <code>fileChooser.accept([filePath])</code>.</li>
+<li>Other filePath-writing tools include screenshots, heap snapshots, network response save paths, snapshots, screencasts, Lighthouse output, and performance trace saves.</li>
+</ul>
+
+<p>This is not a TOCTOU/race condition. The symlink exists before validation and the PoC uses a single process. The issue is a canonicalization bypass / improper link resolution.</p>
+
+<p>Preconditions:</p>
+
+<ul>
+<li>The MCP client declares <code>roots</code> and supplies at least one workspace root.</li>
+<li>A symlink exists inside the workspace and points outside the workspace.</li>
+<li>For the remote prompt-injection chain, the user processes untrusted page content while chrome-devtools-mcp is connected.</li>
+</ul>
+
+<p>A remote attacker does not need local access if a suitable workspace-internal symlink already exists, or if another trusted tool/workflow can create it. Without such a symlink, the issue is a local/workspace-state-dependent boundary bypass.</p>
+
+<h3>PoC</h3>
+
+<p>Conceptual exploitation with a configured root:</p>
+
+<pre><code>Configured roots:
+  file:///workspace
+
+Workspace path:
+  /workspace/project/cache/profile -&gt; /home/user/.aws/credentials
+
+Tool call:
+  upload_file({
+    filePath: "/workspace/project/cache/profile",
+    uid: "&lt;file input element on current page&gt;"
+  })
+
+Result:
+  validatePath() accepts the path because it textually starts with /workspace.
+  Puppeteer follows the symlink and uploads the target file to the page.
+</code></pre>
+
+<p>Lab-only PoC that replicates the exact validation logic and subsequent write. It writes only inside a fresh temporary directory and touches no system paths:</p>
+
+<pre><code>const path = require('node:path');
+const fs = require('node:fs');
+const os = require('node:os');
+const {pathToFileURL, fileURLToPath} = require('node:url');
+
+const lab = fs.mkdtempSync(path.join(os.tmpdir(), 'cdtmcp-lab-'));
+
+try {
+  fs.chmodSync(lab, 0o755);
+
+  const workspace = path.join(lab, 'workspace');
+  fs.mkdirSync(workspace);
+
+  const outside = path.join(lab, 'outside-secret.txt');
+  fs.writeFileSync(outside, 'sensitive outside content\n');
+
+  const symlinkInside = path.join(workspace, 'innocent.txt');
+  fs.symlinkSync(outside, symlinkInside);
+
+  function validatePath(filePath, roots) {
+    const absolutePath = path.resolve(filePath);
+    for (const root of roots) {
+      const rootPath = path.resolve(fileURLToPath(root.uri));
+      if (
+        absolutePath === rootPath ||
+        absolutePath.startsWith(rootPath + path.sep)
+      ) {
+        return true;
+      }
+    }
+    throw new Error(`Access denied: ${filePath}`);
+  }
+
+  const roots = [{uri: pathToFileURL(workspace).href, name: 'workspace'}];
+  validatePath(symlinkInside, roots);
+
+  fs.writeFileSync(symlinkInside, 'OVERWRITTEN BY MCP\n');
+
+  console.log(fs.readFileSync(outside, 'utf8'));
+  // -&gt; "OVERWRITTEN BY MCP"
+} finally {
+  fs.rmSync(lab, {recursive: true, force: true});
+}
+</code></pre>
+
+<p>Observed result:</p>
+
+<pre><code>validatePath() accepts the in-root symlink path.
+The subsequent write follows the symlink and modifies the out-of-root target.
+</code></pre>
+
+<p>I can provide an end-to-end MCP client reproduction if needed. The lab PoC above demonstrates the root cause using the same validation logic as the server.</p>
+
+<h3>Impact</h3>
+
+<p>Who can exploit:</p>
+
+<ul>
+<li>A local process/user or trusted workflow that can create a symlink inside the workspace.</li>
+<li>A remote page/prompt-injection attacker, if a suitable workspace-internal symlink already exists or can be created by another trusted workflow/tool.</li>
+</ul>
+
+<p>Security impact:</p>
+
+<ul>
+<li>Integrity: tools that write to <code>filePath</code> can overwrite files outside the configured workspace root through an in-root symlink.</li>
+<li>Confidentiality: <code>upload_file</code> can read a file outside the workspace through an in-root symlink and attach it to a file input on the current page.</li>
+<li>Stealth/auditability: the exfiltration path goes through normal page file-upload behavior, and chrome-devtools-mcp does not appear to log the canonical path that was uploaded.</li>
+</ul>
+
+<p>Example sensitive files reachable if symlinked into the workspace:</p>
+
+<ul>
+<li>Cloud credentials such as <code>~/.aws/credentials</code>, <code>~/.config/gcloud/...</code>, or <code>~/.azure/...</code>.</li>
+<li>SSH private keys or <code>.ssh</code> files readable by the user.</li>
+<li>Project secrets such as <code>.env</code>, <code>.npmrc</code>, <code>.netrc</code>, <code>secrets.json</code>, and API tokens.</li>
+<li>Out-of-workspace source files or configuration files.</li>
+</ul>
+
+<p>Severity:</p>
+
+<ul>
+<li>Suggested GitHub severity: Moderate.</li>
+<li>CVSS v3.1 chain estimate: <code>CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N</code>.</li>
+<li>AC:H reflects that a workspace-internal symlink must exist at validation time.</li>
+</ul>
+
+<p>Suggested fix:</p>
+
+<p>Canonicalize paths before comparing against roots. For an existing file, use <code>fs.realpath()</code> on the path. For a new file, resolve the parent directory with <code>fs.realpath()</code> and re-join the basename.</p>
+
+<p>```ts
+async validatePath(filePath?: string): Promise<void> {
+  if (filePath === undefined) return;
+  const roots = this.roots();
+  if (roots === undefined) return;</p>
+
+<p>const abs = path.resolve(filePath);
+  let canonical;
+  try {
+    canonical = await fs.realpath(abs);
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      const parent = await fs.realpath(path.dirname(abs));
+      canonical = path.join(parent, path.basename(abs));
+    } else {
+      throw err;
+    }
+  }</p>
+
+<p>for (const root of roots) {
+    const canonicalRoot = await fs.realpath(fileURLToPath(root.uri));
+    if (
+      canonical === canonicalRoot ||
+      canonical.startsWith(canonicalRoot + path.sep)
+    ) {
+      return;
+    }
+  }</p>
+
+<p>throw new Error(
+    <code>Access denied: ${filePath} (canonical: ${canonical}) is not within any workspace root.</code>,
+  );
+}</p>
+</dd>
+          <dt>
+            Database specific
+            <a href="https://ossf.github.io/osv-schema/#database_specific-field" target="_blank"
+              rel="noopener noreferrer"></a>
+          </dt>
+          <dd><pre class="specific">{
+    &#34;severity&#34;: &#34;MODERATE&#34;,
+    &#34;nvd_published_at&#34;: &#34;2026-06-24T22:16:47Z&#34;,
+    &#34;github_reviewed&#34;: true,
+    &#34;cwe_ids&#34;: [
+        &#34;CWE-22&#34;,
+        &#34;CWE-59&#34;
+    ],
+    &#34;github_reviewed_at&#34;: &#34;2026-08-17T21:56:12Z&#34;
+}</pre></dd>
+          
+          <dt>References</dt>
+          <dd>
+            <ul class="links">
+              <li><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp/security/advisories/GHSA-8qf9-62x2-82pp" target="_blank" rel="nofollow noopener noreferrer">https://github.com/ChromeDevTools/chrome-devtools-mcp/security/advisories/GHSA-8qf9-62x2-82pp</a></li>
+              <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-53766" target="_blank" rel="nofollow noopener noreferrer">https://nvd.nist.gov/vuln/detail/CVE-2026-53766</a></li>
+              <li><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp/pull/2127" target="_blank" rel="nofollow noopener noreferrer">https://github.com/ChromeDevTools/chrome-devtools-mcp/pull/2127</a></li>
+              <li><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp/commit/176eb695137d9c46a61e2d4d5571880c5145cf46" target="_blank" rel="nofollow noopener noreferrer">https://github.com/ChromeDevTools/chrome-devtools-mcp/commit/176eb695137d9c46a61e2d4d5571880c5145cf46</a></li>
+              <li><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="nofollow noopener noreferrer">https://github.com/ChromeDevTools/chrome-devtools-mcp</a></li>
+              <li><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp/releases/tag/chrome-devtools-mcp-v1.1.0" target="_blank" rel="nofollow noopener noreferrer">https://github.com/ChromeDevTools/chrome-devtools-mcp/releases/tag/chrome-devtools-mcp-v1.1.0</a></li>
+              </ul>
+          </dd>
+          
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="vulnerability-packages-container">
+  <h2 class="title">Affected packages</h2>
+
+  
+    <osv-tabs
+      class="vulnerability-packages">
+      
+      
+      
+      
+      <h2 class="package-header">
+        <span class="vuln-ecosystem">npm</span>
+        <span class="vuln-title-divider">/</span>
+        <span class="vuln-name">chrome-devtools-mcp</span>
+      </h2>
+      <div class="mdc-layout-grid"><div class="vulnerability-package-subsection mdc-layout-grid__inner">
+          <h3 class="mdc-layout-grid__cell--span-3">
+            Package
+          </h3>
+          <div class="mdc-layout-grid__cell--span-9">
+            <dl>
+              <dt>Name</dt><dd><a href="https://www.npmjs.com/package/chrome-devtools-mcp" target="_blank" rel="nofollow noopener noreferrer">chrome-devtools-mcp</a></dd><dd><a href="https://deps.dev/npm/chrome-devtools-mcp" target="_blank" rel="noopener noreferrer">
+                View open source insights on deps.dev</a></dd><dt>Purl</dt>
+              <dd class="purl">pkg:npm/chrome-devtools-mcp</dd></dl>
+          </div>
+        </div><div class="vulnerability-package-subsection mdc-layout-grid__inner">
+          <h3 class="mdc-layout-grid__cell--span-3">
+            Affected ranges
+            <a href="https://ossf.github.io/osv-schema/#examples" target="_blank" rel="noopener noreferrer"></a>
+          </h3>
+          <div class="mdc-layout-grid__cell--span-9">
+          <dl>
+              <dt>Type</dt>
+              <dd>SEMVER</dd><dt>Events</dt>
+              <dd>
+                <div class="mdc-layout-grid__inner events">
+                  <div class="mdc-layout-grid__cell--span-3">
+                      Introduced</div>
+                    <div class="mdc-layout-grid__cell--span-9 version-value">
+                      0.24.0</div>
+                  <div class="mdc-layout-grid__cell--span-3">
+                      Fixed</div>
+                    <div class="mdc-layout-grid__cell--span-9 version-value">
+                      1.1.0</div>
+                  </div>
+              </dd></dl>
+          </div>
+        </div>
+        <div class="vulnerability-package-subsection mdc-layout-grid__inner">
+          <h3 class="mdc-layout-grid__cell--span-3">
+            Database specific
+            <a href="https://ossf.github.io/osv-schema/#affecteddatabase_specific-field" target="_blank"
+              rel="noopener noreferrer"></a>
+          </h3>
+          <div class="mdc-layout-grid__cell--span-9">
+            
+            
+            <div class="database-specific-list">
+              
+              <details class="database-specific-section">
+                <summary class="database-specific-header">last_known_affected_version_range</summary>
+                <div class="database-specific-content">
+                  <pre class="specific">&#34;&lt;= 1.0.1&#34;</pre>
+                </div>
+              </details>
+              
+              <details class="database-specific-section">
+                <summary class="database-specific-header">source</summary>
+                <div class="database-specific-content">
+                  <pre class="specific">&#34;https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/08/GHSA-8qf9-62x2-82pp/GHSA-8qf9-62x2-82pp.json&#34;</pre>
+                </div>
+              </details>
+              
+            </div>
+            
+          </div>
+        </div>
+        </div>
+      </osv-tabs>
+  
+</div>
+</div>
+<turbo-stream action="update" target="title">
+  <template>
+    GHSA-8qf9-62x2-82pp - OSV
+  </template>
+</turbo-stream>
+
+<script>
+  document.addEventListener('turbo:load', function() {
+    const ECOSYSTEM_EXPAND_THRESHOLD = 10;
+    const PACKAGE_EXPAND_THRESHOLD = 7;
+    const ECOSYSTEM_PACKAGE_COLLAPSE_THRESHOLD = 9;
+
+  /**
+   * Sets up the vertical, grouped layout for vulnerability packages.
+   * - All ecosystem headers are expanded if their total count is below `ECOSYSTEM_EXPAND_THRESHOLD`,
+   *   and if their total packages count is below `ECOSYSTEM_PACKAGE_COLLAPSE_THRESHOLD`.
+   * - Within each ecosystem, all package headers are expanded if their count is below `PACKAGE_EXPAND_THRESHOLD`.
+   */
+    function setupVerticalLayout() {
+      const ecosystemAccordions = document.querySelectorAll('.vulnerability-packages.force-collapse .ecosystem-accordion');
+      if (!ecosystemAccordions.length) return;
+
+      const shouldExpandEcosystems = ecosystemAccordions.length < ECOSYSTEM_EXPAND_THRESHOLD;
+
+      ecosystemAccordions.forEach(accordion => {
+        const panel = accordion.querySelector('.ecosystem-content-panel');
+        const packageAccordions = panel ? panel.querySelectorAll('.package-accordion') : [];
+        const hasManyPackages =
+          ecosystemAccordions.length > 1 && packageAccordions.length > ECOSYSTEM_PACKAGE_COLLAPSE_THRESHOLD;
+
+        const shouldExpandAccordion =
+          shouldExpandEcosystems &&
+          panel !== null &&
+          !hasManyPackages;
+
+        accordion.open = shouldExpandAccordion;
+
+        const shouldExpandPackages = packageAccordions.length <= PACKAGE_EXPAND_THRESHOLD;
+        packageAccordions.forEach(packageAccordion => {
+          packageAccordion.open = shouldExpandPackages;
+        });
+      });
+    }
+    
+    if (document.querySelector('.vulnerability-packages.force-collapse')) {
+      setupVerticalLayout();
+    }
+
+    /**
+     * Sets up "Show More" / "Show Less" functionality for lists that might have
+     * many items. You can enable this feature by adding an 'expandible-list' or
+     * 'expandible-hierarchy-list' class to lists with long value.
+     * @param {string} listSelector The CSS selector for the list container.
+     * @param {string} itemSelector The tag name of the items within the list.
+     */
+    function setupExpandibleList(listSelector, itemSelector) {
+      const EXPANDIBLE_LIST_DEFAULT_LENGTH = 6;
+      const lists = document.querySelectorAll(`${listSelector}:not(.expanded):not([data-has-toggle-btn])`);
+      lists.forEach((list) => {
+        const items = list.getElementsByTagName(itemSelector);
+        if (items.length <= EXPANDIBLE_LIST_DEFAULT_LENGTH) return;
+
+        const expandibleItems = [...items].slice(EXPANDIBLE_LIST_DEFAULT_LENGTH);
+        expandibleItems.forEach((item) => {
+          item.style.display = 'none';
+        });
+
+        const toggleButton = document.createElement('span');
+        toggleButton.classList.add('showmore');
+        toggleButton.textContent = 'Show More';
+        list.append(toggleButton);
+        list.setAttribute('data-has-toggle-btn', 'true');
+
+        toggleButton.addEventListener('click', function() {
+          const isExpanded = list.classList.contains('expanded');
+          expandibleItems.forEach((item) => {
+            item.style.display = isExpanded ? 'none' : 'block';
+          });
+          toggleButton.textContent = isExpanded ? 'Show More' : 'Show Less';
+          list.classList.toggle('expanded');
+        });
+      });
+    }
+
+    setupExpandibleList('.expandible-hierarchy-list', 'ul');
+    setupExpandibleList('.expandible-list', 'li');
+  });
+</script>
+</div></body></html>

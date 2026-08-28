@@ -1,0 +1,341 @@
+<!doctype html><html lang="en"><head><meta name="description" content="Comprehensive vulnerability database for your open source projects and dependencies."><meta name="viewport" content="width=device-width,initial-scale=1"><script>// Early inline script element here is necessary to prevent the "flash of
+    // unstyled content" problem where the dark default theme is first rendered
+    // followed by a sudden flash to light mode.
+    // See https://en.wikipedia.org/wiki/Flash_of_unstyled_content.
+    const theme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);</script><link rel="icon" type="image/png" href="/static/img/favicon-32x32.png" sizes="32x32"><link rel="icon" type="image/png" href="/static/img/favicon-16x16.png" sizes="16x16"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/blog/index.xml"><link rel="preload" href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="preload" href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&family=Overpass:ital,wght@0,400;0,700;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons&display=block"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&family=Overpass:ital,wght@0,400;0,700;1,400&display=swap"></noscript><meta charset="utf-8"><title id="title">OSV - Open Source Vulnerabilities</title><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXG9G6HTBR"></script><script>window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZXG9G6HTBR', { 'anonymize_ip': true });</script>
+<link rel="preload" fetchpriority="high" as="image" href="/static/img/external-link.svg" type="image/webp">
+<script defer="defer" src="/static/vendors.cfa2aac0c42c86b7dc83.js"></script><script defer="defer" src="/static/main.339f3cc21435c5d12ecb.js"></script><link href="/static/main.2e33b25ab02baccaa4fd.css" rel="stylesheet"></head><body><div class="wrapper "><header class="top-bar"><div class="logo"><a href="/" aria-label="Home page"><img alt="OSV logo" class="logo-img-light" src="/static/img/logo.png" srcset="/static/img/logo.png, /static/img/logo@4x.png 4x" width="54" height="20"> <img alt="OSV logo" class="logo-img-dark" src="/static/img/logo-dark.png" srcset="/static/img/logo-dark.png, /static/img/logo-dark@4x.png 4x" width="54" height="20"></a></div><input type="checkbox" id="hamburger-checkbox" aria-label="Hamburger Menu"> <label class="hamburger" for="hamburger-checkbox"><span></span> <span></span> <span></span></label><ul class="tabs"><li class="active page-link"><a href="/list">Vulnerability Database</a></li><li class=" page-link"><a href="/blog/">Blog</a></li><li class=" page-link external-link"><a href="https://google.github.io/osv.dev/faq/" target="_blank">FAQ</a></li><li class=" page-link external-link"><a href="https://google.github.io/osv.dev/" target="_blank">Docs</a></li><ul class="push social-icons"><li class="search-container-nav"><div class="search-toggle-container"><form class="search-form search-suggestions-container" action="/list"><input name="q" class="search-input" placeholder="Search vulnerabilities..." maxlength="300" autocomplete="off"> <button type="submit" class="search-submit" aria-label="Search"><span class="material-icons">arrow_forward</span></button></form><button class="search-toggle" aria-label="Toggle search" aria-expanded="false"><span class="material-icons">search</span></button></div></li><li class="theme-toggle-container"><button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme"><span class="material-icons icon-light-mode">light_mode</span> <span class="material-icons icon-dark-mode">dark_mode</span></button></li><li class="github-container"><a class="logo-img" href="https://github.com/google/osv.dev" target="_blank" aria-label="Go to our github page"><img class="logo-link" src="/static/img/github-mark-white.svg" alt="Github Logo" width="24" height="24"></a></li></ul></ul></header> <div class="vulnerability-page">
+  <div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell--span-12 vulnerability-title">
+        <h1 class="title">
+          CVE-2026-18733
+        </h1>
+        <div class="vulnerability-improvement-link">
+          <a href="https://google.github.io/osv.dev/faq/#ive-found-something-wrong-with-the-data" target="_blank" rel="noopener noreferrer" title="Follow the Source link below and use its record feedback reporting mechanism">
+            See a problem?
+          </a>
+          <br/>
+          Please try reporting it <a href="https://cve.org/CVERecord?id=CVE-2026-18733" target="_blank" rel="nofollow noopener noreferrer">to the source</a> first.
+        </div>
+        </div>
+      <div class="mdc-layout-grid__cell--span-12">
+        <dl class="vulnerability-details"><dt>Source</dt>
+          <dd><a href="https://cve.org/CVERecord?id=CVE-2026-18733" target="_blank" rel="nofollow noopener noreferrer">https://cve.org/CVERecord?id=CVE-2026-18733</a>
+          </dd><dt>Import Source</dt>
+          <dd><a href="https://storage.googleapis.com/cve-osv-conversion/osv-output/CVE-2026-18733.json" target="_blank" rel="nofollow noopener noreferrer">https://storage.googleapis.com/cve-osv-conversion/osv-output/CVE-2026-18733.json</a></dd>
+
+          <dt>JSON Data</dt>
+          <dd><a href="https://api.osv.dev/v1/vulns/CVE-2026-18733" target="_blank" rel="noopener noreferrer">
+            https://api.osv.dev/v1/vulns/CVE-2026-18733</a>
+          </dd>
+          <dt>Aliases</dt>
+          <dd>
+            <ul class="aliases">
+              <li>
+                GHSA-mqvc-p852-wf8x
+                </li>
+              </ul>
+          </dd>
+          <dt>Published</dt>
+          <dd>2026-08-03T20:33:24.872Z</dd>
+          <dt>Modified</dt>
+          <dd>2026-08-12T03:51:44.988012920Z</dd><dt>Severity</dt>
+          <dd>
+            <ul class="severity">
+              <li>
+                
+                  <span class="severity-level severity-high">7.5 (High)</span>
+                  CVSS_V4 - CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N
+                  <a href="https://www.first.org/cvss/calculator/4.0#CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N" target="_blank" rel="nofollow noopener noreferrer">
+                    CVSS Calculator</a>
+                
+              </li>
+              </ul>
+          </dd><dt class="summary">Summary</dt>
+          <dd class="summary ">
+            
+            Prompt injection bypasses shell tool consent gate in Strands Agents Tools
+            
+          </dd>
+          <dt>Details</dt>
+          <dd class="details">
+            <p>A prompt injection vulnerability in the shell tool in Amazon Strands Agents Tools before 0.8.0 might allow remote actors to execute arbitrary operating system commands on the agent's host via a crafted prompt that sets the non_interactive parameter to true, bypassing the human consent gate.</p>
+
+<p>To remediate this issue, users should upgrade to version 0.8.0.</p>
+</dd>
+          <dt>
+            Database specific
+            <a href="https://ossf.github.io/osv-schema/#database_specific-field" target="_blank"
+              rel="noopener noreferrer"></a>
+          </dt>
+          <dd><pre class="specific">{
+    &#34;cna_assigner&#34;: &#34;AMZN&#34;,
+    &#34;cwe_ids&#34;: [
+        &#34;CWE-1427&#34;
+    ],
+    &#34;osv_generated_from&#34;: &#34;https://github.com/CVEProject/cvelistV5/tree/main/cves/2026/18xxx/CVE-2026-18733.json&#34;
+}</pre></dd>
+          
+          <dt>References</dt>
+          <dd>
+            <ul class="links">
+              <li><a href="https://aws.amazon.com/security/security-bulletins/2026-072-aws/" target="_blank" rel="nofollow noopener noreferrer">https://aws.amazon.com/security/security-bulletins/2026-072-aws/</a></li>
+              <li><a href="https://github.com/CVEProject/cvelistV5/tree/main/cves/2026/18xxx/CVE-2026-18733.json" target="_blank" rel="nofollow noopener noreferrer">https://github.com/CVEProject/cvelistV5/tree/main/cves/2026/18xxx/CVE-2026-18733.json</a></li>
+              <li><a href="https://github.com/strands-agents/tools/security/advisories/GHSA-mqvc-p852-wf8x" target="_blank" rel="nofollow noopener noreferrer">https://github.com/strands-agents/tools/security/advisories/GHSA-mqvc-p852-wf8x</a></li>
+              <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-18733" target="_blank" rel="nofollow noopener noreferrer">https://nvd.nist.gov/vuln/detail/CVE-2026-18733</a></li>
+              <li><a href="https://pypi.org/project/strands-agents-tools/0.8.0/" target="_blank" rel="nofollow noopener noreferrer">https://pypi.org/project/strands-agents-tools/0.8.0/</a></li>
+              </ul>
+          </dd>
+          
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="vulnerability-packages-container">
+  <h2 class="title">Affected packages</h2>
+
+  
+    <osv-tabs
+      class="vulnerability-packages">
+      
+      
+      
+      
+      
+      
+      
+      <h2 class="package-header">
+        <span class="vuln-ecosystem">Git</span>
+        <span class="vuln-title-divider">/</span>
+        <span class="vuln-name">github.com/strands-agents/tools</span>
+      </h2>
+      <div class="mdc-layout-grid"><div class="vulnerability-package-subsection mdc-layout-grid__inner">
+          <h3 class="mdc-layout-grid__cell--span-3">
+            Affected ranges
+            <a href="https://ossf.github.io/osv-schema/#examples" target="_blank" rel="noopener noreferrer"></a>
+          </h3>
+          <div class="mdc-layout-grid__cell--span-9">
+          <dl>
+              <dt>Type</dt>
+              <dd>GIT</dd><dt>Repo</dt>
+              <dd>https://github.com/strands-agents/tools</dd><dt>Events</dt>
+              <dd>
+                <div class="mdc-layout-grid__inner events">
+                  <div class="mdc-layout-grid__cell--span-3">
+                      Introduced</div>
+                    <div class="mdc-layout-grid__cell--span-9 version-value">
+                      <div class="tooltip">
+                          0
+                            <span class="tooltiptext">Unknown introduced commit / All previous commits are affected</span>
+                          </div>
+                      </div>
+                  <div class="mdc-layout-grid__cell--span-3">
+                      Fixed</div>
+                    <div class="mdc-layout-grid__cell--span-9 version-value">
+                      <a href="https://github.com/strands-agents/tools/commit/9f0d1625408a468a1e86c32efdfe1f24855aeed1" rel="nofollow">
+                          9f0d1625408a468a1e86c32efdfe1f24855aeed1</a>
+                      </div>
+                  </div>
+              </dd><dt>
+                Database specific
+                <a href="https://ossf.github.io/osv-schema/#affectedrangesdatabase_specific-field" target="_blank"
+                  rel="noopener noreferrer"></a>
+              </dt>
+              <dd>
+                <details class="database-specific-section">
+                  <summary class="database-specific-header">Show details</summary>
+                  <div class="database-specific-content">
+                    <pre class="specific">{
+    &#34;extracted_events&#34;: [
+        {
+            &#34;introduced&#34;: &#34;0&#34;
+        },
+        {
+            &#34;fixed&#34;: &#34;0.8.0&#34;
+        }
+    ],
+    &#34;source&#34;: [
+        &#34;AFFECTED_FIELD&#34;,
+        &#34;DESCRIPTION&#34;
+    ]
+}</pre>
+                  </div>
+                </details>
+              </dd></dl>
+          </div>
+        </div>
+        <div class="vulnerability-package-subsection mdc-layout-grid__inner">
+          <h3 class="mdc-layout-grid__cell--span-3">
+            Affected versions
+            <a href="https://ossf.github.io/osv-schema/#affectedversions-field" target="_blank"
+              rel="noopener noreferrer"></a>
+          </h3>
+          <div class="mdc-layout-grid__cell--span-9 version-value">
+            <details class="versions-section">
+              <summary class="version-header">v0.*</summary>
+              <div class="versions ">
+                <div class="version">v0.1.0</div>
+                <div class="version">v0.1.5</div>
+                <div class="version">v0.1.6</div>
+                <div class="version">v0.1.7</div>
+                <div class="version">v0.1.8</div>
+                <div class="version">v0.1.9</div>
+                <div class="version">v0.2.0</div>
+                <div class="version">v0.2.1</div>
+                <div class="version">v0.2.10</div>
+                <div class="version">v0.2.11</div>
+                <div class="version">v0.2.12</div>
+                <div class="version">v0.2.13</div>
+                <div class="version">v0.2.14</div>
+                <div class="version">v0.2.15</div>
+                <div class="version">v0.2.16</div>
+                <div class="version">v0.2.17</div>
+                <div class="version">v0.2.18</div>
+                <div class="version">v0.2.19</div>
+                <div class="version">v0.2.2</div>
+                <div class="version">v0.2.20</div>
+                <div class="version">v0.2.21</div>
+                <div class="version">v0.2.22</div>
+                <div class="version">v0.2.23</div>
+                <div class="version">v0.2.3</div>
+                <div class="version">v0.2.4</div>
+                <div class="version">v0.2.5</div>
+                <div class="version">v0.2.6</div>
+                <div class="version">v0.2.7</div>
+                <div class="version">v0.2.8</div>
+                <div class="version">v0.2.9</div>
+                <div class="version">v0.3.0</div>
+                <div class="version">v0.4.0</div>
+                <div class="version">v0.4.1</div>
+                <div class="version">v0.5.0</div>
+                <div class="version">v0.5.1</div>
+                <div class="version">v0.5.2</div>
+                <div class="version">v0.5.3</div>
+                <div class="version">v0.6.0</div>
+                <div class="version">v0.7.0</div>
+                </div>
+            </details>
+            </div>
+        </div>
+        <div class="vulnerability-package-subsection mdc-layout-grid__inner">
+          <h3 class="mdc-layout-grid__cell--span-3">
+            Database specific
+            <a href="https://ossf.github.io/osv-schema/#affecteddatabase_specific-field" target="_blank"
+              rel="noopener noreferrer"></a>
+          </h3>
+          <div class="mdc-layout-grid__cell--span-9">
+            
+            
+            <div class="database-specific-list">
+              
+              <details class="database-specific-section">
+                <summary class="database-specific-header">source</summary>
+                <div class="database-specific-content">
+                  <pre class="specific">&#34;https://storage.googleapis.com/cve-osv-conversion/osv-output/CVE-2026-18733.json&#34;</pre>
+                </div>
+              </details>
+              
+            </div>
+            
+          </div>
+        </div>
+        </div>
+      </osv-tabs>
+  
+</div>
+</div>
+<turbo-stream action="update" target="title">
+  <template>
+    CVE-2026-18733 - OSV
+  </template>
+</turbo-stream>
+
+<script>
+  document.addEventListener('turbo:load', function() {
+    const ECOSYSTEM_EXPAND_THRESHOLD = 10;
+    const PACKAGE_EXPAND_THRESHOLD = 7;
+    const ECOSYSTEM_PACKAGE_COLLAPSE_THRESHOLD = 9;
+
+  /**
+   * Sets up the vertical, grouped layout for vulnerability packages.
+   * - All ecosystem headers are expanded if their total count is below `ECOSYSTEM_EXPAND_THRESHOLD`,
+   *   and if their total packages count is below `ECOSYSTEM_PACKAGE_COLLAPSE_THRESHOLD`.
+   * - Within each ecosystem, all package headers are expanded if their count is below `PACKAGE_EXPAND_THRESHOLD`.
+   */
+    function setupVerticalLayout() {
+      const ecosystemAccordions = document.querySelectorAll('.vulnerability-packages.force-collapse .ecosystem-accordion');
+      if (!ecosystemAccordions.length) return;
+
+      const shouldExpandEcosystems = ecosystemAccordions.length < ECOSYSTEM_EXPAND_THRESHOLD;
+
+      ecosystemAccordions.forEach(accordion => {
+        const panel = accordion.querySelector('.ecosystem-content-panel');
+        const packageAccordions = panel ? panel.querySelectorAll('.package-accordion') : [];
+        const hasManyPackages =
+          ecosystemAccordions.length > 1 && packageAccordions.length > ECOSYSTEM_PACKAGE_COLLAPSE_THRESHOLD;
+
+        const shouldExpandAccordion =
+          shouldExpandEcosystems &&
+          panel !== null &&
+          !hasManyPackages;
+
+        accordion.open = shouldExpandAccordion;
+
+        const shouldExpandPackages = packageAccordions.length <= PACKAGE_EXPAND_THRESHOLD;
+        packageAccordions.forEach(packageAccordion => {
+          packageAccordion.open = shouldExpandPackages;
+        });
+      });
+    }
+    
+    if (document.querySelector('.vulnerability-packages.force-collapse')) {
+      setupVerticalLayout();
+    }
+
+    /**
+     * Sets up "Show More" / "Show Less" functionality for lists that might have
+     * many items. You can enable this feature by adding an 'expandible-list' or
+     * 'expandible-hierarchy-list' class to lists with long value.
+     * @param {string} listSelector The CSS selector for the list container.
+     * @param {string} itemSelector The tag name of the items within the list.
+     */
+    function setupExpandibleList(listSelector, itemSelector) {
+      const EXPANDIBLE_LIST_DEFAULT_LENGTH = 6;
+      const lists = document.querySelectorAll(`${listSelector}:not(.expanded):not([data-has-toggle-btn])`);
+      lists.forEach((list) => {
+        const items = list.getElementsByTagName(itemSelector);
+        if (items.length <= EXPANDIBLE_LIST_DEFAULT_LENGTH) return;
+
+        const expandibleItems = [...items].slice(EXPANDIBLE_LIST_DEFAULT_LENGTH);
+        expandibleItems.forEach((item) => {
+          item.style.display = 'none';
+        });
+
+        const toggleButton = document.createElement('span');
+        toggleButton.classList.add('showmore');
+        toggleButton.textContent = 'Show More';
+        list.append(toggleButton);
+        list.setAttribute('data-has-toggle-btn', 'true');
+
+        toggleButton.addEventListener('click', function() {
+          const isExpanded = list.classList.contains('expanded');
+          expandibleItems.forEach((item) => {
+            item.style.display = isExpanded ? 'none' : 'block';
+          });
+          toggleButton.textContent = isExpanded ? 'Show More' : 'Show Less';
+          list.classList.toggle('expanded');
+        });
+      });
+    }
+
+    setupExpandibleList('.expandible-hierarchy-list', 'ul');
+    setupExpandibleList('.expandible-list', 'li');
+  });
+</script>
+</div></body></html>

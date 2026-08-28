@@ -1,0 +1,43 @@
+slug: 2026-grok-build-full-repository-upload
+title_en: Grok Build Full Git Repository Upload Data Exposure
+title_cn: Grok Build 全量 Git 仓库上传导致的数据暴露风险
+year: 2026
+disclosed: '2026-07-10'
+category: human-factor
+severity: high
+severity_basis: quantifiable-impact
+severity_evidence: Traffic captures reported that Grok Build 0.2.93 uploaded a 5.1 GB Git bundle to xAI storage for a task requiring about 192 KB of context. Independent follow-up observed a server-side disable flag, while xAI said it would delete previously uploaded data.
+real_incident: true
+reproducible: true
+ai_tool:
+- Grok Build
+- Grok coding CLI
+- xAI cloud storage
+language:
+- Rust
+- Git
+attack_surface:
+- Coding-agent repository context
+- Git bundle upload
+- commit history
+- cloud trace storage
+- privacy control
+references:
+- title: 'xAI Docs: Grok Build overview'
+  url: https://docs.x.ai/build/overview
+- title: 'xAI: Grok Build source repository'
+  url: https://github.com/xai-org/grok-build
+- title: 'The Hacker News: Grok Build uploaded entire Git repositories'
+  url: https://thehackernews.com/2026/07/grok-build-uploads-entire-git.html
+- title: 'BuilderWithin: Grok Build uploaded entire Git repositories'
+  url: https://builderwithin.com/articles/grok-build-uploaded-entire-git-repositories/
+- title: 'Simon Willison: xai-org/grok-build now open source'
+  url: https://simonwillison.net/2026/Jul/15/grok-build/
+tldr: Grok Build 0.2.93 was observed uploading whole Git repositories and history to xAI-controlled storage even when the task did not require that data, creating a source-code and credential-exposure risk.
+tags:
+- grok-build
+- code-exfiltration
+- repository-upload
+- coding-agent
+- privacy
+verification_notes: The traffic-capture finding was reported by independent researchers and corroborated by The Hacker News, Axios, Simon Willison, and later source-code inspection. xAI's public pages establish the product context; public reporting says xAI changed a server-side setting and announced deletion, but does not prove retrospective deletion or identify all affected users.

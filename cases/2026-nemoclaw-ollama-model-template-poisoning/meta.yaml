@@ -1,0 +1,43 @@
+slug: 2026-nemoclaw-ollama-model-template-poisoning
+title_en: NVIDIA NemoClaw Ollama Model Template Poisoning
+title_cn: NVIDIA NemoClaw 本地模型模板持久化投毒
+year: 2026
+disclosed: '2026-08-25'
+category: agent-risk
+severity: high
+severity_basis: cvss
+severity_evidence: NVIDIA assigns CVE-2026-65105 a CVSS 3.1 score of 8.1 High and lists NemoClaw 0 through 0.0.25
+  as affected.
+real_incident: true
+reproducible: true
+ai_tool:
+- NVIDIA NemoClaw
+- Ollama
+- OpenClaw agents
+language:
+- Go
+- TypeScript
+attack_surface:
+- local inference endpoint
+- DNS rebinding
+- Ollama model template
+- agent tool permissions
+references:
+- title: NVIDIA Security Bulletin 5872
+  url: https://github.com/NVIDIA/product-security/blob/main/2026/5872/5872.md
+- title: Cyera Oasis Security research
+  url: https://www.cyera.com/research/nemoclaw-one-website-visit-to-hijack-your-ai-agent
+- title: The Hacker News report
+  url: https://thehackernews.com/2026/08/a-malicious-webpage-could-poison-your.html
+- title: Permission Protocol incident record
+  url: https://www.permissionprotocol.com/agent-incident-tracker/nvidia-nemoclaw-ollama-dns-rebinding-model-poisoning
+- title: SiliconANGLE report
+  url: https://siliconangle.com/2026/08/25/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent/
+tldr: NemoClaw 将 Ollama 推理服务绑定到所有网络接口后，恶意网页可借 DNS rebinding 访问未认证 API，并把持久化指令写入模型聊天模板，使后续 Agent 会话持续受到攻击者指令影响。
+tags:
+- ai-security
+- agent-risk
+verification_notes: NVIDIA assigns CVE-2026-65105 a CVSS 3.1 score of 8.1 High and lists NemoClaw 0 through 0.0.25
+  as affected.
+cve: CVE-2026-65105
+fixed_version: f06796ff3; 0.0.25

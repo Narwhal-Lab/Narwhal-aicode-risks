@@ -1,0 +1,36 @@
+slug: "2026-keras-hdf5-external-storage-file-disclosure"
+title_en: "Keras HDF5 External Storage Local File Disclosure"
+title_cn: "Keras HDF5 外部存储权重加载本地文件泄露漏洞"
+year: 2026
+disclosed: "2026-02-11"
+category: "supply-chain"
+severity: "high"
+severity_basis: "cvss"
+cve: "CVE-2026-1669"
+cvss: 7.5
+severity_evidence: "NVD records a CVSS 3.1 score of 7.5 for CVE-2026-1669."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Keras model and weight loading"
+language:
+  - "Python"
+attack_surface:
+  - "Keras model and weight loading"
+  - "Untrusted AI workflow input"
+references:
+  - title: "Keras advisory: HDF5 external link file disclosure"
+    url: "https://github.com/keras-team/keras/security/advisories/GHSA-3m4q-jmj6-r34q"
+  - title: "NVD: CVE-2026-1669"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-1669"
+  - title: "Keras security fix commit"
+    url: "https://github.com/keras-team/keras/commit/8a37f9dadd8e23fa4ee3f537eeb6413e75d12553"
+  - title: "Keras 3.12.1 release"
+    url: "https://github.com/keras-team/keras/releases/tag/v3.12.1"
+  - title: "Snyk: CVE-2026-1669"
+    url: "https://security.snyk.io/vuln/SNYK-PYTHON-KERAS-15268069"
+tldr: "A crafted Keras weight file could direct HDF5 loading to readable local files and expose their bytes through model tensors."
+tags:
+  - "ai-security"
+  - "cve-2026-1669"
+verification_notes: "Reviewed primary disclosure, vulnerability record, upstream remediation material, and independent corroboration."

@@ -1,0 +1,38 @@
+﻿slug: 2026-servicenow-bodysnatcher-virtual-agent-impersonation
+title_en: 'ServiceNow BodySnatcher Virtual Agent User Impersonation'
+title_cn: 'ServiceNow BodySnatcher 虚拟代理用户冒充漏洞'
+year: 2026
+disclosed: '2026-01-12'
+category: agent-risk
+severity: critical
+severity_basis: cvss
+severity_evidence: 'ServiceNow Virtual Agent 的外部集成信任链允许未认证攻击者仅凭邮箱冒充用户，绕过 MFA 与 SSO，并以被冒充身份驱动 Now Assist AI Agent 执行有权限的操作。 公开公告给出了受影响范围和修复信息。'
+real_incident: true
+reproducible: true
+ai_tool:
+- 'ServiceNow Now Assist AI Agents, Virtual Agent API'
+language:
+- 'SaaS / REST API / Agentic AI'
+attack_surface:
+- AI agent integration
+- tool or plugin boundary
+- untrusted configuration or request data
+references:
+- title: 'AppOmni BodySnatcher research'
+  url: https://appomni.com/ao-labs/bodysnatcher-agentic-ai-security-vulnerability-in-servicenow/
+- title: 'NVD CVE record'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2025-12420
+- title: 'Silverfort identity security analysis'
+  url: https://www.silverfort.com/blog/agent-hijacking-lateral-movement-lessons-from-the-servicenow-ai-vulnerability/
+- title: 'The Hacker News independent report'
+  url: https://thehackernews.com/2026/01/servicenow-patches-critical-ai-platform.html
+- title: 'Emerging Threats detection rule'
+  url: https://rules.evebox.org/pub/et/open/2067122
+tldr: 'ServiceNow Virtual Agent 的外部集成信任链允许未认证攻击者仅凭邮箱冒充用户，绕过 MFA 与 SSO，并以被冒充身份驱动 Now Assist AI Agent 执行有权限的操作。'
+tags:
+- ai-security
+- agent
+- 2026
+verification_notes: '事件由安全公告、CVE 或项目修复记录共同确认；文中将已证实的漏洞能力与具体部署条件分别说明。'
+cve: CVE-2025-12420
+

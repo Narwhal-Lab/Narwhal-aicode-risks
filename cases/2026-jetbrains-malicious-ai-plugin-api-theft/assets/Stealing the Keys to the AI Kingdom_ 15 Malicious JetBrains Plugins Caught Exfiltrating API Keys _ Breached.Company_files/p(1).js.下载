@@ -1,0 +1,38 @@
+/* CyberAdX pixel — privacy: https://cyberadx.network/privacy */
+(function(){
+  var dnt=navigator.doNotTrack==='1'||navigator.doNotTrack==='yes'||window.doNotTrack==='1'||navigator.globalPrivacyControl===true;
+  var base=window.__caxProxy||'https://px.cyberadx.network';
+  var endpoint=base+'/collect';
+  var property=window.location.hostname;
+  var sessionId=null;
+  if(!dnt){try{sessionId=sessionStorage.getItem('cax_s');if(!sessionId){sessionId=(crypto.randomUUID&&crypto.randomUUID())||(Date.now().toString(36)+Math.random().toString(36).slice(2));sessionStorage.setItem('cax_s',sessionId);}}catch(e){sessionId=null;}}
+  function beacon(t,x){
+    var p={v:1,event_type:t,property:property,page_url:window.location.pathname,page_title:document.title.slice(0,200),referrer:document.referrer||null,session_id:sessionId,timestamp:Date.now(),viewport:window.innerWidth+'x'+window.innerHeight,language:navigator.language,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone,dnt:dnt};
+    if(x){
+      var SAFE=['campaign_id','ad_unit_id','zone','carousel_position','dwell_ms'];
+      for(var i=0;i<SAFE.length;i++){if(x[SAFE[i]]!==undefined)p[SAFE[i]]=x[SAFE[i]];}
+    }
+    var b=JSON.stringify(p);
+    if(navigator.sendBeacon){try{navigator.sendBeacon(endpoint,new Blob([b],{type:'text/plain;charset=UTF-8'}));return;}catch(e){}}
+    fetch(endpoint,{method:'POST',body:b,headers:{'Content-Type':'text/plain;charset=UTF-8'},keepalive:true,credentials:'omit',mode:'cors'}).catch(function(){});
+  }
+  beacon('pageview');
+  if(!dnt){
+    setTimeout(function(){beacon('engaged');},15000);
+    var f50=false,f90=false;
+    function onScroll(){
+      var d=document.documentElement,s=(window.scrollY||d.scrollTop)+window.innerHeight,t=d.scrollHeight||document.body.scrollHeight;
+      if(!t)return;
+      var p=(s/t)*100;
+      if(p>=50&&!f50){f50=true;beacon('scroll_50');}
+      if(p>=90&&!f90){f90=true;beacon('scroll_90');}
+      if(f50&&f90)window.removeEventListener('scroll',onScroll);
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+  }
+  window.cyberadx={
+    impression:function(c,u,z,pos,dwell){beacon('ad_impression',{campaign_id:c,ad_unit_id:u,zone:z,carousel_position:pos==null?0:pos,dwell_ms:dwell||null});},
+    click:function(c,u,z){beacon('ad_click',{campaign_id:c,ad_unit_id:u,zone:z});},
+    track:function(n,d){beacon(n,d||{});}
+  };
+})();

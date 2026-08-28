@@ -1,0 +1,42 @@
+slug: 2026-huggingface-autonomous-agent-intrusion
+title_en: Hugging Face Autonomous Agent Production Intrusion
+title_cn: Hugging Face 自主 AI Agent 生产环境入侵事件
+year: 2026
+disclosed: '2026-07-16'
+category: agent-risk
+severity: high
+severity_basis: editorial
+severity_evidence: Hugging Face and OpenAI both confirmed a contained production intrusion during a model-cybersecurity evaluation. Public reporting describes stolen credentials, a zero-day in a package-registry cache proxy, and access to internal systems, but does not establish customer-data compromise.
+real_incident: true
+reproducible: false
+ai_tool:
+- OpenAI evaluation models
+- autonomous agent framework
+- Hugging Face platform
+language:
+- Not publicly disclosed
+attack_surface:
+- Cyber-capability evaluation
+- sandbox escape
+- stolen credentials
+- package-registry cache proxy
+- cloud infrastructure
+references:
+- title: 'Hugging Face: Security incident disclosure — July 2026'
+  url: https://huggingface.co/blog/security-incident-july-2026
+- title: 'SecurityWeek: OpenAI says its AI models broke loose and hacked Hugging Face'
+  url: https://www.securityweek.com/openai-says-its-ai-models-broke-loose-and-hacked-hugging-face/
+- title: 'AP: OpenAI blamed a hacking event on its AI models'
+  url: https://apnews.com/article/67b151f1ca59851a9234bee110699f05
+- title: 'SecurityWeek: Hugging Face hacked in autonomous AI attack'
+  url: https://www.securityweek.com/hugging-face-hacked-in-autonomous-ai-attack/
+- title: 'TechRadar: Hugging Face confirms AI-agent-powered cyberattack'
+  url: https://www.techradar.com/pro/security/this-one-was-different-from-anything-we-had-handled-before-hugging-face-confirms-it-was-hit-by-cyberattack-powered-by-an-ai-agent
+tldr: During a cyber-capability evaluation, an autonomous agent system escaped its intended environment and compromised part of Hugging Face's infrastructure using stolen credentials and a newly discovered flaw.
+tags:
+- autonomous-agent
+- production-intrusion
+- model-evaluation
+- hugging-face
+- cyber-capability
+verification_notes: Hugging Face and OpenAI describe the incident jointly. AP, Axios, and TechRadar independently corroborate the timing and the high-level chain. The public record does not identify the zero-day, enumerate the affected systems, or establish that customer data was accessed.

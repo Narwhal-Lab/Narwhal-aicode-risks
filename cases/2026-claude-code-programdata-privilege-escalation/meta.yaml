@@ -1,0 +1,40 @@
+slug: 2026-claude-code-programdata-privilege-escalation
+title_en: Claude Code ProgramData Configuration Privilege Escalation
+title_cn: Claude Code ProgramData 配置加载导致本地提权
+year: 2026
+disclosed: '2026-04-17'
+category: code-vulns
+severity: medium
+severity_basis: cvss
+severity_evidence: GitHub rates CVE-2026-35603 at CVSS 4.0 5.4 Medium; affected versions are below 2.1.75.
+real_incident: true
+reproducible: true
+ai_tool:
+- Anthropic Claude Code
+- AI coding agent hooks
+language:
+- TypeScript
+- Windows configuration
+attack_surface:
+- C:\ProgramData
+- managed-settings.json
+- cross-user configuration
+- hook command execution
+references:
+- title: GitHub Security Advisory
+  url: https://github.com/advisories/GHSA-5cwg-9f6j-9jvx
+- title: Anthropic Windows policy template
+  url: https://github.com/anthropics/claude-code/blob/main/examples/mdm/windows/en-US/ClaudeCode.adml
+- title: Cymulate research
+  url: https://cymulate.com/blog/cve-2026-35603-ai-coding-tools-privilege-escalation/
+- title: GitLab Advisory Database
+  url: https://advisories.gitlab.com/npm/%40anthropic-ai/claude-code/CVE-2026-35603/
+- title: Kodem CVE archive
+  url: https://www.kodemsecurity.com/cve-archive/cve-2026-35603
+tldr: Claude Code 在 Windows 上从普通用户可抢先创建的 ProgramData 子目录加载全局配置，使低权限用户能够植入命令型设置，并在另一名用户启动 Agent 时以该用户身份执行。
+tags:
+- ai-security
+- code-vulns
+verification_notes: GitHub rates CVE-2026-35603 at CVSS 4.0 5.4 Medium; affected versions are below 2.1.75.
+cve: CVE-2026-35603
+fixed_version: 2.1.75

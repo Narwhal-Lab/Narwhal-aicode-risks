@@ -1,0 +1,36 @@
+slug: "2026-ms-agent-shell-prompt-command-injection"
+title_en: "MS-Agent Shell Tool Prompt-Derived Command Injection"
+title_cn: "ModelScope MS-Agent Shell 工具提示词派生命令注入漏洞"
+year: 2026
+disclosed: "2026-03-02"
+category: "agent-risk"
+severity: "medium"
+severity_basis: "cvss"
+cve: "CVE-2026-2256"
+cvss: 6.5
+severity_evidence: "NVD records the CISA-ADP CVSS 3.1 score of 6.5 for CVE-2026-2256."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "ModelScope MS-Agent Shell tool"
+language:
+  - "Python"
+attack_surface:
+  - "ModelScope MS-Agent Shell tool"
+  - "Untrusted AI workflow input"
+references:
+  - title: "CERT/CC VU#431821: MS-Agent Shell tool RCE"
+    url: "https://www.kb.cert.org/vuls/id/431821"
+  - title: "NVD: CVE-2026-2256"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-2256"
+  - title: "MS-Agent v1.6.0 release"
+    url: "https://github.com/modelscope/ms-agent/releases/tag/v1.6.0"
+  - title: "Snyk: CVE-2026-2256"
+    url: "https://security.snyk.io/vuln/SNYK-PYTHON-MSAGENT-15440541"
+  - title: "MyNavi: MS-Agent CVE-2026-2256 coverage"
+    url: "https://news.mynavi.jp/techplus/article/20260309-4189915/"
+tldr: "Prompt-derived input could bypass the Shell tool's regex denylist and reach operating-system command execution."
+tags:
+  - "ai-security"
+  - "cve-2026-2256"
+verification_notes: "Reviewed primary disclosure, vulnerability record, upstream remediation material, and independent corroboration."

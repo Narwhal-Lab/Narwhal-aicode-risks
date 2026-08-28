@@ -1,0 +1,40 @@
+slug: 2026-claude-shared-chats-google-indexing
+title_en: Claude Shared Chats and Artifacts Indexed by Google
+title_cn: Claude 共享会话与 Artifacts 被搜索引擎收录
+year: 2026
+disclosed: '2026-07-27'
+category: ip-compliance
+severity: medium
+severity_basis: editorial
+severity_evidence: Multiple outlets independently observed shared Claude pages in Google results; only user-created
+  public links were affected and no count of all exposed records was confirmed by Anthropic.
+real_incident: true
+reproducible: false
+ai_tool:
+- Anthropic Claude
+- Claude Artifacts
+- Google Search
+language:
+- Web
+attack_surface:
+- public share links
+- search indexing
+- chat snapshots
+- Artifacts
+references:
+- title: Anthropic sharing documentation
+  url: https://support.claude.com/en/articles/10593882-share-and-unshare-chats
+- title: Inimino technical analysis
+  url: https://inimino.org/claude-shared-chats-indexed-disallow-noindex/
+- title: Yahoo Tech report
+  url: https://tech.yahoo.com/ai/claude/articles/shared-claude-chats-appeared-search-130000452.html
+- title: TechSpot report
+  url: https://www.techspot.com/news/113267-hundreds-shared-claude-conversations-including-resumes-health-details.html
+- title: Malwarebytes report
+  url: https://www.malwarebytes.com/blog/privacy/2026/07/shared-claude-chats-were-searchable-on-google
+tldr: Claude 用户主动生成的公开共享链接被 Google 搜索结果收录，使原本按链接传递的会话和 Artifacts 更容易被陌生人发现，其中部分页面包含医疗、教育和企业内部信息。
+tags:
+- ai-security
+- privacy
+verification_notes: Multiple outlets independently observed shared Claude pages in Google results; only user-created
+  public links were affected and no count of all exposed records was confirmed by Anthropic.

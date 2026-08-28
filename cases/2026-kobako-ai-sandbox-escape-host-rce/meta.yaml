@@ -1,0 +1,41 @@
+slug: 2026-kobako-ai-sandbox-escape-host-rce
+title_en: Kobako AI Sandbox Escape to Host Code Execution
+title_cn: Kobako AI 代理沙箱逃逸并在宿主执行代码
+year: 2026
+disclosed: '2026-06-11'
+category: agent-risk
+severity: critical
+severity_basis: cvss
+severity_evidence: The project advisory and GitHub Advisory Database assign CVSS 3.1 10.0 to CVE-2026-55107; versions 0.1.0
+  through 0.9.0 are affected and 0.9.1 is fixed.
+real_incident: true
+reproducible: true
+ai_tool:
+- Kobako
+- Ruby AI agents
+language:
+- Ruby
+attack_surface:
+- agent-generated Ruby code
+- sandbox service dispatch
+- host object bindings
+references:
+- title: GitHub Security Advisory GHSA-7pwq-q9jf-539h
+  url: https://github.com/elct9620/kobako/security/advisories/GHSA-7pwq-q9jf-539h
+- title: GitHub Advisory Database CVE-2026-55107
+  url: https://github.com/advisories/GHSA-7pwq-q9jf-539h
+- title: Kobako security fix commit
+  url: https://github.com/elct9620/kobako/commit/64f84700c81f44902bed9211318d5362f44987b3
+- title: RubyGems Kobako 0.9.1
+  url: https://rubygems.org/gems/kobako/versions/0.9.1
+- title: Kobako author introduction for AI agents
+  url: https://blog.aotoki.me/en/posts/2026/05/20/kobako-ruby-sandbox-for-ai/
+tldr: Kobako 用于隔离 AI 代理生成的 Ruby 代码，但旧版服务分发允许调用继承方法，沙箱内代码可经 `send(:eval, ...)` 在宿主进程执行。
+tags:
+- agent-risk
+- ai-security
+- kobako
+verification_notes: The project advisory and GitHub Advisory Database assign CVSS 3.1 10.0 to CVE-2026-55107; versions 0.1.0
+  through 0.9.0 are affected and 0.9.1 is fixed.
+cve: CVE-2026-55107
+fixed_version: 0.9.1

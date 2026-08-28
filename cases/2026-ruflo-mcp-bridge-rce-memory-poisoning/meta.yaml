@@ -1,0 +1,38 @@
+﻿slug: 2026-ruflo-mcp-bridge-rce-memory-poisoning
+title_en: 'Ruflo MCP Bridge Unauthenticated RCE and Agent Memory Poisoning'
+title_cn: 'Ruflo MCP Bridge 未授权远程执行与 Agent 记忆污染'
+year: 2026
+disclosed: '2026-07-09'
+category: agent-risk
+severity: critical
+severity_basis: cvss
+severity_evidence: 'Ruflo 默认容器部署对外开放未认证的 MCP Bridge，网络攻击者可调用 terminal_execute 获取容器 Shell、读取模型服务密钥，并篡改 AgentDB 学习数据。 公开公告给出了受影响范围和修复信息。'
+real_incident: true
+reproducible: true
+ai_tool:
+- 'Ruflo, Claude Code, Codex, MCP, AgentDB'
+language:
+- 'TypeScript / Docker / MCP'
+attack_surface:
+- AI agent integration
+- tool or plugin boundary
+- untrusted configuration or request data
+references:
+- title: 'Ruflo repository advisory'
+  url: https://github.com/ruvnet/ruflo/security/advisories/GHSA-c4hm-4h84-2cf3
+- title: 'NVD CVE record'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-59726
+- title: 'Ruflo 3.16.3 release'
+  url: https://github.com/ruvnet/ruflo/releases/tag/v3.16.3
+- title: 'Ruflo security pull request 2521'
+  url: https://github.com/ruvnet/ruflo/pull/2521
+- title: 'Ruflo patch commit'
+  url: https://github.com/ruvnet/ruflo/commit/d00a0a40cd8bdbca877ac7f675f416bdc69accd1
+tldr: 'Ruflo 默认容器部署对外开放未认证的 MCP Bridge，网络攻击者可调用 terminal_execute 获取容器 Shell、读取模型服务密钥，并篡改 AgentDB 学习数据。'
+tags:
+- ai-security
+- agent
+- 2026
+verification_notes: '事件由安全公告、CVE 或项目修复记录共同确认；文中将已证实的漏洞能力与具体部署条件分别说明。'
+cve: CVE-2026-59726
+

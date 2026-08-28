@@ -1,0 +1,42 @@
+slug: 2026-monai-medical-ai-artifact-rce-cluster
+title_en: MONAI Medical AI Artifact Loading Vulnerability Cluster
+title_cn: MONAI 医疗 AI 数据与算法制品加载漏洞组
+year: 2026
+disclosed: '2026-08-07'
+category: domain-specific
+severity: high
+severity_basis: editorial
+severity_evidence: Three coordinated MONAI advisories affect releases before 1.6.0 and describe code execution paths through
+  untrusted medical-AI artifacts.
+real_incident: true
+reproducible: true
+ai_tool:
+- MONAI
+- Auto3DSeg
+- medical imaging pipelines
+language:
+- Python
+attack_surface:
+- medical imaging datasets
+- algorithm bundles
+- NumPy and pickle artifacts
+- YAML metadata
+references:
+- title: MONAI unsafe NumPy artifact advisory
+  url: https://github.com/Project-MONAI/MONAI/security/advisories/GHSA-wg9g-w2j2-8pgr
+- title: MONAI dataset metadata command injection advisory
+  url: https://github.com/Project-MONAI/MONAI/security/advisories/GHSA-rghg-q7wp-9767
+- title: MONAI algorithm pickle bypass advisory
+  url: https://github.com/Project-MONAI/MONAI/security/advisories/GHSA-qxq5-qhx6-94qw
+- title: MONAI 1.6.0 release
+  url: https://github.com/Project-MONAI/MONAI/releases/tag/1.6.0
+- title: PyPI MONAI 1.6.0
+  url: https://pypi.org/project/monai/1.6.0/
+tldr: MONAI 1.6.0 之前的多个数据与算法制品加载路径会把不可信 NumPy、pickle 或 YAML 元数据带入代码执行，医疗 AI 工作流中的数据包因而不能被当作纯数据。
+tags:
+- ai-security
+- domain-specific
+- monai
+verification_notes: Three coordinated MONAI advisories affect releases before 1.6.0 and describe code execution paths through
+  untrusted medical-AI artifacts.
+fixed_version: 1.6.0

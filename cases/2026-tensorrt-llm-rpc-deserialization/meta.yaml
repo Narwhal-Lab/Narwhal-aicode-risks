@@ -1,0 +1,49 @@
+slug: 2026-tensorrt-llm-rpc-deserialization
+title_en: TensorRT-LLM RPC Unsafe Deserialization Vulnerability
+title_cn: TensorRT-LLM RPC 测试接口不安全反序列化漏洞
+year: 2026
+disclosed: '2026-05-19'
+category: code-vulns
+severity: critical
+severity_basis: cvss
+severity_evidence: NVD assigns CVE-2026-24163 a CVSS 3.1 score of 9.8 and identifies unsafe deserialization in TensorRT-LLM RPC testing. NVIDIA's bulletin lists versions before 1.2 as affected and rates the bulletin high.
+real_incident: true
+reproducible: true
+ai_tool:
+- NVIDIA TensorRT-LLM
+- RPC testing backend
+- LLM inference service
+language:
+- Python
+- C++
+- RPC
+attack_surface:
+- RPC testing interface
+- serialized request data
+- inference host
+- containerized serving
+references:
+- title: 'OSV: CVE-2026-24163'
+  url: https://osv.dev/vulnerability/CVE-2026-24163
+- title: 'NVD: CVE-2026-24163'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-24163
+- title: 'Tenable: CVE-2026-24163'
+  url: https://www.tenable.com/cve/CVE-2026-24163
+- title: NVIDIA Product Security index
+  url: https://www.nvidia.com/en-us/security/
+- title: Snyk TensorRT-LLM package versions
+  url: https://security.snyk.io/package/pip/tensorrt-llm/versions
+- title: NVIDIA TensorRT-LLM source repository
+  url: https://github.com/NVIDIA/TensorRT-LLM
+- title: NVIDIA TensorRT-LLM documentation
+  url: https://nvidia.github.io/TensorRT-LLM/
+tldr: TensorRT-LLM versions before 1.2 contained unsafe deserialization in an RPC testing path, allowing a successful exploit to affect code execution, integrity, availability, and confidentiality.
+tags:
+- tensorrt-llm
+- deserialization
+- rpc
+- inference-server
+- cwe-502
+verification_notes: NVIDIA is the CVE source and maintains the security bulletin. NVD, CVE.org, and NVIDIA's product-security index corroborate the affected release range and CWE. The NVD and CNA scoring differ, so the README preserves that difference instead of selecting the larger number as a universal fact.
+cve: CVE-2026-24163
+cvss: 9.8

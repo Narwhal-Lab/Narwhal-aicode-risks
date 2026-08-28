@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://breached.company/px/ts-frame -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;self&#39; https://challenges.cloudflare.com &#39;unsafe-inline&#39;; frame-src https://challenges.cloudflare.com; connect-src https://challenges.cloudflare.com;">
+<!-- cyberadx-pixel --><script async="" src="./p(1).js.下载"></script></head><body>
+<div id="ts"><div><template shadowrootmode="closed"><iframe src="https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/b/turnstile/f/av0/rch5KBbJIzVhcrEGYj6q0cCQpSnVHktWSeRtfu4hxNJu.Y-1783503150-1.3.1.1-0DQseHNnaZd6f4cjYeQQNYow01RXXFTm3aGcl7bRmpw/06nmk/0x4AAAAAADRyflYA1x4wxuXP/auto/fbE/failure_retry/invisible?lang=auto" allow="cross-origin-isolated; fullscreen; autoplay; keyboard-map; gamepad; xr-spatial-tracking" sandbox="allow-same-origin allow-scripts allow-popups" id="cf-chl-widget-06nmk" tabindex="-1" title="包含 Cloudflare 安全质询的小组件" aria-hidden="true" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: none; overflow: hidden; width: 1px; height: 1px; opacity: 0.01; position: fixed; left: 0px; top: 0px; visibility: visible; pointer-events: none; z-index: -1;"></iframe></template><input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-06nmk_response" value=""></div></div>
+<script src="./api.js.下载" async=""></script>
+<script>
+var _wid;
+function caxTsInit() {
+  _wid = window.turnstile.render('#ts', {
+    sitekey: '0x4AAAAAADRyflYA1x4wxuXP',
+    size: 'invisible',
+    appearance: 'always',
+    callback: function(token) {
+      window.parent.postMessage({ type: 'cax-ts', token: token }, '*');
+    },
+    'expired-callback': function() {
+      try { window.turnstile.execute(_wid); } catch(e) {}
+    },
+    'error-callback': function() {
+      window.parent.postMessage({ type: 'cax-ts', token: null }, '*');
+    },
+  });
+}
+</script>
+<script>
+(function(){
+  var SERVE='https://px.cyberadx.network/serve';
+  var prop=window.location.hostname.replace(/^www./,'');
+
+  function getCtx(){
+    var m=document.querySelector('meta[property="article:section"],meta[name="article:section"]');
+    if(m&&m.content)return m.content.toLowerCase();
+    var h=document.querySelector('h1,h2');
+    if(h){var t=h.textContent.toLowerCase();
+      if(/breach|hack|incident|vuln/.test(t))return'breach';
+      if(/compliance|gdpr|hipaa|soc|iso|pci/.test(t))return'compliance';
+      if(/privacy|data protection/.test(t))return'privacy';
+      if(/career|job|certif/.test(t))return'careers';
+      if(/iot|smart home|device/.test(t))return'iot';
+    }
+    return'security';
+  }
+
+  function renderCard(el,ad){
+    var icon=ad.headline&&/breach|hack/.test(ad.headline.toLowerCase())?'🔍':ad.headline&&/compliance|policy|gdpr|hipaa/.test(ad.headline.toLowerCase())?'📋':ad.headline&&/insurance|cost|calc/.test(ad.headline.toLowerCase())?'🧮':'🔧';
+    el.innerHTML='<a href="'+ad.click_url+'" target="_blank" rel="noopener sponsored" '
+      +'style="display:flex;align-items:center;gap:14px;padding:14px 18px;'
+      +'background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.22);'
+      +'border-radius:10px;text-decoration:none;margin:1.5rem 0;cursor:pointer;">'
+      +'<div style="flex-shrink:0;width:42px;height:42px;background:rgba(99,102,241,0.14);'
+      +'border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:22px;">'+icon+'</div>'
+      +'<div style="flex:1;min-width:0;">'
+      +'<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#818cf8;margin-bottom:3px;">Free Security Tool</div>'
+      +'<div style="font-size:14px;font-weight:600;color:#f1f5f9;line-height:1.3;">'+(ad.headline||'')+'</div>'
+      +(ad.body_text?'<div style="font-size:12px;color:#94a3b8;margin-top:3px;line-height:1.4;">'+ad.body_text+'</div>':'')
+      +'</div>'
+      +'<div style="flex-shrink:0;font-size:12px;font-weight:700;color:#818cf8;white-space:nowrap;padding-left:8px;">'+(ad.cta_text||'Try Free →')+'</div>'
+      +'</a>';
+    if(window.cyberadx&&window.cyberadx.impression)
+      window.cyberadx.impression(ad.campaign_id,ad.ad_unit_id,'tool_promo_card',0,null);
+  }
+
+  function doFetch(wrap){
+    var params='/px/serve?property='+encodeURIComponent(prop)+'&zone=tool_promo_card&context='+encodeURIComponent(getCtx());
+    function go(token){
+      var url=params+(token?'&ts='+encodeURIComponent(token):'');
+      fetch(url,{credentials:'omit'})
+        .then(function(r){return r.ok?r.json():null;})
+        .then(function(ad){if(ad&&ad.click_url)renderCard(wrap,ad);})
+        .catch(function(){});
+    }
+    if(window.__caxTs&&window.__caxTs.ready){
+      Promise.race([
+        window.__caxTs.ready,
+        new Promise(function(r){setTimeout(function(){r(window.__caxTs?window.__caxTs.token:null);},2500);}),
+      ]).then(go);
+    } else {
+      go(null);
+    }
+  }
+
+  function insertCard(){
+    var root=document.querySelector('article')||document.querySelector('.post-content')||document.querySelector('.entry-content')||document.querySelector('main');
+    if(!root)return;
+    var paras=root.querySelectorAll('p');
+    if(paras.length<4)return;
+    var after=paras[2];
+    var wrap=document.createElement('div');
+    wrap.id='cax-tool-card';
+    after.parentNode.insertBefore(wrap,after.nextSibling);
+    doFetch(wrap);
+  }
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',insertCard);}
+  else{insertCard();}
+})();
+</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a17e14fc29bb0441',t:'MTc4MzUwMzE0OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; visibility: hidden;" src="./saved_resource(1).html"></iframe><script defer="" src="./v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;0f5af3844165434fbc68c2726e8e4cdd&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+</body></html>

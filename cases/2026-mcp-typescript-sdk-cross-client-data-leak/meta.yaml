@@ -1,0 +1,44 @@
+slug: 2026-mcp-typescript-sdk-cross-client-data-leak
+title_en: MCP TypeScript SDK Cross-Client Response Data Leak
+title_cn: MCP TypeScript SDK 跨客户端响应数据泄露漏洞
+year: 2026
+disclosed: '2026-02-10'
+category: agent-risk
+severity: high
+severity_basis: cvss
+severity_evidence: CVE-2026-25536 affects official MCP TypeScript SDK versions 1.10.0 through 1.25.3 when one server and transport instance are reused across multiple client connections. NVD records cross-client response leakage and a 1.26.0 patch.
+real_incident: true
+reproducible: true
+ai_tool:
+- Model Context Protocol TypeScript SDK
+- Streamable HTTP transport
+- MCP server
+language:
+- TypeScript
+- HTTP
+- JSON-RPC
+attack_surface:
+- Stateless Streamable HTTP deployment
+- shared transport
+- response routing
+- multi-client sessions
+references:
+- title: 'GitHub Advisory: GHSA-345p-7cg4-v4c7'
+  url: https://github.com/advisories/GHSA-345p-7cg4-v4c7
+- title: 'NVD: CVE-2026-25536'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-25536
+- title: MCP TypeScript SDK Issue 204
+  url: https://github.com/modelcontextprotocol/typescript-sdk/issues/204
+- title: ReversingLabs package advisory
+  url: https://secure.software/npm/packages/%40modelcontextprotocol/sdk/vulnerabilities/1.11.5
+- title: 'MCP TypeScript SDK: v1.26.0 release'
+  url: https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v1.26.0
+tldr: Reusing a single MCP server and transport across Streamable HTTP clients could route one client's response data to another client, causing cross-tenant exposure.
+tags:
+- mcp
+- typescript-sdk
+- multi-tenant
+- response-leak
+- streamable-http
+verification_notes: The upstream GitHub advisory, NVD, SDK issues and release record, ReversingLabs, and CSA material agree on the shared-instance condition and 1.26.0 fix. The issue affects specific stateless deployment patterns, not every TypeScript SDK use.
+cve: CVE-2026-25536

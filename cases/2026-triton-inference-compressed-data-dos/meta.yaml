@@ -1,0 +1,39 @@
+slug: "2026-triton-inference-compressed-data-dos"
+title_en: "NVIDIA Triton Inference Server Compressed Data Denial of Service"
+title_cn: "NVIDIA Triton 推理服务器压缩数据拒绝服务漏洞"
+year: 2026
+disclosed: "2026-06-30"
+category: "domain-specific"
+severity: "high"
+severity_basis: "cvss"
+cve: "CVE-2026-24264"
+cvss: 7.5
+severity_evidence: "NVIDIA assigned CVSS 3.1 base score 7.5 High to CVE-2026-24264."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "NVIDIA Triton Inference Server"
+language:
+  - "C++"
+attack_surface:
+  - "Network-accessible inference service"
+  - "Highly compressed request data"
+references:
+  - title: "NVIDIA Triton Inference Server June 2026 Security Bulletin"
+    url: "https://nvidia.custhelp.com/app/answers/detail/a_id/5848/~/security-bulletin%3A-nvidia-triton-inference-server---june-2026"
+  - title: "NVD: CVE-2026-24264"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-24264"
+  - title: "Snyk: CVE-2026-24264"
+    url: "https://security.snyk.io/vuln/SNYK-UNMANAGED-TRITONINFERENCESERVERSERVER-17879258"
+  - title: "NVIDIA Product Security record 5848"
+    url: "https://github.com/NVIDIA/product-security/tree/main/2026/5848"
+  - title: "NVIDIA Triton Inference Server repository"
+    url: "https://github.com/triton-inference-server/server"
+tldr: "A remote unauthenticated attacker could send highly compressed data that Triton Inference Server handled improperly, exhausting resources and disrupting AI inference availability."
+tags:
+  - "ai-security"
+  - "inference-server"
+  - "denial-of-service"
+  - "data-amplification"
+  - "cve-2026-24264"
+verification_notes: "The NVIDIA bulletin and product-security record, NVD record, independent package advisory, and official server repository were reviewed together."

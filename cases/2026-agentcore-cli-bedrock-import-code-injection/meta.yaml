@@ -1,0 +1,38 @@
+﻿slug: 2026-agentcore-cli-bedrock-import-code-injection
+title_en: 'AgentCore CLI Bedrock Agent Import Code Injection'
+title_cn: 'AgentCore CLI 导入 Bedrock Agent 时的代码注入漏洞'
+year: 2026
+disclosed: '2026-06-08'
+category: cloud-iac
+severity: high
+severity_basis: cvss
+severity_evidence: 'AgentCore CLI 导入 Bedrock 多 Agent 协作配置时，将远端 collaborationInstruction 插入三引号 Python 字符串，恶意元数据可逃逸字符串并进入生成的 main.py。 公开公告给出了受影响范围和修复信息。'
+real_incident: true
+reproducible: true
+ai_tool:
+- 'Amazon Bedrock AgentCore, AgentCore CLI, multi-agent collaboration'
+language:
+- 'TypeScript / Python / AWS'
+attack_surface:
+- AI agent integration
+- tool or plugin boundary
+- untrusted configuration or request data
+references:
+- title: 'AWS security bulletin 2026-040-AWS'
+  url: https://aws.amazon.com/security/security-bulletins/2026-040-aws
+- title: 'AgentCore repository advisory'
+  url: https://github.com/aws/agentcore-cli/security/advisories/GHSA-m4x6-gwgp-4pm7
+- title: 'GitHub Advisory Database'
+  url: https://github.com/advisories/GHSA-m4x6-gwgp-4pm7
+- title: 'NVD CVE record'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-11393
+- title: 'AgentCore CLI 0.14.2 release'
+  url: https://github.com/aws/agentcore-cli/releases/tag/v0.14.2
+tldr: 'AgentCore CLI 导入 Bedrock 多 Agent 协作配置时，将远端 collaborationInstruction 插入三引号 Python 字符串，恶意元数据可逃逸字符串并进入生成的 main.py。'
+tags:
+- ai-security
+- agent
+- 2026
+verification_notes: '事件由安全公告、CVE 或项目修复记录共同确认；文中将已证实的漏洞能力与具体部署条件分别说明。'
+cve: CVE-2026-11393
+

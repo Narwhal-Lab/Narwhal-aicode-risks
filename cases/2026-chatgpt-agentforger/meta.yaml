@@ -1,0 +1,35 @@
+slug: "2026-chatgpt-agentforger"
+title_en: "AgentForger: ChatGPT Workspace Cross-Site Agent Forgery"
+title_cn: AgentForger：ChatGPT Workspace跨站Agent伪造漏洞
+year: 2026
+disclosed: 2026-06-04
+category: "agent-risk"
+severity: "critical"
+severity_basis: "cvss"
+severity_evidence: "CVE-2026-47131 assigned CVSS 9.1 critical score; single malicious link click creates persistent attacker-controlled agent inheriting victim’s SaaS connector permissions for unattended corporate data theft."
+cvss: "9.1"
+cve: "CVE-2026-47131"
+real_incident: true
+reproducible: true
+ai_tool:
+  - "ChatGPT Workspace Agents"
+language:
+  - "TypeScript"
+attack_surface:
+  - "URL-parameter-driven agent creation"
+  - Missing CSRF & explicit user confirmation
+  - OAuth connector permission inheritance
+references:
+  - title: Cyber Security News
+    url: https://cybersecuritynews.com/chatgpt-agentforger-vulnerability/amp/
+  - title: The Hacker News Coverage
+    url: https://thehackernews.com/2026/07/chatgpt-agentforger-flaw-could-deploy.html
+  - title: NVD Official CVE-2026-47131 Record
+    url: https://nvd.nist.gov/vuln/detail/CVE-2026-47131
+tldr: Malicious URL parameters enable cross-site agent forgery on ChatGPT Workspace; victim click creates persistent malicious agent inheriting SaaS-connector permissions for silent corporate-data exfiltration.
+tags:
+  - agent-forgery
+  - chatgpt-workspace
+  - confused-deputy
+  - oauth-inheritance
+  - agent-risk

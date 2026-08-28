@@ -1,0 +1,45 @@
+slug: 2026-aws-api-mcp-file-access-bypass
+title_en: AWS API MCP Server File Access Restriction Bypass
+title_cn: AWS API MCP Server 文件访问限制绕过漏洞
+year: 2026
+disclosed: '2026-03-16'
+category: cloud-iac
+severity: high
+severity_basis: cvss
+severity_evidence: AWS confirmed CVE-2026-4270 in aws-api-mcp-server versions 0.2.14 through 1.3.8. The no-access and workdir controls could be bypassed to expose arbitrary local file content to an MCP client context.
+real_incident: true
+reproducible: true
+ai_tool:
+- AWS API MCP Server
+- Model Context Protocol
+- AWS CLI
+language:
+- Python
+- TypeScript
+- AWS CLI
+attack_surface:
+- MCP tool arguments
+- file access restriction
+- alternate paths
+- workdir
+- local credential files
+references:
+- title: AWS Security Bulletin 2026-007-AWS
+  url: https://aws.amazon.com/security/security-bulletins/2026-007-AWS/
+- title: 'GitHub Advisory: GHSA-2cpp-j2fc-qhp7'
+  url: https://github.com/advisories/GHSA-2cpp-j2fc-qhp7
+- title: 'NVD: CVE-2026-4270'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-4270
+- title: 'Varonis: AWS Remote MCP Server local file inclusion'
+  url: https://www.varonis.com/blog/aws-api-mcp-server-vulnerability
+- title: 'AWS Labs: AWS API MCP Server source repository'
+  url: https://github.com/awslabs/mcp
+tldr: AWS API MCP Server path controls could be bypassed through alternate path syntax, exposing arbitrary local file contents to the AI client despite no-access or workdir restrictions.
+tags:
+- aws
+- mcp
+- local-file-read
+- path-bypass
+- cloud-agent
+verification_notes: AWS's security bulletin is the primary source and credits Varonis. NVD, the GitHub advisory, Varonis reporting, and Singapore's bulletin corroborate the affected range and patch. The case does not assume every MCP client automatically exposes all returned file content to a model or user.
+cve: CVE-2026-4270
