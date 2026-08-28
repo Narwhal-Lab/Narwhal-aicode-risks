@@ -1,0 +1,43 @@
+slug: 2026-spring-ai-promptchatmemoryadvisor-memory-poisoning
+title_en: Spring AI PromptChatMemoryAdvisor Memory Poisoning
+title_cn: Spring AI PromptChatMemoryAdvisor 会话记忆投毒
+year: 2026
+disclosed: '2026-05-08'
+category: agent-risk
+severity: high
+severity_basis: cvss
+severity_evidence: Spring assigned CVSS 3.1 8.2 to CVE-2026-41713. Spring AI 1.0.0 through 1.0.6 and 1.1.0 through 1.1.5 are
+  affected; 1.0.7 and 1.1.6 contain the fix.
+real_incident: true
+reproducible: true
+ai_tool:
+- Spring AI
+- PromptChatMemoryAdvisor
+- ChatClient
+language:
+- Java
+attack_surface:
+- conversation memory
+- prompt assembly
+- user-controlled chat input
+- cross-turn model behavior
+references:
+- title: Spring security advisory CVE-2026-41713
+  url: https://spring.io/security/cve-2026-41713/
+- title: GitHub Advisory Database GHSA-5852-phmh-8fhr
+  url: https://github.com/advisories/GHSA-5852-phmh-8fhr
+- title: Spring AI explicit conversation ID fix
+  url: https://github.com/spring-projects/spring-ai/commit/13cde419e30042c663706f130dd65b80d92d4667
+- title: Spring AI 1.0.7 and 1.1.6 release announcement
+  url: https://spring.io/blog/2026/05/08/spring-ai-1-0-7-1-1-6-2-0-0-M6-available-now
+- title: Canadian Centre for Cyber Security AV26-443
+  url: https://www.cyber.gc.ca/en/alerts-advisories/spring-security-advisory-av26-443
+tldr: Spring AI 旧版 PromptChatMemoryAdvisor 会把攻击者构造的输入写入会话记忆，后续轮次重新组装提示时，模型可能把这段持久化内容当作指令执行。CVE-2026-41713 的修复进入 1.0.7 和 1.1.6。
+tags:
+- agent-risk
+- ai-security
+- spring-ai
+verification_notes: Spring assigned CVSS 3.1 8.2 to CVE-2026-41713. Spring AI 1.0.0 through 1.0.6 and 1.1.0 through 1.1.5
+  are affected; 1.0.7 and 1.1.6 contain the fix.
+cve: CVE-2026-41713
+fixed_version: 1.0.7 / 1.1.6

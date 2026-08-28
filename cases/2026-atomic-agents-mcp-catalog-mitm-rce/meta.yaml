@@ -1,0 +1,38 @@
+slug: 2026-atomic-agents-mcp-catalog-mitm-rce
+title_en: Atomic Agents MCP Catalog Man-in-the-Middle Command Execution
+title_cn: Atomic Agents MCP 目录明文传输导致本地命令执行
+year: 2026
+disclosed: '2026-06-18'
+category: supply-chain
+severity: high
+severity_basis: editorial
+severity_evidence: The project advisory marks releases through 1.0.0 affected; 1.1.0 adds HTTPS enforcement and command restrictions.
+real_incident: true
+reproducible: true
+ai_tool:
+- Atomic Agents Stack
+- MCPClientPool
+language:
+- Python
+attack_surface:
+- remote MCP catalog
+- cleartext HTTP
+- local process spawning
+references:
+- title: GitHub Security Advisory GHSA-xhcr-cqfr-m3hv
+  url: https://github.com/dep0we/atomic-agents-stack/security/advisories/GHSA-xhcr-cqfr-m3hv
+- title: Atomic Agents Stack 1.1.0 release
+  url: https://github.com/dep0we/atomic-agents-stack/releases/tag/v1.1.0
+- title: PyPI atomic-agents-stack 1.1.0
+  url: https://pypi.org/project/atomic-agents-stack/1.1.0/
+- title: Safety package changelog
+  url: https://data.safetycli.com/packages/pypi/atomic-agents-stack/changelog
+- title: Atomic Agents Stack project
+  url: https://github.com/dep0we/atomic-agents-stack
+tldr: Atomic Agents Stack 从明文 HTTP 目录取得 MCP 启动命令并在本机创建进程，网络中间人可篡改目录响应，把一个远程服务清单变成本地命令执行入口。
+tags:
+- ai-security
+- atomic-agents-stack
+- supply-chain
+verification_notes: The project advisory marks releases through 1.0.0 affected; 1.1.0 adds HTTPS enforcement and command restrictions.
+fixed_version: 1.1.0

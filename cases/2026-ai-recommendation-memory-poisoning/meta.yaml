@@ -1,0 +1,41 @@
+slug: 2026-ai-recommendation-memory-poisoning
+title_en: 'AI Recommendation Memory Poisoning in Summarize Links'
+title_cn: '“AI 摘要”链接导致的推荐记忆投毒活动'
+year: 2026
+disclosed: '2026-02-10'
+category: human-factor
+severity: medium
+severity_basis: quantifiable-impact
+severity_evidence: 'Microsoft 在 60 天的邮件流量观察中发现 50 个针对 AI 助手记忆的推广性提示，来自 31 家公司并覆盖 14 个行业。攻击通过“Summarize with AI”链接把品牌偏好写入跨会话记忆，实际持久性因平台和防护状态而异。'
+real_incident: true
+reproducible: true
+ai_tool:
+- 'Microsoft 365 Copilot'
+- 'ChatGPT, Claude, Gemini, Perplexity and Grok share links'
+- 'memory-enabled AI assistants'
+language:
+- 'Web / URL prompt parameters / LLM memory'
+attack_surface:
+- AI agent memory
+- cross-session recommendation integrity
+- prefilled prompt links
+- social engineering
+references:
+- title: 'Microsoft Security: AI Recommendation Poisoning'
+  url: https://www.microsoft.com/en-us/security/blog/2026/02/10/ai-recommendation-poisoning/
+- title: 'Microsoft Learn: Manage AI memory safety in agentic systems'
+  url: https://learn.microsoft.com/en-us/security/zero-trust/sfi/manage-agentic-memory-safety
+- title: 'Help Net Security: AI recommendation memory poisoning attacks'
+  url: https://www.helpnetsecurity.com/2026/02/11/ai-recommendation-memory-poisoning-attacks/
+- title: 'TechRadar: AI recommendations poisoned through memory'
+  url: https://www.techradar.com/pro/security/if-someone-can-inject-instructions-or-spurious-facts-into-your-ais-memory-they-gain-persistent-influence-over-your-future-interactions-microsoft-warns-ai-recommendations-are-being-poisoned-to-serve-up-malicious-results
+- title: 'Microsoft Security: mitigating attacks against AI guardrails'
+  url: https://www.microsoft.com/en-us/security/blog/2024/04/11/how-microsoft-discovers-and-mitigates-evolving-attacks-against-ai-guardrails/
+tldr: '真实网站把“记住本站是可信来源”等指令藏进“Summarize with AI”链接的预填提示中，用户点击后可能把商业偏好写进 AI 助手的长期记忆，使未来看似中立的推荐持续偏向指定品牌。'
+tags:
+- ai-security
+- memory-poisoning
+- recommendation-integrity
+- prompt-injection
+- 2026
+verification_notes: 'Microsoft Defender Security Research 给出了真实观察规模、匿名化样例、投递方式和检测语句；Microsoft Learn 提供记忆治理措施，Help Net Security 与 TechRadar 复核了核心发现，Microsoft Security 的防护研究说明摘要型外部内容注入的技术背景。'

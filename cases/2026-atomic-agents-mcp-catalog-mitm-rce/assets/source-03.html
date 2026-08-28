@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="defaultLanguage" content="en">
+    <meta name="availableLanguages"
+          content="en, es, fr, ja, pt_BR, uk, el, de, zh_Hans, zh_Hant, ru, he, eo, ko">
+    <title>atomic-agents-stack · PyPI</title>
+    <meta name="description"
+          content="Spec + reference implementation for vault-native, multi-runtime AI agents">
+    <link rel="stylesheet"
+          href="/static/css/warehouse-ltr.ed752148.css">
+    <link rel="stylesheet"
+          href="/static/css/fontawesome.94176253.css">
+    <link rel="stylesheet"
+          href="/static/css/fonts.3b5d1a1c.css">
+    <noscript>
+      <link rel="stylesheet"
+            href="/static/css/noscript.0673c9ea.css">
+    </noscript>
+    <link rel="icon"
+          href="/static/images/favicon.35549fe8.ico"
+          type="image/x-icon">
+    <link rel="alternate"
+          type="application/rss+xml"
+          title="RSS: 40 latest updates"
+          href="/rss/updates.xml">
+    <link rel="alternate"
+          type="application/rss+xml"
+          title="RSS: 40 newest packages"
+          href="/rss/packages.xml">
+<link rel="alternate"
+        type="application/rss+xml"
+        title="RSS: latest releases for atomic-agents-stack"
+        href="/rss/project/atomic-agents-stack/releases.xml">      <link rel="canonical" href="https://pypi.org/project/atomic-agents-stack/">
+    <meta property="og:url"
+          content="https://pypi.org/project/atomic-agents-stack/1.1.0/">
+    <meta property="og:site_name" content="PyPI">
+    <meta property="og:type" content="website">
+<meta property="og:image" content="https://pypi.org/static/images/og-card.00947198.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PyPI, the Python Package Index">
+  <meta name="twitter:image:alt" content="PyPI, the Python Package Index">
+  <meta name="twitter:card" content="summary_large_image">    <meta property="og:title"
+          content="atomic-agents-stack">
+    <meta property="og:description" content="Spec + reference implementation for vault-native, multi-runtime AI agents">
+<meta name="source-commit" content="6dda362f94296a0b2113746f8a6743f5c44c25cc">    <link rel="search"
+          type="application/opensearchdescription+xml"
+          title="PyPI"
+          href="/opensearch.xml">
+    <script defer src="/static/js/warehouse.efdbdec3.js">
+    </script>
+  <script src="/static/js/utils/mathjax-config.e569c56a.js"></script>
+  <script async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"
+          integrity="sha256-1CldwzdEg2k1wTmf7s5RWVd7NMXI/7nxxjJM2C4DqII="
+          crossorigin="anonymous"></script>
+      <script src="/static/js/utils/plausible-init.f60de74f.js"></script>
+      <script async
+              src="https://analytics.python.org/js/pa-Z-QYGvOKHwfKWak0xljXn.js"></script>
+    <script async
+            src="https://media.ethicalads.io/media/client/v1.4.0/ethicalads.min.js"
+            integrity="sha256-U3hKDidudIaxBDEzwGJApJgPEf2mWk6cfMWghrAa6i0= sha384-UcmsCqcNRSLW/dV3Lo1oCi2/VaurXbib6p4HyUEOeIa/4OpsrnucrugAefzVZJfI sha512-q4t1L4xEjGV2R4hzqCa41P8jrgFUS8xTb8rdNv4FGvw7FpydVj/kkxBJHOiaoxHa8olCcx1Slk9K+3sNbsM4ug=="
+            crossorigin="anonymous"></script>
+  </head>
+  <body data-controller="viewport-toggle">
+      <!-- Accessibility: this link should always be the first piece of content inside the body-->
+      <a href="#content" class="skip-to-content">Skip to main content</a>
+      <button type="button"
+              class="button button--primary button--switch-to-mobile hidden"
+              data-viewport-toggle-target="switchToMobile"
+              data-action="viewport-toggle#switchToMobile">Switch to mobile version</button>
+      <div id="sticky-notifications" class="stick-to-top js-stick-to-top">
+        <!-- Add browser warning. Will show for ie9 and below -->
+        <!--[if IE]>
+      <div class="notification-bar notification-bar--warning" role="status">
+        <div class="notification-bar__container">
+          <span class="notification-bar__icon">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            <span class="sr-only">Warning</span>
+          </span>
+          <span class="notification-bar__message">You are using an unsupported browser, upgrade to a newer version.</span>
+        </div>
+      </div>
+      <![endif]-->
+        <noscript>
+          <div class="notification-bar notification-bar--warning" role="status">
+            <div class="notification-bar__container">
+              <span class="notification-bar__icon">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                <span class="sr-only">Warning</span>
+              </span>
+              <span class="notification-bar__message">Some features may not work without JavaScript. Please try enabling it if you encounter problems.</span>
+            </div>
+          </div>
+        </noscript>
+<div data-html-include="/_includes/unauthed/notification-banners/"></div>    </div>
+<div data-html-include="/_includes/unauthed/flash-messages/"></div><div data-html-include="/_includes/authed/session-notifications/"></div><header class="site-header ">
+  <div class="site-container">
+    <div class="split-layout">
+        <div class="split-layout">
+          <div>
+            <a class="site-header__logo" href="/">
+              <img alt="PyPI"
+                   src="/static/images/logo-small.0e0855d0.svg">
+            </a>
+          </div>
+          <form class="search-form search-form--primary"
+                action="/search/"
+                role="search">
+            <label for="search" class="sr-only">Search PyPI</label>
+            <input id="search"
+                   class="search-form__search"
+                   type="text"
+                   name="q"
+                   placeholder="Type '/' to search projects"
+                   value=""
+                   autocomplete="off"
+                   autocapitalize="off"
+                   spellcheck="false"
+                   data-controller="search-focus"
+                   data-action="keydown@window->search-focus#focusSearchField"
+                   data-search-focus-target="searchField">
+            <button type="submit" class="search-form__button">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              <span class="sr-only">Search</span>
+            </button>
+          </form>
+        </div>
+<div data-html-include="/_includes/authed/current-user-indicator/">        <div id="user-indicator"
+       class="horizontal-menu horizontal-menu--light horizontal-menu--tall">
+    <nav class="horizontal-menu horizontal-menu--light horizontal-menu--tall hide-on-tablet"
+         aria-label="Main navigation">
+      <ul>
+        <li class="horizontal-menu__item">
+          <a href="/help/" class="horizontal-menu__link">Help</a>
+        </li>
+        <li class="horizontal-menu__item">
+          <a href="https://docs.pypi.org/" class="horizontal-menu__link">Docs</a>
+        </li>
+        <li class="horizontal-menu__item">
+          <a href="/sponsors/"
+             class="horizontal-menu__link">Sponsors</a>
+        </li>
+        <li class="horizontal-menu__item">
+          <a href="/account/login/?next=https%3A%2F%2Fpypi.org%2Fproject%2Fatomic-agents-stack%2F1.1.0%2F" class="horizontal-menu__link">Log in</a>
+        </li>
+        <li class="horizontal-menu__item">
+          <a href="/account/register/"
+             class="horizontal-menu__link">Register</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="dropdown dropdown--on-menu hidden show-on-tablet"
+         aria-label="Main navigation">
+      <button type="button"
+              class="horizontal-menu__link dropdown__trigger"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-label="View menu">
+Menu<span class="dropdown__trigger-caret"><i class="fa fa-caret-down" aria-hidden="true"></i></span>      </button>
+      <ul class="dropdown__content"
+          aria-hidden="true"
+          aria-label="Main menu">
+        <li>
+          <a class="dropdown__link" href="/help/">Help</a>
+        </li>
+        <li>
+          <a class="dropdown__link" href="https://docs.pypi.org/">Docs</a>
+        </li>
+        <li>
+          <a class="dropdown__link" href="/sponsors/">Sponsors</a>
+        </li>
+        <li>
+          <a class="dropdown__link" href="/account/login/?next=https%3A%2F%2Fpypi.org%2Fproject%2Fatomic-agents-stack%2F1.1.0%2F">Log in</a>
+        </li>
+        <li>
+          <a class="dropdown__link"
+             href="/account/register/">Register</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>  </div>
+</div>
+</header>
+  <div class="mobile-search">
+    <form class="search-form search-form--fullwidth"
+          action="/search/"
+          role="search">
+      <label for="mobile-search" class="sr-only">Search PyPI</label>
+      <input id="mobile-search"
+             class="search-form__search"
+             type="text"
+             name="q"
+             placeholder="Search projects"
+             value=""
+             autocomplete="off"
+             autocapitalize="off"
+             spellcheck="false">
+      
+      <button type="submit" class="search-form__button">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <span class="sr-only">Search</span>
+      </button>
+    </form>
+  </div>
+<main id="content">
+<div class="banner  banner--project">
+  <div class="project-header">
+    <h1 class="project-header__name">atomic-agents-stack 1.1.0</h1>
+      <p class="project-header__summary">Spec + reference implementation for vault-native, multi-runtime AI agents</p>
+      <div data-controller="clipboard"
+           data-clipboard-plausible-event-value="Copy Project Install Command">
+        <p class="project-header__pip-instructions">
+          <span id="pip-command" data-clipboard-target="source">pip install atomic-agents-stack==1.1.0</span>
+          <button type="button"
+                  class="copy-tooltip copy-tooltip-n"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+            <i class="fa fa-copy" aria-hidden="true"></i>
+            <span class="sr-only">Copy PIP instructions</span>
+          </button>
+        </p>
+      </div>
+  </div>
+</div><div data-html-include="/_includes/authed/administer-project-include/atomic-agents-stack"></div>  <div data-controller="project-tabs" class="project-tabs">
+<div class="horizontal-section horizontal-section--grey horizontal-section--no-padding">
+  <div class="site-container">
+    <nav class="project-tabs__tabs"
+         aria-label="Navigation for atomic-agents-stack">
+      <ul class="project-tabs__list" role="tablist">
+        <li role="presentation">
+          <a id="description-tab"
+             href="#description"
+             role="tab"
+             class="project-tabs__tab project-tabs__tab--is-active"
+             aria-selected="true"
+             aria-controls="description"
+             tabindex="0"
+             data-project-tabs-target="tab"
+             data-action="project-tabs#tabClick keydown->project-tabs#tabKeydown"
+             aria-label="Project description. Focus will be moved to the description.">
+            <span>
+              <i class="fa-regular fa-rectangle-list" aria-hidden="true"></i>
+Description            </span>
+          </a>
+        </li>
+          <li role="presentation">
+            <a id="files-tab"
+               href="#files"
+               role="tab"
+               class="project-tabs__tab"
+               aria-selected="false"
+               aria-controls="files"
+               tabindex="-1"
+               data-project-tabs-target="tab"
+               data-action="project-tabs#tabClick keydown->project-tabs#tabKeydown"
+               aria-label="Files. Focus will be moved to the project files.">
+              <span>
+                <i class="fa-regular fa-circle-down" aria-hidden="true"></i>
+Download files              </span>
+            </a>
+          </li>
+        <li role="presentation">
+          <a id="history-tab"
+             href="#history"
+             role="tab"
+             class="project-tabs__tab"
+             aria-selected="false"
+             aria-controls="history"
+             tabindex="-1"
+             data-project-tabs-target="tab"
+             data-action="project-tabs#tabClick keydown->project-tabs#tabKeydown"
+             aria-label="Release history. Focus will be moved to the release history panel.">
+            <span>
+              <i class="fa fa-history" aria-hidden="true"></i>
+Release history            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>    <div class="site-container">
+      <div class="project-tabs__panel">
+<div id="description"
+     data-project-tabs-target="content"
+     role="tabpanel"
+     aria-labelledby="description-tab"
+     tabindex="-1">
+  <div class="project-description">
+    <div class="project-description__main">
+        <div class="project-description__content"><h1><a href=#user-content-atomic-agents-stack id=user-content-atomic-agents-stack rel=nofollow></a>atomic-agents-stack</h1>
+<p><a href="https://github.com/dep0we/atomic-agents-stack/actions/workflows/test.yml" rel=nofollow><img src="https://pypi-camo.freetls.fastly.net/cb5980b5b934f301a870165ec5ac46aa0b892354/68747470733a2f2f6769746875622e636f6d2f6465703077652f61746f6d69632d6167656e74732d737461636b2f616374696f6e732f776f726b666c6f77732f746573742e796d6c2f62616467652e737667" alt=Tests></a>
+<a href="https://github.com/dep0we/atomic-agents-stack/blob/main/pyproject.toml" rel=nofollow><img src="https://pypi-camo.freetls.fastly.net/9c7abefbb22cd1ff18de9517a74202d53c57fae2/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e3131253230253743253230332e31322d626c7565" alt=Python></a>
+<a href="https://github.com/dep0we/atomic-agents-stack/blob/main/LICENSE" rel=nofollow><img src="https://pypi-camo.freetls.fastly.net/d74b889724a6b53a30744b633cba43dca8f56767/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d677265656e" alt=License></a>
+<a href="https://github.com/dep0we/atomic-agents-stack/blob/main/CHANGELOG.md" rel=nofollow><img src="https://pypi-camo.freetls.fastly.net/8a5dbbd8509c192e363fbd03bbadc04851ee4320/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f76657273696f6e2d312e302e302d626c7565" alt=Version></a>
+<a href="https://pypi.org/project/atomic-agents-stack/" rel=nofollow><img src="https://pypi-camo.freetls.fastly.net/84da4084d88ee604e78f3d2d7b712907930e0487/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707970692d61746f6d69632d2d6167656e74732d2d737461636b2d626c7565" alt=PyPI></a></p>
+<blockquote>
+<p><strong>AI agents that live in your folder, not someone else's database.</strong></p>
+</blockquote>
+<p>Vault-native, MIT-licensed, Markdown-source-of-truth.</p>
+<p align=center>
+  <picture>
+    
+    <img src="https://pypi-camo.freetls.fastly.net/197e3d7ecfc058f25de86c5b89057bb14f50acee/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f6465703077652f61746f6d69632d6167656e74732d737461636b2f6d61696e2f646f63732f6173736574732f61746f6d69632d6167656e74732d6865726f2e737667" alt="Atomic Agents at a glance: an agent is a folder of Markdown files (persona, tools, memory, wiki, journal, log); the runtime is stateless and wrapped in cost guardrails; every run writes a JSONL audit line, a typed memory note, and a journal entry. Same agent definition runs from cron, launchd, a Claude Code skill, or embedded in Python." width=100%>
+  </picture>
+</p>
+<p><strong>New here?</strong> Read the <a href="https://dep0we.github.io/atomic-agents-stack/" rel=nofollow>visual guide</a> — a 30-minute plain-English walkthrough of what an atomic agent is, how it runs, the safety layer, and the protocol-pattern scaling story.</p>
+<hr>
+<h2><a href=#user-content-why-this-exists id=user-content-why-this-exists rel=nofollow></a>Why this exists</h2>
+<p>Your AI agent's persona, memory, and audit trail live in someone else's database. The persona is locked inside Letta's hosted memory blocks. The memory is in Mem0's vector store. The audit trail is in LangSmith. The cost guardrails are in your wrapper code. Migrating any of it costs a project.</p>
+<p><strong>There's another shape: your agents live in your folder.</strong> Plain markdown files you can <code>cat</code>, <code>grep</code>, and <code>git diff</code>. No hosted service. No vendor that owns your agent's continuity. Switch laptops, you copy a folder.</p>
+<p>Concretely: INDEX.md routing layer. Persona in <code>IDENTITY.md</code> / <code>SOUL.md</code> / <code>USER.md</code>. Typed atomic notes. Audit trail as JSONL. Cost guardrails in markdown config. Crash-safe writes (temp + fsync + rename + parent-dir fsync — a power loss never leaves a half-written note). Schema migrations are scripts you read before running. The runtime is stateless — point cron, launchd, a Claude Code skill, or embedded Python at the folder.</p>
+<p>That's what <code>atomic-agents-stack</code> defines, in locked spec docs (plus active RFCs), with a Python reference implementation, 3,840+ tests, and a Caldwell sample shipping 5 days of real JSONL run logs, a rendered cost dashboard, evals across happy / edge / adversarial / decline categories, and a helper-pattern day showing ~76% cost savings vs. all-Opus.</p>
+<p>A home user with one agent and an org with a fleet experience the same framework — graceful, coherent, self-explanatory at every scale.</p>
+<p><strong>Files are the default — and the win. The same agent scales to a database substrate when an operator prefers that.</strong> Today: <code>LogBackend</code> ships filesystem (JSONL) + SQLite + Postgres reference impls; <code>LockBackend</code> ships filesystem + Redis; <code>AgentProfileBackend</code> + <code>ToolRegistryBackend</code> ship filesystem + SQLite. The remaining backends' Postgres adapters are planned (tracked at <a href="https://github.com/dep0we/atomic-agents-stack/issues/258" rel=nofollow>#258</a>) via the same protocol seams. <strong>The agent's persona doesn't change. The folder layout doesn't change. The audit trail doesn't change.</strong> Only what's registered as the backend for each protocol changes — one env var flips the backend (plus a connection URL for database substrates), no rewrite, no migration. The conformance test suite gates every substrate against the same contract, so the agent on your laptop and the agent running behind a fleet HTTP service answer the same way for the same inputs.</p>
+<hr>
+<h2><a href=#user-content-quick-start id=user-content-quick-start rel=nofollow></a>Quick start</h2>
+<p><strong>To use the framework</strong> (install from PyPI, then point it at your vault):</p>
+<pre lang=bash><span class=c1># Install</span>
+pip<span class=w> </span>install<span class=w> </span>atomic-agents-stack
+<span class=c1># or with uv:</span>
+uv<span class=w> </span>add<span class=w> </span>atomic-agents-stack
+
+<span class=c1># Configure your vault location (default: ~/docs/agents)</span>
+<span class=nb>export</span><span class=w> </span><span class=nv>ATOMIC_AGENTS_ROOT</span><span class=o>=</span>~/agents
+
+<span class=c1># Verify everything's wired up</span>
+atomic-agents<span class=w> </span>doctor
+
+<span class=c1># Run an agent (assuming you've created one; see the getting-started guide)</span>
+atomic-agents<span class=w> </span>run<span class=w> </span>myagent<span class=w> </span>--work-item<span class=w> </span><span class=s2>"What should I focus on today?"</span>
+
+<span class=c1># See the cost dashboard</span>
+python<span class=w> </span>-m<span class=w> </span>atomic_agents.dashboard<span class=w> </span>render
+open<span class=w> </span>~/agents/_dashboard/index.html
+</pre>
+<p><strong>To contribute or run the full test suite</strong> (clone + dev install):</p>
+<pre lang=bash>git<span class=w> </span>clone<span class=w> </span>https://github.com/dep0we/atomic-agents-stack.git
+<span class=nb>cd</span><span class=w> </span>atomic-agents-stack
+uv<span class=w> </span>sync
+uv<span class=w> </span>run<span class=w> </span>pytest
+</pre>
+<pre lang=python><span class=c1># Programmatic use — embed in your own Python app</span>
+<span class=kn>from</span><span class=w> </span><span class=nn>atomic_agents</span><span class=w> </span><span class=kn>import</span> <span class=n>AtomicAgent</span>
+
+<span class=n>agent</span> <span class=o>=</span> <span class=n>AtomicAgent</span><span class=p>(</span><span class=n>name</span><span class=o>=</span><span class=s2>"myagent"</span><span class=p>,</span> <span class=n>trigger</span><span class=o>=</span><span class=s2>"cron"</span><span class=p>)</span>
+<span class=n>response</span> <span class=o>=</span> <span class=n>agent</span><span class=o>.</span><span class=n>call</span><span class=p>(</span><span class=n>work_item</span><span class=o>=</span><span class=s2>"Daily morning brief"</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>response</span><span class=o>.</span><span class=n>text</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>"Cost: $</span><span class=si>{</span><span class=n>response</span><span class=o>.</span><span class=n>cost_usd</span><span class=si>:</span><span class=s2>.4f</span><span class=si>}</span><span class=s2>"</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>"Captures: </span><span class=si>{</span><span class=nb>len</span><span class=p>(</span><span class=n>response</span><span class=o>.</span><span class=n>captures</span><span class=p>)</span><span class=si>}</span><span class=s2>"</span><span class=p>)</span>
+</pre>
+<p>See <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/getting-started.md" rel=nofollow><code>docs/getting-started.md</code></a> for the 15-minute clone-to-running-agent walk-through and <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/programmatic.md" rel=nofollow><code>docs/deployment/programmatic.md</code></a> for the complete programmatic API + public exception table.</p>
+<hr>
+<h2><a href=#user-content-what-an-agent-looks-like id=user-content-what-an-agent-looks-like rel=nofollow></a>What an agent looks like</h2>
+<p>An <code>atomic-agents-stack</code> agent is a folder. Everything stateful is in plain text:</p>
+<pre><code>~/agents/myagent/
+├── persona/
+│   ├── IDENTITY.md          who I am, my mission, my scope
+│   ├── SOUL.md              personality, voice, how I evolve
+│   └── USER.md              about the operator, what they care about
+├── tools.md                 what I can read, write, and call
+├── model.md                 LLM + token budget + cost guardrails
+├── memory/                  typed atomic notes (feedback / decision / project / reference / user)
+│   ├── INDEX.md             always-loaded routing layer
+│   └── *.md                 one file per note
+├── wiki/                    distilled corpus (optional)
+├── journal/                 narrative episodic log
+│   └── YYYY-MM/YYYY-MM-DD.md
+└── log/                     audit trail (one JSONL line per run)
+    └── YYYY-MM/YYYY-MM-DD.jsonl
+</code></pre>
+<p>When the agent runs, it loads these files in a canonical order, assembles the system prompt, calls the LLM, extracts capture markers from the response, writes new atomic notes, appends to the journal, and logs the run as one JSONL line. The vault is the only persistent state. The runtime is stateless.</p>
+<p>For a complete worked example with real persona, memory, journal, evals, and a sample dashboard rendered from real log data, see <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/samples/caldwell/" rel=nofollow><code>docs/samples/caldwell/</code></a>.</p>
+<hr>
+<h2><a href=#user-content-current-limits id=user-content-current-limits rel=nofollow></a>Current limits</h2>
+<p>Honest about what isn't shipped or fully tested:</p>
+<ul>
+<li><strong>v1.0, single maintainer.</strong> At v1.0 the Protocol surface is stable per SemVer Major; breaking changes require a v2.0 bump. Minor releases add features without breaking existing agents.</li>
+<li><strong>macOS / Linux primary; Windows under-tested.</strong> <code>atomic_agents/_locks.py</code> uses POSIX <code>fcntl</code>. iOS can't run the runtime at all (Markdown vault files sync there fine; see <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/obsidian.md" rel=nofollow><code>docs/deployment/obsidian.md</code></a>).</li>
+<li><strong><code>MemoryBackend</code> + <code>LLMBackend</code> + <code>JudgeBackend</code> + <code>LockBackend</code> + <code>LogBackend</code> + <code>AgentProfileBackend</code> + <code>ToolRegistryBackend</code> + <code>MandateBackend</code> + <code>PolicyBackend</code> + <code>PersonaBackend</code> + <code>CorpusBackend</code> are shipped from the protocol roadmap.</strong> <code>MemoryBackend</code> ships a filesystem reference impl + operator override surface: <code>ATOMIC_AGENTS_MEMORY_BACKEND</code> env var (default <code>"filesystem"</code>) or <code>AtomicAgent(..., memory_backend=...)</code> kwarg select the backend; <code>get_default_memory_backend(agent_root)</code> is the public factory; unknown ids fail-fast at construction; operator override surface added in <a href="https://github.com/dep0we/atomic-agents-stack/issues/382" rel=nofollow>#382</a>. Four reference LLM backends (Anthropic, OpenAI direct via <code>OpenAICompatibleLLMBackend</code>, Moonshot via the same factory class, and Vertex Gemini via <code>VertexGeminiLLMBackend</code> with the optional <code>[vertex]</code> extra) register lazily on the first model lookup (not at module import — see spec/31); third-party Bedrock / vLLM-local backends can register without forking core. <code>LockBackend</code> ships filesystem + Redis reference impls; <code>LogBackend</code> ships filesystem + SQLite; <code>AgentProfileBackend</code> ships filesystem + SQLite (with JSON-based snapshot trio + <code>supports_skills</code> capability + Implementer contract for future Postgres / git / SaaS-database adapters); <code>ToolRegistryBackend</code> ships filesystem + SQLite (with hybrid metadata-in-SQL + handler-bodies-on-disk storage shape + <code>install</code> / <code>uninstall</code> capability flipped True on SQLite + cross-scope isolation enforced at the SQL layer + Implementer contract for future PyPI / git / company-internal-HTTP / SaaS-database adapters); <code>PolicyBackend</code> ships filesystem reference impl reading <code>&lt;project_root&gt;/policy.md</code> (markdown + embedded YAML), with cost-cap MIN composition, tool / MCP / model surfaces enforced by default after PR 4 (set <code>ATOMIC_AGENTS_POLICY_ENFORCE_NONCAP=false</code> to opt back into log-only mode), <code>policy_decision</code> audit event family with <code>decision_kind</code> / <code>axis</code> discriminators, and Implementer contract for future Postgres / SaaS / org-admin-console adapters. <code>PersonaBackend</code> ships filesystem reference impl at <code>&lt;scope_root&gt;/.personas/&lt;persona_id&gt;/{IDENTITY,SOUL,USER}.md</code> + <code>metadata.json</code>, with <code>persona.link.md</code> ownership trigger, snapshot trio nested under each persona's directory (<code>supports_snapshot=True</code>), <code>atomic-agents persona</code> CLI lifecycle, <code>AgentProfileBackend</code> composition that drops persona fields when externally owned, and Implementer contract for future Postgres / SaaS / git PersonaBackend adapters. <code>CorpusBackend</code> ships <code>FilesystemCorpusBackend</code> + <code>SQLiteCorpusBackend</code> with FTS5 reference impls; <code>&lt;agent_root&gt;/wiki/</code> + <code>&lt;agent_root&gt;/raw/</code> per-agent corpus; <code>render_index_summary(corpus)</code> Protocol method; page-count performance cliff WARN at 1000+ pages on <code>supports_full_text_search=False</code> filesystem (with the <code>ATOMIC_AGENTS_CORPUS_BACKEND=sqlite</code> remedy hint); <code>atomic-agents corpus</code> CLI; operator override via <code>ATOMIC_AGENTS_CORPUS_BACKEND</code> env var or <code>corpus_backend=</code> constructor kwarg; Implementer contract in spec/34. Org-scale deployments today can run filesystem + Redis + SQLite mixed (e.g., SQLite for logs + profiles + tools, Redis for locks); future Postgres adapters slot in via the same Protocol seams.</li>
+<li><strong>Cost guardrail <code>alert</code> action is log-backed today.</strong> The <code>alert_channel</code> field is parsed, but external dispatch (Telegram / email / webhook) is not wired up yet. Today's alerts go to the run log; the dashboard surfaces them visually. See <a href="https://github.com/dep0we/atomic-agents-stack/issues/70" rel=nofollow><code>#70</code></a>.</li>
+<li><strong>Cross-host locking is shipped via the <code>LockBackend</code> Protocol</strong> (<a href="https://github.com/dep0we/atomic-agents-stack/issues/60" rel=nofollow><code>#60</code></a> — locked at PR 4). Default filesystem backend preserves the pre-arc per-host POSIX <code>fcntl.flock</code> semantic for single-host deployments; operators on Cloud Run / Kubernetes / gizmo can opt into <code>RedisLockBackend</code> via <code>ATOMIC_AGENTS_LOCK_BACKEND=redis</code>. Cross-host correctness is now a Protocol-level concern, not an operator burden.</li>
+<li><strong><code>__all__</code> lags behind raised exceptions.</strong> A few public-facing exceptions are raised inside the package but not in <code>atomic_agents.__all__</code> yet (<a href="https://github.com/dep0we/atomic-agents-stack/issues/99" rel=nofollow><code>#99</code></a>); documented in <code>docs/deployment/programmatic.md</code>.</li>
+</ul>
+<hr>
+<h2><a href=#user-content-how-it-compares-to-alternatives id=user-content-how-it-compares-to-alternatives rel=nofollow></a>How it compares to alternatives</h2>
+<p>This is the slot in the AI-agent-tooling landscape <code>atomic-agents-stack</code> occupies, in narrow defensible claims rather than competitive sniping:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Atomic Agents</th>
+<th>Letta</th>
+<th>Mem0</th>
+<th>LangGraph + LangSmith</th>
+<th>Direct SDK + your scripts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source of truth for agent state</strong></td>
+<td>Markdown files in a folder you own</td>
+<td>Postgres-backed memory blocks (cloud or self-hosted Docker)</td>
+<td>Vector / structured memory store (cloud or OSS)</td>
+<td>Checkpointer + long-term store you wire in</td>
+<td>Whatever you build</td>
+</tr>
+<tr>
+<td><strong>Persona layer</strong></td>
+<td>Spec-defined <code>IDENTITY.md</code> / <code>SOUL.md</code> / <code>USER.md</code> files; promotion loop from memory</td>
+<td><code>persona</code> / <code>human</code> memory blocks</td>
+<td>Operator-defined memory</td>
+<td>Prompts + state schemas</td>
+<td>Prompts</td>
+</tr>
+<tr>
+<td><strong>License (core)</strong></td>
+<td>MIT</td>
+<td>Apache-2.0 (OSS); managed Letta Cloud also offered</td>
+<td>Apache-2.0 (OSS); managed Mem0 also offered</td>
+<td>MIT (LangGraph OSS); LangSmith is hosted</td>
+<td>Whatever</td>
+</tr>
+<tr>
+<td><strong>Required server / DB</strong></td>
+<td>None (just files + Python)</td>
+<td>Postgres recommended for production</td>
+<td>Vector store backend</td>
+<td>None for OSS; Postgres-style for <code>langgraph-checkpoint-postgres</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>Audit trail</strong></td>
+<td>JSONL per run with <code>parent_run_id</code> rollups; helper + delegate + tool + capture lines all link back</td>
+<td>Dashboards in Letta UI / cloud</td>
+<td>Mem0 dashboards</td>
+<td>LangSmith (hosted)</td>
+<td>Build it</td>
+</tr>
+<tr>
+<td><strong>Cost guardrails</strong></td>
+<td>First-class — daily / monthly caps, threshold warnings, fallback action, <code>critical=True</code> override, tree-cap across delegates</td>
+<td>Per their pricing model</td>
+<td>Per their pricing model</td>
+<td>Not built into core OSS</td>
+<td>Build it</td>
+</tr>
+<tr>
+<td><strong>Multi-agent coordination</strong></td>
+<td>Role × project cascade defined in spec/06</td>
+<td>Multi-agent shared memory blocks</td>
+<td>Agent-shared memory pools</td>
+<td>LangGraph: graph-based orchestration (more flexible)</td>
+<td>Build it</td>
+</tr>
+<tr>
+<td><strong>Numbered, locked spec</strong></td>
+<td>33 locked docs in <code>docs/spec/</code> (+ 5 RFCs/DRAFTs in progress)</td>
+<td>API + concept docs</td>
+<td>API + concept docs</td>
+<td>API reference + concept docs</td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>Reference runtime</strong></td>
+<td>Python, macOS / Linux primary</td>
+<td>Python (server) + multi-language clients</td>
+<td>Python (OSS) + multi-language clients</td>
+<td>Python + JavaScript</td>
+<td>Whatever</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where the alternatives win:</strong></p>
+<ul>
+<li><strong>Letta</strong> ships a polished hosted UX and multi-language clients; vault-only ships neither.</li>
+<li><strong>Mem0</strong> owns the embeddings-retrieval research; if memory quality is the bottleneck, look there first.</li>
+<li><strong>LangGraph</strong> wins on graph-shaped orchestration; <strong>LangSmith</strong> observability is broader than any single repo's audit trail can replicate.</li>
+<li><strong>Direct SDK</strong> wins when the problem is so domain-specific that any framework's structure is overhead.</li>
+</ul>
+<p><strong>Where Atomic Agents wins:</strong></p>
+<ul>
+<li><strong>Markdown-source-of-truth, human-editable.</strong> Operators can edit persona / tools / memory from any text editor or Obsidian without a vendor app.</li>
+<li><strong>No required server.</strong> The framework is "files + Python." A complete agent runs on a laptop with zero infrastructure.</li>
+<li><strong>Spec-level file layout.</strong> 33 numbered docs lock the contract (plus 5 RFCs/DRAFTs in progress); conformance is testable; alternate implementations are possible.</li>
+<li><strong>Crash-safe writes by default.</strong> <code>temp file + fsync + rename + parent-dir fsync</code> for every mutation; an interrupted run leaves recoverable artifacts, not corruption.</li>
+<li><strong>Cost story is structural, not bolted on.</strong> Daily / monthly caps + tree-cap for delegations + per-call cost reservation for helper batches + a <code>critical=True</code> override that's part of the API, not a per-vendor workaround.</li>
+</ul>
+<hr>
+<h2><a href=#user-content-the-spec-is-the-product id=user-content-the-spec-is-the-product rel=nofollow></a>The spec is the product</h2>
+<p><code>atomic-agents-stack</code> is a <strong>spec</strong> for vault-native AI agents, plus one <strong>reference implementation</strong> in Python. The spec is the central artifact; anyone can build agents to the spec without using this code.</p>
+<p>Start at <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/README.md" rel=nofollow><code>docs/README.md</code></a> for the spec entry point. The locked spec docs (plus active RFCs) in <a href="https://github.com/dep0we/atomic-agents-stack/tree/main/docs/spec/" rel=nofollow><code>docs/spec/</code></a> cover:</p>
+<ul>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/01-anatomy.md" rel=nofollow>01: Anatomy</a>: file layout, persona, memory, wiki, journal, log</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/02-atomic-memory.md" rel=nofollow>02: Atomic Memory</a>: Notes + Wiki + INDEX-driven recall</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/03-file-formats.md" rel=nofollow>03: File formats</a>: frontmatter schemas + filename conventions</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/04-runtime-assembly.md" rel=nofollow>04: Runtime assembly</a>: canonical load sequence</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/05-capture-rules.md" rel=nofollow>05: Capture rules</a>: when and how agents write to memory</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/06-multi-agent-projects.md" rel=nofollow>06: Multi-agent projects</a>: role x project cascade</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/07-research-foundations.md" rel=nofollow>07: Research foundations</a>: lineage and prior art</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/08-evaluation.md" rel=nofollow>08: Evaluation</a>: rubrics + LLM-as-judge framework</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/09-cost-observability.md" rel=nofollow>09: Cost &amp; observability</a>: pricing, dashboard, guardrails</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/10-helpers.md" rel=nofollow>10: Helpers</a>: cheap-LLM workers for transformation subtasks</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/11-tuning.md" rel=nofollow>11: Tuning</a>: eval-driven self-improvement</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/12-goals-and-intent.md" rel=nofollow>12: Goals &amp; intent</a>: goal-driven agents</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/13-research-integrity.md" rel=nofollow>13: Research integrity</a>: citations + factual accuracy</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/tree/main/docs/spec/" rel=nofollow>14-19</a>: capture markers, delegation, dreams, skills, MCP, alternative-runtime contracts</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/20-memory-backend.md" rel=nofollow>20: Memory backend protocol</a>: the protocol-pattern moat; <code>ATOMIC_AGENTS_MEMORY_BACKEND</code> env var + <code>memory_backend=</code> kwarg + <code>get_default_memory_backend</code> factory + operator override surface (#382)</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/21-lock-backend.md" rel=nofollow>21: Lock backend protocol</a>: multi-host lock primitive; filesystem + Redis reference impls</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/22-log-backend.md" rel=nofollow>22: Log backend protocol</a>: JSONL + SQLite reference impls; indexed query / aggregate / retention</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/24-agent-profile-backend.md" rel=nofollow>24: AgentProfile backend protocol</a>: agent registry primitive; filesystem + SQLite reference impls</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/25-tool-registry-backend.md" rel=nofollow>25: ToolRegistry backend protocol</a>: tool catalog primitive; install / uninstall capability</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/26-cascade-bundle.md" rel=nofollow>26: Cascade bundle</a>: pre-rendered cascade for skill-mode loads (DRAFT)</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/27-doctor.md" rel=nofollow>27: Doctor</a>: preflight verification</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/28-judge-layer.md" rel=nofollow>28: Judge layer</a>: pre-action validation; ESCALATE + REVISE state machines</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/29-mandates.md" rel=nofollow>29: Mandates</a>: durable revocable scoped authority; reservation pattern + crash recovery</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/30-responsibility-audit.md" rel=nofollow>30: Responsibility audit</a>: per-action accountability trail (DRAFT)</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/31-llm-backend.md" rel=nofollow>31: LLM backend protocol</a>: provider routing; Anthropic + OpenAI + Moonshot + Vertex Gemini reference impls</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/32-policy-backend.md" rel=nofollow>32: Policy backend protocol</a>: fleet-wide <code>policy.md</code>; cost-cap MIN composition + allowlist enforcement</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/33-persona-backend.md" rel=nofollow>33: PersonaBackend Protocol</a>: persona ownership, snapshot/restore, <code>persona.link.md</code> format</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/34-corpus-backend.md" rel=nofollow>34: CorpusBackend Protocol</a>: wiki/raw corpus protocol; filesystem + SQLite (FTS5) reference impls; GB-scale indexed full-text search</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/35-init-wizard.md" rel=nofollow>35: init wizard</a>: <code>atomic-agents init</code> on-ramp; template scaffolding + Add-to-it merge; CI-friendly <code>--from-template</code> (RFC)</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/36-mcp-server-registry-backend.md" rel=nofollow>36: MCPServerRegistryBackend Protocol</a>: MCP server catalog + install/uninstall; <code>FilesystemMCPServerRegistryBackend</code> + <code>HTTPMCPServerRegistryBackend</code> reference impls with tier-1/2/3 capability negotiation; <code>atomic-agents mcp-registry</code> CLI (LOCKED, PR 5 of 5 v1.0; amended post-v1.0 for GHSA-xhcr-cqfr-m3hv — HTTP scheme gate + MCPClientPool spawn allowlist)</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/37-serve.md" rel=nofollow>37: atomic-agents serve</a>: thin HTTP wrapper exposing <code>agent.call()</code> over four routes; Cloud Run / GKE / Fly.io / Render; identity header pass-through; DRAFT (#342)</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/38-secret-backend.md" rel=nofollow>38: SecretBackend Protocol</a>: credential resolution abstraction; <code>FilesystemSecretBackend</code> (env → Keychain → keys.json) + <code>GCPSecretManagerBackend</code>; <code>atomic-agents secrets</code> CLI; LOCKED (#340)</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/39-otel-export.md" rel=nofollow>39: OpenTelemetry trace export</a>: off-by-default tracing seam; <code>atomic_agents.call</code> parent span with cost/token/outcome attributes; <code>[otel]</code> optional extra; OTLP/HTTP exporter only (no gRPC); DRAFT (#341 PR 1)</li>
+</ul>
+<p>Each spec doc is locked when the implementation matches and tests pass. Spec changes that imply implementation changes get filed as GitHub issues. <strong>Spec docs separate shipped behavior from explicit future / deferred boundaries</strong> — sections that describe behavior not yet implemented are explicitly marked as such, not silently aspirational.</p>
+<hr>
+<h2><a href=#user-content-backend-protocols--the-scaling-story id=user-content-backend-protocols--the-scaling-story rel=nofollow></a>Backend protocols — the scaling story</h2>
+<p>The framework is moving toward swappable backends layer by layer. The shape: a Python <code>Protocol</code> for each primitive that touches storage, a filesystem-default implementation, capability advertisement, and a conformance test suite. Same agent definitions, same <code>call()</code> flow, same audit trail — different backends registered.</p>
+<table>
+<thead>
+<tr>
+<th>Backend</th>
+<th>Status</th>
+<th>What it does</th>
+<th>Spec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MemoryBackend</code></td>
+<td>✅ Shipped</td>
+<td>Notes + Wiki + INDEX storage; filesystem default</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/20-memory-backend.md" rel=nofollow><code>spec/20</code></a></td>
+</tr>
+<tr>
+<td><code>LLMBackend</code></td>
+<td>✅ Shipped</td>
+<td>Provider routing; Anthropic + OpenAI + Moonshot + Vertex Gemini reference impls</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/31-llm-backend.md" rel=nofollow><code>spec/31</code></a></td>
+</tr>
+<tr>
+<td><code>JudgeBackend</code></td>
+<td>✅ Shipped</td>
+<td>Pre-action validation; <code>PolicyJudge</code> (rules) + <code>LLMJudgeBackend</code> reference impls; ESCALATE + REVISE state machines</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/28-judge-layer.md" rel=nofollow><code>spec/28</code></a></td>
+</tr>
+<tr>
+<td><code>LockBackend</code></td>
+<td>✅ Shipped</td>
+<td>Filesystem (<code>fcntl.flock</code>) + Redis reference impls; closes the multi-host cliff for Cloud Run / Kubernetes</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/21-lock-backend.md" rel=nofollow><code>spec/21</code></a></td>
+</tr>
+<tr>
+<td><code>LogBackend</code></td>
+<td>✅ Shipped</td>
+<td>Filesystem (JSONL) + SQLite reference impls; indexed query/aggregate/retention; closes the dashboard-perf cliff</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/22-log-backend.md" rel=nofollow><code>spec/22</code></a></td>
+</tr>
+<tr>
+<td><code>AgentProfileBackend</code></td>
+<td>✅ Shipped</td>
+<td>Filesystem + SQLite reference impls; JSON snapshot trio; closes the SaaS-shape cliff for DB-backed agent registries</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/24-agent-profile-backend.md" rel=nofollow><code>spec/24</code></a></td>
+</tr>
+<tr>
+<td><code>ToolRegistryBackend</code></td>
+<td>✅ Shipped</td>
+<td>Filesystem + SQLite reference impls; hybrid metadata-in-SQL + handler-bodies-on-disk; install / uninstall capability</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/25-tool-registry-backend.md" rel=nofollow><code>spec/25</code></a></td>
+</tr>
+<tr>
+<td><code>MandateBackend</code></td>
+<td>✅ Shipped</td>
+<td>Filesystem reference impl; <code>MandateCheck</code> specialist + reservation pattern + crash recovery; closes the durable-authorization cliff</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/29-mandates.md" rel=nofollow><code>spec/29</code></a></td>
+</tr>
+<tr>
+<td><code>PolicyBackend</code></td>
+<td>✅ Shipped</td>
+<td>Filesystem reference impl (<code>policy.md</code> at project root); cost-cap MIN composition + tool / MCP / model surfaces enforced by default (PR 4 flag flip); unified <code>policy_decision</code> audit event family</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/32-policy-backend.md" rel=nofollow><code>spec/32</code></a></td>
+</tr>
+<tr>
+<td><code>PersonaBackend</code></td>
+<td>✅ Shipped</td>
+<td>Filesystem reference impl at <code>&lt;scope_root&gt;/.personas/&lt;persona_id&gt;/</code>; <code>persona.link.md</code> ownership trigger; snapshot trio nested under each persona's directory; <code>atomic-agents persona</code> CLI; AgentProfile composition with migration-window restore event</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/33-persona-backend.md" rel=nofollow><code>spec/33</code></a></td>
+</tr>
+<tr>
+<td><code>CorpusBackend</code></td>
+<td>✅ Shipped</td>
+<td>Filesystem + SQLite (FTS5) reference impls; per-agent <code>wiki/</code> + <code>raw/</code>; <code>render_index_summary(corpus)</code> Protocol method; closes the GB-scale wiki cliff via O(log N) indexed full-text query</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/34-corpus-backend.md" rel=nofollow><code>spec/34</code></a></td>
+</tr>
+<tr>
+<td><code>MCPServerRegistryBackend</code></td>
+<td>✅ Shipped</td>
+<td>Filesystem + HTTP reference impls with tier-1/2/3 capability negotiation; install/uninstall write paths; <code>atomic-agents mcp-registry</code> CLI; HTTP scheme gate + spawn allowlist (GHSA-xhcr-cqfr-m3hv); closes the v1.0 Protocol surface</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/36-mcp-server-registry-backend.md" rel=nofollow><code>spec/36</code></a></td>
+</tr>
+<tr>
+<td><code>SecretBackend</code></td>
+<td>✅ Shipped (LOCKED, spec/38)</td>
+<td>Credential resolution abstraction; <code>FilesystemSecretBackend</code> (env → Keychain → keys.json) + <code>GCPSecretManagerBackend</code>; <code>atomic-agents secrets</code> CLI</td>
+<td><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/38-secret-backend.md" rel=nofollow><code>spec/38</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>v1 direction:</strong> a home user runs filesystem-everything today. An organization runs the same agent definitions over Postgres / Redis / SQLite-Datadog / behind an HTTP service. v1.0 is here: all 12 backend protocols shipped and locked, conformance suites pin the contracts. A thirteenth, <code>SecretBackend</code> (#340), shipped for v1.5 (both PRs merged, spec/38 LOCKED, Filesystem + GCP Secret Manager reference impls). See <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/architecture.md" rel=nofollow><code>docs/architecture.md</code></a> for the mental model, <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/TENSIONS.md" rel=nofollow><code>docs/TENSIONS.md</code></a> for architectural tensions this scaling story has to survive, and <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/ROADMAP.md" rel=nofollow><code>ROADMAP.md</code></a> for the full backlog beyond v1.0.</p>
+<hr>
+<h2><a href=#user-content-judge-layer-opt-in id=user-content-judge-layer-opt-in rel=nofollow></a>Judge layer (opt-in)</h2>
+<p>The <strong>judge layer</strong> is a pre-action validation surface. Before any side-effectful tool call executes, a separate <code>JudgeBackend</code> inspects a structured action proposal and returns ALLOW / BLOCK / REVISE / ESCALATE. Every judgment writes a JSONL audit event carrying the proposal hashes, the outcome, the policy version, and the judge's reason. ESCALATE pauses execution and writes a PENDING file to <code>&lt;agent_root&gt;/vault/escalations/</code> that an operator resolves by editing in any text editor. REVISE supports both judge-driven amendments (e.g., <em>"send this email but strip the attachment"</em>) and operator-driven amendments via an embedded <code>amendment:</code> YAML block on the PENDING file.</p>
+<p>The layer is <strong>fully opt-in</strong>. Existing deployments see no judge invocation until they drop a <code>judges.md</code> file in the agent root (or set <code>AGENT_JUDGE_ENABLED=1</code>). The default <code>failure_policy</code> is fail-closed (<code>block</code> for every exception type); cascade-aware project floors enforce a non-relaxable minimum across delegates per spec/28 §408.</p>
+<ul>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/judges-md.md" rel=nofollow><code>docs/deployment/judges-md.md</code></a>: operator runbook: every <code>judges.md</code> field, every error message, examples</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/spec/28-judge-layer.md" rel=nofollow><code>docs/spec/28-judge-layer.md</code></a>: full spec: ESCALATE + REVISE state machines, audit-event schema, conformance suite reference</li>
+</ul>
+<hr>
+<h2><a href=#user-content-deployment-shapes id=user-content-deployment-shapes rel=nofollow></a>Deployment shapes</h2>
+<p>For a full cloud reference deployment, see <a href="https://github.com/dep0we/atomic-agents-stack/tree/main/extras/gcp/" rel=nofollow><code>extras/gcp/</code></a>: two reference topologies — a stateless Cloud Run service (Cloud Run v2 does not support persistent disk; ephemeral state until managed backends ship) and a Compute Engine VM with a persistent ext4/xfs disk (stateful-today bridge). Both use IAP + Cloud Scheduler + Redis locks + Cloud Monitoring.</p>
+<p>Nine operator runbooks under <code>docs/deployment/</code> cover the common deployment paths. Pick the one that matches what you're doing:</p>
+<ul>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/obsidian.md" rel=nofollow><code>docs/deployment/obsidian.md</code></a>: running the framework against an Obsidian-synced vault: ignore patterns, <code>.versions/</code> trade-offs, sync race conditions, conflict copy recovery</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/programmatic.md" rel=nofollow><code>docs/deployment/programmatic.md</code></a>: embedding in Python: the <code>Agent</code> + <code>call()</code> public surface, the complete public exception table, three worked examples</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/disaster-recovery.md" rel=nofollow><code>docs/deployment/disaster-recovery.md</code></a>: symptom-organized runbook: stale locks, mid-run crashes, corrupted INDEX, migration rollback, memory write races</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/cost-guardrail-sizing.md" rel=nofollow><code>docs/deployment/cost-guardrail-sizing.md</code></a>: picking daily/monthly caps + cap action; seven role archetypes with recommended starting values</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/judges-md.md" rel=nofollow><code>docs/deployment/judges-md.md</code></a>: authoring <code>judges.md</code> to configure the judge layer: class policy, cascade-aware project floor, <code>failure_policy</code> shapes</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/serve.md" rel=nofollow><code>docs/deployment/serve.md</code></a>: deploying agents over HTTP with <code>atomic-agents serve</code>: Cloud Run / GKE / Fly.io / Render, identity-header pass-through, no-auth default, healthz/doctor probes</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/versioning.md" rel=nofollow><code>docs/deployment/versioning.md</code></a>: SemVer policy; what counts as Major / Minor / Patch</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/upgrading.md" rel=nofollow><code>docs/deployment/upgrading.md</code></a>: operator upgrade runbook + migration runner usage</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/release-runbook.md" rel=nofollow><code>docs/deployment/release-runbook.md</code></a>: maintainer-facing <code>/ship</code> runbook: two-mode workflow (PR-level vs. release cut), local gstack patch, operator manual surface check</li>
+</ul>
+<hr>
+<h2><a href=#user-content-whats-shipped id=user-content-whats-shipped rel=nofollow></a>What's shipped</h2>
+<p>The backend protocols table above covers the load-bearing capabilities. For per-version detail across every shipped runtime feature, CLI command, deployment runbook, and spec doc, see <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/CHANGELOG.md" rel=nofollow>CHANGELOG.md</a>.</p>
+<hr>
+<h2><a href=#user-content-versioning--upgrades id=user-content-versioning--upgrades rel=nofollow></a>Versioning &amp; upgrades</h2>
+<p><code>atomic-agents-stack</code> follows <a href="https://semver.org" rel=nofollow>SemVer</a> with project-specific rules for what counts as a Major / Minor / Patch change. <strong>Pre-1.0, Minor releases may contain breaking changes</strong> — always read the release notes before upgrading.</p>
+<ul>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/versioning.md" rel=nofollow><code>docs/deployment/versioning.md</code></a>: full SemVer policy</li>
+<li><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/upgrading.md" rel=nofollow><code>docs/deployment/upgrading.md</code></a>: operator upgrade runbook</li>
+</ul>
+<p>Every release lands as a <code>vX.Y.Z</code> git tag plus a GitHub Release with the CHANGELOG entry verbatim. Breaking changes get a <code>### BREAKING</code> callout in that entry.</p>
+<hr>
+<h2><a href=#user-content-configuration id=user-content-configuration rel=nofollow></a>Configuration</h2>
+<h3><a href=#user-content-atomic_agents_root id=user-content-atomic_agents_root rel=nofollow></a><code>ATOMIC_AGENTS_ROOT</code></h3>
+<p>Tells the framework where to find your agent vault. <strong>Default: <code>~/docs/agents</code></strong> (suitable for Obsidian-backed deployments; see <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/obsidian.md" rel=nofollow><code>docs/deployment/obsidian.md</code></a>).</p>
+<pre lang=bash><span class=nb>export</span><span class=w> </span><span class=nv>ATOMIC_AGENTS_ROOT</span><span class=o>=</span>/path/to/your/agents
+</pre>
+<h3><a href=#user-content-api-keys id=user-content-api-keys rel=nofollow></a>API keys</h3>
+<p>The framework looks for keys in this order:</p>
+<ol>
+<li><strong>Environment variables</strong> — <code>ATOMIC_AGENTS_ANTHROPIC_KEY</code>, <code>ANTHROPIC_API_KEY</code></li>
+<li><strong>macOS Keychain</strong> — <code>security add-generic-password -a $USER -s atomic-agents-anthropic -w sk-ant-...</code></li>
+<li><strong><code>~/.config/atomic_agents/keys.json</code></strong> (chmod 600):
+<pre lang=json><span class=p>{</span><span class=nt>"anthropic"</span><span class=p>:</span><span class=w> </span><span class=s2>"sk-ant-..."</span><span class=p>,</span><span class=w> </span><span class=nt>"openai"</span><span class=p>:</span><span class=w> </span><span class=s2>"sk-..."</span><span class=p>,</span><span class=w> </span><span class=nt>"moonshot"</span><span class=p>:</span><span class=w> </span><span class=s2>"..."</span><span class=p>}</span>
+</pre>
+</li>
+</ol>
+<p>Same pattern for OpenAI (<code>atomic-agents-openai</code>) and Moonshot (<code>atomic-agents-moonshot</code>). Run <code>uv run atomic-agents doctor</code> to verify which lookup chain found your keys.</p>
+<hr>
+<h2><a href=#user-content-repository-structure id=user-content-repository-structure rel=nofollow></a>Repository structure</h2>
+<ul>
+<li><code>atomic_agents/</code> — the Python package (runtime in <code>agent.py</code>; backend protocols in <code>memory/</code>, <code>_llm.py</code>, <code>_locks.py</code>, <code>_costs.py</code>, etc.; CLI in <code>cli.py</code>; preflight in <code>doctor.py</code>)</li>
+<li><code>tests/</code> 3,840+ tests collected, Python 3.11 + 3.12 matrix</li>
+<li><code>docs/</code>: <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/README.md" rel=nofollow>spec entry point</a>, <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/architecture.md" rel=nofollow><code>architecture.md</code></a>, <a href="https://github.com/dep0we/atomic-agents-stack/tree/main/docs/spec/" rel=nofollow><code>spec/</code></a> (33 locked docs + 5 RFCs/DRAFTs), <a href="https://github.com/dep0we/atomic-agents-stack/tree/main/docs/deployment/" rel=nofollow><code>deployment/</code></a> (9 operator runbooks), <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/samples/caldwell/" rel=nofollow><code>samples/caldwell/</code></a> (complete worked example), <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/GOVERNANCE.md" rel=nofollow><code>GOVERNANCE.md</code></a>, <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/TENSIONS.md" rel=nofollow><code>TENSIONS.md</code></a>, <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/methodology.md" rel=nofollow><code>methodology.md</code></a></li>
+<li><code>extras/</code> — operational templates (Claude Code skill wrappers, macOS LaunchAgent plists, cron examples, GCP Cloud Run + IAP reference deployment)</li>
+</ul>
+<hr>
+<h2><a href=#user-content-development id=user-content-development rel=nofollow></a>Development</h2>
+<pre lang=bash><span class=c1># Install dev dependencies</span>
+uv<span class=w> </span>sync<span class=w> </span>--extra<span class=w> </span>dev
+
+<span class=c1># Run the full test suite</span>
+uv<span class=w> </span>run<span class=w> </span>pytest
+
+<span class=c1># Run a specific test module</span>
+uv<span class=w> </span>run<span class=w> </span>pytest<span class=w> </span>tests/test_capture.py<span class=w> </span>-v
+</pre>
+<p>Before opening a PR, read <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/CLAUDE.md" rel=nofollow><code>CLAUDE.md</code></a> (the project's design ethos and 14 taste rules), <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/TENSIONS.md" rel=nofollow><code>docs/TENSIONS.md</code></a> (architectural tensions to protect when changing code), and <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/methodology.md" rel=nofollow><code>docs/methodology.md</code></a> (the practices that produced this codebase's quality). See <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/CONTRIBUTING.md" rel=nofollow><code>CONTRIBUTING.md</code></a> for the contribution flow.</p>
+<hr>
+<h2><a href=#user-content-license id=user-content-license rel=nofollow></a>License</h2>
+<p><a href="https://github.com/dep0we/atomic-agents-stack/blob/main/LICENSE" rel=nofollow>MIT</a>.</p>
+<hr>
+<h2><a href=#user-content-status id=user-content-status rel=nofollow></a>Status</h2>
+<p><strong>v1.0.0, stable.</strong> Core runtime stable. Twelve of twelve backend protocols shipped and locked at v1.0 (see the backend protocols table above); <code>MCPServerRegistryBackend</code> LOCKED at PR 5 v1.0. A thirteenth, <code>SecretBackend</code> (#340), shipped for v1.5 (both PRs merged, spec/38 LOCKED, Filesystem + GCP Secret Manager reference impls). The v1.0 Protocol surface is stable per SemVer Major. See <a href="https://github.com/dep0we/atomic-agents-stack/blob/main/docs/deployment/versioning.md" rel=nofollow><code>docs/deployment/versioning.md</code></a> for the breaking-change policy. Single-maintainer project; reference implementation anyone can use, fork, or extend.</p>
+</div>
+    </div>
+    <div class="project-description__sidebar">
+<div data-html-include="/_includes/authed/edit-project-button/atomic-agents-stack"></div><div class="sidebar-section">
+  <h2 class="sidebar-section__title">Project links</h2>
+    <div class="sidebar-section__data-block">
+      <ul class="sidebar-links">
+            <li>
+              <a class="sidebar-links__link" href="https://github.com/dep0we/atomic-agents-stack" rel="nofollow">  <i class="fas fa-home" aria-hidden="true"></i>Homepage</a>
+            </li>
+            <li>
+              <a class="sidebar-links__link" href="https://github.com/dep0we/atomic-agents-stack/issues" rel="nofollow">  <i class="fas fa-bug" aria-hidden="true"></i>Issues</a>
+            </li>
+            <li>
+              <a class="sidebar-links__link" href="https://github.com/dep0we/atomic-agents-stack" rel="nofollow">  <i class="fab fa-github" aria-hidden="true"></i>Repository</a>
+            </li>
+      </ul>
+    </div>
+</div><div class="sidebar-section">
+  <h2 class="sidebar-section__title">Key dates</h2>
+  <div class="sidebar-section__content sidebar-section__content--pypi">
+    <details class="sidebar-section__data-source">
+      <summary class="sidebar-section__data-source-label"
+               title="PyPI data">PyPI data</summary>
+      <div class="sidebar-section__data-source-description">Data sourced directly from PyPI's database.</div>
+    </details>
+    <div class="sidebar-section__data-block">
+      <ul class="unstyled">
+          <li>
+              <strong>Released:</strong> <time datetime="2026-06-10T14:29:15+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Jun 10, 2026
+  </time>
+          </li>
+      </ul>
+          <a class="badge badge--key-dates badge--warning"
+             href="/project/atomic-agents-stack/">
+Newer release available (2.0.0)          </a>
+    </div>
+  </div>
+</div><div class="sidebar-section">
+  <h2 class="sidebar-section__title">
+1 maintainer  </h2>
+  <div class="sidebar-section__content sidebar-section__content--pypi">
+    <details class="sidebar-section__data-source">
+      <summary class="sidebar-section__data-source-label"
+               title="PyPI data">PyPI data</summary>
+      <div class="sidebar-section__data-source-description">Data sourced directly from PyPI's database.</div>
+    </details>
+    <div class="sidebar-section__data-block">
+          <a class="sidebar-section__maintainer"
+     href="/user/dep0we/"
+     aria-label="dep0we">
+    <img src="https://pypi-camo.freetls.fastly.net/cd6d6279a98d9f2264fdf9749bfdcf6f91bf3ebc/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f64613761316638616265366463383661373032666234393636623961366563353f73697a653d3335"
+         height="35"
+         width="35"
+         alt="Avatar for dep0we from gravatar.com"
+         title="Avatar for dep0we from gravatar.com">
+    <span>dep0we</span>
+  </a>
+
+    </div>
+  </div>
+</div><div class="sidebar-section">
+  <h2 class="sidebar-section__title">Credits</h2>
+      <div class="sidebar-section__data-block">
+          <p>
+            <strong>
+Author:            </strong> atomic-agents-stack contributors
+          </p>
+      </div>
+</div><div class="sidebar-section">
+    <h2 class="sidebar-section__title">License</h2>
+    <div class="sidebar-section__data-block">
+      <p>MIT License (MIT)</p>
+    </div>
+</div><div class="sidebar-section">
+  <h2 class="sidebar-section__title">Requires</h2>
+  <div class="sidebar-section__data-block">
+    <p><strong>Python</strong> &gt;=3.11</p>
+  </div>
+</div><div class="sidebar-section">
+  <h2 class="sidebar-section__title">Provides Extra</h2>
+  <div class="sidebar-section__data-block">
+    <p>
+        <code>dev</code>
+        <code>gcp</code>
+        <code>http</code>
+        <code>openai</code>
+        <code>otel</code>
+        <code>postgres</code>
+        <code>redis</code>
+        <code>serve</code>
+        <code>validation</code>
+        <code>vertex</code>
+    </p>
+  </div>
+</div><div class="sidebar-section">
+  <h2 class="sidebar-section__title">Tags</h2>
+  <div class="sidebar-section__data-block">
+    <p class="tags">
+        <code>agents</code>
+        <code>ai</code>
+        <code>anthropic</code>
+        <code>claude</code>
+        <code>framework</code>
+        <code>llm</code>
+        <code>openai</code>
+    </p>
+  </div>
+</div><div class="sidebar-section">
+  <h2 class="sidebar-section__title">Classifiers</h2>
+  <div class="sidebar-section__data-block">
+    <ul class="sidebar-section__classifiers">
+        <li>
+          Development Status
+          <ul>
+              <li>
+                <a href="/search/?c=Development+Status+%3A%3A+5+-+Production%2FStable">
+                  5 - Production/Stable
+                </a>
+              </li>
+          </ul>
+        </li>
+        <li>
+          Intended Audience
+          <ul>
+              <li>
+                <a href="/search/?c=Intended+Audience+%3A%3A+Developers">
+                  Developers
+                </a>
+              </li>
+          </ul>
+        </li>
+        <li>
+          License
+          <ul>
+              <li>
+                <a href="/search/?c=License+%3A%3A+OSI+Approved+%3A%3A+MIT+License">
+                  OSI Approved :: MIT License
+                </a>
+              </li>
+          </ul>
+        </li>
+        <li>
+          Programming Language
+          <ul>
+              <li>
+                <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.11">
+                  Python :: 3.11
+                </a>
+              </li>
+              <li>
+                <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.12">
+                  Python :: 3.12
+                </a>
+              </li>
+          </ul>
+        </li>
+        <li>
+          Topic
+          <ul>
+              <li>
+                <a href="/search/?c=Topic+%3A%3A+Software+Development+%3A%3A+Libraries">
+                  Software Development :: Libraries
+                </a>
+              </li>
+          </ul>
+        </li>
+    </ul>
+  </div>
+</div><div class="sidebar-section">
+  <div class="sidebar-section"
+       data-ea-publisher="psf"
+       data-ea-type="psf"
+       data-ea-keywords="pypi-sidebar"></div>
+</div>
+<div class="sidebar-section">
+  <a class="button button--full-width button--warning"
+     href="https://pypi.org/project/atomic-agents-stack/submit-malware-report/"
+     rel="nofollow"
+     role="button">Report project as malware</a>
+</div>    </div>
+  </div>
+</div><div id="files"
+     data-project-tabs-target="content"
+     role="tabpanel"
+     aria-labelledby="files-tab"
+     tabindex="-1"
+     data-controller="filter-list">
+  <h2 class="page-title">Download files</h2>
+  <p>
+Download the file for your platform. If you're not sure which to choose, learn more about <a href="https://packaging.python.org/tutorials/installing-packages/" title="External link" target="_blank" rel="noopener">installing packages</a>.  </p>
+  <h3>
+Source Distribution</h3>
+      <div class="file"
+>
+      <div class="file__graphic">
+        <i class="far fa-file" aria-hidden="true"></i>
+      </div>
+      <div class="card file__card">
+        <a href="https://files.pythonhosted.org/packages/3d/4d/9a76e24d7972e3e18805eded392d9266d787f61f52d2d76c1dbbc31eb9dc/atomic_agents_stack-1.1.0.tar.gz">atomic_agents_stack-1.1.0.tar.gz</a>
+        (1.0 MB
+        <a href="#atomic_agents_stack-1.1.0.tar.gz"
+           data-project-tabs-target="tab"
+           data-action="project-tabs#tabClick">view details</a>)
+        <p class="file__meta">
+Uploaded <time datetime="2026-06-10T14:29:15+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Jun 10, 2026
+  </time><code>Source</code>        </p>
+      </div>
+    </div>
+
+  <h3>
+Built Distribution</h3>
+<p class="hidden initial-toggle-visibility">
+Filter files by name, interpreter, ABI, and platform.</p>
+<p>
+If you're not sure about the file name format, learn more about <a href="https://packaging.python.org/en/latest/specifications/binary-distribution-format/" title="External link" target="_blank" rel="noopener">wheel file names</a>.</p>
+<noscript>
+  <p class="initial-toggle-visibility">
+The dropdown lists show the available interpreters, ABIs, and platforms.  </p>
+  <p class="initial-toggle-visibility">
+Enable javascript to be able to filter the list of wheel files.  </p>
+</noscript>
+<p class="hidden initial-toggle-visibility" data-controller="clipboard">
+Copy a direct link to the current filters  <a class="hidden"
+     href="https://pypi.org/project/atomic-agents-stack/1.1.0/#files"
+     data-clipboard-target="source"
+     data-filter-list-target="url"></a>
+  <button type="button"
+          class="button button--small copy-tooltip copy-tooltip-w"
+          data-action="clipboard#copy"
+          data-clipboard-target="tooltip"
+          data-clipboard-tooltip-value="Copy to clipboard">
+Copy  </button>
+</p>
+<p class="hidden initial-toggle-visibility">
+  <span data-filter-list-target="summary"></span>
+</p>
+<div>
+  <div class="form-group hidden initial-toggle-visibility">
+    <label class="form-group__label sr-only" for="bdist-filenames-filter">File name</label>
+    <input class="form-group__field"
+           type="text"
+           id="bdist-filenames-filter"
+           name="bdist-filenames-filter"
+           placeholder="File name"
+           autocapitalize="none"
+           autocomplete=""
+           spellcheck="false"
+           data-action="filter-list#filter"
+           data-filter-list-target="filter"
+           data-filtered-source="filename">
+  </div>
+  <div class="col-grid">
+    <div class="form-group col-third">  <label class="form-group__label sr-only" for="bdist-tags-interpreters">Interpreter</label>
+  <select class="form-group__field"
+          id="bdist-tags-interpreters"
+          name="bdist-tags-interpreters"
+          data-action="filter-list#filter"
+          data-filter-list-target="filter"
+          data-filtered-source="interpreters">
+    <option selected value="">Interpreter</option>
+      <option               value="py3">py3</option>
+  </select>
+</div>
+    <div class="form-group col-third">  <label class="form-group__label sr-only" for="bdist-tags-abis">ABI</label>
+  <select class="form-group__field"
+          id="bdist-tags-abis"
+          name="bdist-tags-abis"
+          data-action="filter-list#filter"
+          data-filter-list-target="filter"
+          data-filtered-source="abis">
+    <option selected value="">ABI</option>
+      <option               value="none">none</option>
+  </select>
+</div>
+    <div class="form-group col-third">  <label class="form-group__label sr-only" for="bdist-tags-platforms">Platform</label>
+  <select class="form-group__field"
+          id="bdist-tags-platforms"
+          name="bdist-tags-platforms"
+          data-action="filter-list#filter"
+          data-filter-list-target="filter"
+          data-filtered-source="platforms">
+    <option selected value="">Platform</option>
+      <option               value="any">any</option>
+  </select>
+</div>
+  </div>
+</div>
+    <div class="file"
+ data-filter-list-target="item" data-filtered-target-filename='["atomic_agents_stack-1.1.0-py3-none-any.whl"]'  data-filtered-target-interpreters='["py3"]'  data-filtered-target-abis='["none"]'  data-filtered-target-platforms='["any"]' >
+      <div class="file__graphic">
+        <i class="far fa-file" aria-hidden="true"></i>
+      </div>
+      <div class="card file__card">
+        <a href="https://files.pythonhosted.org/packages/07/a7/3d71d50ac2af84a506939add78897a9cf32f121607bbc99b4375e2d39107/atomic_agents_stack-1.1.0-py3-none-any.whl">atomic_agents_stack-1.1.0-py3-none-any.whl</a>
+        (950.2 kB
+        <a href="#atomic_agents_stack-1.1.0-py3-none-any.whl"
+           data-project-tabs-target="tab"
+           data-action="project-tabs#tabClick">view details</a>)
+        <p class="file__meta">
+Uploaded <time datetime="2026-06-10T14:29:17+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Jun 10, 2026
+  </time><code>Python 3</code>        </p>
+      </div>
+    </div>
+
+</div>
+<div id="atomic_agents_stack-1.1.0.tar.gz"
+     data-project-tabs-target="content"
+     class="vertical-tabs__content"
+     role="tabpanel"
+     aria-labelledby="file-tab mobile-file-tab"
+     tabindex="-1">
+  <h2 class="page-title">File details</h2>
+  <p>
+    Details for the file <code>atomic_agents_stack-1.1.0.tar.gz</code>.
+  </p>
+  <h3>File metadata</h3>
+  <div>
+    <ul>
+      <li>
+        Download URL: <a href="https://files.pythonhosted.org/packages/3d/4d/9a76e24d7972e3e18805eded392d9266d787f61f52d2d76c1dbbc31eb9dc/atomic_agents_stack-1.1.0.tar.gz">atomic_agents_stack-1.1.0.tar.gz</a>
+      </li>
+      <li>Upload date: <time datetime="2026-06-10T14:29:15+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Jun 10, 2026
+  </time></li>
+      <li>
+Size: 1.0 MB      </li>
+      <li>Tags: Source</li>
+      <li>
+Uploaded using Trusted Publishing? No    </li>
+      <li>Uploaded via:         <code class="code-block">uv/0.11.19 {&#34;installer&#34;:{&#34;name&#34;:&#34;uv&#34;,&#34;version&#34;:&#34;0.11.19&#34;,&#34;subcommand&#34;:[&#34;publish&#34;]},&#34;python&#34;:null,&#34;implementation&#34;:{&#34;name&#34;:null,&#34;version&#34;:null},&#34;distro&#34;:{&#34;name&#34;:&#34;Ubuntu&#34;,&#34;version&#34;:&#34;24.04&#34;,&#34;id&#34;:&#34;noble&#34;,&#34;libc&#34;:null},&#34;system&#34;:{&#34;name&#34;:null,&#34;release&#34;:null},&#34;cpu&#34;:null,&#34;openssl_version&#34;:null,&#34;setuptools_version&#34;:null,&#34;rustc_version&#34;:null,&#34;ci&#34;:true}</code>
+</li>
+  </ul>
+</div>
+<h3>File hashes</h3>
+<div>
+  <table class="table table--hashes">
+    <caption class="sr-only">Hashes for atomic_agents_stack-1.1.0.tar.gz</caption>
+    <thead>
+      <tr>
+        <th scope="col">Algorithm</th>
+        <th scope="col">Hash digest</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-controller="clipboard">
+        <th scope="row">SHA256</th>
+        <td>
+          <code data-clipboard-target="source">06c687f5e3f3146cf7f46b760f7cbbed3f6c79ae11d1f338b3f2a25bec9b35df</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+      <tr data-controller="clipboard">
+        <th scope="row">MD5</th>
+        <td>
+          <code data-clipboard-target="source">89925d9d62dd069919c910d1e26a03b6</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+      <tr data-controller="clipboard">
+        <th scope="row">BLAKE2b-256</th>
+        <td>
+          <code data-clipboard-target="source">3d4d9a76e24d7972e3e18805eded392d9266d787f61f52d2d76c1dbbc31eb9dc</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+<a href="https://pip.pypa.io/en/stable/topics/secure-installs/#hash-checking-mode" title="External link" target="_blank" rel="noopener">See more details on using hashes here.</a></p>
+</div>
+</div><div id="atomic_agents_stack-1.1.0-py3-none-any.whl"
+     data-project-tabs-target="content"
+     class="vertical-tabs__content"
+     role="tabpanel"
+     aria-labelledby="file-tab mobile-file-tab"
+     tabindex="-1">
+  <h2 class="page-title">File details</h2>
+  <p>
+    Details for the file <code>atomic_agents_stack-1.1.0-py3-none-any.whl</code>.
+  </p>
+  <h3>File metadata</h3>
+  <div>
+    <ul>
+      <li>
+        Download URL: <a href="https://files.pythonhosted.org/packages/07/a7/3d71d50ac2af84a506939add78897a9cf32f121607bbc99b4375e2d39107/atomic_agents_stack-1.1.0-py3-none-any.whl">atomic_agents_stack-1.1.0-py3-none-any.whl</a>
+      </li>
+      <li>Upload date: <time datetime="2026-06-10T14:29:17+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Jun 10, 2026
+  </time></li>
+      <li>
+Size: 950.2 kB      </li>
+      <li>Tags: Python 3</li>
+      <li>
+Uploaded using Trusted Publishing? No    </li>
+      <li>Uploaded via:         <code class="code-block">uv/0.11.19 {&#34;installer&#34;:{&#34;name&#34;:&#34;uv&#34;,&#34;version&#34;:&#34;0.11.19&#34;,&#34;subcommand&#34;:[&#34;publish&#34;]},&#34;python&#34;:null,&#34;implementation&#34;:{&#34;name&#34;:null,&#34;version&#34;:null},&#34;distro&#34;:{&#34;name&#34;:&#34;Ubuntu&#34;,&#34;version&#34;:&#34;24.04&#34;,&#34;id&#34;:&#34;noble&#34;,&#34;libc&#34;:null},&#34;system&#34;:{&#34;name&#34;:null,&#34;release&#34;:null},&#34;cpu&#34;:null,&#34;openssl_version&#34;:null,&#34;setuptools_version&#34;:null,&#34;rustc_version&#34;:null,&#34;ci&#34;:true}</code>
+</li>
+  </ul>
+</div>
+<h3>File hashes</h3>
+<div>
+  <table class="table table--hashes">
+    <caption class="sr-only">Hashes for atomic_agents_stack-1.1.0-py3-none-any.whl</caption>
+    <thead>
+      <tr>
+        <th scope="col">Algorithm</th>
+        <th scope="col">Hash digest</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-controller="clipboard">
+        <th scope="row">SHA256</th>
+        <td>
+          <code data-clipboard-target="source">339ae5f38d8fafb7836ab1f2e17bdd854deadcb780e3b2211b4ea1ea19868b3d</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+      <tr data-controller="clipboard">
+        <th scope="row">MD5</th>
+        <td>
+          <code data-clipboard-target="source">54e4854eef2829a96e10e17e6c2d349d</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+      <tr data-controller="clipboard">
+        <th scope="row">BLAKE2b-256</th>
+        <td>
+          <code data-clipboard-target="source">07a73d71d50ac2af84a506939add78897a9cf32f121607bbc99b4375e2d39107</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+<a href="https://pip.pypa.io/en/stable/topics/secure-installs/#hash-checking-mode" title="External link" target="_blank" rel="noopener">See more details on using hashes here.</a></p>
+</div>
+</div><div id="history"
+     data-project-tabs-target="content"
+     role="tabpanel"
+     aria-labelledby="history-tab"
+     tabindex="-1">
+  <h2 class="page-title split-layout">
+    <span>Release history</span>
+    <span class="reset-text margin-top">
+      <a href="/help/#project-release-notifications">Release notifications</a> |
+      <a href="/rss/project/atomic-agents-stack/releases.xml">RSS feed <i class="fa fa-rss" aria-hidden="true"></i></a>
+    </span>
+  </h2>
+  <div class="release-timeline">
+      <div class="release release--latest">
+        <div class="release__meta">
+        </div>
+        <div class="release__graphic">
+            <div class="release__line"></div>
+            <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+        </div>
+        <a class="card release__card"
+           href="/project/atomic-agents-stack/2.0.0/">
+          <p class="release__version">
+            2.0.0
+          </p>
+          <p class="release__version-date"><time datetime="2026-06-21T19:46:08+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Jun 21, 2026
+  </time></p>
+        </a>
+      </div>
+      <div class="release release--current">
+        <div class="release__meta">
+            <span class="badge">This release</span>
+        </div>
+        <div class="release__graphic">
+            <div class="release__line"></div>
+            <img class="release__node" alt="" src="https://pypi.org/static/images/blue-cube.572a5bfb.svg">
+        </div>
+        <a class="card release__card"
+           href="/project/atomic-agents-stack/1.1.0/">
+          <p class="release__version">
+            1.1.0
+          </p>
+          <p class="release__version-date"><time datetime="2026-06-10T14:29:15+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Jun 10, 2026
+  </time></p>
+        </a>
+      </div>
+      <div class="release release--oldest">
+        <div class="release__meta">
+        </div>
+        <div class="release__graphic">
+            <div class="release__line"></div>
+            <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+        </div>
+        <a class="card release__card"
+           href="/project/atomic-agents-stack/1.0.0/">
+          <p class="release__version">
+            1.0.0
+          </p>
+          <p class="release__version-date"><time datetime="2026-06-05T16:56:12+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Jun 5, 2026
+  </time></p>
+        </a>
+      </div>
+  </div>
+</div>      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="footer__logo">
+    <img src="/static/images/white-cube.2351a86c.svg"
+         alt=""
+         class="-js-white-cube">
+  </div>
+  <div class="footer__menus">
+    <div class="footer__menu">
+      <h2>Help</h2>
+      <nav aria-label="Help navigation">
+        <ul>
+          <li>
+            <a href="https://packaging.python.org/tutorials/installing-packages/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Installing packages</a>
+          </li>
+          <li>
+            <a href="https://packaging.python.org/tutorials/packaging-projects/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Uploading packages</a>
+          </li>
+          <li>
+            <a href="https://packaging.python.org/"
+               title="External link"
+               target="_blank"
+               rel="noopener">User guide</a>
+          </li>
+          <li>
+            <a href="https://www.python.org/dev/peps/pep-0541/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Project name retention</a>
+          </li>
+          <li>
+            <a href="/help/">FAQs</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__menu">
+      <h2>About PyPI</h2>
+      <nav aria-label="About PyPI navigation">
+        <ul>
+          <li>
+            <a href="https://blog.pypi.org"
+               title="External link"
+               target="_blank"
+               rel="noopener">PyPI Blog</a>
+          </li>
+          <li>
+            <a href="https://dtdg.co/pypi"
+               title="External link"
+               target="_blank"
+               rel="noopener">Infrastructure dashboard</a>
+          </li>
+          <li>
+            <a href="/stats/">Statistics</a>
+          </li>
+          <li>
+            <a href="/trademarks/">Logos & trademarks</a>
+          </li>
+          <li>
+            <a href="/sponsors/">Our sponsors</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__menu">
+      <h2>Contributing to PyPI</h2>
+      <nav aria-label="How to contribute navigation">
+        <ul>
+          <li>
+            <a href="/help/#feedback">Bugs and feedback</a>
+          </li>
+          <li>
+            <a href="https://github.com/pypi/warehouse"
+               title="External link"
+               target="_blank"
+               rel="noopener">Contribute on GitHub</a>
+          </li>
+          <li>
+            <a href="https://hosted.weblate.org/projects/pypa/warehouse/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Translate PyPI</a>
+          </li>
+          <li>
+            <a href="/sponsors/">Sponsor PyPI</a>
+          </li>
+          <li>
+            <a href="https://github.com/pypi/warehouse/graphs/contributors"
+               title="External link"
+               target="_blank"
+               rel="noopener">Development credits</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__menu">
+      <h2>Using PyPI</h2>
+      <nav aria-label="Using PyPI navigation">
+        <ul>
+          <li>
+            <a href="https://policies.python.org/pypi.org/Terms-of-Service/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Terms of Service</a>
+          </li>
+          <li>
+            <a href="/security/">Report security issue</a>
+          </li>
+          <li>
+            <a href="https://policies.python.org/python.org/code-of-conduct/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Code of conduct</a>
+          </li>
+          <li>
+            <a href="https://policies.python.org/pypi.org/Privacy-Notice/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Privacy Notice</a>
+          </li>
+          <li>
+            <a href="https://policies.python.org/pypi.org/Acceptable-Use-Policy/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Acceptable Use Policy</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <hr class="footer__divider">
+  <div class="footer__text">
+      <p>
+Status:<a href="https://status.python.org/"
+   title="External link"
+   target="_blank"
+   rel="noopener">
+        <span data-statuspage-domain="https://2p66nmmycsj3.statuspage.io">all systems operational</span></a>
+    </p>
+  <p>
+Developed and maintained by the Python community, for the Python community.    <br>
+    <a href="https://donate.pypi.org">Donate today!</a>
+  </p>
+  <p>
+    "PyPI", "Python Package Index", and the blocks logos are registered <a href="/trademarks/">trademarks</a> of the <a href="https://www.python.org/psf-landing" target="_blank" rel="noopener">Python Software Foundation</a>.
+    <br>
+  </p>
+  <p>
+    © 2026 <a href="https://www.python.org/psf-landing/"
+    title="External link"
+    target="_blank"
+    rel="noopener">Python Software Foundation</a>
+    <br>
+    <a href="/sitemap/">Site map</a>
+  </p>
+    <p>
+Deployed from <a href="https://github.com/pypi/warehouse/commit/6dda362f94296a0b2113746f8a6743f5c44c25cc" title="External link" target="_blank" rel="noopener"><code>6dda362</code></a>    </p>
+</div>
+<div class="centered hide-on-desktop">
+  <button type="button"
+          class="button button--switch-to-desktop hidden"
+          data-viewport-toggle-target="switchToDesktop"
+          data-action="viewport-toggle#switchToDesktop">Switch to desktop version</button>
+</div>
+</footer>
+<div class="language-switcher">
+  <form action="/locale/">
+    <ul>
+        <li>
+          <button class="language-switcher__selected"                  name="locale_id"
+                  value="en"
+                  type="submit">English</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="es"
+                  type="submit">español</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="fr"
+                  type="submit">français</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="ja"
+                  type="submit">日本語</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="pt_BR"
+                  type="submit">português (Brasil)</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="uk"
+                  type="submit">українська</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="el"
+                  type="submit">Ελληνικά</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="de"
+                  type="submit">Deutsch</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="zh_Hans"
+                  type="submit">中文 (简体)</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="zh_Hant"
+                  type="submit">中文 (繁體)</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="ru"
+                  type="submit">русский</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="he"
+                  type="submit">עברית</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="eo"
+                  type="submit">Esperanto</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="ko"
+                  type="submit">한국어</button>
+        </li>
+    </ul>
+  </form>
+</div>
+<div class="sponsors">
+  <p class="sponsors__title">Supported by</p>
+  <div class="sponsors__divider"></div>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://aws.amazon.com/">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/ed7074cadad1a06f56bc520ad9bd3e00d0704c5b/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f6177732d77686974652d6c6f676f2d7443615473387a432e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">AWS</span>
+          <span class="sponsors__service">
+              Cloud computing and Security Sponsor
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://www.datadoghq.com/">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/8855f7c063a3bdb5b0ce8d91bfc50cf851cc5c51/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f64617461646f672d77686974652d6c6f676f2d6668644c4e666c6f2e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Datadog</span>
+          <span class="sponsors__service">
+              Monitoring
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://depot.dev">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/60f709d24f3e4d469f9adc77c65e2f5291a3d165/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f6465706f742d77686974652d6c6f676f2d7038506f476831302e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Depot</span>
+          <span class="sponsors__service">
+              Continuous Integration
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://www.fastly.com/">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/df6fe8829cbff2d7f668d98571df1fd011f36192/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f666173746c792d77686974652d6c6f676f2d65684d3077735f6f2e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Fastly</span>
+          <span class="sponsors__service">
+              CDN
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://careers.google.com/">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/420cc8cf360bac879e24c923b2f50ba7d1314fb0/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f676f6f676c652d77686974652d6c6f676f2d616734424e3774332e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Google</span>
+          <span class="sponsors__service">
+              Download Analytics
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://sentry.io/for/python/?utm_source=pypi&amp;utm_medium=paid-community&amp;utm_campaign=python-na-evergreen&amp;utm_content=static-ad-pypi-sponsor-learnmore">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/67af7117035e2345bacb5a82e9aa8b5b3e70701d/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f73656e7472792d77686974652d6c6f676f2d4a2d6b64742d706e2e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Sentry</span>
+          <span class="sponsors__service">
+              Error logging
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://statuspage.io">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/b611884ff90435a0575dbab7d9b0d3e60f136466/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f737461747573706167652d77686974652d6c6f676f2d5467476c6a4a2d502e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">StatusPage</span>
+          <span class="sponsors__service">
+              Status page
+          </span>
+        </a>
+</div></body>
+</html>

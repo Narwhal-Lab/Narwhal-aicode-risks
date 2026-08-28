@@ -1,0 +1,43 @@
+slug: 2026-taiwan-government-autonomous-ai-agent-attack
+title_en: Autonomous AI Agent Attack Against Taiwan Government Systems
+title_cn: 台湾政府系统遭自主 AI 代理持续攻击
+year: 2026
+disclosed: '2026-08-12'
+category: agent-risk
+severity: critical
+severity_basis: quantifiable-impact
+severity_evidence: The original investigation reported 21 systems, 85 accounts, more than 2,500 personnel records and a 160
+  MB archive; Taiwan's digital ministry separately confirmed an abnormal overseas-sourced campaign using manual and OpenClaw
+  methods.
+real_incident: true
+reproducible: false
+ai_tool:
+- Hermes
+- OpenClaw
+- multiple autonomous agents
+language:
+- Multiple
+attack_surface:
+- government internet-facing systems
+- credential theft
+- autonomous exploitation
+- data collection
+references:
+- title: The Register investigation
+  url: https://assets.theregister.com/2026/08/14/20269/?td=keepreading
+- title: The Guardian report
+  url: https://www.theguardian.com/technology/2026/aug/13/taiwan-ai-assisted-cyber-attacks-overseas
+- title: CNN report citing Taiwan MODA
+  url: https://keyt.com/news/money-and-business/cnn-business-consumer/2026/08/13/hackers-used-autonomous-ai-agents-to-attack-taiwan-is-this-the-future-of-cyberwarfare/
+- title: TechRadar technical report
+  url: https://www.techradar.com/pro/security/world-first-autonomous-end-to-end-ai-attack-against-taiwan-tied-to-chinese-hackers-and-the-scariest-part-is-that-it-was-fully-open-source
+- title: Tom's Hardware report
+  url: https://www.tomshardware.com/tech-industry/cyber-security/suspected-china-linked-hackers-used-ai-to-run-the-first-ever-end-to-end-autonomous-cyberattack-on-taiwans-government-israeli-firm-says-open-source-built-tool-continuously-devised-effective-hack-strategies-in-real-time
+tldr: 2026 年 7 月针对台湾政府的攻击把多个开源 AI 代理用于持续侦察、漏洞利用和数据整理；台湾数位主管部门确认了境外来源的异常攻击及 OpenClaw 使用，但具体规模数字主要来自安全公司调查。
+tags:
+- agent-risk
+- ai-security
+- hermes-and-openclaw-agent-tooling
+verification_notes: The original investigation reported 21 systems, 85 accounts, more than 2,500 personnel records and a 160
+  MB archive; Taiwan's digital ministry separately confirmed an abnormal overseas-sourced campaign using manual and OpenClaw
+  methods.

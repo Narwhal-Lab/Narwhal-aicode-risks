@@ -1,0 +1,41 @@
+slug: 2026-chrome-devtools-mcp-symlink-root-escape
+title_en: Chrome DevTools MCP Symlink Root Escape
+title_cn: Chrome DevTools MCP 符号链接越界读写
+year: 2026
+disclosed: '2026-06-15'
+category: code-vulns
+severity: medium
+severity_basis: cvss
+severity_evidence: The project advisory records CVSS 3.1 6.1 for CVE-2026-53766; versions 0.24.0 through 1.0.1 are affected
+  and 1.1.0 is fixed. OSV maps the advisory to the affected npm package.
+real_incident: true
+reproducible: true
+ai_tool:
+- Chrome DevTools MCP
+- AI coding agents
+language:
+- TypeScript
+attack_surface:
+- local file paths
+- symlink resolution
+- browser file upload and download
+references:
+- title: GitHub Security Advisory GHSA-8qf9-62x2-82pp
+  url: https://github.com/ChromeDevTools/chrome-devtools-mcp/security/advisories/GHSA-8qf9-62x2-82pp
+- title: OSV CVE-2026-53766 record
+  url: https://osv.dev/vulnerability/GHSA-8qf9-62x2-82pp
+- title: Chrome DevTools MCP 1.1.0 release
+  url: https://github.com/ChromeDevTools/chrome-devtools-mcp/releases/tag/chrome-devtools-mcp-v1.1.0
+- title: Chrome DevTools MCP project
+  url: https://github.com/ChromeDevTools/chrome-devtools-mcp
+- title: Chrome DevTools MCP changelog
+  url: https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/CHANGELOG.md
+tldr: Chrome DevTools MCP 仅按文本路径检查允许目录，工作区内的符号链接可把 AI 代理的文件上传或下载动作引向目录之外。
+tags:
+- ai-security
+- chrome-devtools-mcp
+- code-vulns
+verification_notes: The project advisory records CVSS 3.1 6.1 for CVE-2026-53766; versions 0.24.0 through 1.0.1 are affected
+  and 1.1.0 is fixed. OSV maps the advisory to the affected npm package.
+cve: CVE-2026-53766
+fixed_version: 1.1.0

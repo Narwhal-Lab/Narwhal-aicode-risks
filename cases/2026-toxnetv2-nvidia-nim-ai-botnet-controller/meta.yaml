@@ -1,0 +1,41 @@
+slug: 2026-toxnetv2-nvidia-nim-ai-botnet-controller
+title_en: ToxNetV2 NVIDIA NIM AI-Assisted Botnet Controller
+title_cn: ToxNetV2 将 NVIDIA NIM 接入僵尸网络控制回路
+year: 2026
+disclosed: '2026-08-25'
+category: domain-specific
+severity: high
+severity_basis: quantifiable-impact
+severity_evidence: Joe Security confirmed live malware code that connects an LLM to shell, file, SSH and deployment
+  actions; no CVE or public victim count exists.
+real_incident: true
+reproducible: true
+ai_tool:
+- NVIDIA NIM
+- z-ai/glm-5.2
+- ToxNetV2
+language:
+- C++
+- Linux AArch64
+attack_surface:
+- botnet controller
+- host telemetry
+- LLM action parser
+- operator approval queue
+references:
+- title: Joe Security technical analysis
+  url: https://www.joesecurity.org/blog/6764463444623599134
+- title: Cybersecurity News report
+  url: https://cybersecuritynews.com/toxnetv2-linux-botnet/
+- title: HackersRadar report
+  url: https://hackersradar.com/toxnetv2-linux-botnet-leverages-nvidia-ai-to-automate-attacks/
+- title: Cyber Press report
+  url: https://cyberpress.org/nim-powered-linux-botnet-emerges/
+- title: SecurityLab report
+  url: https://www.securitylab.lat/news/576531.php
+tldr: ToxNetV2 在 Linux 僵尸网络控制器中调用 NVIDIA NIM 的 GLM-5.2，把主机与网络遥测转成结构化行动建议，并在操作者批准后连接到 shell、文件写入、SSH 和编译部署能力。
+tags:
+- ai-security
+- malicious-use
+verification_notes: Joe Security confirmed live malware code that connects an LLM to shell, file, SSH and deployment
+  actions; no CVE or public victim count exists.

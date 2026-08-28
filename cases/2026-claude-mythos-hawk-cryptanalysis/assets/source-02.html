@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en-us" xml:lang="en-us">
+<head>
+    <meta charset="utf-8" />
+    <title>Post-Quantum Cryptography: Additional Digital Signature Schemes | CSRC</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="content-script-type" content="text/javascript" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="msapplication-config" content="/CSRC/Media/images/favicons/browserconfig.xml" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="google-site-verification" content="xbrnrVYDgLD-Bd64xHLCt4XsPXzUhQ-4lGMj4TdUUTA" />
+    
+
+        <meta name="description" content="Official comments on the&#160;Third Round Candidates should be submitted using the &#39;Submit Comment&#39; link for the appropriate algorithm. Comments from the pqc-forum Google group subscribers&#160;will also be forwarded to the pqc-forum Google group list. We will..." />
+
+    <!-- dcterms meta information -->
+    <meta name="dcterms.title" content="Round 3 Additional Signatures - Post-Quantum Cryptography: Additional Digital Signature Schemes | CSRC | CSRC" />
+    <meta name="dcterms.description" content="Official comments on the&#160;Third Round Candidates should be submitted using the &#39;Submit Comment&#39; link for the appropriate algorithm. Comments from the pqc-forum Google group subscribers&#160;will also be forwarded to the pqc-forum Google group list. We will..." />
+    <meta name="dcterms.creator" content="Computer Security Division, Information Technology Laboratory, National Institute of Standards and Technology, U.S. Department of Commerce" />
+    <meta name="dcterms.date.created" scheme="ISO8601" content="2022-08-29" />
+    <meta name="dcterms.date.reviewed" scheme="ISO8601" content="2026-07-29" />
+    <meta name="dcterms.language" scheme="DCTERMS.RFC1766" content="EN-US" />
+
+    <!-- Facebook OpenGraph Tags -->
+    <meta name="og:site_name" content="CSRC | NIST" />
+    <meta name="og:type" content="article" />
+    <meta name="og:url" content="https://csrc.nist.gov/projects/pqc-dig-sig/round-3-additional-signatures" />
+    <meta name="og:title" content="Round 3 Additional Signatures - Post-Quantum Cryptography: Additional Digital Signature Schemes | CSRC | CSRC" />
+    <meta name="og:description" content="Official comments on the&#160;Third Round Candidates should be submitted using the &#39;Submit Comment&#39; link for the appropriate algorithm. Comments from the pqc-forum Google group subscribers&#160;will also be forwarded to the pqc-forum Google group list. We will periodically post and update the comments received to the appropriate algorithm. &#160;  All relevant comments will be posted in their entirety and should not include PII&#160;information&#160;in the body of the email message.  Please refrain from using OFFICIAL COMMENT to ask administrative questions, which should be sent to pqc-comments@nist.gov.  The rationale for choosing the Round 3 Candidates is described in NIST IR 8610, Status Report on the Second Round of the Additional Digital Signature Schemes for the NIST Post-Quantum Cryptography Standardization Process.&#160;  The 9 candidates that will be in the 3rd round are:&#160;  Isogeny Signatures   	 		 			Algorithm 			Algorithm Information 			Submitters 			Comments 		 	 	 		 			SQIsign 			Website 			Marius A. Aardal 			Gora Adj..." />
+
+    <meta name="article:tag" content="digital signatures; post-quantum cryptography" />
+    <meta name="article:published_time" content="2022-08-29" />
+        <meta name="article:modified_time" content="2026-07-29" />
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/images/icons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="manifest" href="/images/icons/manifest.json" />
+    <link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#000000" />
+    <link href="/CSRC/Media/images/favicons/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+    <link href="/CSRC/Media/images/favicons/favicon.ico" type="image/x-icon" rel="icon" />
+    <link href="/dist/app.css" rel="stylesheet" />
+    
+    <!-- Highlight.js -->
+    <link href="/dist/highlight-js/github.css" rel="stylesheet" />
+    
+    <!-- USWDS Top -->
+    <link href="/dist/uswds/css/uswds.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/dist/uswds/js/uswds-init.min.js"></script>
+
+    <!-- reCAPTCHA v3 -->
+    <style>
+    .grecaptcha-badge {
+        visibility: hidden;
+    }
+    </style>
+
+    
+
+
+    <script async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=nist&subagency=csrc&pua=UA-66610693-15&yt=true&exts=xsd,xml,wav,mpg,mpeg,avi,rtf,webm,ogg,ogv,oga,map,otf,eot,svg,ttf,woff"></script>
+    <style id="antiClickjackCss">
+        body > * {
+            display: none !important;
+        }
+        #antiClickjack {
+            display: block !important;
+        }
+    </style>
+    <noscript>
+        <style id="antiClickjackNoScript">
+            body > * { display: block !important; }
+            #antiClickjack {
+                display: none !important;
+            }
+        </style>
+    </noscript>
+    <script type="text/javascript" id="antiClickjackScript">
+        if (self === top) {
+            // no clickjacking
+            var antiClickjack = document.getElementById("antiClickjackCss"); antiClickjack.parentNode.removeChild(antiClickjack);
+        } else {
+            setTimeout(tryForward(), 5000);
+        }
+        function tryForward() {
+            top.location = self.location;
+        }
+    </script>
+    <!-- Google tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TSQ0PLGJZP"></script> 
+    <script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());   gtag('config', 'G-TSQ0PLGJZP'); </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MZQC4NCJ');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZQC4NCJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="antiClickjack" style="display: none;">
+        <strong style="font-size: 1.6rem;">You are viewing this page in an unauthorized frame window.</strong>
+        <p>This is a potential security issue, you are being redirected to <a href="https://csrc.nist.gov">https://csrc.nist.gov</a>.</p>
+    </div>
+
+    <section
+    class="usa-banner"
+    aria-label="Official website of the United States government">
+    <div class="usa-accordion">
+        <header class="usa-banner__header">
+            <noscript>
+                <p style="font-size: 0.85rem; font-weight: bold;">You have JavaScript disabled. This site requires JavaScript to be enabled for complete site functionality.</p>
+            </noscript>
+            <div class="usa-banner__inner">
+                <div class="grid-col-auto">
+                    <img
+                        aria-hidden="true"
+                        class="usa-banner__header-flag"
+                        src="/dist/uswds/img/us_flag_small.png"
+                        alt=""/>
+                </div>
+                <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+                    <p class="usa-banner__header-text">
+                        An official website of the United States government
+                    </p>
+                    <p class="usa-banner__header-action">Here’s how you know</p>
+                </div>
+                <button
+                    type="button"
+                    class="usa-accordion__button usa-banner__button"
+                    aria-expanded="false"
+                    aria-controls="gov-banner-default">
+                    <span class="usa-banner__button-text">Here’s how you know</span>
+                </button>
+            </div>
+        </header>
+        <div
+            class="usa-banner__content usa-accordion__content"
+            id="gov-banner-default">
+            <div class="grid-row grid-gap-lg">
+                <div class="usa-banner__guidance tablet:grid-col-6">
+                    <img
+                        class="usa-banner__icon usa-media-block__img"
+                        src="/dist/uswds/img/icon-dot-gov.svg"
+                        role="img"
+                        alt=""
+                        aria-hidden="true"/>
+                    <div class="usa-media-block__body">
+                        <p>
+                            <strong>Official websites use .gov</strong><br/>A
+                            <strong>.gov</strong> website belongs to an official government
+                            organization in the United States.
+                        </p>
+                    </div>
+                </div>
+                <div class="usa-banner__guidance tablet:grid-col-6">
+                    <img
+                        class="usa-banner__icon usa-media-block__img"
+                        src="/dist/uswds/img/icon-https.svg"
+                        role="img"
+                        alt=""
+                        aria-hidden="true"/>
+                    <div class="usa-media-block__body">
+                        <p>
+                            <strong>Secure .gov websites use HTTPS</strong><br/>A
+                            <strong>lock</strong> (
+                            <span class="icon-lock">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="52"
+                                    height="64"
+                                    viewBox="0 0 52 64"
+                                    class="usa-banner__lock-image"
+                                    role="img"
+                                    aria-labelledby="banner-lock-description-default"
+                                    focusable="false">
+                                    <title id="banner-lock-title-default">Lock</title>
+                                    <desc id="banner-lock-description-default">Locked padlock icon</desc>
+                                    <path
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"/>
+                                </svg>
+                            </span
+                            >) or <strong>https://</strong> means you’ve safely connected to
+                            the .gov website. Share sensitive information only on official,
+                            secure websites.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <nav id="navbar" class="navbar">
+    <div id="nist-menu-container" class="container">
+        <div class="row">
+            <!-- Brand -->
+            <div class="col-xs-6 col-md-4 navbar-header">
+                <a class="navbar-brand" href="https://www.nist.gov" target='_blank' rel="noopener noreferrer" id="navbar-brand-image">
+                    <img src="/CSRC/media/images/svg/nist-logo.svg" alt="National Institute of Standards and Technology" width="110" height="30">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-8 navbar-nist-logo">
+                <div class="form-inline hidden-sm hidden-xs">
+                    <form name="site-search" id="site-search-form" action="/search" method="GET">
+                        <label for="search-csrc-query" class="element-invisible">Search</label>
+                        <input autocomplete="off" class="form-control" id="search-csrc-query" name="keywords" type="text" size="15" maxlength="128" placeholder="Search CSRC" />
+                        <input type="hidden" name="ipp" value="25" />
+                        <input type="hidden" name="sortBy" value="relevance" />
+                        <input type="hidden" name="showOnly" value="publications,projects,news,events,presentations,glossary,topics" />
+                        <input type="hidden" name="topicsMatch" value="ANY" />
+                        <input type="hidden" name="status" value="Final,Draft" />
+                        <button type="submit" id="search-csrc-submit-btn" class="form-submit">
+                            <span class="element-invisible">Search</span>
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <span id="nvd-menu-button" class="pull-right">
+                    <a href="#" id="nvd-menu-button-link">
+                        <span class="fa fa-bars"></span>
+                        <span id="nvd-menu-full-text">CSRC MENU</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-inline hidden-md hidden-lg">
+        <form name="site-search-mobile" id="site-search-form-mobile" action="/search" method="GET">
+            <label for="search-csrc-query-mobile" class="element-invisible">Search</label>
+            <input autocomplete="off" class="form-control" id="search-csrc-query-mobile" name="keywords" type="text" size="15" maxlength="128" placeholder="Search CSRC" />
+            <button type="submit" id="search-csrc-submit-btn-mobile" class="form-submit">
+                <span class="element-invisible">Search</span>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+    <div class="main-menu-row container">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="main-menu-drop" class="col-lg-12" style="display: none;">
+            <ul>
+                <li><a href="/projects">Projects</a></li>
+                <li>
+                    <a href="/publications">
+                        Publications
+                        <span class="expander fa fa-plus" id="main-menu-pubs-expander" data-expander-name="publications" data-expanded="false">
+                            <span class="element-invisible">Expand or Collapse</span>
+                        </span>
+                    </a>
+                    <div style="display: none;" class="sub-menu" data-expander-trigger="publications" id="main-menu-pubs-expanded">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p><a href="/publications/drafts-open-for-comment">Drafts for Public Comment</a></p>
+                                <p><a href="/publications/draft-pubs">All Public Drafts</a></p>
+                                <p><a href="/publications/final-pubs">Final Pubs</a></p>
+                                <p><a href="/publications/fips">FIPS <small>(standards)</small></a></p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p><a href="/publications/sp">Special Publications (SP<small>s</small>)</a></p>
+                                <p><a href="/publications/ir">IR <small>(interagency/internal reports)</small></a></p>
+                                <p><a href="/publications/cswp">CSWP <small>(cybersecurity white papers)</small></a></p>
+                                <p><a href="/publications/itl-bulletin">ITL Bulletins</a></p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p><a href="/publications/project-description">Project Descriptions</a></p>
+                                <p><a href="/publications/journal-article">Journal Articles</a></p>
+                                <p><a href="/publications/conference-paper">Conference Papers</a></p>
+                                <p><a href="/publications/book">Books</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="/topics">
+                        Topics
+                        <span class="expander fa fa-plus" id="main-menu-topics-expander" data-expander-name="topics" data-expanded="false">
+                            <span class="element-invisible">Expand or Collapse</span>
+                        </span>
+                    </a>
+                    <div style="display: none;" class="sub-menu" data-expander-trigger="topics" id="main-menu-topics-expanded">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p><a href="/Topics/Security-and-Privacy">Security & Privacy</a></p>
+                                <p><a href="/Topics/Applications">Applications</a></p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p><a href="/Topics/Technologies">Technologies</a></p>
+                                <p><a href="/Topics/Sectors">Sectors</a></p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p><a href="/Topics/Laws-and-Regulations">Laws & Regulations</a></p>
+                                <p><a href="/Topics/Activities-and-Products">Activities & Products</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="/news">News & Updates</a></li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/glossary">Glossary</a></li>
+                <li>
+                    <a href="/about">
+                        About CSRC
+                        <span class="expander fa fa-plus" id="main-menu-about-expander" data-expander-name="about" data-expanded="false">
+                            <span class="element-invisible">Expand or Collapse</span>
+                        </span>
+                    </a>
+                    <div style="display: none;" class="sub-menu" data-expander-trigger="about" id="main-menu-about-expanded">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <p>
+                                    <strong><a href="/Groups/Computer-Security-Division">Computer Security Division</a></strong><br />
+                                    <ul>
+                                        <li><a href="/Groups/Computer-Security-Division/Cryptographic-Technology">Cryptographic Technology</a></li>
+                                        <li><a href="/Groups/Computer-Security-Division/software-security-group">Software Security Group</a></li>
+                                        <li><a href="/Groups/Computer-Security-Division/hardware-security-group">Hardware Security Group</a></li>
+                                        <li><a href="/Groups/Computer-Security-Division/Security-Engineering-and-Risk-Management">Security Engineering and Risk Management</a></li>
+                                    </ul>
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p>
+                                    <strong><a href="/Groups/Applied-Cybersecurity-Division">Applied Cybersecurity Division</a></strong><br />
+                                    <ul>
+                                        <li><a href="/Groups/Applied-Cybersecurity-Division/Cybersecurity-and-Privacy-Applications">Cybersecurity and Privacy Applications</a></li>
+                                        <li><a href="/Groups/Applied-Cybersecurity-Division/National-Cybersecurity-Center-of-Excellence">National Cybersecurity Center of Excellence (NCCoE)</a></li>
+                                        <li><a href="https://www.nist.gov/nice/">National Initiative for Cybersecurity Education (NICE)</a></li>
+                                    </ul>
+                                </p>
+                                <p>
+                                    <a href="/contact">
+                                        Contact Us
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div><!-- /#mobile-nav-container -->
+    </div>
+
+</nav>
+
+    <section id="itl-header" class="has-menu">
+        <div class="itl-background"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                        <div class="hidden-xs hidden-sm" id="itl-header-lg">
+                            <a href="https://www.nist.gov/itl" target='_blank' rel="noopener noreferrer" id="itl-header-link">Information Technology Laboratory</a>
+                        </div>
+                        <div class="hidden-xs hidden-sm" id="csrc-header-lg">
+                            <a href="/" id="csrc-header-link-lg">Computer Security Resource Center</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="hidden-xs hidden-sm hidden-md">
+                            <a id="logo-csrc-lg" href="/"><img id="img-logo-csrc-lg" src="/CSRC/Media/images/nist-logo-csrc-white.svg" alt="CSRC Logo" class="csrc-header-logo"></a>
+                        </div>
+                        <div class="hidden-lg">
+                            <a id="logo-csrc-sm" href="/"><img id="img-logo-csrc-sm" src="/CSRC/Media/images/nist-logo-csrc-white.svg" alt="CSRC Logo" class="csrc-header-logo"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <div id="body-section" class="container">
+        
+        
+
+
+
+
+<div class="breadcrumb">
+        <a href="/projects" class="breadcrumb-link">Projects</a>
+        <a href="/projects/pqc-dig-sig" class="breadcrumb-link">PQC Digital Signature Schemes</a>
+</div>
+
+
+    <h1 id="projectName">Post-Quantum Cryptography: Additional Digital Signature Schemes</h1>
+
+
+<div class="page-social-buttons" id=&quot;news-social-buttons&quot;>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcsrc.nist.gov%2Fprojects%2Fpqc-dig-sig%2Fround-3-additional-signatures" class="social-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i><span class="sr-only">Share to Facebook</span></a>
+    <a href="https://x.com/share?url=https%3A%2F%2Fcsrc.nist.gov%2Fprojects%2Fpqc-dig-sig%2Fround-3-additional-signatures" class="social-twitter"><i class="fa-brands fa-x-twitter"></i><span class="sr-only">Share to X</span></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fcsrc.nist.gov%2Fprojects%2Fpqc-dig-sig%2Fround-3-additional-signatures&amp;source=csrc.nist.gov" class="social-linked-in"><i class="fa fa-linkedin fa-fw" aria-hidden="true"></i><span class="sr-only">Share to LinkedIn</span></a>
+    <a href="/cdn-cgi/l/email-protection#fac5898f98909f998ec799898899d49493898ed49d958cdc9b978ac198959e83c7b9929f9991da958f8eda8e929389da89938e9fda928e8e8a89c0d5d599898899d49493898ed49d958cd58a8895909f998e89d58a8b99d79e939dd789939dd588958f949ed7c9d79b9e9e938e9395949b96d789939d949b8e8f889f89" class="social-email"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><span class="sr-only">Share ia Email</span></a>
+</div>
+
+<div class="row visible-sm visible-xs visible-md">
+	<div class="col-sm-12">
+        <div class="bs-callout bs-callout-subnav" id="projectLinksContainer-sm">
+            <h4><i class="fa fa-link"></i> Project Links</h4>
+            <div class="project-icons-container">
+                <span>
+                    <a href="/projects/pqc-dig-sig" id="NavOverviewLink-sm">
+                        <i class="fa fa-info-circle"></i> Overview
+                    </a>
+                </span>
+                                <span>
+                    <a href="/Projects/pqc-dig-sig/news" id="NavNewsLink-sm" data-count="5">
+                        <i class="fa fa-newspaper-o"></i> News &amp; Updates
+                    </a>
+                </span>
+                                                <span>
+                    <a href="/Projects/pqc-dig-sig/publications" id="NavPubsLink-sm" data-count="2">
+                        <i class="fa fa-file-text"></i> Publications
+                    </a>
+                </span>
+                            </div>
+        </div>
+	</div>
+</div>
+<div class="row">
+
+
+        <div class="col-lg-8 col-sm-12">
+<h3 id="pageName">Round 3 Additional Signatures</h3>
+
+
+<p id="content">
+    <div>Official comments on the<strong>&nbsp;Third Round Candidates </strong>should be submitted using the "Submit Comment" link for the appropriate algorithm. Comments from the <a data-csrc-link="true" data-node-guid="67289b1b-18cc-4d5e-920c-a477b7aa7ac3" href="/projects/pqc-dig-sig/email-list">pqc-forum Google group subscribers</a>&nbsp;will also be forwarded to the pqc-forum Google group list. We will periodically post and update the comments received to the appropriate algorithm.<br>
+&nbsp;</div>
+
+<p>All relevant comments will be posted in their entirety and should not include PII&nbsp;information&nbsp;in the body of the email message.</p>
+
+<p>Please refrain from using OFFICIAL COMMENT to ask administrative questions, which should be sent to <a href="/cdn-cgi/l/email-protection#7a0a0b1957191517171f140e093a1413090e541d150c"><span class="__cf_email__" data-cfemail="1a6a6b7937797577777f746e695a7473696e347d756c">[email&#160;protected]</span></a>.</p>
+
+<p>The rationale for choosing the Round 3 Candidates is described in <a data-csrc-pub-link="true" data-node-guid="ac01dd6e-eca0-426a-b279-70cee67fdf48" href="/pubs/ir/8610/final">NIST IR 8610</a>, <em>Status Report on the Second Round of the Additional Digital Signature Schemes for the NIST Post-Quantum Cryptography Standardization Process.&nbsp;</em></p>
+
+<h4><em>The 9 candidates that will be in the 3rd round are:&nbsp;</em></h4>
+
+<h4><strong>Isogeny Signatures</strong></h4>
+
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th style="width:20%">Algorithm</th>
+			<th style="width:20%">Algorithm Information</th>
+			<th style="width:40%">Submitters</th>
+			<th>Comments</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><strong>SQIsign</strong></td>
+			<td><a href="https://sqisign.org/">Website</a></td>
+			<td>Marius A. Aardal<br>
+			Gora Adj<br>
+			Diego F. Aranha<br>
+			Andrea Basso<br>
+			Isaac Andrés Canales Martínez<br>
+			Jorge Chávez-Saab<br>
+			Maria Corte-Real Santos<br>
+			Pierrick Dartois<br>
+			Luca De Feo<br>
+			Max Duparc<br>
+			Jonathan Komada Eriksen<br>
+			Tako Boris Fouotsa<br>
+			Décio Luiz Gazzoni Filho<br>
+			Basil Hess<br>
+			David Kohel<br>
+			Antonin Leroux<br>
+			Patrick Longa<br>
+			Luciano Maino<br>
+			Michael Meyer<br>
+			Kohei Nakagawa<br>
+			Hiroshi Onuki<br>
+			Lorenz Panny<br>
+			Sikhar Patranabis<br>
+			Christophe Petit<br>
+			Giacomo Pope<br>
+			Krijn Reijnders<br>
+			Damien Robert<br>
+			Francisco Rodríguez Henríquez<br>
+			Sina Schaeffler<br>
+			Benjamin Wesolowski</td>
+			<td style="width:20%">
+			<p><a href="/cdn-cgi/l/email-protection#027273612f616d6f6f676c7671426c6b71762c656d743d717760686761763f506d776c66273032302730322a4366666b766b6d6c636e273032516b656c6376777067712b2730324d44444b414b434e273032414d4f4f474c5627314327303251736b516b656c24636f723961613f7273612f646d70776f426e6b71762c6c6b71762c656d74">Submit Comment</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4><br>
+<strong>Lattice-based Signatures</strong></h4>
+
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th style="width:20%">Algorithm</th>
+			<th style="vertical-align:bottom; width:20%">Algorithm Information&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</th>
+			<th style="width:40%">Submitters</th>
+			<th>Comments</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+			<p><strong>HAWK</strong></p>
+
+			<p><a href="https://groups.google.com/a/list.nist.gov/g/pqc-forum/c/2r2u6SbHun4/m/0_I2KOZ_CQAJ">The submission team has <strong>withdrawn</strong> HAWK from the additional digital signatures standardization process.</a></p>
+			</td>
+			<td><a href="https://hawk-sign.info/">Website</a></td>
+			<td>Joppe W. Bos&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>
+			Olivier Bronchain<br>
+			Léo Ducas<br>
+			Serge Fehr<br>
+			Yu-Hsuan Huang<br>
+			Thomas Pornin<br>
+			Eamonn W. Postlethwaite<br>
+			Thomas Prest<br>
+			Ludo N. Pulles<br>
+			Wessel van Woerden&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+			<td style="width:20%">
+			<p><a href="/cdn-cgi/l/email-protection#fb8b8a98d6989496969e958f88bb9592888fd59c948dc4888e99919e988fc6a9948e959fdec9cbc9dec9cbd3ba9f9f928f9294959a97dec9cba8929c959a8f8e899e88d2dec9cbb4bdbdb2b8b2bab7dec9cbb8b4b6b6beb5afdec8badec9cbb3baacb0dd9a968bc09898c68b8a98d69d94898e96bb9792888fd59592888fd59c948d">Submit Comment</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4><strong>MPC-in-the-Head Signatures</strong></h4>
+
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th style="width:20%">Algorithm</th>
+			<th style="width:20%">Algorithm Information</th>
+			<th style="width:40px">Submitters</th>
+			<th>Comments</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><strong>MQOM</strong><br>
+			MQ on my Mind</td>
+			<td>&nbsp;<a href="https://mqom.org/">Website</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</td>
+			<td>Ryad Benadjila<br>
+			Charles Bouillaguet<br>
+			Thibauld Feneuil<br>
+			Matthieu Rivain</td>
+			<td style="width:20%">
+			<p><a href="/cdn-cgi/l/email-protection#9cecedffb1fff3f1f1f9f2e8efdcf2f5efe8b2fbf3eaa3efe9fef6f9ffe8a1cef3e9f2f8b9aeacaeb9aeacb4ddf8f8f5e8f5f3f2fdf0b9aeaccff5fbf2fde8e9eef9efb5b9aeacd3dadad5dfd5ddd0b9aeacdfd3d1d1d9d2c8b9afddb9aeacd1cdd3d1bafdf1eca7ffffa1ecedffb1faf3eee9f1dcf0f5efe8b2f2f5efe8b2fbf3ea">Submit Comment&nbsp; &nbsp;</a></p>
+			</td>
+		</tr>
+		<tr>
+			<td><strong>SDitH&nbsp;</strong><br>
+			Syndrome Decoding in the Head</td>
+			<td>
+			<p><a href="https://sdith.org/">Website</a></p>
+			</td>
+			<td>
+			<p>Carlos Aguilar Melchor<br>
+			Slim Bettaieb<br>
+			Loïc BidouxThibauld Feneuil<br>
+			Philippe Gaborit<br>
+			Nicolas Gama<br>
+			Shay Gueron<br>
+			James Howe<br>
+			Andreas Hülsing<br>
+			David Joseph<br>
+			Antoine Joux<br>
+			Mukul Kulkarni<br>
+			Edoardo Persichetti<br>
+			Tovohery H. Randrianarisoa<br>
+			Matthieu Rivain<br>
+			Dongze Yue</p>
+			</td>
+			<td style="width:20%">
+			<p><a href="/cdn-cgi/l/email-protection#0575746628666a6868606b7176456b6c76712b626a733a7670676f60667138576a706b61203735372037352d4461616c716c6a6b6469203735566c626b6471707760762c2037354a43434c464c4449203735464a4848404b5120364420373556416c714d236468753e66663875746628636a77706845696c76712b6b6c76712b626a73">Submit Comment</a>&nbsp; &nbsp;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4><strong>Multivariate Signatures</strong></h4>
+
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th style="width:20%">Algorithm</th>
+			<th style="width:20%">Algorithm Information</th>
+			<th style="width:40%">Submitters</th>
+			<th>Comments</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><strong>MAYO</strong></td>
+			<td><a href="https://pqmayo.org/">Website</a></td>
+			<td>Ward Beullens<br>
+			Fabio Campos<br>
+			Sofía Celi<br>
+			Basil Hess<br>
+			Matthias J. Kannwischer</td>
+			<td style="width:20%">
+			<p><a href="/cdn-cgi/l/email-protection#3b4b4a5816585456565e554f487b5552484f155c544d04484e59515e584f0669544e555f1e090b091e090b137a5f5f524f5254555a571e090b68525c555a4f4e495e48121e090b747d7d7278727a771e090b787476767e756f1e087a1e090b767a62741d5a564b005858064b4a58165d54494e567b5752484f155552484f155c544d">Submit Comment</a></p>
+			</td>
+		</tr>
+		<tr>
+			<td><strong>QR-UOV</strong></td>
+			<td>
+			<p><a href="https://info.isl.ntt.co.jp/crypt/qruov/">Website</a></p>
+			</td>
+			<td>
+			<p>Rika Akiyama<br>
+			Hiroki Furue<br>
+			Yasuhiko Ikematsu<br>
+			Fumitaka Hoshino<br>
+			Koha Kinjo<br>
+			Haruhisa Kosuge<br>
+			Satoshi Nakamura<br>
+			Shingo Orihara<br>
+			Tsuyoshi Takagi<br>
+			Kimihiro Yamakoshi</p>
+			</td>
+			<td style="width:20%">
+			<p><a href="/cdn-cgi/l/email-protection#3a4a4b5917595557575f544e497a5453494e145d554c05494f58505f594e0768554f545e1f080a081f080a127b5e5e534e5355545b561f080a69535d545b4e4f485f49131f080a757c7c7379737b761f080a797577777f746e1f097b1f080a6b68176f756c1c5b574a015959074a4b59175c55484f577a5653494e145453494e145d554c">Submit Comment</a></p>
+			</td>
+		</tr>
+		<tr>
+			<td><strong>SNOVA</strong></td>
+			<td><a href="https://snova.pqclab.org/">Website</a></td>
+			<td>Lih-Chung Wang<br>
+			Chun-Yen Chou<br>
+			Jintai Ding<br>
+			Yen-Liang Kuan<br>
+			Jan Adriaan Leegwater<br>
+			Ming-Siou<br>
+			LiBo-Shu Tseng<br>
+			Po-En Tseng<br>
+			Chia-Chun Wang</td>
+			<td style="width:20%">
+			<p><a href="/cdn-cgi/l/email-protection#8dfdfceea0eee2e0e0e8e3f9fecde3e4fef9a3eae2fbb2fef8efe7e8eef9b0dfe2f8e3e9a8bfbdbfa8bfbda5cce9e9e4f9e4e2e3ece1a8bfbddee4eae3ecf9f8ffe8fea4a8bfbdc2cbcbc4cec4ccc1a8bfbdcec2c0c0c8c3d9a8becca8bfbddec3c2dbccabece0fdb6eeeeb0fdfceea0ebe2fff8e0cde1e4fef9a3e3e4fef9a3eae2fb">Submit Comment</a></p>
+			</td>
+		</tr>
+		<tr>
+			<td><strong>UOV</strong><br>
+			Unbalanced Oil and Vinegar</td>
+			<td>
+			<p><a href="https://www.uovsig.org/">Website</a></p>
+			</td>
+			<td>Ward Beullens<br>
+			Ming-Shing Chen<br>
+			Jintai Ding<br>
+			Boru Gong<br>
+			Matthias J. Kannwischer<br>
+			Jacques Patarin<br>
+			Bo-Yuan Peng<br>
+			Dieter Schmidt<br>
+			Cheng-Jhih Shih<br>
+			Chengdong Tao<br>
+			Bo-Yin Yang</td>
+			<td style="width:20%">
+			<p><a href="/cdn-cgi/l/email-protection#4434352769272b2929212a3037042a2d37306a232b327b3731262e21273079162b312a20617674766176746c0520202d302d2b2a2528617674172d232a2530313621376d6176740b02020d070d0508617674070b0909010a10617705617674110b12622529347f27277934352769222b36312904282d37306a2a2d37306a232b32">Submit Comment</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4><strong>Symmetric-based Signatures</strong></h4>
+
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th style="width:20%">Algorithm</th>
+			<th style="width:20%">Algorithm Information</th>
+			<th style="width:40%">Submitters</th>
+			<th style="width:20%">Comments</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><strong>FAEST</strong></td>
+			<td><a href="https://faest.info/">Website</a></td>
+			<td>Carsten Baum<br>
+			Lennart Braun<br>
+			Ward Beullens<br>
+			Cyprien Delpech de Saint Guilhem<br>
+			Michael Klooß<br>
+			Christian Majenz<br>
+			Shibam Mukherjee<br>
+			Emmanuela Orsini<br>
+			Sebastian Ramacher<br>
+			Christian Rechberger<br>
+			Lawrence Roy<br>
+			Peter Scholl</td>
+			<td>
+			<p><a href="/cdn-cgi/l/email-protection#720203115f111d1f1f171c0601321c1b01065c151d044d010710181711064f201d071c16574042405740425a3316161b061b1d1c131e574042211b151c1306070017015b5740423d34343b313b333e574042313d3f3f373c26574133574042343337212654131f024911114f0203115f141d00071f321e1b01065c1c1b01065c151d04">Submit Comment</a></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>&nbsp;</h4>
+
+</p>
+
+
+        </div>
+
+
+        <div class="col-lg-4 hidden-xs hidden-sm hidden-md">
+
+            <div class="project-nav-container">
+                <div class="bs-callout bs-callout-subnav" id="projectLinksContainer-lg">
+<h4><i class="fa fa-link"></i> Project Links</h4>
+<div class="project-icons-container">
+    <span>
+        <a href="/projects/pqc-dig-sig" id="SideNavOverviewLink">
+            <i class="fa fa-info-circle"></i> Overview
+        </a>
+    </span>
+        <span>
+        <a href="/Projects/pqc-dig-sig/news" id="SideNavNewsLink" data-count="5">
+            <i class="fa fa-newspaper-o"></i> News &amp; Updates
+        </a>
+    </span>
+            <span>
+        <a href="/Projects/pqc-dig-sig/publications" id="SideNavPubsLink" data-count="2">
+            <i class="fa fa-file-text"></i> Publications
+        </a>
+    </span>
+    </div>
+
+    <h4>Additional Pages</h4>
+    <div id="projectPagesCallout-lg">
+
+<a class="csrc-add-page" data-node-level="0" data-node-order="1" href="/Projects/pqc-dig-sig/standardization" id="projPage0" style="border-left: solid 0rem transparent;">Standardization of Additional Digital Signature Schemes</a>
+<a class="csrc-add-page" data-node-level="1" data-node-order="1" href="/Projects/pqc-dig-sig/standardization/call-for-proposals" id="projPage1" style="border-left: solid 1rem transparent;">Call for Proposals</a>
+<a class="csrc-add-page" data-node-level="1" data-node-order="2" href="/Projects/pqc-dig-sig/standardization/example-files" id="projPage2" style="border-left: solid 1rem transparent;">Example Files</a>
+<a class="csrc-add-page" data-node-level="1" data-node-order="4" href="/Projects/pqc-dig-sig/standardization/workshops-and-timeline" id="projPage3" style="border-left: solid 1rem transparent;">Workshops and Timeline</a>
+<a class="csrc-add-page" data-node-level="0" data-node-order="2" href="/Projects/pqc-dig-sig/round-1-additional-signatures" id="projPage4" style="border-left: solid 0rem transparent;">Round 1 Additional Signatures</a>
+<a class="csrc-add-page" data-node-level="0" data-node-order="3" href="/Projects/pqc-dig-sig/round-2-additional-signatures" id="projPage5" style="border-left: solid 0rem transparent;">Round 2 Additional Signatures</a>
+<a class="csrc-add-page" data-node-level="0" data-node-order="4" href="/Projects/pqc-dig-sig/round-3-additional-signatures" id="projPage6" style="border-left: solid 0rem transparent;">Round 3 Additional Signatures</a>
+<a class="csrc-add-page" data-node-level="0" data-node-order="5" href="/Projects/pqc-dig-sig/email-list" id="projPage7" style="border-left: solid 0rem transparent;">Email List (PQC Forum)</a>
+<a class="csrc-add-page" data-node-level="0" data-node-order="6" href="/Projects/pqc-dig-sig/pqc-standardization-main-project" id="projPage8" style="border-left: solid 0rem transparent;">PQC Standardization: Main Project</a>
+
+
+    </div>
+
+                </div>
+            </div>
+
+    <div class="bs-callout bs-callout-success" id="contactsCallout-lg">
+        <h4><i class="fa fa-user"></i> Contacts</h4>
+            <p id="projContact0"><span class='contact-display'><strong data-field='full-name'> <span data-field='firstname'>PQC Crypto</span>   <span data-field='lastname'>Technical Inquiries</span> </strong><br/><a href="/cdn-cgi/l/email-protection#6a1a1b0947090507070f041e192a0403191e440d051c" data-field='email'><span class="__cf_email__" data-cfemail="dcacadbff1bfb3b1b1b9b2a8af9cb2b5afa8f2bbb3aa">[email&#160;protected]</span></a><br/></span></p>
+            <p id="projContact1"><span class='contact-display'><strong data-field='full-name'><span data-field='title'>Dr.</span> <span data-field='firstname'>Lily</span>   <span data-field='lastname'>Chen</span> </strong><br/></span></p>
+            <p id="projContact2"><span class='contact-display'><strong data-field='full-name'><span data-field='title'>Dr.</span> <span data-field='firstname'>Dustin</span>   <span data-field='lastname'>Moody</span> </strong><br/></span></p>
+            <p id="projContact3"><span class='contact-display'><strong data-field='full-name'><span data-field='title'>Dr.</span> <span data-field='firstname'>Yi-Kai</span>   <span data-field='lastname'>Liu</span> </strong><br/></span></p>
+    </div>
+
+
+    <div class="bs-callout bs-callout-danger" id="owningGroupCallout-lg">
+        <h4><i class="fa fa-sitemap"></i> Group</h4>
+        <a href="/Groups/Computer-Security-Division/Cryptographic-Technology">Cryptographic Technology</a>
+    </div>
+
+
+    <div class="bs-callout bs-callout-danger" id="topicsCallout-lg">
+        <h4><i class="fa fa-tag"></i> Topics</h4>
+
+            <p>
+                <strong id="catName0-lg">Security and Privacy:</strong>
+                    <a id="catTopLink0-0-lg" href="/Topics/Security-and-Privacy/cryptography/digital-signatures">digital signatures</a>,                     <a id="catTopLink0-1-lg" href="/Topics/Security-and-Privacy/cryptography/post-quantum-cryptography">post-quantum cryptography</a>            </p>
+    </div>
+
+
+    <div class="bs-callout bs-callout-warning" id="relatedProjectsCallout-lg">
+        <h4>Related Projects</h4>
+            <a href="/Projects/stateful-hash-based-signatures" id="relProjLink0">Hash-Based Signatures</a><br/>
+            <a href="/Projects/migration-to-post-quantum-cryptography-nccoe" id="relProjLink1">Migration to Post-Quantum Cryptography | NCCoE</a><br/>
+            <a href="/Projects/post-quantum-cryptography" id="relProjLink2">Post-Quantum Cryptography</a><br/>
+    </div>
+
+
+        </div>
+
+</div>
+    <div class="row visible-sm visible-xs visible-md">
+
+        <div class="col-sm-12">
+
+<div class="bs-callout bs-callout-subnav" id="projectPagesCallout-sm">
+    <h4>Additional Pages</h4>
+    <p>
+
+<a class="csrc-add-page" data-node-level="0" data-node-order="1" href="/Projects/pqc-dig-sig/standardization" id="projPage0-sm" style="border-left: solid 0rem transparent;">Standardization of Additional Digital Signature Schemes</a>
+<a class="csrc-add-page" data-node-level="1" data-node-order="1" href="/Projects/pqc-dig-sig/standardization/call-for-proposals" id="projPage1-sm" style="border-left: solid 1rem transparent;">Call for Proposals</a>
+<a class="csrc-add-page" data-node-level="1" data-node-order="2" href="/Projects/pqc-dig-sig/standardization/example-files" id="projPage2-sm" style="border-left: solid 1rem transparent;">Example Files</a>
+<a class="csrc-add-page" data-node-level="1" data-node-order="4" href="/Projects/pqc-dig-sig/standardization/workshops-and-timeline" id="projPage3-sm" style="border-left: solid 1rem transparent;">Workshops and Timeline</a>
+<a class="csrc-add-page" data-node-level="0" data-node-order="2" href="/Projects/pqc-dig-sig/round-1-additional-signatures" id="projPage4-sm" style="border-left: solid 0rem transparent;">Round 1 Additional Signatures</a>
+<a class="csrc-add-page" data-node-level="0" data-node-order="3" href="/Projects/pqc-dig-sig/round-2-additional-signatures" id="projPage5-sm" style="border-left: solid 0rem transparent;">Round 2 Additional Signatures</a>
+<a class="csrc-add-page" data-node-level="0" data-node-order="4" href="/Projects/pqc-dig-sig/round-3-additional-signatures" id="projPage6-sm" style="border-left: solid 0rem transparent;">Round 3 Additional Signatures</a>
+<a class="csrc-add-page" data-node-level="0" data-node-order="5" href="/Projects/pqc-dig-sig/email-list" id="projPage7-sm" style="border-left: solid 0rem transparent;">Email List (PQC Forum)</a>
+<a class="csrc-add-page" data-node-level="0" data-node-order="6" href="/Projects/pqc-dig-sig/pqc-standardization-main-project" id="projPage8-sm" style="border-left: solid 0rem transparent;">PQC Standardization: Main Project</a>
+
+
+    </p>
+</div>
+
+
+    <div class="bs-callout bs-callout-subnav" id="contactsCallout-sm">
+        <h4><i class="fa fa-user"></i> Contacts</h4>
+        <p style="padding-left: 15px;">
+            <span id="projContact0-sm"><span class='contact-display'><strong data-field='full-name'> <span data-field='firstname'>PQC Crypto</span>   <span data-field='lastname'>Technical Inquiries</span> </strong><br/><a href="/cdn-cgi/l/email-protection#a7d7d6c48ac4c8cacac2c9d3d4e7c9ced4d389c0c8d1" data-field='email'><span class="__cf_email__" data-cfemail="addddcce80cec2c0c0c8c3d9deedc3c4ded983cac2db">[email&#160;protected]</span></a><br/></span></span><br/>
+            <span id="projContact1-sm"><span class='contact-display'><strong data-field='full-name'><span data-field='title'>Dr.</span> <span data-field='firstname'>Lily</span>   <span data-field='lastname'>Chen</span> </strong><br/></span></span><br/>
+            <span id="projContact2-sm"><span class='contact-display'><strong data-field='full-name'><span data-field='title'>Dr.</span> <span data-field='firstname'>Dustin</span>   <span data-field='lastname'>Moody</span> </strong><br/></span></span><br/>
+            <span id="projContact3-sm"><span class='contact-display'><strong data-field='full-name'><span data-field='title'>Dr.</span> <span data-field='firstname'>Yi-Kai</span>   <span data-field='lastname'>Liu</span> </strong><br/></span></span><br/>
+        </p>
+    </div>
+
+
+    <div class="bs-callout bs-callout-danger" id="owningGroupCallout-sm">
+        <h4><i class="fa fa-sitemap"></i> Group</h4>
+        <a href="/Groups/Computer-Security-Division/Cryptographic-Technology">Cryptographic Technology</a>
+    </div>
+
+
+    <div class="bs-callout bs-callout-danger" id="topicsCallout-sm">
+        <h4><i class="fa fa-tag"></i> Topics</h4>
+
+            <p>
+                <strong id="catName0-sm">Security and Privacy:</strong>
+                    <a id="catTopLink0-0-sm" href="/Topics/Security-and-Privacy/cryptography/digital-signatures">digital signatures</a>,                     <a id="catTopLink0-1-sm" href="/Topics/Security-and-Privacy/cryptography/post-quantum-cryptography">post-quantum cryptography</a>            </p>
+    </div>
+
+
+    <div class="bs-callout bs-callout-warning" id="relatedProjectsCallout-sm">
+        <h4>Related Projects</h4>
+        <p>
+            <a href="/Projects/stateful-hash-based-signatures" id="relProjLink0-sm">Hash-Based Signatures</a><br/>
+            <a href="/Projects/migration-to-post-quantum-cryptography-nccoe" id="relProjLink1-sm">Migration to Post-Quantum Cryptography | NCCoE</a><br/>
+            <a href="/Projects/post-quantum-cryptography" id="relProjLink2-sm">Post-Quantum Cryptography</a><br/>
+        </p>
+    </div>
+
+
+        </div>
+
+    </div>
+
+<div class="row">
+    <div class="col-md-12 historical-data-area" id="historical-data-area">
+
+            <span>Created <span id="page-created-date">August 29, 2022</span>, Updated <span id="page-updated-date">July 29, 2026</span></span>
+    </div>
+</div>
+
+
+
+
+
+
+        <div id="footer-pusher"></div>
+
+    </div>
+
+    
+
+    <footer id="footer">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <span class="hidden-xs">
+                    <a href="https://www.nist.gov" title="National Institute of Standards and Technology" rel="home" target='_blank' rel="noopener noreferrer" class="footer-nist-logo" id="footer-nist-logo-link">
+                        <img src="/CSRC/Media/images/nist-logo-brand-white.svg" alt="National Institute of Standards and Technology logo" id="footer-nist-logo" />
+                    </a>
+                </span>
+
+                <div class="row footer-contact-container">
+                    <div class="col-sm-12" id="footer-address">
+                        <strong>HEADQUARTERS</strong><br>
+                        100 Bureau Drive<br>
+                        Gaithersburg, MD 20899
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <ul class="social-list text-right" style="display: block;">
+                    <li class="field-item service-twitter list-horiz">
+                        <a href="https://x.com/NISTCyber" class="social-btn social-btn--large extlink ext" id="footer-social-twitter-link">
+                            <i class="fa-brands fa-x-twitter fa-fw"><span class="element-invisible">X</span></i><span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+                    </li>
+                    <li class="field-item service-facebook list-horiz">
+                        <a href="https://www.facebook.com/NIST" class="social-btn social-btn--large extlink ext" id="footer-social-facebook-link">
+                            <i class="fa fa-facebook fa-fw"><span class="element-invisible">facebook</span></i><span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+
+                    </li>
+                    <li class="field-item service-linkedin list-horiz">
+                        <a href="https://www.linkedin.com/company/nist" class="social-btn social-btn--large extlink ext" id="footer-social-linkedin-link">
+                            <i class="fa fa-linkedin fa-fw"><span class="element-invisible">linkedin</span></i><span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+
+                    </li>
+                    <li class="field-item service-instagram list-horiz">
+                        <a href="https://www.instagram.com/usnistgov/" class="social-btn social-btn--large extlink ext" id="footer-social-instagram-link">
+                            <i class="fa fa-instagram fa-fw"><span class="element-invisible">instagram</span></i>
+                            <span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+
+                    </li>
+                    <li class="field-item service-youtube list-horiz">
+                        <a href="https://www.youtube.com/user/USNISTGOV" class="social-btn social-btn--large extlink ext" id="footer-social-youtube-link">
+                            <i class="fa fa-youtube fa-fw"><span class="element-invisible">youtube</span></i><span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+
+                    </li>
+                    <li class="field-item service-rss list-horiz">
+                        <a href="https://www.nist.gov/news-events/nist-rss-feeds" class="social-btn social-btn--large extlink" id="footer-social-rss-link">
+                            <i class="fa fa-rss fa-fw"><span class="element-invisible">rss</span></i>
+                        </a>
+
+                    </li>
+                    <li class="field-item service-govdelivery list-horiz last">
+                        <a href="https://public.govdelivery.com/accounts/USNIST/subscriber/new?qsp=USNIST_3" class="social-btn social-btn--large extlink ext" title="Subscribe to CSRC and publication updates, and other NIST cybersecurity news" id="footer-social-govdelivery-link">
+                            <i class="fa fa-envelope fa-fw"><span class="element-invisible">govdelivery</span></i><span class="ext"><span class="element-invisible"> (link is external)</span></span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="text-right">
+                    Want updates about CSRC and our publications?
+                    <a href="https://public.govdelivery.com/accounts/USNIST/subscriber/new?qsp=USNIST_3" class="btn btn-lg btn-primary" style="background-color: #12659c!important; border-color: #12659c!important;" id="footer-subscribe-link">Subscribe</a>
+                </p>
+            </div>
+        </div>
+        <div class="row hidden-sm hidden-md hidden-lg">
+            <div class="col-sm-12">
+                <a href="https://www.nist.gov" title="National Institute of Standards and Technology" rel="home" target='_blank' rel="noopener noreferrer" class="footer-nist-logo" id="footer-bottom-nist-logo-link">
+                    <img src="/CSRC/Media/images/logo_rev.png" alt="National Institute of Standards and Technology logo" id="footer-bottom-nist-logo" />
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p>
+                    <a href="/about/contact" id="footer-contact-us-link">Contact Us</a> |
+                    <a href="https://www.nist.gov/about-nist/visit" style="display: inline-block;" id="footer-org-link">Our Other Offices</a>
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <span class="pull-right text-right">
+                    Send inquiries to <a href="/cdn-cgi/l/email-protection#096a7a7b6a246067787c607b704967607a7d276e667f367a7c6b636c6a7d344a5a5b4a294067787c607b70" style="display: inline-block;" id="footer-inquiries-link"><span class="__cf_email__" data-cfemail="47243435246a2e2936322e353e07292e343369202831">[email&#160;protected]</span></a>
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="footer-bottom-links-container" id="footer-bottom-links-container">
+                <ul>
+                  <li><a href="https://www.nist.gov/privacy-policy">Site Privacy</a></li>
+                  <li><a href="https://www.nist.gov/oism/accessibility">Accessibility</a></li>
+                  <li><a href="https://www.nist.gov/privacy">Privacy Program</a></li>
+                  <li><a href="https://www.nist.gov/oism/copyrights">Copyrights</a></li>
+                  <li><a href="https://www.commerce.gov/vulnerability-disclosure-policy">Vulnerability Disclosure</a></li>
+                  <li><a href="https://www.nist.gov/no-fear-act-policy">No Fear Act Policy</a></li>
+                  <li><a href="https://www.nist.gov/foia">FOIA</a></li>
+                  <li><a href="https://www.nist.gov/environmental-policy-statement">Environmental Policy</a></li>
+                  <li><a href="https://www.nist.gov/summary-report-scientific-integrity">Scientific Integrity</a></li>
+                  <li><a href="https://www.nist.gov/nist-information-quality-standards">Information Quality Standards</a></li>
+                  <li><a href="https://www.commerce.gov/">Commerce.gov</a></li>
+                  <li><a href="https://www.science.gov/">Science.gov</a></li>
+                  <li><a href="https://www.usa.gov/">USA.gov</a></li>
+                  <li><a href="https://vote.gov/">Vote.gov</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="/dist/js/quick-collapse.js"></script>
+<script type="text/javascript" src="/dist/app.bundle.js"></script>
+<!-- USWDS Bottom -->
+<script type="text/javascript" src="/dist/uswds/js/uswds.min.js"></script>
+
+    
+    <script type="text/javascript" src="/dist/projects.bundle.js"></script>
+
+    
+
+
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3231a0d3ae9a34b',t:'MTc4NzkxNzg2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"9ef5b487afff42a68917b2d63593a474"}' crossorigin="anonymous"></script>
+</body>
+</html>

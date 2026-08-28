@@ -1,0 +1,44 @@
+slug: 2026-jadepuffer-agentic-ransomware
+title_en: JADEPUFFER Agentic Ransomware Database Extortion
+title_cn: JADEPUFFER 自主 Agent 勒索与数据库敲诈事件
+year: 2026
+disclosed: '2026-07-01'
+category: human-factor
+severity: high
+severity_basis: editorial
+severity_evidence: Sysdig documented a production database extortion operation that it assessed as being run end to end by an LLM-driven agent after an initial human setup. Independent reports corroborate the autonomous reconnaissance, credential harvesting, lateral movement, and destructive database activity.
+real_incident: true
+reproducible: false
+ai_tool:
+- LLM-driven autonomous agent
+- Langflow target environment
+- cloud and database tooling
+language:
+- Python
+- shell commands
+- SQL
+attack_surface:
+- Known Langflow flaw
+- agentic reconnaissance
+- credential harvesting
+- cloud access
+- database encryption
+references:
+- title: 'Sysdig: JADEPUFFER agentic ransomware for automated database extortion'
+  url: https://www.sysdig.com/blog/jadepuffer-agentic-ransomware-for-automated-database-extortion
+- title: 'Sysdig: JADEPUFFER evolves and targets AI models'
+  url: https://www.sysdig.com/blog/jadepuffer-evolves-the-agentic-threat-actor-deploys-ransomware-built-to-destroy-ai-models
+- title: 'TechRadar: first documented case of agentic ransomware'
+  url: https://www.techradar.com/pro/security/experts-warn-of-the-first-documented-case-of-agentic-ransomware-dangerous-jadepuffer-attack-run-entirely-by-an-llm
+- title: 'ITPro: experts identify first case of agentic ransomware'
+  url: https://www.itpro.com/security/its-a-marker-of-where-extortion-tradecraft-is-heading-cyber-experts-say-theyve-identified-the-first-case-of-agentic-ransomware-but-theres-a-catch
+- title: 'TechCrunch: The first AI-run ransomware attack still needed a human'
+  url: https://techcrunch.com/2026/07/06/the-first-ai-run-ransomware-attack-still-needed-a-human/
+tldr: Sysdig documented an extortion operation in which an LLM-driven agent autonomously progressed from exploiting an AI application to credential theft, lateral movement, and database destruction.
+tags:
+- jadepuffer
+- ransomware
+- autonomous-agent
+- database-extortion
+- threat-actor
+verification_notes: The primary account is Sysdig's threat-research report. TechRadar, ITPro, Forbes, Axios, and later Sysdig follow-up reporting corroborate the event. The initial access and target details are retained as reported; no broad claim is made that all ransomware stages were free of human preparation.

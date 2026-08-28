@@ -1,0 +1,34 @@
+slug: "2026-jetbrains-malicious-ai-plugin-api-theft"
+title_en: JetBrains Marketplace Malicious AI Plugin Supply-Chain Theft
+title_cn: JetBrains插件市场恶意AI助手插件供应链窃取API密钥攻击事件
+year: 2026
+disclosed: 2026-06-16
+category: "supply-chain"
+severity: "critical"
+severity_basis: "quantifiable-impact"
+severity_evidence: "15 fake AI assistant plugins with total 70,000 installations silently steal LLM API keys from developers, causing mass leakage of enterprise AI service credentials and financial losses."
+real_incident: true
+reproducible: true
+ai_tool:
+  - "DeepSeek AI Assist"
+  - "CodeGPT AI Assistant"
+language:
+  - "Java"
+  - "Kotlin"
+attack_surface:
+  - "IDE plugin supply chain"
+  - "LLM credential storage"
+references:
+  - title: JetBrains Official Marketplace Security Advisory
+    url: https://blog.jetbrains.com/platform/2026/06/marketplace-ecosystem-security-update-malicious-ai-plugins/
+  - title: The Hacker News Coverage
+    url: https://thehackernews.com/2026/06/malicious-jetbrains-plugins-steal-ai.html
+  - title: Breached Company Technical Recap
+    url: https://breached.company/malicious-jetbrains-plugins-steal-ai-api-keys-2026/
+tldr: Attackers released functional fake AI IDE plugins on JetBrains Marketplace, silently exfiltrate OpenAI/DeepSeek API keys via plain HTTP once developers save credentials in settings.
+tags:
+  - ide-plugin
+  - supply-chain-poisoning
+  - api-key-theft
+  - llm-credential-leak
+  - jetbrains

@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="en-US"><head>    <meta charset="utf-8"/>    <title>Security Bulletin: NVIDIA Triton Inference Server - June 2026 | NVIDIA</title>    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />    <meta name="viewport" content="width=device-width, initial-scale=1">	<!--[if lt IE 9]><script src="/euf/core/static/html5.js"></script><![endif]-->    <link rel="search" type="application/opensearchdescription+xml" title="Support Home Page Search" href="/ci/browserSearch/desc/https%3A%2F%2Fnvidia.custhelp.com%2Fapp%2Fanswers%2Flist%2Fkw%2F%7BsearchTerms%7D/Support+Home+Page+Search/Support+Home+Page+Search/%2Feuf%2Fassets%2Fimages%2Ficons%2Ffavicon_browserSearchPlugin.ico"/>
+        <link rel="stylesheet" href="https://www.nvidia.com/etc/designs/nvidiaGDC/clientlibs_global.min.b243c64690c148f97cfe5cdf3c7e0827.css" type="text/css">
+	<script src=https://images.nvidia.com/aem-dam/en-us/navigation.js></script>
+        <link rel='canonical' href='https://nvidia.custhelp.com/app/answers/detail/a_id/5848/~/security-bulletin%3A-nvidia-triton-inference-server---june-2026'/>
+<style type='text/css'>
+ <!-- 
+.rn_ScreenReaderOnly{position:absolute; height:1px; left:-10000px; overflow:hidden; top:auto; width:1px;}
+.rn_Hidden{display:none !important;}
+ --></style>
+<base href='https://nvidia.custhelp.com/euf/generated/optimized/1778070915/themes/standard/'/>
+<link href='/euf/generated/optimized/1778070915/templates/standard.themes.standard.SITE.css' rel='stylesheet' type='text/css' media='all'/>
+<style type="text/css">
+<!--
+.rn_head_2021{}
+.rn_head_2021{}
+.rn_CapabilityDetector .MessageContainer{font-size: 1.5em;line-height: 1em;padding: 10px;text-align: center;border-style: solid;border-width: 2px;}
+.rn_header{}
+.rn_Breadcrumb{}
+#breadCrumbs{background: #ffffff;float: left;font-size: 12px;color: #999;max-width: 632px;width: 632px;line-height: 11px;}
+.breadcrumbs-knbase{color: #5b8d03;}
+#breadCrumbRow{clear: both;background-color: #fff;padding: 14px 19px 14px 19px;height: auto;overflow: auto;float: left;}
+#breadCrumbs a{color: #666666;text-decoration: none;}
+#breadCrumbs a:hover{color: #5b8d03;text-decoration: underline;}
+#breadCrumbs span{color: #5b8d03;}
+.rn_Breadcrumb{}
+.rn_ServerStatus{}
+.home-server-status .capital{text-transform: uppercase;list-style: none;margin: 0 10px 7px 0;width: 45%;float: left;}
+.home-server-status ul{width: 100%;}
+.home-server-status .green, .home-server-status .yellow, .home-server-status .red{display: inline-block;width: 20px;height: 20px;margin-right: 16px;-webkit-box-shadow: 1px 3px 3px 0px rgba(0,0,0,0.5);-moz-box-shadow: 1px 3px 3px 0px rgba(0,0,0,0.5);box-shadow: 1px 3px 3px 0px rgba(0,0,0,0.5);}
+.home-server-status .green{background-color: #76b900;}
+.home-server-status .yellow{background-color:#ffeb3b;}
+.home-server-status .red{background-color:#f44336;}
+.home-server-status .serverstatus{margin-bottom: 20px;text-transform: uppercase;color: #004831;font-weight: bold;}
+.home-server-status .status-title{font-weight: bold;}
+.home-server-status .serverlog{border-top: 1px solid #141414;margin-bottom: 20px;margin-left: 15px;margin-right: 20px;padding-top: 35px;}
+.home-server-status .otherserverlog{border-top: 1px solid #141414;margin-bottom: 20px;margin-left: 15px;margin-right: 20px;padding-top: 35px;}
+.home-server-status .log-title{font-size: 20px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;}
+.home-server-status .dm{font-weight:bold;color:#eeeeee;}
+.home-server-status .dt{color:#eeeeee;}
+.home-server-status .rg{color:#999999;}
+.home-server-status .eachday-log > p{line-height: 24px;padding-bottom: 10px;}
+.rn_ServerStatus{}
+.rn_Chat_AAQ{}
+.rn_Chat_AAQ{}
+.rn_footer{}
+-->
+</style>
+<link href='/euf/generated/optimized/1778070915/pages/answers/detail.themes.standard.css' rel='stylesheet' type='text/css' media='all'/>
+    <link href="/euf/assets/themes/standard/images/apple-favicon.png" rel="apple-touch-icon"/>	<link href="/euf/assets/themes/standard/images/apple-startup.png" rel="apple-touch-startup-image"/>	<link href="/euf/assets/themes/standard/images/favicon.ico" 	  rel="shortcut icon"/>	<link rel="stylesheet" type="text/css" href="/euf/assets/javascript/chosen/chosen.min.css">    
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    <script  xmlns="http://www.w3.org/1999/xhtml">             var isIE6 = false;             var isIE7 = false;             var isIE8 = false;    </script>    <script>    navigation.mount({        headerElemID : 'nv-header',        footerElemID : 'nv-footer',        showGlobalFooter : true,        showBrandFooter : false,        url : 'https://www.nvidia.com/services/com.nvidia.services/nvgdcNavFooterSrvc?locale=en_US',        enableMegaMenu : true    });</script>    <script src="/euf/assets/themes/standard/js/global_menu.js"></script>	<script src="/euf/assets/javascript/chosen/chosen.jquery.min.js"></script>	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>	<script src="/euf/assets/javascript/ADA.js"></script>	<script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>		<meta name="google-site-verification" content="UiUA_JebMVsVMAYjfBkM91g9jFJnbkufw6xhnALtEDw" />    <meta itemprop="url" content="https://nvidia.custhelp.com/"/>	<meta itemprop="name" content="NVIDIA Support"/>	<meta itemprop="alternateName" content="NVIDIA Support"/>	<meta property="og:title" content="NVIDIA Support"/>	</head><div id="nv-header"></div><body class="yui-skin-sam yui3-skin-sam" itemscope itemtype="http://schema.org/WebPage">	<a href="#rn_MainContent" class="rn_SkipNav rn_ScreenReaderOnly">Skip Navigation</a>		 <div class="rn_CapabilityDetector" id="rn_CapabilityDetector_4">
+        <noscript>
+        <div class="MessageContainer MessageContainerFailure">
+            Your browser either does not have JavaScript enabled or does not appear to support enough features of JavaScript to be used well on this site.        </div>
+    </noscript>
+        <div id="rn_CapabilityDetector_4_MessageContainer">
+    </div>
+        <script type="text/javascript"><!-- 
+ /*<![CDATA[*/(function () {
+    var runJSTests = function() {
+        var messageContainerDiv = document.getElementById('rn_CapabilityDetector_4_MessageContainer');
+        function showFailure() {
+                        messageContainerDiv.className = 'MessageContainer MessageContainerFailure';
+            messageContainerDiv.innerHTML = 'Your browser either does not have JavaScript enabled or does not appear to support enough features of JavaScript to be used well on this site.';
+                                }
+                        function xhrTestFails() {
+            return !window.XMLHttpRequest;
+        }
+        if(typeof RightNowTesting !== 'undefined' && RightNowTesting._isTesting) {
+            RightNowTesting._xhrTestFails = xhrTestFails;
+        }
+        if (xhrTestFails()) {
+            showFailure();
+            return;
+        }
+                            }
+    if(typeof RightNowTesting !== 'undefined' && RightNowTesting._isTesting) {
+        RightNowTesting._runJSTests = runJSTests;
+    }
+    runJSTests();
+})();
+    /*]]>*/ // --></script></div>
+<div id="rn_Container">	<div class="mainBody">					</div>	<div id="greenBandMain" >    <div id="greenBand" role="banner">        <h2 id="greenBarTitle">NVIDIA SUPPORT</h2>    </div></div><div id="rn_subheader" role="navigation">    <div id="rn_Breadcrumb_5" class="rn_Breadcrumb">
+	<div id="breadCrumbRow">
+    <div id="breadCrumbs">
+                    <a href="http://www.nvidia.com/page/home.html">NVIDIA Home</a>&nbsp;&gt;&nbsp;<a href="http://www.nvidia.com/page/support.html">Support Home Page</a>&nbsp;&gt;&nbsp;<a href="/app/home/" class="breadcrumbs-knbase">Knowledgebase Home Page</a>&nbsp;&gt;&nbsp; <span class="breadcrumbs-knbase">Security Bulletin: NVIDIA Triton Inference Server - June 2026</span>    </div>
+</div>
+</div>
+					<div id="rn_LoginStatus">							<!-- <a href="/app/utils/login_form/" id="rn_LoginLink">Log In</a>&nbsp;|&nbsp;<a href="/app/utils/create_account">Sign Up</a> -->			<!-- <a href="/app/utils/login_form/" id="rn_LoginLink">Log In</a>&nbsp;|&nbsp;<a href="/app/utils/create_account">Sign Up</a> -->			<a href="https://login.nvidia.com/authorize?response_type=code&client_id=qtGdYjahOV9NjYJ6iTPXfYDu_Z20k-ualaLp5b2vNVg&redirect_uri=https%3A%2F%2Fnvidia.custhelp.com%2Fapp%2Futils%2Fstarfleet_login&scope=openid+profile+email&state=%2Fapp%2Fanswers%2Fdetail%2Fa_id%2F5848%2F%7E%2Fsecurity-bulletin%253A-nvidia-triton-inference-server---june-2026" id="rn_LoginLink">Log In</a>&nbsp;|&nbsp;<a href="https://login.nvidia.com/authorize?response_type=code&client_id=qtGdYjahOV9NjYJ6iTPXfYDu_Z20k-ualaLp5b2vNVg&redirect_uri=https%3A%2F%2Fnvidia.custhelp.com%2Fapp%2Futils%2Fstarfleet_login&scope=openid+profile+email&state=%2Fapp%2Fanswers%2Fdetail%2Fa_id%2F5848%2F%7E%2Fsecurity-bulletin%253A-nvidia-triton-inference-server---june-2026">Sign Up</a>						</div>	</div>               <div class="rn_Container_Main">                <div id="rn_ContainerPage" >                    <div id="rn_Body">                        <div id="rn_MainColumn" role="main">                            <a name="rn_MainContent" id="rn_MainContent"></a>                            
+<script>
+	$(document).ready(function(){
+		if(window.location.href == "https://nvidia.custhelp.com/app/answers/detail/a_id/4907"){
+			//alert('ID = 4907');
+			$('h3').addClass("rn_horizontalLine")
+		}
+		$('p').addClass('rn_margin');
+		$('caption').addClass('sr-only');
+	});
+</script>
+<article itemscope itemtype="http://schema.org/Article" class="rn_Container">
+    <div class="rn_ContentDetail">
+        <div class="rn_PageTitle rn_RecordDetail">
+                        <h1 class="rn_Summary" itemprop="name">Security Bulletin: NVIDIA Triton Inference Server - June 2026</h1>
+            <div class="rn_RecordInfo rn_AnswerInfo">
+                               <div id="rn_DateTime">
+                Updated <span itemprop="dateModified">07/01/2026 11:31 AM</span>
+                </div>
+            </div>
+            <div class="rn_AnswerQuestion">
+                <p>NVIDIA has released a software update for NVIDIA® Triton Inference Server.&nbsp;</p><p>To protect your system, clone or update this software to Triton Server r26.04 or later from the NVIDIA <a href="https://github.com/triton-inference-server/server">Triton Inference Server</a> GitHub repo.</p><p><span style="FONT-SIZE:8pt;">Go to </span><a href="https://www.nvidia.com/security/"><span style="FONT-SIZE:8pt;">NVIDIA Product Security</span></a><span style="FONT-SIZE:8pt;">.</span></p>            </div>
+        </div>
+		<hr style="margin-bottom: -30px;">
+        <div class="rn_PageContent rn_RecordDetail">
+            <div class="rn_RecordText rn_AnswerText" itemprop="articleBody">
+                <h2>Details</h2><p>The following table summarizes the potential vulnerabilities that this security update addresses and their impact. Descriptions use&nbsp;<a href="https://cwe.mitre.org/">CWE™</a>, and base scores and vectors use&nbsp;<a href="https://www.first.org/cvss/user-guide">CVSS v3.1</a> standards.</p><table class="ck-table-resized" style="margin-left:0;margin-right:auto;width:100%;" border="1" width="100%"><thead><tr><th style="BACKGROUND:#ddeebf;"><strong>CVE ID</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Description</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Vector</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Base Score</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Severity</strong></th><th style="BACKGROUND:#ddeebf;"><strong>CWE</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Impacts</strong></th></tr></thead><tbody><tr><td>CVE-2026-24264</td><td>NVIDIA Triton Inference Server for Linux contains a vulnerability where an attacker can cause improper handling of highly compressed data. A successful exploit of this vulnerability might lead to denial of service.</td><td><a href="https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H">AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</a></td><td>7.5</td><td>High</td><td><a href="https://cwe.mitre.org/data/definitions/409.html">CWE-409</a></td><td>Denial of service</td></tr><tr><td>CVE-2026-24266</td><td>NVIDIA Triton Inference Server for Linux contains a vulnerability where an attacker can cause a use-after-free issue. A successful exploit of this vulnerability might lead to denial of service.</td><td><a href="https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H">AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H</a></td><td>5.9</td><td>Medium</td><td><a href="https://cwe.mitre.org/data/definitions/416.html">CWE-416</a></td><td>Denial of service</td></tr></tbody></table><p>The NVIDIA risk assessment is based on an average of risk across a diverse set of installed systems and may not represent the true risk to your local installation. NVIDIA recommends evaluating the risk to your specific configuration.</p><h3>Security Updates</h3><p>The following table lists the NVIDIA products affected, versions affected, and the updated version that includes this security update.</p><table class="ck-table-resized" style="margin-left:0;margin-right:auto;" border="1" width="100%"><thead><tr><th style="BACKGROUND:#ddeebf;"><strong>CVE IDs Addressed</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Affected Products</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Platform or OS</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Affected Versions</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Updated Version</strong></th></tr></thead><tbody><tr><td>CVE-2026-24264<br>CVE-2026-24266</td><td>Triton Inference Server</td><td>Linux</td><td>0.0 - 26.03</td><td>26.04</td></tr></tbody></table><h3>Mitigations</h3><p>Refer to Security Updates for the updated versions to install.</p><h3>Acknowledgements</h3><p>NVIDIA thanks the following for reporting issues:<br>NSK: CVE-2026-24264<br>deayzl: CVE-2026-24266</p><h3>Get the Most Up-to-Date Product Security Information</h3><p>Visit the <a href="https://www.nvidia.com/security">NVIDIA Product Security</a> page to</p><ul><li>Subscribe to security bulletin notifications</li><li>See the current list of NVIDIA security bulletins</li><li>Report a potential security issue in any NVIDIA supported product</li><li>Learn more about the vulnerability management process followed by the NVIDIA Product Security Incident Response Team (PSIRT)</li></ul><h3>Revision History</h3><figure><table class="ck-table-resized" border="1" width="100%"><thead><tr><th style="BACKGROUND:#ddeebf;"><strong>Revision</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Date</strong></th><th style="BACKGROUND:#ddeebf;"><strong>Description</strong></th></tr></thead><tbody><tr><td>1.0</td><td>June 30, 2026</td><td>Initial release</td></tr><tr><td>2.0</td><td>July 1, 2026</td><td>Removed previously disclosed CVE-2026-24210 associated with 26.03 update</td></tr></tbody></table></figure><h3>Support</h3><p>If you have any questions about this security bulletin, contact <a href="https://www.nvidia.com/object/support.html">NVIDIA Support</a>.</p><h5>Disclaimer</h5><p>ALL NVIDIA INFORMATION, DESIGN SPECIFICATIONS, REFERENCE BOARDS, FILES, DRAWINGS, DIAGNOSTICS, LISTS, AND OTHER DOCUMENTS (TOGETHER AND SEPARATELY, “MATERIALS”) ARE BEING PROVIDED “AS IS.” NVIDIA MAKES NO WARRANTIES, EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE WITH RESPECT TO THE MATERIALS, AND ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OR CONDITION OF TITLE, MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT, ARE HEREBY EXCLUDED TO THE MAXIMUM EXTENT PERMITTED BY LAW.</p><p>Information is believed to be accurate and reliable at the time it is furnished. However, NVIDIA Corporation assumes no responsibility for the consequences of use of such information or for any infringement of patents or other rights of third parties that may result from its use. No license is granted by implication or otherwise under any patent or patent rights of NVIDIA Corporation. Specifications mentioned in this publication are subject to change without notice. This publication supersedes and replaces all information previously supplied. NVIDIA Corporation products are not authorized for use as critical components in life support devices or systems without express written approval of NVIDIA Corporation.</p><p>&nbsp;</p>            </div>
+                        <div class="rn_FileAttach">
+                <div id="rn_FileListDisplay_8" class="rn_FileListDisplay rn_Output">
+    </div>
+            </div>
+            <div class="rn_DetailTools rn_HideInPrint">
+            <div id="rn_AnswerFeedback_9" class="rn_AnswerFeedback">
+    <div id="rn_AnswerFeedback_9_AnswerFeedbackControl" class="rn_AnswerFeedbackControl">
+                    <h2 class="rn_Title">Is this answer helpful?</h2>
+                            <div id="rn_AnswerFeedback_9_RatingButtons" class="rn_RatingButtons">
+    <button id="rn_AnswerFeedback_9_RatingYesButton" type="button">Yes</button>
+    <button id="rn_AnswerFeedback_9_RatingNoButton" type="button">No</button>
+</div>
+            </div>
+</div>
+        </div>
+    <div id="rn_AnswerContent">
+        <div id="rn_FlexLeft">
+			<div id="rn_RelatedAnswers_10" class="rn_RelatedAnswers">
+                <h2>Answers others found helpful</h2>
+        <ul>
+                <li>
+            <a href="/app/answers/detail/a_id/4635/related/1" target="_self">
+                Security Bulletin: NVIDIA Jetson TX1, Jetson TK1, Jetson TX2, and Tegra K1 L4T Security Updates for Multiple Vulnerabilities            </a>
+        </li>
+                <li>
+            <a href="/app/answers/detail/a_id/5708/related/1" target="_self">
+                Security Bulletin: NVIDIA Isaac Sim Framework - October 2025            </a>
+        </li>
+        </ul>
+</div>
+        </div>
+        <div id="rn_FlexRight">
+			        </div>
+    </div>
+</div>
+</article>
+<style>
+.rn_horizontalLine{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.rn_margin{
+	margin-top: 10px;
+}
+h2, h3, h4, h5{
+	margin-top: 20px;
+}
+h2{
+	color: #2F2F2F;
+    font-size: 1.167em!important;
+    line-height: 1.3em!important;
+    text-transform: none;
+}
+body table{
+	margin-top: 20px;
+}
+hr {
+    margin-bottom: 0px!important;
+}
+</style>
+	                                                        																								<div id="rn_Chat_AAQ_12" class="rn_Chat_AAQ">
+<div class="crm-chat">
+	<div class="crm-chat-area">
+		<h3 style="text-transform: uppercase;">Live Chat</h3>
+		<h4>Chat online with one of our support agents</h4>
+		<a href="/app/chat/chat_launch/">CHAT NOW</a>
+	</div>
+	<div class="crm-question-area">
+		<h3>ASK US A QUESTION</h3>
+		<h4>Contact Support for assistance</h4>
+		<h4>800.797.6530</h4>
+			<a href="/app/ask"><span style="text-transform: uppercase;">Ask a Question</span></a>
+	</div>
+</div>
+</div>
+															                        </div>                    </div>                </div>            </div>            </div>	<div id="nv-footer"></div><script type="text/javascript">_satellite.pageBottom();</script><div id="chatbot"></div><script src="https://d4j85rjepgcta.cloudfront.net/nvcc/chatbot.js"></script><script type="text/javascript">_satellite.pageBottom();</script>
+<script>var YUI_config={"fetchCSS":false,"modules":{"RightNowTreeView":"/euf/core/3.11/js/1.326/min/modules/ui/treeview.js","RightNowTreeViewDialog":"/euf/core/3.11/js/1.326/min/modules/ui/treeviewdialog.js","RightNowTreeViewDropdown":"/euf/core/3.11/js/1.326/min/modules/ui/treeviewdropdown.js"},"lang":["en-US","en-US"],"injected":true,"comboBase":"//nvidia.widget.custhelp.com/ci/cache/yuiCombo/","groups":{"gallery-treeview":{"base":"/rnt/rnw/yui_3.18/gallery-treeview/","modules":{"gallery-treeview":{"path":"gallery-treeview-min.js"}}}}};</script>
+<script type="text/javascript" src="/euf/core/3.11/js/1.326/min/RightNow.js"></script>
+<script type="text/javascript" src="/euf/generated/optimized/1778070915/templates/standard.313737383037303931352e332e31312e372e7374616e646172642e6a73.js"></script>
+<script type="text/javascript" src="/euf/generated/optimized/1778070915/pages/answers/detail.313737383037303931352e332e31312e372e64657461696c2e6a73.js"></script>
+<script type="text/javascript" src="/euf/generated/optimized/1778070915/custom/autoload.js"></script>
+<script>
+/* <![CDATA[ */
+RightNow.Env=(function(){var _props={module:'standard',coreAssets:'/euf/core/3.11/',yuiCore:'/rnt/rnw/yui_3.18/',profileData:{"isLoggedIn":false,"previouslySeenEmail":null}};return function(prop){return _props[prop];};})();RightNow.Interface.setMessagebase(function(){return {"ATTRIBUTES_LC_LBL":"attributes","ATTRIBUTE_HAVENT_SPECIFIED_VALID_IT_LBL":"  Value for '%s' attribute is a number and you haven't specified a valid value for it.","BACK_LBL":"Back","BEG_DIALOG_PLS_DISMISS_DIALOG_BEF_MSG":"Beginning of dialog, please dismiss dialog before continuing","CHANGED_LBL":"Changed","CLOSE_CMD":"Close","COL_SAVE_ED_ERR_L_INV_E_PERMISSIONS_MSG":"Widget changes could not be saved due to errors while saving. Please check the file permissions.","DIALOG_LBL":"dialog","DIALOG_PLEASE_READ_TEXT_DIALOG_MSG_MSG":"dialog, please read above text for dialog message","END_DIALOG_PLS_DISMISS_DIALOG_BEF_MSG":"End of dialog, please dismiss dialog before continuing","ERROR_LBL":"Error","ERRORS_LBL":"Errors","ERROR_PCT_S_LBL":"Error: %s","ERROR_REQUEST_ACTION_COMPLETED_MSG":"There was an error with the request and the action could not be completed.","ERR_SUBMITTING_FORM_DUE_INV_INPUT_LBL":"There was an error submitting the form due to invalid input","ERR_SUBMITTING_SEARCH_MSG":"There was a problem with your request.  Please change your search terms and try again.","HELP_LBL":"Help","INFORMATION_LBL":"Information","INFORMATION_S_LBL":"Information: %s","OK_LBL":"OK","PCT_S_ATTRIB_REQD_HAVENT_VALUE_MSG":"The '%s' attribute is required and you haven't specified a value for it.","PG_COL_SAVE_ED_ERR_L_INV_E_PERMISSIONS_MSG":"Widget changes of page could not be saved due to errors while saving. Please check the page file permissions.","REVEALED_DISP_TB_DD_OP_ADDTL_T_EXPOSED_MSG":"Note: The widget, when revealed, can be inspected, but you may need to perform additional actions for it to be exposed.","SOME_INST_ID_BUT_SEE_ITS_SATTRIBUTESS_MSG":"Some or all instances of this widget are hidden, but you can see its %sattributes%s.","SUCCESS_S_LBL":"Success: %s","TEMPL_COL_SAVE_ED_ERR_INV_TEMPL_PRMSSNS_MSG":"Widget changes of template could not be saved due to errors while saving. Please check the template file permissions.","THIS_WIDGET_HAS_NO_ATTRIBUTES_MSG":"This widget has no attributes.","THIS_WIDGET_HAS_NO_VIEW_LBL":"This widget has no view","VAL_PCT_S_ATTRIB_MINIMUM_VAL_ACCD_MSG":"Value for '%s' attribute is too small. The minimum value accepted is %s but the value received was %s.","VAL_PCT_S_ATTRIB_MAX_VAL_ACCD_PCT_S_MSG":"Value for '%s' attribute is too large. The maximum value accepted is %s but the value received was %s.","VIEW_ATTRIBUTES_LBL":"View Attributes","WARNING_LBL":"Warning","WARNING_S_LBL":"Warning: %s","WIDGET_CHANGES_ERRORS_WILL_IGNORED_MSG":"Widget changes with errors will be ignored.","REQUIRED_LBL":"Required","FIELD_REQUIRED_MARK_LBL":"*","RESPONSE_PLACEHOLDER_LBL":"<Response Placeholder>","NO_ANSWERS_FOUND_MSG":"No Answers found.","AGT_TEXT_LBL":"Agent text:","ADD_TO_CHAT_CMD":"Add to Chat","NEW_CONTENT_ADDED_BELOW_MSG":"New content added below.","TOP_CONTENT_CONTENT_ADDED_MSG":"Top of new content. New content has been added below.","PCT_S_IS_REQUIRED_MSG":"%s is required","FIELD_IS_NOT_A_VALID_EMAIL_ADDRESS_MSG":"field is not a valid email address.","THUMBNAIL_FOR_ATTACHED_IMAGE_MSG":"Thumbnail for attached image."};});
+RightNow.Interface.setConfigbase(function(){return {"DE_VALID_EMAIL_PATTERN":"^((([-_!#$%&'*+\/=?^~`{|}\\w]+(\\.[.]?[-_!#$%&'*+\/=?^~`{|}\\w]+)*)|(\"[^\"]+\"))@[0-9A-Za-z]+([\\-]+[0-9A-Za-z]+)*(\\.[0-9A-Za-z]+([\\-]+[0-9A-Za-z]+)*)+[; ]*)$","CP_HOME_URL":"answers\/list","CP_FILE_UPLOAD_MAX_TIME":300,"OE_WEB_SERVER":"nvidia.custhelp.com","SUBMIT_TOKEN_EXP":30};});
+RightNow.Url.setParameterSegment(5);
+RightNow.Interface.Constants = 
+{"API_VALIDATION_REGEX_EMAIL":"((([-_!#$%&'*+\/=?^~`{|}\\w]+([.][-_!#$%&'*+\/=?^~`{|}\\w]*)*)|(\"[^\"]+\"))@[0-9A-Za-z]+([\\-]+[0-9A-Za-z]+)*(\\.[0-9A-Za-z]+([\\-]+[0-9A-Za-z]+)*)+[;, ]*)+"};
+YUI().use('event-base',function(Y){Y.on('domready',function(){var n=RightNow.namespace,W=RightNow.Widgets,c='createWidgetInstance';
+n('RightNow.Widgets.FileListDisplay').templates={"refreshedFileList":"<div id=\"rn_<%= instanceID %>\" class=\"rn_FileListDisplay rn_Output\">  <% if (attrs.label) { %>  <span class=\"rn_DataLabel\"><%= attrs.label %><\/span>  <% } %> <div class=\"rn_DataValue\">  <ul> <% for(var i=0; i < fileAttachments.length; i++) { %>  <li id=\"<%='rn_File_' + fileAttachments[i].ID %>\">  <a href=\"<%= fileAttachments[i].AttachmentUrl %>\" rel=\"nofollow\" target=\"_blank\"> <% if (attrs.display_thumbnail && fileAttachments[i].ThumbnailScreenReaderText) { %>  <img class='rn_FileTypeImageThumbnail' alt=\"<%= thumbnailAltText %>\"\/> <span class=\"rn_ScreenReaderOnly\"><%= fileAttachments[i].ThumbnailScreenReaderText %><\/span>  <% } %>  <%= fileAttachments[i].FileName %>  <\/a> <% if(attrs.display_file_size) { %>  <span class=\"rn_FileSize\">(<%= fileAttachments[i].FileSize %>)<\/span>  <% } %>  <\/li>  <% } %> <\/ul>  <\/div> <\/div>"};
+n('RightNow.Widgets.AnswerFeedback').templates={"feedbackForm":"<div id=\"<%= domPrefix %>_AnswerFeedbackForm\" class=\"rn_AnswerFeedbackForm\"> <div id=\"<%= domPrefix %>_DialogDescription\" class=\"rn_DialogSubtitle\"><%= labelDialogDescription %><\/div> <div id=\"<%= domPrefix %>_ErrorMessage\"><\/div>  <form>  <% if (!isProfile) { %>  <label for=\"<%= domPrefix %>_EmailInput\"><%= labelEmailAddress %> <%= getRequiredLabel() %> <\/label> <input id=\"<%= domPrefix %>_EmailInput\" class=\"rn_EmailField\" type=\"text\" value=\"<%= userEmail %>\"\/>  <% } %>  <label for=\"<%= domPrefix %>_FeedbackTextarea\"><%= labelCommentBox %> <%= getRequiredLabel() %> <\/label> <textarea id=\"<%= domPrefix %>_FeedbackTextarea\" class=\"rn_Textarea\" rows=\"4\" cols=\"60\"><\/textarea>   <\/form> <\/div>"};
+W.setInitialWidgetCount(2);
+W[c]({"i":{"c":"FileListDisplay","n":"FileListDisplay","w":8},"a":{"display_thumbnail":true,"label":"Attachments","left_justify":false,"name":"Answer.FileAttachments","display_file_size":true,"sort_by_filename":false,"parent_object_id":null,"sub_id":"file"},"j":[]},'W10=','fUcQTQyVCQcRdBnXQ0JRJ_dfMIOkvrDN4snlzlMiq6T50Qg1sijZQj1hYwRGcvCas1s~Xv6qf8lSL8mDEwSdKDkjLgpXm5g95FxFaZeZhRNvghGqvBRlmIkFm1Gmf4avWmJ9FywDFcci0!',1785354256,'FileListDisplay_8','standard/output/FileListDisplay','RightNow.Widgets.FileListDisplay','8','ZlVDOTA1flRNfjRab2JjYV9zZlZTclQ1bFJzdmdVQTZXSTVfQW5TMHdGaE5TaUNoOHJ4Y2xsYWdETG1lUGlwYllpcnlZQ0V_d01uMm9iVGlKOUM3V3lrTkdlcmY2bEdraHF6T0VyT0JDZkV5SU5GXzlzQWNYU3lQRFFQVmN3U1p6V0VyQ24xfjNVNnp3IQ!!');
+W[c]({"i":{"c":"AnswerFeedback","n":"AnswerFeedback","w":9},"a":{"submit_rating_ajax":"\/ci\/ajaxRequest\/submitAnswerRating","submit_feedback_ajax":"\/ci\/ajaxRequest\/submitAnswerFeedback","label_title":"Is this answer helpful?","label_accessible_option_description":"Rate answer %d of %d","label_dialog_title":"Provide Additional Information","label_dialog_description":"Your rating has been submitted, please tell us how we can make this answer more useful.","options_count":2,"options_descending":true,"label_yes_button":"Yes","label_no_button":"No","feedback_page_url":"","dialog_threshold":0,"label_feedback_submitted":"Your feedback has been submitted.","label_feedback_thanks":"Thanks for your feedback.","label_email_address":"Email","label_comment_box":"Your Feedback","label_send_button":"Submit","label_cancel_button":"Cancel","use_rank_labels":false,"dialog_width":"375px"},"j":{"f_tok":"ZlU2X2lMaTlkNEwzOEhhRTRyQnRpV0ZWSzc1RHpOTlg4R3lxU05XT2c5dlFkVXJReVNUTk5vaEp1YkZTeU1lMmtZcE5teWtzRzNuVGR6VDd5OWJKWUFDYVppdEpRfkFhVVVrYmJ6UnJaRXA0ZlpPbUxnUlRPa1pwVUplUXlaUjFCNHlVcXVVUGhrbU9LTW1oS2JEaVNOa35YS2ZmOUpZU29X","isProfile":false,"email":"","buttonView":true,"answerID":"5848"}},'W10=','fUH~cMOcM8Yr~j4GnGyhSRpvFpYI8k5wD7eRBNbwvVIwlcS9wjCydIEaYHOkSQ3fEz1i8IbLq~t4O4JsK_PsgfunGmkn14ClyyBlAqVyjzifmFdqBmSA_IJkGWLX5tCFp_Z2gs9ZIhiGc!',1785354256,'AnswerFeedback_9','standard/feedback/AnswerFeedback','RightNow.Widgets.AnswerFeedback','9','ZlVCazBaeEw4ZFhzaVlXXzBVOEtrNzRHbDltdVhTRHNKTkdfOFpPaEFsZG8xV2pIUVVjdGFTOTRSaUpRSVhzdkV4ZHI0SXQ4NUFVVjVvbVBFTkMwVTBza2FZTnl0aV9rNGR4X2xrUU9UTm0wVHAyNnRFQ1UxSjBfQTE0cUNCWkJScDRtZnd5YVFja2Z3IQ!!');
+})});
+/* ]]> */
+</script>
+<script type="text/javascript">
+var _rnq=_rnq||[];_rnq.push({"s":"vQD_oGDr","uh":"c64f83dd","uc":"nvidia.custhelp.com\/app\/answers\/detail\/a_id\/5848","b":"ca12032","i":"nvidia:nvidia","f":"rnw","p":"Customer Portal","v":"26.2.0.1-b326-sp2","th":"www.rnengage.com"}),function(r){function e(r){var e=document.createElement("script");e.src=r,e.async=!0,e.onload=function(){console.log("Script loaded:",r)},e.onerror=function(){console.error("Failed to load script:",r)},document.head.appendChild(e)}for(;r.length;)e(r.pop())}(["https://www.rnengage.com/api/e/ca12032/e.js","//www.rnengage.com/api/1/javascript/acs.js"]);
+</script><script type="text/javascript"  src="/Mx_l50cSPmzd_6_HfIso/w2O5kL7a/WAIkAg/PA4wTgo/2cyN7?v=b6cccb42-aecf-b9c5-1953-feed7f366011" defer></script></body>
+    </html><style>.navigation .global-nav .mobile-nav .mega-overlay{	position: inherit!important;}.navigation .global-nav .mobile-nav .mega-nav{	position: initial!important;}@media only screen and (max-width: 1024px){.navigation .global-nav .mobile-nav .mega-nav .mega-menu {    position: absolute!important;    top: 46px;	}}@media only screen and (max-width: 768px){.navigation .global-nav .mobile-nav .mega-nav .mega-menu {    width: 78%!important;	}}@media only screen and (max-width: 639px){.navigation .global-nav .mobile-nav .mega-nav .mega-menu {    width: 60%!important;    	}}</style>

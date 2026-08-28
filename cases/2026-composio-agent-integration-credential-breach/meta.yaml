@@ -1,0 +1,41 @@
+slug: 2026-composio-agent-integration-credential-breach
+title_en: Composio Agent Integration Credential Breach
+title_cn: Composio Agent 集成平台凭据泄露事件
+year: 2026
+disclosed: '2026-05-21'
+category: supply-chain
+severity: critical
+severity_basis: quantifiable-impact
+severity_evidence: Composio disclosed 5,001 affected GitHub connections and an auxiliary cache containing 5,241
+  API keys with potential exposure; the company described the listed connections as about 0.3% of active connections.
+real_incident: true
+reproducible: false
+ai_tool:
+- Composio
+- agent tool integrations
+- internal agentic remediation
+language:
+- Cloud services
+- OAuth
+attack_surface:
+- internal monitoring agent
+- automated remediation
+- tool execution sandbox
+- OAuth and API key cache
+references:
+- title: Composio security incident status
+  url: https://status.composio.dev/cmpfuudag002cpbm2wv1qhjpf
+- title: Protocol Report analysis
+  url: https://protocolreport.com/blog/composio-ai-connector-token-incident/
+- title: P0 Security analysis
+  url: https://p0.dev/blog/the-composio-breach-lets-stop-blaming-the-agents/
+- title: Hyperagent incident response
+  url: https://www.hyperagent.com/blog/composio-incident-response/
+- title: Hatz AI vendor response
+  url: https://hatz.ai/en/articles/composio-tool-deprecation
+tldr: 攻击者进入 Composio 内部 Agent 监控与自动修复链，注册恶意工具定义并获得沙箱代码执行，随后触及集中保存的 GitHub OAuth 连接和 API key，迫使平台及下游客户大规模撤销凭据。
+tags:
+- ai-security
+- supply-chain
+verification_notes: Composio disclosed 5,001 affected GitHub connections and an auxiliary cache containing 5,241
+  API keys with potential exposure; the company described the listed connections as about 0.3% of active connections.

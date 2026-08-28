@@ -1,0 +1,43 @@
+slug: 2026-mcp-atlassian-response-prompt-injection-ssrf
+title_en: MCP Atlassian SSRF and Tool Response Prompt Injection
+title_cn: MCP Atlassian SSRF 与工具返回内容提示注入
+year: 2026
+disclosed: '2026-03-18'
+category: code-vulns
+severity: high
+severity_basis: cvss
+severity_evidence: CVE-2026-27826 has CVSS 3.1 8.2; releases before 0.17.0 are affected. Later advisories document additional
+  redirect and DNS-rebinding hardening.
+real_incident: true
+reproducible: true
+ai_tool:
+- MCP Atlassian
+- LLM agents
+- Jira
+- Confluence
+language:
+- Python
+attack_surface:
+- custom URL headers
+- outbound Atlassian API requests
+- MCP tool responses
+references:
+- title: GitHub Advisory Database GHSA-7r34-79r5-rcc9
+  url: https://github.com/advisories/GHSA-7r34-79r5-rcc9
+- title: Project security advisory GHSA-7r34-79r5-rcc9
+  url: https://github.com/sooperset/mcp-atlassian/security/advisories/GHSA-7r34-79r5-rcc9
+- title: OSV CVE-2026-27826 record
+  url: https://osv.dev/vulnerability/GHSA-7r34-79r5-rcc9
+- title: MCP Atlassian SSRF fix commit
+  url: https://github.com/sooperset/mcp-atlassian/commit/5cd697dfce9116ef330b8dc7a91291640e0528d9
+- title: MCP Atlassian redirect hardening advisory
+  url: https://github.com/sooperset/mcp-atlassian/security/advisories/GHSA-72fm-whvq-jghf
+tldr: MCP Atlassian 0.17.0 之前允许未认证请求用自定义头指定 Jira 或 Confluence 地址，服务器会访问该地址并把响应交给 LLM，形成 SSRF 与工具返回内容提示注入的组合入口。
+tags:
+- ai-security
+- code-vulns
+- mcp-atlassian
+verification_notes: CVE-2026-27826 has CVSS 3.1 8.2; releases before 0.17.0 are affected. Later advisories document additional
+  redirect and DNS-rebinding hardening.
+cve: CVE-2026-27826
+fixed_version: 0.17.0

@@ -1,0 +1,44 @@
+slug: 2026-tgi-vlm-external-image-fetch-dos
+title_en: Text Generation Inference VLM External Image Fetch DoS
+title_cn: Text Generation Inference 视觉模型外部图片抓取拒绝服务漏洞
+year: 2026
+disclosed: '2026-02-03'
+category: domain-specific
+severity: high
+severity_basis: cvss
+severity_evidence: CVE-2026-0599 is rated CVSS 7.5 by downstream advisories. It affects text-generation-inference 3.3.6 VLM validation, where unauthenticated requests can trigger unbounded external image fetching and exhaust availability.
+real_incident: true
+reproducible: true
+ai_tool:
+- Hugging Face Text Generation Inference
+- vision-language model endpoint
+language:
+- Python
+- Rust
+- HTTP
+attack_surface:
+- VLM image URL validation
+- external fetch
+- inference worker resources
+- unauthenticated API
+references:
+- title: 'NVD: CVE-2026-0599'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-0599
+- title: 'GitHub Advisory: GHSA-j7x9-7j54-2v3h'
+  url: https://github.com/advisories/GHSA-j7x9-7j54-2v3h
+- title: Hugging Face fixing commit
+  url: https://github.com/huggingface/text-generation-inference/commit/24ee40d143d8d046039f12f76940a85886cbe152
+- title: 'Huntr: Text Generation Inference'
+  url: https://huntr.com/repos/huggingface/text-generation-inference
+- title: Check Point advisory for CVE-2026-0599
+  url: https://advisories.checkpoint.com/defense/advisories/public/2026/cpai-2026-5496.html/
+tldr: A Text Generation Inference VLM validation path allowed unauthenticated callers to trigger unbounded external image fetching, enabling denial of service against exposed inference endpoints.
+tags:
+- text-generation-inference
+- vlm
+- external-fetch
+- denial-of-service
+- multimodal
+verification_notes: NVD, the GitHub advisory, the fixing commit, Huntr, Safety, Check Point, and Singapore's cyber bulletin agree on the VLM validation and external-fetch nature of CVE-2026-0599. Public material does not establish active exploitation.
+cve: CVE-2026-0599
+cvss: 7.5

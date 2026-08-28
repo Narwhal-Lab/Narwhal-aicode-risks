@@ -1,0 +1,42 @@
+slug: 2026-gemini-android-notification-prompt-injection
+title_en: 'Google Gemini Android Notification Prompt Injection'
+title_cn: 'Google Gemini Android 消息通知间接提示注入漏洞'
+year: 2026
+disclosed: '2026-06-03'
+category: agent-risk
+severity: high
+severity_basis: editorial
+severity_evidence: 'SafeBreach 通过 WhatsApp、Slack、SMS 等普通通知向 Gemini Android 语音助手注入隐藏指令，演示了伪造可信联系人消息、调用 Google Home、启动 Zoom 视频和污染长期记忆。Google 在负责任披露后通过服务端内容分类器更新修复。'
+real_incident: true
+reproducible: true
+ai_tool:
+- 'Google Gemini for Android'
+- 'Gemini voice assistant'
+- 'Android Utilities connected app'
+language:
+- 'Android / LLM agent / voice interface'
+attack_surface:
+- indirect prompt injection
+- notification context ingestion
+- delayed tool invocation
+- long-term memory
+references:
+- title: 'SafeBreach Labs: Exploiting Gemini via Prompt Injection'
+  url: https://www.safebreach.com/blog/gemini-voice-assistant-prompt-injection-exploit
+- title: 'SecurityWeek: Gemini Voice Assistant Hijacked via Messaging Notifications'
+  url: https://www.securityweek.com/gemini-voice-assistant-hijacked-via-messaging-notifications/amp/
+- title: 'The Hacker News: WhatsApp and Slack Notifications Could Hijack Gemini'
+  url: https://thehackernews.com/2026/06/whatsapp-slack-notifications-could.html
+- title: 'Google Gemini Help: malicious content and prompt injection'
+  url: https://support.google.com/gemini/answer/16188217?hl=en
+- title: 'Google Security Blog: prompt injections on the web'
+  url: https://blog.google/security/prompt-injections-web/
+tldr: 'Gemini Android 在读取消息通知时会把外部文本带入语音智能体上下文；攻击者利用隐藏语言和静音链接构造双重语境，使用户听到无害问题，安全检查却把同一个回答理解为对敏感工具动作的授权。'
+tags:
+- ai-security
+- prompt-injection
+- voice-agent
+- android
+- gemini
+- 2026
+verification_notes: 'SafeBreach 提供了攻击步骤、演示和披露时间；SecurityWeek 与 The Hacker News 独立报道了补丁、入口及影响；Google 的帮助中心和安全博客确认间接提示注入威胁及内容分类防护。'

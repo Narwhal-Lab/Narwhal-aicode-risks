@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Composio Security Incident - Hyperagent Response</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preload" as="style" href="https://www.hyperagent.com/blog/assets/built/screen.css?v=R33bgSIe5DNyI_x9">
+    <link rel="preload" as="script" href="https://www.hyperagent.com/blog/assets/built/source.js?v=0Zia9fBUZ9HlIrkb">
+    
+    <link rel="preload" as="font" type="font/woff2" href="https://www.hyperagent.com/blog/assets/fonts/geist-roman.woff2?v=BSfyqJnfAQFJLA66" crossorigin="anonymous">
+<link rel="preload" as="font" type="font/woff2" href="https://www.hyperagent.com/blog/assets/fonts/geist-italic.woff2?v=mkNPmkakv6xh3h6Q" crossorigin="anonymous">
+<style>
+    @font-face {
+        font-family: "Geist";
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: optional;
+        src: url(https://www.hyperagent.com/blog/assets/fonts/geist-roman.woff2?v=BSfyqJnfAQFJLA66) format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+        font-family: "Geist";
+        font-style: italic;
+        font-weight: 100 900;
+        font-display: optional;
+        src: url(https://www.hyperagent.com/blog/assets/fonts/geist-italic.woff2?v=mkNPmkakv6xh3h6Q) format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+</style>
+
+    <link rel="stylesheet" type="text/css" href="https://www.hyperagent.com/blog/assets/built/screen.css?v=R33bgSIe5DNyI_x9">
+
+    <style>
+        :root {
+            --background-color: #ffffff
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast has been taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+
+        if (accentColor.length === 3) {
+            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
+        }
+
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    <link rel="icon" href="https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/size/w256h256/format/png/2026/03/favicon.svg" type="image/png">
+    <link rel="canonical" href="https://www.hyperagent.com/blog/composio-incident-response/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Hyperagent">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Composio Security Incident - Hyperagent Response">
+    <meta property="og:description" content="Last updated: May 26, 2026 at 16:00 PT. We will continue to update this page as we learn more, so please check back regularly.
+
+On May 21, 2026, Composio, a platform we use to facilitate integrations between Hyperagent and various third-party data sources, disclosed a security incident in">
+    <meta property="og:url" content="https://www.hyperagent.com/blog/composio-incident-response/">
+    <meta property="og:image" content="https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/2026/03/Twitter-Card-----800x418--1--3.png">
+    <meta property="article:published_time" content="2026-05-24T00:39:10.000Z">
+    <meta property="article:modified_time" content="2026-05-26T23:04:21.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Composio Security Incident - Hyperagent Response">
+    <meta name="twitter:description" content="Last updated: May 26, 2026 at 16:00 PT. We will continue to update this page as we learn more, so please check back regularly.
+
+On May 21, 2026, Composio, a platform we use to facilitate integrations between Hyperagent and various third-party data sources, disclosed a security incident in">
+    <meta name="twitter:url" content="https://www.hyperagent.com/blog/composio-incident-response/">
+    <meta name="twitter:image" content="https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/2026/03/Twitter-Card-----800x418--1--2.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="The Hyperagent Team">
+    <meta name="twitter:site" content="@hyperagentapp">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="418">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Hyperagent",
+        "url": "https://www.hyperagent.com/blog/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/2026/03/favicon-1.svg",
+            "width": 22,
+            "height": 22
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "The Hyperagent Team",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/2026/03/XQ1utovK_400x400-3.jpg",
+            "width": 400,
+            "height": 400
+        },
+        "url": "https://www.hyperagent.com/blog/author/hyperagent/",
+        "sameAs": []
+    },
+    "headline": "Composio Security Incident - Hyperagent Response",
+    "url": "https://www.hyperagent.com/blog/composio-incident-response/",
+    "datePublished": "2026-05-24T00:39:10.000Z",
+    "dateModified": "2026-05-26T23:04:21.000Z",
+    "description": "Last updated: May 26, 2026 at 16:00 PT. We will continue to update this page as we learn more, so please check back regularly.\n\nOn May 21, 2026, Composio, a platform we use to facilitate integrations between Hyperagent and various third-party data sources, disclosed a security incident in which a threat actor gained unauthorized access to certain of its internal systems. For full details on the incident itself, see Composio's security bulletin: https://composio.dev/blog/composio-may-2026-securit",
+    "mainEntityOfPage": "https://www.hyperagent.com/blog/composio-incident-response/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.61">
+    <link rel="alternate" type="application/rss+xml" title="Hyperagent" href="https://www.hyperagent.com/blog/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="4f24afa6f41813e5054ddb7cec" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://hyperagent.ghost.io/blog/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://www.hyperagent.com/blog/webmentions/receive/" rel="webmention">
+    <script defer src="/blog/public/cards.min.js?v=ShRHxgy4po8zN-Wf"></script>
+    <link rel="stylesheet" type="text/css" href="/blog/public/cards.min.css?v=WwnU9jw5ancNC8Gc">
+    <script defer src="/blog/public/ghost-stats.min.js?v=vFcCUf6ZQ0Hyhc8h" data-stringify-payload="false" data-datasource="analytics_events" data-storage="localStorage" data-host="https://www.hyperagent.com/blog/.ghost/analytics/api/v1/page_hit"  tb_site_uuid="f7e5175c-8256-4575-815c-d9f6464dca0a" tb_post_uuid="4df6fc20-6a27-48ab-9b3f-6ab56481909b" tb_post_type="post" tb_member_uuid="undefined" tb_member_status="undefined" tb_gift_link=""></script><style>:root {--ghost-accent-color: #111111;}</style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7H2E8EFKWT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7H2E8EFKWT');
+</script>
+
+</head>
+<body class="post-template has-sans-title has-sans-body">
+
+<div class="gh-viewport">
+    
+    <header id="gh-navigation" class="gh-navigation is-left-logo gh-outer">
+    <div class="gh-navigation-inner gh-inner">
+
+        <div class="gh-navigation-brand">
+            <button class="gh-burger gh-icon-button" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true">
+                    <line x1="40" y1="64" x2="216" y2="64"/>
+                    <line x1="40" y1="128" x2="216" y2="128"/>
+                    <line x1="40" y1="192" x2="216" y2="192"/>
+                </svg>
+            </button>
+            <a class="gh-navigation-logo is-title" href="https://www.hyperagent.com/blog">
+                <svg width="134" height="24" viewBox="0 0 134 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M89.3096 4.96973C90.3379 4.96973 91.2715 5.15554 92.0566 5.53125L96.0898 5.20898V7.77246H94.2471C94.45 8.28108 94.5537 8.84817 94.5537 9.47363C94.5536 10.3872 94.3374 11.1351 93.9043 11.8174C93.4712 12.4998 92.8603 13.0323 92.0752 13.4102C91.2863 13.7918 90.3653 13.9805 89.3096 13.9805C88.592 13.9804 87.9359 13.8881 87.3398 13.707C87.3146 13.7223 87.2884 13.7368 87.2637 13.7529C87.0396 13.8993 86.8659 14.0651 86.7461 14.2461C86.6262 14.4273 86.5645 14.6128 86.5645 14.8018C86.5645 15.0946 86.6762 15.3104 86.9004 15.4492C87.1246 15.588 87.4727 15.6572 87.9404 15.6572H91.8125C92.7289 15.6573 93.5335 15.7926 94.2295 16.0586C94.9215 16.3284 95.4589 16.733 95.8379 17.2764C96.2169 17.82 96.4102 18.48 96.4102 19.2588C96.4101 20.0375 96.2437 20.7087 95.915 21.2793C95.5863 21.8497 95.1148 22.3164 94.5 22.6787C93.8851 23.0411 93.1696 23.3149 92.3574 23.4961C91.5453 23.6773 90.6443 23.7695 89.6582 23.7695L89.6465 23.7656C88.297 23.7656 87.1407 23.6231 86.1816 23.3379C85.2225 23.0526 84.4792 22.6203 83.9609 22.042C83.4429 21.4637 83.1836 20.7234 83.1836 19.8291C83.1836 19.4474 83.2574 19.0692 83.4043 18.6914C83.5512 18.3137 83.7566 17.9706 84.0156 17.6699C84.1849 17.4735 84.3672 17.2986 84.5596 17.1416C84.4219 17.0384 84.2965 16.9276 84.1855 16.8066C83.8143 16.4018 83.6289 15.8963 83.6289 15.291C83.6289 14.8092 83.7486 14.3697 83.9922 13.9727C84.2358 13.5757 84.549 13.2404 84.9395 12.9629C85.1029 12.8467 85.2699 12.743 85.4375 12.6484C85.1695 12.4017 84.9362 12.1259 84.7422 11.8174C84.3092 11.1351 84.0929 10.3563 84.0928 9.47363C84.0928 8.59071 84.309 7.76863 84.7422 7.10547C85.1753 6.44236 85.7872 5.91786 86.5723 5.54004C87.361 5.16241 88.2735 4.96977 89.3096 4.96973ZM20.0176 5.33203L20.5625 7.09473L23.2891 15.1982L25.9893 7.09473L26.5342 5.33203L26.5615 5.22852H29.624V5.33203L28.9473 7.09473L24.2715 20.041C23.9776 20.8507 23.5949 21.5337 23.1309 22.0889C22.6629 22.6401 22.1097 23.0564 21.4678 23.3301C20.8258 23.6076 20.0912 23.7461 19.2598 23.7461L19.2715 23.7422C18.7688 23.7422 18.3162 23.7 17.9062 23.6113C17.5003 23.5265 17.1753 23.4113 16.9316 23.2764L17.8135 20.7891C17.9875 20.9086 18.1849 20.9977 18.4092 21.0479C18.6332 21.0979 18.8689 21.125 19.1084 21.125C19.5918 21.125 20.072 20.9515 20.5361 20.6084C21.0041 20.2614 21.3678 19.7288 21.627 19.0039L21.8086 18.4873L17.6006 7.09473L16.9775 5.33203V5.22852H19.9902L20.0176 5.33203ZM38.4844 4.96973C39.6949 4.96973 40.7741 5.27065 41.7178 5.87598C42.6613 6.48124 43.4079 7.30992 43.9531 8.3623C44.4984 9.41487 44.7725 10.6144 44.7725 11.96C44.7725 12.9624 44.6179 13.8882 44.3047 14.7441C43.9914 15.5999 43.5508 16.3364 42.9824 16.957C42.4102 17.5776 41.7411 18.0631 40.9717 18.4062C40.2022 18.7532 39.3588 18.9228 38.4385 18.9229C37.8662 18.9229 37.3129 18.8385 36.7754 18.665C36.2378 18.4915 35.7615 18.2527 35.3477 17.9404C34.9339 17.6282 34.6021 17.2921 34.3623 16.9297V23.5078H31.3184V5.22852H34.3584V6.96289C34.7026 6.41171 35.2558 5.94108 36.0059 5.55176C36.7599 5.1625 37.5835 4.96975 38.4844 4.96973ZM87 17.9795C86.8601 18.0733 86.7395 18.1757 86.6416 18.291C86.4716 18.4913 86.348 18.6954 86.2783 18.9111C86.2087 19.127 86.1738 19.3397 86.1738 19.5479C86.1738 19.9449 86.3084 20.2769 86.5752 20.543C86.842 20.8089 87.2328 21.0095 87.7432 21.1367C88.2537 21.2678 88.8886 21.3291 89.6543 21.3291C90.3115 21.3291 90.8799 21.2869 91.3555 21.1982C91.831 21.1134 92.2218 20.982 92.5234 20.8086C92.8251 20.6351 93.0532 20.4344 93.2002 20.1992C93.3471 19.9679 93.4209 19.7021 93.4209 19.4092C93.4209 18.908 93.2545 18.553 92.9258 18.3486C92.5971 18.1405 92.1136 18.0361 91.4717 18.0361H88.0186C87.6634 18.0361 87.3238 18.0161 87 17.9795ZM130.42 5.23242H133.746V7.76855H130.42V14.3193C130.42 15.0442 130.602 15.5577 130.966 15.8623C131.329 16.1628 131.762 16.3163 132.265 16.3164C132.473 16.3164 132.691 16.2934 132.915 16.251C133.139 16.2085 133.383 16.1082 133.642 15.9541V18.4912C133.468 18.6107 133.185 18.7151 132.799 18.8037C132.408 18.8885 132.014 18.9346 131.615 18.9346V18.9268C130.803 18.9267 130.08 18.7654 129.445 18.4492C128.815 18.1292 128.313 17.6507 127.941 17.0107C127.57 16.3708 127.385 15.5612 127.385 14.5781V7.76855H125.071V5.23242C125.644 5.23242 126.093 5.20134 126.422 5.13965C126.75 5.07793 126.998 4.9424 127.16 4.72656C127.322 4.51065 127.427 4.19061 127.474 3.77051C127.516 3.34643 127.539 2.78349 127.539 2.07422H130.42V5.23242ZM52.8291 4.97754C53.935 4.97758 54.8751 5.13994 55.6484 5.45605C56.4177 5.776 57.0519 6.2035 57.543 6.73535C58.0379 7.27121 58.4128 7.86922 58.6719 8.53613C58.931 9.19929 59.0974 9.8742 59.167 10.5566C59.2366 11.2391 59.2366 11.891 59.167 12.5117H49.2393C49.2946 13.1815 49.4402 13.7749 49.6807 14.293C49.9939 14.9675 50.4346 15.4843 51.0029 15.8467C51.5753 16.2091 52.2491 16.3896 53.0303 16.3896C53.6022 16.3896 54.0892 16.3092 54.4951 16.1436C54.9012 15.9778 55.25 15.7349 55.5361 15.4072C55.8223 15.0795 56.0426 14.6663 56.1973 14.165L59.1592 14.9678C58.9155 15.7618 58.5257 16.4562 57.9805 17.0537C57.4352 17.6474 56.7425 18.1098 55.9033 18.4375C55.0641 18.7652 54.0815 18.9307 52.9561 18.9307C51.9854 18.9306 51.0922 18.7572 50.2686 18.4141C49.4449 18.071 48.7371 17.5855 48.1377 16.9648C47.5421 16.3441 47.0778 15.6031 46.749 14.751C46.4204 13.8952 46.2539 12.962 46.2539 11.9404C46.2539 10.9189 46.4125 9.98976 46.7334 9.14551C47.0543 8.30129 47.5071 7.56501 48.0986 6.94434C48.6865 6.32359 49.3831 5.84114 50.1914 5.49414C50.9958 5.15107 51.874 4.97754 52.8291 4.97754ZM103.418 4.97754C104.524 4.97754 105.464 5.1399 106.237 5.45605C107.007 5.77606 107.642 6.2033 108.133 6.73535C108.628 7.27124 109.003 7.86917 109.262 8.53613C109.521 9.19929 109.687 9.8742 109.757 10.5566C109.826 11.2391 109.826 11.891 109.757 12.5117H99.8281C99.8834 13.1815 100.03 13.7749 100.271 14.293C100.584 14.9675 101.024 15.4843 101.593 15.8467C102.165 16.209 102.838 16.3896 103.619 16.3896C104.191 16.3896 104.679 16.3093 105.085 16.1436C105.491 15.9778 105.839 15.7348 106.125 15.4072C106.411 15.0795 106.632 14.6663 106.787 14.165L109.749 14.9678C109.505 15.7619 109.115 16.4562 108.569 17.0537C108.024 17.6472 107.332 18.1099 106.493 18.4375C105.654 18.7652 104.671 18.9307 103.546 18.9307C102.575 18.9307 101.682 18.7571 100.858 18.4141C100.035 18.0709 99.326 17.5856 98.7266 16.9648C98.131 16.3441 97.6676 15.603 97.3389 14.751C97.0102 13.8951 96.8438 12.962 96.8438 11.9404C96.8438 10.9188 97.0023 9.98979 97.3232 9.14551C97.6442 8.30121 98.0968 7.56505 98.6885 6.94434C99.2763 6.32365 99.9721 5.84113 100.78 5.49414C101.585 5.15102 102.463 4.97756 103.418 4.97754ZM75.6963 4.96973C76.8061 4.96973 77.7811 5.17027 78.6318 5.56348C79.4788 5.9606 80.1444 6.53522 80.6201 7.2832C81.0958 8.03501 81.335 8.9258 81.335 9.96289V18.6611H78.3223V16.9072C77.9886 17.3817 77.6101 17.766 77.1934 18.0557C76.768 18.3487 76.3154 18.5643 75.8281 18.7031C75.3447 18.8419 74.8574 18.9111 74.374 18.9111L74.3779 18.9268C73.4769 18.9268 72.6725 18.7573 71.9609 18.4219C71.2494 18.0864 70.6922 17.6201 70.2861 17.0225C69.8801 16.4287 69.6748 15.7578 69.6748 15.0137C69.6748 14.2194 69.8612 13.5365 70.2324 12.9697C70.6037 12.3993 71.145 11.9326 71.8564 11.5703C72.5641 11.2079 73.4153 10.9571 74.4014 10.8184L78.3223 10.248V9.78125C78.3222 9.24548 78.2106 8.79789 77.9863 8.43555C77.762 8.07325 77.4481 7.79229 77.0498 7.5957C76.6515 7.39916 76.2028 7.29883 75.7002 7.29883C75.1125 7.29887 74.61 7.39912 74.1924 7.5957C73.7786 7.79234 73.4378 8.07009 73.1787 8.4248C72.9198 8.77941 72.7382 9.18797 72.6338 9.6543L69.8525 8.92969C70.0614 8.22412 70.4063 7.56837 70.8936 6.97461C71.377 6.38095 72.0228 5.89548 72.8271 5.52539C73.6315 5.1553 74.5865 4.96977 75.6963 4.96973ZM3.22168 7.50684H11.9463V0H15.168V18.6689H11.9463V10.3291H3.22168V18.6689H0V0H3.22168V7.50684ZM68.7666 4.97363C68.8864 4.97366 69.0101 4.98877 69.1299 5.02344V7.92285C68.3333 7.78407 67.6525 7.80714 67.0918 7.98828C66.5272 8.16949 66.0626 8.45531 65.6875 8.84473C65.3163 9.23409 65.0222 9.6624 64.8057 10.125C64.6739 10.4088 64.5693 10.6906 64.4854 10.9678V18.665H61.4453V5.22852H64.4854V7.26855C64.633 7.00872 64.8047 6.76497 65.0029 6.53906C65.4361 6.04558 65.9393 5.66432 66.5078 5.38672C67.08 5.11304 67.6754 4.9737 68.2979 4.97363H68.7666ZM118.814 4.96582C119.785 4.96584 120.651 5.15853 121.413 5.54785C122.175 5.93726 122.779 6.48486 123.22 7.19043C123.661 7.89983 123.881 8.74443 123.881 9.72754V18.6611H120.868V10.4521C120.868 9.84696 120.76 9.33019 120.543 8.89844C120.326 8.46671 120.009 8.13863 119.596 7.91504C119.182 7.69143 118.687 7.58008 118.114 7.58008C117.577 7.58008 117.085 7.71845 116.633 7.99219C116.184 8.26972 115.806 8.64009 115.504 9.10645C115.202 9.57295 114.989 10.1015 114.865 10.6875V18.6611H111.826V5.22852H114.865V7.01367C115.144 6.6166 115.481 6.26555 115.879 5.96484C116.277 5.66412 116.722 5.42047 117.217 5.23926C117.712 5.05805 118.242 4.96582 118.814 4.96582ZM74.8965 12.9629C74.2043 13.067 73.6741 13.2746 73.3105 13.583C72.947 13.8953 72.7656 14.3276 72.7656 14.8789C72.7657 15.2257 72.8505 15.53 73.0244 15.7959C73.1984 16.0619 73.4418 16.2745 73.7627 16.4287C74.0837 16.5829 74.4594 16.6602 74.8926 16.6602C75.6349 16.6601 76.265 16.4785 76.7754 16.1162C77.2859 15.7538 77.6885 15.2985 77.9824 14.7549C78.121 14.4986 78.2336 14.2394 78.3223 13.9775V12.3691L74.8965 12.9629ZM37.9971 7.5918C37.2895 7.59182 36.7252 7.74238 36.207 8.04688C35.6888 8.35146 35.2673 8.76781 34.9463 9.30371C34.6253 9.83961 34.4319 10.4525 34.3623 11.1426V12.8506C34.4126 13.5253 34.598 14.1232 34.9189 14.6514C35.2399 15.1795 35.6577 15.5879 36.1797 15.8809C36.6979 16.1739 37.2859 16.3203 37.9473 16.3203L37.9434 16.3125C38.3764 16.3125 38.7823 16.2473 39.165 16.1201C39.544 15.989 39.8888 15.7964 40.1904 15.5381C40.492 15.2798 40.7582 14.9709 40.9824 14.6201C41.2067 14.2693 41.3811 13.8682 41.501 13.4287C41.6208 12.9893 41.6826 12.5115 41.6826 11.9912C41.6826 11.1276 41.5241 10.3634 41.2031 9.7002C40.8822 9.03727 40.4455 8.51654 39.8926 8.14648C39.3395 7.77635 38.7048 7.5918 37.9971 7.5918ZM89.3096 7.34863C88.9462 7.34866 88.6211 7.39886 88.335 7.50293C88.049 7.60699 87.8015 7.74958 87.5967 7.93066C87.3879 8.11183 87.2293 8.33567 87.1172 8.60547C87.005 8.87536 86.9473 9.16133 86.9473 9.47363C86.9473 9.88599 87.048 10.2562 87.2451 10.5723C87.4423 10.8921 87.7165 11.1431 88.0645 11.3242C88.4124 11.5054 88.8263 11.5976 89.3096 11.5977C89.6731 11.5977 90.002 11.5395 90.2959 11.4277C90.5897 11.316 90.841 11.1694 91.0498 10.9883C91.2586 10.8071 91.4181 10.5874 91.5303 10.3291C91.6423 10.071 91.7001 9.78568 91.7002 9.47363C91.7002 9.042 91.5994 8.67159 91.4023 8.35938C91.2051 8.04707 90.9261 7.80328 90.5703 7.62207C90.2146 7.44101 89.7967 7.34863 89.3096 7.34863ZM64.3496 11.4971H64.3535L64.3516 11.4844C64.3507 11.4886 64.3504 11.4929 64.3496 11.4971ZM52.8291 7.2832C52.2567 7.2832 51.7455 7.39151 51.2969 7.60742C50.8446 7.82329 50.4695 8.1275 50.168 8.52441C49.8663 8.92154 49.6302 9.40398 49.4678 9.97461C49.4334 10.0925 49.4041 10.2134 49.377 10.3369H56.0234C55.9886 9.90509 55.888 9.49987 55.7256 9.11816C55.5593 8.74039 55.342 8.4133 55.0752 8.13574C54.8083 7.862 54.4835 7.64944 54.1006 7.50293C53.7218 7.35657 53.2967 7.28325 52.8291 7.2832ZM103.418 7.2832C102.846 7.28323 102.335 7.39153 101.887 7.60742C101.434 7.82326 101.059 8.12751 100.758 8.52441C100.456 8.92154 100.22 9.40398 100.058 9.97461C100.023 10.0925 99.993 10.2133 99.9658 10.3369H106.612C106.577 9.90509 106.477 9.49987 106.314 9.11816C106.148 8.74057 105.932 8.41321 105.665 8.13574C105.398 7.862 105.073 7.64944 104.69 7.50293C104.311 7.35645 103.886 7.2832 103.418 7.2832Z" fill="currentColor"/>
+</svg>
+            </a>
+        </div>
+
+        <nav class="gh-navigation-menu">
+            <ul class="nav">
+    <li class="nav-blog"><a href="https://www.hyperagent.com/blog/">Blog</a></li>
+    <li class="nav-customer-stories"><a href="https://www.hyperagent.com/blog/customer-stories/">Customer Stories</a></li>
+    <li class="nav-extra"><a href="https://hyperagent.com/terms">Terms</a></li>
+    <li class="nav-extra"><a href="https://hyperagent.com/privacy">Privacy</a></li>
+    <li class="nav-extra nav-extra-socials">
+        <a href="https://x.com/hyperagent" aria-label="X (Twitter)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/hyperagentapp/" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C2.67157 2 2 2.67157 2 3.5V12.5C2 13.3284 2.67157 14 3.5 14H12.5C13.3284 14 14 13.3284 14 12.5V3.5C14 2.67157 13.3284 2 12.5 2H3.5ZM4.74556 5.5C5.21057 5.5 5.5 5.16665 5.5 4.75006C5.49133 4.3241 5.21057 4 4.75438 4C4.29824 4 4 4.3241 4 4.75006C4 5.16665 4.28937 5.5 4.73687 5.5H4.74556ZM5.5 6.5V12H4V6.5H5.5ZM7 12H8.5V8.89479C8.5 8.89479 8.60415 7.78962 9.55208 7.78962C10.5 7.78962 10.5 9.02275 10.5 9.02275V12H12V8.8133C12 7.13837 11.25 6.5025 10.125 6.5025C9 6.5025 8.5 7.27778 8.5 7.27778V6.5025H7.00005C7.02383 7.01418 7 12 7 12Z"></path></svg>
+        </a>
+    </li>
+</ul>
+
+        </nav>
+
+        <div class="gh-navigation-actions">
+            <a href="https://hyperagent.com/login" class="gh-button gh-button-outline">Login</a>
+            <a href="https://hyperagent.com/login" class="gh-button">Sign up</a>
+        </div>
+
+    </div>
+</header>
+
+    
+
+<main class="gh-main">
+
+    <article class="gh-article post no-image">
+
+        <header class="gh-article-header gh-canvas">
+
+            <h1 class="gh-article-title is-title">Composio Security Incident - Hyperagent Response</h1>
+
+            <div class="gh-article-meta">
+                <div class="gh-article-author-image instapaper_ignore">
+                            <a href="/blog/author/hyperagent/">
+                                <img class="author-profile-image" src="https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/size/w160/2026/03/XQ1utovK_400x400-3.jpg" alt="The Hyperagent Team">
+                            </a>
+                </div>
+                <div class="gh-article-meta-wrapper">
+                    <h4 class="gh-article-author-name"><a href="/blog/author/hyperagent/">The Hyperagent Team</a></h4>
+                    <div class="gh-article-meta-content">
+                        <time class="gh-article-meta-date" datetime="2026-05-23">23 May 2026</time>
+                            <span class="gh-article-meta-length"><span class="bull">—</span> 4 min read</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </header>
+
+        <section class="gh-content gh-canvas is-body">
+            <p><em>Last updated: May 26, 2026 at 16:00 PT.</em> <em>We will continue to update this page as we learn more, so please check back regularly.</em></p><hr><p>On May 21, 2026, Composio, a platform we use to facilitate integrations between Hyperagent and various third-party data sources, disclosed a security incident in which a threat actor gained unauthorized access to certain of its internal systems. For full details on the incident itself, see Composio's security bulletin: <a href="https://composio.dev/blog/composio-may-2026-security-incident?ref=hyperagent.com"><u>https://composio.dev/blog/composio-may-2026-security-incident</u></a>.</p><p><strong>This incident did not impact Hyperagent's own systems or software code.</strong> This page outlines the steps we've taken to protect our customers and the actions we recommend to ensure your accounts are fully secured.</p><h2 id="timeline"><strong>Timeline</strong></h2><p><strong>May 21</strong> - Composio publicly disclosed the security incident. Late that night, Composio indicated that the breach affected a small number of Hyperagent customers' GitHub OAuth tokens. We immediately initiated our incident response protocols and commenced an internal investigation.</p><p><strong>May 22</strong> - We notified all affected customers whose GitHub tokens were exposed and provided guidance on reviewing their GitHub accounts for suspicious activity.</p><p><strong>May 23 </strong>- Our own investigation identified additional anomalous activity relating to our Composio account. Composio’s ongoing investigation indicated that the scope of the incident may extend beyond the initially identified GitHub tokens to other tokens stored in Composio, with a potential exposure window beginning as early as 06:00 UTC on May 21, 2026. Composio has not confirmed that these additional tokens were accessed or exploited, but could not rule it out. In an abundance of caution, we immediately disabled all Composio-powered integrations in Hyperagent.</p><p><strong>May 24</strong> - We deployed an update to the Hyperagent integrations page (<a href="https://hyperagent.com/settings/integrations?ref=hyperagent.com">hyperagent.com/settings/integrations</a>) that now shows all previously connected Composio integrations, their authentication type, and their current status.</p><p><strong>May 26</strong> - We launched new first-party integrations for Google (Gmail, Calendar, Drive, Docs, Sheets, Slides, Contacts, Tasks), GitHub, and Notion, as well as support for custom MCP servers. These join our existing native integrations for Airtable, Slack, and Databricks. All are available at <a href="http://hyperagent.com/settings/integrations?ref=hyperagent.com" rel="noopener noreferrer">hyperagent.com/settings/integrations</a>.</p><h2 id="what-weve-done"><strong>What we've done</strong></h2><p>We do not have confirmation that tokens were improperly accessed or misused, but your security comes first. Out of an abundance of caution, we have taken the following steps:</p><ul><li><strong>Disabled all Composio-powered integrations in Hyperagent.</strong> No data is flowing through Composio from Hyperagent as of May 23, 2026.</li><li><strong>Verified OAuth token revocations.</strong> Where possible, Composio has revoked OAuth authorizations with third-party providers. The Hyperagent team has independently verified that those tokens are revoked.</li><li><strong>Notified all affected customers</strong> via email with a summary of the incident and recommended actions.</li><li><strong>Commenced investigation</strong> of our own logs and systems to identify any anomalous activity during the exposure window.</li></ul><h2 id="what-we-recommend-you-do"><strong>What we recommend you do</strong></h2><p>We recommend treating all third-party tokens that were connected through Composio-powered integrations in Hyperagent as potentially exposed, even though we do not have confirmation that tokens were improperly accessed or misused.</p><p>The integrations page at <a href="https://hyperagent.com/settings/integrations?ref=hyperagent.com">hyperagent.com/settings/integrations</a> shows all previously connected Composio integrations along with their authentication type. For each one, we recommend signing in to the provider, verifying that Composio is no longer authorized, and reviewing recent account activity for anything unexpected. Disconnecting an account on that page removes the credential from Hyperagent - it does not revoke access on the provider's side.</p><h3 id="oauth-connected-services-via-composio"><strong>OAuth-connected services (via Composio)</strong></h3><p>For services you connected to Hyperagent through a Composio-powered OAuth flow (such as Google, GitHub, Microsoft, and similar apps), we recommend confirming that no active Composio connections remain on your accounts.</p><p>As an example, for <strong>Google</strong> (Gmail, Drive, Calendar): visit <a href="https://myaccount.google.com/permissions?ref=hyperagent.com"><u>myaccount.google.com/permissions</u></a>. Look for any connection referencing Composio and remove it.</p><p>For <strong>other OAuth services</strong>: look for "Connected Apps," "OAuth Apps," "Authorized Apps," or "Third-party access" in your account's security or privacy settings. Remove any connection associated with Composio.</p><h3 id="api-key-based-integrations-via-composio"><strong>API-key-based integrations (via Composio)</strong></h3><p>If you connected any services to Hyperagent using an API key you provided directly to Composio (such as Telegram, Granola MCP, Vercel, or any other service for which you manually entered a key), these credentials could not be invalidated by Composio or Hyperagent. You will need to:</p><ol><li>go to that service's API or developer dashboard;</li><li>revoke the API key you provided to Composio in Hyperagent; and</li><li>generate a new key for future use.</li></ol><p>As an example, for <strong>Vercel</strong>: visit <a href="https://vercel.com/account/settings/tokens?ref=hyperagent.com"><u>https://vercel.com/account/settings/tokens</u></a>, locate the API token used with Composio on Hyperagent, click the three dots on that token record, and select <strong>Delete</strong>.</p><h3 id="review-your-access-logs"><strong>Review your access logs</strong></h3><p>For all connected services, we recommend reviewing your access and audit logs for any unusual activity since May 21. If your service provides downloadable audit logs, we recommend pulling them for this exposure window so you have a record. Composio has published <a href="https://composio.dev/blog/composio-may-2026-security-incident?ref=hyperagent.com"><u>indicators of compromise (IOCs)</u></a>, including IP addresses associated with threat actor activity that you can cross-reference against your logs.</p><h2 id="whats-next"><strong>What's next</strong></h2><p><strong>First-party integrations</strong> for the most widely used tools are now available at <a href="http://hyperagent.com/settings/integrations?ref=hyperagent.com" rel="noopener noreferrer">hyperagent.com/settings/integrations</a>, including Airtable, Slack, Databricks, Google (Gmail, Calendar, Drive, Docs, Sheets, Slides, Contacts, Tasks), GitHub, and Notion - with more on the way.<br><br><strong>Custom MCP servers</strong> are now supported for any service that offers an MCP endpoint. You can connect these from the integrations page. This covers a broad and growing ecosystem of tools beyond our first-party list.<br><br><strong>Skills</strong> can connect to any service’s API directly and store your credentials securely within Hyperagent. You can create a new Skill by visiting <a href="http://hyperagent.com/skills?ref=hyperagent.com" rel="noopener noreferrer">hyperagent.com/skills</a> and clicking “Create Skill,” or by asking the agent to create a Skill in any existing thread.</p><p></p><p>We will continue to update this page as our investigation progresses. If you need assistance or have questions, please contact us at <a href="mailto:support@hyperagent.com" rel="noreferrer"><u>support@hyperagent.com</u></a>.</p><p>–The Hyperagent Security Team</p>
+        </section>
+
+    </article>
+
+
+</main>
+
+
+            <section class="gh-container is-grid gh-outer">
+                <div class="gh-container-inner gh-inner">
+                    <h2 class="gh-container-title">Read more</h2>
+                    <div class="gh-feed">
+                            <article class="gh-card post no-image">
+    <a class="gh-card-link" href="/blog/agents-do-more-stay-in-control/">
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Your agents can do more. You stay in control.</h3>
+                <p class="gh-card-excerpt is-body">Your agent can carry work from research to action, bring context into new conversations, and show you what it plans to do, remember, and learn.</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By The Hyperagent Team</span>
+                    <time class="gh-card-date" datetime="2026-08-24">24 Aug 2026</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>
+                            <article class="gh-card post no-image">
+    <a class="gh-card-link" href="/blog/four-new-models-for-every-job/">
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Four new models for every job</h3>
+                    <p class="gh-card-excerpt is-body">New this week: Four new models ready to take on any job, agents can search across team documents, tables, and memories for shared context. Plus, safer agent updates, and an improved experience with Slack.
+
+ * Gemini 3.7 Flash fits document-heavy operations. Think: reviewing ten vendor proposals, comparing them against</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By The Hyperagent Team</span>
+                    <time class="gh-card-date" datetime="2026-08-13">13 Aug 2026</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>
+                            <article class="gh-card post">
+    <a class="gh-card-link" href="/blog/customer-stories/hellopackage-agent-team-sales/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/size/w160/format/webp/2026/08/hp_feature_single.png 160w,
+                            https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/size/w320/format/webp/2026/08/hp_feature_single.png 320w,
+                            https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/size/w600/format/webp/2026/08/hp_feature_single.png 600w,
+                            https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/size/w960/format/webp/2026/08/hp_feature_single.png 960w,
+                            https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/size/w1200/format/webp/2026/08/hp_feature_single.png 1200w,
+                            https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/size/w2000/format/webp/2026/08/hp_feature_single.png 2000w"
+                    sizes="320px"
+                    src="https://storage.ghost.io/c/f7/e5/f7e5175c-8256-4575-815c-d9f6464dca0a/content/images/size/w600/2026/08/hp_feature_single.png"
+                    alt="HelloPackage&#x27;s agent team mapping buildings under construction across regional markets"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">HelloPackage: 800 Sales Opportunities Surfaced in a Day</h3>
+                <p class="gh-card-excerpt is-body">HelloPackage&#x27;s CEO used Hyperagent to hand his sales prospecting to a team of agents. They mapped 27 markets and surfaced 800 opportunities in a single day.</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By The Hyperagent Team</span>
+                    <time class="gh-card-date" datetime="2026-08-03">03 Aug 2026</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>
+                            <article class="gh-card post no-image">
+    <a class="gh-card-link" href="/blog/opus-5-kimi-k3-agent-team-july-2026/">
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Run your agents as one team</h3>
+                <p class="gh-card-excerpt is-body">New this week: stronger models for the agents that coordinate multi-step jobs and pass work to other agents. Plus, clearer handoffs between agents, and alerts when an agent needs you.</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <span class="gh-card-author">By The Hyperagent Team</span>
+                    <time class="gh-card-date" datetime="2026-07-30">30 Jul 2026</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>
+                    </div>
+                </div>
+            </section>
+
+    
+    <footer class="gh-footer gh-outer">
+    <div class="gh-footer-inner gh-inner">
+        <div class="gh-footer-bar">
+            <span class="gh-footer-logo is-title">
+                <svg width="134" height="24" viewBox="0 0 134 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M89.3096 4.96973C90.3379 4.96973 91.2715 5.15554 92.0566 5.53125L96.0898 5.20898V7.77246H94.2471C94.45 8.28108 94.5537 8.84817 94.5537 9.47363C94.5536 10.3872 94.3374 11.1351 93.9043 11.8174C93.4712 12.4998 92.8603 13.0323 92.0752 13.4102C91.2863 13.7918 90.3653 13.9805 89.3096 13.9805C88.592 13.9804 87.9359 13.8881 87.3398 13.707C87.3146 13.7223 87.2884 13.7368 87.2637 13.7529C87.0396 13.8993 86.8659 14.0651 86.7461 14.2461C86.6262 14.4273 86.5645 14.6128 86.5645 14.8018C86.5645 15.0946 86.6762 15.3104 86.9004 15.4492C87.1246 15.588 87.4727 15.6572 87.9404 15.6572H91.8125C92.7289 15.6573 93.5335 15.7926 94.2295 16.0586C94.9215 16.3284 95.4589 16.733 95.8379 17.2764C96.2169 17.82 96.4102 18.48 96.4102 19.2588C96.4101 20.0375 96.2437 20.7087 95.915 21.2793C95.5863 21.8497 95.1148 22.3164 94.5 22.6787C93.8851 23.0411 93.1696 23.3149 92.3574 23.4961C91.5453 23.6773 90.6443 23.7695 89.6582 23.7695L89.6465 23.7656C88.297 23.7656 87.1407 23.6231 86.1816 23.3379C85.2225 23.0526 84.4792 22.6203 83.9609 22.042C83.4429 21.4637 83.1836 20.7234 83.1836 19.8291C83.1836 19.4474 83.2574 19.0692 83.4043 18.6914C83.5512 18.3137 83.7566 17.9706 84.0156 17.6699C84.1849 17.4735 84.3672 17.2986 84.5596 17.1416C84.4219 17.0384 84.2965 16.9276 84.1855 16.8066C83.8143 16.4018 83.6289 15.8963 83.6289 15.291C83.6289 14.8092 83.7486 14.3697 83.9922 13.9727C84.2358 13.5757 84.549 13.2404 84.9395 12.9629C85.1029 12.8467 85.2699 12.743 85.4375 12.6484C85.1695 12.4017 84.9362 12.1259 84.7422 11.8174C84.3092 11.1351 84.0929 10.3563 84.0928 9.47363C84.0928 8.59071 84.309 7.76863 84.7422 7.10547C85.1753 6.44236 85.7872 5.91786 86.5723 5.54004C87.361 5.16241 88.2735 4.96977 89.3096 4.96973ZM20.0176 5.33203L20.5625 7.09473L23.2891 15.1982L25.9893 7.09473L26.5342 5.33203L26.5615 5.22852H29.624V5.33203L28.9473 7.09473L24.2715 20.041C23.9776 20.8507 23.5949 21.5337 23.1309 22.0889C22.6629 22.6401 22.1097 23.0564 21.4678 23.3301C20.8258 23.6076 20.0912 23.7461 19.2598 23.7461L19.2715 23.7422C18.7688 23.7422 18.3162 23.7 17.9062 23.6113C17.5003 23.5265 17.1753 23.4113 16.9316 23.2764L17.8135 20.7891C17.9875 20.9086 18.1849 20.9977 18.4092 21.0479C18.6332 21.0979 18.8689 21.125 19.1084 21.125C19.5918 21.125 20.072 20.9515 20.5361 20.6084C21.0041 20.2614 21.3678 19.7288 21.627 19.0039L21.8086 18.4873L17.6006 7.09473L16.9775 5.33203V5.22852H19.9902L20.0176 5.33203ZM38.4844 4.96973C39.6949 4.96973 40.7741 5.27065 41.7178 5.87598C42.6613 6.48124 43.4079 7.30992 43.9531 8.3623C44.4984 9.41487 44.7725 10.6144 44.7725 11.96C44.7725 12.9624 44.6179 13.8882 44.3047 14.7441C43.9914 15.5999 43.5508 16.3364 42.9824 16.957C42.4102 17.5776 41.7411 18.0631 40.9717 18.4062C40.2022 18.7532 39.3588 18.9228 38.4385 18.9229C37.8662 18.9229 37.3129 18.8385 36.7754 18.665C36.2378 18.4915 35.7615 18.2527 35.3477 17.9404C34.9339 17.6282 34.6021 17.2921 34.3623 16.9297V23.5078H31.3184V5.22852H34.3584V6.96289C34.7026 6.41171 35.2558 5.94108 36.0059 5.55176C36.7599 5.1625 37.5835 4.96975 38.4844 4.96973ZM87 17.9795C86.8601 18.0733 86.7395 18.1757 86.6416 18.291C86.4716 18.4913 86.348 18.6954 86.2783 18.9111C86.2087 19.127 86.1738 19.3397 86.1738 19.5479C86.1738 19.9449 86.3084 20.2769 86.5752 20.543C86.842 20.8089 87.2328 21.0095 87.7432 21.1367C88.2537 21.2678 88.8886 21.3291 89.6543 21.3291C90.3115 21.3291 90.8799 21.2869 91.3555 21.1982C91.831 21.1134 92.2218 20.982 92.5234 20.8086C92.8251 20.6351 93.0532 20.4344 93.2002 20.1992C93.3471 19.9679 93.4209 19.7021 93.4209 19.4092C93.4209 18.908 93.2545 18.553 92.9258 18.3486C92.5971 18.1405 92.1136 18.0361 91.4717 18.0361H88.0186C87.6634 18.0361 87.3238 18.0161 87 17.9795ZM130.42 5.23242H133.746V7.76855H130.42V14.3193C130.42 15.0442 130.602 15.5577 130.966 15.8623C131.329 16.1628 131.762 16.3163 132.265 16.3164C132.473 16.3164 132.691 16.2934 132.915 16.251C133.139 16.2085 133.383 16.1082 133.642 15.9541V18.4912C133.468 18.6107 133.185 18.7151 132.799 18.8037C132.408 18.8885 132.014 18.9346 131.615 18.9346V18.9268C130.803 18.9267 130.08 18.7654 129.445 18.4492C128.815 18.1292 128.313 17.6507 127.941 17.0107C127.57 16.3708 127.385 15.5612 127.385 14.5781V7.76855H125.071V5.23242C125.644 5.23242 126.093 5.20134 126.422 5.13965C126.75 5.07793 126.998 4.9424 127.16 4.72656C127.322 4.51065 127.427 4.19061 127.474 3.77051C127.516 3.34643 127.539 2.78349 127.539 2.07422H130.42V5.23242ZM52.8291 4.97754C53.935 4.97758 54.8751 5.13994 55.6484 5.45605C56.4177 5.776 57.0519 6.2035 57.543 6.73535C58.0379 7.27121 58.4128 7.86922 58.6719 8.53613C58.931 9.19929 59.0974 9.8742 59.167 10.5566C59.2366 11.2391 59.2366 11.891 59.167 12.5117H49.2393C49.2946 13.1815 49.4402 13.7749 49.6807 14.293C49.9939 14.9675 50.4346 15.4843 51.0029 15.8467C51.5753 16.2091 52.2491 16.3896 53.0303 16.3896C53.6022 16.3896 54.0892 16.3092 54.4951 16.1436C54.9012 15.9778 55.25 15.7349 55.5361 15.4072C55.8223 15.0795 56.0426 14.6663 56.1973 14.165L59.1592 14.9678C58.9155 15.7618 58.5257 16.4562 57.9805 17.0537C57.4352 17.6474 56.7425 18.1098 55.9033 18.4375C55.0641 18.7652 54.0815 18.9307 52.9561 18.9307C51.9854 18.9306 51.0922 18.7572 50.2686 18.4141C49.4449 18.071 48.7371 17.5855 48.1377 16.9648C47.5421 16.3441 47.0778 15.6031 46.749 14.751C46.4204 13.8952 46.2539 12.962 46.2539 11.9404C46.2539 10.9189 46.4125 9.98976 46.7334 9.14551C47.0543 8.30129 47.5071 7.56501 48.0986 6.94434C48.6865 6.32359 49.3831 5.84114 50.1914 5.49414C50.9958 5.15107 51.874 4.97754 52.8291 4.97754ZM103.418 4.97754C104.524 4.97754 105.464 5.1399 106.237 5.45605C107.007 5.77606 107.642 6.2033 108.133 6.73535C108.628 7.27124 109.003 7.86917 109.262 8.53613C109.521 9.19929 109.687 9.8742 109.757 10.5566C109.826 11.2391 109.826 11.891 109.757 12.5117H99.8281C99.8834 13.1815 100.03 13.7749 100.271 14.293C100.584 14.9675 101.024 15.4843 101.593 15.8467C102.165 16.209 102.838 16.3896 103.619 16.3896C104.191 16.3896 104.679 16.3093 105.085 16.1436C105.491 15.9778 105.839 15.7348 106.125 15.4072C106.411 15.0795 106.632 14.6663 106.787 14.165L109.749 14.9678C109.505 15.7619 109.115 16.4562 108.569 17.0537C108.024 17.6472 107.332 18.1099 106.493 18.4375C105.654 18.7652 104.671 18.9307 103.546 18.9307C102.575 18.9307 101.682 18.7571 100.858 18.4141C100.035 18.0709 99.326 17.5856 98.7266 16.9648C98.131 16.3441 97.6676 15.603 97.3389 14.751C97.0102 13.8951 96.8438 12.962 96.8438 11.9404C96.8438 10.9188 97.0023 9.98979 97.3232 9.14551C97.6442 8.30121 98.0968 7.56505 98.6885 6.94434C99.2763 6.32365 99.9721 5.84113 100.78 5.49414C101.585 5.15102 102.463 4.97756 103.418 4.97754ZM75.6963 4.96973C76.8061 4.96973 77.7811 5.17027 78.6318 5.56348C79.4788 5.9606 80.1444 6.53522 80.6201 7.2832C81.0958 8.03501 81.335 8.9258 81.335 9.96289V18.6611H78.3223V16.9072C77.9886 17.3817 77.6101 17.766 77.1934 18.0557C76.768 18.3487 76.3154 18.5643 75.8281 18.7031C75.3447 18.8419 74.8574 18.9111 74.374 18.9111L74.3779 18.9268C73.4769 18.9268 72.6725 18.7573 71.9609 18.4219C71.2494 18.0864 70.6922 17.6201 70.2861 17.0225C69.8801 16.4287 69.6748 15.7578 69.6748 15.0137C69.6748 14.2194 69.8612 13.5365 70.2324 12.9697C70.6037 12.3993 71.145 11.9326 71.8564 11.5703C72.5641 11.2079 73.4153 10.9571 74.4014 10.8184L78.3223 10.248V9.78125C78.3222 9.24548 78.2106 8.79789 77.9863 8.43555C77.762 8.07325 77.4481 7.79229 77.0498 7.5957C76.6515 7.39916 76.2028 7.29883 75.7002 7.29883C75.1125 7.29887 74.61 7.39912 74.1924 7.5957C73.7786 7.79234 73.4378 8.07009 73.1787 8.4248C72.9198 8.77941 72.7382 9.18797 72.6338 9.6543L69.8525 8.92969C70.0614 8.22412 70.4063 7.56837 70.8936 6.97461C71.377 6.38095 72.0228 5.89548 72.8271 5.52539C73.6315 5.1553 74.5865 4.96977 75.6963 4.96973ZM3.22168 7.50684H11.9463V0H15.168V18.6689H11.9463V10.3291H3.22168V18.6689H0V0H3.22168V7.50684ZM68.7666 4.97363C68.8864 4.97366 69.0101 4.98877 69.1299 5.02344V7.92285C68.3333 7.78407 67.6525 7.80714 67.0918 7.98828C66.5272 8.16949 66.0626 8.45531 65.6875 8.84473C65.3163 9.23409 65.0222 9.6624 64.8057 10.125C64.6739 10.4088 64.5693 10.6906 64.4854 10.9678V18.665H61.4453V5.22852H64.4854V7.26855C64.633 7.00872 64.8047 6.76497 65.0029 6.53906C65.4361 6.04558 65.9393 5.66432 66.5078 5.38672C67.08 5.11304 67.6754 4.9737 68.2979 4.97363H68.7666ZM118.814 4.96582C119.785 4.96584 120.651 5.15853 121.413 5.54785C122.175 5.93726 122.779 6.48486 123.22 7.19043C123.661 7.89983 123.881 8.74443 123.881 9.72754V18.6611H120.868V10.4521C120.868 9.84696 120.76 9.33019 120.543 8.89844C120.326 8.46671 120.009 8.13863 119.596 7.91504C119.182 7.69143 118.687 7.58008 118.114 7.58008C117.577 7.58008 117.085 7.71845 116.633 7.99219C116.184 8.26972 115.806 8.64009 115.504 9.10645C115.202 9.57295 114.989 10.1015 114.865 10.6875V18.6611H111.826V5.22852H114.865V7.01367C115.144 6.6166 115.481 6.26555 115.879 5.96484C116.277 5.66412 116.722 5.42047 117.217 5.23926C117.712 5.05805 118.242 4.96582 118.814 4.96582ZM74.8965 12.9629C74.2043 13.067 73.6741 13.2746 73.3105 13.583C72.947 13.8953 72.7656 14.3276 72.7656 14.8789C72.7657 15.2257 72.8505 15.53 73.0244 15.7959C73.1984 16.0619 73.4418 16.2745 73.7627 16.4287C74.0837 16.5829 74.4594 16.6602 74.8926 16.6602C75.6349 16.6601 76.265 16.4785 76.7754 16.1162C77.2859 15.7538 77.6885 15.2985 77.9824 14.7549C78.121 14.4986 78.2336 14.2394 78.3223 13.9775V12.3691L74.8965 12.9629ZM37.9971 7.5918C37.2895 7.59182 36.7252 7.74238 36.207 8.04688C35.6888 8.35146 35.2673 8.76781 34.9463 9.30371C34.6253 9.83961 34.4319 10.4525 34.3623 11.1426V12.8506C34.4126 13.5253 34.598 14.1232 34.9189 14.6514C35.2399 15.1795 35.6577 15.5879 36.1797 15.8809C36.6979 16.1739 37.2859 16.3203 37.9473 16.3203L37.9434 16.3125C38.3764 16.3125 38.7823 16.2473 39.165 16.1201C39.544 15.989 39.8888 15.7964 40.1904 15.5381C40.492 15.2798 40.7582 14.9709 40.9824 14.6201C41.2067 14.2693 41.3811 13.8682 41.501 13.4287C41.6208 12.9893 41.6826 12.5115 41.6826 11.9912C41.6826 11.1276 41.5241 10.3634 41.2031 9.7002C40.8822 9.03727 40.4455 8.51654 39.8926 8.14648C39.3395 7.77635 38.7048 7.5918 37.9971 7.5918ZM89.3096 7.34863C88.9462 7.34866 88.6211 7.39886 88.335 7.50293C88.049 7.60699 87.8015 7.74958 87.5967 7.93066C87.3879 8.11183 87.2293 8.33567 87.1172 8.60547C87.005 8.87536 86.9473 9.16133 86.9473 9.47363C86.9473 9.88599 87.048 10.2562 87.2451 10.5723C87.4423 10.8921 87.7165 11.1431 88.0645 11.3242C88.4124 11.5054 88.8263 11.5976 89.3096 11.5977C89.6731 11.5977 90.002 11.5395 90.2959 11.4277C90.5897 11.316 90.841 11.1694 91.0498 10.9883C91.2586 10.8071 91.4181 10.5874 91.5303 10.3291C91.6423 10.071 91.7001 9.78568 91.7002 9.47363C91.7002 9.042 91.5994 8.67159 91.4023 8.35938C91.2051 8.04707 90.9261 7.80328 90.5703 7.62207C90.2146 7.44101 89.7967 7.34863 89.3096 7.34863ZM64.3496 11.4971H64.3535L64.3516 11.4844C64.3507 11.4886 64.3504 11.4929 64.3496 11.4971ZM52.8291 7.2832C52.2567 7.2832 51.7455 7.39151 51.2969 7.60742C50.8446 7.82329 50.4695 8.1275 50.168 8.52441C49.8663 8.92154 49.6302 9.40398 49.4678 9.97461C49.4334 10.0925 49.4041 10.2134 49.377 10.3369H56.0234C55.9886 9.90509 55.888 9.49987 55.7256 9.11816C55.5593 8.74039 55.342 8.4133 55.0752 8.13574C54.8083 7.862 54.4835 7.64944 54.1006 7.50293C53.7218 7.35657 53.2967 7.28325 52.8291 7.2832ZM103.418 7.2832C102.846 7.28323 102.335 7.39153 101.887 7.60742C101.434 7.82326 101.059 8.12751 100.758 8.52441C100.456 8.92154 100.22 9.40398 100.058 9.97461C100.023 10.0925 99.993 10.2133 99.9658 10.3369H106.612C106.577 9.90509 106.477 9.49987 106.314 9.11816C106.148 8.74057 105.932 8.41321 105.665 8.13574C105.398 7.862 105.073 7.64944 104.69 7.50293C104.311 7.35645 103.886 7.2832 103.418 7.2832Z" fill="currentColor"/>
+</svg>
+            </span>
+            <div class="gh-footer-links">
+                <a href="https://x.com/hyperagent" class="gh-footer-social" aria-label="X (Twitter)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/hyperagentapp/" class="gh-footer-social" aria-label="LinkedIn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C2.67157 2 2 2.67157 2 3.5V12.5C2 13.3284 2.67157 14 3.5 14H12.5C13.3284 14 14 13.3284 14 12.5V3.5C14 2.67157 13.3284 2 12.5 2H3.5ZM4.74556 5.5C5.21057 5.5 5.5 5.16665 5.5 4.75006C5.49133 4.3241 5.21057 4 4.75438 4C4.29824 4 4 4.3241 4 4.75006C4 5.16665 4.28937 5.5 4.73687 5.5H4.74556ZM5.5 6.5V12H4V6.5H5.5ZM7 12H8.5V8.89479C8.5 8.89479 8.60415 7.78962 9.55208 7.78962C10.5 7.78962 10.5 9.02275 10.5 9.02275V12H12V8.8133C12 7.13837 11.25 6.5025 10.125 6.5025C9 6.5025 8.5 7.27778 8.5 7.27778V6.5025H7.00005C7.02383 7.01418 7 12 7 12Z"></path></svg>
+                </a>
+                <a href="/" class="gh-footer-link">Blog</a>
+                <a href="https://hyperagent.com/terms" class="gh-footer-link">Terms</a>
+                <a href="https://hyperagent.com/privacy" class="gh-footer-link">Privacy</a>
+                <span class="gh-footer-copyright">&copy; 2026 Airtable. All rights reserved.</span>
+            </div>
+        </div>
+    </div>
+</footer>    
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://www.hyperagent.com/blog/assets/built/source.js?v=0Zia9fBUZ9HlIrkb"></script>
+
+
+
+</body>
+</html>

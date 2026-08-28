@@ -1,0 +1,41 @@
+slug: 2026-strands-shell-consent-gate-prompt-injection
+title_en: Strands Shell Tool Consent Gate Bypass Through Prompt Injection
+title_cn: Strands Shell 工具确认门可被提示注入绕过
+year: 2026
+disclosed: '2026-07-15'
+category: agent-risk
+severity: high
+severity_basis: cvss
+severity_evidence: AWS assigned CVSS 4.0 7.5; the GitHub advisory records CVSS 3.1 8.8. Both identify versions before 0.8.0
+  as affected.
+real_incident: true
+reproducible: true
+ai_tool:
+- Strands Agents
+- Strands shell tool
+language:
+- Python
+attack_surface:
+- LLM-controlled tool arguments
+- local shell execution
+- human consent workflow
+references:
+- title: AWS Security Bulletin AWS-2026-072
+  url: https://aws.amazon.com/security/security-bulletins/2026-072-aws/
+- title: GitHub Security Advisory GHSA-mqvc-p852-wf8x
+  url: https://github.com/strands-agents/tools/security/advisories/GHSA-mqvc-p852-wf8x
+- title: OSV CVE-2026-18733 record
+  url: https://osv.dev/vulnerability/GHSA-mqvc-p852-wf8x
+- title: Strands Agents Tools 0.8.0 release
+  url: https://github.com/strands-agents/tools/releases/tag/v0.8.0
+- title: PyPI strands-agents-tools 0.8.0
+  url: https://pypi.org/project/strands-agents-tools/0.8.0/
+tldr: Strands 的 shell 工具把 non_interactive 作为模型可控参数，提示注入可借此跳过原本面向用户的命令确认并在代理进程权限下执行系统命令。
+tags:
+- agent-risk
+- ai-security
+- strands-agents-tools
+verification_notes: AWS assigned CVSS 4.0 7.5; the GitHub advisory records CVSS 3.1 8.8. Both identify versions before 0.8.0
+  as affected.
+cve: CVE-2026-18733
+fixed_version: 0.8.0

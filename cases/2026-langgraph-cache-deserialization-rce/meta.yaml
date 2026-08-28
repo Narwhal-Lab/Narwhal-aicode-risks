@@ -1,0 +1,36 @@
+slug: "2026-langgraph-cache-deserialization-rce"
+title_en: "LangGraph Cache Deserialization Remote Code Execution"
+title_cn: "LangGraph Agent 缓存反序列化远程代码执行漏洞"
+year: 2026
+disclosed: "2026-02-25"
+category: "agent-risk"
+severity: "medium"
+severity_basis: "cvss"
+cve: "CVE-2026-27794"
+cvss: 6.6
+severity_evidence: "The GitHub CNA advisory assigns CVSS 3.1 6.6 and requires attacker write access to the cache."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "LangGraph agent caching and checkpointing"
+language:
+  - "Python"
+attack_surface:
+  - "LangGraph agent caching and checkpointing"
+  - "Untrusted AI workflow input"
+references:
+  - title: "LangGraph advisory: unsafe cache deserialization"
+    url: "https://github.com/langchain-ai/langgraph/security/advisories/GHSA-mhr3-j7m5-c7c9"
+  - title: "NVD: CVE-2026-27794"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-27794"
+  - title: "ZDI-26-135: LangGraph cache deserialization"
+    url: "https://www.zerodayinitiative.com/advisories/ZDI-26-135/"
+  - title: "The Hacker News: LangChain and LangGraph flaws"
+    url: "https://thehackernews.com/2026/03/langchain-langgraph-flaws-expose-files.html"
+  - title: "Snyk: CVE-2026-27794"
+    url: "https://security.snyk.io/vuln/SNYK-PYTHON-LANGGRAPHCHECKPOINT-15353408"
+tldr: "A writable LangGraph cache could supply bytes that the framework deserialized with pickle fallback, escalating cache compromise into application-runtime code execution."
+tags:
+  - "ai-security"
+  - "cve-2026-27794"
+verification_notes: "Reviewed primary disclosure, vulnerability record, upstream remediation material, and independent corroboration."

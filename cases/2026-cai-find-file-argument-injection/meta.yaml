@@ -1,0 +1,36 @@
+slug: "2026-cai-find-file-argument-injection"
+title_en: "Cybersecurity AI find_file Tool Argument Injection"
+title_cn: "Cybersecurity AI find_file Agent 工具参数注入漏洞"
+year: 2026
+disclosed: "2026-01-30"
+category: "agent-risk"
+severity: "critical"
+severity_basis: "cvss"
+cve: "CVE-2026-25130"
+cvss: 9.6
+severity_evidence: "The GitHub CNA and OSV record a CVSS 3.1 score of 9.6 for CVE-2026-25130."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Cybersecurity AI (CAI) agent tools"
+language:
+  - "Python"
+attack_surface:
+  - "Cybersecurity AI (CAI) agent tools"
+  - "Untrusted AI workflow input"
+references:
+  - title: "CAI advisory: find_file argument injection"
+    url: "https://github.com/aliasrobotics/cai/security/advisories/GHSA-jfpc-wj3m-qw2m"
+  - title: "NVD: CVE-2026-25130"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-25130"
+  - title: "CAI fix commit e22a122"
+    url: "https://github.com/aliasrobotics/cai/commit/e22a122"
+  - title: "OSV: GHSA-jfpc-wj3m-qw2m"
+    url: "https://osv.dev/vulnerability/GHSA-jfpc-wj3m-qw2m"
+  - title: "CAI framework research paper"
+    url: "https://arxiv.org/abs/2508.21669"
+tldr: "CAI treated find as a pre-approved operation while passing attacker-controlled arguments to a shell, permitting command execution without the intended approval step."
+tags:
+  - "ai-security"
+  - "cve-2026-25130"
+verification_notes: "Reviewed primary disclosure, vulnerability record, upstream remediation material, and independent corroboration."

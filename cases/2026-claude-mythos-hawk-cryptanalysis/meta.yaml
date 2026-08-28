@@ -1,0 +1,40 @@
+slug: 2026-claude-mythos-hawk-cryptanalysis
+title_en: Claude Mythos HAWK Post-Quantum Cryptanalysis
+title_cn: Claude Mythos 发现 HAWK 后量子签名弱点
+year: 2026
+disclosed: '2026-07-28'
+category: domain-specific
+severity: medium
+severity_basis: quantifiable-impact
+severity_evidence: Anthropic reports a reduction of the HAWK-256 key-recovery work factor from about 2^64 to 2^38;
+  HAWK was a candidate and not deployed in production.
+real_incident: true
+reproducible: true
+ai_tool:
+- Claude Mythos Preview
+- agentic cryptanalysis harness
+language:
+- Mathematics
+- Python
+attack_surface:
+- HAWK-256
+- lattice automorphism
+- post-quantum signature review
+- AI-assisted cryptanalysis
+references:
+- title: Anthropic research
+  url: https://www.anthropic.com/research/discovering-cryptographic-weaknesses
+- title: NIST additional digital signatures project
+  url: https://csrc.nist.gov/projects/pqc-dig-sig/round-3-additional-signatures
+- title: The Hacker News report
+  url: https://thehackernews.com/2026/07/claude-ai-just-cracked-post-quantum.html
+- title: The Quantum Insider report
+  url: https://thequantuminsider.com/2026/07/29/ai-finds-new-weaknesses-in-cryptographic-algorithms-anthropic-says/
+- title: PostQuantum.com technical analysis
+  url: https://www.postquantum.com/post-quantum/ai-cryptanalysis-hawk-aes/
+tldr: Claude Mythos Preview 在约 60 小时的人机协作研究中找到 HAWK 格结构的非平凡自同构，把 HAWK-256 的预期密钥恢复成本从约 2^64 降至 2^38，随后方案退出 NIST 候选流程。
+tags:
+- ai-security
+- model-capability
+verification_notes: Anthropic reports a reduction of the HAWK-256 key-recovery work factor from about 2^64 to 2^38;
+  HAWK was a candidate and not deployed in production.

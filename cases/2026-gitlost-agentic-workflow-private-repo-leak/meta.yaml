@@ -1,0 +1,40 @@
+slug: 2026-gitlost-agentic-workflow-private-repo-leak
+title_en: 'GitLost Prompt Injection in GitHub Agentic Workflows'
+title_cn: 'GitLost 利用公开 Issue 诱导 Agent 泄露私有仓库内容'
+year: 2026
+disclosed: '2026-07-07'
+category: agent-risk
+severity: high
+severity_basis: quantifiable-impact
+severity_evidence: 'Noma Security demonstrated that a public issue could steer an over-privileged Agentic Workflow to read a private repository and publish content in a public issue comment.'
+real_incident: true
+reproducible: true
+ai_tool:
+- 'GitHub Agentic Workflows'
+- 'GitHub Copilot, Claude, Codex, Gemini'
+language:
+- 'GitHub Actions / Markdown / YAML'
+attack_surface:
+- 'public issue content'
+- 'agent prompt context'
+- 'cross-repository read permission'
+- 'safe output comments'
+references:
+- title: 'Noma Security GitLost research'
+  url: https://noma.security/blog/gitlost-how-we-tricked-githubs-ai-agent-into-leaking-private-repos/
+- title: 'GitHub Agentic Workflows documentation'
+  url: https://docs.github.com/en/enterprise-cloud%40latest/copilot/concepts/agents/about-github-agentic-workflows
+- title: 'GitHub gh-aw source repository'
+  url: https://github.com/github/gh-aw
+- title: 'Infosec.ge independent analysis'
+  url: https://infosec.ge/blog/gitlost-github-ai-agent-prompt-injection/
+- title: 'Agentic Workflow Injection research paper'
+  url: https://arxiv.org/abs/2605.07135
+tldr: 'A crafted public issue could steer an Agentic Workflow with broad repository access to read private files and publish their contents through an allowed public comment.'
+tags:
+- github
+- agentic-workflows
+- prompt-injection
+- private-repository
+- data-exfiltration
+verification_notes: 'Noma documents the proof of concept; GitHub documents the product permissions and guardrails; independent analysis and the AWI paper corroborate the attack pattern and required conditions.'

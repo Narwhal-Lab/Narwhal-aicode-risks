@@ -1,0 +1,36 @@
+slug: "2026-langchain-prompt-config-path-traversal"
+title_en: "LangChain Prompt Configuration Path Traversal"
+title_cn: "LangChain Prompt 配置加载路径穿越漏洞"
+year: 2026
+disclosed: "2026-03-26"
+category: "code-vulns"
+severity: "high"
+severity_basis: "cvss"
+cve: "CVE-2026-34070"
+cvss: 7.5
+severity_evidence: "NVD records a CVSS 3.1 score of 7.5 for CVE-2026-34070."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "LangChain prompt loading APIs"
+language:
+  - "Python"
+attack_surface:
+  - "LangChain prompt loading APIs"
+  - "Untrusted AI workflow input"
+references:
+  - title: "LangChain advisory: prompt config path traversal"
+    url: "https://github.com/langchain-ai/langchain/security/advisories/GHSA-qh6h-p6c9-ff54"
+  - title: "NVD: CVE-2026-34070"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-34070"
+  - title: "LangChain PR #36200: validate prompt paths"
+    url: "https://github.com/langchain-ai/langchain/pull/36200"
+  - title: "The Hacker News: LangChain and LangGraph flaws"
+    url: "https://thehackernews.com/2026/03/langchain-langgraph-flaws-expose-files.html"
+  - title: "Cloud Security Alliance research note"
+    url: "https://labs.cloudsecurityalliance.org/research/csa-research-note-langchain-langgraph-critical-vulns-framewo/"
+tldr: "Legacy LangChain prompt loaders accepted user-influenced paths embedded in prompt configurations and could read host files outside the expected directory."
+tags:
+  - "ai-security"
+  - "cve-2026-34070"
+verification_notes: "Reviewed primary disclosure, vulnerability record, upstream remediation material, and independent corroboration."

@@ -1,0 +1,498 @@
+@font-face {
+  font-family: "JetSites Cookie Banner JetBrains Mono";
+  src: url("https://resources.jetbrains.com/storage/jetbrains-mono/v2.304/webfonts/JetBrainsMono-Bold.woff2");
+}
+
+:root {
+  --ch2-font: 12px/16px "JetSites Cookie Banner JetBrains Mono",
+    Menlo, Consolas, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+}
+
+#ch2-dialog *,
+#ch2-dialog *::before,
+#ch2-dialog *::after,
+#ch2-settings-dialog *,
+#ch2-settings-dialog *::before,
+#ch2-settings-dialog *::after {
+  box-sizing: border-box !important;
+  margin-top: 0;
+}
+
+#ch2-dialog,
+#ch2-settings-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 999999;
+  width: 100% !important;
+  max-width: 570px;
+  height: fit-content;
+  padding: 7px;
+  transform: translate(-50%, -50%);
+  border-radius: 0;
+  box-sizing: border-box !important;
+  box-shadow: 20px 20px 0 0 rgba(0, 0, 0, 0.682);
+  background-color: #01a7a8;
+  color: #000;
+  font: var(--ch2-font);
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+#ch2-settings-dialog {
+  border: none;
+  padding: 16px;
+}
+
+#ch2-settings-dialog .ch2-settings-header {
+  height: 0 !important;
+}
+
+.ch2-theme-bar .ch2-dialog,
+.ch2-theme-default .ch2-dialog,
+.ch2-theme-overlay .ch2-dialog {
+  border: none !important;
+}
+
+#ch2-dialog-description,
+#ch2-settings-description {
+  position: relative;
+  margin: 0;
+  padding: 16px 18px 20px;
+  overflow: visible;
+  color: #000;
+  font: var(--ch2-font);
+  text-align: center;
+}
+
+#ch2-dialog-description a,
+.ch2-style-light .ch2-settings-content a {
+  color: #000 !important;
+  border: none !important;
+  text-decoration: underline !important;
+}
+
+.ch2-style-light .ch2-settings-content h3,
+.ch2-style-light .ch2-settings-content p {
+  color: #000 !important;
+  font: var(--ch2-font);
+}
+
+.ch2-dialog-content,
+.ch2-settings-content {
+  position: relative;
+  margin-top: 2px;
+  padding: 2px;
+  overflow: visible;
+  border: 1px solid #000;
+  border-bottom: none;
+  text-align: center;
+  font-weight: 700;
+}
+
+.ch2-settings-content::before,
+#ch2-dialog-description::before,
+.ch2-dialog-actions::before,
+.ch2-settings-actions::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border: 1px solid #000;
+}
+
+#ch2-dialog-description::before {
+  top: -6px;
+  left: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 7px);
+  border-bottom: none;
+}
+
+.ch2-settings-content::before {
+  top: -4px;
+  left: -4px;
+  width: calc(100% + 8px) !important;
+  height: calc(100% + 6px);
+  border-bottom: none;
+}
+
+.ch2-dialog-actions,
+.ch2-settings-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding-bottom: 20px;
+  border: 1px solid #000;
+  border-top: none;
+  background-color: #01a7a8 !important;
+}
+
+.ch2-dialog-actions::before,
+.ch2-settings-actions::before {
+  top: -1px;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 5px);
+  border-top: none;
+}
+
+button.ch2-btn,
+.ch2-dialog-actions button.ch2-btn,
+.ch2-settings-tab-container button.ch2-btn,
+.ch2-settings-actions button.ch2-btn {
+  position: relative;
+  margin: 0;
+  padding: 0 16px;
+  border: none;
+  border-radius: 0;
+  background: #fff;
+  color: #000;
+  font: var(--ch2-font);
+  box-shadow: 6px 6px 0 0 #000;
+  flex-grow: 0 !important;
+  flex-basis: auto !important;
+  height: 16px;
+  cursor: pointer;
+}
+
+button.ch2-btn.ch2-allow-all-btn {
+   background-color: #fefc4f;
+}
+
+button.ch2-btn-secondary {
+  background-color: #fff !important;
+  transition: none;
+}
+
+button.ch2-btn-secondary:hover {
+  background-color: #fefc4f !important;
+}
+
+.ch2-dialog-actions button.ch2-btn:hover,
+.ch2-settings-actions button.ch2-btn-primary:hover {
+  padding: 0 16px;
+  border: none;
+  box-shadow: 6px 6px 0 0 #000;
+  color: #000;
+  transition: none;
+}
+
+.ch2-settings-tab-container button.ch2-btn-secondary {
+  position: absolute;
+  bottom: 28px;
+}
+
+.ch2-settings-tab-container button.ch2-btn-secondary:nth-of-type(1) {
+  left: 20%;
+  bottom: -16px;
+  z-index: 1;
+}
+
+.ch2-settings-tab-container button.ch2-btn-secondary:nth-of-type(2) {
+  left: 220px;
+  bottom: -16px;
+  z-index: 1;
+}
+
+html[lang="de"] .ch2-settings-tab-container button.ch2-btn-secondary:nth-of-type(2) {
+  left: 200px;
+}
+
+html[lang="es"] .ch2-settings-tab-container button.ch2-btn-secondary:nth-of-type(2) {
+  left: 180px;
+}
+
+html[lang="fr"] .ch2-settings-tab-container button.ch2-btn-secondary:nth-of-type(2) {
+  left: 190px;
+}
+
+.ch2-settings-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 380px;
+  margin: 0 auto 14px;
+  padding: 0 18px;
+}
+
+.ch2-settings-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px !important;
+}
+
+.ch2-settings-option > :last-child {
+  flex-grow: unset;
+  padding-left: 16px;
+}
+
+.ch2-settings-content h3 {
+  margin-bottom: 0;
+}
+
+.ch2-settings-actions button.ch2-save-settings-btn {
+  margin-left: 180px;
+}
+
+.ch2-settings-tab-container:has(.ch2-deny-all-btn) button.ch2-btn-secondary:nth-of-type(1) {
+  left: 6%;
+}
+
+.ch2-settings-content:has(.ch2-deny-all-btn) + .ch2-settings-actions button.ch2-save-settings-btn {
+  margin-left: 330px;
+}
+
+html[lang="de"] .ch2-settings-content:has(.ch2-deny-all-btn) + .ch2-settings-actions button.ch2-save-settings-btn {
+  margin-left: 308px !important;
+}
+
+html[lang="es"] .ch2-settings-content:has(.ch2-deny-all-btn) + .ch2-settings-actions button.ch2-save-settings-btn {
+  margin-left: 295px !important;
+}
+
+html[lang="fr"] .ch2-settings-content:has(.ch2-deny-all-btn) + .ch2-settings-actions button.ch2-save-settings-btn {
+  margin-left: 300px !important;
+}
+
+.ch2-style-light .ch2-settings-content .ch2-settings-option-details p,
+.ch2-settings-options2.ch2-collapse,
+#ch2-settings-tablist,
+.ch2-settings-tablist-wrap,
+.ch2-settings-tabs,
+.ch2-close-settings-btn {
+  display: none !important;
+}
+
+#ch2-dialog #ch2-dialog-title,
+#ch2-settings-title {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  z-index: 1;
+  display: inline-block;
+  height: auto;
+  padding: 0 5px;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  font-size: 12px;
+  line-height: initial !important;
+}
+
+#ch2-settings-title {
+  top: 0;
+}
+
+a.ch2-dialog-close-btn {
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  width: 32px;
+  height: 32px;
+  pointer-events: none !important;
+}
+
+a.ch2-dialog-close-btn::before,
+a.ch2-dialog-close-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+a.ch2-dialog-close-btn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+a.ch2-dialog-close-btn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.ch2-block {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ch2-settings.ch2-visible {
+  animation: none !important;
+}
+
+/* switch */
+.ch2-switch {
+  position: relative;
+  display: inline-block;
+}
+
+.ch2-switch input {
+  position: absolute;
+  opacity: 0;
+  display: block !important;
+}
+
+.ch2-switch input + label {
+  display: block !important;
+  color: transparent;
+  width: 34px;
+  height: 17px;
+  min-height: auto !important;
+  padding: 0 !important;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: 17px;
+  background: #ccc;
+  cursor: pointer;
+  line-height: 17px;
+  transition: background 0.3s ease;
+}
+
+.ch2-switch label::before {
+  content: "";
+  position: relative !important;
+  top: 2px !important;
+  left: 2px;
+  display: block !important;
+  width: 13px !important;
+  height: 13px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #fff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.ch2-switch label::after {
+  display: none;
+}
+
+.ch2-switch input:checked + label {
+  background: #000 !important;
+}
+
+.ch2-switch input:checked + label::before {
+  transform: translateX(17px);
+}
+
+.ch2-switch input:disabled + label::before {
+  background: #ccc !important;
+}
+
+.ch2-switch input:focus + label {
+  outline: 1px solid #666;
+  outline-offset: 3px;
+}
+
+/* responsive */
+@media (max-width: 800px) {
+  .ch2-settings-content .ch2-settings-tab-container > button,
+  .ch2-settings-actions button {
+    width: auto;
+  }
+
+  .ch2-settings-content .ch2-settings-tab-container {
+    padding-bottom: 0;
+  }
+
+  .ch2-settings-scan .ch2-settings-content {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .ch2-settings-options {
+    grid-template-columns: 1fr !important;
+    max-width: unset;
+    gap: 16px !important;
+  }
+
+  .ch2-dialog-actions,
+  .ch2-settings-actions {
+    flex-direction: column;
+  }
+
+  .ch2-dialog-actions .ch2-btn,
+  .ch2-settings-actions .ch2-btn {
+    width: calc(100% - 60px);
+  }
+
+  .ch2-settings-actions {
+    padding: 100px 20px 20px !important;
+  }
+
+.ch2-settings-tab-container button.ch2-btn-secondary {
+  width: calc(100% - 40px);
+}
+
+.ch2-settings-tab-container button.ch2-btn-secondary:nth-of-type(1) {
+  left: 20px !important;
+}
+
+.ch2-settings-tab-container button.ch2-btn-secondary:nth-of-type(2) {
+  left: 50% !important;
+  bottom: -27% !important;
+  transform: translateX(-50%);
+}
+
+  button.ch2-save-settings-btn {
+    width: 100% !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  a.ch2-dialog-close-btn {
+    right: -2px !important;
+    pointer-events: none !important;
+  }
+
+  html[lang="de"] .ch2-settings-content:has(.ch2-deny-all-btn) + .ch2-settings-actions button.ch2-save-settings-btn,
+  html[lang="es"] .ch2-settings-content:has(.ch2-deny-all-btn) + .ch2-settings-actions button.ch2-save-settings-btn,
+  html[lang="fr"] .ch2-settings-content:has(.ch2-deny-all-btn) + .ch2-settings-actions button.ch2-save-settings-btn {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 440px) {
+  .ch2-settings-tab-container button.ch2-btn-secondary:nth-of-type(1) {
+      bottom: -30px;
+  }
+  
+  .ch2-settings-tab-container button.ch2-btn-secondary:nth-of-type(2) {
+    bottom: -23% !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .ch2-settings-tab-container button.ch2-btn-secondary:nth-of-type(2) {
+    bottom: -20% !important;
+  }
+}
+
+
+/* styles from cookiehub for hiding banner logic */
+.ch2-dialog {
+	display: none;
+	z-index: 700001;
+}
+
+.ch2-dialog.ch2-visible {
+	display: block;
+}
+
+.ch2-settings {
+	display: none;
+	z-index: 700001;
+}
+
+.ch2-settings.ch2-visible {
+	display: block;
+}

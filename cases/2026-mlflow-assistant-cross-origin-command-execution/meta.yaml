@@ -1,0 +1,46 @@
+slug: 2026-mlflow-assistant-cross-origin-command-execution
+title_en: MLflow Assistant Cross-Origin Command Execution
+title_cn: MLflow Assistant 跨源请求导致的本地命令执行漏洞
+year: 2026
+disclosed: '2026-05-19'
+category: agent-risk
+severity: high
+severity_basis: cvss
+severity_evidence: CVE-2026-2611 permits a malicious webpage to bypass the MLflow Assistant loopback restriction, alter its configuration, and enable arbitrary command execution through a Claude Code sub-agent. Downstream sources record a 9.6 CVSS score and a 3.11.0rc1 fix.
+real_incident: true
+reproducible: true
+ai_tool:
+- MLflow Assistant
+- Claude Code sub-agent
+- MLflow tracking server
+language:
+- Python
+- HTTP
+- browser origin policy
+attack_surface:
+- ajax-api endpoints
+- local loopback service
+- Origin validation
+- Assistant configuration
+- command sub-agent
+references:
+- title: 'NVD: CVE-2026-2611'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-2611
+- title: 'Snyk: MLflow Assistant origin validation error'
+  url: https://security.snyk.io/vuln/SNYK-PYTHON-MLFLOWSKINNY-16758001
+- title: Corgea MLflow advisories
+  url: https://corgea.com/advisories/packages/pypi/mlflow
+- title: 'MLflow release v3.11.0rc1'
+  url: https://github.com/mlflow/mlflow/releases/tag/v3.11.0rc1
+- title: MLflow repository
+  url: https://github.com/mlflow/mlflow
+tldr: A malicious webpage could bypass MLflow Assistant's loopback trust assumption, change its configuration, and enable arbitrary commands through its Claude Code sub-agent.
+tags:
+- mlflow
+- assistant
+- cors
+- claude-code
+- local-command-execution
+verification_notes: NVD, Snyk, Corgea, the Singapore bulletin, and vulnerability databases agree on the cross-origin assistant configuration flaw and command-execution consequence. The attack requires a victim browser to interact with a local vulnerable Assistant; it is not a remote takeover of every MLflow server.
+cve: CVE-2026-2611
+cvss: 9.6

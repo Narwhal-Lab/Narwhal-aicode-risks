@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://breached.company/malicious-jetbrains-plugins-steal-ai-api-keys-2026/ -->
+<html lang="en" data-astro-cid-37fxchfa=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="https://breached.company/favicon.svg"><link rel="canonical" href="https://breached.company/malicious-jetbrains-plugins-steal-ai-api-keys-2026/"><link rel="alternate" type="application/rss+xml" title="Breached Company RSS" href="https://breached.company/rss.xml"><!-- Bridgy Fed / Fediverse --><link rel="me" href="https://fed.brid.gy/"><title>Stealing the Keys to the AI Kingdom: 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys | Breached.Company</title><meta name="description" content="15 malicious JetBrains plugins posing as AI coding assistants stole OpenAI, DeepSeek &amp; SiliconFlow API keys across ~70,000 installs. How the scheme worked."><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><!-- Open Graph --><meta property="og:type" content="article"><meta property="og:site_name" content="Breached.Company"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://breached.company/malicious-jetbrains-plugins-steal-ai-api-keys-2026/"><meta property="og:title" content="Stealing the Keys to the AI Kingdom: 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys"><meta property="og:description" content="15 malicious JetBrains plugins posing as AI coding assistants stole OpenAI, DeepSeek &amp; SiliconFlow API keys across ~70,000 installs. How the scheme worked."><meta property="og:image" content="https://breached.company/images/2026-06-18-malicious-jetbrains-plugins-steal-ai-api-keys-2026.png"><meta property="article:published_time" content="2026-06-18T17:00:00.000Z"><meta property="article:author" content="Breached Company"><meta property="article:tag" content="Supply Chain"><meta property="article:tag" content="AI Security"><meta property="article:tag" content="Developer Tools"><meta property="article:tag" content="Credential Theft"><meta property="article:tag" content="Malware"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Stealing the Keys to the AI Kingdom: 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys"><meta name="twitter:description" content="15 malicious JetBrains plugins posing as AI coding assistants stole OpenAI, DeepSeek &amp; SiliconFlow API keys across ~70,000 installs. How the scheme worked."><meta name="twitter:image" content="https://breached.company/images/2026-06-18-malicious-jetbrains-plugins-steal-ai-api-keys-2026.png"><!-- Structured data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://breached.company/#organization","name":"Breached.Company","url":"https://breached.company/","logo":"https://breached.company/images/logo.png","description":"Cybersecurity breach intelligence, incident response & data breach analysis","parentOrganization":{"@type":"Organization","name":"CISO Marketplace"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://breached.company/#website","name":"Breached.Company","url":"https://breached.company/","description":"Cybersecurity breach intelligence, incident response & data breach analysis","publisher":{"@id":"https://breached.company/#organization"},"inLanguage":"en-US"}</script><!-- Google Analytics --><script async="" src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/js"></script><!-- AdSense --><!-- CISO Marketplace Signals --><!-- CyberAdX pixel --><script src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/p.js.下载" defer=""></script><script src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/cax-slots.js.下载" defer=""></script><script src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/t.js.下载" defer=""></script><script src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/widget.js.下载" data-site="breached.company" defer=""></script><link rel="stylesheet" href="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/_slug_.BEkNiaL_.css">
+<style>.cyberadx-placement{display:block;text-align:center;margin:1.5rem auto}.cyberadx-mobile_sticky{position:fixed;bottom:0;left:0;right:0;z-index:999;display:flex;justify-content:center;align-items:center;background:#000000d9;padding:4px 0;margin:0}.cax-link{display:inline-block;line-height:0;text-decoration:none}.cax-img-wrap{position:relative;display:block;container-type:inline-size}.cax-img-wrap img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;max-width:none!important}.cax-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.55) 40%,transparent 72%);border-radius:6px;display:flex;align-items:flex-end}.cax-copy{padding:8px 12px 10px;text-align:left;width:100%}.cax-headline{color:#fff;font-weight:700;font-size:clamp(.65rem,1.8cqw,.85rem);line-height:1.25;margin:0 0 2px;text-shadow:0 1px 3px rgba(0,0,0,.6)}.cax-body{color:#ffffffd1;font-size:clamp(.6rem,1.5cqw,.7rem);line-height:1.3;margin:0 0 5px}.cax-cta{display:inline-block;background:#4f46e5;color:#fff;font-size:clamp(.55rem,1.4cqw,.65rem);font-weight:700;padding:2px 8px;border-radius:4px;white-space:nowrap}.cax-native{display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.12);border-radius:8px;line-height:1.4;color:inherit}.cax-native strong{display:block;margin-bottom:4px}.cax-native p{font-size:.85rem;opacity:.8;margin:0 0 8px}.cyberadx-billboard{display:none}@media (min-width:992px){.cyberadx-billboard{display:block}}@media (min-width:769px){.cyberadx-mobile_sticky{display:none!important}}
+</style>
+<link rel="stylesheet" href="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/_slug_.BoiEyYX4.css"><script type="module" src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/hoisted.Dwznkw5D.js.下载"></script><!-- cyberadx-pixel --><script async="" src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/p(1).js.下载"></script><style id="cisodiy-styles">
+    .cisodiy-card{font-family:system-ui,-apple-system,sans-serif;background:#0f1829;border:1px solid #1e2d47;border-radius:12px;padding:20px;max-width:360px;color:#e8edf5;text-decoration:none;display:block;transition:border-color .2s}
+    .cisodiy-card:hover{border-color:rgba(0,201,167,.5)}
+    .cisodiy-badge{font-size:11px;font-weight:600;color:#00c9a7;background:rgba(0,201,167,.1);padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:12px}
+    .cisodiy-title{font-size:15px;font-weight:700;color:#e8edf5;margin:0 0 8px;line-height:1.3}
+    .cisodiy-desc{font-size:13px;color:#6b7fa3;margin:0 0 14px;line-height:1.5}
+    .cisodiy-formats{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+    .cisodiy-fmt{font-size:11px;font-family:monospace;color:#6b7fa3;border:1px solid #1e2d47;padding:2px 8px;border-radius:4px}
+    .cisodiy-footer{display:flex;align-items:center;justify-content:space-between}
+    .cisodiy-price{font-size:18px;font-weight:700;color:#e8edf5}
+    .cisodiy-btn{font-size:12px;font-weight:700;color:#070d1a;background:#00c9a7;padding:8px 16px;border-radius:8px;text-decoration:none;transition:background .2s}
+    .cisodiy-btn:hover{background:#00a88a}
+    .cisodiy-brand{font-size:10px;color:#1e2d47;margin-top:14px;text-align:right;font-family:monospace}
+  </style><style>
+    #ciso-brain-widget * { box-sizing: border-box; margin: 0; padding: 0; font-family: Inter, -apple-system, sans-serif; }
+    #ciso-brain-btn {
+      position: fixed; bottom: 24px; left: 24px; z-index: 9998;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border: none; cursor: pointer; font-size: 24px;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #ciso-brain-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(99,102,241,0.5); }
+    #ciso-brain-panel {
+      position: fixed; bottom: 92px; left: 24px; z-index: 9999;
+      width: 380px; height: 560px; max-height: calc(100vh - 120px);
+      background: #0f1117; border: 1px solid #2d3149; border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      display: flex; flex-direction: column;
+      transition: opacity 0.2s, transform 0.2s, width 0.25s, height 0.25s;
+      font-size: 14px; color: #e8eaf6;
+    }
+    #ciso-brain-panel.cb-expanded {
+      width: min(560px, calc(100vw - 32px));
+      height: min(760px, calc(100vh - 120px));
+    }
+    #ciso-brain-panel.hidden { opacity: 0; transform: translateY(12px) scale(0.97); pointer-events: none; }
+    .cb-header {
+      padding: 14px 16px; border-bottom: 1px solid #2d3149;
+      display: flex; align-items: center; gap: 10px;
+      background: #1a1d27; border-radius: 16px 16px 0 0;
+    }
+    .cb-avatar {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
+    }
+    .cb-header-text { flex: 1; }
+    .cb-header-title { font-weight: 700; font-size: 14px; }
+    .cb-header-sub { font-size: 11px; color: #8b8fa8; }
+    .cb-header-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .cb-icon-btn {
+      background: #22263a; border: 1px solid #2d3149; border-radius: 6px;
+      width: 28px; height: 28px; color: #8b8fa8; cursor: pointer; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .cb-icon-btn:hover { color: #e8eaf6; border-color: #6366f1; }
+    .cb-close {
+      background: #22263a; border: 1px solid #2d3149; border-radius: 6px;
+      width: 28px; height: 28px; color: #8b8fa8; cursor: pointer; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cb-messages {
+      flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 12px;
+      scrollbar-width: thin; scrollbar-color: #2d3149 transparent;
+    }
+    .cb-msg { display: flex; gap: 8px; min-width: 0; width: 100%; }
+    .cb-msg.user { flex-direction: row-reverse; }
+    .cb-msg.assistant { flex-direction: column; align-items: flex-start; }
+    .cb-bubble {
+      padding: 10px 13px; border-radius: 12px; max-width: 85%;
+      line-height: 1.55; font-size: 13.5px; word-break: break-word;
+      overflow-wrap: break-word; min-width: 0;
+    }
+    .cb-msg.user .cb-bubble { background: #6366f1; border-radius: 12px 4px 12px 12px; align-self: flex-end; }
+    .cb-msg.assistant .cb-bubble { background: #1a1d27; border: 1px solid #2d3149; border-radius: 4px 12px 12px 12px; max-width: 100%; width: 100%; }
+    .cb-sources { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; width: 100%; }
+    .cb-source {
+      display: flex; align-items: center; gap: 6px;
+      padding: 5px 9px; background: #1a1d27; border: 1px solid #2d3149; border-radius: 6px;
+      text-decoration: none; color: #e8eaf6; font-size: 11px; transition: border-color 0.15s;
+    }
+    .cb-source:hover { border-color: #6366f1; }
+    .cb-score { background: #22263a; color: #818cf8; padding: 1px 5px; border-radius: 3px; font-weight: 700; flex-shrink: 0; }
+    .cb-typing { display: flex; gap: 5px; align-items: center; padding: 10px 13px; }
+    .cb-dot { width: 7px; height: 7px; border-radius: 50%; background: #6366f1; animation: cb-pulse 1.2s ease-in-out infinite; }
+    .cb-dot:nth-child(2) { animation-delay: 0.2s; }
+    .cb-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes cb-pulse { 0%,80%,100%{opacity:0.3;transform:scale(0.8)} 40%{opacity:1;transform:scale(1)} }
+    .cb-suggestions { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; width: 100%; }
+    .cb-suggestion {
+      padding: 5px 10px; background: #22263a; border: 1px solid #2d3149;
+      border-radius: 16px; font-size: 12px; color: #a5b4fc; cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .cb-suggestion:hover { border-color: #6366f1; }
+    .cb-input-area {
+      padding: 10px 12px; border-top: 1px solid #2d3149;
+      display: flex; gap: 8px; align-items: flex-end;
+    }
+    .cb-input {
+      flex: 1; background: #22263a; border: 1px solid #2d3149; border-radius: 8px;
+      padding: 9px 12px; color: #e8eaf6; font-size: 13px; resize: none;
+      outline: none; font-family: inherit; line-height: 1.4; max-height: 100px;
+    }
+    .cb-input:focus { border-color: #6366f1; }
+    .cb-send {
+      padding: 9px 14px; background: #6366f1; border: none; border-radius: 8px;
+      color: white; font-weight: 700; cursor: pointer; font-size: 13px; flex-shrink: 0;
+    }
+    .cb-send:disabled { background: #22263a; color: #8b8fa8; cursor: not-allowed; }
+    .cb-footer {
+      padding: 7px 12px; text-align: center; font-size: 10.5px; color: #8b8fa8;
+      border-top: 1px solid #2d3149; line-height: 1.6;
+    }
+    .cb-footer a { color: #a5b4fc; text-decoration: none; }
+    .cb-footer a:hover { text-decoration: underline; }
+    @media (max-width: 480px) {
+      #ciso-brain-panel, #ciso-brain-panel.cb-expanded {
+        width: calc(100vw - 16px); left: 8px; bottom: 80px;
+        height: min(620px, calc(100vh - 100px));
+      }
+    }
+  </style><link rel="stylesheet" href="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/css2"></head> <body data-astro-cid-37fxchfa=""> <header class="site-header" data-astro-cid-37fxchfa=""> <div class="container" data-astro-cid-37fxchfa=""> <nav class="nav" data-astro-cid-37fxchfa=""> <a href="https://breached.company/" class="logo" data-astro-cid-37fxchfa=""> <span class="logo-icon" data-astro-cid-37fxchfa="">🚨</span> <span class="logo-text" data-astro-cid-37fxchfa="">Breached<span class="accent" data-astro-cid-37fxchfa="">.Company</span></span> </a> <ul class="nav-links" data-astro-cid-37fxchfa=""> <li data-astro-cid-37fxchfa=""><a href="https://breached.company/" data-astro-cid-37fxchfa="">Home</a></li> <li data-astro-cid-37fxchfa=""><a href="https://breached.company/blog" data-astro-cid-37fxchfa="">Blog</a></li> <li data-astro-cid-37fxchfa=""><a href="https://breached.company/tags" data-astro-cid-37fxchfa="">Topics</a></li> <li data-astro-cid-37fxchfa=""><a href="https://breached.company/members/" data-astro-cid-37fxchfa="">Members</a></li> <li data-astro-cid-37fxchfa=""><a href="https://breached.company/about" data-astro-cid-37fxchfa="">About</a></li> <li data-astro-cid-37fxchfa=""><a href="https://breached.company/advertise" class="btn-advertise" data-astro-cid-37fxchfa="">Advertise</a></li> <li data-astro-cid-37fxchfa=""><button id="search-btn" class="search-btn" aria-label="Search" title="Search (Ctrl+K)" data-astro-cid-otpdt6jm=""> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-otpdt6jm=""> <circle cx="11" cy="11" r="8" data-astro-cid-otpdt6jm=""></circle> <line x1="21" y1="21" x2="16.65" y2="16.65" data-astro-cid-otpdt6jm=""></line> </svg> <span class="search-btn-text" data-astro-cid-otpdt6jm="">Search</span> <kbd class="search-kbd" data-astro-cid-otpdt6jm="">⌘K</kbd> </button> <div id="search-overlay" class="search-overlay" aria-hidden="true" data-astro-cid-otpdt6jm=""> <div class="search-backdrop" data-astro-cid-otpdt6jm=""></div> <div class="search-modal" data-astro-cid-otpdt6jm=""> <div class="search-header" data-astro-cid-otpdt6jm=""> <span class="search-title" data-astro-cid-otpdt6jm="">Search articles</span> <button id="search-close" class="search-close" aria-label="Close search" data-astro-cid-otpdt6jm=""> <kbd data-astro-cid-otpdt6jm="">Esc</kbd> </button> </div> <div id="search-container" data-astro-cid-otpdt6jm=""></div> </div> </div>   </li> <li data-astro-cid-37fxchfa=""><a href="https://breached.company/newsletter" class="btn-newsletter" data-astro-cid-37fxchfa="">Newsletter</a></li> </ul> </nav> </div> </header> <div id="ciso-poker-strip" style="display: block; position: relative;"> <a href="https://ciso.poker/?utm_source=network&amp;utm_medium=strip&amp;utm_campaign=defcon2026" target="_blank" rel="noopener noreferrer" id="ciso-poker-link" style="
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      background:linear-gradient(90deg,#7c2d12,#9a3412,#7c2d12);
+      padding:8px 44px 8px 12px;
+      text-decoration:none;
+      border-bottom:1px solid rgba(251,146,60,0.3);
+      font-family:system-ui,-apple-system,sans-serif;
+      position:relative;
+    "> <span style="font-size:1rem;flex-shrink:0">🃏</span> <span style="color:#fed7aa;font-size:0.78rem;font-weight:700;letter-spacing:0.02em;white-space:nowrap">
+CISO.POKER
+</span> <span style="color:rgba(254,215,170,0.5);font-size:0.7rem;flex-shrink:0">·</span> <span style="color:#fdba74;font-size:0.75rem;white-space:nowrap">
+DEF CON Week · Aug 5 · Las Vegas
+</span> <span style="color: rgba(254, 215, 170, 0.5); font-size: 0.7rem; flex-shrink: 0; display: inline;" id="ciso-poker-sep2">·</span> <span style="color: rgb(253, 230, 138); font-size: 0.7rem; font-weight: 600; white-space: nowrap; display: inline;" id="ciso-poker-countdown">28d 17h away</span> <span style="
+      flex-shrink:0;display:inline-block;
+      background:rgba(251,146,60,0.25);border:1px solid rgba(251,146,60,0.5);
+      color:#fed7aa;font-size:0.65rem;font-weight:700;
+      padding:2px 8px;border-radius:4px;white-space:nowrap;
+    ">Apply for a Seat →</span> </a> <button id="ciso-poker-close" aria-label="Close" style="
+      position:absolute;right:10px;top:50%;transform:translateY(-50%);
+      background:none;border:none;color:rgba(254,215,170,0.6);
+      font-size:1.1rem;cursor:pointer;padding:4px 8px;line-height:1;
+    ">×</button> </div>  <!-- Micro Tools Bar --> <nav class="tools-bar" data-astro-cid-37fxchfa=""> <div class="container" data-astro-cid-37fxchfa=""> <div class="tools-row" data-astro-cid-37fxchfa=""> <span class="row-label" data-astro-cid-37fxchfa="">🛠️ IR &amp; Assessment</span> <div class="tools-scroll" data-astro-cid-37fxchfa=""> <a href="https://notification.breached.company/" target="_blank" class="tool-link tool-internal" data-astro-cid-37fxchfa="">📢 Breach Notification</a> <a href="https://incidentresponse.tools/" target="_blank" class="tool-link tool-internal" data-astro-cid-37fxchfa="">🚨 IR Tooling</a> <a href="https://ircost.breached.company/" target="_blank" class="tool-link tool-internal" data-astro-cid-37fxchfa="">💰 IR Cost</a> <a href="https://databreachcostcalculator.com/" target="_blank" class="tool-link tool-internal" data-astro-cid-37fxchfa="">📊 Breach Calculator</a> <a href="https://forensics.breached.company/" target="_blank" class="tool-link tool-internal" data-astro-cid-37fxchfa="">🔍 Forensics</a> <a href="https://backups.breached.company/" target="_blank" class="tool-link tool-internal" data-astro-cid-37fxchfa="">💾 Backup Assess</a> <a href="https://ir.breached.company/" target="_blank" class="tool-link tool-internal" data-astro-cid-37fxchfa="">📊 IR Maturity</a> </div> </div> <div class="tools-row" data-astro-cid-37fxchfa=""> <span class="row-label" data-astro-cid-37fxchfa="">🛡️ Risk &amp; Privacy</span> <div class="tools-scroll" data-astro-cid-37fxchfa=""> <a href="https://finemydata.com/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">⚖️ Privacy Fines</a> <a href="https://pii.compliancehub.wiki/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">📋 PII Navigator</a> <a href="https://ransomwarematurity.com/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">💀 Ransomware Assess</a> <a href="https://cyberinsurancecalc.com/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">📜 Cyber Insurance</a> <a href="https://phishingrisk.com/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">🎣 Phishing Risk</a> <a href="https://ratemysoc.com/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">🖥️ Rate My SOC</a> </div> </div> <div class="tools-row" data-astro-cid-37fxchfa=""> <span class="row-label" data-astro-cid-37fxchfa="">📚 Resources</span> <div class="tools-scroll" data-astro-cid-37fxchfa=""> <a href="https://privacyrights.compliancehub.wiki/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">🔒 Privacy Rights</a> <a href="https://biometric.myprivacy.blog/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">🤚 Biometric</a> <a href="https://digitaltwin.compliancehub.wiki/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">🧬 Digital Twin</a> <a href="https://devicerisk.compliancehub.wiki/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">🩺 Device Risk</a> <a href="https://cvedaily.breached.company/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">🐛 CVE Daily</a> <a href="https://tooling.hackernoob.tips/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">🛠️ Security Tools</a> <a href="https://www.cisomarketplace.com/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">🛒 CISO Marketplace</a> <a href="https://glossary.cisomarketplace.com/" target="_blank" class="tool-link" data-astro-cid-37fxchfa="">📖 Cyber Glossary</a> <a href="https://breached.company/digital-downloads" class="tool-link tool-internal" data-astro-cid-37fxchfa="">📥 IR Workbooks</a> </div> </div> </div> </nav> <main data-pagefind-body="" data-astro-cid-37fxchfa="">  <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Stealing the Keys to the AI Kingdom: 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys","description":"15 malicious JetBrains plugins posing as AI coding assistants stole OpenAI, DeepSeek & SiliconFlow API keys across ~70,000 installs. How the scheme worked.","datePublished":"2026-06-18T17:00:00.000Z","dateModified":"2026-06-18T17:00:00.000Z","author":{"@type":"Organization","name":"Breached Company","url":"https://breached.company/about"},"publisher":{"@id":"https://breached.company/#organization"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://breached.company/malicious-jetbrains-plugins-steal-ai-api-keys-2026/"},"image":"https://breached.company/images/2026-06-18-malicious-jetbrains-plugins-steal-ai-api-keys-2026.png","keywords":"Supply Chain, AI Security, Developer Tools, Credential Theft, Malware","articleSection":"Cybersecurity","inLanguage":"en-US"}</script> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://breached.company/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://breached.company/blog/"},{"@type":"ListItem","position":3,"name":"Stealing the Keys to the AI Kingdom: 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys","item":"https://breached.company/malicious-jetbrains-plugins-steal-ai-api-keys-2026/"}]}</script> <article class="blog-post" data-pagefind-meta="description:15 malicious JetBrains plugins posing as AI coding assistants stole OpenAI, DeepSeek &amp; SiliconFlow API keys across ~70,000 installs. How the scheme worked." data-astro-cid-fzx4jmue=""> <header class="post-header" data-astro-cid-fzx4jmue=""> <div class="container" data-astro-cid-fzx4jmue=""> <div class="post-meta" data-astro-cid-fzx4jmue=""> <time datetime="2026-06-18T17:00:00.000Z" data-astro-cid-fzx4jmue=""> June 18, 2026 </time> <span class="author" data-astro-cid-fzx4jmue="">by Breached Company</span> </div> <h1 data-astro-cid-fzx4jmue="">Stealing the Keys to the AI Kingdom: 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys</h1> <p class="post-excerpt" data-astro-cid-fzx4jmue="">15 malicious JetBrains plugins posing as AI coding assistants stole OpenAI, DeepSeek &amp; SiliconFlow API keys across ~70,000 installs. How the scheme worked.</p> <div class="post-tags" data-astro-cid-fzx4jmue=""> <a href="https://breached.company/tags/supply-chain/" class="tag" data-astro-cid-fzx4jmue="">Supply Chain</a><a href="https://breached.company/tags/ai-security/" class="tag" data-astro-cid-fzx4jmue="">AI Security</a><span class="tag" data-astro-cid-fzx4jmue="">Developer Tools</span><a href="https://breached.company/tags/credential-theft/" class="tag" data-astro-cid-fzx4jmue="">Credential Theft</a><a href="https://breached.company/tags/malware/" class="tag" data-astro-cid-fzx4jmue="">Malware</a> </div> </div> </header> <div class="feature-image" data-astro-cid-fzx4jmue=""><div class="container" data-astro-cid-fzx4jmue=""><img src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/2026-06-18-malicious-jetbrains-plugins-steal-ai-.png" alt="Stealing the Keys to the AI Kingdom: 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys" loading="eager" fetchpriority="high" decoding="async" data-astro-cid-fzx4jmue=""></div></div> <!-- CyberAdX leaderboard (top of article) --> <div class="container" data-astro-cid-fzx4jmue=""><div id="cax-leaderboard-zhtzb0" class="cyberadx-placement cyberadx-leaderboard" data-zone="leaderboard" data-format="leaderboard" data-context="breach" data-w="728" data-h="90" data-mobile-sticky="false" data-carousel="true" aria-label="Sponsored content"><a href="https://cyberadx.network/" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; border: 1px solid rgba(99, 102, 241, 0.35); border-radius: 8px; padding: 14px 18px; background: linear-gradient(135deg, rgba(49, 46, 129, 0.45), rgba(17, 24, 39, 0.7)); max-width: 728px; margin: 0px auto; font-family: system-ui, sans-serif;"><div style="color:#a5b4fc;font-size:0.65rem;font-weight:700;margin-right:10px;display:inline">Ad Space Available on breached.company</div><span style="display:inline-block;background:#4f46e5;color:#fff;font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:3px">Advertise →</span></a></div> <script>(function(){const slotId = "cax-leaderboard-zhtzb0";
+
+  window.__caxPending = window.__caxPending || [];
+  window.__caxPending.push(slotId);
+})();</script> </div> <div class="post-content" data-astro-cid-fzx4jmue=""><div class="container content-container" data-astro-cid-fzx4jmue=""> <!-- CyberAdX in-article rectangle (floats right within content) --> <div id="cax-in-article-h8he9w" class="cyberadx-placement cyberadx-in-article" data-zone="medium_rectangle" data-format="medium_rectangle" data-context="breach" data-w="300" data-h="250" data-mobile-sticky="false" data-carousel="true" aria-label="Sponsored content"><a href="https://cyberadx.network/" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; border: 1px solid rgba(99, 102, 241, 0.35); border-radius: 8px; padding: 14px 18px; background: linear-gradient(135deg, rgba(49, 46, 129, 0.45), rgba(17, 24, 39, 0.7)); max-width: 300px; margin: 0px auto; font-family: system-ui, sans-serif;"><div style="color:#a5b4fc;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">Ad Space Available</div><div style="color:#fff;font-weight:700;font-size:0.88rem;line-height:1.3;margin-bottom:6px">This Slot Is Available on breached.company</div><div style="color:rgba(255,255,255,0.65);font-size:0.72rem;line-height:1.4;margin-bottom:10px">Reach CISOs, security engineers, and compliance professionals. Partner access required — apply at cyberadx.network.</div><span style="display:inline-block;background:#4f46e5;color:#fff;font-size:0.7rem;font-weight:700;padding:4px 12px;border-radius:4px">Advertise on CyberAdX →</span><div style="margin-top:8px"><a href="https://cyberadx.network/privacy" target="_blank" rel="noopener noreferrer" style="color:rgba(165,180,252,0.6);font-size:0.62rem;text-decoration:none;" onclick="event.stopPropagation()">Privacy Policy</a></div></a></div> <script>(function(){const slotId = "cax-in-article-h8he9w";
+
+  window.__caxPending = window.__caxPending || [];
+  window.__caxPending.push(slotId);
+})();</script>  <p>A cluster of <strong>15 malicious JetBrains Marketplace plugins</strong> disguised as AI coding assistants has been caught quietly stealing developers’ <strong>AI provider API keys</strong> — including <strong>OpenAI, DeepSeek, and SiliconFlow</strong> credentials — and shipping them to a hard-coded, attacker-controlled server. Collectively the plugins were installed <strong>nearly 70,000 times</strong>, making this one of the more successful developer-supply-chain campaigns of the year. The first fakes appeared at the end of <strong>October 2025</strong>, and new ones were still being published as recently as <strong>June 2026</strong>.</p>
+<p>The genius and the menace of the campaign are the same thing: the plugins <strong>actually worked</strong>. Victims got functioning AI tooling and never had a reason to look closer.</p><div id="cax-tool-card"></div>
+<h2 id="real-features-hidden-theft">Real features, hidden theft</h2>
+<p>The malicious plugins weren’t hollow shells. They delivered genuine, useful functionality — <strong>code reviews, automated git commit messages, unit-test generation</strong> — wrapped around a small payload whose only job was to grab the user’s AI authentication credentials and exfiltrate them. Because the developer experience was legitimate, the malicious behavior generated no obvious symptoms. The key you pasted in to enable “your” AI assistant was the key being stolen.</p>
+<p>The two most-downloaded entries tell the story:</p>
+<ul>
+<li><strong>DeepSeek AI Assist</strong> (<code>ord.cp.code.ai.kit</code>) — <strong>27,727 downloads</strong></li>
+<li><strong>CodeGPT AI Assistant</strong> (<code>com.my.code.tools</code>) — <strong>25,571 downloads</strong></li>
+</ul>
+<p>Across the full set, the operators used <strong>seven different seller accounts</strong> to publish and republish the plugins, a deliberate redundancy that let the campaign survive individual takedowns and keep shipping new versions for eight months.</p>
+<h2 id="the-resale-twist">The resale twist</h2>
+<p>The most elegant part of the scheme is also the most cynical. Researchers at <strong>Aikido</strong> concluded that the keys handed to paying users of these plugins may well be the <strong>keys stolen from everyone else</strong> — turning the operation into a service that <strong>resells other people’s stolen AI access</strong>. In other words, the campaign is potentially self-funding: steal API keys from free users, then monetize those same keys by renting them out, with the original owners footing the inference bill.</p>
+<p>For a stolen OpenAI or DeepSeek key, the cost lands squarely on the victim. API keys are bearer tokens — whoever holds one can spend against the owner’s account until it’s revoked. That means runaway inference charges, quota exhaustion, and access to whatever data and fine-tuned models the key was scoped to reach.</p>
+<h2 id="why-developer-tooling-is-the-soft-underbelly">Why developer tooling is the soft underbelly</h2>
+<p>IDE plugin marketplaces sit in a trust gap. Developers install extensions with broad local privileges, rarely audit their code, and assume marketplace presence implies vetting. AI coding assistants make the target richer still: the whole point of the plugin is to handle high-value API credentials, so the malware doesn’t even need to go hunting — the user hands the secret over as part of normal setup.</p>
+<p>This is the same supply-chain logic that drives malicious npm, PyPI, and VS Code extension campaigns, now aimed at the AI-tooling gold rush. Where developers go and credentials concentrate, attackers follow.</p>
+<h2 id="what-developers-and-teams-should-do">What developers and teams should do</h2>
+<ul>
+<li><strong>Audit installed JetBrains plugins</strong> and remove anything matching the named IDs or any AI assistant of uncertain provenance.</li>
+<li><strong>Rotate every AI provider API key</strong> that was ever entered into a third-party plugin — OpenAI, DeepSeek, SiliconFlow, and others. Assume exposure if you can’t rule it out.</li>
+<li><strong>Scope and cap keys.</strong> Use per-project keys, set hard spend limits, and restrict permissions so a stolen token has a small blast radius.</li>
+<li><strong>Prefer first-party or well-known vendors</strong> for AI tooling, and treat download count as marketing, not a safety signal.</li>
+<li><strong>Monitor provider billing and usage dashboards</strong> for anomalous spend — often the first and only sign a key has been pirated.</li>
+</ul>
+<h2 id="the-takeaway">The takeaway</h2>
+<p>The fastest-growing category in developer tooling is now a credential-harvesting target, and “it works fine” is exactly what a good supply-chain implant is supposed to look like. If you’ve installed an AI coding assistant from a marketplace and pasted a provider key into it, the safe assumption is that the key is gone — rotate it today.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://thehackernews.com/2026/06/malicious-jetbrains-plugins-steal-ai.html">The Hacker News — Malicious JetBrains Plugins Steal AI API Keys as Chrome Extensions Capture Chatbot Chats</a></li>
+<li><a href="https://www.bleepingcomputer.com/news/security/malicious-jetbrains-marketplace-plugins-steal-ai-api-keys-from-developers/">BleepingComputer — Malicious JetBrains Marketplace plugins steal AI API keys from developers</a></li>
+<li><a href="https://www.aikido.dev/blog/multiple-jetbrains-ide-plugins-caught-stealing-ai-keys">Aikido — Multiple JetBrains IDE plugins caught stealing AI keys</a></li>
+<li><a href="https://hackread.com/malicious-jetbrains-plugins-steal-deepseek-openai-api-keys/">Hackread — 15 Malicious JetBrains Plugins Caught Stealing DeepSeek, OpenAI API Keys</a></li>
+</ul> </div></div> <!-- CyberAdX post-content banner --> <div class="container" data-astro-cid-fzx4jmue=""><div id="cax-after-content-29ebwe" class="cyberadx-placement cyberadx-after-content" data-zone="leaderboard" data-format="leaderboard" data-context="breach" data-w="728" data-h="90" data-mobile-sticky="false" data-carousel="true" aria-label="Sponsored content"><a href="https://cyberadx.network/" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; border: 1px solid rgba(99, 102, 241, 0.35); border-radius: 8px; padding: 14px 18px; background: linear-gradient(135deg, rgba(49, 46, 129, 0.45), rgba(17, 24, 39, 0.7)); max-width: 728px; margin: 0px auto; font-family: system-ui, sans-serif;"><div style="color:#a5b4fc;font-size:0.65rem;font-weight:700;margin-right:10px;display:inline">Ad Space Available on breached.company</div><span style="display:inline-block;background:#4f46e5;color:#fff;font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:3px">Advertise →</span></a></div> <script>(function(){const slotId = "cax-after-content-29ebwe";
+
+  window.__caxPending = window.__caxPending || [];
+  window.__caxPending.push(slotId);
+})();</script> </div> <div id="cax-mobile_sticky-q421o7" class="cyberadx-placement cyberadx-mobile_sticky" data-zone="mobile_sticky" data-format="mobile_banner" data-context="breach" data-w="320" data-h="50" data-mobile-sticky="true" data-carousel="false" aria-label="Sponsored content" style="display: none;"></div> <script>(function(){const slotId = "cax-mobile_sticky-q421o7";
+
+  window.__caxPending = window.__caxPending || [];
+  window.__caxPending.push(slotId);
+})();</script>   <div class="container" data-astro-cid-fzx4jmue=""> <div style="margin: 2rem 0; padding: 1rem 1.25rem; background: linear-gradient(135deg, #1e1b4b, #2e1065); border: 1px solid #4c1d95; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;" data-astro-cid-fzx4jmue=""> <div data-astro-cid-fzx4jmue=""> <div style="color: #a5b4fc; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem;" data-astro-cid-fzx4jmue="">🧠 Ask Cipher about this article</div> <div style="color: #c4b5fd; font-size: 0.82rem; opacity: 0.85;" data-astro-cid-fzx4jmue="">Get AI-powered insights, related threats, and expert context — powered by CISO Brain</div> </div> <a href="https://brain.cisomarketplace.com/?url=https%3A%2F%2Fbreached.company%2Fmalicious-jetbrains-plugins-steal-ai-api-keys-2026%2F&amp;title=Stealing%20the%20Keys%20to%20the%20AI%20Kingdom%3A%2015%20Malicious%20JetBrains%20Plugins%20Caught%20Exfiltrating%20API%20Keys" target="_blank" rel="noopener noreferrer" style="flex-shrink: 0; padding: 0.6rem 1.25rem; background: #6366f1; color: white; font-weight: 700; font-size: 0.875rem; border-radius: 8px; text-decoration: none; white-space: nowrap;" data-astro-cid-fzx4jmue="">
+Ask Cipher →
+</a> </div> </div> <!-- ciso.diy breach preparedness workbook promo (tag + title matched) --> <div class="container" data-astro-cid-fzx4jmue=""> <div class="cisodiy-promo" data-astro-cid-gkb6dndu=""> <div class="promo-header" data-astro-cid-gkb6dndu=""> <span class="promo-badge" data-astro-cid-gkb6dndu="">🛡️ Breach Preparedness Workbook</span> <span class="promo-powered" data-astro-cid-gkb6dndu="">via <a href="https://ciso.diy/" target="_blank" rel="noopener noreferrer" data-astro-cid-gkb6dndu="">ciso.diy</a></span> </div> <div class="promo-body" data-astro-cid-gkb6dndu=""> <div data-cisodiy-product="enterprise-questionnaire-kit" data-astro-cid-gkb6dndu="">
+      <a class="cisodiy-card" href="https://ciso.diy/templates/enterprise-questionnaire-kit?utm_source=breachedcompany&amp;utm_medium=embed&amp;utm_campaign=product_card&amp;utm_content=enterprise-questionnaire-kit" target="_blank" rel="noopener">
+        <span class="cisodiy-badge">Vendor Risk</span>
+        <p class="cisodiy-title">Enterprise Questionnaire Response Kit</p>
+        <p class="cisodiy-desc">14-tab workbook that auto-maps SIG Lite, CAIQ, and custom DDQs — 500+ pre-written answers, answer library, and one-click export to customer-ready questionnaire format.</p>
+        <div class="cisodiy-formats"><span class="cisodiy-fmt">Excel</span><span class="cisodiy-fmt">User Guide</span></div>
+        <div class="cisodiy-footer">
+          <span class="cisodiy-price">From $299</span>
+          <span class="cisodiy-btn">Buy Now →</span>
+        </div>
+        <div class="cisodiy-brand">ciso.diy</div>
+      </a>
+    </div> <div class="promo-fallback" data-astro-cid-gkb6dndu=""> <strong data-astro-cid-gkb6dndu="">Enterprise Questionnaire Kit</strong> <p data-astro-cid-gkb6dndu="">Vendor and third-party risk questionnaire kit — assessment templates, scoring, and due diligence tracking.</p> <a href="https://ciso.diy/templates/enterprise-questionnaire-kit?utm_source=breachedcompany&amp;utm_medium=article_promo&amp;utm_campaign=ciso_promo" target="_blank" rel="noopener noreferrer" class="promo-cta" data-astro-cid-gkb6dndu="">
+Buy Now →
+</a> </div> </div> <div class="promo-more" data-astro-cid-gkb6dndu=""> <a href="https://breached.company/digital-downloads" data-astro-cid-gkb6dndu="">Browse all IR &amp; breach preparedness workbooks →</a> </div> </div> <script>
+  (function() {
+    if (document.querySelector('script[src*="ciso.diy/embed"]')) return;
+    var s = document.createElement('script');
+    s.src = 'https://ciso.diy/embed/product-card.js';
+    s.async = true;
+    document.body.appendChild(s);
+  })();
+</script>  </div> <!-- Related Articles --> <div class="container" data-astro-cid-fzx4jmue=""> <section class="related-articles" data-astro-cid-2zkmu4eg=""><h3 data-astro-cid-2zkmu4eg="">Related Articles</h3><div class="related-grid" data-astro-cid-2zkmu4eg=""><a href="https://breached.company/when-github-became-the-battlefield-how-ai-powered-malware-and-workflow-hijacking-exposed-thousands-of-developer-secrets/" class="related-card" data-astro-cid-2zkmu4eg=""><img src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/ChatGPT-Image-Sep-8--2025--03_27_17-PM.webp" alt="" class="related-image" loading="lazy" data-astro-cid-2zkmu4eg=""><div class="related-content" data-astro-cid-2zkmu4eg=""><h4 data-astro-cid-2zkmu4eg="">When GitHub Became the Battlefield: How AI-Powered Malware and Workflow Hijacking Exposed Thousands of Developer Secrets</h4></div></a><a href="https://breached.company/trapdoor-supply-chain-npm-pypi-crates-credential-stealer-2026/" class="related-card" data-astro-cid-2zkmu4eg=""><img src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/2026-05-26-trapdoor-supply-chain-npm-pypi-crate.webp" alt="" class="related-image" loading="lazy" data-astro-cid-2zkmu4eg=""><div class="related-content" data-astro-cid-2zkmu4eg=""><h4 data-astro-cid-2zkmu4eg="">TrapDoor: 34 Malicious Packages Across npm, PyPI, and Crates.io Steal Crypto Wallets, SSH Keys, and Poison AI Assistants</h4><p class="related-excerpt" data-astro-cid-2zkmu4eg="">A coordinated supply chain campaign dubbed TrapDoor deployed 34 malicious packages across three pack...
+</p></div></a><a href="https://breached.company/ai-as-a-weapon-how-one-hacker-breached-600-firewalls-in-5-weeks/" class="related-card" data-astro-cid-2zkmu4eg=""><img src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/screenshoteasy---2026-02-21T211141.246.png" alt="" class="related-image" loading="lazy" data-astro-cid-2zkmu4eg=""><div class="related-content" data-astro-cid-2zkmu4eg=""><h4 data-astro-cid-2zkmu4eg="">AI as a Weapon: How One Hacker Breached 600 Firewalls in 5 Weeks</h4><p class="related-excerpt" data-astro-cid-2zkmu4eg="">AI as a Weapon: How One Hacker Breached 600 Firewalls in 5 Weeks...
+</p></div></a></div></section> </div> <footer class="post-footer" data-astro-cid-fzx4jmue=""><div class="container" data-astro-cid-fzx4jmue=""><nav class="post-nav" data-astro-cid-fzx4jmue=""><a href="https://breached.company/blog" class="back-link" data-astro-cid-fzx4jmue="">← Back to Articles</a></nav></div></footer> </article>  </main><script src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/product-card.js.下载" async=""></script> <footer class="site-footer" data-astro-cid-37fxchfa=""> <div class="container" data-astro-cid-37fxchfa=""> <!-- h-card for Bridgy Fed / Fediverse discovery --> <div class="h-card" style="display:none;" data-astro-cid-37fxchfa=""> <a class="p-name u-url" href="https://breached.company/" data-astro-cid-37fxchfa="">Breached.Company</a> <p class="p-note" data-astro-cid-37fxchfa="">Cybersecurity breach intelligence, incident response &amp; data breach analysis</p> <a class="u-photo" href="https://breached.company/favicon.svg" data-astro-cid-37fxchfa=""></a> </div> <p data-astro-cid-37fxchfa="">© 2026 Breached.Company. Cybersecurity breach intelligence &amp; incident response.</p> <p class="footer-support-strip" style="margin-top:0.75rem;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.75rem;" data-astro-cid-37fxchfa="">
+🛡️ <strong data-astro-cid-37fxchfa="">CISO Marketplace Support:</strong> <a href="https://support.cisomarketplace.com/" target="_blank" rel="noopener" data-astro-cid-37fxchfa="">Help &amp; Support</a> ·
+<a href="https://support.cisomarketplace.com/bug-report" target="_blank" rel="noopener" data-astro-cid-37fxchfa="">Report a Bug</a> ·
+<a href="https://support.cisomarketplace.com/security" target="_blank" rel="noopener" data-astro-cid-37fxchfa="">VDP / Security Disclosure</a> </p> <p class="footer-links" data-astro-cid-37fxchfa=""> <a href="https://breached.company/members/" data-astro-cid-37fxchfa="">Members</a> ·
+<a href="https://breached.company/privacy" data-astro-cid-37fxchfa="">Privacy</a> ·
+<a href="https://breached.company/terms" data-astro-cid-37fxchfa="">Terms</a> ·
+<a href="https://breached.company/digital-downloads" data-astro-cid-37fxchfa="">IR Workbooks</a> ·
+<a href="https://ciso.diy/" target="_blank" rel="noopener noreferrer" data-astro-cid-37fxchfa="">ciso.diy</a> ·
+<a href="https://breached.company/contact" data-astro-cid-37fxchfa="">Contact</a> ·
+<a href="https://breached.company/advertise" data-astro-cid-37fxchfa="">Advertise</a> </p> </div> </footer>  <div id="vapi-widget" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:8px" data-astro-cid-qlp5i7vy=""> <div id="vapi-label" style="background:#0f172a;border:1px solid rgba(6,182,212,.4);color:#67e8f9;font-size:12px;padding:5px 12px;border-radius:20px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.4)" data-astro-cid-qlp5i7vy="">Ask Rio 🤖</div> <div id="vapi-controls" style="display:none;background:#0f172a;border:1px solid rgba(6,182,212,.3);border-radius:24px;padding:8px 14px;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(0,0,0,.5)" data-astro-cid-qlp5i7vy=""> <span id="vapi-agent-name" style="color:#67e8f9;font-size:12px;font-weight:600" data-astro-cid-qlp5i7vy="">Rio</span> <div id="vapi-bars" style="display:flex;gap:2px;align-items:flex-end;height:16px" data-astro-cid-qlp5i7vy=""> <span style="width:3px;background:#22d3ee;border-radius:2px;height:4px;display:inline-block;transition:height .1s" data-astro-cid-qlp5i7vy=""></span> <span style="width:3px;background:#22d3ee;border-radius:2px;height:4px;display:inline-block;transition:height .1s" data-astro-cid-qlp5i7vy=""></span> <span style="width:3px;background:#22d3ee;border-radius:2px;height:4px;display:inline-block;transition:height .1s" data-astro-cid-qlp5i7vy=""></span> <span style="width:3px;background:#22d3ee;border-radius:2px;height:4px;display:inline-block;transition:height .1s" data-astro-cid-qlp5i7vy=""></span> </div> <button id="vapi-mute-btn" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:14px;padding:2px 4px" title="Mute" data-astro-cid-qlp5i7vy="">🎤</button> <button id="vapi-end-btn" style="background:#dc2626;border:none;color:white;cursor:pointer;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px" data-astro-cid-qlp5i7vy="">End</button> </div> <button id="vapi-main-btn" style="width:52px;height:52px;border-radius:50%;background:#0891b2;border:2px solid #22d3ee;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(8,145,178,.5);transition:all .2s" title="Talk to Sage" data-astro-cid-qlp5i7vy=""> <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" data-astro-cid-qlp5i7vy=""> <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4M9 11V7a3 3 0 016 0v4" data-astro-cid-qlp5i7vy=""></path> </svg> </button> </div> <script type="module">const SAGE_ID = "61893dcd-6eb7-4c66-8bbd-062e45e87206";
+const RIO_ID = "30ff74c8-2c4e-4f2e-abb2-7d7a02aca55b";
+const PUBLIC_KEY = "829cf1f7-1e89-40e3-91a0-98de2b3cbf58";
+
+  const lang = (navigator.language || 'en').toLowerCase();
+  const useRio = !lang.startsWith('en');
+  const ASSISTANT_ID = useRio ? RIO_ID : SAGE_ID;
+  const agentName = useRio ? 'Rio' : 'Sage';
+
+  let vapi = null;
+  let callState = 'idle';
+  let isMuted = false;
+  let animTimer = null;
+
+  const btn     = document.getElementById('vapi-main-btn');
+  const label   = document.getElementById('vapi-label');
+  const controls= document.getElementById('vapi-controls');
+  const muteBtn = document.getElementById('vapi-mute-btn');
+  const endBtn  = document.getElementById('vapi-end-btn');
+  const nameEl  = document.getElementById('vapi-agent-name');
+  const bars    = document.querySelectorAll('#vapi-bars span');
+
+  nameEl.textContent = agentName;
+  label.textContent  = `Ask ${agentName} 🤖`;
+
+  function setIdle() {
+    callState = 'idle'; vapi = null; isMuted = false;
+    label.style.display = 'block';
+    label.textContent = useRio ? 'Ask Rio 🌍' : 'Ask Sage 🤖';
+    controls.style.display = 'none';
+    btn.style.cssText += ';background:#0891b2;border-color:#22d3ee;cursor:pointer';
+    btn.title = useRio ? 'Talk to Rio' : 'Talk to Sage';
+    btn.innerHTML = '<svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4M9 11V7a3 3 0 016 0v4"/></svg>';
+    clearInterval(animTimer);
+  }
+
+  function setConnecting() {
+    callState = 'connecting';
+    label.textContent = 'Connecting...';
+    controls.style.display = 'none';
+    btn.style.cssText += ';background:#374151;border-color:#6b7280;cursor:wait';
+    btn.innerHTML = '<svg width="20" height="20" style="animation:spin 1s linear infinite" fill="none" viewBox="0 0 24 24"><circle style="opacity:.25" cx="12" cy="12" r="10" stroke="white" stroke-width="4"/><path style="opacity:.75" fill="white" d="M4 12a8 8 0 018-8v8z"/></svg>';
+  }
+
+  function setActive() {
+    callState = 'active';
+    label.style.display = 'none';
+    controls.style.display = 'flex';
+    btn.style.cssText += ';background:#dc2626;border-color:#f87171;cursor:pointer';
+    btn.title = 'End call';
+    btn.innerHTML = '<svg width="18" height="18" fill="white" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>';
+    animTimer = setInterval(() => {
+      bars.forEach(b => { b.style.height = (3 + Math.random() * 13) + 'px'; });
+    }, 120);
+  }
+
+  async function startCall() {
+    setConnecting();
+    try {
+      // Load Vapi via esm.sh — works in all modern browsers, no build step needed
+      const { default: Vapi } = await import('https://esm.sh/@vapi-ai/web@2.5.2');
+      vapi = new Vapi(PUBLIC_KEY);
+      vapi.on('call-start', () => setActive());
+      vapi.on('call-end',   () => setIdle());
+      vapi.on('error',      (e) => { console.error('Vapi:', e); setIdle(); });
+      await vapi.start(ASSISTANT_ID);
+    } catch(e) {
+      console.error('Failed to start Vapi call:', e);
+      setIdle();
+    }
+  }
+
+  function stopCall() {
+    clearInterval(animTimer);
+    if (vapi) { try { vapi.stop(); } catch(e) {} }
+    setIdle();
+  }
+
+  btn.addEventListener('click', () => {
+    if (callState === 'idle') startCall();
+    else if (callState === 'active') stopCall();
+  });
+  endBtn.addEventListener('click', stopCall);
+  muteBtn.addEventListener('click', () => {
+    if (!vapi || callState !== 'active') return;
+    isMuted = !isMuted;
+    vapi.setMuted(isMuted);
+    muteBtn.textContent = isMuted ? '🔇' : '🎤';
+    muteBtn.style.color = isMuted ? '#f59e0b' : '#94a3b8';
+  });
+</script>  <div id="cax-anchor-wrap" data-context="breach" style="display:none" aria-label="Sponsored content" role="complementary"></div> <script>
+(function(){
+  var SERVE='https://px.cyberadx.network/serve';
+  var prop=window.location.hostname.replace(/^www./,'');
+
+  function getCtx(){
+    var m=document.querySelector('meta[property="article:section"],meta[name="article:section"]');
+    if(m&&m.content)return m.content.toLowerCase();
+    var h=document.querySelector('h1,h2');
+    if(h){var t=h.textContent.toLowerCase();
+      if(/breach|hack|incident|vuln/.test(t))return'breach';
+      if(/compliance|gdpr|hipaa|soc|iso|pci/.test(t))return'compliance';
+      if(/privacy|data protection/.test(t))return'privacy';
+      if(/career|job|certif/.test(t))return'careers';
+      if(/iot|smart home|device/.test(t))return'iot';
+    }
+    return'security';
+  }
+
+  function renderCard(el,ad){
+    var icon=ad.headline&&/breach|hack/.test(ad.headline.toLowerCase())?'🔍':ad.headline&&/compliance|policy|gdpr|hipaa/.test(ad.headline.toLowerCase())?'📋':ad.headline&&/insurance|cost|calc/.test(ad.headline.toLowerCase())?'🧮':'🔧';
+    el.innerHTML='<a href="'+ad.click_url+'" target="_blank" rel="noopener sponsored" '
+      +'style="display:flex;align-items:center;gap:14px;padding:14px 18px;'
+      +'background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.22);'
+      +'border-radius:10px;text-decoration:none;margin:1.5rem 0;cursor:pointer;">'
+      +'<div style="flex-shrink:0;width:42px;height:42px;background:rgba(99,102,241,0.14);'
+      +'border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:22px;">'+icon+'</div>'
+      +'<div style="flex:1;min-width:0;">'
+      +'<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#818cf8;margin-bottom:3px;">Free Security Tool</div>'
+      +'<div style="font-size:14px;font-weight:600;color:#f1f5f9;line-height:1.3;">'+(ad.headline||'')+'</div>'
+      +(ad.body_text?'<div style="font-size:12px;color:#94a3b8;margin-top:3px;line-height:1.4;">'+ad.body_text+'</div>':'')
+      +'</div>'
+      +'<div style="flex-shrink:0;font-size:12px;font-weight:700;color:#818cf8;white-space:nowrap;padding-left:8px;">'+(ad.cta_text||'Try Free →')+'</div>'
+      +'</a>';
+    if(window.cyberadx&&window.cyberadx.impression)
+      window.cyberadx.impression(ad.campaign_id,ad.ad_unit_id,'tool_promo_card',0,null);
+  }
+
+  function doFetch(wrap){
+    var params='/px/serve?property='+encodeURIComponent(prop)+'&zone=tool_promo_card&context='+encodeURIComponent(getCtx());
+    function go(token){
+      var url=params+(token?'&ts='+encodeURIComponent(token):'');
+      fetch(url,{credentials:'omit'})
+        .then(function(r){return r.ok?r.json():null;})
+        .then(function(ad){if(ad&&ad.click_url)renderCard(wrap,ad);})
+        .catch(function(){});
+    }
+    if(window.__caxTs&&window.__caxTs.ready){
+      Promise.race([
+        window.__caxTs.ready,
+        new Promise(function(r){setTimeout(function(){r(window.__caxTs?window.__caxTs.token:null);},2500);}),
+      ]).then(go);
+    } else {
+      go(null);
+    }
+  }
+
+  function insertCard(){
+    var root=document.querySelector('article')||document.querySelector('.post-content')||document.querySelector('.entry-content')||document.querySelector('main');
+    if(!root)return;
+    var paras=root.querySelectorAll('p');
+    if(paras.length<4)return;
+    var after=paras[2];
+    var wrap=document.createElement('div');
+    wrap.id='cax-tool-card';
+    after.parentNode.insertBefore(wrap,after.nextSibling);
+    doFetch(wrap);
+  }
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',insertCard);}
+  else{insertCard();}
+})();
+</script><script defer="" src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;0f5af3844165434fbc68c2726e8e4cdd&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a17e14f2d9010441',t:'MTc4MzUwMzE0Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; visibility: hidden;" src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/saved_resource.html"></iframe> <iframe src="./Stealing the Keys to the AI Kingdom_ 15 Malicious JetBrains Plugins Caught Exfiltrating API Keys _ Breached.Company_files/ts-frame.html" sandbox="allow-scripts allow-same-origin allow-forms" aria-hidden="true" style="display: none; width: 0px; height: 0px; border: 0px; position: absolute;"></iframe><div id="ciso-brain-widget"><button id="ciso-brain-btn" title="Ask Cipher — 10 free questions sponsored by CISO Marketplace">🧠</button><div id="ciso-brain-panel" class="hidden">
+      <div class="cb-header">
+        <div class="cb-avatar">🧠</div>
+        <div class="cb-header-text">
+          <div class="cb-header-title">Cipher</div>
+          <div class="cb-header-sub">CISO Brain AI · Cybersecurity Advisor</div>
+        </div>
+        <div class="cb-header-actions">
+          <button class="cb-icon-btn" id="cb-expand-btn" title="Expand / shrink">⤢</button>
+          <button class="cb-icon-btn cb-close" id="cb-close-btn">×</button>
+        </div>
+      </div>
+      <div class="cb-messages" id="cb-messages">
+        <div class="cb-msg assistant">
+          <div class="cb-bubble">Hey — I'm Cipher. Ask me anything about cybersecurity, compliance, or security strategy and I'll pull answers from 3,400+ expert articles.</div>
+        </div>
+      </div>
+      <div class="cb-input-area">
+        <textarea class="cb-input" id="cb-input" placeholder="Ask about security, compliance, IR..." rows="1"></textarea>
+        <button class="cb-send" id="cb-send-btn">↑</button>
+      </div>
+      <div class="cb-footer" id="cb-footer">
+        <span id="cb-guest-counter"></span>
+        🧠 Full app: <a href="https://brain.cisomarketplace.com/" target="_blank">brain.cisomarketplace.com</a> ·
+        <a href="https://support.cisomarketplace.com/" target="_blank">Support</a>
+      </div>
+    </div></div></body></html>

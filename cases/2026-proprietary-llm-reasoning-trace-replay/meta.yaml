@@ -1,0 +1,41 @@
+slug: 2026-proprietary-llm-reasoning-trace-replay
+title_en: Proprietary LLM Encrypted Reasoning Trace Replay
+title_cn: 专有大模型加密推理轨迹可重放与解码
+year: 2026
+disclosed: '2026-08-10'
+category: ip-compliance
+severity: high
+severity_basis: quantifiable-impact
+severity_evidence: The paper decoded 315,320 reasoning blocks from 6,708 public trajectories and recovered 367 PII
+  artifacts and 182 credentials; providers reportedly mitigated the demonstrated attacks by August 2026.
+real_incident: true
+reproducible: true
+ai_tool:
+- OpenAI reasoning APIs
+- Anthropic Claude APIs
+- Google Gemini APIs
+language:
+- Python
+- API JSON
+attack_surface:
+- encrypted reasoning blocks
+- cross-session replay
+- cross-model decoding
+- public agent logs
+references:
+- title: arXiv research paper
+  url: https://arxiv.org/abs/2608.09867
+- title: Snyk research article
+  url: https://research.snyk.io/blog/stealing-reasoning-traces/
+- title: The Hacker News report
+  url: https://thehackernews.com/2026/08/openai-anthropic-google-api-flaw-let.html
+- title: alphaXiv paper page
+  url: https://www.alphaxiv.org/abs/2608.09867
+- title: Cloud Security Alliance research note
+  url: https://labs.cloudsecurityalliance.org/research/csa-research-note-llm-reasoning-trace-theft-20260814-csa-sty/
+tldr: 研究发现，多家模型 API 返回的加密推理块没有绑定用户、会话或具体模型，可被重放给同一厂商较弱模型并诱导其解码，公开 Agent 日志中的不透明字段因此暴露出凭据、个人信息和隐藏指令。
+tags:
+- ai-security
+- privacy
+verification_notes: The paper decoded 315,320 reasoning blocks from 6,708 public trajectories and recovered 367
+  PII artifacts and 182 credentials; providers reportedly mitigated the demonstrated attacks by August 2026.

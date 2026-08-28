@@ -1,0 +1,38 @@
+﻿slug: 2026-gemini-bridge-inline-file-read
+title_en: 'Gemini Bridge Inline Mode Arbitrary Local File Read'
+title_cn: 'Gemini Bridge Inline 模式任意本地文件读取'
+year: 2026
+disclosed: '2026-07-31'
+category: agent-risk
+severity: medium
+severity_basis: cvss
+severity_evidence: 'gemini-bridge 的 consult_gemini_with_files 在 inline 模式下未把文件限制在工作目录，绝对路径、上级目录和符号链接可使本地文件被读取并发送给 Gemini CLI。 公开公告给出了受影响范围和修复信息。'
+real_incident: true
+reproducible: true
+ai_tool:
+- 'gemini-bridge, Gemini CLI, MCP'
+language:
+- 'Python / MCP'
+attack_surface:
+- AI agent integration
+- tool or plugin boundary
+- untrusted configuration or request data
+references:
+- title: 'gemini-bridge repository advisory'
+  url: https://github.com/eLyiN/gemini-bridge/security/advisories/GHSA-c5px-58j2-7fqp
+- title: 'GitHub Advisory Database'
+  url: https://github.com/advisories/GHSA-c5px-58j2-7fqp
+- title: 'NVD CVE record'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-54785
+- title: 'gemini-bridge pull request 9'
+  url: https://github.com/eLyiN/gemini-bridge/pull/9
+- title: 'gemini-bridge 1.3.1 release'
+  url: https://github.com/eLyiN/gemini-bridge/releases/tag/v1.3.1
+tldr: 'gemini-bridge 的 consult_gemini_with_files 在 inline 模式下未把文件限制在工作目录，绝对路径、上级目录和符号链接可使本地文件被读取并发送给 Gemini CLI。'
+tags:
+- ai-security
+- agent
+- 2026
+verification_notes: '事件由安全公告、CVE 或项目修复记录共同确认；文中将已证实的漏洞能力与具体部署条件分别说明。'
+cve: CVE-2026-54785
+

@@ -1,0 +1,41 @@
+slug: 2026-aws-kiro-mcp-config-prompt-injection-rce
+title_en: AWS Kiro MCP Configuration Prompt Injection RCE
+title_cn: AWS Kiro 提示注入改写 MCP 配置导致远程代码执行
+year: 2026
+disclosed: '2026-06-02'
+category: agent-risk
+severity: high
+severity_basis: cvss
+severity_evidence: AWS assigns CVE-2026-10591 CVSS 3.1 8.8 High and states that Kiro versions below 0.11 are affected.
+real_incident: true
+reproducible: true
+ai_tool:
+- AWS Kiro
+- MCP servers
+- agentic web retrieval
+language:
+- TypeScript
+- JSON
+attack_surface:
+- remote web content
+- prompt injection
+- mcp.json
+- automatic MCP reload
+references:
+- title: AWS Security Bulletin 2026-037
+  url: https://aws.amazon.com/security/security-bulletins/2026-037-aws/
+- title: Cymulate zero-click RCE research
+  url: https://cymulate.com/blog/zero-click-rce-prompt-injection-ai-tools/
+- title: Permission Protocol incident record
+  url: https://www.permissionprotocol.com/agent-incident-tracker/kiro-mcp-config-rewrite-hidden-web-text
+- title: Kodem Security research
+  url: https://www.kodemsecurity.com/resources/aws-kiro-agentic-ide-rce-prompt-injection-mcp-config-vulnerability
+- title: The Hacker News report
+  url: https://thehackernews.com/2026/07/aws-kiro-flaw-let-poisoned-web-page.html
+tldr: 攻击者把隐藏指令放入 Kiro 会读取的网页，诱导 Agent 改写 MCP 配置并注册攻击者命令；旧版本未保护该执行敏感路径，配置自动重载后可在开发者主机运行命令。
+tags:
+- ai-security
+- prompt-injection
+verification_notes: AWS assigns CVE-2026-10591 CVSS 3.1 8.8 High and states that Kiro versions below 0.11 are affected.
+cve: CVE-2026-10591
+fixed_version: '0.11'

@@ -1,0 +1,38 @@
+﻿slug: 2026-kiota-copilot-manifest-path-injection
+title_en: 'Microsoft Kiota Copilot Plugin Manifest Path and URL Injection'
+title_cn: 'Microsoft Kiota Copilot 插件清单路径与 URL 注入'
+year: 2026
+disclosed: '2026-07-04'
+category: supply-chain
+severity: critical
+severity_basis: cvss
+severity_evidence: 'Kiota 生成 Microsoft 365 Copilot API 插件清单时，直接采用 OpenAPI 的 x-ai-* 扩展值，恶意规范可把攻击者控制的路径或 URL 写入生成的插件清单。 公开公告给出了受影响范围和修复信息。'
+real_incident: true
+reproducible: true
+ai_tool:
+- 'Microsoft Kiota, Microsoft 365 Copilot plugins, OpenAPI'
+language:
+- '.NET / JSON / OpenAPI'
+attack_surface:
+- AI agent integration
+- tool or plugin boundary
+- untrusted configuration or request data
+references:
+- title: 'Microsoft Kiota repository advisory'
+  url: https://github.com/microsoft/kiota/security/advisories/GHSA-4jwf-m4wg-8p66
+- title: 'NVD CVE record'
+  url: https://nvd.nist.gov/vuln/detail/CVE-2026-59864
+- title: 'Microsoft Kiota remediation pull request 7892'
+  url: https://github.com/microsoft/kiota/pull/7892
+- title: 'Microsoft Kiota 1.32.5 release'
+  url: https://github.com/microsoft/kiota/releases/tag/v1.32.5
+- title: 'Microsoft Copilot API plugin manifest documentation'
+  url: https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/api-plugin-manifest-2.3
+tldr: 'Kiota 生成 Microsoft 365 Copilot API 插件清单时，直接采用 OpenAPI 的 x-ai-* 扩展值，恶意规范可把攻击者控制的路径或 URL 写入生成的插件清单。'
+tags:
+- ai-security
+- agent
+- 2026
+verification_notes: '事件由安全公告、CVE 或项目修复记录共同确认；文中将已证实的漏洞能力与具体部署条件分别说明。'
+cve: CVE-2026-59864
+

@@ -1,0 +1,46 @@
+slug: 2026-lerobot-unauthenticated-rce
+title_en: LeRobot gRPC PolicyServer Unauthenticated RCE
+title_cn: LeRobot gRPC PolicyServer 未认证远程代码执行漏洞
+year: 2026
+disclosed: '2026-04-29'
+category: domain-specific
+severity: critical
+severity_basis: cvss
+severity_evidence: Public advisories describe CVE-2026-25874 as unsafe pickle deserialization in LeRobot's gRPC PolicyServer. The disclosure and downstream databases report unauthenticated remote code execution and a CVSS score of 9.8.
+real_incident: true
+reproducible: true
+ai_tool:
+- Hugging Face LeRobot
+- gRPC PolicyServer
+- robotics inference workflow
+language:
+- Python
+- gRPC
+- pickle
+attack_surface:
+- PolicyServer
+- policy serialization
+- network-exposed gRPC service
+- robotics control host
+references:
+- title: 'Chocapikk: LeRobot unauthenticated RCE via pickle'
+  url: https://chocapikk.com/posts/2026/lerobot-pickle-rce/
+- title: 'GitHub Advisory: GHSA-f7vj-73pm-m822'
+  url: https://github.com/advisories/GHSA-f7vj-73pm-m822
+- title: 'JVN: CVE-2026-25874'
+  url: https://jvndb.jvn.jp/ja/contents/2026/JVNDB-2026-013270.html
+- title: 'CSA: LeRobot unauthenticated RCE research note'
+  url: https://labs.cloudsecurityalliance.org/research/csa-research-note-lerobot-cve-2026-25874-unauth-rce-20260429/
+- title: Hugging Face LeRobot repository
+  url: https://github.com/huggingface/lerobot
+tldr: LeRobot's gRPC PolicyServer accepted unsafe serialized policy data, allowing an unauthenticated requester to trigger code execution on hosts exposing the service.
+tags:
+- lerobot
+- robotics
+- pickle
+- grpc
+- rce
+- cwe-502
+verification_notes: The original researcher, GitHub advisory, JVN, and multiple security databases agree on the pickle-deserialization root cause. The public reports describe an unpatched or early-disclosure condition; deployment-specific reachability and use in physical robots are not established for every installation.
+cve: CVE-2026-25874
+cvss: 9.8

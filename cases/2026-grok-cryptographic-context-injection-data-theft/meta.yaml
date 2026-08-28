@@ -1,0 +1,41 @@
+slug: 2026-grok-cryptographic-context-injection-data-theft
+title_en: Grok Cryptographic Context Injection Data Theft
+title_cn: Grok 加密上下文注入与会话数据外传
+year: 2026
+disclosed: '2026-08-20'
+category: agent-risk
+severity: high
+severity_basis: editorial
+severity_evidence: Adversa AI reproduced the controlled proof of concept against Grok and Gemini; no CVE, vendor
+  severity or in-the-wild exploitation has been published.
+real_incident: true
+reproducible: true
+ai_tool:
+- xAI Grok
+- Google Gemini
+- LLM guardrails
+language:
+- Web
+- AES
+attack_surface:
+- encrypted prompt payload
+- in-context decryption
+- browser tool call
+- chat history
+references:
+- title: Adversa AI research
+  url: https://adversa.ai/blog/cryptographic-context-injection-grok-data-theft/
+- title: The Hacker News report
+  url: https://thehackernews.com/2026/08/new-cryptographic-context-injection.html
+- title: Permission Protocol incident record
+  url: https://www.permissionprotocol.com/agent-incident-tracker/grok-cryptographic-context-injection-chat-data-theft
+- title: Cybersecurity News report
+  url: https://cybersecuritynews.com/grok-zero-click-attack/
+- title: Rogue AI Tracker incident record
+  url: https://rogueaitracker.com/incidents/adversa-grok-cryptographic-context-injection
+tldr: 研究人员把恶意指令封装成加密文本，让输入过滤器只看到不可读密文，再诱导 Grok 在上下文内部解密并执行，从而绕过内容审查并通过外部 URL 带出会话数据。
+tags:
+- ai-security
+- prompt-injection
+verification_notes: Adversa AI reproduced the controlled proof of concept against Grok and Gemini; no CVE, vendor
+  severity or in-the-wild exploitation has been published.

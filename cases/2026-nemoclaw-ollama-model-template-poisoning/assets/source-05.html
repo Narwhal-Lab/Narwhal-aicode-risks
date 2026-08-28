@@ -1,0 +1,1111 @@
+<!doctype html>
+<html class="no-js" lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="pingback" href="https://siliconangle.com/xmlrpc.php">
+	<link rel="icon" href="https://siliconangle.com/wp-content/themes/siliconangle/img/favicon-SA.png">
+	<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+	ad_storage: 'denied',
+	ad_user_data: 'denied',
+	ad_personalization: 'denied',
+	analytics_storage: 'denied',
+	wait_for_update: 500
+});
+</script>
+		<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v28.3 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>Nvidia NemoClaw flaw let attackers poison the model behind a developer&#039;s AI agent - SiliconANGLE</title>
+	<meta name="description" content="Nvidia NemoClaw flaw let attackers poison the model behind a developer&#039;s AI agent - SiliconANGLE" />
+	<link rel="canonical" href="https://siliconangle.com/2026/08/25/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Nvidia NemoClaw flaw let attackers poison the model behind a developer&#039;s AI agent - SiliconANGLE" />
+	<meta property="og:description" content="Nvidia NemoClaw flaw let attackers poison the model behind a developer&#039;s AI agent - SiliconANGLE" />
+	<meta property="og:url" content="https://siliconangle.com/2026/08/25/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent/" />
+	<meta property="og:site_name" content="SiliconANGLE" />
+	<meta property="article:published_time" content="2026-08-25T13:00:28+00:00" />
+	<meta property="article:modified_time" content="2026-08-26T15:32:36+00:00" />
+	<meta property="og:image" content="https://images.siliconangle.com/blogs.dir/1/files/2026/08/nemoclawvulnerability.png" />
+	<meta property="og:image:width" content="1280" />
+	<meta property="og:image:height" content="720" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="author" content="Duncan Riley" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Duncan Riley" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="4 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"Article","@id":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/#article","isPartOf":{"@id":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/"},"author":{"name":"Duncan Riley","@id":"https:\/\/siliconangle.com\/#\/schema\/person\/627006e3db44a373ac055b8a822a7791"},"headline":"Nvidia NemoClaw flaw let attackers poison the model behind a developer&#8217;s AI agent","datePublished":"2026-08-25T13:00:28+00:00","dateModified":"2026-08-26T15:32:36+00:00","mainEntityOfPage":{"@id":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/"},"wordCount":896,"image":{"@id":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/#primaryimage"},"thumbnailUrl":"https:\/\/images.siliconangle.com\/blogs.dir\/1\/files\/2026\/08\/nemoclawvulnerability.png","keywords":["agentic AI","AI agents","Black Duck software","Cequence Security","Collin Hogue-Spears","CVE-2026-65105","cybersecurity","Cyera","DNS rebinding","Elad Luz","model poisoning","NemoClaw","Nvidia","Oasis Security","Ollama","OpenClaw","OpenShell","prompt injection","Randolph Barr","vulnerability disclosure"],"articleSection":["NEWS","Security","The-Latest"],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/","url":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/","name":"Nvidia NemoClaw flaw let attackers poison the model behind a developer's AI agent - SiliconANGLE","isPartOf":{"@id":"https:\/\/siliconangle.com\/#website"},"primaryImageOfPage":{"@id":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/#primaryimage"},"image":{"@id":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/#primaryimage"},"thumbnailUrl":"https:\/\/images.siliconangle.com\/blogs.dir\/1\/files\/2026\/08\/nemoclawvulnerability.png","datePublished":"2026-08-25T13:00:28+00:00","dateModified":"2026-08-26T15:32:36+00:00","author":{"@id":"https:\/\/siliconangle.com\/#\/schema\/person\/627006e3db44a373ac055b8a822a7791"},"description":"Nvidia NemoClaw flaw let attackers poison the model behind a developer's AI agent - SiliconANGLE","breadcrumb":{"@id":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/#primaryimage","url":"https:\/\/images.siliconangle.com\/blogs.dir\/1\/files\/2026\/08\/nemoclawvulnerability.png","contentUrl":"https:\/\/images.siliconangle.com\/blogs.dir\/1\/files\/2026\/08\/nemoclawvulnerability.png","width":1280,"height":720},{"@type":"BreadcrumbList","@id":"https:\/\/siliconangle.com\/2026\/08\/25\/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/siliconangle.com\/"},{"@type":"ListItem","position":2,"name":"Security","item":"https:\/\/siliconangle.com\/category\/security\/"},{"@type":"ListItem","position":3,"name":"Nvidia NemoClaw flaw let attackers poison the model behind a developer&#8217;s AI agent"}]},{"@type":"WebSite","@id":"https:\/\/siliconangle.com\/#website","url":"https:\/\/siliconangle.com\/","name":"SiliconANGLE","description":"Extracting the signal from the noise.","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/siliconangle.com\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Person","@id":"https:\/\/siliconangle.com\/#\/schema\/person\/627006e3db44a373ac055b8a822a7791","name":"Duncan Riley","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/siliconangle.com\/wp-content\/blogs.dir\/1\/files\/2025\/04\/cropped-IMG_1751-1-96x96.png","url":"https:\/\/siliconangle.com\/wp-content\/blogs.dir\/1\/files\/2025\/04\/cropped-IMG_1751-1-96x96.png","contentUrl":"https:\/\/siliconangle.com\/wp-content\/blogs.dir\/1\/files\/2025\/04\/cropped-IMG_1751-1-96x96.png","caption":"Duncan Riley"},"description":"Duncan Riley is a senior writer at SiliconANGLE covering Startups, Bitcoin, and the Internet of Things. Duncan is a co-founder of VC funded media company B5Media and founder of news site The Inquisitr, and was a senior writer at TechCrunch in its earlier days. Tips? Press releases? Intersting startup? email: duncan@nichenet.com.au or contact Duncan on Twitter @duncanriley","url":"https:\/\/siliconangle.com\/author\/duncanriley\/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://siliconangle.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://siliconangle.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F&#038;format=xml" />
+<!-- siliconangle.com is managing ads with Advanced Ads 2.0.26 – https://wpadvancedads.com/ --><script id="silic-ready">
+			window.advanced_ads_ready=function(e,a){a=a||"complete";var d=function(e){return"interactive"===a?"loading"!==e:"complete"===e};d(document.readyState)?e():document.addEventListener("readystatechange",(function(a){d(a.target.readyState)&&e()}),{once:"interactive"===a})},window.advanced_ads_ready_queue=window.advanced_ads_ready_queue||[];		</script>
+		<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='material-icons-css' href='https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined' media='all' />
+<link rel='stylesheet' id='bootstrap-css' href='https://siliconangle.com/wp-content/themes/siliconangle/css/bootstrap.css?ver=3.4.1' media='all' />
+<link rel='stylesheet' id='style-css' href='https://siliconangle.com/wp-content/themes/siliconangle/style.css?ver=1787903747' media='all' />
+<link rel='stylesheet' id='mobile-css' href='https://siliconangle.com/wp-content/themes/siliconangle/mobile.css?ver=1787206037' media='all' />
+<link rel='stylesheet' id='owl-css-css' href='https://siliconangle.com/wp-content/themes/siliconangle/css/owl.carousel.css?ver=2.2' media='all' />
+<link rel='stylesheet' id='owl-theme-css-css' href='https://siliconangle.com/wp-content/themes/siliconangle/css/owl.theme.default.min.css?ver=2.2' media='all' />
+<link rel='stylesheet' id='siliconangle-brand-fonts-css' href='https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&#038;family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&#038;family=Space+Grotesk:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;display=swap' media='all' />
+<link rel='stylesheet' id='sa-theme-foundation-css' href='https://siliconangle.com/wp-content/themes/siliconangle/css/theme-foundation.css?ver=1787050468' media='all' />
+<link rel='stylesheet' id='font-awesome-css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=4.7.0' media='all' />
+<script id="jquery-core-js" src="https://siliconangle.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://siliconangle.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<link rel="https://api.w.org/" href="https://siliconangle.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://siliconangle.com/wp-json/wp/v2/posts/828359" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://siliconangle.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.1" />
+<link rel='shortlink' href='https://siliconangle.com/?p=828359' />
+	<meta name="google-site-verification" content="z1uV9Xh00rJHDW1mA8lV7MP97J2T6ZCwGaCTrww-Nvc">
+<link rel='stylesheet' id='gforms_reset_css-css' href='https://siliconangle.com/wp-content/plugins/gravityforms/css/formreset.min.css?ver=1.9.15' media='all' />
+<link rel='stylesheet' id='gforms_formsmain_css-css' href='https://siliconangle.com/wp-content/plugins/gravityforms/css/formsmain.min.css?ver=1.9.15' media='all' />
+<link rel='stylesheet' id='gforms_ready_class_css-css' href='https://siliconangle.com/wp-content/plugins/gravityforms/css/readyclass.min.css?ver=1.9.15' media='all' />
+<link rel='stylesheet' id='gforms_browsers_css-css' href='https://siliconangle.com/wp-content/plugins/gravityforms/css/browsers.min.css?ver=1.9.15' media='all' />
+
+</head>
+<body class="wp-singular post-template-default single single-post postid-828359 single-format-standard wp-theme-siliconangle aa-prefix-silic-">
+		<a class="sa-skip-link" href="#sa-page-content">Skip to content</a>
+	<header class="sa-sticky">
+	<nav class="navbar navbar-inverse" aria-label="Site navigation">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 hide_on_mobile hide_on_tablet">
+					<a href="https://siliconangle.com/" class="navbar-brand" style="margin:10px;outline: none !important">
+						<img class="img-responsive sa-logo-home" src="https://siliconangle.com/wp-content/themes/siliconangle/img/SA-web-logo-300x58.png" alt="SiliconANGLE home">
+					</a>
+
+					<div class="col-xs-6 col-md-3 voice-of-enterprise">
+						[the voice of enterprise and emerging tech]					</div>
+
+					<ul class="navbar-nav navbar-right list-unstyled sa-header-network">
+						<li class="our-network"><span>OUR NETWORK</span></li>
+						<li>
+							<a href="https://www.thecube.net" target="_blank" rel="noopener noreferrer">
+								<img class="network-logo" src="https://s3.us-west-2.amazonaws.com/cube365-prod/related-content/e810e50d-1091-4ce3-9cc2-0232848a8d60.png" alt="theCUBE">
+							</a>
+						</li>
+						<li>
+							<a href="https://thecuberesearch.com" target="_blank" rel="noopener noreferrer">
+								<img class="network-logo" src="https://s3.us-west-2.amazonaws.com/cube365-prod/related-content/04ae65c6-92d8-4203-904e-2ee935b71f1f.png" alt="theCUBE Research">
+							</a>
+						</li>
+						<li id="searchbox" class="sa-header-search">
+							<button
+								type="button"
+								class="sa-header-search-toggle"
+								aria-label="Open search"
+								aria-expanded="false"
+							>
+								<span class="material-icons" aria-hidden="true">search</span>
+							</button>
+							<form role="search" method="get" class="search-form" action="https://siliconangle.com/">
+	<label class="screen-reader-text" for="sa-search-field-1">
+		Search SiliconANGLE	</label>
+	<input
+		id="sa-search-field-1"
+		type="search"
+		class="search-field"
+		placeholder="Search"
+		value=""
+		name="s"
+		required
+		pattern=".*\S.*"
+		title="Enter a search term."
+	>
+	<button type="submit" class="search-submit">
+		<span class="material-icons search-icon" aria-hidden="true">search</span>
+		<span class="screen-reader-text">Submit search</span>
+	</button>
+</form>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-md-12 navwrapper">
+					<div class="navbar-header">
+						<button
+							type="button"
+							id="header-dropdown"
+							class="navbar-toggle collapsed"
+							data-toggle="collapse"
+							data-target="#sa-header-navbar-collapse-home"
+							aria-controls="sa-header-navbar-collapse-home"
+							aria-expanded="false"
+							aria-label="Toggle navigation"
+						>
+							<span class="fa fa-bars" aria-hidden="true"></span>
+						</button>
+
+						<a href="https://siliconangle.com/" class="navbar-brand hidden-md hidden-lg">
+							<img class="img-responsive sa-logo-home" src="https://siliconangle.com/wp-content/themes/siliconangle/img/SA-web-logo-300x58.png" alt="SiliconANGLE home">
+						</a>
+
+						<ul class="hide_on_dsktp header-mobile-account" style="list-style:none">
+															<li class="header-acc-parent clearfix">
+									<button class="header-account-trigger" type="button" data-sa-dialog="#signinModal" aria-label="Sign in">
+										<span class="fa fa-user-circle" aria-hidden="true"></span>
+									</button>
+								</li>
+													</ul>
+					</div>
+
+					<div id="sa-header-navbar-collapse-home" class="collapse navbar-collapse">
+													<div class="sa-100-block hide_on_dsktp">
+								<a href="https://siliconangle.com/sa-120/" class="sa-100-btn">THE SILICONANGLE 120</a>
+								<div class="sa-quotemedia-block">
+									<span class="sa-quotemedia-text">Market Data Provided by</span>
+									<a href="https://www.quotemedia.com" target="_blank" rel="noopener noreferrer"><img src="https://client.quotemedia.com/qmc/footer/logo.png" alt="QuoteMedia"></a>
+								</div>
+							</div>
+						
+						<ul class="navbar-nav navbar-right list-unstyled hide_on_dsktp">
+							<li id="searchbox-mobile"><form role="search" method="get" class="search-form" action="https://siliconangle.com/">
+	<label class="screen-reader-text" for="sa-search-field-2">
+		Search SiliconANGLE	</label>
+	<input
+		id="sa-search-field-2"
+		type="search"
+		class="search-field"
+		placeholder="Search"
+		value=""
+		name="s"
+		required
+		pattern=".*\S.*"
+		title="Enter a search term."
+	>
+	<button type="submit" class="search-submit">
+		<span class="material-icons search-icon" aria-hidden="true">search</span>
+		<span class="screen-reader-text">Submit search</span>
+	</button>
+</form>
+</li>
+						</ul>
+
+						<ul id="menu-header-menu" class="nav navbar-nav"><li id="menu-item-456674" class="sa-header-logo menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-456674"><a href="http://siliconangle.com">Home</a></li>
+<li id="menu-item-695163" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-695163"><a href="https://siliconangle.com/awards/">TechForward</a></li>
+<li id="menu-item-456675" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-456675 dropdown"><a href="https://siliconangle.com/category/cloud" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cloud <span class="caret" aria-hidden="true"></span></a>
+<ul role="menu" class="dropdown-menu">
+	<li id="menu-item-518643" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-518643"><a href="https://siliconangle.com/category/cloud/cloud-native-3/">Cloud Native</a></li>
+</ul>
+</li>
+<li id="menu-item-463349" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-463349"><a href="https://siliconangle.com/category/ai">AI</a></li>
+<li id="menu-item-456679" class="nav-more-1220 menu-item menu-item-type-custom menu-item-object-custom menu-item-456679"><a href="https://siliconangle.com/category/security">Security</a></li>
+<li id="menu-item-456682" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-456682"><a href="https://siliconangle.com/category/infrastructure">Infra</a></li>
+<li id="menu-item-456678" class="nav-more-1320 menu-item menu-item-type-custom menu-item-object-custom menu-item-456678"><a href="https://siliconangle.com/category/blockchain">Blockchain</a></li>
+<li id="menu-item-456681" class="nav-more-1440 menu-item menu-item-type-custom menu-item-object-custom menu-item-456681"><a href="https://siliconangle.com/category/big-data">Big Data</a></li>
+<li id="menu-item-456684" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-456684"><a href="https://siliconangle.com/category/emerging-tech">Emerging Tech</a></li>
+<li id="menu-item-772268" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-772268"><a href="https://siliconangle.com/aws-marketplace/">AWS Marketplace Newsroom</a></li>
+<li id="menu-item-456680" class="hide additions-nav-items menu-item menu-item-type-custom menu-item-object-custom menu-item-456680"><a href="https://siliconangle.com/category/policy">Policy</a></li>
+<li id="menu-item-456683" class="hide additions-nav-items menu-item menu-item-type-custom menu-item-object-custom menu-item-456683"><a href="https://siliconangle.com/category/apps-2">Apps</a></li>
+<li id="menu-item-456677" class="hide additions-nav-items menu-item menu-item-type-custom menu-item-object-custom menu-item-456677"><a href="https://siliconangle.com/category/iot">Iot</a></li>
+<li id="menu-item-456685" class="hide additions-nav-items menu-item menu-item-type-custom menu-item-object-custom menu-item-456685"><a href="https://siliconangle.com/category/women-in-tech">Women In Tech</a></li>
+<li id="menu-item-456686" class="hide additions-nav-items menu-item menu-item-type-custom menu-item-object-custom menu-item-456686"><a href="https://siliconangle.com/category/wikibon">theCUBE Research</a></li>
+<li id="menu-item-456687" class="hide additions-nav-items menu-item menu-item-type-custom menu-item-object-custom menu-item-456687"><a href="https://siliconangle.com/special-reports">Special Reports</a></li>
+<li id="menu-item-456688" class="hide additions-nav-items menu-item menu-item-type-custom menu-item-object-custom menu-item-456688"><a href="https://siliconangle.com/tag/video-exclusive">Video Exclusives</a></li>
+<li id="menu-item-456689" class="hide additions-nav-items menu-item menu-item-type-custom menu-item-object-custom menu-item-456689"><a href="https://siliconangle.com/people/">CUBE SPECIAL FEATURES</a></li>
+<li id="menu-item-589499" class="hide additions-nav-items menu-item menu-item-type-custom menu-item-object-custom menu-item-589499"><a href="https://siliconangle.com/events">RECENT CUBE EVENTS</a></li>
+<li id="menu-item-668660" class="hide additions-nav-items menu-item menu-item-type-custom menu-item-object-custom menu-item-668660"><a target="_blank" href="https://www.thecube.net/awards">AWARDS</a></li>
+<li class="more-header-links" data-sa-disclosure data-sa-server-more><button class="nav-view-more sa-popover__trigger" type="button" aria-expanded="false">More <span class="fa fa-angle-down" aria-hidden="true"></span></button><div class="sa-popover__content header-more-menu" hidden><ul class="list-unstyled"><li class="additions-headers" data-sa-base-more-item><a href="https://siliconangle.com/aws-marketplace/">AWS Marketplace Newsroom</a></li><li class="additions-headers" data-sa-base-more-item><a href="https://siliconangle.com/category/policy">Policy</a></li><li class="additions-headers" data-sa-base-more-item><a href="https://siliconangle.com/category/apps-2">Apps</a></li><li class="additions-headers" data-sa-base-more-item><a href="https://siliconangle.com/category/iot">Iot</a></li><li class="additions-headers" data-sa-base-more-item><a href="https://siliconangle.com/category/women-in-tech">Women In Tech</a></li><li class="additions-headers" data-sa-base-more-item><a href="https://siliconangle.com/category/wikibon">theCUBE Research</a></li><li class="additions-headers" data-sa-base-more-item><a href="https://siliconangle.com/special-reports">Special Reports</a></li><li class="additions-headers" data-sa-base-more-item><a href="https://siliconangle.com/tag/video-exclusive">Video Exclusives</a></li><li class="additions-headers" data-sa-base-more-item><a href="https://siliconangle.com/people/">CUBE SPECIAL FEATURES</a></li><li class="additions-headers" data-sa-base-more-item><a href="https://siliconangle.com/events">RECENT CUBE EVENTS</a></li><li class="additions-headers" data-sa-base-more-item><a href="https://www.thecube.net/awards" target="_blank" rel="noopener noreferrer">AWARDS</a></li><li class="header-more-menu__auth"><button type="button" data-sa-dialog="#signinModal">Sign In</button></li></ul></div></li></ul>
+													<ul class="sa-100-block hide_on_mobile hide_on_tablet clearfix">
+								<li class="sa-100-nav-item">
+									<a href="https://siliconangle.com/sa-120/" class="sa-100-btn">THE SILICONANGLE 120</a>
+									<div class="sa-quotemedia-block">
+										<span class="sa-quotemedia-text">Market Data Provided by</span>
+										<a href="https://www.quotemedia.com" target="_blank" rel="noopener noreferrer"><img src="https://client.quotemedia.com/qmc/footer/logo.png" alt="QuoteMedia"></a>
+									</div>
+								</li>
+							</ul>
+											</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="sa-sub-menu-parent" aria-hidden="true">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12"><div class="sa-sub-menu"></div></div>
+			</div>
+		</div>
+	</div>
+</header>
+	<span id="sa-page-content" class="sa-page-anchor" tabindex="-1"></span>
+	<div id="sa-box-parent" class="container-fluid">
+		<div class="box row">
+						<div class="col-xs-12 eventBanner">
+									<div id="top-banners" class="col-xs-12">
+						<div id="top-banners-carousel" class="owl-carousel owl-theme">
+																							<div class="item">
+																			<a href="https://www.thecube.net/events/program/thecube-pod?utm_source=social&#038;utm_medium=medium&#038;utm_campaign=SAbanner" target="_blank" rel="noopener noreferrer">
+																		<picture>
+										<source media="(max-width: 620px)" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/02/CUBE-Pod-2.png">
+										<img src="https://images.siliconangle.com/blogs.dir/1/files/2026/02/CUBE-Pod_SAM_banner_1.png" alt="">
+									</picture>
+									</a>								</div>
+																							<div class="item">
+																			<a href="https://www.thecube.net/events/ibm/the-transformation-edge?utm_source=social&#038;utm_medium=medium&#038;utm_campaign=SAbanner" target="_blank" rel="noopener noreferrer">
+																		<picture>
+										<source media="(max-width: 620px)" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/04/SAM_ad_square_watch_on_demand-7.png">
+										<img src="https://images.siliconangle.com/blogs.dir/1/files/2026/04/SAM_ad_banner_watch_now_on_demand-7.png" alt="">
+									</picture>
+									</a>								</div>
+																							<div class="item">
+																			<a href="https://www.thecube.net/events/supermicro/open-storage-summit-2026?utm_source=social&#038;utm_medium=medium&#038;utm_campaign=SAbanner" target="_blank" rel="noopener noreferrer">
+																		<picture>
+										<source media="(max-width: 620px)" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/07/SAM_ad_square_with-date-1.png">
+										<img src="https://images.siliconangle.com/blogs.dir/1/files/2026/07/SAM_ad_banner_with-date_join_us-1.png" alt="">
+									</picture>
+									</a>								</div>
+																							<div class="item">
+																			<a href="https://www.thecube.net/events/dell/rethinking-private-cloud-for-the-age-of-intelligence?utm_source=social&#038;utm_medium=medium&#038;utm_campaign=SAbanner" target="_blank" rel="noopener noreferrer">
+																		<picture>
+										<source media="(max-width: 620px)" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_square_with-date-1-1.png">
+										<img src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_banner_with-date_join_us-1-1-scaled.png" alt="">
+									</picture>
+									</a>								</div>
+																							<div class="item">
+																			<a href="https://www.thecube.net/events/crowdstrike/fal-con-2026?utm_source=social&#038;utm_medium=medium&#038;utm_campaign=SAbanner" target="_blank" rel="noopener noreferrer">
+																		<picture>
+										<source media="(max-width: 620px)" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_square_with-date.png">
+										<img src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_banner_with-date_join_us.png" alt="">
+									</picture>
+									</a>								</div>
+																							<div class="item">
+																			<a href="https://www.thecube.net/events/vmware/vmware-explore-2026?utm_source=social&#038;utm_medium=medium&#038;utm_campaign=SAbanner" target="_blank" rel="noopener noreferrer">
+																		<picture>
+										<source media="(max-width: 620px)" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_square_with-date-1.png">
+										<img src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_banner_with-date_join_us-1-scaled.png" alt="">
+									</picture>
+									</a>								</div>
+																							<div class="item">
+																			<a href="https://www.thecube.net/events/dell/dell-ai-data-platform-event-from-ambition-to-ai-at-scale?utm_source=social&#038;utm_medium=medium&#038;utm_campaign=SAbanner" target="_blank" rel="noopener noreferrer">
+																		<picture>
+										<source media="(max-width: 620px)" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_square_with-date-2.png">
+										<img src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_banner_with-date_join_us-2-scaled.png" alt="">
+									</picture>
+									</a>								</div>
+													</div>
+					</div>
+							</div>
+
+	
+	    	
+
+<div class="col-md-1 col-xs-12 sa-left-gutter">
+	<div class="m_social-icon-container"><div class="dropup"><button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><img class="sa-share" src="/wp-content/themes/siliconangle/img/share.png"><span class="sa-share-text">SHARE</span></button><ul class="dropdown-menu social-sharing"><li><a class="popupIntent twitter-share" data-label="Social Sharing" data-href="http://twitter.com/intent/tweet?text=Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent&url=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F&via=SiliconANGLE"></a></li><li><a class="popupIntent linkedin-share" data-label="Social Sharing" data-href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F&title= Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent"></a></li><li><a class="popupIntent facebook-share" data-label="Social Sharing" data-href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F&t=Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent"></a></li><li><a class="popupIntent flipboard-share" data-label="Social Sharing" data-href="https://share.flipboard.com/bookmarklet/popout?v=2&title=Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent&url=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F"></a></li><li><a class="popupIntent threads-share" data-label="Social Sharing" data-href="https://threads.net/intent/post?text=Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F"></a></li><li><a class="popupIntent bluesky-share" data-label="Social Sharing" data-href="https://bsky.app/intent/compose?text=Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F"></a></li><li><input class="copy-permalink" value="https://siliconangle.com/2026/08/25/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent/"><a class="link-share" title="Copy Link" data-label="Social Sharing"></a></li></ul></div></div><div class="social-icon-container hide"><ul class="list-unstyled social-sharing"><li><a class="popupIntent twitter-share" data-label="Social Sharing" data-href="http://twitter.com/intent/tweet?text=Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent&url=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F&via=SiliconANGLE"></a></li><li><a class="popupIntent linkedin-share" data-label="Social Sharing" data-href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F&title= Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent"></a></li><li><a class="popupIntent facebook-share" data-label="Social Sharing" data-href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F&t=Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent"></a></li><li><a class="popupIntent flipboard-share" data-label="Social Sharing" data-href="https://share.flipboard.com/bookmarklet/popout?v=2&title=Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent&url=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F"></a></li><li><a class="popupIntent threads-share" data-label="Social Sharing" data-href="https://threads.net/intent/post?text=Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F"></a></li><li><a class="popupIntent bluesky-share" data-label="Social Sharing" data-href="https://bsky.app/intent/compose?text=Nvidia%20NemoClaw%20flaw%20let%20attackers%20poison%20the%20model%20behind%20a%20developer%E2%80%99s%20AI%20agent https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F"></a></li><li><input class="copy-permalink" value="https://siliconangle.com/2026/08/25/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent/"><a class="link-share" title="Copy Link" data-label="Social Sharing"></a></li></ul></div></div>
+
+<div class="col-md-10 col-xs-12 unsponsored-post content-div main-content sa-legacy-post-shell">
+	
+	<div class="row content-alignment sa-legacy-post-grid">
+		<main class="col-md-8 col-xs-12 main-content sa-legacy-post-main">
+			<div class="col-xs-12" style="padding:0">
+				<p class="text-uppercase post-updated-date">
+					<span class="meta-dt">
+						UPDATED 09:00 EDT / AUGUST 25 2026					</span>
+				</p>
+			</div>
+
+			<div class="col-md-12 col-xs-12 sa-post-content">
+									<div class="single-post-thumbnail">
+													<img width="1280" height="720" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/nemoclawvulnerability.png" class="attachment-full size-full wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/nemoclawvulnerability.png 1280w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/nemoclawvulnerability-300x169.png 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/nemoclawvulnerability-800x450.png 800w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/nemoclawvulnerability-768x432.png 768w" sizes="(max-width: 1280px) 100vw, 1280px" />															<span class="flag">SECURITY</span>
+																		</div>
+							</div>
+
+			<div class="col-md-12 col-xs-12 sa-post-content" id="single-post-meta">
+				<h3 class="sa-post-title">Nvidia NemoClaw flaw let attackers poison the model behind a developer&#8217;s AI agent</h3>
+				<div class="sa-post-byline">
+					<div class="post-meta">
+						<div class="post-author-image"><img alt='Avatar photo' src='https://siliconangle.com/wp-content/blogs.dir/1/files/2025/04/cropped-IMG_1751-1-96x96.png' srcset='https://siliconangle.com/wp-content/blogs.dir/1/files/2025/04/cropped-IMG_1751-1-192x192.png 2x' class='avatar avatar-96 photo' height='96' width='96' decoding='async'/></div>
+						<div class="sa-post-byline__author">
+							<p class="text-muted post-author-name text-uppercase">
+																																	by								<a href="https://siliconangle.com/author/duncanriley/"><span class="author">Duncan Riley</span></a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12 col-xs-12 sa-post-content">
+				<div class="single-post-content"><p>Researchers at nonhuman identity security company <a href="https://www.oasis.security/">Oasis Security Ltd.</a> today disclosed a vulnerability in Nvidia Corp.&#8217;s NemoClaw that hands an attacker full control of the local model server powering a developer&#8217;s AI agent.</p>
+<p>The vulnerability, tracked as <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-25651">CVE-2026-65105</a>, can be triggered by one visit to a malicious website. Oasis reported it to Nvidia&#8217;s Product Security Incident Response Team before publishing. The research is also the first from the team since Cyera Inc. agreed <a href="https://siliconangle.com/2026/07/28/cyera-buy-nonhuman-identity-startup-oasis-security-reported-1b/">in July</a> to buy Oasis for a reported $1 billion.</p>
+<div>&#8220;We appreciate the researchers’ discovery and report,&#8221; Nvidia said in a statement. &#8220;Their work shows how open-source development fosters transparent collaboration across the ecosystem to test software limits, rapidly identify and patch vulnerabilities to strengthen agentic cybersecurity.&#8221;</div>
+<div></div>
+<div>The company said it has issued an update that customers can download and install. Details are in the <a id="m_7598636832790053109OWAbbb519d0-d7aa-9364-2699-21f366ba2d64" href="https://nvidia.custhelp.com/app/answers/detail/a_id/5872" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=https://nvidia.custhelp.com/app/answers/detail/a_id/5872&amp;source=gmail&amp;ust=1787844675401000&amp;usg=AOvVaw1Ct8s-LSMkfqLmZI20aXWE"><u>public disclosure</u></a>, following Nvidia&#8217;s Coordinated Vulnerability Disclosure best practices.</div>
+<p>Nvidia released NemoClaw at its GTC conference <a href="https://siliconangle.com/2026/03/16/nvidia-launches-nemoclaw-agent-toolkit-enhance-ai-agents/">in March</a> as a safer way to run agents such as OpenClaw. The agent sits inside an OpenShell sandbox, which fences off the file system, the network and the processes it can touch.</p>
+<p>NemoClaw can run the agent&#8217;s model locally through Ollama instead of calling out to a cloud service. Ollama is the server an attacker ends up controlling. Reaching it from inside the sandbox takes some work.</p>
+<p>Docker containers have no path to 127.0.0.1, and that&#8217;s where Ollama binds out of the box. NemoClaw launches Ollama with the flag OLLAMA_HOST=0.0.0.0:11434. Port 11434 goes live on every interface. Other devices on the same network segment can hit it too, and the install message still reads localhost:11434.</p>
+<p>Ollama&#8217;s application programming interface has no authentication. Two middleware checks stand in for it, an origin allowlist and validation of the Host header. The researchers found the Host check is skipped entirely whenever the bind address is not loopback.</p>
+<p>That leaves the origin check, and DNS rebinding walks around it. An attacker points a domain they control at their own server and serves the victim a page on port 11434. The domain then re-resolves to 127.0.0.1. Same-origin policy keys on the hostname, not the address behind it, and the browser does not object. Requests from the page land on the Ollama instance running on the victim&#8217;s machine.</p>
+<p>Full API access alone lets an attacker enumerate what is installed, lift the machine&#8217;s hostname and public key or delete models outright. Model poisoning is the one Oasis considers worst.</p>
+<p>Injecting a hidden system prompt into the model does not survive contact with the agent, because OpenClaw sends its own system prompt and that overrides the one baked in. So the researchers went a layer lower. Ollama&#8217;s /api/create endpoint also accepts a template field. The value is a Go template, and it renders the message list into the raw text the model reads. An attacker can pull the the model&#8217;s existing template through /api/show, splice an instruction into it and write it back.</p>
+<p>Every message the client sends then passes through the attacker&#8217;s version, including the agent&#8217;s own system prompt, which reaches the model with the hidden instruction appended. From the outside nothing looks wrong. Name, size and metadata all read as normal. Opening a fresh chat clears nothing. The payload lives in the model definition, well below the conversation state an operator can reset.</p>
+<p>An instruction sitting in that position can tell the agent to write vulnerabilities into code that passes casual review, to stay quiet about security problems or to push conversation contents to an outside endpoint.</p>
+<p>Elad Luz, head of research at Oasis, said the change sits &#8220;one layer beneath anything a guardrail or an operator can see&#8221; and leaves an integrity problem that is very hard to detect. The sandbox does not help much, he said, because the blast radius of an AI system is its authorizations rather than its isolation. A video published alongside the paper walks through the full chain, from malicious website to a poisoned agent answering with the attacker&#8217;s marker.</p>
+<p>Discussing the report, Randolph Barr, chief information security officer at API security and bot management provider <a href="https://www.cequence.ai/">Cequence Security Inc.</a>, said the target matters more here than the technique.</p>
+<p>&#8220;The individual pieces here aren&#8217;t new, DNS rebinding&#8217;s been a browser party trick for over a decade but pointing it at an unauthenticated local model server is the new part, and it&#8217;s a good preview of where agentic AI risk actually lives,&#8221; Barr said in commentary provided to SiliconANGLE. &#8220;It&#8217;s not really in the model; it&#8217;s in the plumbing around it. Sandboxing the agent doesn&#8217;t buy you much if the thing it&#8217;s built on top of is reachable from any tab in the browser.&#8221;</p>
+<p>Collin Hogue-Spears, senior director of solution management at application security testing company <a href="https://www.blackduck.com/">Black Duck Software Inc.</a>, noted that Ollama hardened this class of browser-to-local-service exposure back in 2024 under CVE-2024-28224. NemoClaw&#8217;s current design refuses a non-loopback Ollama backend on covered topologies, he said. Anyone still on the older pattern should keep Ollama on loopback behind an authenticated proxy and check the Host header against an allowlist.</p>
+<p>&#8220;Local describes where the model runs,&#8221; Hogue-Spears added. &#8220;Private describes who can reach it.&#8221;</p>
+<h5>Image: SiliconANGLE/GPT Image 2</h5>
+<div id="silic-292495472" class="silic-after-content silic-entity-placement"><hr style="border: 1px solid; color: #d8d8d8; height: 0px; margin-top: 20px;" />
+<h1><span style="color: #d0021b; font-size: 18px; font-weight: 600;">A message from John Furrier, co-founder of SiliconANGLE:</span></h1>
+<p>Support our mission to keep content open and free by engaging with theCUBE community. <strong>Join theCUBE&#8217;s Alumni Trust Network</strong>, where technology leaders connect, share intelligence and create opportunities.</p>
+<ul>
+<li class="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto" data-replit-metadata="client/src/pages/Home.tsx:123:12" data-component-name="p"><strong>15M+ viewers of theCUBE videos</strong>, powering conversations across AI, cloud, cybersecurity and more</li>
+<li data-replit-metadata="client/src/pages/Home.tsx:123:12" data-component-name="p"><strong>11.4k+ theCUBE alumni</strong> — Connect with more than 11,400 tech and business leaders shaping the future through a unique trusted-based network</li>
+</ul>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto" data-replit-metadata="client/src/pages/Home.tsx:126:12" data-component-name="div">
+<div class="text-center" data-replit-metadata="client/src/pages/Home.tsx:142:14" data-component-name="div">
+<div data-replit-metadata="client/src/pages/Home.tsx:145:16" data-component-name="div">
+<h3 style="text-align: left;"><span style="color: #d0021b; font-size: 18px; font-weight: 600;">Are you an AWS customer?  </span><span style="font-size: 16px;">Support SiliconANGLE financially by buying your AWS services from our </span><span style="font-size: 16px;">Marketplace portal page and links: </span><a style="font-size: 16px;" href="https://siliconangle.com/aws-marketplace/">https://siliconangle.com/aws-marketplace/</a></h3>
+<p>&nbsp;</p>
+<h5 style="text-align: left;"><strong>About SiliconANGLE Media</strong></h5>
+</div>
+<div style="text-align: left;" data-replit-metadata="client/src/pages/Home.tsx:145:16" data-component-name="div">SiliconANGLE Media is a recognized leader in digital media innovation, uniting breakthrough technology, strategic insights and real-time audience engagement. As the parent company of <a href="https://cts.businesswire.com/ct/CT?id=smartlink&amp;url=https%3A%2F%2Fsiliconangle.com%2F&amp;esheet=54119777&amp;newsitemid=20240910506833&amp;lan=en-US&amp;anchor=SiliconANGLE&amp;index=9&amp;md5=646b1b564e2259100a2b8638aab0a552">SiliconANGLE</a>, <a href="https://cts.businesswire.com/ct/CT?id=smartlink&amp;url=https%3A%2F%2Fwww.thecube.net%2F&amp;esheet=54119777&amp;newsitemid=20240910506833&amp;lan=en-US&amp;anchor=theCUBE+Network&amp;index=10&amp;md5=7de2a85f95ab4a4a495cede20b8cb1da">theCUBE Network</a>, <a href="https://cts.businesswire.com/ct/CT?id=smartlink&amp;url=https%3A%2F%2Fthecuberesearch.com%2F&amp;esheet=54119777&amp;newsitemid=20240910506833&amp;lan=en-US&amp;anchor=theCUBE+Research&amp;index=11&amp;md5=7bb33676722925eb57d588ec343e4f6f">theCUBE Research</a>, <a href="https://cts.businesswire.com/ct/CT?id=smartlink&amp;url=https%3A%2F%2Fwww.cube365.net%2F&amp;esheet=54119777&amp;newsitemid=20240910506833&amp;lan=en-US&amp;anchor=CUBE365&amp;index=12&amp;md5=d310fb35919714e66ad8d42c9c0c1bc6">CUBE365</a>, <a href="https://cts.businesswire.com/ct/CT?id=smartlink&amp;url=https%3A%2F%2Fwww.thecubeai.com%2F&amp;esheet=54119777&amp;newsitemid=20240910506833&amp;lan=en-US&amp;anchor=theCUBE+AI&amp;index=13&amp;md5=b8b98472f8071b23ebb10ab9a8dd0683">theCUBE AI</a> and theCUBE SuperStudios — with flagship locations in Silicon Valley and the New York Stock Exchange — SiliconANGLE Media operates at the intersection of media, technology and AI.</div>
+</div>
+</div>
+<p style="text-align: left;"><span style="font-weight: 400;">Founded by tech visionaries John Furrier and Dave Vellante, SiliconANGLE Media has built a dynamic ecosystem of industry-leading digital media brands that reach 15+ million elite tech professionals. Our new proprietary theCUBE AI Video Cloud is breaking ground in audience interaction, leveraging theCUBEai.com neural network to help technology companies make data-driven decisions and stay at the forefront of industry conversations.</span></p>
+</div></div>
+															</div>
+
+										<div class="row" id="related-articles"><div class="col-xs-12 hide_on_mobile hide_on_tablet"><div class="row"><div class="col-xs-6"><h5 class="es-heading"><span class="color-me-red">LATEST STORIES</span></h5></div><div class="col-xs-12"><hr class="separator"></div><div class="col-xs-6"><div class="hide owl-controls-top owl-theme owl-loaded pull-right"></div></div></div><div class="row"><div class="col-xs-12"><ul class="owl-carousel owl-theme list-unstyled"><li class="item hover"><div class="image-4by3 hover-border-fade"><a href="https://siliconangle.com/2026/08/27/after-posting-a-solid-earnings-beat-elastics-stock-bounces-higher-in-extended-trading/"><img width="300" height="200" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-300x200.jpg 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-800x533.jpg 800w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-768x512.jpg 768w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-1536x1024.jpg 1536w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-2048x1365.jpg 2048w" sizes="(max-width: 300px) 100vw, 300px" /></a></div><a href="https://siliconangle.com/2026/08/27/after-posting-a-solid-earnings-beat-elastics-stock-bounces-higher-in-extended-trading/"><p class="post-title hover-text">After posting a solid earnings beat, Elastic's stock bounces higher in extended trading</p></a></li><li class="item hover"><div class="image-4by3 hover-border-fade"><a href="https://siliconangle.com/2026/08/27/marvells-stock-sinks-despite-earnings-beat-and-strong-guidance/"><img width="300" height="189" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Screenshot-from-2025-08-29-08-12-33-300x189.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Screenshot-from-2025-08-29-08-12-33-300x189.png 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Screenshot-from-2025-08-29-08-12-33.png 708w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div><a href="https://siliconangle.com/2026/08/27/marvells-stock-sinks-despite-earnings-beat-and-strong-guidance/"><p class="post-title hover-text">Marvell's stock sinks despite earnings beat and strong guidance</p></a></li><li class="item hover"><div class="image-4by3 hover-border-fade"><a href="https://siliconangle.com/2026/08/27/anthropic-previews-mhs-standard-for-ai-agents-that-operate-machines/"><img width="300" height="226" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Anthropic-300x226.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Anthropic-300x226.png 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Anthropic.png 697w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div><a href="https://siliconangle.com/2026/08/27/anthropic-previews-mhs-standard-for-ai-agents-that-operate-machines/"><p class="post-title hover-text">Anthropic previews MHS standard for AI agents that operate machines</p></a></li><li class="item hover"><div class="image-4by3 hover-border-fade"><a href="https://siliconangle.com/2026/08/27/openai-anthropic-and-100-plus-firms-warn-ai-attacks-are-about-to-scale/"><img width="300" height="169" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/aicybersecuritythreat-300x169.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/aicybersecuritythreat-300x169.png 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/aicybersecuritythreat-800x450.png 800w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/aicybersecuritythreat-768x432.png 768w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/aicybersecuritythreat.png 1280w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div><a href="https://siliconangle.com/2026/08/27/openai-anthropic-and-100-plus-firms-warn-ai-attacks-are-about-to-scale/"><p class="post-title hover-text">OpenAI, Anthropic and 100-plus firms warn AI attacks are about to explode</p></a></li><li class="item hover"><div class="image-4by3 hover-border-fade"><a href="https://siliconangle.com/2026/08/27/workday-posts-strong-earnings-and-revenue-amid-rapid-uptake-of-its-ai-agents/"><img width="300" height="200" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/29919997654_8b5fa45f26_k-800x533-768x512-1-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/29919997654_8b5fa45f26_k-800x533-768x512-1-300x200.jpg 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/29919997654_8b5fa45f26_k-800x533-768x512-1.jpg 768w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div><a href="https://siliconangle.com/2026/08/27/workday-posts-strong-earnings-and-revenue-amid-rapid-uptake-of-its-ai-agents/"><p class="post-title hover-text">Workday posts strong earnings and revenue amid rapid uptake of its AI agents</p></a></li><li class="item hover"><div class="image-4by3 hover-border-fade"><a href="https://siliconangle.com/2026/08/27/autodesk-shares-fall-despite-q2-beat-as-cash-flow-guidance-narrows/"><img width="300" height="167" src="https://images.siliconangle.com/blogs.dir/1/files/2025/08/Autodesk-300x167.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2025/08/Autodesk-300x167.png 300w, https://images.siliconangle.com/blogs.dir/1/files/2025/08/Autodesk.png 766w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div><a href="https://siliconangle.com/2026/08/27/autodesk-shares-fall-despite-q2-beat-as-cash-flow-guidance-narrows/"><p class="post-title hover-text">Autodesk shares fall despite Q2 beat as cash flow guidance narrows</p></a></li></ul></div></div></div><div class="col-xs-12 hide_on_dsktp"><div class="row"><div class="col-xs-12"><h5 class="es-heading"><span class="color-me-red">LATEST STORIES</span></h5></div><div class="col-xs-12"><hr class="separator"></div></div><div class="row"><div class="col-xs-12"><ul class="list-unstyled"><li class="each-related-article"><div class="row"><div class="col-xs-4"><div class="image-16by9"><a href="https://siliconangle.com/2026/08/27/after-posting-a-solid-earnings-beat-elastics-stock-bounces-higher-in-extended-trading/"><img width="300" height="200" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-300x200.jpg 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-800x533.jpg 800w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-768x512.jpg 768w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-1536x1024.jpg 1536w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Ash-Kulkarni-chief-executive-officer-of-Elasticsearch-B.V.-2-2048x1365.jpg 2048w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div></div><div class="col-xs-8"><a href="https://siliconangle.com/2026/08/27/after-posting-a-solid-earnings-beat-elastics-stock-bounces-higher-in-extended-trading/"><p class="post-title">After posting a solid earnings beat, Elastic's stock bounces higher in extended trading</p></a><p class="post-meta text-muted"><span><span>CLOUD</span> - BY <a href="https://siliconangle.com/author/mikewheatley/" ><span class="author" style="color:#9C0013">MIKE WHEATLEY</span></a> . <span class="date">10 HOURS AGO</span></span></p></div></div></li><li class="each-related-article"><div class="row"><div class="col-xs-4"><div class="image-16by9"><a href="https://siliconangle.com/2026/08/27/marvells-stock-sinks-despite-earnings-beat-and-strong-guidance/"><img width="300" height="189" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Screenshot-from-2025-08-29-08-12-33-300x189.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Screenshot-from-2025-08-29-08-12-33-300x189.png 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Screenshot-from-2025-08-29-08-12-33.png 708w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div></div><div class="col-xs-8"><a href="https://siliconangle.com/2026/08/27/marvells-stock-sinks-despite-earnings-beat-and-strong-guidance/"><p class="post-title">Marvell's stock sinks despite earnings beat and strong guidance</p></a><p class="post-meta text-muted"><span><span>INFRA</span> - BY <a href="https://siliconangle.com/author/mikewheatley/" ><span class="author" style="color:#9C0013">MIKE WHEATLEY</span></a> . <span class="date">10 HOURS AGO</span></span></p></div></div></li><li class="each-related-article"><div class="row"><div class="col-xs-4"><div class="image-16by9"><a href="https://siliconangle.com/2026/08/27/anthropic-previews-mhs-standard-for-ai-agents-that-operate-machines/"><img width="300" height="226" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Anthropic-300x226.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Anthropic-300x226.png 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/Anthropic.png 697w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div></div><div class="col-xs-8"><a href="https://siliconangle.com/2026/08/27/anthropic-previews-mhs-standard-for-ai-agents-that-operate-machines/"><p class="post-title">Anthropic previews MHS standard for AI agents that operate machines</p></a><p class="post-meta text-muted"><span><span>AI</span> - BY <a href="https://siliconangle.com/author/chi22/" ><span class="author" style="color:#9C0013">MARIA DEUTSCHER</span></a> . <span class="date">11 HOURS AGO</span></span></p></div></div></li><li class="each-related-article"><div class="row"><div class="col-xs-4"><div class="image-16by9"><a href="https://siliconangle.com/2026/08/27/openai-anthropic-and-100-plus-firms-warn-ai-attacks-are-about-to-scale/"><img width="300" height="169" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/aicybersecuritythreat-300x169.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/aicybersecuritythreat-300x169.png 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/aicybersecuritythreat-800x450.png 800w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/aicybersecuritythreat-768x432.png 768w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/aicybersecuritythreat.png 1280w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div></div><div class="col-xs-8"><a href="https://siliconangle.com/2026/08/27/openai-anthropic-and-100-plus-firms-warn-ai-attacks-are-about-to-scale/"><p class="post-title">OpenAI, Anthropic and 100-plus firms warn AI attacks are about to explode</p></a><p class="post-meta text-muted"><span><span>SECURITY</span> - BY <a href="https://siliconangle.com/author/duncanriley/" ><span class="author" style="color:#9C0013">DUNCAN RILEY</span></a> . <span class="date">12 HOURS AGO</span></span></p></div></div></li><li class="each-related-article"><div class="row"><div class="col-xs-4"><div class="image-16by9"><a href="https://siliconangle.com/2026/08/27/workday-posts-strong-earnings-and-revenue-amid-rapid-uptake-of-its-ai-agents/"><img width="300" height="200" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/29919997654_8b5fa45f26_k-800x533-768x512-1-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2026/08/29919997654_8b5fa45f26_k-800x533-768x512-1-300x200.jpg 300w, https://images.siliconangle.com/blogs.dir/1/files/2026/08/29919997654_8b5fa45f26_k-800x533-768x512-1.jpg 768w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div></div><div class="col-xs-8"><a href="https://siliconangle.com/2026/08/27/workday-posts-strong-earnings-and-revenue-amid-rapid-uptake-of-its-ai-agents/"><p class="post-title">Workday posts strong earnings and revenue amid rapid uptake of its AI agents</p></a><p class="post-meta text-muted"><span><span>CLOUD</span> - BY <a href="https://siliconangle.com/author/mikewheatley/" ><span class="author" style="color:#9C0013">MIKE WHEATLEY</span></a> . <span class="date">12 HOURS AGO</span></span></p></div></div></li><li class="each-related-article"><div class="row"><div class="col-xs-4"><div class="image-16by9"><a href="https://siliconangle.com/2026/08/27/autodesk-shares-fall-despite-q2-beat-as-cash-flow-guidance-narrows/"><img width="300" height="167" src="https://images.siliconangle.com/blogs.dir/1/files/2025/08/Autodesk-300x167.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://images.siliconangle.com/blogs.dir/1/files/2025/08/Autodesk-300x167.png 300w, https://images.siliconangle.com/blogs.dir/1/files/2025/08/Autodesk.png 766w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></div></div><div class="col-xs-8"><a href="https://siliconangle.com/2026/08/27/autodesk-shares-fall-despite-q2-beat-as-cash-flow-guidance-narrows/"><p class="post-title">Autodesk shares fall despite Q2 beat as cash flow guidance narrows</p></a><p class="post-meta text-muted"><span><span>APPS</span> - BY <a href="https://siliconangle.com/author/duncanriley/" ><span class="author" style="color:#9C0013">DUNCAN RILEY</span></a> . <span class="date">13 HOURS AGO</span></span></p></div></div></li></ul></div></div></div></div>					</main>
+
+		<aside class="col-md-4 col-xs-12 sidebar-content sa-legacy-post-sidebar">
+			<div class="sidebar" style="margin-top:3.4rem">
+								<div id="secondary" class="widget-area">
+			<aside id="text-130" class="widget widget_text">			<div class="textwidget"><div id="cube-live-feed" class="row"><div class="col-xs-12"><div class="cube-live-feed-content"><h5 class="text-left es-heading"><a href="https://siliconangle.com/category/cube-event-coverage/"><span >CUBE EVENT COVERAGE</span>&nbsp;&nbsp;</a><i class="material-icons help-outline" title="TheCUBE, SiliconANGLE Media's livestreaming studio, interviews executives and other thought leaders at enterprise and emerging tech conferences and events around the world. Events or segments that are sponsored are clearly disclosed in each segment." style="float:right">help_outline</i></h5><hr class="separator"><div class="row"><div id="cube-feed-embed" class="col-xs-12"><div align="center"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></div></div></div></div></div></div></div>
+		</aside><aside id="text-134" class="widget widget_text">			<div class="textwidget"><div id="latest-from-thecube"><div class="row latest_from_thecube_div"><div class="col-xs-12"><div class="col-xs-12 latest_from_thecube_content"><div class="col-xs-12"><h5 class="text-left es-heading"><a href=https://siliconangle.com/category/cube-event-coverage/><span>LATEST FROM THECUBE</span></a></h5><hr class="separator"></div><div class="col-xs-12 latest_from_thecube"><a href=https://siliconangle.com/2026/08/27/enterprise-ai-stalls-last-mile-value-lags-capability-dominodatalab/><span>The enterprise AI payoff shifts beyond models to mission-critical workflows</span></a></div><div class="col-xs-12 latest_from_thecube"><a href=https://siliconangle.com/2026/08/27/ddn-solidigm-supermicroopenstoragesummit/><span>The AI storage stack gets an inference-era rethink</span></a></div><div class="col-xs-12 latest_from_thecube"><a href=https://siliconangle.com/2026/08/26/private-cloud-vmware-explore-thecube-vmwareexplore/><span>What to expect during VMware Explore: Join theCUBE Aug. 31-Sept. 2</span></a></div><div class="col-xs-12 latest_from_thecube"><a href=https://siliconangle.com/2026/08/26/data-pipeline-amd-supermicro-minio-lakehouse-supermicroopenstoragesummit/><span>AMD, Supermicro and MinIO target the enterprise data pipeline bottleneck</span></a></div><div class="col-xs-12 latest_from_thecube"><a href=https://siliconangle.com/2026/08/25/ai-storage-infrastructure-supports-scalable-ai-inference-supermicroopenstoragesummit/><span>AI inference gets a new tier as context windows grow</span></a></div></div></div></div><div class="row latest-from-thecube-see-more-div"><div align="center"><i class="fa fa-circle-o-notch fa-spin fa-fw hide"></i></div></div></div></div>
+		</aside><aside id="text-136" class="widget widget_text">			<div class="textwidget"><div><div id="special-report" class="row"><div class="col-xs-12"><div class="col-xs-12 special-report-div"><div class="breaking-analysis-title-background"><img decoding="async" src="/wp-content/themes/siliconangle/img/dave-breaking-analysis.png"></div><div class="col-xs-12 special-report-title hide"><div class="col-xs-10" style="text-align:left;"><a href="https://siliconangle.com/tag/breaking-analysis/" style="color:#FFFFFF;"><span></span><span>DIVE INTO DAVE VELLANTE’S BREAKING ANALYSIS SERIES</span></a></div><i class="col-xs-2 material-icons help-outline" title="" style="font-size: 16px !important;color:#FFFFFF;">help_outline</i><hr class="col-xs-12" style="border-top: 1px solid #FFFFFF;width: 82%;left: 15px;"></div><div class="col-xs-12 breaking-analysis-content"><div class="col-xs-12 special-report-posts"><a href=https://siliconangle.com/2026/08/26/nvidias-next-billion-dollar-market-breaking-ai-factory-out-data-center/ class="col-xs-8" style="padding-left:0;"><span>Nvidia's next multibillion-dollar market: Breaking the AI factory out of the data center</span></a><img class="col-xs-4" src=https://images.siliconangle.com/blogs.dir/1/files/2026/08/ChatGPT-Image-Aug-26-2026-04_53_12-PM-1.png></div><div class="col-xs-12 special-report-posts"><a href=https://siliconangle.com/2026/08/26/the-network-becomes-the-computer-as-cisco-and-nvidia-accelerate-ai-factory-rack-scale-cisconvidiaaifactory/><span>The network becomes the computer as Cisco and Nvidia accelerate AI factory rack-scale</span></a></div><div class="col-xs-12 special-report-posts"><a href=https://siliconangle.com/2026/08/22/from-tokenmaxxing-to-sovereign-alpha-who-controls-your-ai-economics/><span>From tokenmaxxing to sovereign alpha: Who controls your AI economics?</span></a></div><div class="col-xs-12 special-report-posts"><a href=https://siliconangle.com/2026/08/15/nvidias-jensen-huang-just-make-ai-buildout-big-fail/><span>Did Nvidia's Jensen Huang just make the AI buildout too big to fail?</span></a></div><div class="col-xs-12 special-report-posts"><a href=https://siliconangle.com/2026/08/08/forecasting-ai-bubble-scarcity-turns-surplus/><span>Forecasting the AI bubble: When scarcity turns to surplus</span></a></div></div></div></div><div class="col-xs-12 hidden-xs" style="margin-top:20px;"><div id="side-banners" class="col-xs-12">
+                            <div id="side-banners-carousel" class= "owl-carousel owl-theme"><div class="item">
+                            		<a href="https://www.thecube.net/events/program/thecube-pod?utm_source=social&utm_medium=medium&utm_campaign=SAbanner" target="_blank">
+                                		<img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/02/CUBE-Pod-2.png">
+		                            </a>
+		                        </div><div class="item">
+                            		<a href="https://www.thecube.net/events/ibm/the-transformation-edge?utm_source=social&utm_medium=medium&utm_campaign=SAbanner" target="_blank">
+                                		<img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/04/SAM_ad_square_watch_on_demand-7.png">
+		                            </a>
+		                        </div><div class="item">
+                            		<a href="https://www.thecube.net/events/supermicro/open-storage-summit-2026?utm_source=website&utm_medium=SAbanner&utm_campaign=supermicro_open_storage_summit_2026?utm_source=social&utm_medium=medium&utm_campaign=SAbanner" target="_blank">
+                                		<img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/07/SAM_ad_square_with-date-1.png">
+		                            </a>
+		                        </div><div class="item">
+                            		<a href="https://www.thecube.net/events/dell/rethinking-private-cloud-for-the-age-of-intelligence?utm_source=social&utm_medium=medium&utm_campaign=SAbanner" target="_blank">
+                                		<img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_square_with-date-1-1.png">
+		                            </a>
+		                        </div><div class="item">
+                            		<a href="https://www.thecube.net/events/crowdstrike/fal-con-2026?utm_source=social&utm_medium=medium&utm_campaign=SAbanner" target="_blank">
+                                		<img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_square_with-date.png">
+		                            </a>
+		                        </div><div class="item">
+                            		<a href="https://www.thecube.net/events/vmware/vmware-explore-2026?utm_source=social&utm_medium=medium&utm_campaign=SAbanner" target="_blank">
+                                		<img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_square_with-date-1.png">
+		                            </a>
+		                        </div><div class="item">
+                            		<a href="https://www.thecube.net/events/dell/dell-ai-data-platform-event-from-ambition-to-ai-at-scale?utm_source=social&utm_medium=medium&utm_campaign=SAbanner" target="_blank">
+                                		<img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/SAM_ad_square_with-date-2.png">
+		                            </a>
+		                        </div>	</div>
+            			</div></div>
+</div>
+		</aside><aside id="text-140" class="widget widget_text">			<div class="textwidget"><div id="newsletter-btn"><div class="row"><div class="col-xs-12 newsletter-btn-div"><div class="col-xs-12"><h5 class="text-left es-heading"><span >Sign Up for Our Weekly Newsletter</span></h5><hr class="separator"></div><div class="col-xs-12" id="newsletter-btn-wrapper" ><a href="/newsletter"><button id="newsletter-btn-subscribe">SUBSCRIBE</button></a></div></div></div></div>
+</div>
+		</aside><aside id="text-133" class="widget widget_text">			<div class="textwidget"><div id="upcoming-events"><div class="row"><div class="col-xs-12"><div class="col-xs-12 upcoming-events-div"><div class="col-xs-12"><h5 class="text-left es-heading"><a href="https://www.thecube.net/events"><span >UPCOMING CUBE EVENTS</span></a><span></span></h5><hr class="separator"></div><div class="col-xs-12"><div align="center"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></div><div class="row ui_inner"></div><div class="see-more upcoming-events hide"><button id="upcoming-see-more">SEE MORE</button></div></div></div></div></div></div>
+		</aside><aside id="text-139" class="widget widget_text">			<div class="textwidget"><div id="sa-events"><div class="row"><div class="col-xs-12"><div class="col-xs-12 sa-events-div"><div class="col-xs-12"><a href="https://siliconangle.com/events"><h5 class="text-left es-heading">RECENT CUBE EVENTS</h5></a><hr class="separator"></div><div class="col-md-12 col-sm-6 col-xs-12 each-sa-event"><div class="col-md-4 col-sm-12 col-xs-5"><div class="image-16by9"><a href="https://siliconangle.com/tag/cisconvidiaaifactory26eventpage/" target="_blank"><img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/08/Cisco-Secure-AI-Factory-With-Nvidia-Expands-to-Rack-Scale-2026-1.png" alt=""></a></div></div><div class="col-md-8 col-sm-12 col-xs-7"><a href="https://siliconangle.com/tag/cisconvidiaaifactory26eventpage/" target="_blank"><h5 class="event-name">Cisco Secure AI Factory With Nvidia Expands to Rack Scale 2026</h5></a></div></div><div class="col-md-12 col-sm-6 col-xs-12 each-sa-event"><div class="col-md-4 col-sm-12 col-xs-5"><div class="image-16by9"><a href="https://siliconangle.com/tag/supermicroopenstoragesummit26eventpage/" target="_blank"><img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/07/Supermicro-Open-Storage-Summit.jpg" alt=""></a></div></div><div class="col-md-8 col-sm-12 col-xs-7"><a href="https://siliconangle.com/tag/supermicroopenstoragesummit26eventpage/" target="_blank"><h5 class="event-name">Supermicro Open Storage Summit 2026</h5></a></div></div><div class="col-md-12 col-sm-6 col-xs-12 each-sa-event"><div class="col-md-4 col-sm-12 col-xs-5"><div class="image-16by9"><a href="https://siliconangle.com/tag/blackhat26eventpage/" target="_blank"><img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/07/Black-Hat-USA.jpg" alt=""></a></div></div><div class="col-md-8 col-sm-12 col-xs-7"><a href="https://siliconangle.com/tag/blackhat26eventpage/" target="_blank"><h5 class="event-name">Black Hat USA 2026</h5></a></div></div><div class="col-md-12 col-sm-6 col-xs-12 each-sa-event"><div class="col-md-4 col-sm-12 col-xs-5"><div class="image-16by9"><a href="https://siliconangle.com/tag/neo4jgraphtalk26eventpage/" target="_blank"><img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/07/GraphTalk-temporary-hero-2026.png" alt=""></a></div></div><div class="col-md-8 col-sm-12 col-xs-7"><a href="https://siliconangle.com/tag/neo4jgraphtalk26eventpage/" target="_blank"><h5 class="event-name">GraphTalk 2026</h5></a></div></div><div class="col-md-12 col-sm-6 col-xs-12 each-sa-event"><div class="col-md-4 col-sm-12 col-xs-5"><div class="image-16by9"><a href="https://siliconangle.com/tag/amdadvancingai26eventpage/" target="_blank"><img decoding="async" src="https://images.siliconangle.com/blogs.dir/1/files/2026/06/d28b505e-b7d7-4545-9d9b-cd51ad019b48.webp" alt=""></a></div></div><div class="col-md-8 col-sm-12 col-xs-7"><a href="https://siliconangle.com/tag/amdadvancingai26eventpage/" target="_blank"><h5 class="event-name">AMD Advancing AI 2026</h5></a></div></div></div></div></div>
+</div>
+		</aside>	</div>
+			</div>
+		</aside>
+	</div>
+</div>
+<div class="col-md-1 col-xs-12 sa-right-gutter"></div>
+			</div>
+	</div>
+	<footer id="sa-footer" class="site-footer">
+	<div class="site-footer__inner">
+		<div class="site-footer__brand">
+			<a href="https://siliconangle.com/" rel="home">
+				<img
+					src="https://siliconangle.com/wp-content/themes/siliconangle/img/favicon-SA.png"
+					width="32"
+					height="32"
+					alt="SiliconANGLE home"
+				>
+			</a>
+		</div>
+
+		<nav class="site-footer__navigation" aria-label="Footer navigation">
+			<ul id="menu-footer-menu" class="site-footer__menu"><li id="menu-item-307291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307291"><a href="https://siliconangle.com/privacy-policy/">PRIVACY POLICY</a></li>
+<li id="menu-item-307292" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307292"><a href="https://siliconangle.com/terms-of-use/">TERMS</a></li>
+<li id="menu-item-307331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307331"><a href="https://siliconangle.com/about-us/">ABOUT US</a></li>
+<li id="menu-item-622797" class="thecube-contact-us menu-item menu-item-type-custom menu-item-object-custom menu-item-622797"><a href="#">CONTACT US</a></li>
+<li id="menu-item-688229" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-688229"><a href="https://siliconangle.com/brand-guidelines/">BRAND GUIDELINES</a></li>
+<li id="menu-item-307293" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-307293"><a href="#" data-sa-dialog="#news-tip-modal">Send us a News tip</a></li>
+</ul>		</nav>
+
+		<div class="site-footer__community">
+			<h2>Join our community</h2>
+			<ul>
+				<li>
+					<a href="https://twitter.com/thecube" target="_blank" rel="noopener noreferrer">
+						<img src="https://siliconangle.com/wp-content/themes/siliconangle/img/cube_footer.png" alt="" width="18" height="18">
+						theCUBE
+					</a>
+				</li>
+				<li>
+					<a href="https://x.com/theCUBEresearch" target="_blank" rel="noopener noreferrer">
+						<img src="https://siliconangle.com/wp-content/themes/siliconangle/img/research_mark.png" alt="" width="18" height="18">
+						theCUBE Research
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<p class="site-footer__copyright">
+			&copy; 2026 SiliconANGLE Media Inc. All rights reserved.		</p>
+
+			</div>
+</footer>
+
+	<dialog id="news-tip-modal" class="sa-dialog" aria-labelledby="news-tip-title">
+		<button class="sa-dialog__close" type="button" data-sa-dialog-close aria-label="Close">×</button>
+		<h2 id="news-tip-title">Send us a news tip</h2>
+		
+                <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_1' ><a id='gf_1' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_1' id='gform_1'  action='/2026/08/25/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent/#gf_1'>
+                        <div class='gform_heading'>
+                            <h3 class='gform_title'>Send us a News Tip</h3>
+                        </div>
+                        <div class='gform_body'><ul id='gform_fields_1' class='gform_fields top_label form_sublabel_below description_below'><li id='field_1_1' class='gfield gfield_contains_required field_sublabel_below field_description_below' ><label class='gfield_label' for='input_1_1_3' >Name<span class='gfield_required'>*</span></label><div class='ginput_complex ginput_container no_prefix has_first_name no_middle_name has_last_name no_suffix gf_name_has_2 ginput_container_name' id='input_1_1'>
+                            
+                            <span id='input_1_1_3_container' class='name_first' >
+                                                    <input type='text' name='input_1.3' id='input_1_1_3' value='' aria-label='First name' tabindex='50'  />
+                                                    <label for='input_1_1_3' >First</label>
+                                                </span>
+                            
+                            <span id='input_1_1_6_container' class='name_last' >
+                                                    <input type='text' name='input_1.6' id='input_1_1_6' value='' aria-label='Last name' tabindex='52'  />
+                                                    <label for='input_1_1_6' >Last</label>
+                                                </span>
+                            
+                        </div></li><li id='field_1_5' class='gfield gfield_contains_required field_sublabel_below field_description_below' ><label class='gfield_label' for='input_1_5' >Type of Pitch<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_select'><select name='input_5' id='input_1_5'  class='medium gfield_select' tabindex='54' ><option value='' selected='selected' class='gf_placeholder'>Consumer or Enterprise?</option><option value='Enterprise' >Enterprise</option><option value='Startup News' >Startup News</option><option value='Emerging Technology' >Emerging Technology</option></select></div></li><li id='field_1_3' class='gfield gfield_contains_required field_sublabel_below field_description_below' ><label class='gfield_label' for='input_1_3' >Email<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_email'>
+                            <input name='input_3' id='input_1_3' type='text' value='' class='medium' tabindex='55'   />
+                        </div></li><li id='field_1_4' class='gfield gfield_contains_required field_sublabel_below field_description_below' ><label class='gfield_label' for='input_1_4' >What&#039;s your story?<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_textarea'>
+					<textarea name='input_4' id='input_1_4' class='textarea medium' tabindex='56'    rows='10' cols='50'></textarea>
+				</div></li><li id='field_1_2' class='gfield field_sublabel_below field_description_below' ><label class='gfield_label' for='input_1_2' >File</label><div class='ginput_container ginput_container_fileupload'><input type='hidden' name='MAX_FILE_SIZE' value='256000000' /><input name='input_2' id='input_1_2' type='file' class='medium' aria-describedby='extensions_message' tabindex='57' /><span id='extensions_message' class='screen-reader-text'></span></div></li><li id='field_1_6' class='gfield gform_validation_container field_sublabel_below field_description_below' ><label class='gfield_label' for='input_1_6' >Name</label><div class='ginput_container'><input name='input_6' id='input_1_6' type='text' value='' /></div><div class='gfield_description'>This field is for validation purposes and should be left unchanged.</div></li><li id='field_1_9999' class='gfield sa-gf-recaptcha gfield_contains_required field_sublabel_below field_description_below' ><label class='gfield_label' for='input_1_9999' >CAPTCHA<span class='gfield_required'>*</span></label><script type='text/javascript'> var RecaptchaOptions = {theme : 'red'}; if(parseInt('58') > 0) {RecaptchaOptions.tabindex = 58;}</script><div class='ginput_container ginput_container_captcha' id='input_1_9999'><script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6LfK35wtAAAAACFJ3AwBXnCgyXBAPVf6s3pu9M4G&hl=en"></script>
+
+	<noscript>
+  		<iframe src="https://www.google.com/recaptcha/api/noscript?k=6LfK35wtAAAAACFJ3AwBXnCgyXBAPVf6s3pu9M4G" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript></div></li>
+                            </ul></div>
+        <div class='gform_footer top_label'> <input type='submit' id='gform_submit_button_1' class='gform_button button' value='Submit' tabindex='59' onclick='if(window["gf_submitting_1"]){return false;}  window["gf_submitting_1"]=true;  ' /> <input type='hidden' name='gform_ajax' value='form_id=1&amp;title=1&amp;description=&amp;tabindex=49' />
+            <input type='hidden' class='gform_hidden' name='is_submit_1' value='1' />
+            <input type='hidden' class='gform_hidden' name='gform_submit' value='1' />
+            
+            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='' />
+            <input type='hidden' class='gform_hidden' name='state_1' value='WyJbXSIsImNjM2NmMjE1YzUyMDkzZDJhYmQ4OTM0MzgyNWM1YzJkIl0=' />
+            <input type='hidden' class='gform_hidden' name='gform_target_page_number_1' id='gform_target_page_number_1' value='0' />
+            <input type='hidden' class='gform_hidden' name='gform_source_page_number_1' id='gform_source_page_number_1' value='1' />
+            <input type='hidden' name='gform_field_values' value='' />
+            
+        </div>
+                        </form>
+                        </div>
+                <iframe style='display:none;width:0px;height:0px;' src='about:blank' name='gform_ajax_frame_1' id='gform_ajax_frame_1'></iframe>
+                <script type='text/javascript'>jQuery(document).ready(function($){gformInitSpinner( 1, 'https://siliconangle.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery('#gform_ajax_frame_1').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_1');var is_confirmation = jQuery(this).contents().find('#gform_confirmation_wrapper_1').length > 0;var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = form_content.length > 0 && ! is_redirect && ! is_confirmation;if(is_form){jQuery('#gform_wrapper_1').html(form_content.html());setTimeout( function() { /* delay the scroll by 50 milliseconds to fix a bug in chrome */ jQuery(document).scrollTop(jQuery('#gform_wrapper_1').offset().top); }, 50 );if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_1').val();gformInitSpinner( 1, 'https://siliconangle.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery(document).trigger('gform_page_loaded', [1, current_page]);window['gf_submitting_1'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message_1').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_1').replaceWith('<' + 'div id=\'gforms_confirmation_message_1\' class=\'gform_confirmation_message_1 gforms_confirmation_message\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message_1').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [1]);window['gf_submitting_1'] = false;}, 50);}else{jQuery('#gform_1').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [1, current_page]);} );} );</script><script type='text/javascript'> if(typeof gf_global == 'undefined') var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","symbol_right":"","symbol_padding":"","thousand_separator":",","decimal_separator":".","decimals":2},"base_url":"https:\/\/siliconangle.com\/wp-content\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"https:\/\/siliconangle.com\/wp-content\/plugins\/gravityforms\/images\/spinner.gif"};jQuery(document).bind('gform_post_render', function(event, formId, currentPage){if(formId == 1) {if(typeof Placeholders != 'undefined'){
+                        Placeholders.enable();
+                    }} } );jQuery(document).bind('gform_post_conditional_logic', function(event, formId, fields, isInit){} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [1, 1]) } ); </script>	</dialog>
+
+	<dialog id="signinModal" class="sa-dialog" aria-labelledby="signin-title">
+		<button class="sa-dialog__close" type="button" data-sa-dialog-close aria-label="Close">×</button>
+		<h2 id="signin-title">Sign in</h2>
+		<div class="row"><div class="col-xs-12"><h4>SIGN IN</h4><form name="sa_loginform" id="sa_loginform" role="form" method="post"><div class="alert alert-danger hidden">...</div><div class="form-group login-username"><label for="sa_user_signin"></label><input type="text" name="sa_user_signin" id="sa_user_signin" class="form-control" placeholder="Username or Email" size="20" required></div><div class="form-group login-password"><label for="sa_user_pass"></label><input type="password" class="form-control" name="sa_user_pwd" id="sa_user_pass" class="input" placeholder="Password" size="20" required></div><div class="checkbox login-remember"><label><input type="checkbox" name="sa_remember" id="sa-remember-me" value="TRUE"> Remember me</label></div><button type="submit" id="sa-login" class="btn btn-default ">LOGIN</button><div class="form-group forgot-pwd"><p class="forgot-pwd-link"><a href="https://siliconangle.com/wp-login.php?action=lostpassword&#038;redirect_to=https%3A%2F%2Fsiliconangle.com%2F2026%2F08%2F25%2Fnvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent%2F">Forgot Password?</a></p></div></form></div></div>	</dialog>
+
+	<dialog id="EthicsBioModal" class="sa-dialog" aria-labelledby="bio-title">
+		<button class="sa-dialog__close" type="button" data-sa-dialog-close aria-label="Close">×</button>
+		<h2 id="bio-title">Bio</h2><div class="sa_u_bio_mdl"></div>
+		<h2>Ethics statement</h2><div class="sa_u_ethics_mdl"></div>
+	</dialog>
+
+	<dialog id="newsletter-popup" class="sa-dialog" aria-labelledby="newsletter-title">
+		<button class="sa-dialog__close" type="button" data-sa-dialog-close aria-label="Close">×</button>
+		<h2 id="newsletter-title">Extract the signal from the noise</h2>
+		<p>Get SiliconANGLE updates and analysis.</p>
+	</dialog>
+
+	<dialog id="contact-us-options" class="sa-dialog" aria-labelledby="contact-title">
+		<button class="sa-dialog__close" type="button" data-sa-dialog-close aria-label="Close">×</button>
+		<h2 id="contact-title">Contact us</h2>
+		<div class="sa-dialog__actions"><button type="button" id="guest-posts-request">Inquire about guest posts</button><button type="button" id="general-enquiry-request">All other inquiries</button></div>
+	</dialog>
+
+	<dialog id="partner-with-us-form" class="sa-dialog" aria-labelledby="partner-title">
+		<button class="sa-dialog__close" type="button" data-sa-dialog-close aria-label="Close">×</button><h2 id="partner-title">Partner with us</h2>
+                <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_14' ><a id='gf_14' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_14' id='gform_14'  action='/2026/08/25/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent/#gf_14'>
+                        <div class='gform_body'><ul id='gform_fields_14' class='gform_fields top_label form_sublabel_below description_below'><li id='field_14_1' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_14_1' >NAME OF INDIVIDUAL<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_1' id='input_14_1' type='text' value='' class='large'  tabindex='49'  placeholder='NAME' /></div></li><li id='field_14_2' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_14_2' >NAME OF COMPANY<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_2' id='input_14_2' type='text' value='' class='large'  tabindex='50'  placeholder='COMPANY' /></div></li><li id='field_14_3' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_14_3' >EMAIL<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_email'>
+                            <input name='input_3' id='input_14_3' type='text' value='' class='large' tabindex='51'   placeholder='EMAIL'/>
+                        </div></li><li id='field_14_4' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_14_4' >COMMENTS<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_4' id='input_14_4' type='text' value='' class='large'  tabindex='52'  placeholder='COMMENTS' /></div></li>
+                            </ul></div>
+        <div class='gform_footer top_label'> <input type='submit' id='gform_submit_button_14' class='gform_button button' value='SEND' tabindex='53' onclick='if(window["gf_submitting_14"]){return false;}  window["gf_submitting_14"]=true;  ' /> <input type='hidden' name='gform_ajax' value='form_id=14&amp;title=&amp;description=&amp;tabindex=49' />
+            <input type='hidden' class='gform_hidden' name='is_submit_14' value='1' />
+            <input type='hidden' class='gform_hidden' name='gform_submit' value='14' />
+            
+            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='' />
+            <input type='hidden' class='gform_hidden' name='state_14' value='WyJbXSIsImNjM2NmMjE1YzUyMDkzZDJhYmQ4OTM0MzgyNWM1YzJkIl0=' />
+            <input type='hidden' class='gform_hidden' name='gform_target_page_number_14' id='gform_target_page_number_14' value='0' />
+            <input type='hidden' class='gform_hidden' name='gform_source_page_number_14' id='gform_source_page_number_14' value='1' />
+            <input type='hidden' name='gform_field_values' value='' />
+            
+        </div>
+                        </form>
+                        </div>
+                <iframe style='display:none;width:0px;height:0px;' src='about:blank' name='gform_ajax_frame_14' id='gform_ajax_frame_14'></iframe>
+                <script type='text/javascript'>jQuery(document).ready(function($){gformInitSpinner( 14, 'https://siliconangle.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery('#gform_ajax_frame_14').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_14');var is_confirmation = jQuery(this).contents().find('#gform_confirmation_wrapper_14').length > 0;var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = form_content.length > 0 && ! is_redirect && ! is_confirmation;if(is_form){jQuery('#gform_wrapper_14').html(form_content.html());setTimeout( function() { /* delay the scroll by 50 milliseconds to fix a bug in chrome */ jQuery(document).scrollTop(jQuery('#gform_wrapper_14').offset().top); }, 50 );if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_14').val();gformInitSpinner( 14, 'https://siliconangle.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery(document).trigger('gform_page_loaded', [14, current_page]);window['gf_submitting_14'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message_14').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_14').replaceWith('<' + 'div id=\'gforms_confirmation_message_14\' class=\'gform_confirmation_message_14 gforms_confirmation_message\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message_14').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [14]);window['gf_submitting_14'] = false;}, 50);}else{jQuery('#gform_14').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [14, current_page]);} );} );</script><script type='text/javascript'> if(typeof gf_global == 'undefined') var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","symbol_right":"","symbol_padding":"","thousand_separator":",","decimal_separator":".","decimals":2},"base_url":"https:\/\/siliconangle.com\/wp-content\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"https:\/\/siliconangle.com\/wp-content\/plugins\/gravityforms\/images\/spinner.gif"};jQuery(document).bind('gform_post_render', function(event, formId, currentPage){if(formId == 14) {if(typeof Placeholders != 'undefined'){
+                        Placeholders.enable();
+                    }} } );jQuery(document).bind('gform_post_conditional_logic', function(event, formId, fields, isInit){} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [14, 1]) } ); </script>	</dialog>
+	<dialog id="thecube-contact-form" class="sa-dialog" aria-labelledby="cube-contact-title">
+		<button class="sa-dialog__close" type="button" data-sa-dialog-close aria-label="Close">×</button><h2 id="cube-contact-title">Contact us</h2>
+                <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_12' ><a id='gf_12' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_12' id='gform_12'  action='/2026/08/25/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent/#gf_12'>
+                        <div class='gform_body'><ul id='gform_fields_12' class='gform_fields top_label form_sublabel_below description_below'><li id='field_12_1' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_12_1' >NAME OF INDIVIDUAL<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_1' id='input_12_1' type='text' value='' class='large'  tabindex='49'  placeholder='NAME' /></div></li><li id='field_12_2' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_12_2' >NAME OF COMPANY<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_2' id='input_12_2' type='text' value='' class='large'  tabindex='50'  placeholder='COMPANY' /></div></li><li id='field_12_3' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_12_3' >EMAIL<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_email'>
+                            <input name='input_3' id='input_12_3' type='text' value='' class='large' tabindex='51'   placeholder='EMAIL'/>
+                        </div></li><li id='field_12_4' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_12_4' >COMMENTS<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_4' id='input_12_4' type='text' value='' class='large'  tabindex='52'  placeholder='COMMENTS' /></div></li><li id='field_12_9999' class='gfield sa-gf-recaptcha gfield_contains_required field_sublabel_below field_description_below' ><label class='gfield_label' for='input_12_9999' >CAPTCHA<span class='gfield_required'>*</span></label><script type='text/javascript'> var RecaptchaOptions = {theme : 'red'}; if(parseInt('53') > 0) {RecaptchaOptions.tabindex = 53;}</script><div class='ginput_container ginput_container_captcha' id='input_12_9999'><script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6LfK35wtAAAAACFJ3AwBXnCgyXBAPVf6s3pu9M4G&hl=en"></script>
+
+	<noscript>
+  		<iframe src="https://www.google.com/recaptcha/api/noscript?k=6LfK35wtAAAAACFJ3AwBXnCgyXBAPVf6s3pu9M4G" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript></div></li>
+                            </ul></div>
+        <div class='gform_footer top_label'> <input type='submit' id='gform_submit_button_12' class='gform_button button' value='SEND' tabindex='54' onclick='if(window["gf_submitting_12"]){return false;}  window["gf_submitting_12"]=true;  ' /> <input type='hidden' name='gform_ajax' value='form_id=12&amp;title=&amp;description=&amp;tabindex=49' />
+            <input type='hidden' class='gform_hidden' name='is_submit_12' value='1' />
+            <input type='hidden' class='gform_hidden' name='gform_submit' value='12' />
+            
+            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='' />
+            <input type='hidden' class='gform_hidden' name='state_12' value='WyJbXSIsImNjM2NmMjE1YzUyMDkzZDJhYmQ4OTM0MzgyNWM1YzJkIl0=' />
+            <input type='hidden' class='gform_hidden' name='gform_target_page_number_12' id='gform_target_page_number_12' value='0' />
+            <input type='hidden' class='gform_hidden' name='gform_source_page_number_12' id='gform_source_page_number_12' value='1' />
+            <input type='hidden' name='gform_field_values' value='' />
+            
+        </div>
+                        </form>
+                        </div>
+                <iframe style='display:none;width:0px;height:0px;' src='about:blank' name='gform_ajax_frame_12' id='gform_ajax_frame_12'></iframe>
+                <script type='text/javascript'>jQuery(document).ready(function($){gformInitSpinner( 12, 'https://siliconangle.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery('#gform_ajax_frame_12').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_12');var is_confirmation = jQuery(this).contents().find('#gform_confirmation_wrapper_12').length > 0;var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = form_content.length > 0 && ! is_redirect && ! is_confirmation;if(is_form){jQuery('#gform_wrapper_12').html(form_content.html());setTimeout( function() { /* delay the scroll by 50 milliseconds to fix a bug in chrome */ jQuery(document).scrollTop(jQuery('#gform_wrapper_12').offset().top); }, 50 );if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_12').val();gformInitSpinner( 12, 'https://siliconangle.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery(document).trigger('gform_page_loaded', [12, current_page]);window['gf_submitting_12'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message_12').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_12').replaceWith('<' + 'div id=\'gforms_confirmation_message_12\' class=\'gform_confirmation_message_12 gforms_confirmation_message\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message_12').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [12]);window['gf_submitting_12'] = false;}, 50);}else{jQuery('#gform_12').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [12, current_page]);} );} );</script><script type='text/javascript'> if(typeof gf_global == 'undefined') var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","symbol_right":"","symbol_padding":"","thousand_separator":",","decimal_separator":".","decimals":2},"base_url":"https:\/\/siliconangle.com\/wp-content\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"https:\/\/siliconangle.com\/wp-content\/plugins\/gravityforms\/images\/spinner.gif"};jQuery(document).bind('gform_post_render', function(event, formId, currentPage){if(formId == 12) {if(typeof Placeholders != 'undefined'){
+                        Placeholders.enable();
+                    }} } );jQuery(document).bind('gform_post_conditional_logic', function(event, formId, fields, isInit){} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [12, 1]) } ); </script>	</dialog>
+	<dialog id="thecube-inquire-guests-form" class="sa-dialog" aria-labelledby="cube-guest-title">
+		<button class="sa-dialog__close" type="button" data-sa-dialog-close aria-label="Close">×</button><h2 id="cube-guest-title">Guest inquiry</h2>
+                <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_13' ><a id='gf_13' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_13' id='gform_13'  action='/2026/08/25/nvidia-nemoclaw-flaw-let-attackers-poison-the-model-behind-a-developers-ai-agent/#gf_13'>
+                        <div class='gform_body'><ul id='gform_fields_13' class='gform_fields top_label form_sublabel_below description_below'><li id='field_13_1' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_13_1' >NAME OF INDIVIDUAL<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_1' id='input_13_1' type='text' value='' class='large'  tabindex='49'  placeholder='NAME' /></div></li><li id='field_13_2' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_13_2' >NAME OF COMPANY<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_2' id='input_13_2' type='text' value='' class='large'  tabindex='50'  placeholder='COMPANY' /></div></li><li id='field_13_3' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_13_3' >EMAIL<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_3' id='input_13_3' type='text' value='' class='large'  tabindex='51'  placeholder='EMAIL' /></div></li><li id='field_13_4' class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label' ><label class='gfield_label' for='input_13_4' >COMMENTS<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_4' id='input_13_4' type='text' value='' class='large'  tabindex='52'  placeholder='COMMENTS' /></div></li><li id='field_13_9999' class='gfield sa-gf-recaptcha gfield_contains_required field_sublabel_below field_description_below' ><label class='gfield_label' for='input_13_9999' >CAPTCHA<span class='gfield_required'>*</span></label><script type='text/javascript'> var RecaptchaOptions = {theme : 'red'}; if(parseInt('53') > 0) {RecaptchaOptions.tabindex = 53;}</script><div class='ginput_container ginput_container_captcha' id='input_13_9999'><script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6LfK35wtAAAAACFJ3AwBXnCgyXBAPVf6s3pu9M4G&hl=en"></script>
+
+	<noscript>
+  		<iframe src="https://www.google.com/recaptcha/api/noscript?k=6LfK35wtAAAAACFJ3AwBXnCgyXBAPVf6s3pu9M4G" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript></div></li>
+                            </ul></div>
+        <div class='gform_footer top_label'> <input type='submit' id='gform_submit_button_13' class='gform_button button' value='Submit' tabindex='54' onclick='if(window["gf_submitting_13"]){return false;}  window["gf_submitting_13"]=true;  ' /> <input type='hidden' name='gform_ajax' value='form_id=13&amp;title=&amp;description=&amp;tabindex=49' />
+            <input type='hidden' class='gform_hidden' name='is_submit_13' value='1' />
+            <input type='hidden' class='gform_hidden' name='gform_submit' value='13' />
+            
+            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='' />
+            <input type='hidden' class='gform_hidden' name='state_13' value='WyJbXSIsImNjM2NmMjE1YzUyMDkzZDJhYmQ4OTM0MzgyNWM1YzJkIl0=' />
+            <input type='hidden' class='gform_hidden' name='gform_target_page_number_13' id='gform_target_page_number_13' value='0' />
+            <input type='hidden' class='gform_hidden' name='gform_source_page_number_13' id='gform_source_page_number_13' value='1' />
+            <input type='hidden' name='gform_field_values' value='' />
+            
+        </div>
+                        </form>
+                        </div>
+                <iframe style='display:none;width:0px;height:0px;' src='about:blank' name='gform_ajax_frame_13' id='gform_ajax_frame_13'></iframe>
+                <script type='text/javascript'>jQuery(document).ready(function($){gformInitSpinner( 13, 'https://siliconangle.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery('#gform_ajax_frame_13').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_13');var is_confirmation = jQuery(this).contents().find('#gform_confirmation_wrapper_13').length > 0;var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = form_content.length > 0 && ! is_redirect && ! is_confirmation;if(is_form){jQuery('#gform_wrapper_13').html(form_content.html());setTimeout( function() { /* delay the scroll by 50 milliseconds to fix a bug in chrome */ jQuery(document).scrollTop(jQuery('#gform_wrapper_13').offset().top); }, 50 );if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_13').val();gformInitSpinner( 13, 'https://siliconangle.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery(document).trigger('gform_page_loaded', [13, current_page]);window['gf_submitting_13'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message_13').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_13').replaceWith('<' + 'div id=\'gforms_confirmation_message_13\' class=\'gform_confirmation_message_13 gforms_confirmation_message\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message_13').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [13]);window['gf_submitting_13'] = false;}, 50);}else{jQuery('#gform_13').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [13, current_page]);} );} );</script><script type='text/javascript'> if(typeof gf_global == 'undefined') var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","symbol_right":"","symbol_padding":"","thousand_separator":",","decimal_separator":".","decimals":2},"base_url":"https:\/\/siliconangle.com\/wp-content\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"https:\/\/siliconangle.com\/wp-content\/plugins\/gravityforms\/images\/spinner.gif"};jQuery(document).bind('gform_post_render', function(event, formId, currentPage){if(formId == 13) {if(typeof Placeholders != 'undefined'){
+                        Placeholders.enable();
+                    }} } );jQuery(document).bind('gform_post_conditional_logic', function(event, formId, fields, isInit){} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [13, 1]) } ); </script>	</dialog>
+	<style>
+#sa-cookie-consent {
+	display: none;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	z-index: 99999;
+	width: 340px;
+	max-width: calc(100vw - 32px);
+	background: #1a1a1a;
+	color: #f2f2f2;
+	font-family: 'DM Sans', sans-serif;
+	font-size: 13px;
+	line-height: 1.45;
+	padding: 18px 18px 16px;
+	box-shadow: 0 8px 28px rgba(0,0,0,.35);
+	border: 1px solid #333;
+}
+#sa-cookie-consent.sa-cc-visible {
+	display: block;
+}
+#sa-cookie-consent p {
+	margin: 0 0 14px;
+	color: #ddd;
+}
+#sa-cookie-consent a {
+	color: #fff;
+	text-decoration: underline;
+}
+#sa-cookie-consent .sa-cc-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+#sa-cookie-consent button {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 13px;
+	font-weight: 500;
+	border: 0;
+	cursor: pointer;
+	padding: 9px 14px;
+	line-height: 1.2;
+	width: 100%;
+	text-align: center;
+}
+#sa-cookie-consent .sa-cc-reject-all {
+	background: transparent;
+	color: #ccc;
+	border: 1px solid #555 !important;
+}
+#sa-cookie-consent .sa-cc-reject-all:hover {
+	border-color: #888 !important;
+	color: #fff;
+}
+#sa-cookie-consent .sa-cc-accept {
+	background: #9c0013;
+	color: #fff;
+}
+#sa-cookie-consent .sa-cc-accept:hover {
+	background: #b30016;
+}
+@media (max-width: 480px) {
+	#sa-cookie-consent {
+		right: 12px;
+		bottom: 12px;
+		left: 12px;
+		width: auto;
+	}
+}
+</style>
+<div id="sa-cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
+	<p>We use cookies for analytics and measurement. You can accept or reject tracking cookies. See our <a href="https://siliconangle.com/privacy-policy/">Privacy Policy</a>.</p>
+	<div class="sa-cc-actions">
+		<button type="button" class="sa-cc-accept" id="sa-cc-accept">Accept</button>
+		<button type="button" class="sa-cc-reject-all" id="sa-cc-reject-all">Reject</button>
+	</div>
+</div>
+<script>
+(function () {
+	var COOKIE = 'sa_cookie_consent';
+	var MAX_AGE = 2592000;
+	var GA_ID = 'G-QPLHNT2ZSK';
+	var ADS_ID = '';
+	var banner = document.getElementById('sa-cookie-consent');
+
+	function readConsentCookie() {
+		var match = document.cookie.match(new RegExp('(?:^|; )' + COOKIE.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1') + '=([^;]*)'));
+		if (!match) return '';
+		var value = decodeURIComponent(match[1]);
+		if (value === 'accepted' || value === 'essential' || value === 'rejected') {
+			return value;
+		}
+		return '';
+	}
+
+	function setConsentCookie(value) {
+		var parts = [
+			COOKIE + '=' + value,
+			'path=/',
+			'max-age=' + MAX_AGE,
+			'SameSite=Lax'
+		];
+		if (location.protocol === 'https:') {
+			parts.push('Secure');
+		}
+		document.cookie = parts.join('; ');
+	}
+
+	function updateGtag(granted) {
+		if (typeof gtag !== 'function') return;
+		var analytics = granted ? 'granted' : 'denied';
+		var ads = (granted && ADS_ID) ? 'granted' : 'denied';
+		gtag('consent', 'update', {
+			analytics_storage: analytics,
+			ad_storage: ads,
+			ad_user_data: ads,
+			ad_personalization: ads
+		});
+	}
+
+	function loadGoogleTags() {
+		if (window.__saGaLoaded) return;
+		window.__saGaLoaded = true;
+
+		window.dataLayer = window.dataLayer || [];
+		if (typeof gtag !== 'function') {
+			window.gtag = function () { dataLayer.push(arguments); };
+		}
+
+		var primaryId = GA_ID || ADS_ID;
+		if (!primaryId) return;
+
+		var s = document.createElement('script');
+		s.async = true;
+		s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(primaryId);
+		document.head.appendChild(s);
+
+		gtag('js', new Date());
+		if (GA_ID) {
+			gtag('config', GA_ID);
+		}
+		if (ADS_ID) {
+			gtag('config', ADS_ID);
+		}
+	}
+
+	window.saLoadAnalyticsTrackers = function () {
+		if (window.__saThirdPartyLoaded) return;
+		window.__saThirdPartyLoaded = true;
+
+		/* Woopra (matches Woopra WP plugin snippet) */
+		(function(){
+			var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
+		})("woopra");
+		woopra.config({"app":"wordpress","domain":"siliconangle.com","download_tracking":false,"outgoing_tracking":false,"hide_campaign":false});
+		woopra.track();
+
+		/* Quantcast (matches Quantcast Quantifier plugin options on production) */
+		window._qevents = window._qevents || [];
+		(function() {
+			var elem = document.createElement('script');
+			elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+			elem.async = true;
+			elem.type = "text/javascript";
+			var scpt = document.getElementsByTagName('script')[0];
+			scpt.parentNode.insertBefore(elem, scpt);
+		})();
+		_qevents.push({ qacct: "p-HgwXEEYzRpfFC" });
+		window._qoptions = { qacct: "p-0bRKhF16V5Cqk" };
+	};
+
+	function expireCookie(name, domain) {
+		var base = name + '=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+		document.cookie = base;
+		if (domain) {
+			document.cookie = base + '; domain=' + domain;
+		}
+	}
+
+	/** Best-effort: attempts to remove known first-party analytics cookies. */
+	function clearAnalyticsCookies() {
+		var host = location.hostname;
+		var root = host.replace(/^www\./, '');
+		var domains = [null, host, '.' + host, root, '.' + root];
+		var names = document.cookie.split(';');
+		var i, raw, name;
+
+		for (i = 0; i < names.length; i++) {
+			raw = names[i].replace(/^\s+/, '');
+			name = raw.split('=')[0];
+			if (!name) continue;
+			if (
+				name === '_ga' ||
+				name.indexOf('_ga_') === 0 ||
+				name === '_gid' ||
+				name === '_gat' ||
+				name === '__qca' ||
+				name.indexOf('woopra') === 0
+			) {
+				for (var d = 0; d < domains.length; d++) {
+					expireCookie(name, domains[d]);
+				}
+			}
+		}
+	}
+
+	function showBanner() {
+		if (banner) banner.classList.add('sa-cc-visible');
+	}
+
+	function hideBanner() {
+		if (banner) banner.classList.remove('sa-cc-visible');
+	}
+
+	function applyConsent(value) {
+		if (value === 'accepted') {
+			updateGtag(true);
+			loadGoogleTags();
+			window.saLoadAnalyticsTrackers();
+			hideBanner();
+			return;
+		}
+		if (value === 'essential' || value === 'rejected') {
+			updateGtag(false);
+			hideBanner();
+			return;
+		}
+		showBanner();
+	}
+
+	document.getElementById('sa-cc-accept').addEventListener('click', function () {
+		setConsentCookie('accepted');
+		applyConsent('accepted');
+	});
+
+	document.getElementById('sa-cc-reject-all').addEventListener('click', function () {
+		setConsentCookie('rejected');
+		updateGtag(false);
+		clearAnalyticsCookies();
+		window.location.reload();
+	});
+
+	/* EU/EEA + UK (+ associated territories GeoIP may return separately). */
+	var CONSENT_REGIONS = {
+		// EU member states
+		AT:1, BE:1, BG:1, HR:1, CY:1, CZ:1, DK:1, EE:1, FI:1, FR:1, DE:1, GR:1,
+		HU:1, IE:1, IT:1, LV:1, LT:1, LU:1, MT:1, NL:1, PL:1, PT:1, RO:1, SK:1,
+		SI:1, ES:1, SE:1,
+
+		// EEA
+		IS:1, LI:1, NO:1,
+
+		// United Kingdom
+		GB:1,
+		UK:1, // non-standard fallback
+
+		// European/associated territories
+		AX:1, // Åland Islands
+		GI:1, // Gibraltar
+		GG:1, // Guernsey
+		JE:1, // Jersey
+		IM:1, // Isle of Man
+
+		// French territories that may be returned separately by GeoIP
+		GP:1, // Guadeloupe
+		GF:1, // French Guiana
+		MQ:1, // Martinique
+		RE:1, // Réunion
+		YT:1, // Mayotte
+		MF:1  // Saint Martin
+	};
+
+	function requiresConsentBanner(countryCode) {
+		if (!countryCode) return false;
+		return !!CONSENT_REGIONS[String(countryCode).toUpperCase()];
+	}
+
+	function autoAcceptOutsideConsentRegion() {
+		setConsentCookie('accepted');
+		applyConsent('accepted');
+	}
+
+	function initConsentByRegion() {
+		var existing = readConsentCookie();
+		if (existing) {
+			applyConsent(existing);
+			return;
+		}
+
+		var settled = false;
+		function finish(fn) {
+			if (settled) return;
+			settled = true;
+			clearTimeout(timer);
+			fn();
+		}
+
+		var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+		var timer = setTimeout(function () {
+			if (controller) {
+				try { controller.abort(); } catch (e) {}
+			}
+			/* Geo timed out — prefer analytics for non-EU majority; do not show banner. */
+			finish(autoAcceptOutsideConsentRegion);
+		}, 2500);
+
+		var fetchOpts = { credentials: 'omit', cache: 'no-store' };
+		if (controller) fetchOpts.signal = controller.signal;
+
+		fetch('https://get.geojs.io/v1/ip/country.json', fetchOpts)
+			.then(function (res) {
+				if (!res.ok) throw new Error('geo http ' + res.status);
+				return res.json();
+			})
+			.then(function (data) {
+				var code = (data && (data.country || data.country_code)) || '';
+				if (requiresConsentBanner(code)) {
+					finish(showBanner);
+				} else {
+					finish(autoAcceptOutsideConsentRegion);
+				}
+			})
+			.catch(function () {
+				finish(autoAcceptOutsideConsentRegion);
+			});
+	}
+
+	initConsentByRegion();
+})();
+</script>
+	<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/blogs.dir/1/files/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/siliconangle/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script>
+(function () {
+	"use strict";
+
+	document.addEventListener("click", function (e) {
+		// Match any of the known marketplace CTA anchor classes
+		var link = e.target.closest(
+			".aws-marketplace-cta-btn, " +
+			".aws-marketplace-cta-ghost, " +
+			".aws-marketplace-cta-plain, " +
+			".aws-marketplace-written-cta-link, " +
+			".aws-mp-session-product-cta, " +
+			".aws-mp-cta-btn, " +
+			".hero-cta-listing, " +
+			".series-hero-cta-listing"
+		);
+		if (!link) return;
+
+		// Determine CTA type
+		var ctaType = "listing";
+		var text = (link.textContent || "").trim().toUpperCase();
+		if (
+			link.classList.contains("aws-marketplace-cta-ghost") ||
+			link.classList.contains("aws-marketplace-cta-plain") ||
+			text.indexOf("DEMO") !== -1
+		) {
+			ctaType = "demo";
+		}
+
+		// Current page URL
+		var sourcePage = window.location.pathname;
+		var isSpecialVideoPath = sourcePage.indexOf("/special-video-coverage/") === 0;
+		var isSpecialVideoSessionPath = /\/special-video-coverage\/video\/\d+\/?/.test(sourcePage);
+
+		// Section derived from DOM context, with path fallback for special video pages
+		var closestArticle    = link.closest("article");
+		var closestSlide      = link.closest(".series-hero-slide");
+		var closestHub        = link.closest(".aws-marketplace-hub");
+		var closestSvcModal   = link.closest(".aws-svc-modal");
+		var closestSvcGrid    = link.closest(".aws-mp-svc-grid, .aws-mp-svc-page");
+		var closestSvcSession = link.closest(".aws-mp-session, .aws-mp-session-product");
+		var sourceSection;
+		if (closestSlide) {
+			sourceSection = "series-hero";
+		} else if (closestSvcSession || isSpecialVideoSessionPath) {
+			sourceSection = "special-video-session";
+		} else if (closestSvcModal) {
+			sourceSection = "special-video-modal";
+		} else if (closestSvcGrid || (isSpecialVideoPath && !isSpecialVideoSessionPath)) {
+			sourceSection = "special-video-coverage";
+		} else if (closestHub) {
+			sourceSection = "hub";
+		} else {
+			sourceSection = "article";
+		}
+
+		// Nearest post/product title
+		var titleEl = null;
+		if (closestSvcModal) {
+			titleEl = closestSvcModal.querySelector(".aws-svc-modal-title");
+		} else if (closestSvcSession) {
+			titleEl = closestSvcSession.querySelector(".aws-mp-session-product h2, .aws-mp-session-title");
+		} else if (closestArticle) {
+			titleEl = closestArticle.querySelector(".aws-marketplace-card-title, .aws-mp-post-title, .aws-mp-product-name");
+		} else if (closestSlide) {
+			titleEl = closestSlide.querySelector(".series-hero-title");
+		} else {
+			titleEl = document.querySelector(".aws-mp-session-product h2, .aws-mp-session-title, .aws-mp-post-title, .aws-mp-product-name");
+		}
+		var postTitle = titleEl ? (titleEl.textContent || "").trim() : "";
+
+		// Fire GA4 event
+		if (typeof gtag === "function") {
+			gtag("event", "marketplace_cta_click", {
+				cta_type:       ctaType,
+				post_title:     postTitle,
+				destination:    link.href,
+				source_page:    sourcePage,
+				source_section: sourceSection,
+			});
+		}
+	});
+}());
+</script>
+	<script id="sa-bootstrap-js" src="https://siliconangle.com/wp-content/themes/siliconangle/js/vendor/bootstrap.min.js?ver=3.4.1"></script>
+<script id="sa-scripts-js-extra">
+var siliconAngleMeta = {"homeURL":"https://siliconangle.com","ajaxurl":"https://siliconangle.com/wp-admin/admin-ajax.php","loginNonce":"e037b5138d","publicAjaxNonce":"1962882dc0","SA_Placeholder":"https://images.siliconangle.com/blogs.dir/1/files/2025/05/Image-from-iOS-59.jpg","CUBE_Placeholder":"https://images.siliconangle.com/blogs.dir/1/files/2014/12/PLACEHOLDER-theCUBE.png","user_name":"","user_first_name":"","user_img":"","logout_url":"","sa_uinterest":{"interested_topics":"{\"cloud\":[\"CLOUD\"],\"big-data\":[\"BIG DATA\"],\"infrastructure\":[\"INFRASTRUCTURE\"],\"emerging-tech\":[\"EMERGING TECH\"],\"wikibon\":[\"WIKIBON\"],\"thecube\":[\"TheCUBE\"],\"applications\":[\"APPLICATIONS\"],\"women-in-tech\":[\"WOMEN IN TECH\"],\"cube-guest-of-week\":[\"CUBE GUEST OF WEEK\"]}","interested_people":"{\"karen-mills\":[\"KAREN MILLS\"]}","current_user_interests":null}};
+//# sourceURL=sa-scripts-js-extra
+</script>
+<script id="sa-scripts-js" src="https://siliconangle.com/wp-content/themes/siliconangle/scripts.js?ver=1787151353"></script>
+<script id="advanced-ads-find-adblocker-js" src="https://siliconangle.com/wp-content/plugins/advanced-ads/admin/assets/js/advertisement.js"></script>
+<script id="gform_json-js" src="https://siliconangle.com/wp-content/plugins/gravityforms/js/jquery.json.js?ver=1.9.15"></script>
+<script id="gform_gravityforms-js" src="https://siliconangle.com/wp-content/plugins/gravityforms/js/gravityforms.min.js?ver=1.9.15"></script>
+<script id="gform_placeholder-js" src="https://siliconangle.com/wp-content/plugins/gravityforms/js/placeholders.jquery.min.js?ver=1.9.15"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://siliconangle.com/wp-includes/js/wp-emoji-release.min.js?ver=7.1"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://siliconangle.com/wp-includes/js/wp-emoji-loader.min.js
+</script>
+<script>!function(){window.advanced_ads_ready_queue=window.advanced_ads_ready_queue||[],advanced_ads_ready_queue.push=window.advanced_ads_ready;for(var d=0,a=advanced_ads_ready_queue.length;d<a;d++)advanced_ads_ready(advanced_ads_ready_queue[d])}();</script></body>
+</html>
+
+
+
+
+                    
+
+
+
+<!-- Performance optimized by Redis Object Cache. Learn more: https://wprediscache.com -->

@@ -1,0 +1,39 @@
+slug: "2026-vertex-ai-evaluation-stored-xss"
+title_en: "Vertex AI SDK Evaluation Visualization Stored XSS"
+title_cn: "Vertex AI SDK 评估结果可视化存储型跨站脚本漏洞"
+year: 2026
+disclosed: "2026-02-20"
+category: "code-vulns"
+severity: "high"
+severity_basis: "cvss"
+cve: "CVE-2026-2472"
+cvss: 8.6
+severity_evidence: "Google Cloud assigned CVSS 4.0 base score 8.6 High to CVE-2026-2472."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "Google Cloud Vertex AI SDK for Python"
+language:
+  - "Python"
+attack_surface:
+  - "Vertex AI model evaluation results"
+  - "Dataset JSON visualization in Jupyter and Colab"
+references:
+  - title: "Google Cloud Security Bulletin GCP-2026-011"
+    url: "https://docs.cloud.google.com/support/bulletins#gcp-2026-011"
+  - title: "NVD: CVE-2026-2472"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-2472"
+  - title: "Snyk: CVE-2026-2472"
+    url: "https://security.snyk.io/vuln/SNYK-PYTHON-GOOGLECLOUDAIPLATFORM-15338245"
+  - title: "Google APIs Python AI Platform repository"
+    url: "https://github.com/googleapis/python-aiplatform"
+  - title: "Public technical reproduction for CVE-2026-2472"
+    url: "https://github.com/JoshuaProvoste/CVE-2026-2472-Vertex-AI-SDK-Google-Cloud"
+tldr: "Untrusted model-evaluation or dataset JSON content could become active JavaScript when the Vertex AI SDK rendered it in a Jupyter or Colab notebook."
+tags:
+  - "ai-security"
+  - "vertex-ai"
+  - "model-evaluation"
+  - "stored-xss"
+  - "cve-2026-2472"
+verification_notes: "The vendor bulletin, CVE record, package advisory, upstream repository, and public technical reproduction were reviewed together."

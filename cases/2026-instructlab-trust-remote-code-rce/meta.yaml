@@ -1,0 +1,36 @@
+slug: "2026-instructlab-trust-remote-code-rce"
+title_en: "InstructLab Hardcoded Remote Model Code Execution"
+title_cn: "InstructLab 硬编码远程模型代码信任导致的执行漏洞"
+year: 2026
+disclosed: "2026-04-22"
+category: "supply-chain"
+severity: "high"
+severity_basis: "cvss"
+cve: "CVE-2026-6859"
+cvss: 8.8
+severity_evidence: "NVD records a CVSS 3.1 score of 8.8 for CVE-2026-6859."
+real_incident: true
+reproducible: false
+ai_tool:
+  - "InstructLab training and model-loading workflow"
+language:
+  - "Python"
+attack_surface:
+  - "InstructLab training and model-loading workflow"
+  - "Untrusted AI workflow input"
+references:
+  - title: "Red Hat: CVE-2026-6859"
+    url: "https://access.redhat.com/security/cve/CVE-2026-6859"
+  - title: "GitLab advisory: CVE-2026-6859"
+    url: "https://advisories.gitlab.com/pypi/instructlab/CVE-2026-6859/"
+  - title: "Red Hat Bugzilla: CVE-2026-6859"
+    url: "https://bugzilla.redhat.com/show_bug.cgi?id=2459998"
+  - title: "NVD: CVE-2026-6859"
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2026-6859"
+  - title: "Snyk: CVE-2026-6859"
+    url: "https://security.snyk.io/vuln/SNYK-PYTHON-INSTRUCTLAB-16323407"
+tldr: "InstructLab hardcoded trust_remote_code during model loading, so a malicious model repository could run Python on the training host."
+tags:
+  - "ai-security"
+  - "cve-2026-6859"
+verification_notes: "Reviewed primary disclosure, vulnerability record, upstream remediation material, and independent corroboration."

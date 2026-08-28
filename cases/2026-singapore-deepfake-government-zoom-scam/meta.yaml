@@ -1,0 +1,41 @@
+slug: 2026-singapore-deepfake-government-zoom-scam
+title_en: Singapore Government Official Deepfake Zoom Scam
+title_cn: 新加坡深度伪造政府官员 Zoom 诈骗案
+year: 2026
+disclosed: '2026-05-14'
+category: human-factor
+severity: critical
+severity_basis: quantifiable-impact
+severity_evidence: Singapore Police reported that one victim transferred at least SGD 4.9 million after a deepfake Zoom meeting
+  impersonating the prime minister and senior officials.
+real_incident: true
+reproducible: false
+ai_tool:
+- real-time face-swap
+- voice cloning
+- Zoom
+language:
+- Multiple
+attack_surface:
+- WhatsApp and email
+- video conferencing
+- executive impersonation
+- bank transfers
+references:
+- title: Singapore Police Force advisory
+  url: https://www.police.gov.sg/media-hub/news/2026/05/20260514_advisory_on_scams_involving_impersonation_of_snr_govt_officials_incl_secy_cabinet
+- title: Singapore Police Force Zoom footage analysis
+  url: https://www.police.gov.sg/media-hub/news/2026/05/20260516_footage_from_zoom_video_conference_involving_impersonation_of_senior_government_officials
+- title: Channel NewsAsia report
+  url: https://www.channelnewsasia.com/singapore/impersonation-scam-fake-zoom-meeting-footage-lawrence-wong-tharman-indranee-police-6125691
+- title: MHA response on real-time deepfake detection
+  url: https://www.mha.gov.sg/media-room/newsroom/capabilities-to-detect-and-prevent-communications-of-real-time-deepfake-impersonations/
+- title: MHA response on AI-generated impersonation enforcement
+  url: https://www.mha.gov.sg/media-room/newsroom/reports-and-enforcement-actions-involving-ai-generated-deepfake-content-impersonating-public-figures-businesses-or-government-agencies/
+tldr: 新加坡警方确认，一名受害者在与深度伪造总理及高级官员的 Zoom 会议后转出至少 490 万新元；诈骗同时利用伪造文件、保密要求和实时音视频冒充。
+tags:
+- ai-security
+- human-factor
+- real-time-deepfake-video-and-voice-tooling
+verification_notes: Singapore Police reported that one victim transferred at least SGD 4.9 million after a deepfake Zoom meeting
+  impersonating the prime minister and senior officials.
